@@ -1,18 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSO : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public class PlayerSO : ScriptableObject
+{
+    [Header("GroundState")] 
+    public float moveSpeed;
+    
+    [Header("AirState")]
+    public float jumpForce;
+    
+    [Header("BattleState")]
+    public int damage;
+    public int hp;
+    public int defense;
 }
