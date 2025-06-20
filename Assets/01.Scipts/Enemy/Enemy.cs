@@ -1,18 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private EnemyStateMachine stateMachine;
+    [SerializeField] private Transform taget;
+    [SerializeField] public EnemySO Data;
+
+    private void Awake()
     {
-        
+        stateMachine = new EnemyStateMachine();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        stateMachine.ChangeState(new EnemyIdleState(stateMachine));
+    }
+
+    private void Update()
+    {
+        stateMachine.HandleInput();
+        stateMachine.Update();
+    }
+
+    private void FixedUpdate()
+    {
+        stateMachine.PhysicsUpdate();
     }
 }

@@ -1,23 +1,21 @@
 using UnityEngine;
 
-public class EnemyAttackState : EnemyBaseState
+public class EnemyChaseState :EnemyBaseState
 {
     protected EnemyStateMachine stateMachine;
-    
-    
-    public EnemyAttackState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
+
+    public EnemyChaseState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
     {
     }
 
-    
     public override void Enter()
     {
-        Debug.Log("Attack Enter");
+        Debug.Log("Chase Enter");
     }
 
     public override void Exit()
     {
-        Debug.Log("Attack Exit");
+        Debug.Log("Chase Exit");
     }
 
     public override void HandleInput()
@@ -27,12 +25,11 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void Update()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void PhysicsUpdate()
     {
         throw new System.NotImplementedException();
     }
-    
 }
