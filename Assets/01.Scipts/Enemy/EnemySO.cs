@@ -1,19 +1,14 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-
-public class PlayerSO : ScriptableObject
+public class EnemySO : ScriptableObject
 {
     [Header("GroundState")] 
     public float moveSpeed;
-    
-    [Header("AirState")]
-    public float jumpForce;
+    public float areaRange;
     
     [Header("BattleState")]
     public int damage;
     public int hp;
     public int defense;
+    public int attackRange;
 }
