@@ -75,7 +75,7 @@ public class ResourceLoader : MonoBehaviour
     public async void TestCode()
     {
         // 테스트 코드용 주소입력, 실제로는 주소를 기록한 StringNameSpace의 변수가 들어가야함
-        string testKey = "Test/Prefabs/Cube";
+        string testKey = StringNameSpace.test;
 
         // 주소기반 로딩으로 testKey가 불러올 에셋의 주소 파라미터
         GameObject testObj = await LoadAssetAddress<GameObject>(testKey); // await를 통해 로딩이 다 되어야 다음코드로 넘어감
