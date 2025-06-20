@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBaseState : MonoBehaviour
+public class PlayerBaseState : IState
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Enter()
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Exit()
     {
-        
+        throw new System.NotImplementedException();
+    }
+
+    public void HandleInput()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Update()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void PhysicsUpdate()
+    {
+        throw new System.NotImplementedException();
     }
 }
