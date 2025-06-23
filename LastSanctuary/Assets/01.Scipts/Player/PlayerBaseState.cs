@@ -4,28 +4,46 @@ using UnityEngine;
 
 public class PlayerBaseState : IState
 {
-    public void Enter()
+    protected PlayerStateMachine stateMachine;
+    protected PlayerSO playerSO;
+    public PlayerBaseState(PlayerStateMachine stateMachine)
     {
-        throw new System.NotImplementedException();
+        this.stateMachine = stateMachine;
+        playerSO = stateMachine.Player.playerData;
     }
 
-    public void Exit()
+    public virtual void Enter()
     {
-        throw new System.NotImplementedException();
+
     }
 
-    public void HandleInput()
+    public virtual void Exit()
     {
-        throw new System.NotImplementedException();
+
     }
 
-    public void Update()
+    public virtual void HandleInput()
     {
-        throw new System.NotImplementedException();
+
     }
 
-    public void PhysicsUpdate()
+    public virtual void Update()
     {
-        throw new System.NotImplementedException();
+
+    }
+
+    public virtual void PhysicsUpdate()
+    {
+
+    }
+
+    protected void StartAnimation(int animatorHash)
+    {
+        stateMachine.Player.animator.SetBool(animatorHash, true);
+    }
+
+    protected void StopAnimation(int animatorHash)
+    {
+        stateMachine.Player.animator.SetBool(animatorHash, false);
     }
 }
