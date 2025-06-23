@@ -1,35 +1,52 @@
 
+using UnityEngine;
+
 public class EnemyBaseState : IState
 {
     protected EnemyStateMachine stateMachine;
     
-    public EnemyBaseState(EnemyStateMachine EnemyStateMachine)
+    public EnemyBaseState(EnemyStateMachine enemyStateMachine)
     {
-        stateMachine = EnemyStateMachine;
+        stateMachine = enemyStateMachine;
     }
     
     public virtual void Enter()
     {
-        throw new System.NotImplementedException();
     }
-
     public virtual void Exit()
     {
-        throw new System.NotImplementedException();
     }
-
     public virtual void HandleInput()
     {
-        throw new System.NotImplementedException();
     }
-
     public virtual void Update()
     {
-        throw new System.NotImplementedException();
     }
-
     public virtual void PhysicsUpdate()
     {
-        throw new System.NotImplementedException();
     }
+
+    protected void Move()
+    {
+        Vector3 moveDirection = GetMoveDiretion();
+        Move(moveDirection);
+    }
+
+    private Vector3 GetMoveDiretion()
+    {
+        Vector3 moveDirection = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).normalized;
+        return moveDirection;
+    }
+
+    private void Move(Vector3 moveDirection)
+    {
+        float moveSpeed = GetMoveSpeed();
+        stateMachine.Enemy.transform.position += moveDirection * (moveSpeed * Time.deltaTime);
+    }
+
+    private float GetMoveSpeed()
+    {
+        return stateMachine.MoveSpeed;
+    }
+
 }

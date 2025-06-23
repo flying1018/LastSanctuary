@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class EnemyChaseState :EnemyBaseState
 {
-    protected EnemyStateMachine stateMachine;
-
     public EnemyChaseState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
     {
     }
@@ -25,11 +23,11 @@ public class EnemyChaseState :EnemyBaseState
 
     public override void Update()
     {
-        
+        throw new System.NotImplementedException();
     }
 
     public override void PhysicsUpdate()
     {
-        throw new System.NotImplementedException();
+        Move();
     }
 }

@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class EnemyReturnState :EnemyBaseState
 {
-    protected EnemyStateMachine stateMachine;
-
     public EnemyReturnState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
     {
     }

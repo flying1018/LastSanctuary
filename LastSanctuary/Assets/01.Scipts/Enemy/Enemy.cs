@@ -6,9 +6,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform taget;
     [SerializeField] public EnemySO Data;
 
+    //public CharacterController Controller {get; private set;} 쓸지안쓸지모름
+
     private void Awake()
     {
-        stateMachine = new EnemyStateMachine();
+        stateMachine = new EnemyStateMachine(this);
     }
 
     private void Start()

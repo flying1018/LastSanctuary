@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class EnemyIdleState : EnemyBaseState
 {
-    protected EnemyStateMachine stateMachine;
     private Transform enemyPos;
     private Transform targetPos;
     
     [SerializeField] private Collider2D colloder;
 
-    public EnemyIdleState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
+    public EnemyIdleState(EnemyStateMachine StateMachine) : base(StateMachine)
     {
     }
 
@@ -29,12 +28,16 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void HandleInput()
     {
-        
+        throw new System.NotImplementedException();
     }
 
     public override void Update()
     {
-        throw new System.NotImplementedException();
+       float distance = Vector2.Distance(stateMachine.Enemy.transform.position, stateMachine.Target.transform.position);
+       if (distance < 10f)
+       {
+           stateMachine.ChangeState(stateMachine.ChaseState);
+       }
     }
 
     public override void PhysicsUpdate()
