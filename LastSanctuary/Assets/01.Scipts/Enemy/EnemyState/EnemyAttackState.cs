@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class EnemyAttackState : EnemyBaseState
 {
-    protected EnemyStateMachine stateMachine;
-    
-    
     public EnemyAttackState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
     {
     }
