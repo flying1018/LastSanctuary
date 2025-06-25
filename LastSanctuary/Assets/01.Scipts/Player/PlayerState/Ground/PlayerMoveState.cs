@@ -9,27 +9,26 @@ public class PlayerMoveState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.Player.playerAnimationDB.MoveParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.Player.playerAnimationDB.MoveParameterHash);
     }
-
-    public override void HandleInput()
-    {
-
-    }
+    
 
     public override void Update()
     {
+        base.Update();
 
+        if (_input.MoveInput.x == 0f) 
+        {
+            _stateMachine.ChangeState(_stateMachine.IdleState);
+        }
     }
-
+    
     public override void PhysicsUpdate()
     {
-
+        Move();
     }
 }

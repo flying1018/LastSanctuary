@@ -4,36 +4,36 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [field: SerializeField] public PlayerSO playerData { get; private set; }
-    [field: SerializeField] public Rigidbody2D rb { get; private set; } 
-
-    [field: Header("Animation")]
-    [field: SerializeField] public PlayerAnimationDB playerAnimationDB { get; private set; }
-
-    public Animator animator { get; private set; }
-    public PlayerController input { get; private set; }
-
-    public PlayerStateMachine stateMachine;
+    //필드
+    private PlayerController _input;
+    private PlayerStateMachine _stateMachine;
+    private Rigidbody2D _rigidbody;
+    private Animator _animator;
+    //직렬화
+    [SerializeField] private PlayerSO playerData;
+    //프로퍼티
+    public PlayerController Input { get => _input; }
+    public PlayerSO Data { get => playerData; }
+    public Rigidbody2D Rigidbody { get => _rigidbody; }
+    public Animator Animator { get => _animator; }
+    
 
     private void Awake()
     {
-        playerAnimationDB.Initailize();
-        animator = GetComponent<Animator>();
-        input = GetComponent<PlayerController>();
-        rb = GetComponent<Rigidbody2D>();
-        
-        
-        stateMachine = new PlayerStateMachine(this);
+        _input = GetComponent<PlayerController>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        _stateMachine = new PlayerStateMachine(this);
     }
 
     private void Update()
     {
-        stateMachine.HandleInput();
-        stateMachine.Update();
+        _stateMachine.HandleInput();
+        _stateMachine.Update();
     }
 
     private void FixedUpdate()
     {
-        stateMachine.PhysicsUpdate();
+        _stateMachine.PhysicsUpdate();
     }
 }

@@ -9,17 +9,11 @@ public class PlayerJumpState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.Player.playerAnimationDB.JumpParameterHash);
-
-        Rigidbody2D rb = stateMachine.Player.rb;
-        rb.velocity = new Vector2(rb.velocity.x, 0f);
-        rb.AddForce(Vector2.up * playerSO.jumpForce, ForceMode2D.Impulse);
     }
 
     public override void Exit()
     {
         base.Enter();
-        StopAnimation(stateMachine.Player.playerAnimationDB.JumpParameterHash);
     }
 
     public override void HandleInput()
