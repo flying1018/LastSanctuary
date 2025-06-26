@@ -228,7 +228,19 @@ MonoBehaviour:
     m_ActionId: 5468465d-7bdc-4e1e-84d5-6dc88651d714
     m_ActionName: Player/UsingItem[/Keyboard/r]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1151265909}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: db363ae1-1d76-448c-976d-b865fb59fb6d
     m_ActionName: Player/Dash[/Keyboard/leftShift]
   - m_PersistentCalls:

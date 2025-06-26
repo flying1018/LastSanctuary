@@ -17,4 +17,7 @@ public class PlayerSO : ScriptableObject
     public int damage;
     public int hp;
     public int defense;
+    
+    [field: Header("DashState")]
+    [field: SerializeField][field: Range(0f, 50f)] public float dashSpeed { get; private set; } = 20f;
 }

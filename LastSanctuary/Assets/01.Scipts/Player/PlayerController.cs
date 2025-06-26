@@ -9,8 +9,13 @@ public class PlayerController : MonoBehaviour
     //필드
     private Vector2 _moveInput;
     
+    private bool _dashTriggered; // 대시 키가 눌렸는지 (온 대시)
+    
     //프로퍼티
     public Vector2 MoveInput { get => _moveInput; }
+    
+    public bool DashTriggered {get => _dashTriggered;}// 읽기 전용 겟 
+    public void ResetDashTrigger() => _dashTriggered = false; //한번쓰면 초기화 셋
     
     public bool IsGround()
     {
@@ -38,4 +43,14 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+    
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            _dashTriggered = true;     // 트리거 ON (한 프레임용)
+            Debug.Log("대시 입력 감지");
+        }
+    }
+    
 }
