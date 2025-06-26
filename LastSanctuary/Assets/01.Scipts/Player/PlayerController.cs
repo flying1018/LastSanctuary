@@ -8,9 +8,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     //필드
     private Vector2 _moveInput;
+    private bool _isGuarding;
     
     //프로퍼티
     public Vector2 MoveInput { get => _moveInput; }
+    public bool IsGuarding => _isGuarding; 
     
     public bool IsGround()
     {
@@ -38,6 +40,15 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-
-
+    public void OnGuard(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            _isGuarding = true;
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            _isGuarding = false;
+        }
+    }
 }
