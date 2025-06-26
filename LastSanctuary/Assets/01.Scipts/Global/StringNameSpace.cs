@@ -4,7 +4,7 @@ public static class StringNameSpace
 
     public static class JsonAddress
     {
-        public const string EnemyJsonAddress = "Assets/06.Resource/Data/TestEnemyData.json";
+        public const string EnemyJsonAddress = "Assets/02.Data/GameData/TestEnemyData.json";
     }
 
     public static class SoundAddress

@@ -1,7 +1,7 @@
 {
   "Enemy": [
     {
-      "Key": "Goblin01",
+      "Id": "Goblin01",
       "IsGround": true,
       "Name": "Goblin",
       "Attack": 12.5,
@@ -12,7 +12,7 @@
       "AreaRange": 5.0
     },
     {
-      "Key": "Slime02",
+      "Id": "Slime02",
       "IsGround": true,
       "Name": "Slime",
       "Attack": 5.0,
@@ -23,7 +23,7 @@
       "AreaRange": 3.5
     },
     {
-      "Key": "Bat03",
+      "Id": "Bat03",
       "IsGround": false,
       "Name": "Bat",
       "Attack": 8.5,
