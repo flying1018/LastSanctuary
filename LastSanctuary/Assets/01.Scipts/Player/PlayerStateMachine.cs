@@ -7,6 +7,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerMoveState MoveState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
     public PlayerAttackState AttackState { get; private set; }
+    public PlayerGuardState GuardState { get; private set; }
 
     public PlayerStateMachine(Player player)
     {
