@@ -31,4 +31,15 @@ public class PlayerMoveState : PlayerBaseState
     {
         Move();
     }
+    
+    public override void HandleInput()
+    {
+        base.HandleInput();
+
+        if (_input.DashTriggered)
+        {
+            _input.ResetDashTrigger();                       // 한 번만 사용되도록 리셋
+            _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
+        }
+    }
 }
