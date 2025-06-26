@@ -84,15 +84,7 @@ public class PlayerBaseState : IState
 
         }
     }
-
-    public void Guard()
-    {
-        //PerfectGuard
-        if (_input.IsGuarding)
-        {
-            Debug.Log("가드 성공");
-        }
-    }
+    
 
     public void Heal()
     {

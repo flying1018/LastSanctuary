@@ -16,18 +16,13 @@ public class PlayerFallState : PlayerBaseState
 
     }
 
-    public override void HandleInput()
-    {
-
-    }
-
-    public override void Update()
-    {
-
-    }
-
     public override void PhysicsUpdate()
     {
-
+        if (_input.IsGround())
+        {
+            Debug.Log("EndFall");
+            _input.IsJump = false;
+            _stateMachine.ChangeState(_stateMachine.IdleState);
+        }
     }
 }

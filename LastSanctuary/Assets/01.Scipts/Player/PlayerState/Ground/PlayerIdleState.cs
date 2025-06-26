@@ -20,15 +20,13 @@ public class PlayerIdleState : PlayerBaseState
     {
         base.HandleInput();
 
-        if (_input.DashTriggered)
+        if (_input.IsDash)
         {
-            _input.ResetDashTrigger();                       // 한 번만 사용되도록 리셋
             _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
         }
 
-        if (CharacterManager.Instance.isJump)
+        if (_input.IsJump)
         {
-            DebugHelper.Log("점프감지");
             _stateMachine.ChangeState(_stateMachine.JumpState); 
         }
     }
@@ -45,7 +43,7 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void PhysicsUpdate()
     {
-        Move(Vector2.zero);
+        Move();
     }
 
 }

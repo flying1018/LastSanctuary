@@ -11,14 +11,24 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveInput;
     private bool _isGuarding;
 
-    private bool _dashTriggered; // 대시 키가 눌렸는지 (온 대시)
+    private bool _isDash; // 대시 키가 눌렸는지 (온 대시)
+    private bool _isJump;
 
     //프로퍼티
     public Vector2 MoveInput { get => _moveInput; }
     public bool IsGuarding => _isGuarding;
 
-    public bool DashTriggered { get => _dashTriggered; }// 읽기 전용 겟 
-    public void ResetDashTrigger() => _dashTriggered = false; //한번쓰면 초기화 셋
+    public bool IsDash
+    {
+        get => _isDash;
+        set => _isDash = value;
+    }
+
+    public bool IsJump
+    {
+        get => _isJump;
+        set => _isJump = value;
+    }
 
     public bool IsGround()
     {
@@ -40,20 +50,18 @@ public class PlayerController : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-
         if (context.phase == InputActionPhase.Started && IsGround())
         {
-            CharacterManager.Instance.isJump = true;
+            _isJump = true;
         }
     }
 
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && !CharacterManager.Instance.isDash)
+        if (context.phase == InputActionPhase.Started && !_isDash)
         {
-            _dashTriggered = true;     // 트리거 ON
-            Debug.Log("대시 입력 감지");
+            _isDash = true;
         }
     }
 

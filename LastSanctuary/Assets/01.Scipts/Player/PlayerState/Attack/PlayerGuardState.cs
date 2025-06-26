@@ -41,4 +41,13 @@ public class PlayerGuardState : PlayerBaseState
     {
         Guard();
     }
+    
+    public void Guard()
+    {
+        //PerfectGuard
+        if (_input.IsGuarding)
+        {
+            Debug.Log("가드 성공");
+        }
+    }
 }
