@@ -8,7 +8,7 @@ public class PlayerBaseState : IState
     protected PlayerController _input;
     protected PlayerSO _playerSO;
     protected Rigidbody2D _rigidbody;
-    
+
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
         this._stateMachine = stateMachine;
@@ -57,7 +57,7 @@ public class PlayerBaseState : IState
         Move(_input.MoveInput);
         //Rotate(_input.MoveInput);
     }
-    
+
     public void Move(Vector2 direction)
     {
         Vector2 moveVelocity = new Vector2(direction.normalized.x * _playerSO.moveSpeed, _rigidbody.velocity.y);
@@ -66,9 +66,9 @@ public class PlayerBaseState : IState
 
     public void Rotate(Vector2 direction)
     {
-        if(direction != Vector2.zero)
+        if (direction != Vector2.zero)
         {
-            
+
         }
     }
 
@@ -81,5 +81,13 @@ public class PlayerBaseState : IState
         }
     }
 
+    public void Dash()
+    {
 
+    }
+
+    public void Heal()
+    {
+        
+    }
 }
