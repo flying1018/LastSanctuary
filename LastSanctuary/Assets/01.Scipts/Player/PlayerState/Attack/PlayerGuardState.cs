@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerGuardState : PlayerBaseState
 {
+    private float _perfectGuardWindow = 0.2f;
+    private float _guardStart;
+    
     public bool _isPrefectGuard;
     public PlayerGuardState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
@@ -11,6 +14,8 @@ public class PlayerGuardState : PlayerBaseState
     {
         base.Enter();
         _rigidbody.velocity = Vector2.zero;
+        _guardStart = Time.time;
+        _isPrefectGuard = false;
     }
 
     public override void Exit()

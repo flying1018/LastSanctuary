@@ -80,6 +80,4 @@ public class PlayerBaseState : IState
             Debug.Log("가드 성공");
         }
     }
-
-
 }
