@@ -18,12 +18,7 @@ MonoBehaviour:
   m_GUID: 078ad171abff64d0ab7e4d6628049529
   m_SerializeEntries:
   - m_GUID: 97165b912de4a403cafddf6c1e86a9bf
-    m_Address: Assets/06.Resource/Data
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 408ed20ea0a5a4459b31fa5faa2f2641
-    m_Address: Assets/06.Resource/Data/TestEnemyData.json
+    m_Address: Assets/02.Data/GameData
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
