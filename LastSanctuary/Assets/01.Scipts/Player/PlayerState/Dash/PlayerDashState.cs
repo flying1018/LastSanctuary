@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class PlayerDashState : PlayerBaseState
 {
-    private Vector2 _dir;
-    private float _dashElapsedTime; 
-    
+    private Vector2 dir;
     public PlayerDashState(PlayerStateMachine stateMachine) : base(stateMachine) { }
-    
+
     public override void Enter()
     {
-        _dir = _stateMachine.Player.Input.MoveInput.normalized;
-
-        _dashElapsedTime = 0f;
+        base.Enter();
+        CharacterManager.Instance.isDash = true;
+        _elapsedTime = 0f;
+        dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
     }
 
     public override void Exit()
     {
+        base.Exit();
+        _elapsedTime = 0f;
+        _rigidbody.velocity = Vector2.zero;
+        CharacterManager.Instance.StartDashCool();
 
+        DebugHelper.LogWarning($"대시 끝 {_rigidbody.velocity}");
     }
 
     public override void HandleInput()
@@ -28,13 +32,17 @@ public class PlayerDashState : PlayerBaseState
 
     public override void Update()
     {
-      
+        base.Update();
+        _elapsedTime += Time.deltaTime;
+
+        if (_elapsedTime >= _playerSO.dashTime)
+        {
+            _stateMachine.ChangeState(_stateMachine.IdleState);
+        }
     }
 
     public override void PhysicsUpdate()
     {
-        var rb = _stateMachine.Player.Rigidbody;
-        float speed = _stateMachine.Player.Data.dashSpeed;
-        rb.velocity = new Vector2(_dir.x * speed, rb.velocity.y);
+        _rigidbody.velocity = dir * _playerSO.dashPower;
     }
 }

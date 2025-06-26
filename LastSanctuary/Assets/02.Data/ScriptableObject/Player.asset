@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1656d5e7e8832447a9a32cd66ab5c34, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
+  <moveSpeed>k__BackingField: 6
+  <jumpForce>k__BackingField: 20
   damage: 0
   hp: 0
   defense: 0
+  <dashTime>k__BackingField: 0.25
+  <dashPower>k__BackingField: 20

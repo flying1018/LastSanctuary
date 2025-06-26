@@ -1,7 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
+    public bool isDash;
+    public bool isJump;
     private static CharacterManager _instance;
     public static CharacterManager Instance
     {
@@ -37,6 +40,19 @@ public class CharacterManager : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        
+
+    }
+
+    public void StartDashCool(float duration = 0.7f)
+    {
+        if (isDash)
+            StartCoroutine(DashCool_Coroutine(duration));
+    }
+
+    private IEnumerator DashCool_Coroutine(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isDash = false;
+        DebugHelper.Log("대시쿨 종료");
     }
 }

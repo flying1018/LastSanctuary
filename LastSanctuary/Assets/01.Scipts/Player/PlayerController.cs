@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -40,18 +41,18 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
 
-        if (context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started && IsGround())
         {
-
+            CharacterManager.Instance.isJump = true;
         }
     }
 
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started && !CharacterManager.Instance.isDash)
         {
-            _dashTriggered = true;     // 트리거 ON (한 프레임용)
+            _dashTriggered = true;     // 트리거 ON
             Debug.Log("대시 입력 감지");
         }
     }
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnGuard(InputAction.CallbackContext context)
     {
+
         if (context.phase == InputActionPhase.Started)
         {
             _isGuarding = true;
@@ -71,6 +73,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnHeal(InputAction.CallbackContext context)
     {
-        
+
     }
 }
