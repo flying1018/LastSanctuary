@@ -24,6 +24,6 @@ public class EnemyStateMachine : StateMachine
         ChaseState = new EnemyChaseState(this);
         AttackState = new EnemyAttackState(this);
 
-        MoveSpeed = Enemy.Data.moveSpeed;
+        MoveSpeed = Enemy.Data._moveSpeed;
     }
 }
