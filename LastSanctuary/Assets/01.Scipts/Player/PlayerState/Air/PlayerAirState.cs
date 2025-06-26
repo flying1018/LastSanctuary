@@ -23,7 +23,11 @@ public class PlayerAirState : PlayerBaseState
 
     public override void Update()
     {
-
+        if (_input.IsGround())
+        {
+            CharacterManager.Instance.isJump = false;
+            _stateMachine.ChangeState(_stateMachine.IdleState);
+        }
     }
 
     public override void PhysicsUpdate()

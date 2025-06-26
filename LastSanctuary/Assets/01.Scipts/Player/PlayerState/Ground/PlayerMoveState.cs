@@ -15,23 +15,23 @@ public class PlayerMoveState : PlayerBaseState
     {
         base.Exit();
     }
-    
+
 
     public override void Update()
     {
         base.Update();
 
-        if (_input.MoveInput.x == 0f) 
+        if (_input.MoveInput.x == 0f)
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
     }
-    
+
     public override void PhysicsUpdate()
     {
         Move();
     }
-    
+
     public override void HandleInput()
     {
         base.HandleInput();
@@ -40,6 +40,12 @@ public class PlayerMoveState : PlayerBaseState
         {
             _input.ResetDashTrigger();                       // 한 번만 사용되도록 리셋
             _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
+        }
+
+        if (CharacterManager.Instance.isJump)
+        {
+            DebugHelper.Log("점프감지");
+            _stateMachine.ChangeState(_stateMachine.JumpState);
         }
     }
 }

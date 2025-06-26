@@ -8,6 +8,9 @@ public class PlayerBaseState : IState
     protected PlayerController _input;
     protected PlayerSO _playerSO;
     protected Rigidbody2D _rigidbody;
+    protected SpriteRenderer _spriteRenderer;
+    protected float _elapsedTime;
+    protected float DashCool = 0.5f;
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
@@ -15,6 +18,8 @@ public class PlayerBaseState : IState
         _input = stateMachine.Player.Input;
         _playerSO = stateMachine.Player.Data;
         _rigidbody = stateMachine.Player.Rigidbody;
+        _spriteRenderer = stateMachine.Player.SpriteRenderer;
+
     }
 
     public virtual void Enter()
@@ -34,7 +39,7 @@ public class PlayerBaseState : IState
 
     public virtual void Update()
     {
-
+        
     }
 
     public virtual void PhysicsUpdate()
@@ -60,6 +65,14 @@ public class PlayerBaseState : IState
 
     public void Move(Vector2 direction)
     {
+        if (direction.x > 0)
+        {
+            _spriteRenderer.flipX = false;
+        }
+        else if (direction.x < 0)
+        {
+            _spriteRenderer.flipX = true;
+        }
         Vector2 moveVelocity = new Vector2(direction.normalized.x * _playerSO.moveSpeed, _rigidbody.velocity.y);
         _rigidbody.velocity = moveVelocity;
     }
@@ -81,12 +94,12 @@ public class PlayerBaseState : IState
         }
     }
 
-    public void Dash()
+    public void Heal()
     {
 
     }
 
-    public void Heal()
+    public void Jump()
     {
         
     }
