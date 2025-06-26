@@ -40,6 +40,8 @@ public class DebugWindow : EditorWindow
     // 디버그할 기능의 필드 변수 선언공간
     private string test; // 예시용로 사용할 테스트 변수 선언
     private AudioClip bgm;
+    private GameObject go;
+    private int testDamage;
 
 
     [MenuItem("Window/My Debug Tool")]
@@ -65,6 +67,13 @@ public class DebugWindow : EditorWindow
         if (GUILayout.Button("Bgm바꾸기")) // 디버그 툴에 뜰 버튼 이름
         {
             
+        }
+        EditorGUILayout.LabelField("가드 테스트");
+        go = (GameObject)EditorGUILayout.ObjectField("playerObject", go, typeof(GameObject), true); 
+        testDamage = EditorGUILayout.IntField("데미지", testDamage);
+        if (GUILayout.Button("데미지 테스트"))
+        {
+           
         }
     }
 }
