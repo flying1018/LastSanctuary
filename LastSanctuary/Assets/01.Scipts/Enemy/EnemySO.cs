@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class EnemySO : ScriptableObject
 {
-    [Header("GroundState")] 
-    public float moveSpeed;
-    public float areaRange;
-    
+    [Header("Info")]
+    public int _key;
+    public string _name;
+
+    [Header("GroundState")]
+    public float _moveSpeed;
+    public float _areaRange;
+    public bool isGround;
+
     [Header("BattleState")]
-    public int damage;
-    public int hp;
-    public int defense;
-    public int attackRange;
+    public int _attack;
+    public int _hp;
+    public int _defense;
+    public int _attackRange;
 }
