@@ -9,6 +9,9 @@ public class PlayerJumpState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
+        _rigidbody.AddForce(Vector2.up * _playerSO.jumpForce, ForceMode2D.Impulse);
+
+        _stateMachine.ChangeState(_stateMachine.AirState);
     }
 
     public override void Exit()
@@ -18,7 +21,7 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void HandleInput()
     {
-
+        base.HandleInput();
     }
 
     public override void Update()
