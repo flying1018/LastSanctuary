@@ -41,6 +41,10 @@ public class PlayerController : MonoBehaviour
         {
             _moveInput = context.ReadValue<Vector2>();
         }
+        else if (context.phase == InputActionPhase.Performed)
+        {
+            _moveInput = context.ReadValue<Vector2>();
+        }
         else if (context.phase == InputActionPhase.Canceled)
         {
             _moveInput = Vector2.zero;

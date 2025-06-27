@@ -70,13 +70,14 @@ public class PlayerBaseState : IState
 
     public void Move(Vector2 direction)
     {
-        Vector2 moveVelocity = new Vector2(direction.normalized.x * _playerSO.moveSpeed, _rigidbody.velocity.y);
+        float xDirection = direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0;
+        Vector2 moveVelocity = new Vector2(xDirection * _playerSO.moveSpeed, _rigidbody.velocity.y);
         _rigidbody.velocity = moveVelocity;
     }
 
     public void Rotate(Vector2 direction)
     {
-        if (direction != Vector2.zero)
+        if (direction.x != 0)
         {
             _spriteRenderer.flipX = direction.x < 0;
             _playerModel.transform.localPosition = _spriteRenderer.flipX ? 
