@@ -68,6 +68,7 @@ public class DebugWindow : EditorWindow
         {
             
         }
+        
         EditorGUILayout.LabelField("가드 테스트");
         go = (GameObject)EditorGUILayout.ObjectField("playerObject", go, typeof(GameObject), true); 
         testDamage = EditorGUILayout.IntField("데미지", testDamage);

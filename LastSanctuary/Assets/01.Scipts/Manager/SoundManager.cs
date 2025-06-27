@@ -2,26 +2,13 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.AddressableAssets;
 using System.Threading.Tasks;
-public class SoundManager : MonoBehaviour
+public class SoundManager : Singleton<GameManager>
 {
     // 사용할 사운드 종류들
     public enum SoundType
     {
         BGM,
         Effect,
-    }
-
-    private static SoundManager _instance;
-    public static SoundManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new GameObject("SoundManager").AddComponent<SoundManager>();
-            }
-            return _instance;
-        }
     }
 
     public AudioMixer mixer;
@@ -31,22 +18,6 @@ public class SoundManager : MonoBehaviour
     
     private const string sfxVolumeName = "SFXVolume";
     private const string bgmVolumeName = "BGMVolume";
-
-    private void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            if (_instance != this)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
 
     public async void PlayBGM(string key)
     {
