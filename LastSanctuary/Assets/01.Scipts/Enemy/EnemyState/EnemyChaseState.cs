@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyChaseState :EnemyBaseState
+public class EnemyChaseState : EnemyBaseState
 {
     public EnemyChaseState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
     {

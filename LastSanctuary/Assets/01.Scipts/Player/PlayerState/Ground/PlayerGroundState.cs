@@ -8,18 +8,19 @@ public class PlayerGroundState : PlayerBaseState
     
     public override void Enter()
     {
-
-    }
+        base.Enter();
+        StartAnimation(_stateMachine.Player.AnimationDB.GroundParameterHash);
+    }   
 
     public override void Exit()
     {
-
+        base.Exit();
+        StopAnimation(_stateMachine.Player.AnimationDB.GroundParameterHash);
     }
 
     public override void HandleInput()
     {
         base.HandleInput();
-        
         if (_input.IsGuarding)
         {
             _stateMachine.ChangeState(_stateMachine.GuardState);
@@ -30,9 +31,15 @@ public class PlayerGroundState : PlayerBaseState
             _stateMachine.ChangeState(_stateMachine.JumpState);
         }
 
+
         if (_input.IsHeal)
         {
             _stateMachine.ChangeState(_stateMachine.HealState);
+        }
+        
+        if (_input.IsAttack)
+        {
+            _stateMachine.ChangeState(_stateMachine.AttackState);
         }
     }
 }

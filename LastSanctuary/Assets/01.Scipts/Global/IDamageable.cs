@@ -10,7 +10,6 @@ public enum DamageType
 
 public interface IDamageable
 {
- public void TakeDamage(float amount, GameObject attacker, DamageType type);
- public void ApplyDamage(float damage);
- public void Die();
+ public void TakeDamage(int atk, DamageType type);
+ 
 }
