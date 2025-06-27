@@ -29,5 +29,10 @@ public class PlayerGroundState : PlayerBaseState
         {
             _stateMachine.ChangeState(_stateMachine.JumpState);
         }
+
+        if (_input.IsHeal)
+        {
+            _stateMachine.ChangeState(_stateMachine.HealState);
+        }
     }
 }
