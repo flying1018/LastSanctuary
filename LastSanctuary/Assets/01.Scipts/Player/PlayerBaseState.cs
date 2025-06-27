@@ -11,6 +11,7 @@ public class PlayerBaseState : IState
     protected SpriteRenderer _spriteRenderer;
     protected PlayerCondition _condition;
     protected float _elapsedTime;
+    protected GameObject _playerModel;
     protected float DashCool = 0.5f;
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
@@ -20,6 +21,7 @@ public class PlayerBaseState : IState
         _playerSO = stateMachine.Player.Data;
         _rigidbody = stateMachine.Player.Rigidbody;
         _spriteRenderer = stateMachine.Player.SpriteRenderer;
+        _playerModel = stateMachine.Player.Model;
         _condition = stateMachine.Player.Condition;
 
     }
@@ -70,15 +72,21 @@ public class PlayerBaseState : IState
 
     public void Move(Vector2 direction)
     {
-        Vector2 moveVelocity = new Vector2(direction.normalized.x * _playerSO.moveSpeed, _rigidbody.velocity.y);
+        float xDirection = direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0;
+        Vector2 moveVelocity = new Vector2(xDirection * _playerSO.moveSpeed, _rigidbody.velocity.y);
         _rigidbody.velocity = moveVelocity;
     }
 
     public void Rotate(Vector2 direction)
     {
-        if (direction != Vector2.zero)
+        if (direction.x != 0)
         {
             _spriteRenderer.flipX = direction.x < 0;
+            _playerModel.transform.localPosition = _spriteRenderer.flipX ? 
+                new Vector3(Mathf.Abs(_playerModel.transform.localPosition.x), 0, 0) :
+                new Vector3(-Mathf.Abs(_playerModel.transform.localPosition.x), 0, 0);
+            
         }
+
     }
 }

@@ -4,6 +4,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
+public class AttackInfo
+{
+    public int attackIndex;
+    public float multiplier;
+    public GameObject effectPrefab;
+    public float nextComboTime;
+}
+
+[Serializable]
+public class PlayerAttackData
+{
+    [field:SerializeField] public List<AttackInfo> AttackInfoDatas { get; private set; }
+    public int GetAttackInfoCount() { return AttackInfoDatas.Count; }
+    public AttackInfo GetAttackInfo(int index) { return AttackInfoDatas[index]; }
+}
+
+[Serializable]
 [CreateAssetMenu(fileName = "Player", menuName = "New Player")]
 public class PlayerSO : ScriptableObject
 {
@@ -22,4 +39,11 @@ public class PlayerSO : ScriptableObject
     [field: Header("DashState")]
     [field: SerializeField][field: Range(0f, 1.5f)] public float dashTime { get; private set; } = 0.25f;
     [field: SerializeField][field: Range(0f, 50f)] public float dashPower { get; private set; } = 20f;
+    
+    [field: Header("HealState")]
+    [field: SerializeField][field: Range(0f, 100f)] public float HealAmount{ get; private set; } = 15f;
+
+
+    [Header("AttackState")] 
+    [field: SerializeField] public PlayerAttackData attacks;
 }

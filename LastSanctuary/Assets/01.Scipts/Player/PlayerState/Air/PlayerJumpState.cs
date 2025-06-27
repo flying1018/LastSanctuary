@@ -9,12 +9,15 @@ public class PlayerJumpState : PlayerAirState
     public override void Enter()
     {
         base.Enter();
+        StartAnimation(_stateMachine.Player.AnimationDB.JumpParameterHash);
+        
         Jump();
     }
 
     public override void Exit()
     {
         base.Enter();
+        StopAnimation(_stateMachine.Player.AnimationDB.JumpParameterHash);
     }
 
     public override void PhysicsUpdate()
@@ -29,6 +32,7 @@ public class PlayerJumpState : PlayerAirState
 
     void Jump()
     {
+        _input.IsJump = false;
         _rigidbody.AddForce(Vector2.up * _playerSO.jumpForce, ForceMode2D.Impulse);
     }
 }
