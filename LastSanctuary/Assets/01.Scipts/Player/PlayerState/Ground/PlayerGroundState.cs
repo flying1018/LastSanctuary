@@ -8,12 +8,12 @@ public class PlayerGroundState : PlayerBaseState
     
     public override void Enter()
     {
-
-    }
+        StartAnimation(_stateMachine.Player.AnimationDB.GroundParameterHash);
+    }   
 
     public override void Exit()
     {
-
+        StopAnimation(_stateMachine.Player.AnimationDB.GroundParameterHash);
     }
 
     public override void HandleInput()

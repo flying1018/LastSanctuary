@@ -8,12 +8,14 @@ public class PlayerFallState : PlayerAirState
 
     public override void Enter()
     {
-
+        base.Enter();
+        StartAnimation(_stateMachine.Player.AnimationDB.FallParameterHash);;
     }
 
     public override void Exit()
     {
-
+        base.Exit();
+        StopAnimation(_stateMachine.Player.AnimationDB.FallParameterHash);;
     }
 
     public override void Update()

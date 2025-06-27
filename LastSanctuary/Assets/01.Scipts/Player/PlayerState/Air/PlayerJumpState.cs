@@ -10,11 +10,13 @@ public class PlayerJumpState : PlayerAirState
     {
         base.Enter();
         Jump();
+        StartAnimation(_stateMachine.Player.AnimationDB.JumpParameterHash);
     }
 
     public override void Exit()
     {
         base.Enter();
+        StopAnimation(_stateMachine.Player.AnimationDB.JumpParameterHash);
     }
 
     public override void PhysicsUpdate()

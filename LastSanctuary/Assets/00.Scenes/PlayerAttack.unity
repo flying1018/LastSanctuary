@@ -196,12 +196,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 50
-  m_Sprite: {fileID: 21300000, guid: 9c692a8ee10bae7428413e028298cc3c, type: 3}
+  m_Sprite: {fileID: 1208105940, guid: f3b6bae3289f7c74981410fdceebe549, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 2.8125, y: 2.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -431,7 +431,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b642fdb8eddf04586fceeb8a1076b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 0}
+  <AnimationDB>k__BackingField:
+    groundParameter: '@Ground'
+    idleParameter: Idle
+    moveParameter: Move
+    airParameter: '@Air'
+    fallParameter: Fall
+    jumpParameter: Jump
+    attackParameter: '@Attack'
+    guardParameter: Guard
   playerData: {fileID: 11400000, guid: fa11ae5f2b2d74860ae80e96545967e4, type: 2}
   playerModel: {fileID: 642858502}
 --- !u!114 &1218897278
@@ -609,7 +617,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.5, y: 3}
+  m_Size: {x: 1.5, y: 2.7}
   m_Direction: 0
 --- !u!4 &1218897283
 Transform:

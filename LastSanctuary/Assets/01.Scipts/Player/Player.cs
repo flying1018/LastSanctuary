@@ -9,9 +9,10 @@ public class Player : MonoBehaviour
     private PlayerStateMachine _stateMachine;
     private Rigidbody2D _rigidbody;
     private Animator _animator;
-    public SpriteRenderer _spriteRenderer;
+    private SpriteRenderer _spriteRenderer;
 
     //직렬화
+    [field: SerializeField] public PlayerAnimationDB AnimationDB { get; private set; }
     [SerializeField] private PlayerSO playerData;
     [SerializeField] private GameObject playerModel;
     
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _spriteRenderer = playerModel.GetComponent<SpriteRenderer>();
+        AnimationDB.Initailize();
         _stateMachine = new PlayerStateMachine(this);
     }
 
