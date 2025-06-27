@@ -11,8 +11,8 @@ public class PlayerDashState : PlayerBaseState
     {
         base.Enter();
         
-        _elapsedTime = 0f;
         dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
+        Invoke(nameof(ChangeIdleState), _playerSO.dashTime);
     }
 
     public override void Exit()
@@ -27,19 +27,13 @@ public class PlayerDashState : PlayerBaseState
 
     }
 
-    public override void Update()
-    {
-        base.Update();
-        _elapsedTime += Time.deltaTime;
-
-        if (_elapsedTime >= _playerSO.dashTime)
-        {
-            _stateMachine.ChangeState(_stateMachine.IdleState);
-        }
-    }
-
     public override void PhysicsUpdate()
     {
         _rigidbody.velocity = dir * _playerSO.dashPower;
+    }
+
+    void ChangeIdleState()
+    {
+        _stateMachine.ChangeState(_stateMachine.IdleState);
     }
 }

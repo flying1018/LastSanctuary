@@ -21,6 +21,7 @@ public class PlayerStateMachine : StateMachine
         AttackState = new PlayerAttackState(this);
         DashState = new PlayerDashState(this);
         FallState = new PlayerFallState(this);
+        
         ChangeState(IdleState); // 초기 상태
     }
 

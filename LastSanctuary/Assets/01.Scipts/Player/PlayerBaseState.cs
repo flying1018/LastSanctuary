@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBaseState : IState
+public class PlayerBaseState : MonoBehaviour, IState
 {
     protected PlayerStateMachine _stateMachine;
     protected PlayerController _input;
@@ -10,7 +10,6 @@ public class PlayerBaseState : IState
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
     protected GameObject _playerModel;
-    protected float _elapsedTime;
     protected float DashCool = 0.5f;
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
