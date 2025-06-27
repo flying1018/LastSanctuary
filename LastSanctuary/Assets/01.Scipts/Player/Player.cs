@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
     {
         _stateMachine.HandleInput();
         _stateMachine.Update();
-        DebugHelper.ShowRay(this.transform.position, Vector2.down * 1.2f, Color.red);
     }
 
     private void FixedUpdate()
