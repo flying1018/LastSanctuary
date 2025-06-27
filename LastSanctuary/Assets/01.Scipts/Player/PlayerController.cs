@@ -36,11 +36,12 @@ public class PlayerController : MonoBehaviour
         set => _isJump = value;
     }
 
-    
+
     public bool IsHeal
     {
         get => _isHeal;
         set => _isHeal = value;
+    }
 
     public bool IsAttack { get; set; }
     
