@@ -9,6 +9,11 @@ public static class StringNameSpace
 
     public static class SoundAddress
     {
+        public const string MainMixer = "Assets/05.Input/MainMixer.mixer";
+        public const string BGMMixer = "Assets/05.Input/MainMixer.mixer[BGMMixer]";
+
+        public const string SFXPrefab = "Assets/04.Prefabs/Global/SFX.prefab";
+        
         public const string BGM1 = "";
     }
 }
