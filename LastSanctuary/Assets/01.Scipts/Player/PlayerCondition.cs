@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCondition : MonoBehaviour,IDamageable
+public class PlayerCondition : MonoBehaviour, IDamageable
 {
     private Player _player;
+
+    public event Action OnDie;
     
     private int _curHp;
     private int _maxHp;
@@ -35,7 +38,7 @@ public class PlayerCondition : MonoBehaviour,IDamageable
             Debug.Log($"데미지를 받음{_totaldamage}");
             if (_curHp <= _totaldamage)
             {
-                //Die
+                OnDie?.Invoke();
             }
         }
     }
