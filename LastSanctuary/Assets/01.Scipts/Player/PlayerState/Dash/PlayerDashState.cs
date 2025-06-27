@@ -34,7 +34,6 @@ public class PlayerDashState : PlayerBaseState
 
         if (_elapsedTime >= _playerSO.dashTime)
         {
-            _input.IsDash = false;
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
     }

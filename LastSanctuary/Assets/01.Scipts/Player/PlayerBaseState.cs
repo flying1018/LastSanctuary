@@ -9,6 +9,7 @@ public class PlayerBaseState : IState
     protected PlayerSO _playerSO;
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
+    protected GameObject _playerModel;
     protected float _elapsedTime;
     protected float DashCool = 0.5f;
 
@@ -19,6 +20,7 @@ public class PlayerBaseState : IState
         _playerSO = stateMachine.Player.Data;
         _rigidbody = stateMachine.Player.Rigidbody;
         _spriteRenderer = stateMachine.Player.SpriteRenderer;
+        _playerModel = stateMachine.Player.Model;
 
     }
 
@@ -77,6 +79,11 @@ public class PlayerBaseState : IState
         if (direction != Vector2.zero)
         {
             _spriteRenderer.flipX = direction.x < 0;
+            _playerModel.transform.localPosition = _spriteRenderer.flipX ? 
+                new Vector3(Mathf.Abs(_playerModel.transform.localPosition.x), 0, 0) :
+                new Vector3(-Mathf.Abs(_playerModel.transform.localPosition.x), 0, 0);
+            
         }
+
     }
 }

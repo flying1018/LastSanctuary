@@ -13,19 +13,22 @@ public class Player : MonoBehaviour
 
     //직렬화
     [SerializeField] private PlayerSO playerData;
+    [SerializeField] private GameObject playerModel;
+    
     //프로퍼티
     public PlayerController Input { get => _input; }
     public PlayerSO Data { get => playerData; }
     public Rigidbody2D Rigidbody { get => _rigidbody; }
     public Animator Animator { get => _animator; }
     public SpriteRenderer SpriteRenderer { get => _spriteRenderer; }
+    public GameObject Model { get => playerModel; }
 
     private void Awake()
     {
         _input = GetComponent<PlayerController>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = playerModel.GetComponent<SpriteRenderer>();
         _stateMachine = new PlayerStateMachine(this);
     }
 

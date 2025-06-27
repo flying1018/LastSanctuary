@@ -20,7 +20,6 @@ public class PlayerFallState : PlayerAirState
     {
         if (_input.IsGround())
         {
-            _input.IsJump = false;
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,34 +8,31 @@ public class PlayerController : MonoBehaviour
 {
     //직렬화
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float groundCheckDistance;
+    
     //필드
+    private CapsuleCollider2D _capsuleCollider;
     private Vector2 _moveInput;
     private bool _isGuarding;
-
-    private bool _isDash; // 대시 키가 눌렸는지 (온 대시)
+    private bool _isDash;
     private bool _isJump;
 
     //프로퍼티
-    public Vector2 MoveInput { get => _moveInput; }
+    public Vector2 MoveInput => _moveInput; 
     public bool IsGuarding => _isGuarding;
-
-    public bool IsDash
+    public bool IsDash  => _isDash; 
+    public bool IsJump  => _isJump;
+    
+    private void Awake()
     {
-        get => _isDash;
-        set => _isDash = value;
-    }
-
-    public bool IsJump
-    {
-        get => _isJump;
-        set => _isJump = value;
+        _capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
     public bool IsGround()
     {
-        //이거 하드코딩임.
-        var hit = Physics2D.Raycast(transform.position, Vector2.down, 1.2f, groundLayer);
-        return hit;
+        Debug.DrawRay(transform.position, Vector2.down * (_capsuleCollider.size.y / 2 +groundCheckDistance), Color.red);
+        return Physics2D.Raycast(transform.position, Vector2.down,
+            (_capsuleCollider.size.y/2)+groundCheckDistance, groundLayer);
     }
 
     public void OnMove(InputAction.CallbackContext context)
