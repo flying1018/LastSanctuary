@@ -16,18 +16,4 @@ public class PlayerAirState : PlayerBaseState
 
     }
 
-    public override void HandleInput()
-    {
-
-    }
-
-    public override void Update()
-    {
-
-    }
-
-    public override void PhysicsUpdate()
-    {
-
-    }
 }

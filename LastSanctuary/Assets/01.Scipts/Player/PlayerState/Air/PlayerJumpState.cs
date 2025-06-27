@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJumpState : PlayerBaseState
+public class PlayerJumpState : PlayerAirState
 {
     public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
         base.Enter();
-        _rigidbody.AddForce(Vector2.up * _playerSO.jumpForce, ForceMode2D.Impulse);
+        Jump();
     }
 
     public override void Exit()
@@ -19,10 +19,16 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void PhysicsUpdate()
     {
+        base.PhysicsUpdate();
+        
         if (_rigidbody.velocity.y < 0)
         {
-            Debug.Log("EndJump");
             _stateMachine.ChangeState(_stateMachine.FallState);
         }
+    }
+
+    void Jump()
+    {
+        _rigidbody.AddForce(Vector2.up * _playerSO.jumpForce, ForceMode2D.Impulse);
     }
 }

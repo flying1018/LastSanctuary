@@ -34,7 +34,10 @@ public class PlayerBaseState : IState
 
     public virtual void HandleInput()
     {
-
+        if (_input.IsDash)
+        {
+            _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
+        }
     }
 
     public virtual void Update()
@@ -44,7 +47,7 @@ public class PlayerBaseState : IState
 
     public virtual void PhysicsUpdate()
     {
-
+        Move();
     }
 
     protected void StartAnimation(int animatorHash)
@@ -60,19 +63,11 @@ public class PlayerBaseState : IState
     public void Move()
     {
         Move(_input.MoveInput);
-        //Rotate(_input.MoveInput);
+        Rotate(_input.MoveInput);
     }
 
     public void Move(Vector2 direction)
     {
-        if (direction.x > 0)
-        {
-            _spriteRenderer.flipX = false;
-        }
-        else if (direction.x < 0)
-        {
-            _spriteRenderer.flipX = true;
-        }
         Vector2 moveVelocity = new Vector2(direction.normalized.x * _playerSO.moveSpeed, _rigidbody.velocity.y);
         _rigidbody.velocity = moveVelocity;
     }
@@ -81,18 +76,7 @@ public class PlayerBaseState : IState
     {
         if (direction != Vector2.zero)
         {
-
+            _spriteRenderer.flipX = direction.x < 0;
         }
-    }
-    
-
-    public void Heal()
-    {
-
-    }
-
-    public void Jump()
-    {
-        
     }
 }
