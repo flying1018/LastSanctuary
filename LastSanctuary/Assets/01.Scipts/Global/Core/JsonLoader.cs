@@ -6,6 +6,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 /// <summary>
 /// Json 형식의 데이터를 실제 사용할 데이터 클래스로 변환하는 유틸 클래스
@@ -22,29 +23,17 @@ public class JsonLoader
         JToken root = await LoadJson(address);
         if (root == null) { DebugHelper.LogWarning("오류로 파싱 실패"); return null; }
 
-        JToken enemies = root["Enemy"];
-        Dictionary<string, EnemyData> enemyData = new Dictionary<string, EnemyData>();
+        var enemies = root["Enemy"].ToString();
+        List<EnemyData> enemyList = JsonConvert.DeserializeObject<List<EnemyData>>(enemies);
 
-        for (int i = 0; i < enemies.Count(); i++)
+        Dictionary<string, EnemyData> enemyDiction = new Dictionary<string, EnemyData>();
+
+        foreach (var enemy in enemyList)
         {
-            string _id = (string)enemies[i]["Id"];
-            bool _isGround = (bool)enemies[i]["IsGround"];
-            string _name = (string)enemies[i]["Name"];
-            float _attack = (float)enemies[i]["Attack"];
-            float _defense = (float)enemies[i]["Defense"];
-            int _hp = (int)enemies[i]["Hp"];
-            int _attackRange = (int)enemies[i]["AttackRange"];
-            float _moveSpeed = (float)enemies[i]["MoveSpeed"];
-            float _areaRange = (float)enemies[i]["AreaRange"];
-
-            EnemyData Data = new EnemyData(_id, _isGround, _name, _attack, _defense, _hp, _attackRange, _moveSpeed, _areaRange);
-
-            if (!enemyData.ContainsKey(_id)) { enemyData[_id] = Data; }
-            else { DebugHelper.LogError($"{_id}가 겹치는 중복된키 있음 확인 요망"); }
-
+            if (!enemyDiction.ContainsKey(enemy.Id)) { enemyDiction[enemy.Id] = enemy; }
+            else { DebugHelper.LogError($"{enemy.Id}가 겹치는 중복된키 있음 확인 요망"); }
         }
-
-        return enemyData;
+        return enemyDiction;
     }
 
     // 추후 확장용 메서드, 추가 예정
