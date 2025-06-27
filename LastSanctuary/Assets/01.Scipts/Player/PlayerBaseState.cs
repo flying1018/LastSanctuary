@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBaseState : IState
+public class PlayerBaseState : MonoBehaviour, IState
 {
     protected PlayerStateMachine _stateMachine;
     protected PlayerController _input;
