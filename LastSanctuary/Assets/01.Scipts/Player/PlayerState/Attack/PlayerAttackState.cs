@@ -49,6 +49,7 @@ public class PlayerAttackState : PlayerBaseState
             _stateMachine.comboIndex = 0;
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
+        
     }
 
     public override void Update()

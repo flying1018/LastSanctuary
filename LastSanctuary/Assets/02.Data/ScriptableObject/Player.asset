@@ -20,13 +20,12 @@ MonoBehaviour:
   <dashTime>k__BackingField: 0.25
   <dashPower>k__BackingField: 20
   attacks:
-  - attackIndex: 1
-    multiplier: 1
-    effectPrefab: {fileID: 0}
-    nextComboTime: 0.3
-    nextComboIndex: 2
-  - attackIndex: 2
-    multiplier: 1.2
-    effectPrefab: {fileID: 0}
-    nextComboTime: 0.3
-    nextComboIndex: 0
+    <AttackInfoDatas>k__BackingField:
+    - attackIndex: 1
+      multiplier: 1
+      effectPrefab: {fileID: 0}
+      nextComboTime: 0.3
+    - attackIndex: 2
+      multiplier: 1.2
+      effectPrefab: {fileID: 0}
+      nextComboTime: 0.3
