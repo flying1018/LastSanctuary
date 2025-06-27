@@ -54,14 +54,22 @@ public class PlayerController : MonoBehaviour
         {
             _isJump = true;
         }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            _isJump = false;
+        }
     }
 
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && !_isDash)
+        if (context.phase == InputActionPhase.Started)
         {
             _isDash = true;
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            _isDash = false;
         }
     }
 

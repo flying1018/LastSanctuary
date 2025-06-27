@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFallState : PlayerBaseState
+public class PlayerFallState : PlayerAirState
 {
     public PlayerFallState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
@@ -16,11 +16,10 @@ public class PlayerFallState : PlayerBaseState
 
     }
 
-    public override void PhysicsUpdate()
+    public override void Update()
     {
         if (_input.IsGround())
         {
-            Debug.Log("EndFall");
             _input.IsJump = false;
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
