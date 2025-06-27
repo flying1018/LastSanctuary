@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private bool _dashCool;
     private bool _isJump;
 
+    private bool _isHeal; //힐 키가 눌렸을때
+    
     //프로퍼티
     public Vector2 MoveInput => _moveInput; 
     public bool IsGuarding => _isGuarding;
@@ -33,6 +35,13 @@ public class PlayerController : MonoBehaviour
         get => _isJump;
         set => _isJump = value;
     }
+
+    
+    public bool IsHeal
+    {
+        get => _isHeal;
+        set => _isHeal = value;
+
     public bool IsAttack { get; set; }
     
     private void Awake()
@@ -97,7 +106,14 @@ public class PlayerController : MonoBehaviour
 
     public void OnHeal(InputAction.CallbackContext context)
     {
-
+        if (context.phase == InputActionPhase.Started)
+        {
+            _isHeal = true;
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            _isHeal = false;
+        }
     }
 
     public void OnAttack(InputAction.CallbackContext context)
