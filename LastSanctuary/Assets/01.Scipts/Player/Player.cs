@@ -5,35 +5,30 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     //필드
-    private PlayerController _input;
     private PlayerStateMachine _stateMachine;
-    private Rigidbody2D _rigidbody;
-    private Animator _animator;
-    public PlayerCondition _condition;
-    private SpriteRenderer _spriteRenderer;
-
+    
     //직렬화
     [field: SerializeField] public PlayerAnimationDB AnimationDB { get; private set; }
     [SerializeField] private PlayerSO playerData;
     [SerializeField] private GameObject playerModel;
     
     //프로퍼티
-    public PlayerController Input { get => _input; }
+    public PlayerController Input { get; set; }
     public PlayerSO Data { get => playerData; }
-    public Rigidbody2D Rigidbody { get => _rigidbody; }
-    public Animator Animator { get => _animator; }
-    public SpriteRenderer SpriteRenderer { get => _spriteRenderer; }
-    public PlayerCondition Condition { get => _condition; }
-    public GameObject Model { get => playerModel; }
+    public Rigidbody2D Rigidbody { get; set; }
+    public Animator Animator { get; set; }
+    public SpriteRenderer SpriteRenderer { get; set; }
+    public PlayerCondition Condition { get; set; }
+    public GameObject Model { get=> playerModel; }
+    
 
     private void Awake()
     {
-        _input = GetComponent<PlayerController>();
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _condition = GetComponent<PlayerCondition>();
-        _spriteRenderer = playerModel.GetComponent<SpriteRenderer>();
+        Input = GetComponent<PlayerController>();
+        Rigidbody = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
+        Condition = GetComponent<PlayerCondition>();
+        SpriteRenderer = playerModel.GetComponent<SpriteRenderer>();
         AnimationDB.Initailize();
         _stateMachine = new PlayerStateMachine(this);
 
@@ -57,9 +52,9 @@ public class Player : MonoBehaviour
     /// </summary>
     private void OnDie()
     {
-        _animator.SetTrigger("@Die");
-        _input.enabled = false;
-        _rigidbody.velocity = Vector2.zero;
+        Animator.SetTrigger("@Die");
+        Input.enabled = false;
+        Rigidbody.velocity = Vector2.zero;
         // 추후 죽었을때 표기되는 UI추가 요망
     }
 
@@ -72,7 +67,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(2f);
         transform.position = SaveManager.Instance.GetSavePoint();
 
-        _animator.SetTrigger("@Respawn");
-        _input.enabled = true;
+        Animator.SetTrigger("@Respawn");
+        Input.enabled = true;
     }
 }

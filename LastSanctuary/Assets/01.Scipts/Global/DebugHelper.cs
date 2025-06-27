@@ -76,7 +76,7 @@ public class DebugWindow : EditorWindow
         bool newGuarding = EditorGUILayout.Toggle("가드 상태", curGuarding);
         if (newGuarding != curGuarding)
         {
-            pc.testGuard(newGuarding);
+            //pc.testGuard(newGuarding);
         }
 
         testDamage = EditorGUILayout.IntField("데미지", testDamage);
