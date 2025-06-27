@@ -15,8 +15,6 @@ public class PlayerDashState : PlayerBaseState
         _input.IsDash = false;
         _elapsedTime = 0;
         dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
-        
-        Invoke("test",_playerSO.dashTime);
     }
 
     public override void Exit()
@@ -35,22 +33,18 @@ public class PlayerDashState : PlayerBaseState
     {
         base.Update();
 
-        // _elapsedTime += Time.deltaTime;
-        // if (_elapsedTime >= _playerSO.dashTime)
-        // {
-        //     _stateMachine.ChangeState(_stateMachine.IdleState);
-        // }
+        _elapsedTime += Time.deltaTime;
+        if (_elapsedTime >= _playerSO.dashTime)
+        {
+            _stateMachine.ChangeState(_stateMachine.IdleState);
+        }
     }
 
     public override void PhysicsUpdate()
     {
         _rigidbody.velocity = dir * _playerSO.dashPower;
     }
-
-    void test()
-    {
-        _stateMachine.ChangeState(_stateMachine.IdleState);
-    }
+    
 
 
 }
