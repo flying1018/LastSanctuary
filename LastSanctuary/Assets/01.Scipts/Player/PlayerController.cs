@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         get => _isJump;
         set => _isJump = value;
     }
+    public bool IsAttack { get; set; }
     
     private void Awake()
     {
@@ -98,6 +99,16 @@ public class PlayerController : MonoBehaviour
     {
 
     }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            IsAttack = true;
+        }
+    }
+    
+    
 
     void DashCoolTime()
     {
