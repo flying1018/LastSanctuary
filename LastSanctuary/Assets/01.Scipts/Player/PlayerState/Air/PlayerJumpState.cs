@@ -32,6 +32,7 @@ public class PlayerJumpState : PlayerAirState
 
     void Jump()
     {
+        _input.IsJump = false;
         _rigidbody.AddForce(Vector2.up * _playerSO.jumpForce, ForceMode2D.Impulse);
     }
 }

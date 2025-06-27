@@ -419,6 +419,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16
   groundCheckDistance: 0.1
+  dashCoolTime: 0.5
 --- !u!114 &1218897277
 MonoBehaviour:
   m_ObjectHideFlags: 0
