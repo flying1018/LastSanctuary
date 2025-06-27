@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Animator _animator;
     public SpriteRenderer _spriteRenderer;
-
+    public PlayerCondition _condition;
     //직렬화
     [SerializeField] private PlayerSO playerData;
     //프로퍼티
@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D Rigidbody { get => _rigidbody; }
     public Animator Animator { get => _animator; }
     public SpriteRenderer SpriteRenderer { get => _spriteRenderer; }
+    public PlayerCondition Condition { get => _condition; }
 
     private void Awake()
     {
@@ -26,7 +27,9 @@ public class Player : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _condition = GetComponent<PlayerCondition>();
         _stateMachine = new PlayerStateMachine(this);
+        
     }
 
     private void Update()

@@ -71,10 +71,19 @@ public class DebugWindow : EditorWindow
         
         EditorGUILayout.LabelField("가드 테스트");
         go = (GameObject)EditorGUILayout.ObjectField("playerObject", go, typeof(GameObject), true); 
+        PlayerController pc = go.GetComponent<PlayerController>();
+        bool curGuarding = pc.IsGuarding;
+        bool newGuarding = EditorGUILayout.Toggle("가드 상태", curGuarding);
+        if (newGuarding != curGuarding)
+        {
+            pc.testGuard(newGuarding);
+        }
+
         testDamage = EditorGUILayout.IntField("데미지", testDamage);
         if (GUILayout.Button("데미지 테스트"))
         {
-           
+           PlayerCondition condition = go.GetComponent<PlayerCondition>();
+           condition.TakeDamage(testDamage, DamageType.Attack);
         }
     }
 }

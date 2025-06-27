@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerGuardState : PlayerGroundState
 {
-    private float _perfectGuardWindow = 0.2f;
+    private float _perfectGuardWindow = 2f;
     private float _guardStart;
-    
-    public bool _isPrefectGuard;
-    public bool _isGuard;
-    public PlayerGuardState(PlayerStateMachine stateMachine) : base(stateMachine) { }
+
+    public PlayerGuardState(PlayerStateMachine stateMachine) : base(stateMachine)
+    {
+    }
 
     public override void Enter()
     {
@@ -17,8 +17,8 @@ public class PlayerGuardState : PlayerGroundState
        Debug.Log("Enter");
         _rigidbody.velocity = Vector2.zero;
         _guardStart = Time.time;
-        _isPrefectGuard = true;
-        _isGuard = true;
+        _condition.IsPerfectGuard = true;
+        _condition.IsGuard = true;
         //가드 애니메이션 실행
     }
 
@@ -33,9 +33,13 @@ public class PlayerGuardState : PlayerGroundState
     {
         if (!_input.IsGuarding)
         {
-            _isGuard = false;
-            _isPrefectGuard = false;
+            _condition.IsGuard = false;
+            _condition.IsPerfectGuard = false;
             _stateMachine.ChangeState(_stateMachine.IdleState);
+        }
+        if (_input.IsDash)
+        {
+            _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
         }
     }
     
@@ -49,7 +53,7 @@ public class PlayerGuardState : PlayerGroundState
     {
         if (Time.time - _guardStart > _perfectGuardWindow)
         {
-            _isPrefectGuard = false;
+            _condition.IsPerfectGuard = false;
         }
     }
 }
