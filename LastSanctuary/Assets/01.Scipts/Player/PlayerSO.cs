@@ -16,6 +16,7 @@ public class PlayerSO : ScriptableObject
     [Header("BattleState")]
     public int damage;
     public int hp;
+    public int stamina;
     public int defense;
 
     [field: Header("DashState")]
