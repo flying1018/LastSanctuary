@@ -19,7 +19,6 @@ public class PlayerGroundState : PlayerBaseState
     public override void HandleInput()
     {
         base.HandleInput();
-        
         if (_input.IsGuarding)
         {
             _stateMachine.ChangeState(_stateMachine.GuardState);

@@ -8,46 +8,48 @@ public class PlayerGuardState : PlayerGroundState
     private float _guardStart;
     
     public bool _isPrefectGuard;
+    public bool _isGuard;
     public PlayerGuardState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
         base.Enter();
+       Debug.Log("Enter");
         _rigidbody.velocity = Vector2.zero;
         _guardStart = Time.time;
-        _isPrefectGuard = false;
+        _isPrefectGuard = true;
+        _isGuard = true;
+        //가드 애니메이션 실행
     }
 
     public override void Exit()
     {
         base.Exit();
+       Debug.Log("Exit");
+        //가드 애니메이션 해제
     }
 
     public override void HandleInput()
     {
-        base.HandleInput();
         if (!_input.IsGuarding)
         {
+            _isGuard = false;
+            _isPrefectGuard = false;
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
     }
-
-    public override void Update()
-    {
-        base.Update();
-    }
-
+    
     public override void PhysicsUpdate()
     {
-        Guard();
+        base.PhysicsUpdate();
+        PerfectGuard();
     }
     
-    public void Guard()
+    public void PerfectGuard()
     {
-        //PerfectGuard
-        if (_input.IsGuarding)
+        if (Time.time - _guardStart > _perfectGuardWindow)
         {
-            Debug.Log("가드 성공");
+            _isPrefectGuard = false;
         }
     }
 }
