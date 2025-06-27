@@ -9,6 +9,8 @@ public class PlayerBaseState : IState
     protected PlayerSO _playerSO;
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
+    protected PlayerCondition _condition;
+    protected float _elapsedTime;
     protected GameObject _playerModel;
     protected float DashCool = 0.5f;
 
@@ -20,6 +22,7 @@ public class PlayerBaseState : IState
         _rigidbody = stateMachine.Player.Rigidbody;
         _spriteRenderer = stateMachine.Player.SpriteRenderer;
         _playerModel = stateMachine.Player.Model;
+        _condition = stateMachine.Player.Condition;
 
     }
 

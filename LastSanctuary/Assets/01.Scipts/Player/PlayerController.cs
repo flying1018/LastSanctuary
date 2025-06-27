@@ -105,6 +105,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void testGuard(bool state)
+    {
+        _isGuarding = state;
+    }
+
     public void OnHeal(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)

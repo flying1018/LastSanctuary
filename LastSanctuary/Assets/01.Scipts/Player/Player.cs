@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private PlayerStateMachine _stateMachine;
     private Rigidbody2D _rigidbody;
     private Animator _animator;
+    public PlayerCondition _condition;
     private SpriteRenderer _spriteRenderer;
 
     //직렬화
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D Rigidbody { get => _rigidbody; }
     public Animator Animator { get => _animator; }
     public SpriteRenderer SpriteRenderer { get => _spriteRenderer; }
+    public PlayerCondition Condition { get => _condition; }
     public GameObject Model { get => playerModel; }
 
     private void Awake()
@@ -29,6 +31,8 @@ public class Player : MonoBehaviour
         _input = GetComponent<PlayerController>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _condition = GetComponent<PlayerCondition>();
         _spriteRenderer = playerModel.GetComponent<SpriteRenderer>();
         AnimationDB.Initailize();
         _stateMachine = new PlayerStateMachine(this);
