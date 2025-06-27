@@ -10,6 +10,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerDashState DashState { get; private set; }
     public PlayerGuardState GuardState { get; private set; }
     public PlayerFallState FallState { get; private set; }
+    public int comboIndex;
 
     public PlayerStateMachine(Player player)
     {
@@ -22,6 +23,9 @@ public class PlayerStateMachine : StateMachine
         DashState = new PlayerDashState(this);
         FallState = new PlayerFallState(this);
         GuardState = new PlayerGuardState(this);
+        
+        comboIndex = 0;
+        
         ChangeState(IdleState); // 초기 상태
     }
 

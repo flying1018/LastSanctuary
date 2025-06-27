@@ -5,13 +5,15 @@ using UnityEngine;
 public class PlayerDashState : PlayerBaseState
 {
     private Vector2 dir;
+    private float _elapsedTime;
     public PlayerDashState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
         base.Enter();
         
-        _elapsedTime = 0f;
+        _input.IsDash = false;
+        _elapsedTime = 0;
         dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
     }
 
@@ -30,11 +32,10 @@ public class PlayerDashState : PlayerBaseState
     public override void Update()
     {
         base.Update();
-        _elapsedTime += Time.deltaTime;
 
+        _elapsedTime += Time.deltaTime;
         if (_elapsedTime >= _playerSO.dashTime)
         {
-            _input.IsDash = false;
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
     }
@@ -43,4 +44,7 @@ public class PlayerDashState : PlayerBaseState
     {
         _rigidbody.velocity = dir * _playerSO.dashPower;
     }
+    
+
+
 }

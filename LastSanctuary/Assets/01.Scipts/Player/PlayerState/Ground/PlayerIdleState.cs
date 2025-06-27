@@ -9,11 +9,13 @@ public class PlayerIdleState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
+        StartAnimation(_stateMachine.Player.AnimationDB.IdleParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
+        StopAnimation(_stateMachine.Player.AnimationDB.IdleParameterHash);
     }
 
     public override void HandleInput()

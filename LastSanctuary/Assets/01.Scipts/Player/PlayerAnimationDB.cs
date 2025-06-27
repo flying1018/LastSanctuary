@@ -15,6 +15,7 @@ public class PlayerAnimationDB
     [SerializeField] private string jumpParameter = "Jump";
 
     [SerializeField] private string attackParameter = "@Attack";
+    [SerializeField] private string comboParameter = "Combo";
     [SerializeField] private string guardParameter = "Guard";
 
     [SerializeField] private string dieParameter = "@Die";
@@ -29,6 +30,7 @@ public class PlayerAnimationDB
     public int JumpParameterHash { get; private set; }
 
     public int AttackParameterHash { get; private set; }
+    public int ComboParameterHash { get; private set; }   
     public int GuardParameterHash { get; private set; }
 
     public int DieParameterHash { get; private set; }
@@ -44,6 +46,7 @@ public class PlayerAnimationDB
         JumpParameterHash = Animator.StringToHash(jumpParameter);
 
         AttackParameterHash = Animator.StringToHash(attackParameter);
+        ComboParameterHash = Animator.StringToHash(comboParameter);  
         GuardParameterHash = Animator.StringToHash(guardParameter);
 
         DieParameterHash = Animator.StringToHash(dieParameter);
