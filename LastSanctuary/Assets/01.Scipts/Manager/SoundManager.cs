@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.AddressableAssets;
 using System.Threading.Tasks;
-public class SoundManager : Singleton<GameManager>
+public class SoundManager : Singleton<SoundManager>
 {
     // 사용할 사운드 종류들
     public enum SoundType
@@ -61,18 +61,18 @@ public class SoundManager : Singleton<GameManager>
         }
     }
 
-    // public async Task Init()
-    // {
-    //     GameObject obj = await ResourceLoader.LoadAssetAddress<GameObject>(StringNameSpace.AddrSoundName.SFXPrefab);
-    //     sfxPrefab = obj;
-    //     mixer = await ResourceLoader.LoadAssetAddress<AudioMixer>(StringNameSpace.AddrSoundName.MainMixer);
+    public async Task Init()
+    {
+        GameObject obj = await ResourceLoader.LoadAssetAddress<GameObject>(StringNameSpace.SoundAddress.SFXPrefab);
+        sfxPrefab = obj;
+        mixer = await ResourceLoader.LoadAssetAddress<AudioMixer>(StringNameSpace.SoundAddress.MainMixer);
 
-    //     bgmSource = gameObject.AddComponent<AudioSource>();
-    //     bgmSource.outputAudioMixerGroup = await ResourceLoader.LoadAssetAddress<AudioMixerGroup>(StringNameSpace.AddrSoundName.BGMMixer);
-    //     bgmSource.loop = true;
-    //     bgmSource.playOnAwake = false;
+        bgmSource = gameObject.AddComponent<AudioSource>();
+        bgmSource.outputAudioMixerGroup = await ResourceLoader.LoadAssetAddress<AudioMixerGroup>(StringNameSpace.SoundAddress.BGMMixer);
+        bgmSource.loop = true;
+        bgmSource.playOnAwake = false;
 
-    //     bgmSound = gameObject.AddComponent<BGMSound>();
-    //     bgmSound.Init(bgmSource); // AudioSource 주입
-    // }
+        bgmSound = gameObject.AddComponent<BGMSound>();
+        bgmSound.Init(bgmSource); // AudioSource 주입
+    }
 }
