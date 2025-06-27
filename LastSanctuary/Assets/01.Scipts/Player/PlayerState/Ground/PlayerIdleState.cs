@@ -26,7 +26,6 @@ public class PlayerIdleState : PlayerGroundState
     public override void Update()
     {
         base.Update();
-
         if (Mathf.Abs(_input.MoveInput.x) > 0f)
         {
             _stateMachine.ChangeState(_stateMachine.MoveState);

@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
         _spriteRenderer = playerModel.GetComponent<SpriteRenderer>();
         AnimationDB.Initailize();
         _stateMachine = new PlayerStateMachine(this);
+
+        GetComponent<PlayerCondition>().OnDie += OnDie;
     }
 
     private void Update()
@@ -43,5 +45,30 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         _stateMachine.PhysicsUpdate();
+    }
+
+    /// <summary>
+    /// 플레이어가 죽었을때 델리게이트로 호출
+    /// 플레이어의 인풋막고, Rigidbody도 멈춰놓음
+    /// </summary>
+    private void OnDie()
+    {
+        _animator.SetTrigger("@Die");
+        _input.enabled = false;
+        _rigidbody.velocity = Vector2.zero;
+        // 추후 죽었을때 표기되는 UI추가 요망
+    }
+
+    /// <summary>
+    /// 리스폰할때 실행되는 코루틴
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator Respawn_Coroutine()
+    {
+        yield return new WaitForSeconds(2f);
+        transform.position = SaveManager.Instance.GetSavePoint();
+
+        _animator.SetTrigger("@Respawn");
+        _input.enabled = true;
     }
 }

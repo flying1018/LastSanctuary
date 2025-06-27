@@ -22,6 +22,7 @@ public class PlayerStateMachine : StateMachine
         AttackState = new PlayerAttackState(this);
         DashState = new PlayerDashState(this);
         FallState = new PlayerFallState(this);
+        GuardState = new PlayerGuardState(this);
         
         comboIndex = 0;
         
