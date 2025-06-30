@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class AerialPlatform : MonoBehaviour
 {
-    [SerializeField] private float recoveryTime;
+    [SerializeField] private float downJumpTime;
+    [SerializeField] private LayerMask playerLayer;
     
     private PlatformEffector2D _platformEffector2D;
     
@@ -22,9 +23,9 @@ public class AerialPlatform : MonoBehaviour
     
     IEnumerator DownJump_Coroutine()
     {
-        _platformEffector2D.rotationalOffset = 180f;
-        yield return new WaitForSeconds(recoveryTime);
-        _platformEffector2D.rotationalOffset = 0f;
+        _platformEffector2D.colliderMask -= playerLayer;
+        yield return new WaitForSeconds(downJumpTime);
+        _platformEffector2D.colliderMask += playerLayer;
     }
 
 

@@ -26,7 +26,7 @@ public class PlayerGroundState : PlayerBaseState
             _stateMachine.ChangeState(_stateMachine.GuardState);
         }
         
-        if (_input.IsJump)
+        if (_input.IsJump && _player.IsGround())
         {
             _stateMachine.ChangeState(_stateMachine.JumpState);
         }
@@ -44,9 +44,8 @@ public class PlayerGroundState : PlayerBaseState
 
         if (_input.MoveInput.y < 0)
         {
-            if( _stateMachine.Player.AerialPlatform == null)
-                return;
-            _stateMachine.Player.AerialPlatform.DownJump();
+            if(_player.AerialPlatform == null) return;
+            _player.AerialPlatform.DownJump();
             _stateMachine.ChangeState(_stateMachine.FallState);
         }
     }

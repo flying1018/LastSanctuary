@@ -12,6 +12,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerGuardState GuardState { get; private set; }
     public PlayerFallState FallState { get; private set; }
     //ublic PlayerHealState HealState { get; private set; }
+    public PlayerLadderState LadderState { get; private set; }
     public int comboIndex;
 
     public PlayerStateMachine(Player player)
@@ -27,6 +28,7 @@ public class PlayerStateMachine : StateMachine
         FallState = new PlayerFallState(this);
         //HealState = new PlayerHealState(this);
         GuardState = new PlayerGuardState(this);
+        LadderState = new PlayerLadderState(this);
         
         comboIndex = 0;
         ChangeState(IdleState); // 초기 상태

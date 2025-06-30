@@ -7,12 +7,9 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     //직렬화
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private float groundCheckDistance;
     [SerializeField] private float dashCoolTime;
     
     //필드
-    private CapsuleCollider2D _capsuleCollider;
     private bool _dashCool;
     
     //프로퍼티
@@ -22,18 +19,6 @@ public class PlayerController : MonoBehaviour
     public bool IsJump { get; set; }
     public bool IsHeal { get; set; }
     public bool IsAttack { get; set; }
-    
-    private void Awake()
-    {
-        _capsuleCollider = GetComponent<CapsuleCollider2D>();
-    }
-
-    public bool IsGround()
-    {
-        Debug.DrawRay(transform.position, Vector2.down * (_capsuleCollider.size.y / 2 +groundCheckDistance), Color.red);
-        return Physics2D.Raycast(transform.position, Vector2.down,
-            (_capsuleCollider.size.y/2)+groundCheckDistance, groundLayer);
-    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -52,10 +37,16 @@ public class PlayerController : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && IsGround())
+        if (context.phase == InputActionPhase.Started)
         {
             IsJump = true;
         }
+
+        if (context.phase == InputActionPhase.Canceled)
+        {
+            IsJump = false;       
+        }
+
     }
 
 
@@ -66,6 +57,10 @@ public class PlayerController : MonoBehaviour
             IsDash = true;
             _dashCool = true;
             Invoke(nameof(DashCoolTime), dashCoolTime);
+        }
+        else
+        {
+            IsDash = false;
         }
     }
 
