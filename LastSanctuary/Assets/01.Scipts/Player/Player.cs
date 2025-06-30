@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask aerialPlatformLayer;
+    [SerializeField] private GameObject weapon;
     
     //프로퍼티
     public PlayerController Input { get; set; }
@@ -25,10 +26,11 @@ public class Player : MonoBehaviour
     public Animator Animator { get; set; }
     public SpriteRenderer SpriteRenderer { get; set; }
     public PlayerCondition Condition { get; set; }
-    public PlayerSO Data { get => playerData; }
-    public GameObject Model { get=> playerModel; }
     public bool IsLadder { get; set; }
     public AerialPlatform AerialPlatform { get; set; }
+    public PlayerSO Data { get => playerData; }
+    public GameObject Model { get=> playerModel; }
+    public GameObject Weapon {get => weapon;}
     
 
     private void Awake()

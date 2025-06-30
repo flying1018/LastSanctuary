@@ -86,10 +86,11 @@ public class PlayerBaseState : IState
     {
         if (direction.x != 0)
         {
+            //모델 회전
             _spriteRenderer.flipX = direction.x < 0;
-            _playerModel.transform.localPosition = _spriteRenderer.flipX ? 
-                new Vector3(Mathf.Abs(_playerModel.transform.localPosition.x), 0, 0) :
-                new Vector3(-Mathf.Abs(_playerModel.transform.localPosition.x), 0, 0);
+            //무기 회전
+            float angle = _spriteRenderer.flipX ? 180 : 0;
+            _player.Weapon.transform.localRotation = Quaternion.Euler(angle, 0, angle);
         }
 
     }

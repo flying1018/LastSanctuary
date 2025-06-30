@@ -39,6 +39,8 @@ public class ComboAttackState : PlayerAttackState
         _time += Time.deltaTime;
         if (_time <= (_animationTime + _attackInfo.nextComboTime) && _input.IsAttack)
         {
+            //현재 공격이 끝날 때 까지 대기
+            if(_time <= _animationTime) return;
             //다음 공격 번호 가져오기
             _stateMachine.comboIndex = _stateMachine.Player.Data.attacks.GetAttackInfoCount() - 1 <= _stateMachine.comboIndex ? 0 : _stateMachine.comboIndex+1;
             //다음 공격이 없으면 종료
