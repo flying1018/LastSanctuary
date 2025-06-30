@@ -41,6 +41,7 @@ public class DebugWindow : EditorWindow
     private string test; // 예시용로 사용할 테스트 변수 선언
     private AudioClip bgm;
     private GameObject go;
+    private GameObject attacker;
     private int testDamage;
 
 
@@ -76,14 +77,16 @@ public class DebugWindow : EditorWindow
         bool newGuarding = EditorGUILayout.Toggle("가드 상태", curGuarding);
         if (newGuarding != curGuarding)
         {
-            //pc.testGuard(newGuarding);
+            pc.testGuard(newGuarding);
         }
 
         testDamage = EditorGUILayout.IntField("데미지", testDamage);
+        attacker = (GameObject)EditorGUILayout.ObjectField("Attacker", attacker, typeof(GameObject), true);
+        Transform atkDir = attacker != null ? attacker.transform : null;
         if (GUILayout.Button("데미지 테스트"))
         {
            PlayerCondition condition = go.GetComponent<PlayerCondition>();
-           condition.TakeDamage(testDamage, DamageType.Attack);
+           condition.TakeDamage(testDamage, atkDir ,DamageType.Attack);
         }
     }
 }

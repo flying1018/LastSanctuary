@@ -21,10 +21,12 @@ MonoBehaviour:
   <dashTime>k__BackingField: 0.25
   <dashPower>k__BackingField: 20
   <HealAmount>k__BackingField: 15
+  <_perfectGuardWindow>k__BackingField: 0.2
   attacks:
     <AttackInfoDatas>k__BackingField:
     - attackIndex: 1
       multiplier: 1
+      effectPrefab: {fileID: 0}
       nextComboTime: 0.3
     - attackIndex: 2
       multiplier: 1.2
@@ -32,3 +34,9 @@ MonoBehaviour:
     - attackIndex: 3
       multiplier: 2
       nextComboTime: 0.3
+  <_hitDuration>k__BackingField: 0.5
+  <_invincibleDuration>k__BackingField: 1
+  <_hitSteminaRecovery>k__BackingField: 15
+  <_damageReduction>k__BackingField: 0.8
+  <_guardSteminaRecovery>k__BackingField: 30
+  <_guardStaminaCost>k__BackingField: 30

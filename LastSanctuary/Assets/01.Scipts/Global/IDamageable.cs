@@ -10,6 +10,6 @@ public enum DamageType
 
 public interface IDamageable
 {
- public void TakeDamage(int atk, DamageType type);
+ public void TakeDamage(int atk,Transform attackDir ,DamageType type);
  
 }
