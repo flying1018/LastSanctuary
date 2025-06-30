@@ -9,7 +9,8 @@ public class PlayerAnimationDB
     [SerializeField] private string groundParameter = "@Ground";
     [SerializeField] private string idleParameter = "Idle";
     [SerializeField] private string moveParameter = "Move";
-
+    [SerializeField] private string HealParameter = "Heal"; //힐 애니메이션
+    
     [SerializeField] private string airParameter = "@Air";
     [SerializeField] private string fallParameter = "Fall";
     [SerializeField] private string jumpParameter = "Jump";
@@ -17,14 +18,15 @@ public class PlayerAnimationDB
     [SerializeField] private string attackParameter = "@Attack";
     [SerializeField] private string comboParameter = "Combo";
     [SerializeField] private string guardParameter = "Guard";
-
+    
     [SerializeField] private string dieParameter = "@Die";
 
 
     public int GroundParameterHash { get; private set; }
     public int IdleParameterHash { get; private set; }
     public int MoveParameterHash { get; private set; }
-
+    public int HealParameterHash { get; private set; } //힐 해시값
+    
     public int AirParameterHash { get; private set; }
     public int FallParameterHash { get; private set; }
     public int JumpParameterHash { get; private set; }
@@ -40,7 +42,8 @@ public class PlayerAnimationDB
         GroundParameterHash = Animator.StringToHash(groundParameter);
         IdleParameterHash = Animator.StringToHash(idleParameter);
         MoveParameterHash = Animator.StringToHash(moveParameter);
-
+        HealParameterHash = Animator.StringToHash(HealParameter); //힐 정수값으로
+        
         AirParameterHash = Animator.StringToHash(airParameter);
         FallParameterHash = Animator.StringToHash(fallParameter);
         JumpParameterHash = Animator.StringToHash(jumpParameter);

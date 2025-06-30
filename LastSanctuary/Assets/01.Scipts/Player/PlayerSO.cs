@@ -42,6 +42,7 @@ public class PlayerSO : ScriptableObject
     
     [field: Header("HealState")]
     [field: SerializeField][field: Range(0f, 100f)] public float HealAmount{ get; private set; } = 15f;
+    [field: SerializeField][field: Range(0f, 2f)] public float HealDuration{ get; private set; } = 3f;
 
     [field: Header("GuardState")] 
     [field: SerializeField] public float _perfectGuardWindow { get; private set; } = 0.2f;
