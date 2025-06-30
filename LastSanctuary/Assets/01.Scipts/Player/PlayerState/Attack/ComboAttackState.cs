@@ -37,22 +37,30 @@ public class ComboAttackState : PlayerAttackState
     {
         //다음 공격
         _time += Time.deltaTime;
+        
+        //입력 시간 내에 공격 입력 시
         if (_time <= (_animationTime + _attackInfo.nextComboTime) && _input.IsAttack)
         {
-            //현재 공격이 끝날 때 까지 대기
-            if(_time <= _animationTime) return;
-            //다음 공격 번호 가져오기
-            _stateMachine.comboIndex = _stateMachine.Player.Data.attacks.GetAttackInfoCount() - 1 <= _stateMachine.comboIndex ? 0 : _stateMachine.comboIndex+1;
-            //다음 공격이 없으면 종료
-            if (_stateMachine.comboIndex == 0)
+            //애니메이션 끝나고 공격
+            if (_time > _animationTime)
             {
-                _input.IsAttack = false;
-                _stateMachine.ChangeState(_stateMachine.IdleState);
-                return;
+                //다음 공격 번호 가져오기
+                _stateMachine.comboIndex =
+                    _stateMachine.Player.Data.attacks.GetAttackInfoCount()  <= _stateMachine.comboIndex + 1
+                        ? 0
+                        : _stateMachine.comboIndex + 1;
+                //다음 공격이 없으면 종료
+                if (_stateMachine.comboIndex == 0)
+                {
+                    _input.IsAttack = false;
+                    _stateMachine.ChangeState(_stateMachine.IdleState);
+                    return;
+                }
+
+                //다음 공격
+                _stateMachine.ChangeState(_stateMachine.ComboAttack);
             }
             
-            //다음 공격
-            _stateMachine.ChangeState(_stateMachine.ComboAttack);
         }
         //공격 종료
         else if (_time > (_animationTime + _attackInfo.nextComboTime))
