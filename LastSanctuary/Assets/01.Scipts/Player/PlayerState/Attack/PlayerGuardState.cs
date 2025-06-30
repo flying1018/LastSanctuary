@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerGuardState : PlayerGroundState
 {
-    //추후에 SO로 이동
-    private float _perfectGuardWindow = 0.2f;
     private float _guardStart;
 
     public PlayerGuardState(PlayerStateMachine stateMachine) : base(stateMachine) {}
@@ -47,7 +45,7 @@ public class PlayerGuardState : PlayerGroundState
     
     public void PerfectGuard()
     {
-        if (Time.time - _guardStart > _perfectGuardWindow)
+        if (Time.time - _guardStart > _playerSO._perfectGuardWindow)
         {
             _condition.IsPerfectGuard = false;
         }

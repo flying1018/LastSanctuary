@@ -43,7 +43,14 @@ public class PlayerSO : ScriptableObject
     [field: Header("HealState")]
     [field: SerializeField][field: Range(0f, 100f)] public float HealAmount{ get; private set; } = 15f;
 
+    [field: Header("GuardState")] 
+    [field: SerializeField] public float _perfectGuardWindow { get; private set; } = 0.2f;
 
     [Header("AttackState")] 
     [field: SerializeField] public PlayerAttackData attacks;
+
+    [field: Header("Condition")]
+    [field: SerializeField, Range(0f, 1f)] public float _damageReduction { get; private set; } = 0.8f;
+    [field: SerializeField] public int _guardSteminaRecovery { get; private set; } = 30;
+    [field: SerializeField] public int _guardStaminaCost { get; private set; } = 30;
 }

@@ -16,10 +16,6 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private int _maxStamina;
     private int _totaldamage;
     
-    //test용
-    private float _damageReduction = 0.8f;
-    private int _steminaRecovery = 30;
-    private int _staminaCost = 30;
 
     public bool IsPerfectGuard {get; set;}
     public bool IsGuard {get; set;}
@@ -30,18 +26,24 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         _player = GetComponent<Player>();
     }
     
-    public void TakeDamage(int atk, DamageType type)
+    public void TakeDamage(int atk, Transform dir,DamageType type)
     {
-        if (IsPerfectGuard && type != DamageType.Contact)
+        var data = _player.Data;
+
+        bool attackFromRight = dir.position.x > transform.position.x;
+        bool playerDir = !_player.SpriteRenderer.flipX;
+        bool isFront = attackFromRight == playerDir;
+        
+        if (IsPerfectGuard && type != DamageType.Contact && isFront)
         {
             Debug.Log("PerfectGuard");
-            _curStamina += _steminaRecovery;
+            _curStamina += data._guardSteminaRecovery;
             return;
         }
-        if (IsGuard && type != DamageType.Contact)
+        if (IsGuard && type != DamageType.Contact && isFront)
         {
-            _totaldamage = Mathf.CeilToInt(atk * (1 - _damageReduction));
-            _curStamina -= _staminaCost;
+            _totaldamage = Mathf.CeilToInt(atk * (1 - data._damageReduction));
+            _curStamina -= data._guardStaminaCost;
             Debug.Log($"가드 성공 받은 데미지:{_totaldamage}");
         }
         else
@@ -52,6 +54,10 @@ public class PlayerCondition : MonoBehaviour, IDamageable
             if (_curHp <= _totaldamage)
             {
                 OnDie?.Invoke();
+            }
+            else
+            {
+                
             }
         }
     }
