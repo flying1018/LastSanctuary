@@ -6,24 +6,26 @@ using UnityEngine;
 
 public class AerialPlatform : MonoBehaviour
 {
+    [SerializeField] private float recoveryTime;
+    
     private PlatformEffector2D _platformEffector2D;
+    
     private void Awake()
     {
         _platformEffector2D = GetComponent<PlatformEffector2D>();
     }
 
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        UpJump();
-    }
-
     public void DownJump()
     {
-        _platformEffector2D.rotationalOffset = 180f;
+        StartCoroutine(DownJump_Coroutine());
     }
-
-    public void UpJump()
+    
+    IEnumerator DownJump_Coroutine()
     {
+        _platformEffector2D.rotationalOffset = 180f;
+        yield return new WaitForSeconds(recoveryTime);
         _platformEffector2D.rotationalOffset = 0f;
     }
+
+
 }
