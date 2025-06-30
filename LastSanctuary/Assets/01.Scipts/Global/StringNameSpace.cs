@@ -27,6 +27,6 @@ public static class StringNameSpace
         public const string GameController = "GameController";
         public const string Ladder = "Ladder";
         public const string AerialPlatform = "AerialPlatform";
-        
+        public const string SavePoint = "SavePoint";
     }
 }

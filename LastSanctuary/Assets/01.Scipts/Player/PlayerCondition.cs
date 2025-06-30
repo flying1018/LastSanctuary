@@ -10,10 +10,10 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     public event Action OnDie;
 
 
-    private int _curHp = 1000;
-    private int _maxHp;
+    private int _curHp;
+    private int _maxHp = 1000;
     private int _curStamina;
-    private int _maxStamina;
+    private int _maxStamina = 100;
     private int _totaldamage;
 
 
@@ -24,6 +24,8 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private void Awake()
     {
         _player = GetComponent<Player>();
+        _curHp = _maxHp;
+        _curStamina = _maxStamina;
     }
 
     private void Update()

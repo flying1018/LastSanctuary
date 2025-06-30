@@ -89,7 +89,9 @@ public class PlayerBaseState : IState
             _spriteRenderer.flipX = direction.x < 0;
             //무기 회전
             float angle = _spriteRenderer.flipX ? 180 : 0;
-            _player.Weapon.transform.localRotation = Quaternion.Euler(angle, 0, angle);
+            _player.Weapon.transform.rotation = Quaternion.Euler(angle, 0, angle);
+            Debug.Log(_player.Weapon.transform.rotation);
+            
         }
 
     }

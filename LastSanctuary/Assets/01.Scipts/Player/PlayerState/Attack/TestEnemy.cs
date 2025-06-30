@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestEnemy : MonoBehaviour , IDamageable
 {
-    public void TakeDamage(int atk, DamageType type)
+    public void TakeDamage(int atk, Transform attackDir, DamageType type)
     {
         Debug.Log("TakeDamage");
     }

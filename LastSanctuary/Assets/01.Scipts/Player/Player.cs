@@ -62,6 +62,14 @@ public class Player : MonoBehaviour
         {
             IsLadder = true;
         }
+        
+        if (other.CompareTag(StringNameSpace.Tags.SavePoint))
+        {
+            Input.IsNearSave = true;
+            SavePoint dummy = other.GetComponent<SavePoint>();
+            Input.NearSavePos = dummy.ReturnPos();
+            DebugHelper.Log($"가까운 세이브 포인트 {Input.NearSavePos}");
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -69,6 +77,13 @@ public class Player : MonoBehaviour
         if (other.CompareTag(StringNameSpace.Tags.Ladder))
         {
             IsLadder = false;
+        }
+        
+        if (other.CompareTag(StringNameSpace.Tags.SavePoint))
+        {
+            Input.IsNearSave = false;
+            Input.NearSavePos = Vector2.zero;
+            DebugHelper.Log("세이브 포인트에서 벗어남");
         }
     }
 
@@ -113,7 +128,7 @@ public class Player : MonoBehaviour
         DebugHelper.Log("OnDie 호출됨");
 
         Condition.ChangeInvincible(true);
-        Animator.SetTrigger("@Die");
+        Animator.SetTrigger(AnimationDB.DieParameterHash);
         Input.enabled = false;
 
         Rigidbody.velocity = Vector2.zero;
