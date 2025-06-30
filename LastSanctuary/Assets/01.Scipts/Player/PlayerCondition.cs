@@ -8,19 +8,19 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private Player _player;
 
     public event Action OnDie;
-    
-    
+
+
     private int _curHp = 1000;
     private int _maxHp;
     private int _curStamina;
     private int _maxStamina;
     private int _totaldamage;
-    
 
-    public bool IsPerfectGuard {get; set;}
-    public bool IsGuard {get; set;}
-    public bool IsInvincible {get; set;}
-    public float _invincibleStart; 
+
+    public bool IsPerfectGuard { get; set; }
+    public bool IsGuard { get; set; }
+    public bool IsInvincible { get; set; }
+    public float _invincibleStart;
     private void Awake()
     {
         _player = GetComponent<Player>();
@@ -69,17 +69,31 @@ public class PlayerCondition : MonoBehaviour, IDamageable
             _curHp -= _totaldamage;
             _curStamina += data._hitSteminaRecovery; //피격시 스태미나회복
             Debug.Log($"데미지를 받음{_totaldamage}");
-            if (_curHp <= _totaldamage)
+            if (_curHp <= 0)
             {
                 OnDie?.Invoke();
             }
             else
             {
                 Vector2 knockback = (transform.position - dir.transform.position).normalized;
-                
-                
+
+
                 _player._stateMachine.ChangeState(_player._stateMachine.HitState);
             }
         }
+    }
+
+    public void PlayerRecovery()
+    {
+        DebugHelper.Log($"1. {_curHp} 현재 체력");
+        _curHp = _maxHp;
+        _curStamina = _maxStamina;
+
+        DebugHelper.Log($"2. {_curHp} 현재 체력");
+    }
+
+    public void ChangeInvincible(bool Invincible)
+    {
+        IsInvincible = Invincible;
     }
 }
