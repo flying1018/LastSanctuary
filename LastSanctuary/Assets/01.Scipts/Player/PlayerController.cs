@@ -10,10 +10,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private float dashCoolTime;
+    [SerializeField] private float healCoolTime;
     
     //필드
     private CapsuleCollider2D _capsuleCollider;
     private bool _dashCool;
+    private bool _healCool;
     
     //프로퍼티
     public Vector2 MoveInput { get; set; }
@@ -85,9 +87,11 @@ public class PlayerController : MonoBehaviour
 
     public void OnHeal(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started && !_healCool)
         {
             IsHeal = true;
+            _healCool = true;
+            Invoke(nameof(HealCoolTime), healCoolTime);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
@@ -110,5 +114,10 @@ public class PlayerController : MonoBehaviour
     void DashCoolTime()
     {
         _dashCool = false;
+    }
+
+    void HealCoolTime()
+    {
+        _healCool = false;
     }
 }
