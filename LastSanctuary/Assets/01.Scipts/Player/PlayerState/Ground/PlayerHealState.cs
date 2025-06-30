@@ -16,6 +16,7 @@ public class PlayerHealState : PlayerGroundState
         StartAnimation(_stateMachine.Player.AnimationDB.HealParameterHash); //힐 애니메이션 시작
 
         _healTimer = _playerSO.HealDuration;
+        Debug.Log("힐 시작");
     }
 
     public override void Exit()
@@ -27,10 +28,6 @@ public class PlayerHealState : PlayerGroundState
     public override void HandleInput()
     {
         
-        if (!_input.IsHeal)
-        {
-            _stateMachine.ChangeState(_stateMachine.IdleState);
-        }
     }
 
     public override void Update()
