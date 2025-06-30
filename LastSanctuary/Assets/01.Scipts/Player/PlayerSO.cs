@@ -49,6 +49,11 @@ public class PlayerSO : ScriptableObject
     [Header("AttackState")] 
     [field: SerializeField] public PlayerAttackData attacks;
 
+    [field: Header("HitState")]
+    [field: SerializeField] public float _hitDuration{ get; private set; } = 0.2f;
+    [field: SerializeField] public float _invincibleDuration { get; private set; } = 1f;
+    [field: SerializeField] public int _hitSteminaRecovery { get; private set; } = 15;
+
     [field: Header("Condition")]
     [field: SerializeField, Range(0f, 1f)] public float _damageReduction { get; private set; } = 0.8f;
     [field: SerializeField] public int _guardSteminaRecovery { get; private set; } = 30;
