@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     //필드
-    private PlayerStateMachine _stateMachine;
+    public PlayerStateMachine _stateMachine;
     
     //직렬화
     [field: SerializeField] public PlayerAnimationDB AnimationDB { get; private set; }

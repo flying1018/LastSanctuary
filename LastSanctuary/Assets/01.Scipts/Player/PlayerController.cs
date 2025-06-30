@@ -112,4 +112,10 @@ public class PlayerController : MonoBehaviour
     {
         _dashCool = false;
     }
+    
+    public void testGuard(bool state)
+    {
+        IsGuarding = state;
+    }
+
 }
