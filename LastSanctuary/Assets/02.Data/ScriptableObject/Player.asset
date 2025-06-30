@@ -16,9 +16,12 @@ MonoBehaviour:
   <jumpForce>k__BackingField: 20
   damage: 0
   hp: 0
+  stamina: 0
   defense: 0
   <dashTime>k__BackingField: 0.25
   <dashPower>k__BackingField: 20
+  <HealAmount>k__BackingField: 15
+  <_perfectGuardWindow>k__BackingField: 0.2
   attacks:
     <AttackInfoDatas>k__BackingField:
     - attackIndex: 1
@@ -29,3 +32,9 @@ MonoBehaviour:
       multiplier: 1.2
       effectPrefab: {fileID: 0}
       nextComboTime: 0.3
+  <_hitDuration>k__BackingField: 0.5
+  <_invincibleDuration>k__BackingField: 1
+  <_hitSteminaRecovery>k__BackingField: 15
+  <_damageReduction>k__BackingField: 0.8
+  <_guardSteminaRecovery>k__BackingField: 30
+  <_guardStaminaCost>k__BackingField: 30

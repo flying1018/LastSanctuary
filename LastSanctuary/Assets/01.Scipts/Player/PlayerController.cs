@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private float dashCoolTime;
-
+    [SerializeField] private float healCoolTime;
+    
     //필드
     private CapsuleCollider2D _capsuleCollider;
     private bool _dashCool;
@@ -147,4 +148,10 @@ public class PlayerController : MonoBehaviour
     {
         _dashCool = false;
     }
+    
+    public void testGuard(bool state)
+    {
+        IsGuarding = state;
+    }
+
 }
