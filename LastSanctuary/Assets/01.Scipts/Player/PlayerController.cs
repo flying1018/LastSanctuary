@@ -138,6 +138,7 @@ public class PlayerController : MonoBehaviour
             {
                 SaveManager.Instance.SetSavePoint(_nearSavePos);
                 // UI나 효과음 실행
+                return;
             }   
         }
     }
