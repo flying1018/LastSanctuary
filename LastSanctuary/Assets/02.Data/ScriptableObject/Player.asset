@@ -16,16 +16,18 @@ MonoBehaviour:
   <jumpForce>k__BackingField: 20
   damage: 0
   hp: 0
+  stamina: 0
   defense: 0
   <dashTime>k__BackingField: 0.25
   <dashPower>k__BackingField: 20
+  <HealAmount>k__BackingField: 15
   attacks:
     <AttackInfoDatas>k__BackingField:
     - attackIndex: 1
       multiplier: 1
-      effectPrefab: {fileID: 0}
+      effectPrefab: {fileID: 7765177615191433586, guid: c04b5f39610d3f240885a06bab0f9c8c, type: 3}
       nextComboTime: 0.3
     - attackIndex: 2
       multiplier: 1.2
-      effectPrefab: {fileID: 0}
+      effectPrefab: {fileID: 7765177615191433586, guid: c04b5f39610d3f240885a06bab0f9c8c, type: 3}
       nextComboTime: 0.3

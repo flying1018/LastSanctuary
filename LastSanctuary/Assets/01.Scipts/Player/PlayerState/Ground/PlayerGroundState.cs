@@ -34,12 +34,12 @@ public class PlayerGroundState : PlayerBaseState
 
         if (_input.IsHeal)
         {
-            _stateMachine.ChangeState(_stateMachine.HealState);
+            //_stateMachine.ChangeState(_stateMachine.HealState);
         }
         
         if (_input.IsAttack)
         {
-            _stateMachine.ChangeState(_stateMachine.AttackState);
+            _stateMachine.ChangeState(_stateMachine.ComboAttackState);
         }
     }
 }

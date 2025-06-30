@@ -10,9 +10,7 @@ public class PlayerBaseState : IState
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
     protected PlayerCondition _condition;
-    protected float _elapsedTime;
     protected GameObject _playerModel;
-    protected float DashCool = 0.5f;
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
@@ -85,7 +83,6 @@ public class PlayerBaseState : IState
             _playerModel.transform.localPosition = _spriteRenderer.flipX ? 
                 new Vector3(Mathf.Abs(_playerModel.transform.localPosition.x), 0, 0) :
                 new Vector3(-Mathf.Abs(_playerModel.transform.localPosition.x), 0, 0);
-            
         }
 
     }

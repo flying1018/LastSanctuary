@@ -14,11 +14,11 @@ public class Player : MonoBehaviour
     
     //프로퍼티
     public PlayerController Input { get; set; }
-    public PlayerSO Data { get => playerData; }
     public Rigidbody2D Rigidbody { get; set; }
     public Animator Animator { get; set; }
     public SpriteRenderer SpriteRenderer { get; set; }
     public PlayerCondition Condition { get; set; }
+    public PlayerSO Data { get => playerData; }
     public GameObject Model { get=> playerModel; }
     
 
@@ -46,6 +46,9 @@ public class Player : MonoBehaviour
         _stateMachine.PhysicsUpdate();
     }
 
+
+    #region Need MonoBehaviour Method
+
     /// <summary>
     /// 플레이어가 죽었을때 델리게이트로 호출
     /// 플레이어의 인풋막고, Rigidbody도 멈춰놓음
@@ -70,4 +73,6 @@ public class Player : MonoBehaviour
         Animator.SetTrigger("@Respawn");
         Input.enabled = true;
     }
+    
+    #endregion
 }
