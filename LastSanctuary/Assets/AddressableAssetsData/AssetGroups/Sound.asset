@@ -22,6 +22,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 658c77c45c00b48749f52d24d295dc1f
+    m_Address: Assets/04.Prefabs/Global/SFX.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 776f3e8915c904c98ae272975e3fbf24, type: 2}
   m_SchemaSet:
