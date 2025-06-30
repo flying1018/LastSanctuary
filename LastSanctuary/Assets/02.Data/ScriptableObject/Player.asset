@@ -25,9 +25,10 @@ MonoBehaviour:
     <AttackInfoDatas>k__BackingField:
     - attackIndex: 1
       multiplier: 1
-      effectPrefab: {fileID: 7765177615191433586, guid: c04b5f39610d3f240885a06bab0f9c8c, type: 3}
       nextComboTime: 0.3
     - attackIndex: 2
       multiplier: 1.2
-      effectPrefab: {fileID: 7765177615191433586, guid: c04b5f39610d3f240885a06bab0f9c8c, type: 3}
+      nextComboTime: 0.3
+    - attackIndex: 3
+      multiplier: 2
       nextComboTime: 0.3

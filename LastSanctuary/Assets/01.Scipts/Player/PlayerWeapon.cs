@@ -12,7 +12,7 @@ public class PlayerWeapon : MonoBehaviour
         if (other.TryGetComponent(out IDamageable idamageable) )
         {
             if (other.gameObject.CompareTag(StringNameSpace.Tags.Player)) return;
-            Debug.Log(idamageable);
+            Debug.Log(idamageable + "는 " + Damage +"의 를 받았다.");
             idamageable.TakeDamage(Damage, DamageType.Contact);
         }
     }
