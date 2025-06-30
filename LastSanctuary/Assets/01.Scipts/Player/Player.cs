@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     public PlayerCondition Condition { get; set; }
     public PlayerSO Data { get => playerData; }
     public GameObject Model { get=> playerModel; }
+    public AerialPlatform AerialPlatform { get; set; }
     
 
     private void Awake()
@@ -44,6 +46,11 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         _stateMachine.PhysicsUpdate();
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        AerialPlatform = other.gameObject.GetComponent<AerialPlatform>();
     }
 
 

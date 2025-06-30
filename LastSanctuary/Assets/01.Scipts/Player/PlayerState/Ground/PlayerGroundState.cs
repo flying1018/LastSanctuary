@@ -41,5 +41,13 @@ public class PlayerGroundState : PlayerBaseState
         {
             _stateMachine.ChangeState(_stateMachine.ComboAttack);
         }
+
+        if (_input.MoveInput.y < 0)
+        {
+            if( _stateMachine.Player.AerialPlatform == null)
+                return;
+            _stateMachine.Player.AerialPlatform.DownJump();
+            _stateMachine.ChangeState(_stateMachine.FallState);
+        }
     }
 }
