@@ -6,7 +6,8 @@ public class PlayerStateMachine : StateMachine
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
-    public ComboAttackState ComboAttackState { get; private set; }
+    public ComboAttackState ComboAttack { get; private set; }
+    public JumpAttackState JumpAttack {get; private set;}
     public PlayerDashState DashState { get; private set; }
     public PlayerGuardState GuardState { get; private set; }
     public PlayerFallState FallState { get; private set; }
@@ -20,7 +21,8 @@ public class PlayerStateMachine : StateMachine
         IdleState = new PlayerIdleState(this);
         MoveState = new PlayerMoveState(this);
         JumpState = new PlayerJumpState(this);
-        ComboAttackState = new ComboAttackState(this);
+        ComboAttack = new ComboAttackState(this);
+        JumpAttack = new JumpAttackState(this);
         DashState = new PlayerDashState(this);
         FallState = new PlayerFallState(this);
         //HealState = new PlayerHealState(this);

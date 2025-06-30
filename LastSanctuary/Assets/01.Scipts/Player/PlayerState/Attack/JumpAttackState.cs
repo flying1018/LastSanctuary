@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ComboAttackState : PlayerAttackState
+public class JumpAttackState : PlayerAttackState
 {
     private AttackInfo _attackInfo;
     private float _animationTime;
     private float _time;
     
-    public ComboAttackState(PlayerStateMachine stateMachine) : base(stateMachine) { }
+    public JumpAttackState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
@@ -35,34 +35,18 @@ public class ComboAttackState : PlayerAttackState
 
     public override void HandleInput()
     {
-        //다음 공격
-        _time += Time.deltaTime;
-        if (_time <= (_animationTime + _attackInfo.nextComboTime) && _input.IsAttack)
-        {
-            //다음 공격 번호 가져오기
-            _stateMachine.comboIndex = _stateMachine.Player.Data.attacks.GetAttackInfoCount() - 1 <= _stateMachine.comboIndex ? 0 : _stateMachine.comboIndex+1;
-            //다음 공격이 없으면 종료
-            if (_stateMachine.comboIndex == 0)
-            {
-                _input.IsAttack = false;
-                _stateMachine.ChangeState(_stateMachine.IdleState);
-                return;
-            }
-            
-            //다음 공격
-            _stateMachine.ChangeState(_stateMachine.ComboAttack);
-        }
-        //공격 종료
-        else if (_time > (_animationTime + _attackInfo.nextComboTime))
-        {
-            _stateMachine.comboIndex = 0;
-            _stateMachine.ChangeState(_stateMachine.IdleState);
-        }
         
     }
 
     public override void Update()
     {
+        _time += Time.deltaTime;
+        //공격 종료
+        if (_time > (_animationTime + _attackInfo.nextComboTime))
+        {
+            _stateMachine.comboIndex = 0;
+            _stateMachine.ChangeState(_stateMachine.IdleState);
+        }
     }
 
     public override void PhysicsUpdate()
