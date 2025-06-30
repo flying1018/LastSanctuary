@@ -26,7 +26,7 @@ public class PlayerGroundState : PlayerBaseState
             _stateMachine.ChangeState(_stateMachine.GuardState);
         }
         
-        if (_input.IsJump)
+        if (_input.IsJump && _player.IsGround())
         {
             _stateMachine.ChangeState(_stateMachine.JumpState);
         }
@@ -34,12 +34,19 @@ public class PlayerGroundState : PlayerBaseState
 
         if (_input.IsHeal)
         {
-            _stateMachine.ChangeState(_stateMachine.HealState);
+            //_stateMachine.ChangeState(_stateMachine.HealState);
         }
         
         if (_input.IsAttack)
         {
-            _stateMachine.ChangeState(_stateMachine.AttackState);
+            _stateMachine.ChangeState(_stateMachine.ComboAttack);
+        }
+
+        if (_input.MoveInput.y < 0)
+        {
+            if(_player.AerialPlatform == null) return;
+            _player.AerialPlatform.DownJump();
+            _stateMachine.ChangeState(_stateMachine.FallState);
         }
     }
 }

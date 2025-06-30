@@ -34,7 +34,7 @@ public class PlayerDashState : PlayerBaseState
         base.Update();
 
         _elapsedTime += Time.deltaTime;
-        if (_elapsedTime >= _playerSO.dashTime)
+        if (_elapsedTime >= _data.dashTime)
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
@@ -42,7 +42,7 @@ public class PlayerDashState : PlayerBaseState
 
     public override void PhysicsUpdate()
     {
-        _rigidbody.velocity = dir * _playerSO.dashPower;
+        _rigidbody.velocity = dir * _data.dashPower;
     }
     
 

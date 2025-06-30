@@ -15,7 +15,7 @@ public class PlayerHealState : PlayerGroundState
         base.Enter();
         StartAnimation(_stateMachine.Player.AnimationDB.HealParameterHash); //힐 애니메이션 시작
 
-        _healTimer = _playerSO.HealDuration;
+        _healTimer = _data.HealDuration;
         Debug.Log("힐 시작");
     }
 

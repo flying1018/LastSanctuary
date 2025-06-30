@@ -6,23 +6,23 @@ public class PlayerBaseState : IState
 {
     protected PlayerStateMachine _stateMachine;
     protected PlayerController _input;
-    protected PlayerSO _playerSO;
+    protected PlayerSO _data;
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
     protected PlayerCondition _condition;
-    protected float _elapsedTime;
     protected GameObject _playerModel;
-    protected float DashCool = 0.5f;
+    protected Player _player;
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
         this._stateMachine = stateMachine;
-        _input = stateMachine.Player.Input;
-        _playerSO = stateMachine.Player.Data;
-        _rigidbody = stateMachine.Player.Rigidbody;
-        _spriteRenderer = stateMachine.Player.SpriteRenderer;
-        _playerModel = stateMachine.Player.Model;
-        _condition = stateMachine.Player.Condition;
+        _player = stateMachine.Player;
+        _input = _player.Input;
+        _data = _player.Data;
+        _rigidbody = _player.Rigidbody;
+        _spriteRenderer = _player.SpriteRenderer;
+        _playerModel = _player.Model;
+        _condition = _player.Condition;
 
     }
 
@@ -42,6 +42,11 @@ public class PlayerBaseState : IState
         {
             _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
         }
+
+        if (_player.IsLadder && Mathf.Abs(_input.MoveInput.y) > 0f)
+        {
+            _stateMachine.ChangeState(_stateMachine.LadderState);
+        }
     }
 
     public virtual void Update()
@@ -55,12 +60,12 @@ public class PlayerBaseState : IState
 
     protected void StartAnimation(int animatorHash)
     {
-        _stateMachine.Player.Animator.SetBool(animatorHash, true);
+        _player.Animator.SetBool(animatorHash, true);
     }
 
     protected void StopAnimation(int animatorHash)
     {
-        _stateMachine.Player.Animator.SetBool(animatorHash, false);
+        _player.Animator.SetBool(animatorHash, false);
     }
 
     public void Move()
@@ -72,7 +77,7 @@ public class PlayerBaseState : IState
     public void Move(Vector2 direction)
     {
         float xDirection = direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0;
-        Vector2 moveVelocity = new Vector2(xDirection * _playerSO.moveSpeed, _rigidbody.velocity.y);
+        Vector2 moveVelocity = new Vector2(xDirection * _data.moveSpeed, _rigidbody.velocity.y);
         _rigidbody.velocity = moveVelocity;
     }
 
@@ -80,10 +85,12 @@ public class PlayerBaseState : IState
     {
         if (direction.x != 0)
         {
+            //모델 회전
             _spriteRenderer.flipX = direction.x < 0;
-            _playerModel.transform.localPosition = _spriteRenderer.flipX ? 
-                new Vector3(Mathf.Abs(_playerModel.transform.localPosition.x), 0, 0) :
-                new Vector3(-Mathf.Abs(_playerModel.transform.localPosition.x), 0, 0);
+            //무기 회전
+            float angle = _spriteRenderer.flipX ? 180 : 0;
+            _player.Weapon.transform.rotation = Quaternion.Euler(angle, 0, angle);
+            Debug.Log(_player.Weapon.transform.rotation);
             
         }
 

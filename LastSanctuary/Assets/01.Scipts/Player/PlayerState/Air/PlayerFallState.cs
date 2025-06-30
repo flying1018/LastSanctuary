@@ -20,7 +20,7 @@ public class PlayerFallState : PlayerAirState
 
     public override void Update()
     {
-        if (_input.IsGround())
+        if (_player.IsGround())
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }

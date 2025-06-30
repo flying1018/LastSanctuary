@@ -30,7 +30,9 @@ MonoBehaviour:
       nextComboTime: 0.3
     - attackIndex: 2
       multiplier: 1.2
-      effectPrefab: {fileID: 0}
+      nextComboTime: 0.3
+    - attackIndex: 3
+      multiplier: 2
       nextComboTime: 0.3
   <_hitDuration>k__BackingField: 0.5
   <_invincibleDuration>k__BackingField: 1

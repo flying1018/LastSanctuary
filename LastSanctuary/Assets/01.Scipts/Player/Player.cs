@@ -6,12 +6,18 @@ public class Player : MonoBehaviour
 {
     //필드
     public PlayerStateMachine _stateMachine;
+    private CapsuleCollider2D _capsuleCollider;
     
     //직렬화
     [field: SerializeField] public PlayerAnimationDB AnimationDB { get; private set; }
     [SerializeField] private PlayerSO playerData;
     [SerializeField] private GameObject playerModel;
-
+    [SerializeField] private float downJumpTime;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float groundCheckDistance;
+    [SerializeField] private LayerMask aerialPlatformLayer;
+    [SerializeField] private GameObject weapon;
+    
     //프로퍼티
     public PlayerController Input { get; set; }
     public PlayerSO Data { get => playerData; }
@@ -19,11 +25,15 @@ public class Player : MonoBehaviour
     public Animator Animator { get; set; }
     public SpriteRenderer SpriteRenderer { get; set; }
     public PlayerCondition Condition { get; set; }
-    public GameObject Model { get => playerModel; }
-
+    public bool IsLadder { get; set; }
+    public AerialPlatform AerialPlatform { get; set; }
+    public GameObject Model { get=> playerModel; }
+    public GameObject Weapon {get => weapon;}
+    
 
     private void Awake()
     {
+        _capsuleCollider = GetComponent<CapsuleCollider2D>();
         Input = GetComponent<PlayerController>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
@@ -46,6 +56,69 @@ public class Player : MonoBehaviour
         _stateMachine.PhysicsUpdate();
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag(StringNameSpace.Tags.Ladder))
+        {
+            IsLadder = true;
+        }
+        
+        if (other.CompareTag(StringNameSpace.Tags.SavePoint))
+        {
+            Input.IsNearSave = true;
+            SavePoint dummy = other.GetComponent<SavePoint>();
+            Input.NearSavePos = dummy.ReturnPos();
+            DebugHelper.Log($"가까운 세이브 포인트 {Input.NearSavePos}");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag(StringNameSpace.Tags.Ladder))
+        {
+            IsLadder = false;
+        }
+        
+        if (other.CompareTag(StringNameSpace.Tags.SavePoint))
+        {
+            Input.IsNearSave = false;
+            Input.NearSavePos = Vector2.zero;
+            DebugHelper.Log("세이브 포인트에서 벗어남");
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
+        {
+            AerialPlatform = other.gameObject.GetComponent<AerialPlatform>();
+        }
+    }
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
+        {
+            AerialPlatform = null;
+        }
+    }
+
+
+    #region Need MonoBehaviour Method
+    
+    //바닥 확인
+    public bool IsGround()
+    {
+        Debug.DrawRay(transform.position, Vector2.down * (_capsuleCollider.size.y / 2 +groundCheckDistance), Color.red);
+        return Physics2D.Raycast(transform.position, Vector2.down,
+            (_capsuleCollider.size.y/2)+groundCheckDistance, groundLayer);
+    }
+
+    public bool IsAerialPlatform()
+    {
+        return Physics2D.Raycast(transform.position, Vector2.down,
+            (_capsuleCollider.size.y/2)+groundCheckDistance,aerialPlatformLayer);
+    }
+
     /// <summary>
     /// 플레이어가 죽었을때 델리게이트로 호출
     /// 플레이어의 인풋막고, Rigidbody도 멈춰놓음
@@ -55,7 +128,7 @@ public class Player : MonoBehaviour
         DebugHelper.Log("OnDie 호출됨");
 
         Condition.ChangeInvincible(true);
-        Animator.SetTrigger("@Die");
+        Animator.SetTrigger(AnimationDB.DieParameterHash);
         Input.enabled = false;
 
         Rigidbody.velocity = Vector2.zero;
@@ -86,4 +159,6 @@ public class Player : MonoBehaviour
     
         Condition.ChangeInvincible(false);
     }
+    
+    #endregion
 }

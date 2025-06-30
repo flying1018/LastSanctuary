@@ -18,4 +18,12 @@ public class PlayerAirState : PlayerBaseState
         StopAnimation(_stateMachine.Player.AnimationDB.AirParameterHash);
     }
 
+    public override void HandleInput()
+    {
+        base.HandleInput();
+        if (_input.IsAttack)
+        {
+            _stateMachine.ChangeState(_stateMachine.JumpAttack);
+        }
+    }
 }

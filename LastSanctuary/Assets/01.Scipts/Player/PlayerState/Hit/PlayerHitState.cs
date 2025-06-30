@@ -25,7 +25,7 @@ public class PlayerHitState : PlayerBaseState
 
     public override void PhysicsUpdate()
     {
-        if (Time.time - _hitStart >= _playerSO._hitDuration)
+        if (Time.time - _hitStart >= _data._hitDuration)
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }

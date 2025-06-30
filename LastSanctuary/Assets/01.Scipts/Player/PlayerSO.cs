@@ -8,7 +8,6 @@ public class AttackInfo
 {
     public int attackIndex;
     public float multiplier;
-    public GameObject effectPrefab;
     public float nextComboTime;
 }
 
