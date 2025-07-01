@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameDB
 {
-    public static Dictionary<string, EnemyData> enemyData;
+    public static Dictionary<string, EnemyDB> enemyData;
     // public static Dictionary<string, ItemData> itemData;
     // public static Dictionary<string, PlayerData> playerData;
 

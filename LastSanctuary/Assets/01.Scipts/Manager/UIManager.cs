@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : Singleton<GameManager>
+public class UIManager : Singleton<UIManager>
 {
-    public bool[] IsPlayerClear { get; set; }
     public void Init() { }
 }
