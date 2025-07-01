@@ -45,18 +45,19 @@ public class PlayerSO : ScriptableObject
     [field: SerializeField][field: Range(0f, 2f)] public float HealDuration{ get; private set; } = 3f;
 
     [field: Header("GuardState")] 
-    [field: SerializeField] public float _perfectGuardWindow { get; private set; } = 0.2f;
+    [field: SerializeField] public float perfectGuardWindow { get; private set; } = 0.2f;
 
     [Header("AttackState")] 
     [field: SerializeField] public PlayerAttackData attacks;
 
     [field: Header("HitState")]
-    [field: SerializeField] public float _hitDuration{ get; private set; } = 0.2f;
-    [field: SerializeField] public float _invincibleDuration { get; private set; } = 1f;
-    [field: SerializeField] public int _hitSteminaRecovery { get; private set; } = 15;
+    [field: SerializeField] public float hitDuration{ get; private set; } = 0.2f;
+    [field: SerializeField] public float invincibleDuration { get; private set; } = 1f;
+    [field: SerializeField] public int hitSteminaRecovery { get; private set; } = 15;
+    [field: SerializeField] public int  knockbackForce { get; private set; } = 2;
 
     [field: Header("Condition")]
-    [field: SerializeField, Range(0f, 1f)] public float _damageReduction { get; private set; } = 0.8f;
-    [field: SerializeField] public int _guardSteminaRecovery { get; private set; } = 30;
-    [field: SerializeField] public int _guardStaminaCost { get; private set; } = 30;
+    [field: SerializeField, Range(0f, 1f)] public float damageReduction { get; private set; } = 0.8f;
+    [field: SerializeField] public int guardSteminaRecovery { get; private set; } = 30;
+    [field: SerializeField] public int guardStaminaCost { get; private set; } = 30;
 }

@@ -14,7 +14,7 @@ public class PlayerHitState : PlayerBaseState
         _hitStart = Time.time;
         _condition.InvincibleStart = Time.time;
         _condition.IsInvincible = true;
-        _rigidbody.velocity = Vector2.zero;
+        Debug.Log("경직 상태+무적 상태");
     }
 
     public override void Exit()
@@ -24,7 +24,7 @@ public class PlayerHitState : PlayerBaseState
 
     public override void PhysicsUpdate()
     {
-        if (Time.time - _hitStart >= _data._hitDuration)
+        if (Time.time - _hitStart >= _data.hitDuration)
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }

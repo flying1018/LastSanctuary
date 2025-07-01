@@ -34,7 +34,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         //무적 해제
         if (IsInvincible)
         {
-            if ( Time.time - InvincibleStart >= _player.Data._invincibleDuration)
+            if ( Time.time - InvincibleStart >= _player.Data.invincibleDuration)
             {
                 IsInvincible = false;
                 Debug.Log("무적 해제");
@@ -52,31 +52,36 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         if (IsInvincible) return;
         if (IsPerfectGuard && type != DamageType.Contact && isFront)
         {
-            _curStamina += data._guardSteminaRecovery; //퍼펙트 가드시 스태미나회복
+            _curStamina += data.guardSteminaRecovery; //퍼펙트 가드시 스태미나회복
             //궁극기 게이지 회복
             //보스 그로기 상승
             return;
         }
         if (IsGuard && type != DamageType.Contact && isFront)
         {
-            _totaldamage = Mathf.CeilToInt(atk * (1 - data._damageReduction));
-            _curStamina -= data._guardStaminaCost; //가드시 스태미나 소모
+            _totaldamage = Mathf.CeilToInt(atk * (1 - data.damageReduction));
+            _curStamina -= data.guardStaminaCost; //가드시 스태미나 소모
             //스태미나 부족시 가드 실패
+            Debug.Log($"가드 성공 받은 데미지:{_totaldamage}");
         }
         else
         {
             //type(약공격, 강공격)에 따라 경직 시간 변화 (HitState에서 구현해야 할지 고민중)
             _totaldamage = atk;
             _curHp -= _totaldamage;
-            _curStamina += data._hitSteminaRecovery; //피격시 스태미나회복
+            _curStamina += data.hitSteminaRecovery; //피격시 스태미나회복
+            Debug.Log($"데미지를 받음{_totaldamage}");
             if (_curHp <= 0)
             {
                 OnDie?.Invoke();
             }
             else
             {
-                Vector2 knockback = (transform.position - dir.transform.position).normalized;
-
+                Vector2 knockbackDir = (transform.position - dir.transform.position);
+                knockbackDir.y = 0;
+                knockbackDir.Normalize();
+                Vector2 knockback = knockbackDir * data.knockbackForce;
+                _player.Rigidbody.AddForce(knockback, ForceMode2D.Impulse);
                 _player.StateMachine.ChangeState(_player.StateMachine.HitState);
             }
         }
