@@ -24,20 +24,28 @@ public class PlayerLadderState : PlayerAirState
 
     public override void HandleInput()
     {
-        if (_input.IsDash)
+        if (Mathf.Abs(_input.MoveInput.x) > 0 && 
+            _input.IsDash && _condition.UsingStamina(_data.dashCost))
         {
             _stateMachine.ChangeState(_stateMachine.DashState);
         }
 
-        if (_input.IsJump)
+        if (_input.IsJump && Mathf.Abs(_input.MoveInput.x) > 0)
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
-        
+
+        if (_input.MoveInput.y < 0)
+        {
+            if (_player.AerialPlatform == null) return;
+            _player.AerialPlatform.DownJump();
+        }
+
     }
 
     public override void Update()
     {
+        base.Update();
         if(!_player.IsLadder)
             _stateMachine.ChangeState(_stateMachine.IdleState);
         if (_input.MoveInput.y < 0 && _player.IsGround())
@@ -47,12 +55,15 @@ public class PlayerLadderState : PlayerAirState
         }
     }
     
+    
+    
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
         VerticalMove(_input.MoveInput);
     }
 
+    //상하 이동
     void VerticalMove(Vector2 direction)
     {
         float yDirection = direction.y > 0 ? 1 : direction.y < 0 ? -1 : 0;

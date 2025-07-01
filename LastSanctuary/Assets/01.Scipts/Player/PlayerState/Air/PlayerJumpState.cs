@@ -9,7 +9,7 @@ public class PlayerJumpState : PlayerAirState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(_stateMachine.Player.AnimationDB.JumpParameterHash);
+        StartAnimation(_player.AnimationDB.JumpParameterHash);
         
         Jump();
     }
@@ -17,18 +17,9 @@ public class PlayerJumpState : PlayerAirState
     public override void Exit()
     {
         base.Enter();
-        StopAnimation(_stateMachine.Player.AnimationDB.JumpParameterHash);
+        StopAnimation(_player.AnimationDB.JumpParameterHash);
     }
 
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-        
-        if (_rigidbody.velocity.y < 0)
-        {
-            _stateMachine.ChangeState(_stateMachine.FallState);
-        }
-    }
 
     void Jump()
     {
