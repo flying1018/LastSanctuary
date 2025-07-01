@@ -26,7 +26,17 @@ public class PlayerDashState : PlayerBaseState
 
     public override void HandleInput()
     {
-        
+        if (_input.IsAttack)
+        {
+            int index = _stateMachine.comboIndex = 2; //바로 3타로 연결
+            int cost = _data.attacks.GetAttackInfo(index).staminaCost;
+            //스테미나가 충분하다면 3타 시작
+            if (_condition.UsingStamina(cost))
+            {
+                _stateMachine.ChangeState(_stateMachine.ComboAttack);
+            }
+            
+        }
     }
 
     public override void Update()

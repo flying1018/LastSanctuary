@@ -12,7 +12,9 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private float _maxStamina = 100;
     private float _curStamina;
     private int _staminaRecovery;
+    private int _defence;
     
+    public int Damage { get; private set; }
     public bool IsPerfectGuard { get; set; }
     public bool IsGuard { get; set; }
     public bool IsInvincible { get; set; }
@@ -26,6 +28,8 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         _maxHp = _player.Data.hp;
         _maxStamina = _player.Data.stamina;
         _staminaRecovery = _player.Data.staminaRecovery;
+        _defence = _player.Data.defense;
+        Damage = _player.Data.damage;
         _curHp = _maxHp;
         _curStamina = _maxStamina;
     }
@@ -46,6 +50,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         if (_curStamina < _maxStamina)
         {
             _curStamina += _staminaRecovery * Time.deltaTime;
+            _curStamina = Mathf.Clamp(_curStamina, 0, _maxStamina);
         }
     }
 
@@ -59,12 +64,12 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         if (IsInvincible) return;
         if (IsPerfectGuard && type != DamageType.Contact && isFront)
         {
-            _curStamina += data.guardSteminaRecovery; //퍼펙트 가드시 스태미나회복
+            _curStamina += data.perfactGuardStemina; //퍼펙트 가드시 스태미나회복
             //궁극기 게이지 회복
             //보스 그로기 상승
             return;
         }
-        if (IsGuard && type != DamageType.Contact && isFront && UsingStamina(data.guardStaminaCost))
+        if (IsGuard && type != DamageType.Contact && isFront && UsingStamina(data.guardCost))
         {
             _totaldamage = Mathf.CeilToInt(atk * (1 - data.damageReduction));
             Debug.Log($"가드 성공 받은 데미지:{_totaldamage}");

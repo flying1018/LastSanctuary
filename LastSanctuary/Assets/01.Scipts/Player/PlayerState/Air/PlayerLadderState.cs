@@ -24,7 +24,7 @@ public class PlayerLadderState : PlayerAirState
 
     public override void HandleInput()
     {
-        if (_input.IsDash)
+        if (_input.IsDash && _condition.UsingStamina(_data.dashCost))
         {
             _stateMachine.ChangeState(_stateMachine.DashState);
         }

@@ -11,6 +11,7 @@ public class PlayerBaseState : IState
     protected SpriteRenderer _spriteRenderer;
     protected PlayerCondition _condition;
     protected Player _player;
+    protected PlayerWeapon _playerWeapon;
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
@@ -21,7 +22,7 @@ public class PlayerBaseState : IState
         _rigidbody = _player.Rigidbody;
         _spriteRenderer = _player.SpriteRenderer;
         _condition = _player.Condition;
-
+        _playerWeapon = _player.PlayerWeapon;
     }
 
     public virtual void Enter()
@@ -37,7 +38,7 @@ public class PlayerBaseState : IState
     public virtual void HandleInput()
     {
 
-        if (_input.IsDash)
+        if (_input.IsDash && _condition.UsingStamina(_data.dashCost))
         {
             _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
         }

@@ -32,7 +32,7 @@ public class PlayerGuardState : PlayerGroundState
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
-        if (_input.IsDash)
+        if (_input.IsDash && _condition.UsingStamina(_data.dashCost))
         {
             _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
         }

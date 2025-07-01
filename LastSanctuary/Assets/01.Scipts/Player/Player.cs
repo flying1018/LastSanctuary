@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     //직렬화 데이터 프로퍼티
     public PlayerSO Data { get => playerData; }
     public GameObject Weapon {get => weapon;}
+    public PlayerWeapon PlayerWeapon { get; set; }
     
 
     private void Awake()
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
         Animator = GetComponent<Animator>();
         Condition = GetComponent<PlayerCondition>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        PlayerWeapon = Weapon.GetComponent<PlayerWeapon>();
         AnimationDB.Initailize();
         StateMachine = new PlayerStateMachine(this);
 
