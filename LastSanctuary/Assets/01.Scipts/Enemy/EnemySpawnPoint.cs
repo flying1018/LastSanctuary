@@ -27,22 +27,22 @@ public class EnemySpawnPoint : MonoBehaviour
     
     public void Spawn()
     {
-        Instantiate(monster, SpawnPoint.position, SpawnPoint.rotation);
-        _enemy = monster.GetComponent<Enemy>();
+        GameObject go =Instantiate(monster, SpawnPoint.position, SpawnPoint.rotation);
+        _enemy = go.GetComponent<Enemy>();
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
         {
-            _enemy.Taget = other.gameObject.transform;
+            _enemy.Target = other.gameObject.transform;
         }
     }
     public void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
         {
-            _enemy.Taget = null;
+            _enemy.Target = null;
         }
     }
 }

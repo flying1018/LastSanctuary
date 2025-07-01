@@ -4,25 +4,23 @@ using UnityEngine;
 
 public class EnemyStateMachine : StateMachine
 {
-    public Enemy Enemy { get; }
-    public float MoveSpeed { get; private set; }
-
-    public GameObject Target { get; private set; }
-    public EnemyIdleState IdleState { get; }
-    public EnemyChaseState ChaseState { get; }
-    public EnemyAttackState AttackState { get; }
-    public EnemyReturnState ReturnState { get; }
-    public EnemyHitState HitState { get; }
+    public Enemy Enemy { get; private set; }
+    public EnemyIdleState IdleState { get; private set; }
+    public EnemyChaseState ChaseState { get; private set;}
+    public EnemyAttackState AttackState { get; private set;}
+    public EnemyReturnState ReturnState { get; private set;}
+    public EnemyHitState HitState { get; private set;}
 
     public EnemyStateMachine(Enemy enemy)
     {
-        Enemy = enemy;
-        Target = GameObject.FindGameObjectWithTag("Player");
+        this.Enemy = enemy;
 
         IdleState = new EnemyIdleState(this);
         ChaseState = new EnemyChaseState(this);
         AttackState = new EnemyAttackState(this);
         ReturnState = new EnemyReturnState(this);
         HitState = new EnemyHitState(this);
+        
+        ChangeState(IdleState);
     }
 }

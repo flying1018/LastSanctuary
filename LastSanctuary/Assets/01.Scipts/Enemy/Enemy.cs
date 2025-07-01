@@ -5,7 +5,7 @@ public class Enemy : MonoBehaviour
     //필드
     private EnemyStateMachine _stateMachine;
     private CapsuleCollider2D _capsuleCollider;
-    [SerializeField] private Transform taget;
+
     //직렬화
     //[field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
     [SerializeField] private EnemySO enemyData;
@@ -18,8 +18,8 @@ public class Enemy : MonoBehaviour
     public Animator Animator {get; set;}
     public SpriteRenderer SpriteRenderer { get; set; }
     public EnemyCondition Condition { get; set; }
-    public Transform Taget {get => taget;set => taget = value;}
-    
+    public Transform Target { get; set; }
+
     private void Awake()
     {
         _capsuleCollider = GetComponent<CapsuleCollider2D>();
@@ -27,8 +27,8 @@ public class Enemy : MonoBehaviour
         Animator = GetComponent<Animator>();
         Condition = GetComponent<EnemyCondition>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        _stateMachine = new EnemyStateMachine(this);
         
+        _stateMachine = new EnemyStateMachine(this);
     }
     private void Update()
     {

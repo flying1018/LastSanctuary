@@ -8,26 +8,26 @@ public class EnemyChaseState : EnemyBaseState
 
     public override void Enter()
     {
-        Debug.Log("Chase Enter");
+
     }
 
     public override void Exit()
     {
-        Debug.Log("Chase Exit");
-    }
 
-    public override void HandleInput()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Update()
-    {
-        throw new System.NotImplementedException();
     }
 
     public override void PhysicsUpdate()
     {
-        Move();
+        Chase();
+    }
+
+    private void Chase()
+    {
+        if(_enemy.Target == null) return;
+        
+        Vector2 direction = _enemy.Target.position - _enemy.transform.position;
+        if (Mathf.Abs(direction.x) < 1f) return;
+        Move(direction);
+        Rotate(direction);
     }
 }

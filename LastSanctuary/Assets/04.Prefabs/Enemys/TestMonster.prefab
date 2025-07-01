@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 246564995851524428}
   - component: {fileID: 1863970197372497707}
   - component: {fileID: 1348362879168003846}
+  - component: {fileID: -5163532016691331955}
   m_Layer: 0
   m_Name: TestMonster
   m_TagString: Untagged
@@ -81,12 +82,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c58599d6322fe442a166b448f7ce093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taget: {fileID: 0}
-  enemyData: {fileID: 0}
-  enemyModel: {fileID: 0}
+  enemyData: {fileID: 11400000, guid: 1b632bb799493634e9ca1c7ae5199bf8, type: 2}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!50 &-5163532016691331955
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3153555157828818715}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &7002920542076289048
 GameObject:
   m_ObjectHideFlags: 0

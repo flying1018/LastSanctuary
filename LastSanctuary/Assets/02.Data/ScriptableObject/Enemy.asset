@@ -14,9 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: 0
   _name: 
-  _moveSpeed: 0
-  _areaRange: 0
-  isGround: 0
+  moveSpeed: 5
   _attack: 0
   _hp: 0
   _defense: 0
