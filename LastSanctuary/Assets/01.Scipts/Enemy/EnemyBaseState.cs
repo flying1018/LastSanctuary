@@ -4,10 +4,23 @@ using UnityEngine;
 public class EnemyBaseState : IState
 {
     protected EnemyStateMachine stateMachine;
+    protected EnemySO _data;
+    protected Rigidbody2D _rigidbody;
+    protected SpriteRenderer _spriteRenderer;
+    protected EnemyCondition _condition;
+    protected GameObject _enemyModel;
+    protected Enemy _enemy;
     
     public EnemyBaseState(EnemyStateMachine enemyStateMachine)
     {
-        stateMachine = enemyStateMachine;
+        this.stateMachine = enemyStateMachine;
+        _enemy = stateMachine.Enemy;
+        _data = _enemy.Data;
+        _rigidbody = _enemy.Rigidbody;
+        _spriteRenderer =_enemy.SpriteRenderer;
+        _enemyModel = _enemy.Model;
+        _condition = _enemy.Condition;
+        
     }
     
     public virtual void Enter()
@@ -25,28 +38,10 @@ public class EnemyBaseState : IState
     public virtual void PhysicsUpdate()
     {
     }
-
     protected void Move()
     {
-        Vector3 moveDirection = GetMoveDiretion();
-        Move(moveDirection);
     }
-
-    private Vector3 GetMoveDiretion()
-    {
-        Vector3 moveDirection = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).normalized;
-        return moveDirection;
-    }
-
     private void Move(Vector3 moveDirection)
     {
-        float moveSpeed = GetMoveSpeed();
-        stateMachine.Enemy.transform.position += moveDirection * (moveSpeed * Time.deltaTime);
     }
-
-    private float GetMoveSpeed()
-    {
-        return stateMachine.MoveSpeed;
-    }
-
 }

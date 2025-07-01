@@ -2,30 +2,43 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private EnemyStateMachine stateMachine;
+    //필드
+    private EnemyStateMachine _stateMachine;
+    private CapsuleCollider2D _capsuleCollider;
     [SerializeField] private Transform taget;
-    [SerializeField] public EnemySO Data;
-
-    //public CharacterController Controller {get; private set;} 쓸지안쓸지모름
-
+    //직렬화
+    //[field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
+    [SerializeField] private EnemySO enemyData;
+    [SerializeField] private GameObject enemyModel;
+    [SerializeField] private LayerMask playerLayer;
+    //투사체?
+    
+    //프로퍼티
+    public EnemySO Data {get => enemyData;}
+    public Rigidbody2D Rigidbody {get; set;}
+    public Animator Animator {get; set;}
+    public SpriteRenderer SpriteRenderer { get; set; }
+    public EnemyCondition Condition { get; set; }
+    public GameObject Model { get=> enemyModel; }
+    
     private void Awake()
     {
-        stateMachine = new EnemyStateMachine(this);
+        _capsuleCollider = GetComponent<CapsuleCollider2D>();
+        Rigidbody = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
+        Condition = GetComponent<EnemyCondition>();
+        SpriteRenderer = enemyModel.GetComponent<SpriteRenderer>();
+        _stateMachine = new EnemyStateMachine(this);
+        
     }
-
-    private void Start()
-    {
-        stateMachine.ChangeState(new EnemyIdleState(stateMachine));
-    }
-
     private void Update()
     {
-        stateMachine.HandleInput();
-        stateMachine.Update();
+        _stateMachine.HandleInput();
+        _stateMachine.Update();
     }
 
     private void FixedUpdate()
     {
-        stateMachine.PhysicsUpdate();
+        _stateMachine.PhysicsUpdate();
     }
 }
