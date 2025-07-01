@@ -5,29 +5,27 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     //필드
-    public PlayerStateMachine _stateMachine;
     private CapsuleCollider2D _capsuleCollider;
     
     //직렬화
     [field: SerializeField] public PlayerAnimationDB AnimationDB { get; private set; }
     [SerializeField] private PlayerSO playerData;
-    [SerializeField] private GameObject playerModel;
-    [SerializeField] private float downJumpTime;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask aerialPlatformLayer;
     [SerializeField] private GameObject weapon;
     
     //프로퍼티
+    public PlayerStateMachine StateMachine { get; set; }
     public PlayerController Input { get; set; }
-    public PlayerSO Data { get => playerData; }
     public Rigidbody2D Rigidbody { get; set; }
     public Animator Animator { get; set; }
     public SpriteRenderer SpriteRenderer { get; set; }
     public PlayerCondition Condition { get; set; }
     public bool IsLadder { get; set; }
     public AerialPlatform AerialPlatform { get; set; }
-    public GameObject Model { get=> playerModel; }
+    //직렬화 데이터 프로퍼티
+    public PlayerSO Data { get => playerData; }
     public GameObject Weapon {get => weapon;}
     
 
@@ -38,57 +36,60 @@ public class Player : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         Condition = GetComponent<PlayerCondition>();
-        SpriteRenderer = playerModel.GetComponent<SpriteRenderer>();
+        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         AnimationDB.Initailize();
-        _stateMachine = new PlayerStateMachine(this);
+        StateMachine = new PlayerStateMachine(this);
 
         GetComponent<PlayerCondition>().OnDie += OnDie;
     }
 
     private void Update()
     {
-        _stateMachine.HandleInput();
-        _stateMachine.Update();
+        StateMachine.HandleInput();
+        StateMachine.Update();
     }
 
     private void FixedUpdate()
     {
-        _stateMachine.PhysicsUpdate();
+        StateMachine.PhysicsUpdate();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //사다리 판단
         if (other.CompareTag(StringNameSpace.Tags.Ladder))
         {
             IsLadder = true;
         }
         
+        //세이브 포인트
         if (other.CompareTag(StringNameSpace.Tags.SavePoint))
         {
             Input.IsNearSave = true;
             SavePoint dummy = other.GetComponent<SavePoint>();
             Input.NearSavePos = dummy.ReturnPos();
-            DebugHelper.Log($"가까운 세이브 포인트 {Input.NearSavePos}");
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        //사다리 나가기
         if (other.CompareTag(StringNameSpace.Tags.Ladder))
         {
             IsLadder = false;
         }
         
+        //세이브 포인트 나가기
         if (other.CompareTag(StringNameSpace.Tags.SavePoint))
         {
             Input.IsNearSave = false;
             Input.NearSavePos = Vector2.zero;
-            DebugHelper.Log("세이브 포인트에서 벗어남");
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        //공중 발판 정보 가져오기
         if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
         {
             AerialPlatform = other.gameObject.GetComponent<AerialPlatform>();
@@ -96,6 +97,7 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionExit2D(Collision2D other)
     {
+        //공중 발판 정보 초기화
         if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
         {
             AerialPlatform = null;
@@ -113,6 +115,7 @@ public class Player : MonoBehaviour
             (_capsuleCollider.size.y/2)+groundCheckDistance, groundLayer);
     }
 
+    //공중 발판 확인
     public bool IsAerialPlatform()
     {
         return Physics2D.Raycast(transform.position, Vector2.down,
@@ -151,7 +154,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         Condition.PlayerRecovery();
-        _stateMachine.ChangeState(_stateMachine.IdleState);
+        StateMachine.ChangeState(StateMachine.IdleState);
         Animator.Rebind();
 
         Input.enabled = true;

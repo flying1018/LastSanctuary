@@ -20,7 +20,8 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     public bool IsPerfectGuard { get; set; }
     public bool IsGuard { get; set; }
     public bool IsInvincible { get; set; }
-    public float _invincibleStart;
+    public float InvincibleStart { get; set; }
+
     private void Awake()
     {
         _player = GetComponent<Player>();
@@ -33,7 +34,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         //무적 해제
         if (IsInvincible)
         {
-            if ( Time.time - _invincibleStart >= _player.Data._invincibleDuration)
+            if ( Time.time - InvincibleStart >= _player.Data._invincibleDuration)
             {
                 IsInvincible = false;
                 Debug.Log("무적 해제");
@@ -51,7 +52,6 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         if (IsInvincible) return;
         if (IsPerfectGuard && type != DamageType.Contact && isFront)
         {
-            Debug.Log("PerfectGuard");
             _curStamina += data._guardSteminaRecovery; //퍼펙트 가드시 스태미나회복
             //궁극기 게이지 회복
             //보스 그로기 상승
@@ -62,7 +62,6 @@ public class PlayerCondition : MonoBehaviour, IDamageable
             _totaldamage = Mathf.CeilToInt(atk * (1 - data._damageReduction));
             _curStamina -= data._guardStaminaCost; //가드시 스태미나 소모
             //스태미나 부족시 가드 실패
-            Debug.Log($"가드 성공 받은 데미지:{_totaldamage}");
         }
         else
         {
@@ -70,7 +69,6 @@ public class PlayerCondition : MonoBehaviour, IDamageable
             _totaldamage = atk;
             _curHp -= _totaldamage;
             _curStamina += data._hitSteminaRecovery; //피격시 스태미나회복
-            Debug.Log($"데미지를 받음{_totaldamage}");
             if (_curHp <= 0)
             {
                 OnDie?.Invoke();
@@ -79,19 +77,15 @@ public class PlayerCondition : MonoBehaviour, IDamageable
             {
                 Vector2 knockback = (transform.position - dir.transform.position).normalized;
 
-
-                _player._stateMachine.ChangeState(_player._stateMachine.HitState);
+                _player.StateMachine.ChangeState(_player.StateMachine.HitState);
             }
         }
     }
 
     public void PlayerRecovery()
     {
-        DebugHelper.Log($"1. {_curHp} 현재 체력");
         _curHp = _maxHp;
         _curStamina = _maxStamina;
-
-        DebugHelper.Log($"2. {_curHp} 현재 체력");
     }
 
     public void ChangeInvincible(bool Invincible)

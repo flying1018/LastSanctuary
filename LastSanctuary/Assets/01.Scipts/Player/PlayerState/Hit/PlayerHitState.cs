@@ -12,15 +12,14 @@ public class PlayerHitState : PlayerBaseState
         //넉백
         //사다리나 밧줄에서 피격시 추가 넉백
         _hitStart = Time.time;
-        _condition._invincibleStart = Time.time;
+        _condition.InvincibleStart = Time.time;
         _condition.IsInvincible = true;
         _rigidbody.velocity = Vector2.zero;
-        Debug.Log("경직 상태+무적 상태");
     }
 
     public override void Exit()
     {
-        Debug.Log("경직 해제");
+        
     }
 
     public override void PhysicsUpdate()

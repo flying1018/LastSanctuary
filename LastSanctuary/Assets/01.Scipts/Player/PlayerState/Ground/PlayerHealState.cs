@@ -13,16 +13,16 @@ public class PlayerHealState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(_stateMachine.Player.AnimationDB.HealParameterHash); //힐 애니메이션 시작
+        StartAnimation(_player.AnimationDB.HealParameterHash); //힐 애니메이션 시작
 
         _healTimer = _data.HealDuration;
-        Debug.Log("힐 시작");
+        _rigidbody.velocity = Vector2.zero;
     }
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(_stateMachine.Player.AnimationDB.HealParameterHash);
+        StopAnimation(_player.AnimationDB.HealParameterHash);
     }
 
     public override void HandleInput()

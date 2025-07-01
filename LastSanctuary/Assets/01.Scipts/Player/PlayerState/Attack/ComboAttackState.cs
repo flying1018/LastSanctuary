@@ -13,24 +13,26 @@ public class ComboAttackState : PlayerAttackState
     public override void Enter()
     {
         base.Enter();
+        
+        _rigidbody.velocity = Vector2.zero;
 
         //현재 공격 정보 가져오기
         int comboIndex = _stateMachine.comboIndex;
-        _attackInfo = _stateMachine.Player.Data.attacks.GetAttackInfo(comboIndex);
+        _attackInfo = _player.Data.attacks.GetAttackInfo(comboIndex);
         
         //공격 애니메이션 실행
-        _stateMachine.Player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, _attackInfo.attackIndex);
+        _player.Animator.SetInteger(_player.AnimationDB.ComboParameterHash, _attackInfo.attackIndex);
 
         //시간 측정
         _time = 0;
-        _animationTime = _stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0).length;
+        _animationTime = _player.Animator.GetCurrentAnimatorStateInfo(0).length;
     }
 
     public override void Exit()
     {
         base.Exit();
         
-        _stateMachine.Player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, 0);
+        _player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, 0);
     }
 
     public override void HandleInput()
@@ -46,9 +48,8 @@ public class ComboAttackState : PlayerAttackState
             {
                 //다음 공격 번호 가져오기
                 _stateMachine.comboIndex =
-                    _stateMachine.Player.Data.attacks.GetAttackInfoCount()  <= _stateMachine.comboIndex + 1
-                        ? 0
-                        : _stateMachine.comboIndex + 1;
+                    _data.attacks.GetAttackInfoCount()  <= _stateMachine.comboIndex + 1
+                        ? 0 : _stateMachine.comboIndex + 1;
                 //다음 공격이 없으면 종료
                 if (_stateMachine.comboIndex == 0)
                 {

@@ -9,13 +9,13 @@ public class PlayerMoveState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(_stateMachine.Player.AnimationDB.MoveParameterHash);
+        StartAnimation(_player.AnimationDB.MoveParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(_stateMachine.Player.AnimationDB.MoveParameterHash);
+        StopAnimation(_player.AnimationDB.MoveParameterHash);
     }
 
 

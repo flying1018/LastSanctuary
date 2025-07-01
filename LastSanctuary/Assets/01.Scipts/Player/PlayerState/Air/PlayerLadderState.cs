@@ -61,6 +61,7 @@ public class PlayerLadderState : PlayerAirState
         VerticalMove(_input.MoveInput);
     }
 
+    //상하 이동
     void VerticalMove(Vector2 direction)
     {
         float yDirection = direction.y > 0 ? 1 : direction.y < 0 ? -1 : 0;

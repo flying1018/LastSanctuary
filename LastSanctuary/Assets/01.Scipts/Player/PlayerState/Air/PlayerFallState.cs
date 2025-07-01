@@ -9,18 +9,19 @@ public class PlayerFallState : PlayerAirState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(_stateMachine.Player.AnimationDB.FallParameterHash);;
+        StartAnimation(_player.AnimationDB.FallParameterHash);;
     }
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(_stateMachine.Player.AnimationDB.FallParameterHash);;
+        StopAnimation(_player.AnimationDB.FallParameterHash);;
     }
 
-    public override void PhysicsUpdate()
+    public override void Update()
     {
-        base.PhysicsUpdate();
+        base.Update();
+        
         if (_player.IsGround())
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);

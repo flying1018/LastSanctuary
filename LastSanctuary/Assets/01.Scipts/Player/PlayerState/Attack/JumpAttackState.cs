@@ -16,21 +16,21 @@ public class JumpAttackState : PlayerAttackState
 
         //현재 공격 정보 가져오기
         int comboIndex = _stateMachine.comboIndex;
-        _attackInfo = _stateMachine.Player.Data.attacks.GetAttackInfo(comboIndex);
+        _attackInfo = _data.attacks.GetAttackInfo(comboIndex);
         
         //공격 애니메이션 실행
-        _stateMachine.Player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, _attackInfo.attackIndex);
+        _player.Animator.SetInteger(_player.AnimationDB.ComboParameterHash, _attackInfo.attackIndex);
 
         //시간 측정
         _time = 0;
-        _animationTime = _stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0).length;
+        _animationTime = _player.Animator.GetCurrentAnimatorStateInfo(0).length;
     }
 
     public override void Exit()
     {
         base.Exit();
         
-        _stateMachine.Player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, 0);
+        _player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, 0);
     }
 
     public override void HandleInput()

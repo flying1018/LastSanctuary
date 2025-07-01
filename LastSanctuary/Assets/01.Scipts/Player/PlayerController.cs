@@ -6,11 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    //직렬화
-    [SerializeField] private float dashCoolTime;
-    [SerializeField] private float healCoolTime;
-    
     //필드
+    private float _dashCoolTime;
     private bool _dashCool;
 
     //프로퍼티
@@ -22,6 +19,11 @@ public class PlayerController : MonoBehaviour
     public bool IsAttack { get; set; }
     public bool IsNearSave { get; set; }
     public Vector2 NearSavePos { get; set; }
+
+    public void Start()
+    {
+        _dashCoolTime = GetComponent<Player>().Data.dashCoolTime;
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -59,7 +61,7 @@ public class PlayerController : MonoBehaviour
         {
             IsDash = true;
             _dashCool = true;
-            Invoke(nameof(DashCoolTime), dashCoolTime);
+            Invoke(nameof(DashCoolTime), _dashCoolTime);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
