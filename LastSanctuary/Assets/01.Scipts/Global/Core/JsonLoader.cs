@@ -35,6 +35,7 @@ public class JsonLoader
         }
         return enemyDiction;
     }
+    
 
     // 추후 확장용 메서드, 추가 예정
     // public static async Task<Dictionary<string, EnemyData>> ParseItemJson(string address)

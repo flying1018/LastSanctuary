@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    public bool[] IsPlayerClear { get; set; }
     public void Init() { }
 }
