@@ -29,12 +29,6 @@ public class PlayerSO : ScriptableObject
     [field: Header("AirState")]
     [field: SerializeField][field: Range(0f, 100f)] public float jumpForce { get; private set; } = 10f;
 
-    [Header("BattleState")]
-    public int damage;
-    public int hp;
-    public int stamina;
-    public int defense;
-
     [field: Header("DashState")]
     [field: SerializeField][field: Range(0f, 1.5f)] public float dashTime { get; private set; } = 0.25f;
     [field: SerializeField][field: Range(0f, 50f)] public float dashPower { get; private set; } = 20f;
@@ -48,16 +42,22 @@ public class PlayerSO : ScriptableObject
     [field: SerializeField] public float perfectGuardWindow { get; private set; } = 0.2f;
 
     [Header("AttackState")] 
+    [field: SerializeField] public int damage;
     [field: SerializeField] public PlayerAttackData attacks;
 
     [field: Header("HitState")]
-    [field: SerializeField] public float hitDuration{ get; private set; } = 0.2f;
+    [field: SerializeField] public float LightHitDuration{ get; private set; } = 0.2f;
+    [field: SerializeField] public float HeavyHitDuration{ get; private set; } = 0.2f;
     [field: SerializeField] public float invincibleDuration { get; private set; } = 1f;
     [field: SerializeField] public int hitSteminaRecovery { get; private set; } = 15;
     [field: SerializeField] public int  knockbackForce { get; private set; } = 2;
 
     [field: Header("Condition")]
+    [field: SerializeField] public int hp;
+    [field: SerializeField] public int defense;
+    [field: SerializeField] public int stamina;
     [field: SerializeField, Range(0f, 1f)] public float damageReduction { get; private set; } = 0.8f;
     [field: SerializeField] public int guardSteminaRecovery { get; private set; } = 30;
     [field: SerializeField] public int guardStaminaCost { get; private set; } = 30;
+    [field: SerializeField] public int staminaRecovery { get; private set; } = 15;
 }
