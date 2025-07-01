@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     public bool IsAttack { get; set; }
     public bool IsNearSave { get; set; }
     public Vector2 NearSavePos { get; set; }
-    
 
     public void OnMove(InputAction.CallbackContext context)
     {
