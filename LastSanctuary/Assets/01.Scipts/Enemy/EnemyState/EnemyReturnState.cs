@@ -9,25 +9,34 @@ public class EnemyReturnState :EnemyBaseState
     public override void Enter()
     {
         Debug.Log("Return Enter");
+        _condition.IsInvincible = true;
     }
 
     public override void Exit()
     {
         Debug.Log("Return Exit");
-    }
-
-    public override void HandleInput()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Update()
-    {
-        
+        _condition.IsInvincible = false;
     }
 
     public override void PhysicsUpdate()
     {
-        throw new System.NotImplementedException();
+        base.PhysicsUpdate();
+        Return();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        if (Mathf.Abs(_enemy.transform.position.x - _spawnPoint.position.x) < 0.5f)
+        {
+            _stateMachine.ChangeState(_stateMachine.IdleState);       
+        }
+    }
+
+    public void Return()
+    {
+        Vector2 direction = _spawnPoint.position - _enemy.transform.position;
+        Rotate(direction);
+        Move(direction);
     }
 }

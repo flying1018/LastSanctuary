@@ -9,15 +9,19 @@ public class EnemySO : ScriptableObject
     public int _key;
     public string _name;
 
-    [Header("GroundState")]
-    public float _moveSpeed;
-    public float _areaRange;
-    public bool isGround;
+    [Header("DetectState")]
+    public float detectTime;
+    
+    [Header("ChaseState")]
+    public float moveSpeed;
+    public float cancelChaseTime;
+
+    [Header("PatrolState")]
     [field: SerializeField] public float patrolDistance { get; private set; } = 10f;
 
-    [Header("BattleState")]
-    public int _attack;
-    public int _hp;
-    public int _defense;
-    public int _attackRange;
+    [Header("condition")]
+    public int attack;
+    public int hp;
+    public int defense;
+    public int attackRange;
 }

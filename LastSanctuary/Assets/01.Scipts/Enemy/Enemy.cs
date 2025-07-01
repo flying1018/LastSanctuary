@@ -1,13 +1,11 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Enemy : MonoBehaviour
 {
     //필드
     private EnemyStateMachine _stateMachine;
     private CapsuleCollider2D _capsuleCollider;
-    [SerializeField] private Transform taget;
-    public GameObject spawnPoint;
+
     //직렬화
     //[field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
     [SerializeField] private EnemySO enemyData;
@@ -23,15 +21,17 @@ public class Enemy : MonoBehaviour
     public Animator Animator {get; set;}
     public SpriteRenderer SpriteRenderer { get; set; }
     public EnemyCondition Condition { get; set; }
-    public GameObject Model { get=> enemyModel; }
-    
+    public Transform Target { get; set; }
+    public Transform SpawnPoint { get; set; }
+
     private void Awake()
     {
         _capsuleCollider = GetComponent<CapsuleCollider2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         Condition = GetComponent<EnemyCondition>();
-        SpriteRenderer = enemyModel.GetComponent<SpriteRenderer>();
+        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        
         _stateMachine = new EnemyStateMachine(this);
         
     }
@@ -51,5 +51,18 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
         _stateMachine.PhysicsUpdate();
+    }
+
+    public void Init(Transform spawnPoint)
+    {
+        SpawnPoint = spawnPoint;
+        _capsuleCollider = GetComponent<CapsuleCollider2D>();
+        Rigidbody = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
+        Condition = GetComponent<EnemyCondition>();
+        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        
+        Condition.Init(this);
+        _stateMachine = new EnemyStateMachine(this);
     }
 }

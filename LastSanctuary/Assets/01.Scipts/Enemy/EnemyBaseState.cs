@@ -8,8 +8,8 @@ public class EnemyBaseState : IState
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
     protected EnemyCondition _condition;
-    protected GameObject _enemyModel;
     protected Enemy _enemy;
+    protected Transform _spawnPoint;
     
     public EnemyBaseState(EnemyStateMachine enemyStateMachine)
     {
@@ -18,8 +18,8 @@ public class EnemyBaseState : IState
         _data = _enemy.Data;
         _rigidbody = _enemy.Rigidbody;
         _spriteRenderer =_enemy.SpriteRenderer;
-        _enemyModel = _enemy.Model;
         _condition = _enemy.Condition;
+        _spawnPoint = _enemy.SpawnPoint;
         
     }
     
@@ -40,13 +40,17 @@ public class EnemyBaseState : IState
     }
     protected void Move()
     {
+
     }
-    private void Move(Vector2 moveDirection)
+    protected void Move(Vector2 direction)
     {
+        float xDirection = direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0;
+        Vector2 moveVelocity = new Vector2(xDirection * _data.moveSpeed, _rigidbody.velocity.y);
+        _rigidbody.velocity = moveVelocity;
     }
 
-    public void Rotate()
+    protected void Rotate(Vector2 direction)
     {
-        
+        _spriteRenderer.flipX = direction.x < 0;
     }
 }
