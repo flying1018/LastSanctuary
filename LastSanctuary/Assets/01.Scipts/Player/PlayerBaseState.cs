@@ -56,6 +56,11 @@ public class PlayerBaseState : IState
     public virtual void PhysicsUpdate()
     {
         Move();
+        
+        if (_rigidbody.velocity.y < -0.2f)
+        {
+            _stateMachine.ChangeState(_stateMachine.FallState);
+        }
     }
 
     protected void StartAnimation(int animatorHash)
