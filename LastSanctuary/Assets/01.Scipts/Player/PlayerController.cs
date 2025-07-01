@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
             _dashCool = true;
             Invoke(nameof(DashCoolTime), dashCoolTime);
         }
-        else
+        else if (context.phase == InputActionPhase.Canceled)
         {
             IsDash = false;
         }

@@ -10,7 +10,6 @@ public class PlayerBaseState : IState
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
     protected PlayerCondition _condition;
-    protected GameObject _playerModel;
     protected Player _player;
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
@@ -21,7 +20,6 @@ public class PlayerBaseState : IState
         _data = _player.Data;
         _rigidbody = _player.Rigidbody;
         _spriteRenderer = _player.SpriteRenderer;
-        _playerModel = _player.Model;
         _condition = _player.Condition;
 
     }
@@ -38,6 +36,7 @@ public class PlayerBaseState : IState
 
     public virtual void HandleInput()
     {
+
         if (_input.IsDash)
         {
             _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
