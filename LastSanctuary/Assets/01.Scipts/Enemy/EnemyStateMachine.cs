@@ -15,6 +15,7 @@ public class EnemyStateMachine : StateMachine
     public EnemyAttackState AttackState { get; }
     public EnemyReturnState ReturnState { get; }
     public EnemyHitState HitState { get; }
+    public EnemyPatrolState PatrolState { get; }
 
     public EnemyStateMachine(Enemy enemy)
     {
@@ -26,6 +27,7 @@ public class EnemyStateMachine : StateMachine
         AttackState = new EnemyAttackState(this);
         ReturnState = new EnemyReturnState(this);
         HitState = new EnemyHitState(this);
+        PatrolState = new EnemyPatrolState(this);
 
         MoveSpeed = Enemy.Data._moveSpeed;
     }

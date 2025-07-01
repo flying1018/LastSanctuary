@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyBaseState : IState
 {
-    protected EnemyStateMachine stateMachine;
+    protected EnemyStateMachine _stateMachine;
     protected EnemySO _data;
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
@@ -13,8 +13,8 @@ public class EnemyBaseState : IState
     
     public EnemyBaseState(EnemyStateMachine enemyStateMachine)
     {
-        this.stateMachine = enemyStateMachine;
-        _enemy = stateMachine.Enemy;
+        this._stateMachine = enemyStateMachine;
+        _enemy = _stateMachine.Enemy;
         _data = _enemy.Data;
         _rigidbody = _enemy.Rigidbody;
         _spriteRenderer =_enemy.SpriteRenderer;
@@ -41,7 +41,12 @@ public class EnemyBaseState : IState
     protected void Move()
     {
     }
-    private void Move(Vector3 moveDirection)
+    private void Move(Vector2 moveDirection)
     {
+    }
+
+    public void Rotate()
+    {
+        
     }
 }

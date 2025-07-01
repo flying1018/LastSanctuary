@@ -13,6 +13,7 @@ public class EnemySO : ScriptableObject
     public float _moveSpeed;
     public float _areaRange;
     public bool isGround;
+    [field: SerializeField] public float patrolDistance { get; private set; } = 10f;
 
     [Header("BattleState")]
     public int _attack;

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Enemy : MonoBehaviour
 {
@@ -6,11 +7,14 @@ public class Enemy : MonoBehaviour
     private EnemyStateMachine _stateMachine;
     private CapsuleCollider2D _capsuleCollider;
     [SerializeField] private Transform taget;
+    public GameObject spawnPoint;
     //직렬화
     //[field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
     [SerializeField] private EnemySO enemyData;
     [SerializeField] private GameObject enemyModel;
     [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private LayerMask platformLayer;
+    [SerializeField] private float platformCheckDistance;
     //투사체?
     
     //프로퍼티
@@ -35,6 +39,13 @@ public class Enemy : MonoBehaviour
     {
         _stateMachine.HandleInput();
         _stateMachine.Update();
+    }
+
+    public bool IsPlatform()
+    {
+        Debug.DrawRay(transform.position, Vector2.down * platformCheckDistance, Color.red);
+        return Physics2D.Raycast(transform.position, Vector2.down,
+            platformCheckDistance,platformLayer);
     }
 
     private void FixedUpdate()
