@@ -45,7 +45,7 @@ public class PlayerGuardState : PlayerGroundState
     
     public void PerfectGuard()
     {
-        if (Time.time - _guardStart >= _data._perfectGuardWindow)
+        if (Time.time - _guardStart >= _data.perfectGuardWindow)
         {
             _condition.IsPerfectGuard = false;
         }
