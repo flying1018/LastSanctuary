@@ -1,5 +1,8 @@
+using System;
 using UnityEngine;
 
+[Serializable]
+[CreateAssetMenu(fileName = "Enemy", menuName = "New Enemy")]
 public class EnemySO : ScriptableObject
 {
     [Header("Info")]
