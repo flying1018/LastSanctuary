@@ -24,13 +24,18 @@ public class EnemyPatrolState : EnemyBaseState
     public override void Update()
     {
         patrol();
+
+        if (_enemy.Target != null)
+        {
+            _stateMachine.ChangeState(_stateMachine.DetectState);
+        }
     }
 
     public void patrol()
     {
         Vector2 pos =_enemy.transform.position;
 
-        float movedDistance = Mathf.Abs(pos.x - _enemy.spawnPoint.transform.position.x);
+        float movedDistance = Mathf.Abs(pos.x - _spawnPoint.transform.position.x);
         bool distanceExit = movedDistance >= _patrolDistance;
 
         if (!_enemy.IsPlatform() || distanceExit)
@@ -39,7 +44,7 @@ public class EnemyPatrolState : EnemyBaseState
         }
         
         float dir = isRight ? 1 : -1;
-        Vector2 moveVelocity = new Vector2(dir * _data._moveSpeed, _rigidbody.velocity.y);
+        Vector2 moveVelocity = new Vector2(dir * _data.moveSpeed, _rigidbody.velocity.y);
         _rigidbody.velocity = moveVelocity;
     }
 }

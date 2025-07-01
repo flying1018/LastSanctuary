@@ -16,7 +16,7 @@ public class EnemySO : ScriptableObject
     public float moveSpeed;
     public float cancelChaseTime;
 
-    [Header("PatrolState")]
+    [field: Header("PatrolState")]
     [field: SerializeField] public float patrolDistance { get; private set; } = 10f;
 
     [Header("condition")]

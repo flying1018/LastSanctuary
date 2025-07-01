@@ -8,6 +8,7 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Enter()
     {
+        _stateMachine.ChangeState(_stateMachine.PatrolState);
     }
 
     public override void Exit()

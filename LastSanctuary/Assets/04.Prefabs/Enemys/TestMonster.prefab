@@ -83,10 +83,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c58599d6322fe442a166b448f7ce093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 1b632bb799493634e9ca1c7ae5199bf8, type: 2}
+  enemyData: {fileID: 11400000, guid: 79002608b4f4cac48b62fd38ebe5331e, type: 2}
+  enemyModel: {fileID: 0}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  platformCheckDistance: 0
+  type: 0
 --- !u!50 &-5163532016691331955
 Rigidbody2D:
   serializedVersion: 4

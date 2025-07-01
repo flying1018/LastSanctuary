@@ -1,5 +1,11 @@
 using UnityEngine;
 
+public enum MonsterType
+{
+    Idle,
+    Patrol,
+}
+
 public class Enemy : MonoBehaviour
 {
     //필드
@@ -13,6 +19,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private LayerMask platformLayer;
     [SerializeField] private float platformCheckDistance;
+    [SerializeField] private MonsterType type;
     //투사체?
     
     //프로퍼티
@@ -23,6 +30,7 @@ public class Enemy : MonoBehaviour
     public EnemyCondition Condition { get; set; }
     public Transform Target { get; set; }
     public Transform SpawnPoint { get; set; }
+    public MonsterType Type { get => type; set => type = value; }
 
     private void Awake()
     {
