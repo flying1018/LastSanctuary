@@ -33,7 +33,13 @@ public class PlayerLadderState : PlayerAirState
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
-        
+
+        if (_input.MoveInput.y < 0)
+        {
+            if (_player.AerialPlatform == null) return;
+            _player.AerialPlatform.DownJump();
+        }
+
     }
 
     public override void Update()
@@ -46,6 +52,8 @@ public class PlayerLadderState : PlayerAirState
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
     }
+    
+    
     
     public override void PhysicsUpdate()
     {
