@@ -3,11 +3,24 @@ using UnityEngine;
 
 public class EnemyBaseState : IState
 {
-    protected EnemyStateMachine stateMachine;
+    protected EnemyStateMachine _stateMachine;
+    protected EnemySO _data;
+    protected Rigidbody2D _rigidbody;
+    protected SpriteRenderer _spriteRenderer;
+    protected EnemyCondition _condition;
+    protected Enemy _enemy;
+    protected Transform _spawnPoint;
     
     public EnemyBaseState(EnemyStateMachine enemyStateMachine)
     {
-        stateMachine = enemyStateMachine;
+        this._stateMachine = enemyStateMachine;
+        _enemy = _stateMachine.Enemy;
+        _data = _enemy.Data;
+        _rigidbody = _enemy.Rigidbody;
+        _spriteRenderer =_enemy.SpriteRenderer;
+        _condition = _enemy.Condition;
+        _spawnPoint = _enemy.SpawnPoint;
+        
     }
     
     public virtual void Enter()
@@ -25,28 +38,19 @@ public class EnemyBaseState : IState
     public virtual void PhysicsUpdate()
     {
     }
-
     protected void Move()
     {
-        Vector3 moveDirection = GetMoveDiretion();
-        Move(moveDirection);
-    }
 
-    private Vector3 GetMoveDiretion()
+    }
+    protected void Move(Vector2 direction)
     {
-        Vector3 moveDirection = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).normalized;
-        return moveDirection;
+        float xDirection = direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0;
+        Vector2 moveVelocity = new Vector2(xDirection * _data.moveSpeed, _rigidbody.velocity.y);
+        _rigidbody.velocity = moveVelocity;
     }
 
-    private void Move(Vector3 moveDirection)
+    protected void Rotate(Vector2 direction)
     {
-        float moveSpeed = GetMoveSpeed();
-        stateMachine.Enemy.transform.position += moveDirection * (moveSpeed * Time.deltaTime);
+        _spriteRenderer.flipX = direction.x < 0;
     }
-
-    private float GetMoveSpeed()
-    {
-        return stateMachine.MoveSpeed;
-    }
-
 }

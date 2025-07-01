@@ -1,31 +1,76 @@
 using UnityEngine;
 
+public enum MonsterType
+{
+    Idle,
+    Patrol,
+}
+
 public class Enemy : MonoBehaviour
 {
-    private EnemyStateMachine stateMachine;
-    [SerializeField] private Transform taget;
-    [SerializeField] public EnemySO Data;
+    //필드
+    private EnemyStateMachine _stateMachine;
+    private CapsuleCollider2D _capsuleCollider;
 
-    //public CharacterController Controller {get; private set;} 쓸지안쓸지모름
+    //직렬화
+    //[field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
+    [SerializeField] private EnemySO enemyData;
+    [SerializeField] private GameObject enemyModel;
+    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private LayerMask platformLayer;
+    [SerializeField] private float platformCheckDistance;
+    [SerializeField] private MonsterType type;
+    //투사체?
+    
+    //프로퍼티
+    public EnemySO Data {get => enemyData;}
+    public Rigidbody2D Rigidbody {get; set;}
+    public Animator Animator {get; set;}
+    public SpriteRenderer SpriteRenderer { get; set; }
+    public EnemyCondition Condition { get; set; }
+    public Transform Target { get; set; }
+    public Transform SpawnPoint { get; set; }
+    public MonsterType Type { get => type; set => type = value; }
 
     private void Awake()
     {
-        stateMachine = new EnemyStateMachine(this);
+        _capsuleCollider = GetComponent<CapsuleCollider2D>();
+        Rigidbody = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
+        Condition = GetComponent<EnemyCondition>();
+        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        
+        _stateMachine = new EnemyStateMachine(this);
+        
     }
-
-    private void Start()
-    {
-        stateMachine.ChangeState(new EnemyIdleState(stateMachine));
-    }
-
     private void Update()
     {
-        stateMachine.HandleInput();
-        stateMachine.Update();
+        _stateMachine.HandleInput();
+        _stateMachine.Update();
+    }
+
+    public bool IsPlatform()
+    {
+        Debug.DrawRay(transform.position, Vector2.down * platformCheckDistance, Color.red);
+        return Physics2D.Raycast(transform.position, Vector2.down,
+            platformCheckDistance,platformLayer);
     }
 
     private void FixedUpdate()
     {
-        stateMachine.PhysicsUpdate();
+        _stateMachine.PhysicsUpdate();
+    }
+
+    public void Init(Transform spawnPoint)
+    {
+        SpawnPoint = spawnPoint;
+        _capsuleCollider = GetComponent<CapsuleCollider2D>();
+        Rigidbody = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
+        Condition = GetComponent<EnemyCondition>();
+        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        
+        Condition.Init(this);
+        _stateMachine = new EnemyStateMachine(this);
     }
 }
