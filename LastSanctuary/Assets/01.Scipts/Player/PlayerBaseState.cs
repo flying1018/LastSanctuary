@@ -10,8 +10,8 @@ public class PlayerBaseState : IState
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
     protected PlayerCondition _condition;
-    protected GameObject _playerModel;
     protected Player _player;
+    protected PlayerWeapon _playerWeapon;
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
@@ -21,9 +21,8 @@ public class PlayerBaseState : IState
         _data = _player.Data;
         _rigidbody = _player.Rigidbody;
         _spriteRenderer = _player.SpriteRenderer;
-        _playerModel = _player.Model;
         _condition = _player.Condition;
-
+        _playerWeapon = _player.PlayerWeapon;
     }
 
     public virtual void Enter()
@@ -38,7 +37,8 @@ public class PlayerBaseState : IState
 
     public virtual void HandleInput()
     {
-        if (_input.IsDash)
+
+        if (_input.IsDash && _condition.UsingStamina(_data.dashCost))
         {
             _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
         }
@@ -51,11 +51,17 @@ public class PlayerBaseState : IState
 
     public virtual void Update()
     {
+        _condition.RecoveryStamina();
     }
 
     public virtual void PhysicsUpdate()
     {
         Move();
+        
+        if (_rigidbody.velocity.y < -0.2f)
+        {
+            _stateMachine.ChangeState(_stateMachine.FallState);
+        }
     }
 
     protected void StartAnimation(int animatorHash)
@@ -90,7 +96,6 @@ public class PlayerBaseState : IState
             //무기 회전
             float angle = _spriteRenderer.flipX ? 180 : 0;
             _player.Weapon.transform.rotation = Quaternion.Euler(angle, 0, angle);
-            Debug.Log(_player.Weapon.transform.rotation);
             
         }
 
