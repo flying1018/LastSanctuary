@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class EnemyIdleState : EnemyBaseState
 {
-    public EnemyIdleState(EnemyStateMachine StateMachine) : base(StateMachine) {}
+    public EnemyIdleState(EnemyStateMachine StateMachine) : base(StateMachine)
+    {
+    }
 
     public override void Enter()
     {
+        _stateMachine.ChangeState(_stateMachine.PatrolState);
     }
 
     public override void Exit()
@@ -14,5 +17,9 @@ public class EnemyIdleState : EnemyBaseState
     
     public override void Update()
     {
+        if (_enemy.Target != null)
+        {
+            _stateMachine.ChangeState(_stateMachine.DetectState);
+        }
     }
 }
