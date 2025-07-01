@@ -16,14 +16,14 @@ public class PlayerAttackState : PlayerBaseState
         _input.IsAttack = false;
         
         //공격 상태 진입
-        StartAnimation(_stateMachine.Player.AnimationDB.AttackParameterHash);
+        StartAnimation(_player.AnimationDB.AttackParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
         
-        StopAnimation(_stateMachine.Player.AnimationDB.AttackParameterHash);
+        StopAnimation(_player.AnimationDB.AttackParameterHash);
     }
 
     public override void HandleInput()

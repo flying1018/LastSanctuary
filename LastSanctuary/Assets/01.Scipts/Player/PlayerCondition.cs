@@ -6,24 +6,30 @@ using UnityEngine;
 public class PlayerCondition : MonoBehaviour, IDamageable
 {
     private Player _player;
-
-    public event Action OnDie;
-
-
-    private int _curHp;
-    private int _maxHp = 1000;
-    private int _curStamina;
-    private int _maxStamina = 100;
     private int _totaldamage;
-
-
+    private int _maxHp = 1000;
+    private int _curHp;
+    private float _maxStamina = 100;
+    private float _curStamina;
+    private int _staminaRecovery;
+    private int _defence;
+    
+    public int Damage { get; private set; }
     public bool IsPerfectGuard { get; set; }
     public bool IsGuard { get; set; }
     public bool IsInvincible { get; set; }
-    public float _invincibleStart;
+    public float InvincibleStart { get; set; }
+    public DamageType DamageType { get; set; }
+    public event Action OnDie;
+
     private void Awake()
     {
         _player = GetComponent<Player>();
+        _maxHp = _player.Data.hp;
+        _maxStamina = _player.Data.stamina;
+        _staminaRecovery = _player.Data.staminaRecovery;
+        _defence = _player.Data.defense;
+        Damage = _player.Data.damage;
         _curHp = _maxHp;
         _curStamina = _maxStamina;
     }
@@ -33,7 +39,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         //무적 해제
         if (IsInvincible)
         {
-            if ( Time.time - _invincibleStart >= _player.Data._invincibleDuration)
+            if ( Time.time - InvincibleStart >= _player.Data.invincibleDuration)
             {
                 IsInvincible = false;
                 Debug.Log("무적 해제");
@@ -51,25 +57,21 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         if (IsInvincible) return;
         if (IsPerfectGuard && type != DamageType.Contact && isFront)
         {
-            Debug.Log("PerfectGuard");
-            _curStamina += data._guardSteminaRecovery; //퍼펙트 가드시 스태미나회복
+            _curStamina += data.perfactGuardStemina; //퍼펙트 가드시 스태미나회복
             //궁극기 게이지 회복
             //보스 그로기 상승
             return;
         }
-        if (IsGuard && type != DamageType.Contact && isFront)
+        if (IsGuard && type != DamageType.Contact && isFront && UsingStamina(data.guardCost))
         {
-            _totaldamage = Mathf.CeilToInt(atk * (1 - data._damageReduction));
-            _curStamina -= data._guardStaminaCost; //가드시 스태미나 소모
-            //스태미나 부족시 가드 실패
+            _totaldamage = Mathf.CeilToInt(atk * (1 - data.damageReduction));
             Debug.Log($"가드 성공 받은 데미지:{_totaldamage}");
         }
         else
         {
-            //type(약공격, 강공격)에 따라 경직 시간 변화 (HitState에서 구현해야 할지 고민중)
+            DamageType = type;  //경직 시간 판단을 위한 대미지 타입
             _totaldamage = atk;
             _curHp -= _totaldamage;
-            _curStamina += data._hitSteminaRecovery; //피격시 스태미나회복
             Debug.Log($"데미지를 받음{_totaldamage}");
             if (_curHp <= 0)
             {
@@ -77,25 +79,48 @@ public class PlayerCondition : MonoBehaviour, IDamageable
             }
             else
             {
-                Vector2 knockback = (transform.position - dir.transform.position).normalized;
-
-
-                _player._stateMachine.ChangeState(_player._stateMachine.HitState);
+                //넉백
+                Vector2 knockbackDir = (transform.position - dir.transform.position);
+                knockbackDir.y = 0;
+                knockbackDir.Normalize();
+                Vector2 knockback = knockbackDir * data.knockbackForce;
+                _player.Rigidbody.AddForce(knockback, ForceMode2D.Impulse);
+                
+                //hit 상태로 전환
+                _player.StateMachine.ChangeState(_player.StateMachine.HitState);
             }
         }
     }
 
     public void PlayerRecovery()
     {
-        DebugHelper.Log($"1. {_curHp} 현재 체력");
         _curHp = _maxHp;
         _curStamina = _maxStamina;
-
-        DebugHelper.Log($"2. {_curHp} 현재 체력");
     }
 
-    public void ChangeInvincible(bool Invincible)
+    public void ChangeInvincible(bool invincible)
     {
-        IsInvincible = Invincible;
+        IsInvincible = invincible;
     }
+    
+    public bool UsingStamina(int stamina)
+    {
+        if (_curStamina >= stamina)
+        {
+            _curStamina -= stamina;
+            return true;
+        }
+        return false;
+    }
+
+    //스테미나 회복
+    public void RecoveryStamina()
+    {
+        if (_curStamina < _maxStamina)
+        {
+            _curStamina += _staminaRecovery * Time.deltaTime;
+            _curStamina = Mathf.Clamp(_curStamina, 0, _maxStamina);
+        }
+    }
+    
 }

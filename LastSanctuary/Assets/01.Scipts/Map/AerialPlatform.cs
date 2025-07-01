@@ -27,6 +27,4 @@ public class AerialPlatform : MonoBehaviour
         yield return new WaitForSeconds(downJumpTime);
         _platformEffector2D.colliderMask += playerLayer;
     }
-
-
 }

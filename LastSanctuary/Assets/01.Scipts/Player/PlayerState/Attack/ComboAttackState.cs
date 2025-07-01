@@ -7,30 +7,39 @@ public class ComboAttackState : PlayerAttackState
     private AttackInfo _attackInfo;
     private float _animationTime;
     private float _time;
+    private Vector2 _dir;
     
     public ComboAttackState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
         base.Enter();
+        
+        _rigidbody.velocity = Vector2.zero;
 
         //현재 공격 정보 가져오기
         int comboIndex = _stateMachine.comboIndex;
-        _attackInfo = _stateMachine.Player.Data.attacks.GetAttackInfo(comboIndex);
+        _attackInfo = _player.Data.attacks.GetAttackInfo(comboIndex);
         
         //공격 애니메이션 실행
-        _stateMachine.Player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, _attackInfo.attackIndex);
+        _player.Animator.SetInteger(_player.AnimationDB.ComboParameterHash, _attackInfo.attackIndex);
 
         //시간 측정
         _time = 0;
-        _animationTime = _stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0).length;
+        _animationTime = _player.Animator.GetCurrentAnimatorStateInfo(0).length;
+        
+        //전진 파워 만큼 앞으로 전진
+        _dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
+        
+        //무기에 대미지 전달
+        _playerWeapon.Damage = (int)(_condition.Damage * _attackInfo.multiplier);
     }
 
     public override void Exit()
     {
         base.Exit();
         
-        _stateMachine.Player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, 0);
+        _player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, 0);
     }
 
     public override void HandleInput()
@@ -46,21 +55,25 @@ public class ComboAttackState : PlayerAttackState
             {
                 //다음 공격 번호 가져오기
                 _stateMachine.comboIndex =
-                    _stateMachine.Player.Data.attacks.GetAttackInfoCount()  <= _stateMachine.comboIndex + 1
-                        ? 0
-                        : _stateMachine.comboIndex + 1;
-                //다음 공격이 없으면 종료
-                if (_stateMachine.comboIndex == 0)
+                    _data.attacks.GetAttackInfoCount() <= _stateMachine.comboIndex + 1
+                        ? 0 : _stateMachine.comboIndex + 1;
+                
+                //다음 공격의 필요 스테미나가 충분하다면 공격
+                if (_condition.UsingStamina(_data.attacks.GetAttackInfo(_stateMachine.comboIndex).staminaCost))
                 {
-                    _input.IsAttack = false;
-                    _stateMachine.ChangeState(_stateMachine.IdleState);
-                    return;
-                }
+                    //다음 공격이 없으면 종료
+                    if (_stateMachine.comboIndex == 0)
+                    {
+                        _input.IsAttack = false;
+                        _stateMachine.ChangeState(_stateMachine.IdleState);
+                        return;
+                    }
 
-                //다음 공격
-                _stateMachine.ChangeState(_stateMachine.ComboAttack);
+                    //다음 공격
+                    _stateMachine.ChangeState(_stateMachine.ComboAttack);
+                }
             }
-            
+
         }
         //공격 종료
         else if (_time > (_animationTime + _attackInfo.nextComboTime))
@@ -77,6 +90,6 @@ public class ComboAttackState : PlayerAttackState
 
     public override void PhysicsUpdate()
     {
-
+        _rigidbody.velocity = Vector2.Lerp(_rigidbody.velocity, _dir * _attackInfo.attackForce, Time.deltaTime * 10f);
     }
 }

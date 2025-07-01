@@ -9,13 +9,13 @@ public class PlayerGroundState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(_stateMachine.Player.AnimationDB.GroundParameterHash);
+        StartAnimation(_player.AnimationDB.GroundParameterHash);
     }   
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(_stateMachine.Player.AnimationDB.GroundParameterHash);
+        StopAnimation(_player.AnimationDB.GroundParameterHash);
     }
 
     public override void HandleInput()
@@ -34,7 +34,7 @@ public class PlayerGroundState : PlayerBaseState
 
         if (_input.IsHeal)
         {
-            //_stateMachine.ChangeState(_stateMachine.HealState);
+            _stateMachine.ChangeState(_stateMachine.HealState);
         }
         
         if (_input.IsAttack)
@@ -46,7 +46,6 @@ public class PlayerGroundState : PlayerBaseState
         {
             if(_player.AerialPlatform == null) return;
             _player.AerialPlatform.DownJump();
-            _stateMachine.ChangeState(_stateMachine.FallState);
         }
     }
 }
