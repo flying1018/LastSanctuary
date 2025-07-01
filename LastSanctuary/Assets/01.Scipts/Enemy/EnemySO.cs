@@ -16,9 +16,9 @@ public class EnemySO : ScriptableObject
     public float moveSpeed;
     public float cancelChaseTime;
 
-    [Header("BattleState")]
-    public int _attack;
-    public int _hp;
-    public int _defense;
-    public int _attackRange;
+    [Header("condition")]
+    public int attack;
+    public int hp;
+    public int defense;
+    public int attackRange;
 }

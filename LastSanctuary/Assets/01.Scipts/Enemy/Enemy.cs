@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     public SpriteRenderer SpriteRenderer { get; set; }
     public EnemyCondition Condition { get; set; }
     public Transform Target { get; set; }
+    public Transform SpawnPoint { get; set; }
 
     private void Awake()
     {
@@ -39,5 +40,18 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
         _stateMachine.PhysicsUpdate();
+    }
+
+    public void Init(Transform spawnPoint)
+    {
+        SpawnPoint = spawnPoint;
+        _capsuleCollider = GetComponent<CapsuleCollider2D>();
+        Rigidbody = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
+        Condition = GetComponent<EnemyCondition>();
+        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        
+        Condition.Init(this);
+        _stateMachine = new EnemyStateMachine(this);
     }
 }

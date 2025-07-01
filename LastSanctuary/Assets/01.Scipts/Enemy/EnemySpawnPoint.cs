@@ -5,20 +5,11 @@ using UnityEngine;
 public class EnemySpawnPoint : MonoBehaviour
 {
     //필드
-    private BoxCollider2D _boxCollider;
     private Enemy _enemy;
     private Coroutine _cancelChase;
     
     //직렬화
     [SerializeField] private GameObject monster;
-    
-    //프로퍼티
-    public Transform SpawnPoint {get => transform;}
-
-    private void Awake()
-    {
-        _boxCollider = GetComponent<BoxCollider2D>();
-    }
 
     private void Start()
     {
@@ -28,8 +19,9 @@ public class EnemySpawnPoint : MonoBehaviour
     
     public void Spawn()
     {
-        GameObject go =Instantiate(monster, SpawnPoint.position, SpawnPoint.rotation);
+        GameObject go =Instantiate(monster, transform.position, transform.rotation);
         _enemy = go.GetComponent<Enemy>();
+        _enemy.Init(this.transform);
     }
 
     public void OnTriggerEnter2D(Collider2D other)
