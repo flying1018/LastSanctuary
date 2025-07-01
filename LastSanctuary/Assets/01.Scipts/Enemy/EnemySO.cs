@@ -9,10 +9,8 @@ public class EnemySO : ScriptableObject
     public int _key;
     public string _name;
 
-    [Header("GroundState")]
-    public float _moveSpeed;
-    public float _areaRange;
-    public bool isGround;
+    [Header("ChaseState")]
+    public float moveSpeed;
 
     [Header("BattleState")]
     public int _attack;

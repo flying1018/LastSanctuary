@@ -5,8 +5,6 @@ using UnityEngine;
 public class EnemyStateMachine : StateMachine
 {
     public Enemy Enemy { get; }
-
-    public Vector2 MoveInput { get; }
     public float MoveSpeed { get; private set; }
 
     public GameObject Target { get; private set; }
@@ -26,7 +24,5 @@ public class EnemyStateMachine : StateMachine
         AttackState = new EnemyAttackState(this);
         ReturnState = new EnemyReturnState(this);
         HitState = new EnemyHitState(this);
-
-        MoveSpeed = Enemy.Data._moveSpeed;
     }
 }

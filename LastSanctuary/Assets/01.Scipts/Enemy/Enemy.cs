@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour
     //직렬화
     //[field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
     [SerializeField] private EnemySO enemyData;
-    [SerializeField] private GameObject enemyModel;
     [SerializeField] private LayerMask playerLayer;
     //투사체?
     
@@ -19,7 +18,7 @@ public class Enemy : MonoBehaviour
     public Animator Animator {get; set;}
     public SpriteRenderer SpriteRenderer { get; set; }
     public EnemyCondition Condition { get; set; }
-    public GameObject Model { get=> enemyModel; }
+    public Transform Taget {get => taget;set => taget = value;}
     
     private void Awake()
     {
@@ -27,7 +26,7 @@ public class Enemy : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         Condition = GetComponent<EnemyCondition>();
-        SpriteRenderer = enemyModel.GetComponent<SpriteRenderer>();
+        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _stateMachine = new EnemyStateMachine(this);
         
     }

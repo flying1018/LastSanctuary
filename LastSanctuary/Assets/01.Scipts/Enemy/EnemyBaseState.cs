@@ -18,7 +18,6 @@ public class EnemyBaseState : IState
         _data = _enemy.Data;
         _rigidbody = _enemy.Rigidbody;
         _spriteRenderer =_enemy.SpriteRenderer;
-        _enemyModel = _enemy.Model;
         _condition = _enemy.Condition;
         
     }
