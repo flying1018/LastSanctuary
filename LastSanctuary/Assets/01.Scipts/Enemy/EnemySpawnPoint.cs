@@ -7,6 +7,7 @@ public class EnemySpawnPoint : MonoBehaviour
     //필드
     private BoxCollider2D _boxCollider;
     private Enemy _enemy;
+    private Coroutine _cancelChase;
     
     //직렬화
     [SerializeField] private GameObject monster;
@@ -35,6 +36,12 @@ public class EnemySpawnPoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
         {
+            if (_cancelChase != null)
+            {
+                StopCoroutine(_cancelChase);
+                _cancelChase = null;
+            }
+            
             _enemy.Target = other.gameObject.transform;
         }
     }
@@ -42,7 +49,21 @@ public class EnemySpawnPoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
         {
-            _enemy.Target = null;
+            if (_cancelChase != null)
+            {
+                StopCoroutine(_cancelChase);
+                _cancelChase = null;
+            }
+
+            _cancelChase = StartCoroutine(CancelChase_Coroutine());
         }
+    }
+    
+    //인식 범위 밖으로 일정 시간 탈출 후 추적 취소
+    IEnumerator CancelChase_Coroutine()
+    {
+        yield return new WaitForSeconds(_enemy.Data.cancelChaseTime);
+        _enemy.Target = null;
+        _cancelChase = null;
     }
 }

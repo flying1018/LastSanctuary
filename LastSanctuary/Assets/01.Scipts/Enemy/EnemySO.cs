@@ -9,8 +9,12 @@ public class EnemySO : ScriptableObject
     public int _key;
     public string _name;
 
+    [Header("DetectState")]
+    public float detectTime;
+    
     [Header("ChaseState")]
     public float moveSpeed;
+    public float cancelChaseTime;
 
     [Header("BattleState")]
     public int _attack;

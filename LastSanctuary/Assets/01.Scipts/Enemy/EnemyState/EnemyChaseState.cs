@@ -16,6 +16,12 @@ public class EnemyChaseState : EnemyBaseState
 
     }
 
+    public override void Update()
+    {
+        if(_enemy.Target == null)
+            _stateMachine.ChangeState(_stateMachine.IdleState);
+    }
+
     public override void PhysicsUpdate()
     {
         Chase();

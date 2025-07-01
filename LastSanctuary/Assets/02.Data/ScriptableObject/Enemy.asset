@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: 0
   _name: 
+  detectTime: 0.2
   moveSpeed: 5
+  cancelChaseTime: 3
   _attack: 0
   _hp: 0
   _defense: 0

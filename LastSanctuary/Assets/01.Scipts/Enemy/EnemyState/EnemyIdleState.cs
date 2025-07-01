@@ -21,7 +21,7 @@ public class EnemyIdleState : EnemyBaseState
     {
         if (_enemy.Target != null)
         {
-            _stateMachine.ChangeState(_stateMachine.ChaseState);
+            _stateMachine.ChangeState(_stateMachine.DetectState);
         }
     }
 }

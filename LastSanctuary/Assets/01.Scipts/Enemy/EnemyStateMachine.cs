@@ -10,6 +10,7 @@ public class EnemyStateMachine : StateMachine
     public EnemyAttackState AttackState { get; private set;}
     public EnemyReturnState ReturnState { get; private set;}
     public EnemyHitState HitState { get; private set;}
+    public EnemyDetectState DetectState { get; private set;}
 
     public EnemyStateMachine(Enemy enemy)
     {
@@ -20,6 +21,7 @@ public class EnemyStateMachine : StateMachine
         AttackState = new EnemyAttackState(this);
         ReturnState = new EnemyReturnState(this);
         HitState = new EnemyHitState(this);
+        DetectState = new EnemyDetectState(this);
         
         ChangeState(IdleState);
     }
