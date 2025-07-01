@@ -479,7 +479,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 862669733}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e542b63bd5bfa42d0b9022fd40683038, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -25826,7 +25826,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 40
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -25847,7 +25847,7 @@ Transform:
   m_GameObject: {fileID: 1772901979}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.15, y: -25.13, z: 0}
+  m_LocalPosition: {x: 4.15, y: -25.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25913,10 +25913,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: effe1bdcdba7b1f49951f25dea192d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  groundCheckDistance: 0
   dashCoolTime: 0.5
   healCoolTime: 0
 --- !u!114 &2024329260
@@ -26188,7 +26184,7 @@ Transform:
   m_GameObject: {fileID: 2024329257}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2, y: -22.3, z: 0}
+  m_LocalPosition: {x: -4.2, y: -0.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

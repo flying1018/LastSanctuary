@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyData
+public class EnemyDB
 {
     public string Id { get; set; }
     public bool IsGround { get; set; }

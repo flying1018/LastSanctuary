@@ -18,15 +18,15 @@ public class JsonLoader
     /// </summary>
     /// <param name="address">적데이터 Json파일 어드레서블 주소를 넣으면 됨</param>
     /// <returns> Key = 적 ID, Value = EnemyData, 반환 확인은 DataDB.cs 확인 요망</returns>
-    public static async Task<Dictionary<string, EnemyData>> ParseEnemyJson(string address)
+    public static async Task<Dictionary<string, EnemyDB>> ParseEnemyJson(string address)
     {
         JToken root = await LoadJson(address);
         if (root == null) { DebugHelper.LogWarning("오류로 파싱 실패"); return null; }
 
         var enemies = root["Enemy"].ToString();
-        List<EnemyData> enemyList = JsonConvert.DeserializeObject<List<EnemyData>>(enemies);
+        List<EnemyDB> enemyList = JsonConvert.DeserializeObject<List<EnemyDB>>(enemies);
 
-        Dictionary<string, EnemyData> enemyDiction = new Dictionary<string, EnemyData>();
+        Dictionary<string, EnemyDB> enemyDiction = new Dictionary<string, EnemyDB>();
 
         foreach (var enemy in enemyList)
         {
@@ -35,6 +35,7 @@ public class JsonLoader
         }
         return enemyDiction;
     }
+    
 
     // 추후 확장용 메서드, 추가 예정
     // public static async Task<Dictionary<string, EnemyData>> ParseItemJson(string address)
