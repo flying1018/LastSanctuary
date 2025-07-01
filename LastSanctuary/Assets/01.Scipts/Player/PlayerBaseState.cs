@@ -51,6 +51,7 @@ public class PlayerBaseState : IState
 
     public virtual void Update()
     {
+        _condition.RecoveryStamina();
     }
 
     public virtual void PhysicsUpdate()

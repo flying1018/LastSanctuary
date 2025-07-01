@@ -50,4 +50,9 @@ public class PlayerGuardState : PlayerGroundState
             _condition.IsPerfectGuard = false;
         }
     }
+    
+    public override void Update()
+    {
+        
+    }
 }

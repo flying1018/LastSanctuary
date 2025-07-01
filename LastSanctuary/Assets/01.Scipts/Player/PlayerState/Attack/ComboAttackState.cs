@@ -7,6 +7,7 @@ public class ComboAttackState : PlayerAttackState
     private AttackInfo _attackInfo;
     private float _animationTime;
     private float _time;
+    private Vector2 _dir;
     
     public ComboAttackState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
@@ -28,8 +29,7 @@ public class ComboAttackState : PlayerAttackState
         _animationTime = _player.Animator.GetCurrentAnimatorStateInfo(0).length;
         
         //전진 파워 만큼 앞으로 전진
-        Vector2 dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
-        _rigidbody.AddForce(dir * _attackInfo.attackForce);
+        _dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
         
         //무기에 대미지 전달
         _playerWeapon.Damage = (int)(_condition.Damage * _attackInfo.multiplier);
@@ -90,6 +90,6 @@ public class ComboAttackState : PlayerAttackState
 
     public override void PhysicsUpdate()
     {
-
+        _rigidbody.velocity = Vector2.Lerp(_rigidbody.velocity, _dir * _attackInfo.attackForce, Time.deltaTime * 10f);
     }
 }

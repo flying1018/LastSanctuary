@@ -32,6 +32,8 @@ public class PlayerHealState : PlayerGroundState
 
     public override void Update()
     {
+        base.Update();
+        
         _healTimer -= Time.deltaTime;
 
         if (_healTimer <= 0f) //만약 힐 타임이 0보다 작으면

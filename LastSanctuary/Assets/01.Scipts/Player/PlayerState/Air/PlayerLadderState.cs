@@ -24,12 +24,13 @@ public class PlayerLadderState : PlayerAirState
 
     public override void HandleInput()
     {
-        if (_input.IsDash && _condition.UsingStamina(_data.dashCost))
+        if (Mathf.Abs(_input.MoveInput.x) > 0 && 
+            _input.IsDash && _condition.UsingStamina(_data.dashCost))
         {
             _stateMachine.ChangeState(_stateMachine.DashState);
         }
 
-        if (_input.IsJump)
+        if (_input.IsJump && Mathf.Abs(_input.MoveInput.x) > 0)
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
@@ -44,6 +45,7 @@ public class PlayerLadderState : PlayerAirState
 
     public override void Update()
     {
+        base.Update();
         if(!_player.IsLadder)
             _stateMachine.ChangeState(_stateMachine.IdleState);
         if (_input.MoveInput.y < 0 && _player.IsGround())

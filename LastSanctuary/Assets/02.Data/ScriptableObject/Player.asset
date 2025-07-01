@@ -14,29 +14,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <moveSpeed>k__BackingField: 6
   <jumpForce>k__BackingField: 20
-  damage: 0
-  hp: 0
-  stamina: 0
-  defense: 0
   <dashTime>k__BackingField: 0.25
   <dashPower>k__BackingField: 20
+  <dashCoolTime>k__BackingField: 0.5
+  <dashCost>k__BackingField: 25
   <HealAmount>k__BackingField: 15
-  <_perfectGuardWindow>k__BackingField: 0.2
+  <HealDuration>k__BackingField: 2
+  <perfectGuardWindow>k__BackingField: 0.2
+  <perfactGuardStemina>k__BackingField: 30
+  <guardCost>k__BackingField: 30
   attacks:
     <AttackInfoDatas>k__BackingField:
     - attackIndex: 1
       multiplier: 1
-      effectPrefab: {fileID: 0}
       nextComboTime: 0.3
+      staminaCost: 0
+      attackForce: 0
     - attackIndex: 2
       multiplier: 1.2
       nextComboTime: 0.3
+      staminaCost: 0
+      attackForce: 0
     - attackIndex: 3
       multiplier: 2
       nextComboTime: 0.3
-  <_hitDuration>k__BackingField: 0.5
-  <_invincibleDuration>k__BackingField: 1
-  <_hitSteminaRecovery>k__BackingField: 15
-  <_damageReduction>k__BackingField: 0.8
-  <_guardSteminaRecovery>k__BackingField: 30
-  <_guardStaminaCost>k__BackingField: 30
+      staminaCost: 15
+      attackForce: 10
+  <LightHitDuration>k__BackingField: 0.2
+  <HeavyHitDuration>k__BackingField: 0.2
+  <invincibleDuration>k__BackingField: 1
+  <hitSteminaRecovery>k__BackingField: 15
+  <knockbackForce>k__BackingField: 2
+  <damageReduction>k__BackingField: 0.8
+  hp: 100
+  damage: 20
+  defense: 20
+  stamina: 100
+  <staminaRecovery>k__BackingField: 15

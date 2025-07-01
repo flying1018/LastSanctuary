@@ -41,8 +41,6 @@ public class PlayerDashState : PlayerBaseState
 
     public override void Update()
     {
-        base.Update();
-
         _elapsedTime += Time.deltaTime;
         if (_elapsedTime >= _data.dashTime)
         {

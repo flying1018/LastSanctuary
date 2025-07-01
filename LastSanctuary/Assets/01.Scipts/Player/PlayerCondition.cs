@@ -45,13 +45,6 @@ public class PlayerCondition : MonoBehaviour, IDamageable
                 Debug.Log("무적 해제");
             }
         }
-        
-        //스테미나 회복
-        if (_curStamina < _maxStamina)
-        {
-            _curStamina += _staminaRecovery * Time.deltaTime;
-            _curStamina = Mathf.Clamp(_curStamina, 0, _maxStamina);
-        }
     }
 
     public void TakeDamage(int atk, Transform dir,DamageType type)
@@ -118,6 +111,16 @@ public class PlayerCondition : MonoBehaviour, IDamageable
             return true;
         }
         return false;
+    }
+
+    //스테미나 회복
+    public void RecoveryStamina()
+    {
+        if (_curStamina < _maxStamina)
+        {
+            _curStamina += _staminaRecovery * Time.deltaTime;
+            _curStamina = Mathf.Clamp(_curStamina, 0, _maxStamina);
+        }
     }
     
 }
