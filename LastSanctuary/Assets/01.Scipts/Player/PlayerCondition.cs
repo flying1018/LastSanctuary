@@ -39,7 +39,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         //무적 해제
         if (IsInvincible)
         {
-            if ( Time.deltaTime - InvincibleStart >= _player.Data.invincibleDuration)
+            if ( Time.time - InvincibleStart >= _player.Data.invincibleDuration)
             {
                 IsInvincible = false;
                 Debug.Log("무적 해제");
@@ -49,49 +49,24 @@ public class PlayerCondition : MonoBehaviour, IDamageable
 
     public void TakeDamage(int atk, Transform dir,DamageType type)
     {
-        var data = _player.Data;
-        bool attackFromRight = dir.position.x > transform.position.x;
-        bool playerDir = !_player.SpriteRenderer.flipX;
-        bool isFront = attackFromRight == playerDir;
-        
         if (IsInvincible) return;
-        if (IsPerfectGuard && type != DamageType.Contact && isFront)
+        bool isFront = IsFront(dir);
+        if(TryPerfectGuard(type, isFront))return;
+        if(TryGuard(atk,type, isFront))return;
+        
+        DamageType = type; //경직 시간 판단을 위한 대미지 타입
+        ApplyDamage(atk);
+        if (_curHp <= 0)
         {
-            _curStamina += data.perfactGuardStemina; //퍼펙트 가드시 스태미나회복
-            //궁극기 게이지 회복
-            //보스 그로기 상승
-            return;
-        }
-        if (IsGuard && type != DamageType.Contact && isFront && UsingStamina(data.guardCost))
-        {
-            _totaldamage = Mathf.CeilToInt(atk * (1 - data.damageReduction));
-            Debug.Log($"가드 성공 받은 데미지:{_totaldamage}");
+            OnDie?.Invoke();
         }
         else
         {
-            DamageType = type;  //경직 시간 판단을 위한 대미지 타입
-            _totaldamage = atk;
-            _curHp -= _totaldamage;
-            Debug.Log($"데미지를 받음{_totaldamage}");
-            if (_curHp <= 0)
-            {
-                OnDie?.Invoke();
-            }
-            else
-            {
-                //넉백
-                Vector2 knockbackDir = (transform.position - dir.transform.position);
-                knockbackDir.y = 0;
-                knockbackDir.Normalize();
-                Vector2 knockback = knockbackDir * data.knockbackForce;
-                _player.Rigidbody.AddForce(knockback, ForceMode2D.Impulse);
-                
-                //hit 상태로 전환
-                _player.StateMachine.ChangeState(_player.StateMachine.HitState);
-            }
+            KnockBack(dir);
+            ChangingHitState();
         }
     }
-
+    
     public void PlayerRecovery()
     {
         _curHp = _maxHp;
@@ -121,6 +96,59 @@ public class PlayerCondition : MonoBehaviour, IDamageable
             _curStamina += _staminaRecovery * Time.deltaTime;
             _curStamina = Mathf.Clamp(_curStamina, 0, _maxStamina);
         }
+    }
+    
+    //정면 확인
+    private bool IsFront(Transform dir)
+    {
+        bool attackFromRight = dir.position.x > transform.position.x;
+        bool playerDir = !_player.SpriteRenderer.flipX;
+        return attackFromRight == playerDir;
+    }
+    //퍼펙트가드 확인
+    private bool TryPerfectGuard(DamageType type, bool isFront)
+    {
+        if (IsPerfectGuard && type != DamageType.Contact && isFront)
+        {
+            _curStamina += _player.Data.perfactGuardStemina; //퍼펙트 가드시 스태미나회복
+            //궁극기 게이지 회복
+            //보스 그로기 상승
+            return true;
+        }
+        return false;
+    }
+    //가드 확인
+    private bool TryGuard(int atk, DamageType type, bool isFront)
+    {
+        if (IsGuard && type != DamageType.Contact && isFront && UsingStamina(_player.Data.guardCost))
+        {
+            atk = Mathf.CeilToInt(atk * (1 - _player.Data.damageReduction));
+            ApplyDamage(atk);
+            Debug.Log("가드 성공");
+            return true;
+        }
+        return false;
+    }
+    //대미지 적용
+    public void ApplyDamage(int atk)
+    { 
+        _totaldamage = atk;//계산식
+        _curHp -= _totaldamage;
+        Debug.Log($"대미지를 받음{_totaldamage}");
+    }
+    //넉백
+    public void KnockBack(Transform dir)
+    {
+        Vector2 knockbackDir = (transform.position - dir.transform.position);
+        knockbackDir.y = 0;
+        knockbackDir.Normalize();
+        Vector2 knockback = knockbackDir * _player.Data.knockbackForce;
+        _player.Rigidbody.AddForce(knockback, ForceMode2D.Impulse);
+    }
+    //상태전환
+    public void ChangingHitState()
+    {
+        _player.StateMachine.ChangeState(_player.StateMachine.HitState);
     }
     
 }

@@ -26,6 +26,20 @@ public class EnemyCondition : MonoBehaviour, IDamageable
 
     public void TakeDamage(int atk, Transform attackDir, DamageType type)
     {
+        var data = _enemy.Data;
+        
         if (IsInvincible) return;
+    }
+    public void ApplyDamage(int totalDamage)
+    {
+        throw new NotImplementedException();
+    }
+    public void KnockBack(Transform dir)
+    {
+        throw new NotImplementedException();
+    }
+    public void ChangingHitState()
+    {
+        throw new NotImplementedException();
     }
 }

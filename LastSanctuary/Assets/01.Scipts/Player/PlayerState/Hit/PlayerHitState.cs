@@ -11,8 +11,8 @@ public class PlayerHitState : PlayerBaseState
     {
         //피격 애니메이션
         //사다리나 밧줄에서 피격시 추가 넉백
-        _hitStart = Time.deltaTime;
-        _condition.InvincibleStart = Time.deltaTime;
+        _hitStart = Time.time;
+        _condition.InvincibleStart = Time.time;
         _condition.IsInvincible = true;
         switch (_condition.DamageType)
         {
@@ -23,7 +23,6 @@ public class PlayerHitState : PlayerBaseState
                 _hitDuration = _data.LightHitDuration; //0.2f
                 break;
         }
-        Debug.Log("경직 상태+무적 상태");
     }
 
     public override void Exit()
@@ -33,7 +32,7 @@ public class PlayerHitState : PlayerBaseState
 
     public override void PhysicsUpdate()
     {
-        if (Time.deltaTime - _hitStart >= _hitDuration)
+        if (Time.time - _hitStart >= _hitDuration)
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }

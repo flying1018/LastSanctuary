@@ -12,7 +12,7 @@ public class PlayerGuardState : PlayerGroundState
     {
         base.Enter();
         _rigidbody.velocity = Vector2.zero;
-        _guardStart = Time.deltaTime;
+        _guardStart = Time.time;
         _condition.IsPerfectGuard = true;
         _condition.IsGuard = true;
         //가드 애니메이션 실행
@@ -45,7 +45,7 @@ public class PlayerGuardState : PlayerGroundState
     
     public void PerfectGuard()
     {
-        if (Time.deltaTime - _guardStart >= _data.perfectGuardWindow)
+        if (Time.time - _guardStart >= _data.perfectGuardWindow)
         {
             _condition.IsPerfectGuard = false;
         }
