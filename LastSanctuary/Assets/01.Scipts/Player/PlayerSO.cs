@@ -6,6 +6,8 @@ using UnityEngine;
 [Serializable]
 public class AttackInfo
 {
+    public AnimationClip attackAnim;
+    public float animTime => attackAnim.length;
     public int attackIndex;     //공격 번호
     public float multiplier;    //공격 배수
     public float nextComboTime; //다음 콤보까지 여유 시간

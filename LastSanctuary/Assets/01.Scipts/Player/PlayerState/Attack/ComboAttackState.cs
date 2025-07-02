@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class ComboAttackState : PlayerAttackState
@@ -14,22 +15,21 @@ public class ComboAttackState : PlayerAttackState
     public override void Enter()
     {
         base.Enter();
-        
+
         _rigidbody.velocity = Vector2.zero;
 
         //현재 공격 정보 가져오기
         int comboIndex = _stateMachine.comboIndex;
         _attackInfo = _player.Data.attacks.GetAttackInfo(comboIndex);
-        
-        //공격 애니메이션 실행
-        _player.Animator.SetInteger(_player.AnimationDB.ComboParameterHash, _attackInfo.attackIndex);
 
-        //시간 측정
-        _time = 0;
-        _animationTime = _player.Animator.GetCurrentAnimatorStateInfo(0).length;
-        
         //무기에 대미지 전달
         _playerWeapon.Damage = (int)(_condition.Damage * _attackInfo.multiplier);
+
+        
+        _player.Animator.SetInteger(_player.AnimationDB.ComboParameterHash, _attackInfo.attackIndex);
+        
+        _time = 0;
+        _animationTime = _attackInfo.animTime;
     }
 
     public override void Exit()

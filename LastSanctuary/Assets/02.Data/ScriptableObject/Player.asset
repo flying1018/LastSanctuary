@@ -37,7 +37,7 @@ MonoBehaviour:
       attackForce: 0
     - attackIndex: 3
       multiplier: 2
-      nextComboTime: 0.3
+      nextComboTime: 0
       staminaCost: 15
       attackForce: 10
   <LightHitDuration>k__BackingField: 0.2
