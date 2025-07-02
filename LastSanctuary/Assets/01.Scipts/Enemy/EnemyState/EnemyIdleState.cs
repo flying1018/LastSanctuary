@@ -8,11 +8,12 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Enter()
     {
-        _stateMachine.ChangeState(_stateMachine.PatrolState);
+        StartAnimation(_enemy.AnimationDB.IdleParameterHash);
     }
 
     public override void Exit()
     {
+        StopAnimation(_enemy.AnimationDB.IdleParameterHash);
     }
     
     public override void Update()

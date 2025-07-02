@@ -10,12 +10,14 @@ public class EnemyPatrolState : EnemyBaseState
 
     public override void Enter()
     {
+        StartAnimation(_enemy.AnimationDB.WalkParameterHash);
+        
         _patrolDistance = _data.patrolDistance;
     }
 
     public override void Exit()
     {
-      
+        StopAnimation(_enemy.AnimationDB.WalkParameterHash);
     }
     
     public override void Update()

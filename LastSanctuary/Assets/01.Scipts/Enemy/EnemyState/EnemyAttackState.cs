@@ -9,12 +9,12 @@ public class EnemyAttackState : EnemyBaseState
     
     public override void Enter()
     {
-        Debug.Log("Attack Enter");
+        StartAnimation(_enemy.AnimationDB.AttackParameterHash);
     }
 
     public override void Exit()
     {
-        Debug.Log("Attack Exit");
+        StopAnimation(_enemy.AnimationDB.AttackParameterHash);
     }
 
     public override void HandleInput()

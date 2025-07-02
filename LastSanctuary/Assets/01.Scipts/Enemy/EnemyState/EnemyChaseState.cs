@@ -10,13 +10,16 @@ public class EnemyChaseState : EnemyBaseState
 
     public override void Enter()
     {
+        StartAnimation(_enemy.AnimationDB.WalkParameterHash);
+        
         _dontMove = false;
         _time = 0;
+        
     }
 
     public override void Exit()
     {
-
+        StopAnimation(_enemy.AnimationDB.WalkParameterHash);
     }
 
     public override void Update()

@@ -8,14 +8,16 @@ public class EnemyReturnState :EnemyBaseState
 
     public override void Enter()
     {
-        Debug.Log("Return Enter");
+        StartAnimation(_enemy.AnimationDB.WalkParameterHash);
+        
         _condition.IsInvincible = true;
         _enemy.IsRight = !_enemy.IsRight;
     }
 
     public override void Exit()
     {
-        Debug.Log("Return Exit");
+        StopAnimation(_enemy.AnimationDB.WalkParameterHash);
+        
         _condition.IsInvincible = false;
     }
 

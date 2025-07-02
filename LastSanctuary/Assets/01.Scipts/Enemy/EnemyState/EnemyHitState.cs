@@ -10,7 +10,8 @@ public class EnemyHitState : EnemyBaseState
     private float _hitStart;
     public override void Enter()
     {
-        //피격 애니메이션
+        _enemy.Animator.SetTrigger(_enemy.AnimationDB.HitParameterHash);
+        
         _hitStart = Time.time;
     }
 
@@ -26,4 +27,5 @@ public class EnemyHitState : EnemyBaseState
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
     }
+    
 }
