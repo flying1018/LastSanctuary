@@ -25900,7 +25900,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992e50800852e1b47a59846df1ebdea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _invincibleStart: 0
 --- !u!114 &2024329259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25913,8 +25912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: effe1bdcdba7b1f49951f25dea192d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashCoolTime: 0.5
-  healCoolTime: 0
 --- !u!114 &2024329260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25940,8 +25937,6 @@ MonoBehaviour:
     guardParameter: Guard
     dieParameter: '@Die'
   playerData: {fileID: 11400000, guid: fa11ae5f2b2d74860ae80e96545967e4, type: 2}
-  playerModel: {fileID: 145655885}
-  downJumpTime: 0.8
   groundLayer:
     serializedVersion: 2
     m_Bits: 272
@@ -26184,7 +26179,7 @@ Transform:
   m_GameObject: {fileID: 2024329257}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2, y: -0.11, z: 0}
+  m_LocalPosition: {x: -6.4, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
