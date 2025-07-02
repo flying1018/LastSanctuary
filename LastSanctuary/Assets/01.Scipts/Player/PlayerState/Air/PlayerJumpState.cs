@@ -14,9 +14,9 @@ public class PlayerJumpState : PlayerAirState
         base.Enter();
         StartAnimation(_player.AnimationDB.JumpParameterHash);
 
+        _input.IsJump = false;
         _maxHoldTime = 0.2f;
         _keyHold = _input.IsLongJump;
-
     }
 
     public override void Exit()
@@ -42,7 +42,6 @@ public class PlayerJumpState : PlayerAirState
 
     void Jump()
     {
-        _input.IsJump = false;
         if (_keyHold && _maxHoldTime > 0f)
         {
             _maxHoldTime -= Time.deltaTime;

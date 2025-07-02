@@ -164,6 +164,14 @@ public class Player : MonoBehaviour
     
         Condition.ChangeInvincible(false);
     }
+
+    public void ApplyAttackForce()
+    {
+        AttackInfo attackInfo = Data.attacks.GetAttackInfo(StateMachine.comboIndex);
+        Vector2 direction = SpriteRenderer.flipX ? Vector2.left : Vector2.right;
+        Rigidbody.AddForce(direction * attackInfo.attackForce, ForceMode2D.Impulse);
+    }
+    
     
     #endregion
 }
