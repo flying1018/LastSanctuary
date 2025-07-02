@@ -9,11 +9,10 @@ public enum MonsterType
 public class Enemy : MonoBehaviour
 {
     //필드
-    private EnemyStateMachine _stateMachine;
     private CapsuleCollider2D _capsuleCollider;
 
     //직렬화
-    //[field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
+    [field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
     [SerializeField] private EnemySO enemyData;
     [SerializeField] private GameObject enemyModel;
     [SerializeField] private LayerMask playerLayer;
@@ -23,6 +22,7 @@ public class Enemy : MonoBehaviour
     //투사체?
     
     //프로퍼티
+    public EnemyStateMachine StateMachine { get; set; }
     public EnemySO Data {get => enemyData;}
     public Rigidbody2D Rigidbody {get; set;}
     public Animator Animator {get; set;}
@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     public Transform Target { get; set; }
     public Transform SpawnPoint { get; set; }
     public MonsterType Type { get => type; set => type = value; }
+    public bool IsRight { get; set; } = true;
 
     private void Awake()
     {
@@ -39,26 +40,29 @@ public class Enemy : MonoBehaviour
         Animator = GetComponent<Animator>();
         Condition = GetComponent<EnemyCondition>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        AnimationDB.Initailize();
         
-        _stateMachine = new EnemyStateMachine(this);
+        StateMachine = new EnemyStateMachine(this);
         
     }
     private void Update()
     {
-        _stateMachine.HandleInput();
-        _stateMachine.Update();
+        StateMachine.HandleInput();
+        StateMachine.Update();
     }
 
     public bool IsPlatform()
     {
-        Debug.DrawRay(transform.position, Vector2.down * platformCheckDistance, Color.red);
-        return Physics2D.Raycast(transform.position, Vector2.down,
+        float setX = IsRight ? 0.3f: -0.3f;
+        Vector2 newPos = new Vector2(transform.position.x + setX, transform.position.y);
+        Debug.DrawRay(newPos, Vector2.down * platformCheckDistance, Color.red);
+        return Physics2D.Raycast(newPos, Vector2.down,
             platformCheckDistance,platformLayer);
     }
 
     private void FixedUpdate()
     {
-        _stateMachine.PhysicsUpdate();
+        StateMachine.PhysicsUpdate();
     }
 
     public void Init(Transform spawnPoint)
@@ -71,6 +75,6 @@ public class Enemy : MonoBehaviour
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         
         Condition.Init(this);
-        _stateMachine = new EnemyStateMachine(this);
+        StateMachine = new EnemyStateMachine(this);
     }
 }

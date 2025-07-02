@@ -8,4 +8,19 @@ public class TestEnemy : MonoBehaviour , IDamageable
     {
         Debug.Log("TakeDamage");
     }
+
+    public void ApplyDamage(int totalDamage)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void KnockBack(Transform attackdir)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void ChangingHitState()
+    {
+        throw new System.NotImplementedException();
+    }
 }

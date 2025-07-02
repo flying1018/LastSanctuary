@@ -53,7 +53,5 @@ public class PlayerAnimationDB
         GuardParameterHash = Animator.StringToHash(guardParameter);
 
         DieParameterHash = Animator.StringToHash(dieParameter);
-        
-        Animator animator = new Animator();
     }
 }

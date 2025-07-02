@@ -23,7 +23,6 @@ public class PlayerHitState : PlayerBaseState
                 _hitDuration = _data.LightHitDuration; //0.2f
                 break;
         }
-        Debug.Log("경직 상태+무적 상태");
     }
 
     public override void Exit()
