@@ -7,13 +7,11 @@ public class EnemyPatrolState : EnemyBaseState
     public EnemyPatrolState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine) {}
     
     private float _patrolDistance;
-    private bool isRight;
 
     public override void Enter()
     {
         _patrolDistance = _data.patrolDistance;
-        isRight = true;
-        Debug.Log("Patrol Enter");
+        _enemy.IsRight = true;
     }
 
     public override void Exit()
@@ -40,10 +38,10 @@ public class EnemyPatrolState : EnemyBaseState
 
         if (!_enemy.IsPlatform() || distanceExit)
         {
-            isRight = !isRight;
+            _enemy.IsRight = !_enemy.IsRight;
         }
         
-        float dir = isRight ? 1 : -1;
+        float dir = _enemy.IsRight ? 1 : -1;
         Vector2 moveVelocity = new Vector2(dir * _data.moveSpeed, _rigidbody.velocity.y);
         _rigidbody.velocity = moveVelocity;
     }

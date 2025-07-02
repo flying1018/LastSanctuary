@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     public Transform Target { get; set; }
     public Transform SpawnPoint { get; set; }
     public MonsterType Type { get => type; set => type = value; }
+    public bool IsRight { get; set; } = true;
 
     private void Awake()
     {
@@ -51,8 +52,10 @@ public class Enemy : MonoBehaviour
 
     public bool IsPlatform()
     {
-        Debug.DrawRay(transform.position, Vector2.down * platformCheckDistance, Color.red);
-        return Physics2D.Raycast(transform.position, Vector2.down,
+        float setX = IsRight ? 0.3f: -0.3f;
+        Vector2 newPos = new Vector2(transform.position.x + setX, transform.position.y);
+        Debug.DrawRay(newPos, Vector2.down * platformCheckDistance, Color.red);
+        return Physics2D.Raycast(newPos, Vector2.down,
             platformCheckDistance,platformLayer);
     }
 

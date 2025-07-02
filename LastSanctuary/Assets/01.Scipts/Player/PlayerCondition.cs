@@ -39,7 +39,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         //무적 해제
         if (IsInvincible)
         {
-            if ( Time.time - InvincibleStart >= _player.Data.invincibleDuration)
+            if ( Time.deltaTime - InvincibleStart >= _player.Data.invincibleDuration)
             {
                 IsInvincible = false;
                 Debug.Log("무적 해제");
