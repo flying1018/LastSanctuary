@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public bool[] IsPlayerClear { get; set; }
+    public bool[] IsPlayerClear; // 테스트용 추후 삭제
     public void Init() { }
 }
