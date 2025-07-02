@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: 0
   _name: 
-  _moveSpeed: 5
-  _areaRange: 0
-  isGround: 0
+  detectTime: 0.2
+  moveSpeed: 3
+  cancelChaseTime: 3
   <patrolDistance>k__BackingField: 10
-  _attack: 0
-  _hp: 0
-  _defense: 0
-  _attackRange: 0
+  attack: 0
+  hp: 0
+  defense: 0
+  attackRange: 0
