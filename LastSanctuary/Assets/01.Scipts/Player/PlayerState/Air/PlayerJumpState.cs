@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class PlayerJumpState : PlayerAirState
 {
+    private float _maxHoldTime;
+    private bool _keyHold;
+    
     public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
         base.Enter();
         StartAnimation(_player.AnimationDB.JumpParameterHash);
-        
-        Jump();
+
+        _maxHoldTime = 0.2f;
+        _keyHold = _input.IsLongJump;
+
     }
 
     public override void Exit()
@@ -20,10 +25,34 @@ public class PlayerJumpState : PlayerAirState
         StopAnimation(_player.AnimationDB.JumpParameterHash);
     }
 
+    public override void HandleInput()
+    {
+        base.HandleInput();
+
+        if (!_input.IsLongJump)
+            _keyHold = _input.IsLongJump;
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+        Jump();
+    }
+
 
     void Jump()
     {
         _input.IsJump = false;
-        _rigidbody.AddForce(Vector2.up * _data.jumpForce, ForceMode2D.Impulse);
+        if (_keyHold && _maxHoldTime > 0f)
+        {
+            _maxHoldTime -= Time.deltaTime;
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _data.jumpForce);
+        }
+        else
+        {
+            _keyHold = false;
+        }
+
+
     }
 }
