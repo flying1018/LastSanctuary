@@ -10,6 +10,7 @@ public class EnemyReturnState :EnemyBaseState
     {
         Debug.Log("Return Enter");
         _condition.IsInvincible = true;
+        _enemy.IsRight = !_enemy.IsRight;
     }
 
     public override void Exit()

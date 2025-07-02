@@ -38,6 +38,7 @@ public class EnemyChaseState : EnemyBaseState
         if(_enemy.Target == null) return;
         
         Vector2 direction = _enemy.Target.position - _enemy.transform.position;
+        _enemy.IsRight = direction.x > 0 ? true : false;
         if (Mathf.Abs(direction.x) < 1f) return;
         Move(direction);
         Rotate(direction);
@@ -46,7 +47,7 @@ public class EnemyChaseState : EnemyBaseState
     private void CancelChase()
     {
         //움직이지 않기 시작한다면 시간 체크
-        if (_rigidbody.velocity.magnitude < 0.1f)
+        if (_rigidbody.velocity.magnitude < 0.1f || !_enemy.IsPlatform())
         {
             _time += Time.deltaTime;
         }

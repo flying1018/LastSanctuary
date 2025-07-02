@@ -11,7 +11,6 @@ public class EnemyPatrolState : EnemyBaseState
     public override void Enter()
     {
         _patrolDistance = _data.patrolDistance;
-        _enemy.IsRight = true;
     }
 
     public override void Exit()
