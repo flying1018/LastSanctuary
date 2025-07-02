@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     private CapsuleCollider2D _capsuleCollider;
 
     //직렬화
-    //[field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
+    [field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
     [SerializeField] private EnemySO enemyData;
     [SerializeField] private GameObject enemyModel;
     [SerializeField] private LayerMask playerLayer;
@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
         Animator = GetComponent<Animator>();
         Condition = GetComponent<EnemyCondition>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        AnimationDB.Initailize();
         
         _stateMachine = new EnemyStateMachine(this);
         

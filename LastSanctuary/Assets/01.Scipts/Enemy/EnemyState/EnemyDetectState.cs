@@ -11,6 +11,8 @@ public class EnemyDetectState : EnemyBaseState
 
     public override void Enter()
     {
+        StartAnimation(_enemy.AnimationDB.IdleParameterHash);
+        
         base.Enter();
         //애니메이션 시작
         
@@ -23,7 +25,8 @@ public class EnemyDetectState : EnemyBaseState
     public override void Exit()
     {
         base.Exit();
-        //애니메이션 종료
+
+        StopAnimation(_enemy.AnimationDB.IdleParameterHash);
     }
     
     public override void Update()

@@ -1,18 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAnimationDB : MonoBehaviour
+[Serializable]
+public class EnemyAnimationDB
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private string idleParameter = "Idle";
+    [SerializeField] private string walkParameter = "Walk";
+    [SerializeField] private string attackParameter = "Attack";
+    [SerializeField] private string hitParameter = "Hit";
+    [SerializeField] private string deathParameter = "Death";
 
-    // Update is called once per frame
-    void Update()
+
+
+    public int IdleParameterHash { get; private set; }
+    public int WalkParameterHash { get; private set; }
+    public int AttackParameterHash { get; private set; }
+    public int HitParameterHash { get; private set; }
+    public int DeathParameterHash { get; private set; }
+
+
+    public void Initailize()
     {
-        
+        IdleParameterHash = Animator.StringToHash(idleParameter);
+        WalkParameterHash = Animator.StringToHash(walkParameter);
+        AttackParameterHash = Animator.StringToHash(attackParameter);
+        HitParameterHash = Animator.StringToHash(hitParameter);
+        DeathParameterHash = Animator.StringToHash(deathParameter);
     }
 }

@@ -38,6 +38,16 @@ public class EnemyBaseState : IState
     public virtual void PhysicsUpdate()
     {
     }
+    
+    protected void StartAnimation(int animatorHash)
+    {
+        _enemy.Animator.SetBool(animatorHash, true);
+    }
+
+    protected void StopAnimation(int animatorHash)
+    {
+        _enemy.Animator.SetBool(animatorHash, false);
+    }
     protected void Move()
     {
 
