@@ -16,8 +16,6 @@ public class ComboAttackState : PlayerAttackState
     {
         base.Enter();
 
-        _rigidbody.velocity = Vector2.zero;
-
         //현재 공격 정보 가져오기
         int comboIndex = _stateMachine.comboIndex;
         _attackInfo = _player.Data.attacks.GetAttackInfo(comboIndex);

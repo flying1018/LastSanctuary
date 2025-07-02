@@ -21,14 +21,14 @@ public class PlayerJumpState : PlayerAirState
 
     public override void Exit()
     {
-        base.Enter();
+        base.Exit();
         StopAnimation(_player.AnimationDB.JumpParameterHash);
     }
 
     public override void HandleInput()
     {
         base.HandleInput();
-
+        
         if (!_input.IsLongJump)
             _keyHold = _input.IsLongJump;
     }
