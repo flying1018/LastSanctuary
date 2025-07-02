@@ -3,23 +3,38 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
 
+/// <summary>
+/// 게임 전반부에 세이브할 데이터를 한곳에 모아 Json화
+/// </summary>
 public class SaveManager : Singleton<SaveManager>
 {
     private Vector2 _lastSavePos;
 
-    public void SaveGame()
+    public void SaveMapItem()
     {
         SaveData data = new SaveData(
-            _lastSavePos,
-            GameManager.Instance.IsPlayerClear,
-            ItemManager.Instance.PlayerGold,
-            ItemManager.Instance.isPlayerHaveRelic
+            1f, 1f, false, 100, false
         );
 
         string json = JsonConvert.SerializeObject(data, Formatting.Indented);
 
-        JsonSaver.SaveData(json);
+        DebugHelper.Log(json);
+        JsonSaver.MapItemToJson(json);
+    }
 
+    public void SaveMapGimmick()
+    {
+        
+    }
+
+    public void SavePlayerCollect()
+    {
+
+    }
+
+    public void SavePlayerStatObject()
+    {
+        
     }
 
     public void SetSavePoint(Vector2 pos)

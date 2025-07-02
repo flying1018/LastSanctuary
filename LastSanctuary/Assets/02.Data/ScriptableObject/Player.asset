@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   <moveSpeed>k__BackingField: 6
-  <jumpForce>k__BackingField: 20
+  <jumpForce>k__BackingField: 10
   <dashTime>k__BackingField: 0.25
   <dashPower>k__BackingField: 20
   <dashCoolTime>k__BackingField: 0.5
@@ -37,7 +37,7 @@ MonoBehaviour:
       attackForce: 0
     - attackIndex: 3
       multiplier: 2
-      nextComboTime: 0.3
+      nextComboTime: 0
       staminaCost: 15
       attackForce: 10
   <LightHitDuration>k__BackingField: 0.2

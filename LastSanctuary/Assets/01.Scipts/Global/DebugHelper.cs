@@ -67,11 +67,11 @@ public class DebugWindow : EditorWindow
         bgm = (AudioClip)EditorGUILayout.ObjectField("BGM을 넣어주세요", bgm, typeof(AudioClip), true);
         if (GUILayout.Button("Bgm바꾸기")) // 디버그 툴에 뜰 버튼 이름
         {
-            
+
         }
-        
+
         EditorGUILayout.LabelField("가드 테스트");
-        go = (GameObject)EditorGUILayout.ObjectField("playerObject", go, typeof(GameObject), true); 
+        go = (GameObject)EditorGUILayout.ObjectField("playerObject", go, typeof(GameObject), true);
         PlayerController pc = go.GetComponent<PlayerController>();
         bool curGuarding = pc.IsGuarding;
         bool newGuarding = EditorGUILayout.Toggle("가드 상태", curGuarding);
@@ -85,8 +85,14 @@ public class DebugWindow : EditorWindow
         Transform atkDir = attacker != null ? attacker.transform : null;
         if (GUILayout.Button("데미지 테스트"))
         {
-           PlayerCondition condition = go.GetComponent<PlayerCondition>();
-           condition.TakeDamage(testDamage, atkDir ,DamageType.Attack);
+            PlayerCondition condition = go.GetComponent<PlayerCondition>();
+            condition.TakeDamage(testDamage, atkDir, DamageType.Attack);
+        }
+
+        EditorGUILayout.LabelField("세이브 테스트");
+        if (GUILayout.Button("세이브"))
+        {
+            SaveManager.Instance.SaveMapItem();
         }
     }
 }

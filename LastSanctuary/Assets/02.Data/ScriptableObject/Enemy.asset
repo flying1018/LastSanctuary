@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: 0
   _name: 
-  detectTime: 0
-  moveSpeed: 5
-  cancelChaseTime: 0
+  detectTime: 0.2
+  moveSpeed: 3
+  cancelChaseTime: 3
   <patrolDistance>k__BackingField: 10
   attack: 0
   hp: 0
