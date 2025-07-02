@@ -9,7 +9,6 @@ public enum MonsterType
 public class Enemy : MonoBehaviour
 {
     //필드
-    private EnemyStateMachine _stateMachine;
     private CapsuleCollider2D _capsuleCollider;
 
     //직렬화
@@ -23,6 +22,7 @@ public class Enemy : MonoBehaviour
     //투사체?
     
     //프로퍼티
+    public EnemyStateMachine StateMachine { get; set; }
     public EnemySO Data {get => enemyData;}
     public Rigidbody2D Rigidbody {get; set;}
     public Animator Animator {get; set;}
@@ -41,13 +41,13 @@ public class Enemy : MonoBehaviour
         Condition = GetComponent<EnemyCondition>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         
-        _stateMachine = new EnemyStateMachine(this);
+        StateMachine = new EnemyStateMachine(this);
         
     }
     private void Update()
     {
-        _stateMachine.HandleInput();
-        _stateMachine.Update();
+        StateMachine.HandleInput();
+        StateMachine.Update();
     }
 
     public bool IsPlatform()
@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _stateMachine.PhysicsUpdate();
+        StateMachine.PhysicsUpdate();
     }
 
     public void Init(Transform spawnPoint)
@@ -74,6 +74,6 @@ public class Enemy : MonoBehaviour
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         
         Condition.Init(this);
-        _stateMachine = new EnemyStateMachine(this);
+        StateMachine = new EnemyStateMachine(this);
     }
 }

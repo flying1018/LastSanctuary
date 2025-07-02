@@ -19,6 +19,9 @@ public class EnemySO : ScriptableObject
     [field: Header("PatrolState")]
     [field: SerializeField] public float patrolDistance { get; private set; } = 10f;
 
+    [field: Header("HitState")]
+    [field: SerializeField] public float HitDuration{ get; private set; } = 0.5f;
+    
     [Header("condition")]
     public int attack;
     public int hp;
