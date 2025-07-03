@@ -112,9 +112,9 @@ public class Player : MonoBehaviour
     //바닥 확인
     public bool IsGround()
     {
-        Debug.DrawRay(transform.position, Vector2.down * (_capsuleCollider.size.y / 2 +groundCheckDistance), Color.red);
-        return Physics2D.Raycast(transform.position, Vector2.down,
-            (_capsuleCollider.size.y/2)+groundCheckDistance, groundLayer);
+        Vector2 newPos = new Vector2(transform.position.x, transform.position.y-(_capsuleCollider.size.y/2));
+        Ray ray = new Ray(newPos, Vector2.down);
+        return Physics2D.Raycast(ray.origin,ray.direction,groundCheckDistance, groundLayer);
     }
 
     //공중 발판 확인

@@ -17,7 +17,7 @@ public class PlayerMoveState : PlayerGroundState
         base.Exit();
         StopAnimation(_player.AnimationDB.MoveParameterHash);
         
-        _rigidbody.velocity = Vector2.zero;
+        Move(Vector2.zero);
     }
 
 

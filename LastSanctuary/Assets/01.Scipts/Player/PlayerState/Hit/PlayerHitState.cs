@@ -19,7 +19,7 @@ public class PlayerHitState : PlayerBaseState
             case DamageType.Heavy:
                 _hitDuration = _data.HeavyHitDuration; //0.5f
                 break;
-            Default:
+            case DamageType.Attack:
                 _hitDuration = _data.LightHitDuration; //0.2f
                 break;
         }
