@@ -6,15 +6,17 @@ public class Player : MonoBehaviour
 {
     //필드
     private CapsuleCollider2D _capsuleCollider;
-    
+
     //직렬화
     [field: SerializeField] public PlayerAnimationDB AnimationDB { get; private set; }
     [SerializeField] private PlayerSO playerData;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask aerialPlatformLayer;
     [SerializeField] private GameObject weapon;
-    
+
+
     //프로퍼티
     public PlayerStateMachine StateMachine { get; set; }
     public PlayerController Input { get; set; }
@@ -26,9 +28,9 @@ public class Player : MonoBehaviour
     public AerialPlatform AerialPlatform { get; set; }
     //직렬화 데이터 프로퍼티
     public PlayerSO Data { get => playerData; }
-    public GameObject Weapon {get => weapon;}
+    public GameObject Weapon { get => weapon; }
     public PlayerWeapon PlayerWeapon { get; set; }
-    
+
 
     private void Awake()
     {
@@ -63,13 +65,28 @@ public class Player : MonoBehaviour
         {
             IsLadder = true;
         }
-        
-        //세이브 포인트
-        if (other.CompareTag(StringNameSpace.Tags.SavePoint))
+
+        if ((interactableLayer.value & (1 << other.gameObject.layer)) != 0)
         {
-            Input.IsNearSave = true;
-            SavePoint dummy = other.GetComponent<SavePoint>();
-            Input.NearSavePos = dummy.ReturnPos();
+            IInteractable interactable = other.GetComponent<IInteractable>();
+
+            if (interactable == null)
+            {
+                DebugHelper.LogWarning("IInteractable 컴포넌트 안달려있음");
+                return;
+            }
+
+            Input.InteractableTarget = interactable; // PlayerController에서 Interact()을 하기위한 용도
+            Input.IsNearInteractable = true;
+
+            /*
+            현재 IsSavePoint는 사용하지 않지만 
+            추후 저장에 사용할 수 있으니 보류
+            */
+            if (other.CompareTag(StringNameSpace.Tags.SavePoint))
+            {
+                Input.IsSavePoint = true;
+            }
         }
     }
 
@@ -80,12 +97,17 @@ public class Player : MonoBehaviour
         {
             IsLadder = false;
         }
-        
-        //세이브 포인트 나가기
-        if (other.CompareTag(StringNameSpace.Tags.SavePoint))
+
+        if (other.gameObject.layer == interactableLayer)
         {
-            Input.IsNearSave = false;
-            Input.NearSavePos = Vector2.zero;
+            Input.InteractableTarget = null;
+            Input.IsNearInteractable = false;
+
+            //세이브 포인트 나가기
+            if (other.CompareTag(StringNameSpace.Tags.SavePoint))
+            {
+                Input.IsSavePoint = false;
+            }
         }
     }
 
@@ -108,7 +130,7 @@ public class Player : MonoBehaviour
 
 
     #region Need MonoBehaviour Method
-    
+
     //바닥 확인
     public bool IsGround()
     {
@@ -121,7 +143,7 @@ public class Player : MonoBehaviour
     public bool IsAerialPlatform()
     {
         return Physics2D.Raycast(transform.position, Vector2.down,
-            (_capsuleCollider.size.y/2)+groundCheckDistance,aerialPlatformLayer);
+            (_capsuleCollider.size.y / 2) + groundCheckDistance, aerialPlatformLayer);
     }
 
     /// <summary>
@@ -161,8 +183,8 @@ public class Player : MonoBehaviour
 
         Input.enabled = true;
         yield return new WaitForSeconds(0.5f);
-    
         Condition.IsInvincible = false;
+
     }
 
     public void ApplyAttackForce()
@@ -171,7 +193,7 @@ public class Player : MonoBehaviour
         Vector2 direction = SpriteRenderer.flipX ? Vector2.left : Vector2.right;
         Rigidbody.AddForce(direction * attackInfo.attackForce, ForceMode2D.Impulse);
     }
-    
-    
+
+
     #endregion
 }

@@ -12,14 +12,16 @@ public class PlayerController : MonoBehaviour
 
     //프로퍼티
     public Vector2 MoveInput { get; set; }
+    public IInteractable InteractableTarget { get; set; }
     public bool IsGuarding { get; set; }
     public bool IsDash { get; set; }
     public bool IsJump { get; set; }
-	public bool IsLongJump{get;set;}
+    public bool IsLongJump { get; set; }
     public bool IsHeal { get; set; }
     public bool IsAttack { get; set; }
-    public bool IsNearSave { get; set; }
-    public Vector2 NearSavePos { get; set; }
+    public bool IsNearInteractable { get; set; }
+    public bool IsSavePoint { get; set; }
+
 
     public void Start()
     {
@@ -47,14 +49,14 @@ public class PlayerController : MonoBehaviour
         {
             IsJump = true;
         }
-		if(context.phase == InputActionPhase.Performed)
-		{
-			IsLongJump = true;
-		}
+        if (context.phase == InputActionPhase.Performed)
+        {
+            IsLongJump = true;
+        }
         if (context.phase == InputActionPhase.Canceled)
         {
-            IsJump = false;     
-			IsLongJump = false;  
+            IsJump = false;
+            IsLongJump = false;
         }
 
     }
@@ -116,12 +118,9 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-            if (IsNearSave)
-            {
-                SaveManager.Instance.SetSavePoint(NearSavePos);
-                // UI나 효과음 실행
-                return;
-            }   
+            if (!IsNearInteractable || InteractableTarget == null) { return; } // 방어코드
+
+            InteractableTarget.Interact();
         }
     }
 

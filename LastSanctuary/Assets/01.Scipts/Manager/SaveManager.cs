@@ -12,7 +12,7 @@ public class SaveManager : Singleton<SaveManager>
 
     public void SaveMapItem()
     {
-        SaveData data = new SaveData(
+        MapItemData data = new MapItemData(
             1f, 1f, false, 100, false
         );
 
