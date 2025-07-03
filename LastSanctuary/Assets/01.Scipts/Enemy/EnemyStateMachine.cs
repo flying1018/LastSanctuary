@@ -24,16 +24,15 @@ public class EnemyStateMachine : StateMachine
         HitState = new EnemyHitState(this);
         DetectState = new EnemyDetectState(this);
         PatrolState = new EnemyPatrolState(this);
-
-        // switch (enemy.Type)
-        // {
-        //     case MonsterType.Idle:
-        //         ChangeState(IdleState);
-        //         break;
-        //     case MonsterType.Patrol:
-        //         ChangeState(PatrolState);
-        //         break;
-        // }
-        ChangeState(IdleState);
+        
+         switch (enemy.Type)
+        {
+            case MonsterType.Idle:
+                ChangeState(IdleState);
+                break;
+            case MonsterType.Patrol:
+                ChangeState(PatrolState);
+                break;
+        }
     }
 }

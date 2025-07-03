@@ -25,7 +25,7 @@ public class GameInitializer : MonoBehaviour
         // 각 매니저 Init()으로 호출하여 인스턴스 생성 및 초기세팅
         GameManager.Instance.Init();
         //await SoundManager.Instance.Init();
-        await GameDB.Init();
+        //await GameDB.Init();
 
         InitEventSystem();
     }

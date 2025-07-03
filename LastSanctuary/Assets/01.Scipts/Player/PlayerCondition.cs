@@ -62,8 +62,8 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         }
         else
         {
-            KnockBack(dir);
             ChangingHitState();
+            KnockBack(dir);
         }
     }
     
@@ -71,11 +71,6 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     {
         _curHp = _maxHp;
         _curStamina = _maxStamina;
-    }
-
-    public void ChangeInvincible(bool invincible)
-    {
-        IsInvincible = invincible;
     }
     
     public bool UsingStamina(int stamina)
@@ -110,6 +105,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     {
         if (IsPerfectGuard && type != DamageType.Contact && isFront)
         {
+            Debug.Log("perfect guard");
             _curStamina += _player.Data.perfactGuardStemina; //퍼펙트 가드시 스태미나회복
             //궁극기 게이지 회복
             //보스 그로기 상승
@@ -140,7 +136,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     public void KnockBack(Transform dir)
     {
         Vector2 knockbackDir = (transform.position - dir.transform.position);
-        knockbackDir.y = 0;
+        knockbackDir.y = 0f;
         knockbackDir.Normalize();
         Vector2 knockback = knockbackDir * _player.Data.knockbackForce;
         _player.Rigidbody.AddForce(knockback, ForceMode2D.Impulse);

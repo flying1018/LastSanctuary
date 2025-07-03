@@ -18,7 +18,14 @@ MonoBehaviour:
   moveSpeed: 3
   cancelChaseTime: 3
   <patrolDistance>k__BackingField: 10
-  attack: 0
-  hp: 0
+  <HitDuration>k__BackingField: 0.5
+  attackDistance: 4
+  attackDuration: 2
+  attackAnim: {fileID: 7400000, guid: e3899a35106287c4e80d62e6ade9488c, type: 2}
+  attack: 10
+  hp: 40
   defense: 0
-  attackRange: 0
+  damageDelay: 0.8
+  hitDuration: 0.5
+  alphaValue: 0.5
+  deathAnim: {fileID: 7400000, guid: 2fee7b95aee869640ab0bfeea263aabf, type: 2}

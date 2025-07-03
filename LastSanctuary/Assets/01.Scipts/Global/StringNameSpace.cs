@@ -35,5 +35,6 @@ public static class StringNameSpace
         public const string Ladder = "Ladder";
         public const string AerialPlatform = "AerialPlatform";
         public const string SavePoint = "SavePoint";
+        public const string Enemy = "Enemy";
     }
 }

@@ -11,7 +11,6 @@ public class PlayerLadderState : PlayerAirState
     {
         base.Enter();
         
-        _rigidbody.velocity = Vector2.zero;
         _rigidbody.gravityScale = 0;
     }
     
