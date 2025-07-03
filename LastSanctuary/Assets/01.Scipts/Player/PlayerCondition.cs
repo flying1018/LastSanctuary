@@ -72,11 +72,6 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         _curHp = _maxHp;
         _curStamina = _maxStamina;
     }
-
-    public void ChangeInvincible(bool invincible)
-    {
-        IsInvincible = invincible;
-    }
     
     public bool UsingStamina(int stamina)
     {

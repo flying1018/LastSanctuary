@@ -31,6 +31,7 @@ public class EnemyDetectState : EnemyBaseState
     
     public override void Update()
     {
+        base.Update();
         _time += Time.deltaTime;
         if (_time > _data.detectTime && _enemy.Target != null)
         {

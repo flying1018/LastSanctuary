@@ -18,6 +18,7 @@ public class EnemyIdleState : EnemyBaseState
     
     public override void Update()
     {
+        base.Update();
         if (_enemy.Target != null)
         {
             _stateMachine.ChangeState(_stateMachine.DetectState);

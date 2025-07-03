@@ -19,11 +19,21 @@ public class EnemyChaseState : EnemyBaseState
 
     public override void Exit()
     {
+        Move(Vector2.zero);
         StopAnimation(_enemy.AnimationDB.WalkParameterHash);
     }
 
     public override void Update()
     {
+        base.Update();
+        //공격 조건
+        float targetDistance = TargetDistance();
+        if (targetDistance < _data.attackDistance/2)
+        {
+            _stateMachine.ChangeState(_stateMachine.AttackState);
+        }
+        
+        //복귀 조건
         if(_enemy.Target == null)
             _stateMachine.ChangeState(_stateMachine.ReturnState);
 

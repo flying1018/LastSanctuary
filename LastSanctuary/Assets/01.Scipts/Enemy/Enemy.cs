@@ -23,15 +23,16 @@ public class Enemy : MonoBehaviour
     
     //프로퍼티
     public EnemyStateMachine StateMachine { get; set; }
-    public EnemySO Data {get => enemyData;}
     public Rigidbody2D Rigidbody {get; set;}
     public Animator Animator {get; set;}
     public SpriteRenderer SpriteRenderer { get; set; }
     public EnemyCondition Condition { get; set; }
     public Transform Target { get; set; }
     public Transform SpawnPoint { get; set; }
-    public MonsterType Type { get => type; set => type = value; }
+    public EnemyWeapon EnemyWeapon { get; set; }
     public bool IsRight { get; set; } = true;
+    public EnemySO Data {get => enemyData;}
+    public MonsterType Type { get => type; set => type = value; }
 
     private void Awake()
     {
@@ -73,6 +74,7 @@ public class Enemy : MonoBehaviour
         Animator = GetComponent<Animator>();
         Condition = GetComponent<EnemyCondition>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        EnemyWeapon = GetComponentInChildren<EnemyWeapon>();
         
         Condition.Init(this);
         StateMachine = new EnemyStateMachine(this);
