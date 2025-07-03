@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
     {
         DebugHelper.Log("OnDie 호출됨");
 
-        Condition.ChangeInvincible(true);
+        Condition.IsInvincible = true;
         Animator.SetTrigger(AnimationDB.DieParameterHash);
         Input.enabled = false;
 
@@ -162,7 +162,7 @@ public class Player : MonoBehaviour
         Input.enabled = true;
         yield return new WaitForSeconds(0.5f);
     
-        Condition.ChangeInvincible(false);
+        Condition.IsInvincible = false;
     }
 
     public void ApplyAttackForce()

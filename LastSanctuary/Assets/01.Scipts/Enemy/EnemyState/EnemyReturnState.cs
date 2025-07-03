@@ -38,7 +38,7 @@ public class EnemyReturnState :EnemyBaseState
 
     public void Return()
     {
-        Vector2 direction = _spawnPoint.position - _enemy.transform.position;
+        Vector2 direction = DirectionToSpawnPoint();
         Rotate(direction);
         Move(direction);
     }

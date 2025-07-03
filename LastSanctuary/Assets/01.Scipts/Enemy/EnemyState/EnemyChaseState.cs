@@ -19,11 +19,21 @@ public class EnemyChaseState : EnemyBaseState
 
     public override void Exit()
     {
+        Move(Vector2.zero);
         StopAnimation(_enemy.AnimationDB.WalkParameterHash);
     }
 
     public override void Update()
     {
+        base.Update();
+        //공격 조건
+        float targetDistance = TargetDistance();
+        if (targetDistance < _data.attackDistance/2)
+        {
+            _stateMachine.ChangeState(_stateMachine.AttackState);
+        }
+        
+        //복귀 조건
         if(_enemy.Target == null)
             _stateMachine.ChangeState(_stateMachine.ReturnState);
 
@@ -50,7 +60,7 @@ public class EnemyChaseState : EnemyBaseState
     private void CancelChase()
     {
         //움직이지 않기 시작한다면 시간 체크
-        if (_rigidbody.velocity.magnitude < 0.1f || !_enemy.IsPlatform())
+        if (_rigidbody.velocity.magnitude < 0.1f)
         {
             _time += Time.deltaTime;
         }
@@ -60,8 +70,8 @@ public class EnemyChaseState : EnemyBaseState
             _time = 0;
         }
         
-        //취소 시간에 도달하면 복귀
-        if (_time > _data.cancelChaseTime)
+        //취소 시간에 도달하거나 플랫폼 끝에 있을 경우
+        if (_time > _data.cancelChaseTime || !_enemy.IsPlatform())
         {
             _stateMachine.ChangeState(_stateMachine.ReturnState);       
         }

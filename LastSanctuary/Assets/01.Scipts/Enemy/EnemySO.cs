@@ -21,10 +21,20 @@ public class EnemySO : ScriptableObject
 
     [field: Header("HitState")]
     [field: SerializeField] public float HitDuration{ get; private set; } = 0.5f;
+
+    [Header("attackState")] 
+    public float attackDistance;
+    public float attackDuration;
+    public AnimationClip attackAnim;
+    public float AnimTime => attackAnim.length; 
     
     [Header("condition")]
     public int attack;
     public int hp;
     public int defense;
-    public int attackRange;
+    public float damageDelay;
+    public float hitDuration;
+    public float alphaValue;
+    public AnimationClip deathAnim;
+    public float deathTime => deathAnim.length;
 }
