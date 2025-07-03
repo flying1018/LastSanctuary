@@ -16,7 +16,6 @@ public class PlayerHealState : PlayerGroundState
         StartAnimation(_player.AnimationDB.HealParameterHash); //힐 애니메이션 시작
 
         _healTimer = _data.HealDuration;
-        _rigidbody.velocity = Vector2.zero;
     }
 
     public override void Exit()

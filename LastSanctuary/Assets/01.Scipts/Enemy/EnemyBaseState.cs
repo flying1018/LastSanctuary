@@ -10,7 +10,7 @@ public class EnemyBaseState : IState
     protected EnemyCondition _condition;
     protected Enemy _enemy;
     protected Transform _spawnPoint;
-    protected float _attacktCoolTime;
+    protected static float _attacktCoolTime;
     
     public EnemyBaseState(EnemyStateMachine enemyStateMachine)
     {
@@ -68,11 +68,13 @@ public class EnemyBaseState : IState
     
     protected float TargetDistance()
     {
+        if(_enemy.Target == null) return float.MaxValue;
         return Vector2.Distance(_enemy.transform.position, _enemy.Target.transform.position);
     }
 
     protected Vector2 DirectionToTarget()
     {
+        if (_enemy.Target == null) return new Vector2(float.MaxValue, float.MaxValue);
         return _enemy.Target.position  - _enemy.transform.position;
     }
 
