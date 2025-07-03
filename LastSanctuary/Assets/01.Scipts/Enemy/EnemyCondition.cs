@@ -12,12 +12,10 @@ public class EnemyCondition : MonoBehaviour, IDamageable
     private int _attack;
     private int _defense;
     private int _damage;
-    
+    private bool _isTakeDamageable;
     //프로퍼티
     public bool IsInvincible { get; set; }
-    public bool IsTakeDamageable;
-    public float TakeDamageStart;
-    
+
     public void Init(Enemy enemy)
     {
         _enemy = enemy;
@@ -26,55 +24,65 @@ public class EnemyCondition : MonoBehaviour, IDamageable
         _defense = _enemy.Data.defense;
         _curHp = _maxHp;
     }
-    
-    private void Update()
+    public void TakeDamage(int atk, Transform attackDir, DamageType type)
     {
-        if (IsTakeDamageable)
+        if (IsInvincible) return;
+        if (_isTakeDamageable) return;
+        StartCoroutine(DamageDelay_Coroutine());
+        
+        ApplyDamage(atk);
+        if (_curHp <= 0)
         {
-            if ( Time.time - TakeDamageStart >= 0.5f) //임시
+            Death();
+        }
+        else
+        {
+            if (type == DamageType.Heavy)
             {
-                IsTakeDamageable = false;
+                ChangingHitState();
+            }
+            else
+            {
+                OnHitEffected();
             }
         }
     }
 
-    public void TakeDamage(int atk, Transform attackDir, DamageType type)
+    private IEnumerator DamageDelay_Coroutine()
     {
-        if (IsInvincible) return;
-        if (IsTakeDamageable) return;
-        IsTakeDamageable = true;
-        TakeDamageStart = Time.time;
-        
-        ApplyDamage(atk);
-        if (type == DamageType.Heavy)
-        {
-            ChangingHitState();
-        }
-        else
-        {
-            OnHitEffected();
-        }
-
+        _isTakeDamageable = true;
+        yield return new WaitForSeconds(_enemy.Data.damageDelay);
+        _isTakeDamageable = false;
     }
-
     private void OnHitEffected()
     {
-        StartCoroutine(HitEffectCoroution());
+        StartCoroutine(HitEffect_Coroutine());
     }
-    private IEnumerator HitEffectCoroution()
+    private IEnumerator HitEffect_Coroutine()
     {
         SpriteRenderer sprite = _enemy.SpriteRenderer;
-        Color Hitcolor = sprite.color;
+        Color originColor = sprite.color;
         
-        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0.5f);
-        yield return new WaitForSeconds(0.5f);
-        sprite.color = Hitcolor;
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, _enemy.Data.alphaValue);
+        yield return new WaitForSeconds(_enemy.Data.hitDuration);
+        sprite.color = originColor;
+    }
+    private void Death()
+    {
+        StartCoroutine(Death_Coroutine());
+    }
+    private IEnumerator Death_Coroutine()
+    {
+        _enemy.Animator.SetTrigger(_enemy.AnimationDB.DeathParameterHash);
+        _enemy.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
+        yield return new WaitForSeconds(_enemy.Data.deathTime);
+        Destroy(gameObject);//임시
     }
     public void ApplyDamage(int atk)
     {
         _damage = atk;//계산식
         _curHp -= _damage;
-        Debug.Log($"대미지를 받음{_damage}");
+        Debug.Log(_damage);
     }
     public void KnockBack(Transform dir)
     {

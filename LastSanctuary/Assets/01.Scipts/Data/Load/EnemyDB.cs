@@ -1,4 +1,3 @@
-using UnityEngine;
 
 public class EnemyDB
 {
@@ -12,3 +11,4 @@ public class EnemyDB
     public float MoveSpeed { get; set; }
     public float AreaRange { get; set; }
 }
+
