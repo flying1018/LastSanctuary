@@ -45,5 +45,7 @@ public class EnemyPatrolState : EnemyBaseState
         float dir = _enemy.IsRight ? 1 : -1;
         Vector2 moveVelocity = new Vector2(dir * _data.moveSpeed, _rigidbody.velocity.y);
         _rigidbody.velocity = moveVelocity;
+        
+        Rotate(moveVelocity);
     }
 }

@@ -8,6 +8,10 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Enter()
     {
+        if (_enemy.Type == MonsterType.Patrol )//임시
+        {
+            _stateMachine.ChangeState(_stateMachine.PatrolState);
+        }
         StartAnimation(_enemy.AnimationDB.IdleParameterHash);
     }
 

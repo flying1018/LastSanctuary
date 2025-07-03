@@ -77,4 +77,16 @@ public class Enemy : MonoBehaviour
         Condition.Init(this);
         StateMachine = new EnemyStateMachine(this);
     }
+
+    public void SetCollisionEnabled(bool isEnabled)
+    {
+        if (isEnabled)
+        {
+            Rigidbody.bodyType = RigidbodyType2D.Dynamic;
+        }
+        else
+        {
+            Rigidbody.bodyType = RigidbodyType2D.Kinematic;
+        }
+    }
 }
