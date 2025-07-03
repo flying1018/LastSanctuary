@@ -13,7 +13,7 @@ public class EnemyWeapon : MonoBehaviour
         {
             if (other.gameObject.CompareTag(StringNameSpace.Tags.Enemy)) return;
             Debug.Log(idamageable + "는 " + Damage +"의 를 받았다.");
-            idamageable.TakeDamage(Damage,transform, DamageType.Contact);
+            idamageable.TakeDamage(Damage,transform, DamageType.Attack);
         }
     }
 }

@@ -14,6 +14,7 @@ public class PlayerHitState : PlayerBaseState
         _hitStart = Time.time;
         _condition.InvincibleStart = Time.time;
         _condition.IsInvincible = true;
+        
         switch (_condition.DamageType)
         {
             case DamageType.Heavy:
@@ -22,7 +23,11 @@ public class PlayerHitState : PlayerBaseState
             case DamageType.Attack:
                 _hitDuration = _data.LightHitDuration; //0.2f
                 break;
+            default:
+                _hitDuration = _data.LightHitDuration; //0.2f
+                break;
         }
+
     }
 
     public override void Exit()

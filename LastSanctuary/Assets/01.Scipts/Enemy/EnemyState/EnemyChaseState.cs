@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyChaseState : EnemyBaseState
 {
     private float _time;
-    private bool _dontMove;
+
     public EnemyChaseState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
     {
     }
@@ -12,7 +12,6 @@ public class EnemyChaseState : EnemyBaseState
     {
         StartAnimation(_enemy.AnimationDB.WalkParameterHash);
         
-        _dontMove = false;
         _time = 0;
         
     }
@@ -26,16 +25,18 @@ public class EnemyChaseState : EnemyBaseState
     public override void Update()
     {
         base.Update();
-        //공격 조건
-        float targetDistance = TargetDistance();
-        if (targetDistance < _data.attackDistance/2)
-        {
-            _stateMachine.ChangeState(_stateMachine.AttackState);
-        }
         
         //복귀 조건
         if(_enemy.Target == null)
             _stateMachine.ChangeState(_stateMachine.ReturnState);
+        
+        //공격 조건
+        float targetDistance = TargetDistance();
+        if (targetDistance < _data.attackDistance/2 && _attacktCoolTime > _data.attackDuration)
+        {
+            _stateMachine.ChangeState(_stateMachine.AttackState);
+        }
+        
 
         CancelChase();
 

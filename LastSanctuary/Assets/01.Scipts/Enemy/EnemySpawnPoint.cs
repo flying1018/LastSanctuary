@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,6 +57,12 @@ public class EnemySpawnPoint : MonoBehaviour
     {
         yield return new WaitForSeconds(_enemy.Data.cancelChaseTime);
         _enemy.Target = null;
+        _cancelChase = null;
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(_cancelChase);
         _cancelChase = null;
     }
 }

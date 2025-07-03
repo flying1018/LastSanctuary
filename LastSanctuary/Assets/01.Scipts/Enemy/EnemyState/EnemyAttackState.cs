@@ -11,14 +11,15 @@ public class EnemyAttackState : EnemyBaseState
     
     public override void Enter()
     {
-        //공격 중간은 Idle 애니메이션
-        StartAnimation(_enemy.AnimationDB.IdleParameterHash);
-        _enemy.Animator.SetTrigger(_enemy.AnimationDB.AttackParameterHash);
-
         //공격에 관련된 정보 초기화
         _time = 0;
         _animtionTime = _data.AnimTime;
         _attacktCoolTime = 0;
+        
+        //공격 중간은 Idle 애니메이션
+        StartAnimation(_enemy.AnimationDB.IdleParameterHash);
+        _enemy.Animator.SetTrigger(_enemy.AnimationDB.AttackParameterHash);
+
         
         //공격력 정보 넘겨주기
         _enemy.EnemyWeapon.Damage = _data.attack;
@@ -31,7 +32,6 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void Update()
     {
-        
         //에니메이션이 끝나야 쿨타임 체크
         _time += Time.deltaTime;
         if (_time > _animtionTime)
@@ -53,7 +53,7 @@ public class EnemyAttackState : EnemyBaseState
             if(_enemy.Target == null)
                 _stateMachine.ChangeState(_stateMachine.ReturnState);
             else
-            {//아직 사정거리 안이라면 다시 공격
+            {   //아직 사정거리 안이라면 다시 공격
                 _stateMachine.ChangeState(_stateMachine.AttackState);   
             }
         }
