@@ -31,6 +31,7 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void Update()
     {
+        
         //에니메이션이 끝나야 쿨타임 체크
         _time += Time.deltaTime;
         if (_time > _animtionTime)
@@ -38,25 +39,22 @@ public class EnemyAttackState : EnemyBaseState
             base.Update();
         }
         
+        //타겟이 아직 사정거리 밖에 있으면 추적
+        float targetDistance = TargetDistance();
+        if (targetDistance > _data.attackDistance / 2)
+        {
+            _stateMachine.ChangeState(_stateMachine.ChaseState);   
+        }
+        
         //공격 쿨타임이 지나면
         if (_data.attackDuration < _attacktCoolTime)
         {
-            //탁겟이 없으면 복귀
+            //타겟이 없으면 복귀
             if(_enemy.Target == null)
                 _stateMachine.ChangeState(_stateMachine.ReturnState);
             else
-            {
-                //타겟이 아직 사정거리 안에 있으면 다시 공격
-                float targetDistance = TargetDistance();
-                if (targetDistance < _data.attackDistance / 2)
-                {
-                    _stateMachine.ChangeState(_stateMachine.AttackState);   
-                }
-                //타겟이 사정거리 밖에 있으면 추적
-                else
-                {
-                    _stateMachine.ChangeState(_stateMachine.ChaseState);   
-                }
+            {//아직 사정거리 안이라면 다시 공격
+                _stateMachine.ChangeState(_stateMachine.AttackState);   
             }
         }
 
