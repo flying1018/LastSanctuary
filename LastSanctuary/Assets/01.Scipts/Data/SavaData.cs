@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class SaveData
+public class MapItemData
 {
     #region 플레이어의 맵 정보
     public float LastSavePosX;
@@ -17,7 +17,7 @@ public class SaveData
     public bool IsPlayerHaveRelic;
     #endregion
 
-    public SaveData(float _lastSavePosX, float _lastSavePosY, bool _isPlayerClear, int _playerGold, bool _isPlayerHaveRelic)
+    public MapItemData(float _lastSavePosX, float _lastSavePosY, bool _isPlayerClear, int _playerGold, bool _isPlayerHaveRelic)
     {
         LastSavePosX = _lastSavePosX;
         LastSavePosY = _lastSavePosY;
