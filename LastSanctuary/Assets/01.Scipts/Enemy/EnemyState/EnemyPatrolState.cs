@@ -22,6 +22,7 @@ public class EnemyPatrolState : EnemyBaseState
     
     public override void Update()
     {
+        base.Update();
         patrol();
 
         if (_enemy.Target != null)

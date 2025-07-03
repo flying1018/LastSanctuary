@@ -10,6 +10,7 @@ public class EnemyBaseState : IState
     protected EnemyCondition _condition;
     protected Enemy _enemy;
     protected Transform _spawnPoint;
+    protected float _attacktCoolTime;
     
     public EnemyBaseState(EnemyStateMachine enemyStateMachine)
     {
@@ -34,6 +35,7 @@ public class EnemyBaseState : IState
     }
     public virtual void Update()
     {
+        _attacktCoolTime += Time.deltaTime;
     }
     public virtual void PhysicsUpdate()
     {
@@ -62,5 +64,20 @@ public class EnemyBaseState : IState
     protected void Rotate(Vector2 direction)
     {
         _spriteRenderer.flipX = direction.x < 0;
+    }
+    
+    protected float TargetDistance()
+    {
+        return Vector2.Distance(_enemy.transform.position, _enemy.Target.transform.position);
+    }
+
+    protected Vector2 DirectionToTarget()
+    {
+        return _enemy.Target.position  - _enemy.transform.position;
+    }
+
+    protected Vector2 DirectionToSpawnPoint()
+    {
+        return _spawnPoint.position - _enemy.transform.position;
     }
 }

@@ -23,46 +23,38 @@ public class Enemy : MonoBehaviour
     
     //프로퍼티
     public EnemyStateMachine StateMachine { get; set; }
-    public EnemySO Data {get => enemyData;}
     public Rigidbody2D Rigidbody {get; set;}
     public Animator Animator {get; set;}
     public SpriteRenderer SpriteRenderer { get; set; }
     public EnemyCondition Condition { get; set; }
     public Transform Target { get; set; }
     public Transform SpawnPoint { get; set; }
-    public MonsterType Type { get => type; set => type = value; }
+    public EnemyWeapon EnemyWeapon { get; set; }
     public bool IsRight { get; set; } = true;
+    public EnemySO Data {get => enemyData;}
 
-    private void Awake()
-    {
-        _capsuleCollider = GetComponent<CapsuleCollider2D>();
-        Rigidbody = GetComponent<Rigidbody2D>();
-        Animator = GetComponent<Animator>();
-        Condition = GetComponent<EnemyCondition>();
-        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        AnimationDB.Initailize();
-        
-        StateMachine = new EnemyStateMachine(this);
-        
-    }
+    
     private void Update()
     {
         StateMachine.HandleInput();
         StateMachine.Update();
     }
 
-    public bool IsPlatform()
-    {
-        float setX = IsRight ? 0.3f: -0.3f;
-        Vector2 newPos = new Vector2(transform.position.x + setX, transform.position.y);
-        Debug.DrawRay(newPos, Vector2.down * platformCheckDistance, Color.red);
-        return Physics2D.Raycast(newPos, Vector2.down,
-            platformCheckDistance,platformLayer);
-    }
 
     private void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
+        {
+            if(other.gameObject.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.TakeDamage(Data.attack,transform,DamageType.Contact);
+            }
+        }
     }
 
     public void Init(Transform spawnPoint)
@@ -73,9 +65,20 @@ public class Enemy : MonoBehaviour
         Animator = GetComponent<Animator>();
         Condition = GetComponent<EnemyCondition>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        EnemyWeapon = GetComponentInChildren<EnemyWeapon>();
+        AnimationDB.Initailize();
         
         Condition.Init(this);
         StateMachine = new EnemyStateMachine(this);
+    }
+    
+    public bool IsPlatform()
+    {
+        float setX = IsRight ? 0.3f: -0.3f;
+        Vector2 newPos = new Vector2(transform.position.x + setX, transform.position.y);
+        Debug.DrawRay(newPos, Vector2.down * platformCheckDistance, Color.red);
+        return Physics2D.Raycast(newPos, Vector2.down,
+            platformCheckDistance,platformLayer);
     }
 
     public void SetCollisionEnabled(bool isEnabled)
@@ -90,3 +93,4 @@ public class Enemy : MonoBehaviour
         }
     }
 }
+        
