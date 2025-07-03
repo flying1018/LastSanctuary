@@ -59,10 +59,4 @@ public class EnemySpawnPoint : MonoBehaviour
         _enemy.Target = null;
         _cancelChase = null;
     }
-
-    private void OnDisable()
-    {
-        StopCoroutine(_cancelChase);
-        _cancelChase = null;
-    }
 }
