@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
     public EnemyWeapon EnemyWeapon { get; set; }
     public bool IsRight { get; set; } = true;
     public EnemySO Data {get => enemyData;}
+    public MonsterType Type {get => type;}
 
     
     private void Update()

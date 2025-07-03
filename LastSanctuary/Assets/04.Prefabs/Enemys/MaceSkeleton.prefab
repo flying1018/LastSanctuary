@@ -175,7 +175,7 @@ MonoBehaviour:
     m_Bits: 64
   platformLayer:
     serializedVersion: 2
-    m_Bits: 16
+    m_Bits: 256
   platformCheckDistance: 5
   type: 0
 --- !u!50 &-5163532016691331955
@@ -217,8 +217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c6084146c27f947aec20bd7b40a7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsTakeDamageable: 0
-  TakeDamageStart: 0
 --- !u!95 &9080846291414335315
 Animator:
   serializedVersion: 5
