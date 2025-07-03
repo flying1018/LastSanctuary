@@ -105,6 +105,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     {
         if (IsPerfectGuard && type != DamageType.Contact && isFront)
         {
+            SoundManager.Instance.PlaySFX(_player.Data.perfectGuardSound);
             Debug.Log("perfect guard");
             _curStamina += _player.Data.perfactGuardStemina; //퍼펙트 가드시 스태미나회복
             //궁극기 게이지 회복
@@ -118,6 +119,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     {
         if (IsGuard && type != DamageType.Contact && isFront && UsingStamina(_player.Data.guardCost))
         {
+            SoundManager.Instance.PlaySFX(_player.Data.guardSound);
             atk = Mathf.CeilToInt(atk * (1 - _player.Data.damageReduction));
             ApplyDamage(atk);
             Debug.Log("가드 성공");

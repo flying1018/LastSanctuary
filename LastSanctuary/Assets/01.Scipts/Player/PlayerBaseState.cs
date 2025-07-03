@@ -58,7 +58,7 @@ public class PlayerBaseState : IState
     {
         Move();
         
-        if (_rigidbody.velocity.y < -1f)
+        if (!_player.IsGround()&&_rigidbody.velocity.y < -1f)
         {
             _stateMachine.ChangeState(_stateMachine.FallState);
         }

@@ -32,7 +32,7 @@ public class EnemyChaseState : EnemyBaseState
         
         //공격 조건
         float targetDistance = TargetDistance();
-        if (targetDistance < _data.attackDistance/2 && _attacktCoolTime > _data.attackDuration)
+        if (targetDistance < _data.attackDistance/2 && _stateMachine.attackCoolTime > _data.attackDuration)
         {
             _stateMachine.ChangeState(_stateMachine.AttackState);
         }
