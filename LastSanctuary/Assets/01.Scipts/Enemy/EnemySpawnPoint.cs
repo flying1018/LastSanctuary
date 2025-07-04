@@ -25,6 +25,21 @@ public class EnemySpawnPoint : MonoBehaviour
         _enemy.Init(this.transform);
     }
 
+    public void Respawn()
+    {
+        if (_enemy == null)
+        {
+            Spawn();
+        }
+        else
+        {
+            _enemy.transform.position = transform.position;
+            _enemy.gameObject.SetActive(true);
+            _enemy.Init(this.transform);
+            _enemy.SetCollisionEnabled(true);
+        }
+    }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))

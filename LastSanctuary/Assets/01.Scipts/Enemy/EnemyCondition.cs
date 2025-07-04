@@ -76,7 +76,7 @@ public class EnemyCondition : MonoBehaviour, IDamageable
         _enemy.Animator.SetTrigger(_enemy.AnimationDB.DeathParameterHash);
         _enemy.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
         yield return new WaitForSeconds(_enemy.Data.deathTime);
-        Destroy(gameObject);//임시
+        gameObject.SetActive(false);
     }
     public void ApplyDamage(int atk)
     {
