@@ -11,7 +11,7 @@ public interface IState
 
 public abstract class StateMachine
 {
-    protected IState currentState;
+    public IState currentState;
 
     /// <summary>
     /// 현재 상태를 변경하는 메서드

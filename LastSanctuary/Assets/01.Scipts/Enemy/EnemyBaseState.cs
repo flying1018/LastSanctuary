@@ -51,10 +51,7 @@ public class EnemyBaseState : IState
     {
         _enemy.Animator.SetBool(animatorHash, false);
     }
-    protected void Move()
-    {
-
-    }
+    
     protected void Move(Vector2 direction)
     {
         float xDirection = direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0;
@@ -67,15 +64,27 @@ public class EnemyBaseState : IState
         _spriteRenderer.flipX = direction.x < 0;
     }
     
-    protected float TargetDistance()
+    //공격 사정거리 1/2 만큼 접근
+    protected bool WithinChaseDistance()
     {
-        if(_enemy.Target == null) return float.MaxValue;
-        return Vector2.Distance(_enemy.transform.position, _enemy.Target.transform.position);
+        if (_enemy.Target == null) return false;
+        
+        float distance = Vector2.Distance(_enemy.transform.position, _enemy.Target.transform.position);
+        return distance <= _data.attackDistance/2;
+    }
+
+    //공격 범위 안에 있으면 공격
+    protected bool WithinAttackDistnace()
+    {
+        if (_enemy.Target == null) return false;
+        
+        float distance = Vector2.Distance(_enemy.transform.position, _enemy.Target.transform.position);
+        return distance <= _data.attackDistance;
     }
 
     protected Vector2 DirectionToTarget()
     {
-        if (_enemy.Target == null) return new Vector2(float.MaxValue, float.MaxValue);
+        if(_enemy.Target == null) return Vector2.zero;
         return _enemy.Target.position  - _enemy.transform.position;
     }
 

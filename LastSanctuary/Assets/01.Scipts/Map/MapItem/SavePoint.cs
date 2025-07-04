@@ -4,26 +4,27 @@ using UnityEngine;
 public class SavePoint : MonoBehaviour, IInteractable
 {
     public int index;
-    private bool isInteracted;
+    private bool _isInteracted;
     public void Interact()
     {
         DebugHelper.Log($"{this.name}의 Interact() 작동됨");
 
-        if (isInteracted) { return; }
+        if (_isInteracted) { return; }
 
         SaveManager.Instance.SetSavePoint(this.transform.position);
         ItemManager.Instance.playerCondition.PlayerRecovery(); // 회복
+        //MapManager.Instance.RespawnEnemies();
 
         StartCoroutine(SaveAnimation());
     }
 
     private IEnumerator SaveAnimation()
     {
-        isInteracted = true;
+        _isInteracted = true;
         //SoundManager.Instance.PlaySFX(StringNameSpace.SoundAddress.SavePointSFX);
 
         yield return new WaitForSeconds(2f);
 
-        isInteracted = false;
+        _isInteracted = false;
     }
 }

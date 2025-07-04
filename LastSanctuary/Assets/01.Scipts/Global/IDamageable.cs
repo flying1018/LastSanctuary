@@ -11,8 +11,8 @@ public enum DamageType
 
 public interface IDamageable
 {
- public void TakeDamage(int atk,Transform attackDir = null ,DamageType type = DamageType.Attack);
+ public void TakeDamage(int atk, DamageType type ,Transform attackDir , float knockBackPower);
  public void ApplyDamage(int totalDamage);
- public void KnockBack(Transform attackdir);
+ public void KnockBack(Transform attackdir, float knockBackPower);
  public void ChangingHitState();
 }

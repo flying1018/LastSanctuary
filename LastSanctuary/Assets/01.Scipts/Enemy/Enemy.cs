@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private LayerMask platformLayer;
     [SerializeField] private float platformCheckDistance;
     [SerializeField] private MonsterType type;
+    [SerializeField] private GameObject enemyPrefab;
     //투사체?
     
     //프로퍼티
@@ -33,6 +34,7 @@ public class Enemy : MonoBehaviour
     public bool IsRight { get; set; } = true;
     public EnemySO Data {get => enemyData;}
     public MonsterType Type {get => type;}
+    public GameObject EnemyPrefab => enemyPrefab;
 
     
     private void Update()
@@ -45,6 +47,7 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
+        //Debug.Log(StateMachine.currentState);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -53,11 +56,13 @@ public class Enemy : MonoBehaviour
         {
             if(other.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                damageable.TakeDamage(Data.attack,transform,DamageType.Contact);
+                damageable.TakeDamage(Data.attack,DamageType.Contact,transform,Data.knockbackForce);
             }
         }
     }
 
+    #region  Need MonoBehaviour Method
+    
     public void Init(Transform spawnPoint)
     {
         SpawnPoint = spawnPoint;
@@ -93,5 +98,21 @@ public class Enemy : MonoBehaviour
             Rigidbody.bodyType = RigidbodyType2D.Kinematic;
         }
     }
+
+    public bool FindTarget()
+    {
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, Data.detectDistance, Vector2.down);
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider.CompareTag(StringNameSpace.Tags.Player))
+            {
+                Target = hit.transform;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    #endregion
 }
         

@@ -25,38 +25,18 @@ public class EnemySpawnPoint : MonoBehaviour
         _enemy.Init(this.transform);
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public void Respawn()
     {
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
+        if (_enemy == null)
         {
-            if (_cancelChase != null)
-            {
-                StopCoroutine(_cancelChase);
-                _cancelChase = null;
-            }
-            
-            _enemy.Target = other.gameObject.transform;
+            Spawn();
         }
-    }
-    public void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
+        else
         {
-            if (_cancelChase != null)
-            {
-                StopCoroutine(_cancelChase);
-                _cancelChase = null;
-            }
-
-            _cancelChase = StartCoroutine(CancelChase_Coroutine());
+            _enemy.transform.position = transform.position;
+            _enemy.gameObject.SetActive(true);
+            _enemy.Init(this.transform);
+            _enemy.SetCollisionEnabled(true);
         }
-    }
-    
-    //인식 범위 밖으로 일정 시간 탈출 후 추적 취소
-    IEnumerator CancelChase_Coroutine()
-    {
-        yield return new WaitForSeconds(_enemy.Data.cancelChaseTime);
-        _enemy.Target = null;
-        _cancelChase = null;
     }
 }

@@ -13,6 +13,7 @@ public class EnemyHitState : EnemyBaseState
         _enemy.Animator.SetTrigger(_enemy.AnimationDB.HitParameterHash);
         
         _hitStart = Time.time;
+        Debug.Log("Hit");
     }
 
     public override void Exit()

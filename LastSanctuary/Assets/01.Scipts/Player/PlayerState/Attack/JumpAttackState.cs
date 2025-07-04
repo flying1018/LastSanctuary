@@ -36,11 +36,6 @@ public class JumpAttackState : PlayerAttackState
         _player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, 0);
     }
 
-    public override void HandleInput()
-    {
-        
-    }
-
     public override void Update()
     {
         _time += Time.deltaTime;

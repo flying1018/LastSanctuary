@@ -11,6 +11,7 @@ public class EnemySO : ScriptableObject
 
     [Header("DetectState")]
     public float detectTime;
+    public float detectDistance;
     
     [Header("ChaseState")]
     public float moveSpeed;
@@ -25,6 +26,7 @@ public class EnemySO : ScriptableObject
     [Header("attackState")] 
     public float attackDistance;
     public float attackDuration;
+    public float knockbackForce;
     public AnimationClip attackAnim;
     public float AnimTime => attackAnim.length; 
     
