@@ -11,6 +11,7 @@ public class CollectObject : MonoBehaviour, IInteractable
         if (isGet) { return; }
 
         // ItemManager.Instance.GetCollectItem(collectData);
+        // ItemManager.Instance.AddInventory(필요한 파라미터);
         isGet = true;
 
         SetActive();
