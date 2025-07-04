@@ -34,24 +34,26 @@ MonoBehaviour:
       nextComboTime: 0.3
       staminaCost: 0
       attackForce: 0
+      knockbackForce: 0
     - attackAnim: {fileID: 7400000, guid: 3c8ab8fd8e124cd47ba5909da708ef53, type: 2}
       attackIndex: 2
       multiplier: 1.2
       nextComboTime: 0.3
       staminaCost: 0
       attackForce: 0
+      knockbackForce: 0
     - attackAnim: {fileID: 7400000, guid: bdf51d02ce4552348ba6354a5c6370ff, type: 2}
       attackIndex: 3
       multiplier: 2
       nextComboTime: 0
       staminaCost: 15
       attackForce: 10
+      knockbackForce: 300
   attackSound: {fileID: 8300000, guid: c2b5ad624bada8b4ca44af7c71df039c, type: 3}
   <LightHitDuration>k__BackingField: 0.2
   <HeavyHitDuration>k__BackingField: 0.2
   <invincibleDuration>k__BackingField: 1
   <hitSteminaRecovery>k__BackingField: 15
-  <knockbackForce>k__BackingField: 5
   <damageReduction>k__BackingField: 0.8
   hitSound: {fileID: 8300000, guid: f9277f2f29a788b48a02d30db503506a, type: 3}
   hp: 100
