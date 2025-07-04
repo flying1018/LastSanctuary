@@ -27,16 +27,16 @@ public class EnemyChaseState : EnemyBaseState
         base.Update();
         
         //복귀 조건
-        if(_enemy.Target == null)
+        //1. 추적 시간이 초과 했거나
+        _time += Time.deltaTime;
+        if(_time > _data.cancelChaseTime)
             _stateMachine.ChangeState(_stateMachine.ReturnState);
-        
         //추적 종료 조건
+        //1. 타겟이 추적 범위안에 도달 했을 때
         if (WithinChaseDistance())
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
-        
-        CancelChase();
 
     }
 
@@ -48,31 +48,16 @@ public class EnemyChaseState : EnemyBaseState
     private void Chase()
     {
         if(_enemy.Target == null) return;
-        
-        Vector2 direction = _enemy.Target.position - _enemy.transform.position;
-        _enemy.IsRight = direction.x > 0 ? true : false;
-        if (Mathf.Abs(direction.x) < 1f) return;
+        if (!_enemy.IsPlatform())
+        {
+            Move(Vector2.zero);
+            Rotate(Vector2.zero);
+            return;
+        }
+
+        Vector2 direction = DirectionToTarget();
         Move(direction);
         Rotate(direction);
     }
-
-    private void CancelChase()
-    {
-        //움직이지 않기 시작한다면 시간 체크
-        if (_rigidbody.velocity.magnitude < 0.1f)
-        {
-            _time += Time.deltaTime;
-        }
-        //다시 움직인다면 시간체크 취소
-        else
-        {
-            _time = 0;
-        }
-        
-        //취소 시간에 도달하거나 플랫폼 끝에 있을 경우
-        if (_time > _data.cancelChaseTime || !_enemy.IsPlatform())
-        {
-            _stateMachine.ChangeState(_stateMachine.ReturnState);       
-        }
-    }
+    
 }

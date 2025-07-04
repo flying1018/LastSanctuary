@@ -24,15 +24,4 @@ public class EnemySpawnPoint : MonoBehaviour
         _enemy = go.GetComponent<Enemy>();
         _enemy.Init(this.transform);
     }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.TryGetComponent(out Enemy enemy))
-        {
-            if (enemy == _enemy)
-            {
-                _enemy.StateMachine.ChangeState(_enemy.StateMachine.ReturnState);
-            }
-        }
-    }
 }

@@ -99,16 +99,16 @@ public class Enemy : MonoBehaviour
 
     public bool FindTarget()
     {
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, Data.detectDistance, Vector2.down);
-        if (hit.collider.CompareTag(StringNameSpace.Tags.Player))
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, Data.detectDistance, Vector2.down);
+        foreach (RaycastHit2D hit in hits)
         {
-            Target = hit.transform;
-            return true;
+            if (hit.collider.CompareTag(StringNameSpace.Tags.Player))
+            {
+                Target = hit.transform;
+                return true;
+            }
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
     
     #endregion
