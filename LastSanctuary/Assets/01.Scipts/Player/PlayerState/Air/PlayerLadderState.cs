@@ -58,7 +58,6 @@ public class PlayerLadderState : PlayerAirState
     
     public override void PhysicsUpdate()
     {
-        base.PhysicsUpdate();
         VerticalMove(_input.MoveInput);
     }
 

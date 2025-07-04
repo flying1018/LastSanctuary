@@ -148,5 +148,14 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     {
         _player.StateMachine.ChangeState(_player.StateMachine.HitState);
     }
+
+    public void Heal(int healAmount)
+    {
+        if (_curHp < _maxHp)
+        {
+            _curHp += healAmount;
+            _curHp = Mathf.Clamp(_curHp, 0, _maxHp);
+        }
+    }
     
 }

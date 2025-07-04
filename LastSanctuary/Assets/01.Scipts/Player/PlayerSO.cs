@@ -41,7 +41,7 @@ public class PlayerSO : ScriptableObject
     [field: SerializeField] public int dashCost { get; private set; } = 25;
     
     [field: Header("HealState")]
-    [field: SerializeField][field: Range(0f, 100f)] public float HealAmount{ get; private set; } = 15f;
+    [field: SerializeField][field: Range(0f, 100f)] public int HealAmount{ get; private set; } = 15;
     [field: SerializeField][field: Range(0f, 2f)] public float HealDuration{ get; private set; } = 3f;
 
     [field: Header("GuardState")] 
