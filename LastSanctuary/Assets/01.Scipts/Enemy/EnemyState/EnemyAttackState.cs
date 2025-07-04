@@ -19,10 +19,10 @@ public class EnemyAttackState : EnemyBaseState
         //공격 중간은 Idle 애니메이션
         StartAnimation(_enemy.AnimationDB.IdleParameterHash);
         _enemy.Animator.SetTrigger(_enemy.AnimationDB.AttackParameterHash);
-
         
         //공격력 정보 넘겨주기
         _enemy.EnemyWeapon.Damage = _data.attack;
+        _enemy.EnemyWeapon.KnockBackForce = _data.knockbackForce;
     }
 
     public override void Exit()

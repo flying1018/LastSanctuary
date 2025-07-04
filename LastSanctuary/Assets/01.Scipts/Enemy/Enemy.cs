@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
         {
             if(other.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                damageable.TakeDamage(Data.attack,transform,DamageType.Contact);
+                damageable.TakeDamage(Data.attack,DamageType.Contact,transform,Data.knockbackForce);
             }
         }
     }

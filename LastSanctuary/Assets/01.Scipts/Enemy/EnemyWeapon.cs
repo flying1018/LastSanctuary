@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyWeapon : MonoBehaviour
 {
     public int Damage { get; set;}
+    public float KnockBackForce { get; set;}
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,7 +14,7 @@ public class EnemyWeapon : MonoBehaviour
         {
             if (other.gameObject.CompareTag(StringNameSpace.Tags.Enemy)) return;
             Debug.Log(idamageable + "는 " + Damage +"의 를 받았다.");
-            idamageable.TakeDamage(Damage,transform, DamageType.Attack);
+            idamageable.TakeDamage(Damage, DamageType.Attack,this.transform,KnockBackForce);
         }
     }
 }

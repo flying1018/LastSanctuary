@@ -47,7 +47,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(int atk, Transform dir,DamageType type)
+    public void TakeDamage(int atk, DamageType type, Transform dir = null,float force = 0f)
     {
         if (IsInvincible) return;
         bool isFront = IsFront(dir);
@@ -63,7 +63,8 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         else
         {
             ChangingHitState();
-            KnockBack(dir);
+            if(force>0)
+                KnockBack(dir,force);
         }
     }
     
@@ -127,7 +128,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         }
         return false;
     }
-    //대미지 적용
+
     public void ApplyDamage(int atk)
     { 
         _totaldamage = atk;//계산식
@@ -135,12 +136,11 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         Debug.Log($"대미지를 받음{_totaldamage}");
     }
     //넉백
-    public void KnockBack(Transform dir)
+    public void KnockBack(Transform dir,float force)
     {
         Vector2 knockbackDir = (transform.position - dir.transform.position);
         knockbackDir.y = 0f;
-        knockbackDir.Normalize();
-        Vector2 knockback = knockbackDir * _player.Data.knockbackForce;
+        Vector2 knockback = knockbackDir.normalized * force;
         _player.Rigidbody.AddForce(knockback, ForceMode2D.Impulse);
     }
     //상태전환

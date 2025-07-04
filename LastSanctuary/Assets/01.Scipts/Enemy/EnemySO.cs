@@ -26,6 +26,7 @@ public class EnemySO : ScriptableObject
     [Header("attackState")] 
     public float attackDistance;
     public float attackDuration;
+    public float knockbackForce;
     public AnimationClip attackAnim;
     public float AnimTime => attackAnim.length; 
     

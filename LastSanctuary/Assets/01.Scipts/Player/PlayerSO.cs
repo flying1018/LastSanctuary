@@ -13,6 +13,7 @@ public class AttackInfo
     public float nextComboTime; //다음 콤보까지 여유 시간
     public int staminaCost;     //스테미나 코스트
     public float attackForce;   //공격시 전진 파워
+    public float knockbackForce;//넉백 파워
 }
 
 [Serializable]
@@ -62,7 +63,6 @@ public class PlayerSO : ScriptableObject
     [field: SerializeField] public float HeavyHitDuration{ get; private set; } = 0.2f;
     [field: SerializeField] public float invincibleDuration { get; private set; } = 1f;
     [field: SerializeField] public int hitSteminaRecovery { get; private set; } = 15;
-    [field: SerializeField] public int  knockbackForce { get; private set; } = 2;
     [field: SerializeField, Range(0f, 1f)] public float damageReduction { get; private set; } = 0.8f;
     public AudioClip hitSound;
 

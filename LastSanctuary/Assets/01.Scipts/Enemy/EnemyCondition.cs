@@ -24,29 +24,6 @@ public class EnemyCondition : MonoBehaviour, IDamageable
         _defense = _enemy.Data.defense;
         _curHp = _maxHp;
     }
-    public void TakeDamage(int atk, Transform attackDir, DamageType type)
-    {
-        if (IsInvincible) return;
-        if (_isTakeDamageable) return;
-        StartCoroutine(DamageDelay_Coroutine());
-        
-        ApplyDamage(atk);
-        if (_curHp <= 0)
-        {
-            Death();
-        }
-        else
-        {
-            if (type == DamageType.Heavy)
-            {
-                ChangingHitState();
-            }
-            else
-            {
-                OnHitEffected();
-            }
-        }
-    }
 
     private IEnumerator DamageDelay_Coroutine()
     {
@@ -78,15 +55,46 @@ public class EnemyCondition : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(_enemy.Data.deathTime);
         Destroy(gameObject);//임시
     }
+
+    public void TakeDamage(int atk, DamageType type, Transform attackDir, float knockBackPower)
+    {
+        if (IsInvincible) return;
+        if (_isTakeDamageable) return;
+        StartCoroutine(DamageDelay_Coroutine());
+        
+        ApplyDamage(atk);
+        if (_curHp <= 0)
+        {
+            Death();
+        }
+        else
+        {
+            if (knockBackPower>0)
+            {
+                Debug.Log("asd");
+                ChangingHitState();
+                KnockBack(attackDir, knockBackPower);
+            }
+            else
+            {
+                OnHitEffected();
+            }
+        }
+    }
+
     public void ApplyDamage(int atk)
     {
         _damage = atk;//계산식
         _curHp -= _damage;
         Debug.Log(_damage);
     }
-    public void KnockBack(Transform dir)
+    public void KnockBack(Transform dir, float force)
     {
-        throw new NotImplementedException();
+        Debug.Log("KnockBack");
+        Debug.Log(force);
+        Vector2 knockbackDir = (transform.position - dir.position);
+        knockbackDir.y = 0f;
+        _enemy.Rigidbody.AddForce(knockbackDir.normalized * force,ForceMode2D.Impulse);
     }
     
     public void ChangingHitState()
