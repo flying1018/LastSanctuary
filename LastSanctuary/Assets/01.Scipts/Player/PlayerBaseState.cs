@@ -12,6 +12,7 @@ public class PlayerBaseState : IState
     protected PlayerCondition _condition;
     protected Player _player;
     protected PlayerWeapon _playerWeapon;
+    protected CapsuleCollider2D _capsuleCollider;
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
@@ -23,6 +24,7 @@ public class PlayerBaseState : IState
         _spriteRenderer = _player.SpriteRenderer;
         _condition = _player.Condition;
         _playerWeapon = _player.PlayerWeapon;
+        _capsuleCollider = _player.CapsuleCollider;
     }
 
     public virtual void Enter()
@@ -43,9 +45,9 @@ public class PlayerBaseState : IState
             _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
         }
 
-        if (_player.IsLadder && Mathf.Abs(_input.MoveInput.y) > 0f)
+        if (_player.IsRoped && Mathf.Abs(_input.MoveInput.y) > 0f)
         {
-            _stateMachine.ChangeState(_stateMachine.LadderState);
+            _stateMachine.ChangeState(_stateMachine.RopedState);
         }
     }
 

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //필드
-    private CapsuleCollider2D _capsuleCollider;
-
     //직렬화
     [field: SerializeField] public PlayerAnimationDB AnimationDB { get; private set; }
     [SerializeField] private PlayerSO playerData;
@@ -18,23 +15,25 @@ public class Player : MonoBehaviour
 
 
     //프로퍼티
+    public CapsuleCollider2D CapsuleCollider;
     public PlayerStateMachine StateMachine { get; set; }
     public PlayerController Input { get; set; }
     public Rigidbody2D Rigidbody { get; set; }
     public Animator Animator { get; set; }
     public SpriteRenderer SpriteRenderer { get; set; }
     public PlayerCondition Condition { get; set; }
-    public bool IsLadder { get; set; }
     public AerialPlatform AerialPlatform { get; set; }
+    public bool IsRoped { get; set; }
+    public Vector2 RopedPosition { get; set; }
+    public PlayerWeapon PlayerWeapon { get; set; }
     //직렬화 데이터 프로퍼티
     public PlayerSO Data { get => playerData; }
     public GameObject Weapon { get => weapon; }
-    public PlayerWeapon PlayerWeapon { get; set; }
 
 
     private void Awake()
     {
-        _capsuleCollider = GetComponent<CapsuleCollider2D>();
+        CapsuleCollider = GetComponent<CapsuleCollider2D>();
         Input = GetComponent<PlayerController>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
@@ -63,7 +62,8 @@ public class Player : MonoBehaviour
         //사다리 판단
         if (other.CompareTag(StringNameSpace.Tags.Ladder))
         {
-            IsLadder = true;
+            IsRoped = true;
+            RopedPosition = other.transform.position;
         }
 
         if ((interactableLayer.value & (1 << other.gameObject.layer)) != 0)
@@ -95,7 +95,8 @@ public class Player : MonoBehaviour
         //사다리 나가기
         if (other.CompareTag(StringNameSpace.Tags.Ladder))
         {
-            IsLadder = false;
+            IsRoped = false;
+            RopedPosition = Vector2.zero;
         }
 
         if (other.gameObject.layer == interactableLayer)
@@ -134,7 +135,7 @@ public class Player : MonoBehaviour
     //바닥 확인
     public bool IsGround()
     {
-        Vector2 newPos = new Vector2(transform.position.x, transform.position.y-(_capsuleCollider.size.y/2));
+        Vector2 newPos = new Vector2(transform.position.x, transform.position.y-(CapsuleCollider.size.y/2));
         Ray ray = new Ray(newPos, Vector2.down);
         return Physics2D.Raycast(ray.origin,ray.direction,groundCheckDistance, groundLayer);
     }
@@ -143,7 +144,7 @@ public class Player : MonoBehaviour
     public bool IsAerialPlatform()
     {
         return Physics2D.Raycast(transform.position, Vector2.down,
-            (_capsuleCollider.size.y / 2) + groundCheckDistance, aerialPlatformLayer);
+            (CapsuleCollider.size.y / 2) + groundCheckDistance, aerialPlatformLayer);
     }
 
     /// <summary>

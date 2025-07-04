@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLadderState : PlayerAirState
+public class PlayerRopedState : PlayerAirState
 {
-
-    public PlayerLadderState(PlayerStateMachine stateMachine) : base(stateMachine) { }
+    public PlayerRopedState(PlayerStateMachine stateMachine) : base(stateMachine) { }
     
     public override void Enter()
     {
         base.Enter();
+        StartAnimation(_player.AnimationDB.RopedParameterHash);;
         
         _rigidbody.gravityScale = 0;
     }
@@ -17,6 +17,7 @@ public class PlayerLadderState : PlayerAirState
     public override void Exit()
     {
         base.Exit();
+        StopAnimation(_player.AnimationDB.RopedParameterHash);;
         
         _rigidbody.gravityScale = 3;
     }
@@ -45,7 +46,7 @@ public class PlayerLadderState : PlayerAirState
     public override void Update()
     {
         base.Update();
-        if(!_player.IsLadder)
+        if(!_player.IsRoped)
             _stateMachine.ChangeState(_stateMachine.IdleState);
         if (_input.MoveInput.y < 0 && _player.IsGround())
         {
@@ -58,12 +59,18 @@ public class PlayerLadderState : PlayerAirState
     
     public override void PhysicsUpdate()
     {
+        Rotate(_input.MoveInput);
         VerticalMove(_input.MoveInput);
     }
 
     //상하 이동
     void VerticalMove(Vector2 direction)
     {
+        //로프 x 좌표 고정
+        if(_player.RopedPosition == Vector2.zero) return;
+        float ropeX = _player.RopedPosition.x + (_spriteRenderer.flipX ? +_capsuleCollider.size.x / 2 : -_capsuleCollider.size.x / 2); 
+        _player.transform.position = new Vector2(ropeX, _player.transform.position.y);
+        
         float yDirection = direction.y > 0 ? 1 : direction.y < 0 ? -1 : 0;
         Vector2 moveVelocity = new Vector2(_rigidbody.velocity.x, yDirection * _data.moveSpeed);
         _rigidbody.velocity = moveVelocity;

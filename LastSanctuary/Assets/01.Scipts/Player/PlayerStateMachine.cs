@@ -13,7 +13,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerFallState FallState { get; private set; }
     public PlayerHealState HealState { get; private set; }
     public PlayerHitState HitState { get; private set; }
-    public PlayerLadderState LadderState { get; private set; }
+    public PlayerRopedState RopedState { get; private set; }
     public int comboIndex;
 
     public PlayerStateMachine(Player player)
@@ -29,7 +29,7 @@ public class PlayerStateMachine : StateMachine
         FallState = new PlayerFallState(this);
         HealState = new PlayerHealState(this);
         GuardState = new PlayerGuardState(this);
-        LadderState = new PlayerLadderState(this);
+        RopedState = new PlayerRopedState(this);
         HitState = new PlayerHitState(this);
         
         comboIndex = 0;

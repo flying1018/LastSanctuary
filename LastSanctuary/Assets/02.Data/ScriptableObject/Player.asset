@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <moveSpeed>k__BackingField: 6
   moveSound: {fileID: 8300000, guid: 594fb34ab34a71d4caa854b31a755b5f, type: 3}
-  <jumpForce>k__BackingField: 12
+  <jumpForce>k__BackingField: 15
   <dashTime>k__BackingField: 0.25
   <dashPower>k__BackingField: 20
   <dashCoolTime>k__BackingField: 0.5
