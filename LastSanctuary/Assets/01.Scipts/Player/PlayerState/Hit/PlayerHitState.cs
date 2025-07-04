@@ -27,6 +27,8 @@ public class PlayerHitState : PlayerBaseState
                 _hitDuration = _data.LightHitDuration; //0.2f
                 break;
         }
+        
+        SoundManager.Instance.PlaySFX(_data.hitSound);
 
     }
 

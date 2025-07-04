@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 7080938109545919741}
   - component: {fileID: 9080846291414335315}
   m_Layer: 0
-  m_Name: MaceSkeleton
+  m_Name: MaceSkeleton(Patrol)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,7 +148,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.8, y: 2}
   m_Direction: 0
 --- !u!114 &1348362879168003846
 MonoBehaviour:
@@ -175,9 +175,9 @@ MonoBehaviour:
     m_Bits: 64
   platformLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   platformCheckDistance: 5
-  type: 0
+  type: 1
 --- !u!50 &-5163532016691331955
 Rigidbody2D:
   serializedVersion: 4

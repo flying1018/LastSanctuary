@@ -29,6 +29,7 @@ public class PlayerSO : ScriptableObject
 {
     [field: Header("GroundState")]
     [field: SerializeField][field: Range(0f, 20f)] public float moveSpeed { get; private set; } = 6f;
+    public AudioClip moveSound;
 
     [field: Header("AirState")]
     [field: SerializeField][field: Range(0f, 100f)] public float jumpForce { get; private set; } = 10f;
@@ -47,9 +48,14 @@ public class PlayerSO : ScriptableObject
     [field: SerializeField] public float perfectGuardWindow { get; private set; } = 0.2f;
     [field: SerializeField] public int perfactGuardStemina { get; private set; } = 30;
     [field: SerializeField] public int guardCost { get; private set; } = 30;
+    public AudioClip guardSound;
+    public AudioClip perfectGuardSound;
+    
 
     [Header("AttackState")] 
     [field: SerializeField] public PlayerAttackData attacks;
+
+    public AudioClip attackSound;
 
     [field: Header("HitState")]
     [field: SerializeField] public float LightHitDuration{ get; private set; } = 0.2f;
@@ -58,6 +64,7 @@ public class PlayerSO : ScriptableObject
     [field: SerializeField] public int hitSteminaRecovery { get; private set; } = 15;
     [field: SerializeField] public int  knockbackForce { get; private set; } = 2;
     [field: SerializeField, Range(0f, 1f)] public float damageReduction { get; private set; } = 0.8f;
+    public AudioClip hitSound;
 
     [field: Header("Condition")]
     [field: SerializeField] public int hp;

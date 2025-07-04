@@ -194,6 +194,16 @@ public class Player : MonoBehaviour
         Rigidbody.AddForce(direction * attackInfo.attackForce, ForceMode2D.Impulse);
     }
 
+    public void MoveSound()
+    {
+        SoundManager.Instance.PlaySFX(Data.moveSound);
+    }
+
+    public void AttackSound()
+    {
+        SoundManager.Instance.PlaySFX(Data.attackSound);
+    }
+
 
     #endregion
 }

@@ -10,8 +10,7 @@ public class EnemyBaseState : IState
     protected EnemyCondition _condition;
     protected Enemy _enemy;
     protected Transform _spawnPoint;
-    protected static float _attacktCoolTime;
-    
+
     public EnemyBaseState(EnemyStateMachine enemyStateMachine)
     {
         this._stateMachine = enemyStateMachine;
@@ -35,11 +34,13 @@ public class EnemyBaseState : IState
     }
     public virtual void Update()
     {
-        _attacktCoolTime += Time.deltaTime;
+        _stateMachine.attackCoolTime += Time.deltaTime;
     }
     public virtual void PhysicsUpdate()
     {
     }
+
+
     
     protected void StartAnimation(int animatorHash)
     {

@@ -13,6 +13,8 @@ public class EnemyStateMachine : StateMachine
     public EnemyDetectState DetectState { get; private set;}
     public EnemyPatrolState PatrolState { get; private set; }
 
+    public float attackCoolTime;
+
     public EnemyStateMachine(Enemy enemy)
     {
         this.Enemy = enemy;

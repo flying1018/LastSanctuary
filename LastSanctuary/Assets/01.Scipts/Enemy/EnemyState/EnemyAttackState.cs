@@ -14,7 +14,7 @@ public class EnemyAttackState : EnemyBaseState
         //공격에 관련된 정보 초기화
         _time = 0;
         _animtionTime = _data.AnimTime;
-        _attacktCoolTime = 0;
+        _stateMachine.attackCoolTime = 0;
         
         //공격 중간은 Idle 애니메이션
         StartAnimation(_enemy.AnimationDB.IdleParameterHash);
@@ -47,7 +47,7 @@ public class EnemyAttackState : EnemyBaseState
         }
         
         //공격 쿨타임이 지나면
-        if (_data.attackDuration < _attacktCoolTime)
+        if (_data.attackDuration < _stateMachine.attackCoolTime)
         {
             //타겟이 없으면 복귀
             if(_enemy.Target == null)

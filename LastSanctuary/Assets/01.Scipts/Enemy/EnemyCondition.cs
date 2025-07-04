@@ -88,6 +88,7 @@ public class EnemyCondition : MonoBehaviour, IDamageable
     {
         throw new NotImplementedException();
     }
+    
     public void ChangingHitState()
     {
         _enemy.StateMachine.ChangeState(_enemy.StateMachine.HitState);
