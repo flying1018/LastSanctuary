@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class TrapObject : MonoBehaviour
 {
-    public int damage;
+    [SerializeField] private int damage;
+    [SerializeField] private float knockBackForce;
+    
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,7 +15,7 @@ public class TrapObject : MonoBehaviour
 
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
         {
-            idamageable.TakeDamage(damage, transform, DamageType.Contact);
+            idamageable.TakeDamage(damage, DamageType.Contact,transform,knockBackForce);
         }
     }
 }

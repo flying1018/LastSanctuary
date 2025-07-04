@@ -24,4 +24,19 @@ public class EnemySpawnPoint : MonoBehaviour
         _enemy = go.GetComponent<Enemy>();
         _enemy.Init(this.transform);
     }
+
+    public void Respawn()
+    {
+        if (_enemy == null)
+        {
+            Spawn();
+        }
+        else
+        {
+            _enemy.transform.position = transform.position;
+            _enemy.gameObject.SetActive(true);
+            _enemy.Init(this.transform);
+            _enemy.SetCollisionEnabled(true);
+        }
+    }
 }
