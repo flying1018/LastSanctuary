@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class ItemManager : Singleton<ItemManager>
 {
-    public int PlayerGold = 10; // 테스트용 추후 삭제
+    public PlayerCondition playerCondition;
+    public Inventory inventory;
 
-    public bool[] isPlayerHaveRelic = new bool[1]; // 테스트용 추후 삭제
+
+    public void UpgradeStat(StatObjectSO statObjectSO)
+    {
+        
+    }
+
+    public void GetCollectItem(CollectObjectSO collectObjectSO)
+    {
+
+    }
+
+
     public void Init() { }
 }
