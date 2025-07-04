@@ -39,6 +39,7 @@ public class EnemySpawnPoint : MonoBehaviour
             _enemy.SetCollisionEnabled(true);
         }
     }
+    
 
     public void OnTriggerEnter2D(Collider2D other)
     {
