@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class SavePoint : MonoBehaviour, IInteractable
 {
-    [SerializeField] private MapManager _mapManager;
+    public int index;
     private bool _isInteracted;
     public void Interact()
     {
         DebugHelper.Log($"{this.name}의 Interact() 작동됨");
-        
+
         if (_isInteracted) { return; }
-        
+
         SaveManager.Instance.SetSavePoint(this.transform.position);
-        _mapManager.RespawnEnemies();
-        // ItemManager.Instance.PlayerRecovery();
-        
+        ItemManager.Instance.playerCondition.PlayerRecovery(); // 회복
+        //MapManager.Instance.RespawnEnemies();
+
         StartCoroutine(SaveAnimation());
     }
 

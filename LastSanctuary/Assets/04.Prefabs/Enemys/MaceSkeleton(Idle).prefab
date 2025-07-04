@@ -86,11 +86,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 246564995851524428}
+  - component: {fileID: 9080846291414335315}
   - component: {fileID: 1863970197372497707}
-  - component: {fileID: 1348362879168003846}
   - component: {fileID: -5163532016691331955}
   - component: {fileID: 7080938109545919741}
-  - component: {fileID: 9080846291414335315}
+  - component: {fileID: 1348362879168003846}
   m_Layer: 0
   m_Name: MaceSkeleton(Idle)
   m_TagString: Enemy
@@ -115,6 +115,27 @@ Transform:
   - {fileID: 3932651908727566937}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &9080846291414335315
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3153555157828818715}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 68fb441bb51f18d4a8dd1c7db4de805f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!70 &1863970197372497707
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -150,34 +171,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.8, y: 2}
   m_Direction: 0
---- !u!114 &1348362879168003846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3153555157828818715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c58599d6322fe442a166b448f7ce093, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <AnimationDB>k__BackingField:
-    idleParameter: Idle
-    walkParameter: Walk
-    attackParameter: Attack
-    hitParameter: Hit
-    deathParameter: Death
-  enemyData: {fileID: 11400000, guid: 79002608b4f4cac48b62fd38ebe5331e, type: 2}
-  enemyModel: {fileID: 3153555157828818715}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  platformLayer:
-    serializedVersion: 2
-    m_Bits: 1280
-  platformCheckDistance: 2
-  type: 0
 --- !u!50 &-5163532016691331955
 Rigidbody2D:
   serializedVersion: 4
@@ -217,27 +210,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c6084146c27f947aec20bd7b40a7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &9080846291414335315
-Animator:
-  serializedVersion: 5
+--- !u!114 &1348362879168003846
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3153555157828818715}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 68fb441bb51f18d4a8dd1c7db4de805f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c58599d6322fe442a166b448f7ce093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AnimationDB>k__BackingField:
+    idleParameter: Idle
+    walkParameter: Walk
+    attackParameter: Attack
+    hitParameter: Hit
+    deathParameter: Death
+  enemyData: {fileID: 11400000, guid: 79002608b4f4cac48b62fd38ebe5331e, type: 2}
+  enemyModel: {fileID: 3153555157828818715}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 1280
+  platformCheckDistance: 2
+  type: 0
 --- !u!1 &6224774757196196992
 GameObject:
   m_ObjectHideFlags: 0
