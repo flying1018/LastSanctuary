@@ -38,6 +38,7 @@ public class ComboAttackState : PlayerAttackState
 
     public override void HandleInput()
     {
+        base.HandleInput();
         //다음 공격
         _time += Time.deltaTime;
         

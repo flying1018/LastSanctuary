@@ -30,14 +30,12 @@ public class EnemyChaseState : EnemyBaseState
         if(_enemy.Target == null)
             _stateMachine.ChangeState(_stateMachine.ReturnState);
         
-        //공격 조건
-        float targetDistance = TargetDistance();
-        if (targetDistance < _data.attackDistance/2 && _stateMachine.attackCoolTime > _data.attackDuration)
+        //추적 종료 조건
+        if (WithinChaseDistance())
         {
-            _stateMachine.ChangeState(_stateMachine.AttackState);
+            _stateMachine.ChangeState(_stateMachine.IdleState);
         }
         
-
         CancelChase();
 
     }

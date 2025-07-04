@@ -39,6 +39,7 @@ public class PlayerGroundState : PlayerBaseState
         
         if (_input.IsAttack)
         {
+            _stateMachine.comboIndex = 0;
             _stateMachine.ChangeState(_stateMachine.ComboAttack);
         }
 

@@ -18,7 +18,7 @@ public class PlayerLadderState : PlayerAirState
     {
         base.Exit();
         
-        _rigidbody.gravityScale = 2;
+        _rigidbody.gravityScale = 3;
     }
 
     public override void HandleInput()

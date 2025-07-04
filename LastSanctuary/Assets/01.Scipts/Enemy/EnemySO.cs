@@ -11,6 +11,7 @@ public class EnemySO : ScriptableObject
 
     [Header("DetectState")]
     public float detectTime;
+    public float detectDistance;
     
     [Header("ChaseState")]
     public float moveSpeed;
