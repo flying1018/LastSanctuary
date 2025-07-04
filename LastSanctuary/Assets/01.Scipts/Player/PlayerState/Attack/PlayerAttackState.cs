@@ -28,7 +28,14 @@ public class PlayerAttackState : PlayerBaseState
 
     public override void HandleInput()
     {
-        
+        if (_input.IsDash && _condition.UsingStamina(_data.dashCost))
+        {
+            _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
+        }
+        if (_input.IsGuarding && _stateMachine.comboIndex != 2)
+        {
+            _stateMachine.ChangeState(_stateMachine.GuardState);
+        }
     }
 
     public override void Update()

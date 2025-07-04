@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerWeapon : MonoBehaviour
 {
     public int Damage { get; set;}
+    public float knockBackForce { get; set;}
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,7 +13,7 @@ public class PlayerWeapon : MonoBehaviour
         if (other.TryGetComponent(out IDamageable idamageable) )
         {
             if (other.gameObject.CompareTag(StringNameSpace.Tags.Player)) return;
-            idamageable.TakeDamage(Damage,transform, DamageType.Contact);
+            idamageable.TakeDamage(Damage,DamageType.Attack,transform,knockBackForce);
         }
     }
     

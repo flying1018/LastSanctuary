@@ -47,6 +47,7 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
+        //Debug.Log(StateMachine.currentState);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -55,11 +56,13 @@ public class Enemy : MonoBehaviour
         {
             if(other.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                damageable.TakeDamage(Data.attack,transform,DamageType.Contact);
+                damageable.TakeDamage(Data.attack,DamageType.Contact,transform,Data.knockbackForce);
             }
         }
     }
 
+    #region  Need MonoBehaviour Method
+    
     public void Init(Transform spawnPoint)
     {
         SpawnPoint = spawnPoint;
@@ -95,5 +98,21 @@ public class Enemy : MonoBehaviour
             Rigidbody.bodyType = RigidbodyType2D.Kinematic;
         }
     }
+
+    public bool FindTarget()
+    {
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, Data.detectDistance, Vector2.down);
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider.CompareTag(StringNameSpace.Tags.Player))
+            {
+                Target = hit.transform;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    #endregion
 }
         

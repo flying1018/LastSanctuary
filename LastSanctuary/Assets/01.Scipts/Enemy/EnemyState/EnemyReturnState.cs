@@ -12,6 +12,7 @@ public class EnemyReturnState :EnemyBaseState
         
         _condition.IsInvincible = true;
         _enemy.IsRight = !_enemy.IsRight;
+        _enemy.Target = null;  
     }
 
     public override void Exit()
@@ -30,9 +31,8 @@ public class EnemyReturnState :EnemyBaseState
     public override void Update()
     {
         base.Update();
-        if (Mathf.Abs(_enemy.transform.position.x - _spawnPoint.position.x) < 1f)
+        if (Mathf.Abs(_enemy.transform.position.x - _spawnPoint.position.x) < 0.1f)
         {
-            Debug.Log(Mathf.Abs(_enemy.transform.position.x - _spawnPoint.position.x));
             _stateMachine.ChangeState(_stateMachine.IdleState);       
         }
     }

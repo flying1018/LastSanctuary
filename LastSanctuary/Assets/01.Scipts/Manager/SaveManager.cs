@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class SaveManager : Singleton<SaveManager>
 {
-    private Vector2 _lastSavePos;
+    [SerializeField] private Vector2 _lastSavePos;
 
     public void SaveMapItem()
     {

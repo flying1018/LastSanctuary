@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGuardState : PlayerGroundState
+public class PlayerGuardState : PlayerBaseState
 {
     private float _guardStart;
 
@@ -11,19 +11,22 @@ public class PlayerGuardState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
+        StartAnimation(_player.AnimationDB.GuardParameterHash);
+        
         _rigidbody.velocity = Vector2.zero;
         _guardStart = Time.time;
         _condition.IsPerfectGuard = true;
         _condition.IsGuard = true;
-        //가드 애니메이션 실행
+
     }
 
     public override void Exit()
     {
         base.Exit();
+        StopAnimation(_player.AnimationDB.GuardParameterHash);
+        
         _condition.IsGuard = false;
         _condition.IsPerfectGuard = false;
-        //가드 애니메이션 해제
     }
 
     public override void HandleInput()

@@ -6,7 +6,8 @@ public class DecorateObject : MonoBehaviour, IDamageable
 {
     public bool isBroken;
     public int durability;
-    public void TakeDamage(int atk,Transform attackDir = null ,DamageType type = DamageType.Attack)
+
+    public void TakeDamage(int atk, DamageType type, Transform attackDir, float knockBackPower)
     {
         if (isBroken) { return; }
 
@@ -18,7 +19,6 @@ public class DecorateObject : MonoBehaviour, IDamageable
             isBroken = true;
         }
         // BreakObj(this.gameobject)
-
     }
 
     public void ApplyDamage(int totalDamage)
@@ -26,7 +26,7 @@ public class DecorateObject : MonoBehaviour, IDamageable
 
     }
 
-    public void KnockBack(Transform attackdir) 
+    public void KnockBack(Transform attackdir, float knockBackPower)
     {
         return;
     }

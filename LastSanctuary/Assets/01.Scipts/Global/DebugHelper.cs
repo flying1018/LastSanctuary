@@ -86,7 +86,7 @@ public class DebugWindow : EditorWindow
         if (GUILayout.Button("데미지 테스트"))
         {
             PlayerCondition condition = go.GetComponent<PlayerCondition>();
-            condition.TakeDamage(testDamage, atkDir, DamageType.Attack);
+            //condition.TakeDamage(testDamage, atkDir, DamageType.Attack);
         }
 
         EditorGUILayout.LabelField("세이브 테스트");
