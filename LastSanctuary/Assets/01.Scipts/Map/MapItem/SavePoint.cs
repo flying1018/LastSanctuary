@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SavePoint : MonoBehaviour, IInteractable
 {
+    [SerializeField] private MapManager _mapManager;
     private bool _isInteracted;
     public void Interact()
     {
@@ -11,6 +12,7 @@ public class SavePoint : MonoBehaviour, IInteractable
         if (_isInteracted) { return; }
         
         SaveManager.Instance.SetSavePoint(this.transform.position);
+        _mapManager.RespawnEnemies();
         // ItemManager.Instance.PlayerRecovery();
         
         StartCoroutine(SaveAnimation());
