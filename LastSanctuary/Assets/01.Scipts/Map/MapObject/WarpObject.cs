@@ -12,6 +12,7 @@ public class WarpObject : MonoBehaviour, IInteractable
     {
         if (!isActivated) { isActivated = true; }
 
+        MapManager.Instance.selectWarpObj = this;
         StartCoroutine(WarpAnimation());
     }
 
@@ -23,7 +24,7 @@ public class WarpObject : MonoBehaviour, IInteractable
     {
         //SoundManager.Instance.PlaySFX(StringNameSpace.SoundAddress.WarpObjectSFX);
 
-        //MapManager.Instance.WarpInteract(index);
+        MapManager.Instance.WarpInteract();
         /* 
         추후 WarpInteract에서 UI연결 필요하며
         다른 활성화된 WaroObject를 선택하여 플레이어 위치를 이동해야함

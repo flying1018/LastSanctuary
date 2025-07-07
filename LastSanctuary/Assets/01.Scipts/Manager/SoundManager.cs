@@ -35,6 +35,7 @@ public class SoundManager : Singleton<SoundManager>
     {
         GameObject sfxObj = Instantiate(sfxPrefab);
         SFXSound sfx = sfxObj.GetComponent<SFXSound>();
+
         sfx.Play(clip, volume);
     }
 
