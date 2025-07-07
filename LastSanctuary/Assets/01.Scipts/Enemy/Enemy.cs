@@ -19,7 +19,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private LayerMask platformLayer;
     [SerializeField] private float platformCheckDistance;
     [SerializeField] private MonsterType type;
-    [SerializeField] private GameObject enemyPrefab;
     //투사체?
     
     //프로퍼티
@@ -34,9 +33,9 @@ public class Enemy : MonoBehaviour
     public bool IsRight { get; set; } = true;
     public EnemySO Data {get => enemyData;}
     public MonsterType Type {get => type;}
-    public GameObject EnemyPrefab => enemyPrefab;
+    public GameObject EnemyModel {get => enemyModel;}
 
-    
+
     private void Update()
     {
         StateMachine.HandleInput();

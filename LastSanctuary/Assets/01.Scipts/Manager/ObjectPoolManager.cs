@@ -4,5 +4,51 @@ using UnityEngine;
 
 public static class ObjectPoolManager
 {
+    public enum PoolingIndex
+    {
+        Monster = 1,
+    }
+    private static Dictionary<int, Queue<GameObject>> poolDictionary = new();
 
+    public static GameObject Get(GameObject prefab, int id)
+    {
+        poolDictionary.TryGetValue(id, out Queue<GameObject> objectQueue);
+        if (objectQueue != null && objectQueue.Count > 0)
+        {
+            DebugHelper.Log("기존 풀에서 재활용");
+            GameObject obj = objectQueue.Dequeue();
+            obj.SetActive(true);
+            return obj;
+        }
+        else
+        {
+            DebugHelper.Log("최초 생성");
+            GameObject newObj = Object.Instantiate(prefab);
+            newObj.SetActive(true);
+            return newObj;
+        }
+    }
+
+    public static void Set(int id, GameObject _prefab, GameObject gameObject)
+    {
+        gameObject.SetActive(false);
+
+        if (poolDictionary.TryGetValue(id, out Queue<GameObject> objectQueue))
+        {
+            DebugHelper.Log("기존 프리팹 회수");
+            objectQueue.Enqueue(gameObject);
+        }
+        else
+        {
+            DebugHelper.Log("새로운 프리팹 회수");
+            Queue<GameObject> newQueue = new();
+            newQueue.Enqueue(gameObject);
+            poolDictionary.Add(id, newQueue);
+        }
+
+        static void Clear()
+        {
+            poolDictionary.Clear();
+        }
+    }
 }
