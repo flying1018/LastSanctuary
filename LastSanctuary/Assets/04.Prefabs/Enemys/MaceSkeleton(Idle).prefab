@@ -238,6 +238,7 @@ MonoBehaviour:
     m_Bits: 1280
   platformCheckDistance: 2
   type: 0
+  enemyPrefab: {fileID: 0}
 --- !u!1 &6224774757196196992
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +388,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 1952791576, guid: dd23ec790d29c304f82e7faedaa7d5a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}

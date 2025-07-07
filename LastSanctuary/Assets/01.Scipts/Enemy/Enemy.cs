@@ -1,9 +1,21 @@
 using UnityEngine;
 
-public enum MonsterType
+public enum IdleType
 {
     Idle,
     Patrol,
+}
+
+public enum MoveType
+{
+    Walk,
+    Fly,
+}
+
+public enum AttackType
+{
+    Melee,
+    Range,
 }
 
 public class Enemy : MonoBehaviour
@@ -14,13 +26,11 @@ public class Enemy : MonoBehaviour
     //직렬화
     [field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
     [SerializeField] private EnemySO enemyData;
-    [SerializeField] private GameObject enemyModel;
-    [SerializeField] private LayerMask playerLayer;
     [SerializeField] private LayerMask platformLayer;
     [SerializeField] private float platformCheckDistance;
-    [SerializeField] private MonsterType type;
-    [SerializeField] private GameObject enemyPrefab;
-    //투사체?
+    [SerializeField] private IdleType idleType;
+    [SerializeField] private MoveType moveType;
+    [SerializeField] private AttackType attackType;
     
     //프로퍼티
     public EnemyStateMachine StateMachine { get; set; }
@@ -32,9 +42,11 @@ public class Enemy : MonoBehaviour
     public Transform SpawnPoint { get; set; }
     public EnemyWeapon EnemyWeapon { get; set; }
     public bool IsRight { get; set; } = true;
+    public GameObject Weapon { get; set; }
     public EnemySO Data {get => enemyData;}
-    public MonsterType Type {get => type;}
-    public GameObject EnemyPrefab => enemyPrefab;
+    public IdleType IdleType {get => idleType;}
+    public MoveType MoveType {get => moveType;}
+    public AttackType AttackType {get => attackType;}
 
     
     private void Update()
@@ -48,6 +60,7 @@ public class Enemy : MonoBehaviour
     {
         StateMachine.PhysicsUpdate();
         //Debug.Log(StateMachine.currentState);
+        //Debug.Log(StateMachine.attackCoolTime);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -61,6 +74,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void FireArrow()
+    {
+        if (StateMachine.currentState is EnemyRangeAttackState rangeState)
+            rangeState.FireArrow();
+    }
+
     #region  Need MonoBehaviour Method
     
     public void Init(Transform spawnPoint)
@@ -72,6 +91,7 @@ public class Enemy : MonoBehaviour
         Condition = GetComponent<EnemyCondition>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         EnemyWeapon = GetComponentInChildren<EnemyWeapon>();
+        Weapon = EnemyWeapon.gameObject;
         AnimationDB.Initailize();
         
         Condition.Init(this);

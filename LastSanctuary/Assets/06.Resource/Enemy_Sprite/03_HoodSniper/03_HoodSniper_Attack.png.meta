@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,9 +70,9 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -134,7 +134,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 03_HoodSniper_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 0
+        width: 60
+        height: 61
+      alignment: 9
+      pivot: {x: 0.34323087, y: 0.42840767}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3d5bbd09453d654fa26dd178e847ee0
+      internalID: -1789876207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03_HoodSniper_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 0
+        width: 60
+        height: 61
+      alignment: 9
+      pivot: {x: 0.35442886, y: 0.41188633}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41aaa12b38624594c87d462a1f11c4d1
+      internalID: -2114650726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03_HoodSniper_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 0
+        width: 60
+        height: 61
+      alignment: 9
+      pivot: {x: 0.34883016, y: 0.40637922}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9aab374663d7114193a5eaa37c38c60
+      internalID: -1054247913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03_HoodSniper_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 0
+        width: 60
+        height: 61
+      alignment: 9
+      pivot: {x: 0.3432312, y: 0.41739345}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92a9324aef9ffa24ab591f4110d4bf2c
+      internalID: -1714006320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03_HoodSniper_Attack_4
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 0
+        width: 60
+        height: 61
+      alignment: 9
+      pivot: {x: 0.33763325, y: 0.41188633}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4bdaa1698752e342bc4aadf0577628e
+      internalID: 961013212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03_HoodSniper_Attack_5
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 0
+        width: 60
+        height: 61
+      alignment: 9
+      pivot: {x: 0.33763325, y: 0.42290056}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2b33ade2e06ea24aab07b81e3e96767
+      internalID: -1813849787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +271,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      03_HoodSniper_Attack_0: -1789876207
+      03_HoodSniper_Attack_1: -2114650726
+      03_HoodSniper_Attack_2: -1054247913
+      03_HoodSniper_Attack_3: -1714006320
+      03_HoodSniper_Attack_4: 961013212
+      03_HoodSniper_Attack_5: -1813849787
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

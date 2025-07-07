@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe245788b651394e8fcb8b034fc10ec, type: 3}
+  m_Name: LanceSkeleton
+  m_EditorClassIdentifier: 
+  _key: 0
+  _name: 
+  detectTime: 0.2
+  detectDistance: 7
+  moveSpeed: 3
+  cancelChaseTime: 3
+  <patrolDistance>k__BackingField: 10
+  <HitDuration>k__BackingField: 0.2
+  attackDistance: 4
+  attackDuration: 2
+  knockbackForce: 10
+  attackAnim: {fileID: 7400000, guid: 5e71f4cd6439726469445f502727bac4, type: 2}
+  attack: 10
+  hp: 100
+  defense: 0
+  damageDelay: 0.2
+  hitDuration: 0.5
+  alphaValue: 0.5
+  deathAnim: {fileID: 7400000, guid: e8de934768cde414686f91b0fd9abc0a, type: 2}

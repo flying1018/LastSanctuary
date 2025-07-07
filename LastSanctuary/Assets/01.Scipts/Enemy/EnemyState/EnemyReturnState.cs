@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class EnemyReturnState :EnemyBaseState
+public class EReturnState : EnemyBaseState
 {
-    public EnemyReturnState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
+    public EReturnState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
     {
     }
-
+    
     public override void Enter()
     {
         StartAnimation(_enemy.AnimationDB.WalkParameterHash);
@@ -21,11 +21,25 @@ public class EnemyReturnState :EnemyBaseState
         
         _condition.IsInvincible = false;
     }
-
+    
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
         Return();
+    }
+
+    protected virtual void Return()
+    {
+        
+    }
+    
+}
+
+
+public class EnemyReturnState :EReturnState
+{
+    public EnemyReturnState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
+    {
     }
 
     public override void Update()
@@ -37,10 +51,10 @@ public class EnemyReturnState :EnemyBaseState
         }
     }
 
-    public void Return()
+    protected override void Return()
     {
         Vector2 direction = DirectionToSpawnPoint();
-        Rotate(direction);
         Move(direction);
+        Rotate(direction);
     }
 }
