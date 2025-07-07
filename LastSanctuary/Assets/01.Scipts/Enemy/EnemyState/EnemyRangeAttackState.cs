@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRangeAttackState : EnemyAttackState
+public class EnemyRangeAttackState : EAttackState
 {
     public EnemyRangeAttackState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine) {}
 
@@ -11,12 +11,11 @@ public class EnemyRangeAttackState : EnemyAttackState
         Transform firePoint = _enemy.EnemyWeapon.transform;
 
         GameObject arrow = ObjectPoolManager.Get(_data.arrowPrefab, _data.arrowPoolId);
+        Debug.Log(arrow);
         arrow.transform.position = firePoint.position;
 
         Vector2 dir = DirectionToTarget();
         arrow.transform.right = dir;
-        
-        
 
         if (arrow.TryGetComponent(out ArrowProjectile arrowPoProjectile))
         {

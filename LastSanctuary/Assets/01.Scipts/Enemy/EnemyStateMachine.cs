@@ -37,6 +37,7 @@ public class EnemyStateMachine : StateMachine
                 break;
             case AttackType.Range:
                 AttackState = new EnemyRangeAttackState(this);
+                Debug.Log(AttackState);
                 break;
         }
        
@@ -52,7 +53,6 @@ public class EnemyStateMachine : StateMachine
                 ReturnState = new EnemyFlyReturnState(this);
                 break;
         }
-        AttackState = new EnemyAttackState(this);
         HitState = new EnemyHitState(this);
         DetectState = new EnemyDetectState(this);
         BattleState = new EnemyBattleState(this);

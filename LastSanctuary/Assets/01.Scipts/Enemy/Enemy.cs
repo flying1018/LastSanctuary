@@ -75,8 +75,11 @@ public class Enemy : MonoBehaviour
 
     public void FireArrow()
     {
-        if (StateMachine.currentState is EnemyRangeAttackState rangeState)
+        if (StateMachine.AttackState is EnemyRangeAttackState rangeState)
+        {
             rangeState.FireArrow();
+        }
+
     }
 
     #region  Need MonoBehaviour Method

@@ -6,13 +6,6 @@ public class EAttackState : EnemyBaseState
     public EAttackState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
     {
     }
-}
-
-public class EnemyAttackState : EAttackState
-{
-    public EnemyAttackState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
-    {
-    }
     private float _time;
     private float _animtionTime;
 
@@ -75,5 +68,13 @@ public class EnemyAttackState : EAttackState
         Vector2 direction = DirectionToTarget();
         Rotate(direction);
     }
+}
+
+public class EnemyAttackState : EAttackState
+{
+    public EnemyAttackState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
+    {
+    }
+   
 }
 
