@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
     public bool IsRight { get; set; } = true;
     public EnemySO Data {get => enemyData;}
     public MonsterType Type {get => type;}
-    public GameObject EnemyPrefab => enemyPrefab;
+    public GameObject Weapon { get; set; }
 
     
     private void Update()
@@ -72,6 +72,7 @@ public class Enemy : MonoBehaviour
         Condition = GetComponent<EnemyCondition>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         EnemyWeapon = GetComponentInChildren<EnemyWeapon>();
+        Weapon = EnemyWeapon.gameObject;
         AnimationDB.Initailize();
         
         Condition.Init(this);
