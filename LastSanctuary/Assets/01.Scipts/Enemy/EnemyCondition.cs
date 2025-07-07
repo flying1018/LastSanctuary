@@ -13,6 +13,8 @@ public class EnemyCondition : MonoBehaviour, IDamageable
     private int _defense;
     private int _damage;
     private bool _isTakeDamageable;
+    private Coroutine _hitEffectCoroutine;
+    private Color _originColor;
     //프로퍼티
     public bool IsInvincible { get; set; }
 
@@ -23,6 +25,9 @@ public class EnemyCondition : MonoBehaviour, IDamageable
         _maxHp = _enemy.Data.hp;
         _defense = _enemy.Data.defense;
         _curHp = _maxHp;
+        _originColor = _enemy.SpriteRenderer.color;
+        _isTakeDamageable = false;
+        IsInvincible = false;
     }
 
     private IEnumerator DamageDelay_Coroutine()
@@ -33,16 +38,21 @@ public class EnemyCondition : MonoBehaviour, IDamageable
     }
     private void OnHitEffected()
     {
-        StartCoroutine(HitEffect_Coroutine());
+        if (_hitEffectCoroutine != null)
+        {
+            StopCoroutine(_hitEffectCoroutine);
+            _hitEffectCoroutine = null;       
+        }
+        _hitEffectCoroutine = StartCoroutine(HitEffect_Coroutine());
     }
+    
     private IEnumerator HitEffect_Coroutine()
     {
         SpriteRenderer sprite = _enemy.SpriteRenderer;
-        Color originColor = sprite.color;
         
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, _enemy.Data.alphaValue);
         yield return new WaitForSeconds(_enemy.Data.hitDuration);
-        sprite.color = originColor;
+        sprite.color = _originColor;
     }
     private void Death()
     {
@@ -53,7 +63,7 @@ public class EnemyCondition : MonoBehaviour, IDamageable
         _enemy.Animator.SetTrigger(_enemy.AnimationDB.DeathParameterHash);
         _enemy.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
         yield return new WaitForSeconds(_enemy.Data.deathTime);
-        //ObjectPoolManager.Set(_enemy.Data._key, _enemy.EnemyPrefab, _enemy.gameObject);
+        ObjectPoolManager.Set(_enemy.Data._key, _enemy.gameObject, _enemy.gameObject);
     }
 
     public void TakeDamage(int atk, DamageType type, Transform attackDir, float knockBackPower)
@@ -71,7 +81,6 @@ public class EnemyCondition : MonoBehaviour, IDamageable
         {
             if (knockBackPower>0)
             {
-                Debug.Log("asd");
                 ChangingHitState();
                 KnockBack(attackDir, knockBackPower);
             }

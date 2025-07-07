@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 [CreateAssetMenu(fileName = "Enemy", menuName = "New Enemy")]
@@ -39,4 +40,9 @@ public class EnemySO : ScriptableObject
     public float alphaValue;
     public AnimationClip deathAnim;
     public float deathTime => deathAnim.length;
+    
+    [Header("Range Attack")]
+    public GameObject arrowPrefab;
+    public int arrowPoolId;
+    public int arrowPower;
 }

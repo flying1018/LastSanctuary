@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPatrolState : EnemyBaseState
+public class EnemyPatrolState : EIdleState
 {
     public EnemyPatrolState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine) {}
     
@@ -20,18 +20,12 @@ public class EnemyPatrolState : EnemyBaseState
         StopAnimation(_enemy.AnimationDB.WalkParameterHash);
     }
     
-    public override void Update()
+    public override void PhysicsUpdate()
     {
-        base.Update();
-        patrol();
-
-        if (_enemy.Target != null)
-        {
-            _stateMachine.ChangeState(_stateMachine.DetectState);
-        }
+        Patrol();
     }
 
-    public void patrol()
+    public void Patrol()
     {
         Vector2 pos =_enemy.transform.position;
 

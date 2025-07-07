@@ -36,5 +36,7 @@ public static class StringNameSpace
         public const string AerialPlatform = "AerialPlatform";
         public const string SavePoint = "SavePoint";
         public const string Enemy = "Enemy";
+        public const string Ground = "Ground";
+        
     }
 }

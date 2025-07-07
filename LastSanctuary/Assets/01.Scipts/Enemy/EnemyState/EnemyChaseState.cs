@@ -1,13 +1,12 @@
 using UnityEngine;
 
-public class EnemyChaseState : EnemyBaseState
+public class EChaseState : EnemyBaseState
 {
-    private float _time;
-
-    public EnemyChaseState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
+    protected float _time;
+    public EChaseState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
     {
     }
-
+    
     public override void Enter()
     {
         StartAnimation(_enemy.AnimationDB.WalkParameterHash);
@@ -15,13 +14,12 @@ public class EnemyChaseState : EnemyBaseState
         _time = 0;
         
     }
-
+    
     public override void Exit()
     {
-        Move(Vector2.zero);
         StopAnimation(_enemy.AnimationDB.WalkParameterHash);
     }
-
+    
     public override void Update()
     {
         base.Update();
@@ -35,17 +33,36 @@ public class EnemyChaseState : EnemyBaseState
         //1. 타겟이 추적 범위안에 도달 했을 때
         if (WithinChaseDistance())
         {
-            _stateMachine.ChangeState(_stateMachine.IdleState);
+            _stateMachine.ChangeState(_stateMachine.BattleState);
         }
 
     }
-
+    
     public override void PhysicsUpdate()
     {
         Chase();
     }
 
-    private void Chase()
+    protected virtual void Chase()
+    {
+        
+    }
+}
+
+
+public class EnemyChaseState : EChaseState
+{
+    public EnemyChaseState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
+    {
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        Move(Vector2.zero);
+    }
+
+    protected override void Chase()
     {
         if(_enemy.Target == null) return;
         if (!_enemy.IsPlatform())

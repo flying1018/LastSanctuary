@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -134,7 +134,217 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 03_LanceSkeleton_Attak_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 0
+        width: 76
+        height: 61
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b73bd91d800d727478b5fa4d0d2ff77e
+      internalID: -1394826740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03_LanceSkeleton_Attak_1
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 0
+        width: 76
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76960e95ebf03574c8fe544be6dc4e08
+      internalID: -1658076921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03_LanceSkeleton_Attak_2
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 0
+        width: 90
+        height: 57
+      alignment: 9
+      pivot: {x: 0.1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd48bed3eaa2fd44dbd859daa4db08ff
+      internalID: 961389918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03_LanceSkeleton_Attak_3
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 0
+        width: 80
+        height: 56
+      alignment: 9
+      pivot: {x: 0.1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cad48d4d270cb047bbd8dd5cd889405
+      internalID: 60844201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03_LanceSkeleton_Attak_4
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 0
+        width: 76
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b5efb73a86a50b479527026ebeceb57
+      internalID: 1900673142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03_LanceSkeleton_Attak_5
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 0
+        width: 96
+        height: 57
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecfeef7a58e10d34d971444adc21e724
+      internalID: 723008271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03_LanceSkeleton_Attak_6
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 0
+        width: 76
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 496cd9f8e495ec7448e385943a6c00f8
+      internalID: -2080992595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03_LanceSkeleton_Attak_7
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 0
+        width: 99
+        height: 57
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20cb2fda76b025841a41d29758a1b445
+      internalID: -1230291555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03_LanceSkeleton_Attak_8
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 0
+        width: 76
+        height: 57
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6633c3384608a934b9728d80af274c40
+      internalID: -533967617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03_LanceSkeleton_Attak_9
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 0
+        width: 76
+        height: 56
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5db31b35ff90a744c82c36c1cb35d9c0
+      internalID: 1478270254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +355,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      03_LanceSkeleton_Attak_0: -1394826740
+      03_LanceSkeleton_Attak_1: -1658076921
+      03_LanceSkeleton_Attak_12: -806038561
+      03_LanceSkeleton_Attak_2: 961389918
+      03_LanceSkeleton_Attak_3: 60844201
+      03_LanceSkeleton_Attak_4: 1900673142
+      03_LanceSkeleton_Attak_5: 723008271
+      03_LanceSkeleton_Attak_6: -2080992595
+      03_LanceSkeleton_Attak_7: -1230291555
+      03_LanceSkeleton_Attak_8: -533967617
+      03_LanceSkeleton_Attak_9: 1478270254
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

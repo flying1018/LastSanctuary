@@ -59,9 +59,18 @@ public class EnemyBaseState : IState
         _rigidbody.velocity = moveVelocity;
     }
 
+    protected void Fly(Vector2 direction)
+    {
+        Vector2 moveVelocity = direction.normalized * _data.moveSpeed;
+        _rigidbody.velocity = moveVelocity;
+    }
+
     protected void Rotate(Vector2 direction)
     {
         _spriteRenderer.flipX = direction.x < 0;
+        //무기 회전
+        float angle = _spriteRenderer.flipX ? 180 : 0;
+        _enemy.Weapon.transform.rotation = Quaternion.Euler(angle, 0, angle);
     }
     
     //공격 사정거리 1/2 만큼 접근

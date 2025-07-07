@@ -5,13 +5,14 @@ using UnityEngine;
 public class EnemyStateMachine : StateMachine
 {
     public Enemy Enemy { get; private set; }
-    public EnemyIdleState IdleState { get; private set; }
-    public EnemyChaseState ChaseState { get; private set;}
-    public EnemyAttackState AttackState { get; private set;}
-    public EnemyReturnState ReturnState { get; private set;}
+    public EIdleState IdleState { get; private set; }
+    public EChaseState ChaseState { get; private set;}
+    public EAttackState AttackState { get; private set;}
+    public EReturnState ReturnState { get; private set;}
     public EnemyHitState HitState { get; private set;}
     public EnemyDetectState DetectState { get; private set;}
-    public EnemyPatrolState PatrolState { get; private set; }
+    public EnemyBattleState BattleState { get; private set;}
+    
 
     public float attackCoolTime;
 
@@ -19,22 +20,39 @@ public class EnemyStateMachine : StateMachine
     {
         this.Enemy = enemy;
 
-        IdleState = new EnemyIdleState(this);
-        ChaseState = new EnemyChaseState(this);
-        AttackState = new EnemyAttackState(this);
-        ReturnState = new EnemyReturnState(this);
-        HitState = new EnemyHitState(this);
-        DetectState = new EnemyDetectState(this);
-        PatrolState = new EnemyPatrolState(this);
-        
-         switch (enemy.Type)
+        switch (enemy.IdleType)
         {
-            case MonsterType.Idle:
-                ChangeState(IdleState);
+            case IdleType.Idle:
+                IdleState = new EnemyIdleState(this);
                 break;
-            case MonsterType.Patrol:
-                ChangeState(PatrolState);
+            case IdleType.Patrol:
+                IdleState = new EnemyPatrolState(this);
                 break;
         }
+        switch (enemy.MoveType)
+        {
+            case MoveType.Walk:
+                ChaseState = new EnemyChaseState(this);
+                ReturnState = new EnemyReturnState(this);
+                break;
+            case MoveType.Fly:
+                ChaseState = new EnemyFlyChaseState(this);
+                ReturnState = new EnemyFlyReturnState(this);
+                break;
+        }
+        switch (enemy.AttackType)
+        {
+            case AttackType.Melee:
+                AttackState = new EnemyAttackState(this);
+                break;
+            case AttackType.Range:
+                AttackState = new EnemyRangeAttackState(this);
+                break;
+        }
+        HitState = new EnemyHitState(this);
+        DetectState = new EnemyDetectState(this);
+        BattleState = new EnemyBattleState(this);
+        
+        ChangeState(IdleState);
     }
 }
