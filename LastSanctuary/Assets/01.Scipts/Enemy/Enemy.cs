@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum MonsterType
+public enum IdleType
 {
     Idle,
     Patrol,
@@ -14,14 +14,10 @@ public class Enemy : MonoBehaviour
     //직렬화
     [field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
     [SerializeField] private EnemySO enemyData;
-    [SerializeField] private GameObject enemyModel;
-    [SerializeField] private LayerMask playerLayer;
     [SerializeField] private LayerMask platformLayer;
     [SerializeField] private float platformCheckDistance;
-    [SerializeField] private MonsterType type;
-    [SerializeField] private GameObject enemyPrefab;
-    //투사체?
-    
+    [SerializeField] private IdleType idleType;
+
     //프로퍼티
     public EnemyStateMachine StateMachine { get; set; }
     public Rigidbody2D Rigidbody {get; set;}
@@ -32,9 +28,9 @@ public class Enemy : MonoBehaviour
     public Transform SpawnPoint { get; set; }
     public EnemyWeapon EnemyWeapon { get; set; }
     public bool IsRight { get; set; } = true;
-    public EnemySO Data {get => enemyData;}
-    public MonsterType Type {get => type;}
     public GameObject Weapon { get; set; }
+    public EnemySO Data {get => enemyData;}
+    public IdleType IdleType {get => idleType;}
 
     
     private void Update()
@@ -47,7 +43,7 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
-        //Debug.Log(StateMachine.currentState);
+        Debug.Log(StateMachine.currentState);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

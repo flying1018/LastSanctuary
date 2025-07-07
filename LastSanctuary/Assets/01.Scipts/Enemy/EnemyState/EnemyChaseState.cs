@@ -35,7 +35,7 @@ public class EnemyChaseState : EnemyBaseState
         //1. 타겟이 추적 범위안에 도달 했을 때
         if (WithinChaseDistance())
         {
-            _stateMachine.ChangeState(_stateMachine.IdleState);
+            _stateMachine.ChangeState(_stateMachine.BattleState);
         }
 
     }
