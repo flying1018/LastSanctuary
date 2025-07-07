@@ -6,6 +6,7 @@ public class LeverObject : MonoBehaviour, IDamageable
 {
     [SerializeField] private bool isOn = false;
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioClip audioClip;
 
     private bool _isMove;
 
@@ -26,7 +27,7 @@ public class LeverObject : MonoBehaviour, IDamageable
 
     private IEnumerator Toggle()
     {
-        //SoundManager.Instance.PlaySFX(StringNameSpace.SoundAddress.LeverObjectSFX);
+        //SoundManager.Instance.PlaySFX(audioClip);
         _isMove = true;
 
         isOn = !isOn;
