@@ -59,6 +59,12 @@ public class EnemyBaseState : IState
         _rigidbody.velocity = moveVelocity;
     }
 
+    protected void Fly(Vector2 direction)
+    {
+        Vector2 moveVelocity = direction.normalized * _data.moveSpeed;
+        _rigidbody.velocity = moveVelocity;
+    }
+
     protected void Rotate(Vector2 direction)
     {
         _spriteRenderer.flipX = direction.x < 0;

@@ -22,7 +22,7 @@ public class EnemySpawnPoint : MonoBehaviour
     {
         GameObject go =Instantiate(monster, transform.position, transform.rotation);
         _enemy = go.GetComponent<Enemy>();
-        _enemy.Init(this.transform);
+        _enemy.Init(transform);
     }
 
     public void Respawn()

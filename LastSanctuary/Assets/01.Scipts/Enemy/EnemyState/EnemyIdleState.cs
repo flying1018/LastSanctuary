@@ -34,4 +34,18 @@ public class EnemyIdleState : EIdleState
     {
         StopAnimation(_enemy.AnimationDB.IdleParameterHash);
     }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+        switch (_enemy.MoveType)
+        {
+            case MoveType.Walk:
+                Move(Vector2.zero);
+                break;
+            case MoveType.Fly:
+                Fly(Vector2.zero);
+                break;
+        }
+    }
 }

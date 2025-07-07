@@ -1341,7 +1341,7 @@ PrefabInstance:
     - target: {fileID: 5338306366773298638, guid: 4653b3b449fac104cb979968fa51464b, type: 3}
       propertyPath: monster
       value: 
-      objectReference: {fileID: 3153555157828818715, guid: ab21ebce0a1a3dd45a1a6eae20903f1f, type: 3}
+      objectReference: {fileID: 3153555157828818715, guid: 0ff8090c0f3a10e4782dcfc22e21600f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
