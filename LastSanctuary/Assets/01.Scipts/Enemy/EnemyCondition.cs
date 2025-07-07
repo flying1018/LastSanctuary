@@ -26,6 +26,8 @@ public class EnemyCondition : MonoBehaviour, IDamageable
         _defense = _enemy.Data.defense;
         _curHp = _maxHp;
         _originColor = _enemy.SpriteRenderer.color;
+        _isTakeDamageable = false;
+        IsInvincible = false;
     }
 
     private IEnumerator DamageDelay_Coroutine()
@@ -61,7 +63,7 @@ public class EnemyCondition : MonoBehaviour, IDamageable
         _enemy.Animator.SetTrigger(_enemy.AnimationDB.DeathParameterHash);
         _enemy.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
         yield return new WaitForSeconds(_enemy.Data.deathTime);
-        //ObjectPoolManager.Set(_enemy.Data._key, _enemy.EnemyPrefab, _enemy.gameObject);
+        ObjectPoolManager.Set(_enemy.Data._key, _enemy.EnemyModel, _enemy.gameObject);
     }
 
     public void TakeDamage(int atk, DamageType type, Transform attackDir, float knockBackPower)

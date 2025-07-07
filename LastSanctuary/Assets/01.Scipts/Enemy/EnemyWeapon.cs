@@ -7,7 +7,7 @@ public class EnemyWeapon : MonoBehaviour
     public int Damage { get; set;}
     public float KnockBackForce { get; set;}
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public virtual void OnTriggerEnter2D(Collider2D other)
     {
 
         if (other.TryGetComponent(out IDamageable idamageable) )
