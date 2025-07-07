@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public enum IdleType
 {
@@ -6,16 +7,16 @@ public enum IdleType
     Patrol,
 }
 
-public enum AttackType
-{
-    Melee,
-    Range,
-}
-
 public enum MoveType
 {
     Walk,
     Fly,
+}
+
+public enum AttackType
+{
+    Melee,
+    Range,
 }
 
 public class Enemy : MonoBehaviour
@@ -29,9 +30,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private LayerMask platformLayer;
     [SerializeField] private float platformCheckDistance;
     [SerializeField] private IdleType idleType;
-    [SerializeField] private AttackType attackType;
     [SerializeField] private MoveType moveType;
-
+    [SerializeField] private AttackType attackType;
+    
     //프로퍼티
     public EnemyStateMachine StateMachine { get; set; }
     public Rigidbody2D Rigidbody {get; set;}
@@ -45,8 +46,9 @@ public class Enemy : MonoBehaviour
     public GameObject Weapon { get; set; }
     public EnemySO Data {get => enemyData;}
     public IdleType IdleType {get => idleType;}
-    public AttackType AttackType {get => attackType;}
     public MoveType MoveType {get => moveType;}
+    public AttackType AttackType {get => attackType;}
+
     
     private void Update()
     {
@@ -75,11 +77,8 @@ public class Enemy : MonoBehaviour
 
     public void FireArrow()
     {
-        if (StateMachine.AttackState is EnemyRangeAttackState rangeState)
-        {
+        if (StateMachine.currentState is EnemyRangeAttackState rangeState)
             rangeState.FireArrow();
-        }
-
     }
 
     #region  Need MonoBehaviour Method

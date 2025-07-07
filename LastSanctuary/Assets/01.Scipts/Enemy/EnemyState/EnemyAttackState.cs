@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class EAttackState : EnemyBaseState
 {
+    protected float _time;
+    protected float _animtionTime;
+
     public EAttackState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
     {
     }
-    private float _time;
-    private float _animtionTime;
-
-
+    
     public override void Enter()
     {
         //공격에 관련된 정보 초기화
@@ -25,12 +25,12 @@ public class EAttackState : EnemyBaseState
         _enemy.EnemyWeapon.Damage = _data.attack;
         _enemy.EnemyWeapon.KnockBackForce = _data.knockbackForce;
     }
-
+    
     public override void Exit()
     {
-        StartAnimation(_enemy.AnimationDB.IdleParameterHash);
+        StopAnimation(_enemy.AnimationDB.IdleParameterHash);
     }
-
+    
     public override void Update()
     {
         //에니메이션이 끝나야 쿨타임 체크
@@ -59,7 +59,7 @@ public class EAttackState : EnemyBaseState
         }
 
     }
-
+    
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
@@ -75,6 +75,6 @@ public class EnemyAttackState : EAttackState
     public EnemyAttackState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
     {
     }
-   
+    
 }
 
