@@ -32,7 +32,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MaceSkeleton_Hit
+  m_Name: HoodSniper_Hit
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -45,7 +45,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 96ce74cd3d9e28248961c1378862c546, type: 2}
+  m_Motion: {fileID: 7400000, guid: cd99a98c448d5054eaa6c6e87f7afe01, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -125,7 +125,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MaceSkeleton_Idle
+  m_Name: HoodSniper_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -141,7 +141,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: da055bb2e9938f7408b4253fe11a2939, type: 2}
+  m_Motion: {fileID: 7400000, guid: 93d8004c95c90794eae869bf0364fbc7, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -154,7 +154,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MaceSkeleton_Walk
+  m_Name: HoodSniper_Walk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -169,7 +169,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f852b652ac3be734988cb46d54d139d0, type: 2}
+  m_Motion: {fileID: 7400000, guid: 2f595d6bf35d8dd4e889ee9f0b31784f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -182,7 +182,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MaceSkeleton_Attack
+  m_Name: HoodSniper_Attack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -196,7 +196,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e3899a35106287c4e80d62e6ade9488c, type: 2}
+  m_Motion: {fileID: 7400000, guid: 32f545428e2fedc4fa0fae19f49bdcb7, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -256,7 +256,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MaceSkeleton_Death
+  m_Name: HoodSniper_Death
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -269,7 +269,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 2fee7b95aee869640ab0bfeea263aabf, type: 2}
+  m_Motion: {fileID: 7400000, guid: f919a152158bfc44cab06413c735a95d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -433,13 +433,13 @@ AnimatorStateMachine:
     m_Position: {x: 250, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3601572469278691009}
-    m_Position: {x: 370, y: 240, z: 0}
+    m_Position: {x: 370, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1637490448049689560}
     m_Position: {x: 530, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8606834059738314576}
-    m_Position: {x: 250, y: -60, z: 0}
+    m_Position: {x: 260, y: -60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -528919359840792039}
     m_Position: {x: 260, y: 40, z: 0}

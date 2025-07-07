@@ -865,6 +865,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5338306366773298638, guid: 4653b3b449fac104cb979968fa51464b, type: 3}
+      propertyPath: monster
+      value: 
+      objectReference: {fileID: 3153555157828818715, guid: 54f58af310c87cb49a0285ecfb9948ef, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19963,6 +19967,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5338306366773298638, guid: 4653b3b449fac104cb979968fa51464b, type: 3}
+      propertyPath: monster
+      value: 
+      objectReference: {fileID: 3153555157828818715, guid: 0ff8090c0f3a10e4782dcfc22e21600f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20164,6 +20172,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5338306366773298638, guid: 4653b3b449fac104cb979968fa51464b, type: 3}
+      propertyPath: monster
+      value: 
+      objectReference: {fileID: 3153555157828818715, guid: 54f58af310c87cb49a0285ecfb9948ef, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

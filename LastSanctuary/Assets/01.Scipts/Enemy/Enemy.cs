@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public enum MonsterType
+public enum IdleType
 {
     Idle,
     Patrol,
@@ -58,6 +58,12 @@ public class Enemy : MonoBehaviour
                 damageable.TakeDamage(Data.attack,DamageType.Contact,transform,Data.knockbackForce);
             }
         }
+    }
+
+    public void FireArrow()
+    {
+        if (StateMachine.currentState is EnemyRangeAttackState rangeState)
+            rangeState.FireArrow();
     }
 
     #region  Need MonoBehaviour Method

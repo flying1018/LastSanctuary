@@ -39,4 +39,9 @@ public class EnemySO : ScriptableObject
     public float alphaValue;
     public AnimationClip deathAnim;
     public float deathTime => deathAnim.length;
+    
+    [Header("Range Attack")]
+    public GameObject arrowPrefab;
+    public int arrowPoolId;
+    public int arrowSpeed;
 }

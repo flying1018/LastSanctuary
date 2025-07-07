@@ -169,7 +169,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 2}
+  m_Size: {x: 0.6, y: 2}
   m_Direction: 0
 --- !u!50 &-5163532016691331955
 Rigidbody2D:
@@ -228,16 +228,13 @@ MonoBehaviour:
     attackParameter: Attack
     hitParameter: Hit
     deathParameter: Death
-  enemyData: {fileID: 11400000, guid: 79002608b4f4cac48b62fd38ebe5331e, type: 2}
-  enemyModel: {fileID: 3153555157828818715}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  enemyData: {fileID: 11400000, guid: e2cdeebcee3a1cf43b4ac03ad42cb0cb, type: 2}
+  enemyPrefab: {fileID: 0}
   platformLayer:
     serializedVersion: 2
     m_Bits: 1280
   platformCheckDistance: 2
-  type: 0
+  idleType: 0
 --- !u!1 &6224774757196196992
 GameObject:
   m_ObjectHideFlags: 0

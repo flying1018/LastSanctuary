@@ -7,6 +7,7 @@ public static class ObjectPoolManager
     public enum PoolingIndex
     {
         Monster = 1,
+        Arrow = 2,
     }
     private static Dictionary<int, Queue<GameObject>> poolDictionary = new();
 
