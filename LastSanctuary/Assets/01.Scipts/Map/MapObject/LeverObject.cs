@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LeverObject : MonoBehaviour, IDamageable
+{
+    [SerializeField] private bool isOn = false;
+    [SerializeField] private Animator animator;
+
+    private bool _isMove;
+
+    private void UpdateVisual()
+    {
+        animator.SetBool("isOn", isOn);
+    }
+
+    public void TakeDamage(int atk, DamageType type, Transform attacker, float knockBackPower)
+    {
+        if (_isMove) { return; }
+        StartCoroutine(Toggle());
+    }
+
+    public void ApplyDamage(int totalDamage) { }
+    public void KnockBack(Transform dir, float knockBackPower) { }
+    public void ChangingHitState() { }
+
+    private IEnumerator Toggle()
+    {
+        //SoundManager.Instance.PlaySFX(StringNameSpace.SoundAddress.LeverObjectSFX);
+        _isMove = true;
+
+        isOn = !isOn;
+        DebugHelper.Log($"레버 상태 : {isOn}임");
+        UpdateVisual();
+
+        yield return new WaitForSeconds(2f);
+
+        _isMove = false;
+    }
+}
