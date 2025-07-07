@@ -13,7 +13,6 @@ public class EnemyHitState : EnemyBaseState
         _enemy.Animator.SetTrigger(_enemy.AnimationDB.HitParameterHash);
         
         _hitStart = Time.time;
-        Debug.Log("Hit");
     }
 
     public override void Exit()
@@ -25,7 +24,7 @@ public class EnemyHitState : EnemyBaseState
     {
         if (Time.time - _hitStart >= _data.HitDuration)
         {
-            _stateMachine.ChangeState(_stateMachine.IdleState);
+            _stateMachine.ChangeState(_stateMachine.BattleState);
         }
     }
     

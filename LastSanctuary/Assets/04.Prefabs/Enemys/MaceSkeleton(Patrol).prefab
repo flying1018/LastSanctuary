@@ -169,15 +169,11 @@ MonoBehaviour:
     hitParameter: Hit
     deathParameter: Death
   enemyData: {fileID: 11400000, guid: 79002608b4f4cac48b62fd38ebe5331e, type: 2}
-  enemyModel: {fileID: 3153555157828818715}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
   platformLayer:
     serializedVersion: 2
     m_Bits: 1280
-  platformCheckDistance: 5
-  type: 1
+  platformCheckDistance: 3
+  idleType: 1
 --- !u!50 &-5163532016691331955
 Rigidbody2D:
   serializedVersion: 4

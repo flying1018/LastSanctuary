@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public enum MonsterType
 {
@@ -14,12 +15,10 @@ public class Enemy : MonoBehaviour
     //직렬화
     [field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
     [SerializeField] private EnemySO enemyData;
-    [SerializeField] private GameObject enemyModel;
-    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private LayerMask platformLayer;
     [SerializeField] private float platformCheckDistance;
-    [SerializeField] private MonsterType type;
-    //투사체?
+    [SerializeField] private IdleType idleType;
     
     //프로퍼티
     public EnemyStateMachine StateMachine { get; set; }
@@ -31,11 +30,12 @@ public class Enemy : MonoBehaviour
     public Transform SpawnPoint { get; set; }
     public EnemyWeapon EnemyWeapon { get; set; }
     public bool IsRight { get; set; } = true;
+    public GameObject Weapon { get; set; }
     public EnemySO Data {get => enemyData;}
-    public MonsterType Type {get => type;}
-    public GameObject EnemyModel {get => enemyModel;}
+    public IdleType IdleType {get => idleType;}
+    public GameObject EnemyModel {get => enemyPrefab;}
 
-
+    
     private void Update()
     {
         StateMachine.HandleInput();
@@ -71,6 +71,7 @@ public class Enemy : MonoBehaviour
         Condition = GetComponent<EnemyCondition>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         EnemyWeapon = GetComponentInChildren<EnemyWeapon>();
+        Weapon = EnemyWeapon.gameObject;
         AnimationDB.Initailize();
         
         Condition.Init(this);

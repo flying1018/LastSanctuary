@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 7080938109545919741}
   - component: {fileID: 1348362879168003846}
   m_Layer: 0
-  m_Name: MaceSkeleton(Idle)
+  m_Name: LanceSkeleton(Patrol)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ Animator:
   m_GameObject: {fileID: 3153555157828818715}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 68fb441bb51f18d4a8dd1c7db4de805f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3333c0023f30b544e80b415e02a707fd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -169,7 +169,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 2}
+  m_Size: {x: 0.6, y: 2}
   m_Direction: 0
 --- !u!50 &-5163532016691331955
 Rigidbody2D:
@@ -228,17 +228,12 @@ MonoBehaviour:
     attackParameter: Attack
     hitParameter: Hit
     deathParameter: Death
-  enemyData: {fileID: 11400000, guid: 79002608b4f4cac48b62fd38ebe5331e, type: 2}
-  enemyModel: {fileID: 3153555157828818715}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  enemyData: {fileID: 11400000, guid: 790ca16ca97a0cd428cecb6988ba6e05, type: 2}
   platformLayer:
     serializedVersion: 2
     m_Bits: 1280
   platformCheckDistance: 2
-  type: 0
-  enemyPrefab: {fileID: 0}
+  idleType: 1
 --- !u!1 &6224774757196196992
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +335,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 246564995851524428}
@@ -386,9 +381,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1952791576, guid: dd23ec790d29c304f82e7faedaa7d5a2, type: 3}
+  m_Sprite: {fileID: 198625600, guid: 8b3e240fa87326d48a58c920b6630ac5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}
