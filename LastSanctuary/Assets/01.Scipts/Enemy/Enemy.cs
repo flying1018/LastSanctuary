@@ -7,6 +7,12 @@ public enum IdleType
     Patrol,
 }
 
+public enum AttackType
+{
+    Melee,
+    Range,
+}
+
 public class Enemy : MonoBehaviour
 {
     //필드
@@ -19,6 +25,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private LayerMask platformLayer;
     [SerializeField] private float platformCheckDistance;
     [SerializeField] private IdleType idleType;
+    [SerializeField] private AttackType attackType;
     
     //프로퍼티
     public EnemyStateMachine StateMachine { get; set; }
@@ -34,8 +41,9 @@ public class Enemy : MonoBehaviour
     public EnemySO Data {get => enemyData;}
     public IdleType IdleType {get => idleType;}
     public GameObject EnemyModel {get => enemyPrefab;}
+    public AttackType AttackType {get => attackType;}
 
-    
+
     private void Update()
     {
         StateMachine.HandleInput();
@@ -46,7 +54,7 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
-        //Debug.Log(StateMachine.currentState);
+        Debug.Log(StateMachine.currentState);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

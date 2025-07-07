@@ -7,7 +7,7 @@ public class EnemyStateMachine : StateMachine
     public Enemy Enemy { get; private set; }
     public EIdleState IdleState { get; private set; }
     public EnemyChaseState ChaseState { get; private set;}
-    public EnemyAttackState AttackState { get; private set;}
+    public EAttackState AttackState { get; private set;}
     public EnemyReturnState ReturnState { get; private set;}
     public EnemyHitState HitState { get; private set;}
     public EnemyDetectState DetectState { get; private set;}
@@ -30,7 +30,16 @@ public class EnemyStateMachine : StateMachine
                 break;
         }
         ChaseState = new EnemyChaseState(this);
-        AttackState = new EnemyAttackState(this);
+        switch (enemy.AttackType)
+        {
+            case AttackType.Melee:
+                AttackState = new EnemyAttackState(this);
+                break;
+            case AttackType.Range:
+                AttackState = new EnemyRangeAttackState(this);
+                break;
+        }
+       
         ReturnState = new EnemyReturnState(this);
         HitState = new EnemyHitState(this);
         DetectState = new EnemyDetectState(this);
