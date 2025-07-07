@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public enum IdleType
 {
@@ -13,6 +12,12 @@ public enum AttackType
     Range,
 }
 
+public enum MoveType
+{
+    Walk,
+    Fly,
+}
+
 public class Enemy : MonoBehaviour
 {
     //필드
@@ -21,12 +26,12 @@ public class Enemy : MonoBehaviour
     //직렬화
     [field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
     [SerializeField] private EnemySO enemyData;
-    [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private LayerMask platformLayer;
     [SerializeField] private float platformCheckDistance;
     [SerializeField] private IdleType idleType;
     [SerializeField] private AttackType attackType;
-    
+    [SerializeField] private MoveType moveType;
+
     //프로퍼티
     public EnemyStateMachine StateMachine { get; set; }
     public Rigidbody2D Rigidbody {get; set;}
@@ -40,10 +45,9 @@ public class Enemy : MonoBehaviour
     public GameObject Weapon { get; set; }
     public EnemySO Data {get => enemyData;}
     public IdleType IdleType {get => idleType;}
-    public GameObject EnemyModel {get => enemyPrefab;}
     public AttackType AttackType {get => attackType;}
-
-
+    public MoveType MoveType {get => moveType;}
+    
     private void Update()
     {
         StateMachine.HandleInput();
@@ -54,7 +58,8 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
-        Debug.Log(StateMachine.currentState);
+        //Debug.Log(StateMachine.currentState);
+        //Debug.Log(StateMachine.attackCoolTime);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
