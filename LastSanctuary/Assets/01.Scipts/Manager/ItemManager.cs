@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,19 @@ using UnityEngine;
 public class ItemManager : Singleton<ItemManager>
 {
     public PlayerCondition playerCondition;
-    public Inventory inventory;
+    public PlayerInventory playerInventory;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        Init();
+    }
 
+    public void Init()
+    {
+        playerCondition = FindAnyObjectByType<PlayerCondition>();
+        playerInventory = FindAnyObjectByType<PlayerInventory>();
+    }
     public void UpgradeStat(StatObjectSO statObjectSO)
     {
         
@@ -17,7 +28,4 @@ public class ItemManager : Singleton<ItemManager>
     {
 
     }
-
-
-    public void Init() { }
 }
