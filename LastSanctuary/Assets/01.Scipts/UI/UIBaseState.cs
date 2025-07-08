@@ -8,6 +8,7 @@ public class UIBaseState : IState
     protected UIManager _uiManager;
     protected PlayerCondition _playerCondition;
     protected PlayerInventory _playerInventory;
+    protected UIManagerSO _data;
     
     public UIBaseState(UIStateMachine uiStateMachine)
     {
@@ -15,6 +16,7 @@ public class UIBaseState : IState
         _uiManager = uiStateMachine.UIManager;
         _playerCondition = _uiManager.PlayerCondition;
         _playerInventory = _uiManager.PlayerInventory;
+        _data = _uiManager.Data;
     }
     
     public void Enter()

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class StatUI : MonoBehaviour
 {
+    public TextMeshProUGUI statName;
     public TextMeshProUGUI basic;
     public TextMeshProUGUI relic;
     public TextMeshProUGUI buff;

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab14ca49ce1e5043bb17ff24f52ed84, type: 3}
+  m_Name: UIManager
+  m_EditorClassIdentifier: 
+  statNames:
+  - "\uACF5\uACA9\uB825"
+  - "\uBC29\uC5B4\uB825"
+  - "\uCD5C\uB300 \uCCB4\uB825"
+  - "\uCD5C\uB300 \uC2A4\uD0DC\uBBF8\uB098"
+  equipNum: 5
+  slotNum: 6
+  maxNumOfLine: 8
+  statInterval: 0
+  equipInterval: 20
+  slotInterval: 20
+  statUIPrefab: {fileID: 819825158840137022, guid: 22341d572293d6e428e7a97b27ba635e, type: 3}
+  equipUIPrefab: {fileID: 7505059567028691083, guid: e77f58111ab52754f93611a0082027c9, type: 3}
+  slotUIPrefab: {fileID: 6861087890945916903, guid: a0dbed150bcee3e4cbf6c93e9928e771, type: 3}
