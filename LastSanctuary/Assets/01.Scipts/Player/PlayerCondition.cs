@@ -7,14 +7,14 @@ public class PlayerCondition : MonoBehaviour, IDamageable
 {
     private Player _player;
     private int _totaldamage;
-    private int _maxHp = 1000;
     private int _curHp;
-    private float _maxStamina = 100;
     private float _curStamina;
     private int _staminaRecovery;
-    private int _defence;
     
-    public int Attack { get; private set; }
+    public int Attack { get; set; }
+    public int Defence{ get; set; }
+    public float MaxStamina { get; set; }
+    public int MaxHp { get; set; }
     public bool IsPerfectGuard { get; set; }
     public bool IsGuard { get; set; }
     public bool IsInvincible { get; set; }
@@ -25,13 +25,13 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private void Awake()
     {
         _player = GetComponent<Player>();
-        _maxHp = _player.Data.hp;
-        _maxStamina = _player.Data.stamina;
+        MaxHp = _player.Data.hp;
+        MaxStamina = _player.Data.stamina;
         _staminaRecovery = _player.Data.staminaRecovery;
-        _defence = _player.Data.defense;
+        Defence = _player.Data.defense;
         Attack = _player.Data.attack;
-        _curHp = _maxHp;
-        _curStamina = _maxStamina;
+        _curHp = MaxHp;
+        _curStamina = MaxStamina;
     }
 
     private void Update()
@@ -70,8 +70,8 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     
     public void PlayerRecovery()
     {
-        _curHp = _maxHp;
-        _curStamina = _maxStamina;
+        _curHp = MaxHp;
+        _curStamina = MaxStamina;
     }
     
     public bool UsingStamina(int stamina)
@@ -87,10 +87,10 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     //스테미나 회복
     public void RecoveryStamina()
     {
-        if (_curStamina < _maxStamina)
+        if (_curStamina < MaxStamina)
         {
             _curStamina += _staminaRecovery * Time.deltaTime;
-            _curStamina = Mathf.Clamp(_curStamina, 0, _maxStamina);
+            _curStamina = Mathf.Clamp(_curStamina, 0, MaxStamina);
         }
     }
     
@@ -151,10 +151,10 @@ public class PlayerCondition : MonoBehaviour, IDamageable
 
     public void Heal(int healAmount)
     {
-        if (_curHp < _maxHp)
+        if (_curHp < MaxHp)
         {
             _curHp += healAmount;
-            _curHp = Mathf.Clamp(_curHp, 0, _maxHp);
+            _curHp = Mathf.Clamp(_curHp, 0, MaxHp);
         }
     }
     

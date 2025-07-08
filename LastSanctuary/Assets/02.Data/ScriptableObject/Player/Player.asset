@@ -57,7 +57,9 @@ MonoBehaviour:
   <damageReduction>k__BackingField: 0.8
   hitSound: {fileID: 8300000, guid: f9277f2f29a788b48a02d30db503506a, type: 3}
   hp: 100
-  damage: 20
-  defense: 20
+  attack: 20
+  defense: 30
   stamina: 100
   <staminaRecovery>k__BackingField: 15
+  potionNum: 0
+  relicNum: 0

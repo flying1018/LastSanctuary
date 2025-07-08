@@ -19,8 +19,13 @@ public class CollectObjectSO : ScriptableObject
     
     [Header("Relic")]
     public int index;
+    public string relicName;
+    public string effectDesc;
+    public string relicDesc;
+    public Sprite relicSprite;
     public int attack;
     public int defense;
     public int hp;
     public int stamina;
+    
 }

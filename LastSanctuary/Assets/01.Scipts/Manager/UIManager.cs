@@ -7,6 +7,7 @@ using UnityEngine;
 public class UIManager : Singleton<UIManager>
 {
     [SerializeField] private UIManagerSO data;
+    [SerializeField] private TextMeshProUGUI relicName;
     [SerializeField] private TextMeshProUGUI relicEffectText;
     [SerializeField] private TextMeshProUGUI relicDecsText;
     [SerializeField] private RectTransform statUIPivot;
@@ -18,6 +19,7 @@ public class UIManager : Singleton<UIManager>
     public PlayerCondition PlayerCondition { get; set; }
     public PlayerInventory PlayerInventory { get; set; }
     public UIManagerSO Data { get => data;}
+    public TextMeshProUGUI RelicName { get => relicName;}
     public TextMeshProUGUI RelicEffectText { get => relicEffectText;}
     public TextMeshProUGUI RelicDecsText { get => relicDecsText;}
     public RectTransform StatUIPivot { get => statUIPivot;}
