@@ -1,18 +1,23 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StatObject : MonoBehaviour, IInteractable
 {
-    [SerializeField] private StatObjectSO collectData;
+    public event Action OnInteracte;
+    
+    [SerializeField] private StatObjectSO statData;
+    
     public bool isGet;
     public bool IsGet { get => isGet; set => isGet = value; }
 
     public void Interact()
     {
         if (isGet) { return; }
-
-        // ItemManager.Instance.UpgradeStat(_statData);
+        
         isGet = true;
-
+        ItemManager.Instance.UpgradeStat(statData);
+        OnInteracte?.Invoke();
         gameObject.SetActive(false);
     }
 

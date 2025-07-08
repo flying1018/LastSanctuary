@@ -157,5 +157,27 @@ public class PlayerCondition : MonoBehaviour, IDamageable
             _curHp = Mathf.Clamp(_curHp, 0, _maxHp);
         }
     }
-    
+    public IEnumerator ApplyTempBuffCoroutine(int hp, int stamina, int atk, int def, float duration )
+    {
+         _maxHp += hp;
+         _curHp += hp;
+         _maxStamina += stamina;
+         _curStamina += stamina;
+         Damage += atk;
+         _defence += def;
+         yield return new WaitForSeconds(duration);
+         StartCoroutine(RemoveTempBuffCoroutine(hp, stamina, atk, def));
+
+    }
+
+    private IEnumerator RemoveTempBuffCoroutine(int hp, int stamina, int atk, int def)
+    {
+        _maxHp -= hp;
+        _curHp -= hp;
+        _maxStamina -= stamina;
+        _curStamina -= stamina;
+        Damage -= atk;
+        _defence -= def;
+        yield break;
+    }
 }

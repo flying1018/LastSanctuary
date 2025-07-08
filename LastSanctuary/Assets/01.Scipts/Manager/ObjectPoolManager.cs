@@ -8,6 +8,7 @@ public static class ObjectPoolManager
     {
         Monster = 1,
         Arrow = 2,
+        Item = 3,
     }
     private static Dictionary<int, Queue<GameObject>> poolDictionary = new();
 
