@@ -23,7 +23,7 @@ public class Boss : MonoBehaviour
     public GameObject Weapon { get; set; }
     public BossSO Data {get => bossData;}
 
-    private void Start()
+    private void Awake()
     {
         _polygonCollider = GetComponent<PolygonCollider2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
