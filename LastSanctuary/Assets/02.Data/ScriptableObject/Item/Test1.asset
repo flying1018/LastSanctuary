@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e3e0f2895c8d4651b818dc864c0e262, type: 3}
+  m_Name: Test1
+  m_EditorClassIdentifier: 
+  UID: 
+  collectType: 1
+  isMaxIncrease: 0
+  healAmount: 0
+  index: 0
+  relicName: "\uBD80\uC815\uC758 \uC774\uBE68"
+  effectDesc: "\uACF5\uACA9\uB825 + 10"
+  relicDesc: "\uB098\uC640\uC788\uC9C0 \uC54A\uC74C"
+  relicSprite: {fileID: 21300000, guid: 392871a6d5992a643bd146df279028d3, type: 3}
+  attack: 10
+  defense: 0
+  hp: 0
+  stamina: 0

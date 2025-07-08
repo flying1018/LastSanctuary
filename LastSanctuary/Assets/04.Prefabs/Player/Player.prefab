@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 6103672889267561102}
   - component: {fileID: 8202824365084005588}
   - component: {fileID: 4851930588912857631}
+  - component: {fileID: 8218372911197430180}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -168,7 +169,7 @@ Rigidbody2D:
   m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.01
-  m_GravityScale: 2
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -359,10 +360,11 @@ MonoBehaviour:
     groundParameter: '@Ground'
     idleParameter: Idle
     moveParameter: Move
-    HealParameter: Heal
+    healParameter: Heal
     airParameter: '@Air'
     fallParameter: Fall
     jumpParameter: Jump
+    ropedParameter: Roped
     attackParameter: '@Attack'
     comboParameter: Combo
     guardParameter: Guard
@@ -370,12 +372,16 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: fa11ae5f2b2d74860ae80e96545967e4, type: 2}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 272
+    m_Bits: 1280
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 512
   groundCheckDistance: 0.1
   aerialPlatformLayer:
     serializedVersion: 2
     m_Bits: 256
   weapon: {fileID: 3084327231788739462}
+  CapsuleCollider: {fileID: 0}
 --- !u!114 &8202824365084005588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +406,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992e50800852e1b47a59846df1ebdea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8218372911197430180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2675793038358586897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1dab4efec72ebe408305e8e3f63a8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  relics:
+  - {fileID: 300384178399270722, guid: 456fbb21799de9a4886a0c2ce133f814, type: 3}
+  - {fileID: 8335024016065937334, guid: 4221710ecd0118740b99608b3202c73b, type: 3}
+  - {fileID: 4142069125639008099, guid: 23cfab22bf215504d82155c17c8dcda5, type: 3}
 --- !u!1 &3059308106813386624
 GameObject:
   m_ObjectHideFlags: 0

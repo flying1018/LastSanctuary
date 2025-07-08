@@ -20,7 +20,7 @@ public class ComboAttackState : PlayerAttackState
         _attackInfo = _player.Data.attacks.GetAttackInfo(comboIndex);
 
         //무기에 대미지 전달
-        _playerWeapon.Damage = (int)(_condition.Damage * _attackInfo.multiplier);
+        _playerWeapon.Damage = (int)(_condition.Attack * _attackInfo.multiplier);
         _playerWeapon.knockBackForce = _attackInfo.knockbackForce;
 
         
