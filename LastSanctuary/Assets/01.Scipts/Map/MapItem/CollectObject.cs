@@ -8,7 +8,7 @@ public class CollectObject : MonoBehaviour, IInteractable, IComparable<CollectOb
     public bool isGet;
     
     //프로퍼티
-    public int Index { get => collectData.index; }
+    public CollectObjectSO Data { get => collectData; }
     public bool IsGet { get => isGet; set => isGet = value; }
 
     //충돌한 플레이어의 PlayerInventory 정보를 받아서 처리해도 될듯.

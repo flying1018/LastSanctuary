@@ -68,7 +68,7 @@ public class PlayerSO : ScriptableObject
 
     [field: Header("Condition")]
     [field: SerializeField] public int hp;
-    [field: SerializeField] public int damage;
+    [field: SerializeField] public int attack;
     [field: SerializeField] public int defense;
     [field: SerializeField] public int stamina;
     [field: SerializeField] public int staminaRecovery { get; private set; } = 15;

@@ -14,7 +14,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private int _staminaRecovery;
     private int _defence;
     
-    public int Damage { get; private set; }
+    public int Attack { get; private set; }
     public bool IsPerfectGuard { get; set; }
     public bool IsGuard { get; set; }
     public bool IsInvincible { get; set; }
@@ -29,7 +29,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         _maxStamina = _player.Data.stamina;
         _staminaRecovery = _player.Data.staminaRecovery;
         _defence = _player.Data.defense;
-        Damage = _player.Data.damage;
+        Attack = _player.Data.attack;
         _curHp = _maxHp;
         _curStamina = _maxStamina;
     }

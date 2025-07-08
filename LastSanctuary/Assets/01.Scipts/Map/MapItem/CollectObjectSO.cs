@@ -15,7 +15,7 @@ public class CollectObjectSO : ScriptableObject
 
     [Header("Potion")]
     public bool isMaxIncrease;
-    public int recoveryAmount;
+    public int healAmount;
     
     [Header("Relic")]
     public int index;

@@ -27,7 +27,7 @@ public class PlayerInventory : MonoBehaviour
             case CollectType.Relic:
                 foreach (var relic in relics)
                 {
-                    if (collectObjectSO.index == relic.Index)
+                    if (collectObjectSO.index == relic.Data.index)
                     {
                         relic.IsGet = true;
                         break;
@@ -36,7 +36,11 @@ public class PlayerInventory : MonoBehaviour
                 break;
             case CollectType.Potion:
                 if (collectObjectSO.isMaxIncrease)
+                {
                     MaxPotionNum++;
+                    CurPotionNum++;
+                    CurPotionNum = Mathf.Clamp(CurPotionNum, 0, MaxPotionNum);
+                }
                 else
                 {
                     CurPotionNum++;

@@ -26,7 +26,7 @@ public class JumpAttackState : PlayerAttackState
         _animationTime = _player.Animator.GetCurrentAnimatorStateInfo(0).length;
         
         //무기에 대미지 전달
-        _playerWeapon.Damage = (int)(_condition.Damage * _attackInfo.multiplier);
+        _playerWeapon.Damage = (int)(_condition.Attack * _attackInfo.multiplier);
     }
 
     public override void Exit()
