@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossCondition : MonoBehaviour
+public class BossCondition : MonoBehaviour, IDamageable
 {
     private int _attack;
     private int _defence;
@@ -23,4 +23,23 @@ public class BossCondition : MonoBehaviour
         _groggyGauge = 0;
     }
 
+    public void TakeDamage(int atk, DamageType type, Transform attackDir, float knockBackPower)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void ApplyDamage(int totalDamage)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void KnockBack(Transform attackdir, float knockBackPower)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void ChangingHitState()
+    {
+        throw new NotImplementedException();
+    }
 }
