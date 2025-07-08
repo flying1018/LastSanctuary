@@ -16,11 +16,13 @@ public class SlotUI : MonoBehaviour,IPointerClickHandler
 
     public void SetActive()
     {
+        icon.sprite = data.Data.relicSprite;
         icon.gameObject.SetActive(data.IsGet);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if(!data) return;
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             OnSelect.Invoke();
