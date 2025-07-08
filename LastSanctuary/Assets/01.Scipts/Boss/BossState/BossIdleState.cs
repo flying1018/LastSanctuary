@@ -10,6 +10,7 @@ public class BossIdleState : BossBaseState
 
     public override void Enter()
     {
+        Debug.Log("Boss idle state");
         StartAnimation(_boss.AnimationDB.IdleParameterHash);
     }
 

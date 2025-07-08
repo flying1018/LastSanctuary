@@ -19,6 +19,12 @@ public class SoundManager : Singleton<SoundManager>
     private const string sfxVolumeName = "SFXVolume";
     private const string bgmVolumeName = "BGMVolume";
 
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+    }
+    
     public async void PlayBGM(string key)
     {
         var clip = await ResourceLoader.LoadAssetAddress<AudioClip>(key);
