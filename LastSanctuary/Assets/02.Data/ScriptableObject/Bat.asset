@@ -15,13 +15,13 @@ MonoBehaviour:
   _key: 0
   _name: 
   detectTime: 0.2
-  detectDistance: 7
+  detectDistance: 10
   moveSpeed: 3
   cancelChaseTime: 3
   <patrolDistance>k__BackingField: 10
   <HitDuration>k__BackingField: 0.2
-  attackDistance: 4
-  attackDuration: 2
+  attackDistance: 7
+  attackDuration: 3
   knockbackForce: 10
   attackAnim: {fileID: 7400000, guid: 5e71f4cd6439726469445f502727bac4, type: 2}
   attack: 10
