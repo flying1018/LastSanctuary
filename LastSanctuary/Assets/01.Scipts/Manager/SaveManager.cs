@@ -9,7 +9,12 @@ using UnityEngine;
 public class SaveManager : Singleton<SaveManager>
 {
     [SerializeField] private Vector2 _lastSavePos;
-
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+    }
+    
     public void SaveMapItem()
     {
         MapItemData data = new MapItemData(

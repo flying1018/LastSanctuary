@@ -12,4 +12,5 @@ public class StatObjectSO : ScriptableObject
     public int defense;
     public int hp;
     public int stamina;
+    public float duration;
 }

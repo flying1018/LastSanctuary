@@ -5,10 +5,12 @@ using UnityEngine;
 public class ArrowProjectile : EnemyWeapon
 {
   private Rigidbody2D _rigidbody2D;
+  private GameObject _prefab;
   
-  public void Init()
+  public void Init(GameObject data)
   {
     _rigidbody2D = GetComponent<Rigidbody2D>();
+    _prefab = data;
   }
 
   public void Shot(Vector2 dir, float arrowPower)
@@ -21,12 +23,14 @@ public class ArrowProjectile : EnemyWeapon
     if (other.CompareTag(StringNameSpace.Tags.Ground))
     {
       gameObject.SetActive(false);
+      ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.Arrow, _prefab, gameObject);
       return;
     }
    base.OnTriggerEnter2D(other);
    if (other.CompareTag(StringNameSpace.Tags.Player))
    {
      gameObject.SetActive(false);
+     ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.Arrow, gameObject, gameObject);
    }
   }
 }

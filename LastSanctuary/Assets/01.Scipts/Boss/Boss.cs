@@ -23,7 +23,7 @@ public class Boss : MonoBehaviour
     public GameObject Weapon { get; set; }
     public BossSO Data {get => bossData;}
 
-    private void Start()
+    private void Awake()
     {
         _polygonCollider = GetComponent<PolygonCollider2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
@@ -35,6 +35,7 @@ public class Boss : MonoBehaviour
         
         Condition.Init(this);
         StateMachine = new BossStateMachine(this);
+        StateMachine.ChangeState(StateMachine.IdleState); //대기상태 시작
     }
 
     private void Update()
