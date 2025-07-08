@@ -11,5 +11,19 @@ public class BossIdleState : BossBaseState
     public override void Enter()
     {
         Debug.Log("Boss idle state");
+        StartAnimation(_boss.AnimationDB.IdleParameterHash);
+    }
+
+    public override void Exit()
+    {
+        StopAnimation(_boss.AnimationDB.IdleParameterHash);
+    }
+
+    public override void Update()
+    {
+        if (_boss.Target)
+        {
+             _stateMachine.ChangeState(_stateMachine.ChaseState);
+        }
     }
 }

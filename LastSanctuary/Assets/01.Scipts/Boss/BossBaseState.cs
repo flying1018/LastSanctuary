@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BossBaseState : IState
@@ -23,7 +24,7 @@ public class BossBaseState : IState
     
     public virtual void Enter()
     {
-
+        
     }
 
     public virtual void Exit()
@@ -44,5 +45,15 @@ public class BossBaseState : IState
     public virtual void PhysicsUpdate()
     {
 
+    }
+    
+    protected void StartAnimation(int animatorHash)
+    {
+        _boss.Animator.SetBool(animatorHash, true);
+    }
+
+    protected void StopAnimation(int animatorHash)
+    {
+        _boss.Animator.SetBool(animatorHash, false);
     }
 }
