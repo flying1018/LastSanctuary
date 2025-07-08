@@ -159,12 +159,12 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     }
     public IEnumerator ApplyTempBuffCoroutine(int hp, int stamina, int atk, int def, float duration )
     {
-         _maxHp += hp;
+         MaxHp += hp;
          _curHp += hp;
-         _maxStamina += stamina;
+         MaxStamina += stamina;
          _curStamina += stamina;
-         Damage += atk;
-         _defence += def;
+         Attack += atk;
+         Defence += def;
          yield return new WaitForSeconds(duration);
          StartCoroutine(RemoveTempBuffCoroutine(hp, stamina, atk, def));
 
@@ -172,12 +172,12 @@ public class PlayerCondition : MonoBehaviour, IDamageable
 
     private IEnumerator RemoveTempBuffCoroutine(int hp, int stamina, int atk, int def)
     {
-        _maxHp -= hp;
+        MaxHp -= hp;
         _curHp -= hp;
-        _maxStamina -= stamina;
+        MaxStamina -= stamina;
         _curStamina -= stamina;
-        Damage -= atk;
-        _defence -= def;
+        Attack -= atk;
+        Defence -= def;
         yield break;
     }
 }
