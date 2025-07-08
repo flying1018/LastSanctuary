@@ -19,7 +19,7 @@ public class EnemyRangeAttackState : EAttackState
 
         if (arrow.TryGetComponent(out ArrowProjectile arrowPoProjectile))
         {
-            arrowPoProjectile.Init();
+            arrowPoProjectile.Init(_data.arrowPrefab);
             arrowPoProjectile.Shot(dir, _data.arrowPower);
         }
     }

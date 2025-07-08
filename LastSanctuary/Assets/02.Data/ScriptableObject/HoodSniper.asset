@@ -15,10 +15,10 @@ MonoBehaviour:
   _key: 0
   _name: 
   detectTime: 0.2
-  detectDistance: 7
+  detectDistance: 15
   moveSpeed: 3
   cancelChaseTime: 3
-  <patrolDistance>k__BackingField: 10
+  <patrolDistance>k__BackingField: 15
   <HitDuration>k__BackingField: 0.2
   attackDistance: 10
   attackDuration: 3
@@ -33,4 +33,4 @@ MonoBehaviour:
   deathAnim: {fileID: 7400000, guid: f919a152158bfc44cab06413c735a95d, type: 2}
   arrowPrefab: {fileID: 5272416872062206358, guid: c05a8d5e33a31fd44952373077d8c852, type: 3}
   arrowPoolId: 2
-  arrowSpeed: 3
+  arrowPower: 5
