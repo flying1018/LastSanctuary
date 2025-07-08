@@ -12,6 +12,12 @@ public enum MoveType
     Fly,
 }
 
+public enum AttackType
+{
+    Melee,
+    Range,
+}
+
 public class Enemy : MonoBehaviour
 {
     //필드
@@ -24,7 +30,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float platformCheckDistance;
     [SerializeField] private IdleType idleType;
     [SerializeField] private MoveType moveType;
-
+    [SerializeField] private AttackType attackType;
+    
     //프로퍼티
     public EnemyStateMachine StateMachine { get; set; }
     public Rigidbody2D Rigidbody {get; set;}
@@ -39,6 +46,7 @@ public class Enemy : MonoBehaviour
     public EnemySO Data {get => enemyData;}
     public IdleType IdleType {get => idleType;}
     public MoveType MoveType {get => moveType;}
+    public AttackType AttackType {get => attackType;}
 
     
     private void Update()
@@ -64,6 +72,12 @@ public class Enemy : MonoBehaviour
                 damageable.TakeDamage(Data.attack,DamageType.Contact,transform,Data.knockbackForce);
             }
         }
+    }
+
+    public void FireArrow()
+    {
+        if (StateMachine.currentState is EnemyRangeAttackState rangeState)
+            rangeState.FireArrow();
     }
 
     #region  Need MonoBehaviour Method

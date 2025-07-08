@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f7b50145016ecc94b9ef526bed0cb477
+guid: 61f362494f00842edbc58eb64a640de3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,7 +71,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 1
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
@@ -107,19 +107,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -134,91 +121,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: 04_HoodSniper_Hit_0
-      rect:
-        serializedVersion: 2
-        x: 41
-        y: 0
-        width: 32
-        height: 55
-      alignment: 9
-      pivot: {x: 0.413854, y: 0.4874698}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 248f398827e14c24f950b09928010ff9
-      internalID: 1558600105
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 04_HoodSniper_Hit_1
-      rect:
-        serializedVersion: 2
-        x: 168
-        y: 0
-        width: 31
-        height: 56
-      alignment: 9
-      pivot: {x: 0.46665314, y: 0.47538692}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 963a22fc050c4224cb8b9d9255b6b53c
-      internalID: 674876428
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 04_HoodSniper_Hit_2
-      rect:
-        serializedVersion: 2
-        x: 296
-        y: 0
-        width: 30
-        height: 55
-      alignment: 9
-      pivot: {x: 0.46554157, y: 0.46240914}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2d08932414bd24d428c5d8251f14e1a3
-      internalID: 1890124920
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 04_HoodSniper_Hit_3
-      rect:
-        serializedVersion: 2
-        x: 425
-        y: 0
-        width: 32
-        height: 55
-      alignment: 9
-      pivot: {x: 0.43539047, y: 0.4874698}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 22bbf63984a75bc4aba491d93dc821de
-      internalID: 1031253731
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -229,11 +132,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      04_HoodSniper_Hit_0: 1558600105
-      04_HoodSniper_Hit_1: 674876428
-      04_HoodSniper_Hit_2: 1890124920
-      04_HoodSniper_Hit_3: 1031253731
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

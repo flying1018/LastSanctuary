@@ -20,9 +20,11 @@ public class EnemySpawnPoint : MonoBehaviour
     
     public void Spawn()
     {
-        GameObject go =Instantiate(monster, transform.position, transform.rotation);
+        GameObject go =ObjectPoolManager.Get(monster,(int)ObjectPoolManager.PoolingIndex.Monster);
+        go.transform.position = transform.position;
         _enemy = go.GetComponent<Enemy>();
-        _enemy.Init(transform);
+        _enemy.Init(this.transform);
+        _enemy.SetCollisionEnabled(true);
     }
 
     public void Respawn()

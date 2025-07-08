@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe245788b651394e8fcb8b034fc10ec, type: 3}
+  m_Name: HoodSniper
+  m_EditorClassIdentifier: 
+  _key: 0
+  _name: 
+  detectTime: 0.2
+  detectDistance: 7
+  moveSpeed: 3
+  cancelChaseTime: 3
+  <patrolDistance>k__BackingField: 10
+  <HitDuration>k__BackingField: 0.2
+  attackDistance: 10
+  attackDuration: 3
+  knockbackForce: 5
+  attackAnim: {fileID: 7400000, guid: 32f545428e2fedc4fa0fae19f49bdcb7, type: 2}
+  attack: 10
+  hp: 80
+  defense: 0
+  damageDelay: 0.2
+  hitDuration: 0.5
+  alphaValue: 0.5
+  deathAnim: {fileID: 7400000, guid: f919a152158bfc44cab06413c735a95d, type: 2}
+  arrowPrefab: {fileID: 5272416872062206358, guid: c05a8d5e33a31fd44952373077d8c852, type: 3}
+  arrowPoolId: 2
+  arrowSpeed: 3
