@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MapManager : Singleton<MapManager>
 {
-    [SerializeField] private List<EnemySpawnPoint> SpawnPoints;
+    [SerializeField] private List<EnemySpawnPoint> EnemySpawnPoints;
+    [SerializeField] private List<ItemSpawnPoint> ItemSpawnPoints;
     [SerializeField] private List<WarpObject> warpObjects;
 
     public WarpObject selectWarpObj;
@@ -12,7 +14,12 @@ public class MapManager : Singleton<MapManager>
     
     public void RespawnEnemies()
     {
-        foreach (var spawnPoint in SpawnPoints) spawnPoint.Respawn();
+        foreach (var spawnPoint in EnemySpawnPoints) spawnPoint.Respawn();
+    }
+
+    public void RespawnItems()
+    {
+        foreach (var spawnPoint in ItemSpawnPoints) spawnPoint.Respawn(); 
     }
 
     public void WarpInteract()
