@@ -72,4 +72,10 @@ public class PlayerSO : ScriptableObject
     [field: SerializeField] public int defense;
     [field: SerializeField] public int stamina;
     [field: SerializeField] public int staminaRecovery { get; private set; } = 15;
+
+    [Header("Inventory")]
+    public int potionNum;
+    public int relicNum;
+
+
 }

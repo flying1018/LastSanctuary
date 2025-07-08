@@ -11,10 +11,14 @@ public class CollectObjectSO : ScriptableObject
 {
     [Header("분류")]
     public string UID;
-    public bool isConsumable;
     public CollectType collectType;
 
-    [Header("스탯")]
+    [Header("Potion")]
+    public bool isMaxIncrease;
+    public int recoveryAmount;
+    
+    [Header("Relic")]
+    public int index;
     public int attack;
     public int defense;
     public int hp;

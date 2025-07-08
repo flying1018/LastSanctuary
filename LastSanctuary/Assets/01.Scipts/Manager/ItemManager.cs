@@ -26,6 +26,6 @@ public class ItemManager : Singleton<ItemManager>
 
     public void GetCollectItem(CollectObjectSO collectObjectSO)
     {
-
+        playerInventory.AddItem(collectObjectSO);
     }
 }

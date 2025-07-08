@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask aerialPlatformLayer;
     [SerializeField] private GameObject weapon;
 
-
     //프로퍼티
     public CapsuleCollider2D CapsuleCollider;
     public PlayerStateMachine StateMachine { get; set; }
@@ -29,6 +28,7 @@ public class Player : MonoBehaviour
     //직렬화 데이터 프로퍼티
     public PlayerSO Data { get => playerData; }
     public GameObject Weapon { get => weapon; }
+    public PlayerInventory Inventory { get; set; }
 
 
     private void Awake()
@@ -39,11 +39,16 @@ public class Player : MonoBehaviour
         Animator = GetComponent<Animator>();
         Condition = GetComponent<PlayerCondition>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        PlayerWeapon = Weapon.GetComponent<PlayerWeapon>();
+        PlayerWeapon = GetComponentInChildren<PlayerWeapon>();
+        weapon = PlayerWeapon.gameObject;
+        Inventory = GetComponent<PlayerInventory>();
+        
         AnimationDB.Initailize();
+        Inventory.Init(this);
+        
         StateMachine = new PlayerStateMachine(this);
 
-        GetComponent<PlayerCondition>().OnDie += OnDie;
+        Condition.OnDie += OnDie;
     }
 
     private void Update()

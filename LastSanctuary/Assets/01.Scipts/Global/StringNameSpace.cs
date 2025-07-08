@@ -24,6 +24,11 @@ public static class StringNameSpace
         public const string BGM1 = "";
     }
 
+    public static class Labels
+    {
+        public const string Relic = "Relic";
+    }
+
     public static class Tags
     {
         public const string Respawn = "Respawn";
