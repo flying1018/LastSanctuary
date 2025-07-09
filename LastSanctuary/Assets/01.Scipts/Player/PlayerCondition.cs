@@ -34,6 +34,18 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         _curStamina = MaxStamina;
     }
 
+    private void Update()
+    {
+        //무적 해제
+        if (IsInvincible)
+        {
+            if ( Time.time - InvincibleStart >= _player.Data.invincibleDuration)
+            {
+                IsInvincible = false;
+                Debug.Log("무적 해제");
+            }
+        }
+    }
 
 
     public void TakeDamage(int atk, DamageType type, Transform dir = null,float force = 0f)
