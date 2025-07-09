@@ -6,12 +6,12 @@ public class UIStateMachine : StateMachine
 {
     public UIManager UIManager { get; private set; }
     public MainUI MainUI { get; private set; }
-    public LelicUI LelicUI { get; private set; }
+    public RelicUI RelicUI { get; private set; }
     
     public UIStateMachine(UIManager uiManager)
     {
         UIManager = uiManager;
         MainUI = new MainUI(this);
-        LelicUI = new LelicUI(this);
+        RelicUI = new RelicUI(this);
     }
 }

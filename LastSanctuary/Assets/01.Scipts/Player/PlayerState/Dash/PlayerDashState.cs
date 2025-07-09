@@ -14,7 +14,8 @@ public class PlayerDashState : PlayerBaseState
         
         _input.IsDash = false;
         _elapsedTime = 0;
-        dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
+        dir = _input.MoveInput.x < 0 ? Vector2.left : Vector2.right;
+        Rotate(dir);
     }
 
     public override void Exit()
