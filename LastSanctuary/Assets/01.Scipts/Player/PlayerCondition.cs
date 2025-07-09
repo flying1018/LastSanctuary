@@ -200,4 +200,14 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         _buffcoroutine = null;
     }
 
+    public float HpValue()
+    {
+        return (float)_curHp / MaxHp;
+    }
+
+    public float StaminaValue()
+    {
+        return _curStamina / MaxStamina;
+    }
+
 }
