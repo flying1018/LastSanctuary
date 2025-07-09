@@ -26,8 +26,8 @@ public class ItemManager : Singleton<ItemManager>
         if (data.duration > 0)
         {
             UIManager.Instance.UpdateBuffUI(data);
-            StartCoroutine(playerCondition.ApplyTempBuffCoroutine(data.hp, data.stamina, data.attack, 
-                data.defense, data.duration));
+            int StatObjectSO;
+            playerCondition.ApplyTempBuff(data);
         }
         //지속시간 0이면(보다 작으면)영구 적용 또는 즉시 적용 (궁극기 회복등)
         

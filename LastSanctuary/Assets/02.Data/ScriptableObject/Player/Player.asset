@@ -35,6 +35,7 @@ MonoBehaviour:
       staminaCost: 0
       attackForce: 0
       knockbackForce: 2
+      groggyDamage: 1
     - attackAnim: {fileID: 7400000, guid: 3c8ab8fd8e124cd47ba5909da708ef53, type: 2}
       attackIndex: 2
       multiplier: 1.2
@@ -42,6 +43,7 @@ MonoBehaviour:
       staminaCost: 0
       attackForce: 0
       knockbackForce: 4
+      groggyDamage: 2
     - attackAnim: {fileID: 7400000, guid: bdf51d02ce4552348ba6354a5c6370ff, type: 2}
       attackIndex: 3
       multiplier: 2
@@ -49,6 +51,7 @@ MonoBehaviour:
       staminaCost: 15
       attackForce: 10
       knockbackForce: 1000
+      groggyDamage: 5
   attackSound: {fileID: 8300000, guid: c2b5ad624bada8b4ca44af7c71df039c, type: 3}
   <LightHitDuration>k__BackingField: 0.2
   <HeavyHitDuration>k__BackingField: 0.2

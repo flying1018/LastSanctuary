@@ -10,11 +10,17 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private int _curHp;
     private float _curStamina;
     private int _staminaRecovery;
+    private Coroutine _buffcoroutine;
+    private StatObjectSO _lastBuffData;
     
     public int Attack { get; set; }
+    public int BuffAtk { get; set; }
     public int Defence{ get; set; }
+    public int BuffDef { get; set; }
     public float MaxStamina { get; set; }
+    public float BuffStamina { get; set; }
     public int MaxHp { get; set; }
+    public int BuffHp { get; set; }
     public bool IsPerfectGuard { get; set; }
     public bool IsGuard { get; set; }
     public bool IsInvincible { get; set; }
@@ -33,7 +39,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         _curHp = MaxHp;
         _curStamina = MaxStamina;
     }
-    
+
     private void Update()
     {
         //무적 해제
@@ -47,7 +53,8 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(int atk, DamageType type, Transform dir = null,float force = 0f)
+
+    public void TakeDamage(int atk, DamageType type, Transform dir ,float defpen = 0f)
     {
         if (IsInvincible) return;
         bool isFront = IsFront(dir);
@@ -62,12 +69,16 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         }
         else
         {
-            ChangingHitState();
-            if(force>0)
-                KnockBack(dir,force);
+            ChangingState();
         }
     }
-    
+
+    public void ApplyKnockBack(Transform attackDir, float knockBackPower)
+    {
+        if(knockBackPower>0)
+            KnockBack(attackDir,knockBackPower);
+    }
+
     public void PlayerRecovery()
     {
         _curHp = MaxHp;
@@ -144,7 +155,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         _player.Rigidbody.AddForce(knockback, ForceMode2D.Impulse);
     }
     //상태전환
-    public void ChangingHitState()
+    public void ChangingState()
     {
         _player.StateMachine.ChangeState(_player.StateMachine.HitState);
     }
@@ -157,37 +168,36 @@ public class PlayerCondition : MonoBehaviour, IDamageable
             _curHp = Mathf.Clamp(_curHp, 0, MaxHp);
         }
     }
-    public IEnumerator ApplyTempBuffCoroutine(int hp, int stamina, int atk, int def, float duration )
+    public void ApplyTempBuff(StatObjectSO data)
     {
-         MaxHp += hp;
-         _curHp += hp;
-         MaxStamina += stamina;
-         _curStamina += stamina;
-         Attack += atk;
-         Defence += def;
-         yield return new WaitForSeconds(duration);
-         StartCoroutine(RemoveTempBuffCoroutine(hp, stamina, atk, def));
+        if (_buffcoroutine != null)
+        {
+            StopCoroutine(_buffcoroutine);
+            RemoveTempBuff(_lastBuffData);
+        }
 
+        BuffHp += data.hp;
+         BuffStamina += data.stamina;
+         BuffAtk += data.attack;
+         BuffDef += data.defense;
+         
+         _lastBuffData = data;
+         _buffcoroutine = StartCoroutine(BuffDurationTimerCoroutine(data.duration));
+    }
+    private void RemoveTempBuff(StatObjectSO data)
+    {
+        BuffHp -= data.hp;
+        BuffStamina -= data.stamina;
+        BuffAtk -= data.attack;
+        BuffDef -= data.defense;
+        //죽었을떄는 전체 초기화
     }
 
-    private IEnumerator RemoveTempBuffCoroutine(int hp, int stamina, int atk, int def)
+    private IEnumerator BuffDurationTimerCoroutine(float duration)
     {
-        MaxHp -= hp;
-        _curHp -= hp;
-        MaxStamina -= stamina;
-        _curStamina -= stamina;
-        Attack -= atk;
-        Defence -= def;
-        yield break;
+        yield return new WaitForSeconds(duration);
+        RemoveTempBuff(_lastBuffData);
+        _buffcoroutine = null;
     }
 
-    public float HpValue()
-    {
-        return (float)_curHp/MaxHp;
-    }
-
-    public float StaminaValue()
-    {
-        return (float)_curStamina/MaxStamina;
-    }
 }

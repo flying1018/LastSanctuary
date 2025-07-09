@@ -14,6 +14,7 @@ public class AttackInfo
     public int staminaCost;     //스테미나 코스트
     public float attackForce;   //공격시 전진 파워
     public float knockbackForce;//넉백 파워
+    public int groggyDamage; //그로기 증가량
 }
 
 [Serializable]
@@ -56,6 +57,7 @@ public class PlayerSO : ScriptableObject
     [Header("AttackState")] 
     [field: SerializeField] public PlayerAttackData attacks;
 
+    public float Defpen;
     public AudioClip attackSound;
 
     [field: Header("HitState")]

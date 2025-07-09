@@ -22,6 +22,8 @@ public class ComboAttackState : PlayerAttackState
         //무기에 대미지 전달
         _playerWeapon.Damage = (int)((_condition.Attack + _inventory.EquipRelicAttack()) * _attackInfo.multiplier);
         _playerWeapon.knockBackForce = _attackInfo.knockbackForce;
+        _playerWeapon.groggyDamage = _attackInfo.groggyDamage;
+        _playerWeapon.defpen = _data.Defpen;
 
         
         _player.Animator.SetInteger(_player.AnimationDB.ComboParameterHash, _attackInfo.attackIndex);

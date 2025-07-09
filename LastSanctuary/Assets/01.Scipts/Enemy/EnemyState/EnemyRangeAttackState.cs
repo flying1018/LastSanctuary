@@ -11,7 +11,7 @@ public class EnemyRangeAttackState : EAttackState
         Transform firePoint = _enemy.EnemyWeapon.transform;
 
         GameObject arrow = ObjectPoolManager.Get(_data.arrowPrefab, _data.arrowPoolId);
-        Debug.Log(arrow);
+        
         arrow.transform.position = firePoint.position;
 
         Vector2 dir = DirectionToTarget();
@@ -19,7 +19,7 @@ public class EnemyRangeAttackState : EAttackState
 
         if (arrow.TryGetComponent(out ArrowProjectile arrowPoProjectile))
         {
-            arrowPoProjectile.Init(_data.arrowPrefab);
+            arrowPoProjectile.Init(_data.attack, _data.knockbackForce);
             arrowPoProjectile.Shot(dir, _data.arrowPower);
         }
     }
