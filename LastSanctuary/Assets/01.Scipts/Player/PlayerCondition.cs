@@ -10,6 +10,8 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private int _curHp;
     private float _curStamina;
     private int _staminaRecovery;
+    private Coroutine _coroutine;
+    private StatObjectSO _lastBuffData;
     
     public int Attack { get; set; }
     public int Defence{ get; set; }
@@ -157,27 +159,39 @@ public class PlayerCondition : MonoBehaviour, IDamageable
             _curHp = Mathf.Clamp(_curHp, 0, MaxHp);
         }
     }
-    public IEnumerator ApplyTempBuffCoroutine(int hp, int stamina, int atk, int def, float duration )
+    public void ApplyTempBuff(StatObjectSO data)
     {
-         MaxHp += hp;
-         _curHp += hp;
-         MaxStamina += stamina;
-         _curStamina += stamina;
-         Attack += atk;
-         Defence += def;
-         yield return new WaitForSeconds(duration);
-         StartCoroutine(RemoveTempBuffCoroutine(hp, stamina, atk, def));
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+            RemoveTempBuff(_lastBuffData);
+        }
 
+        MaxHp += data.hp;
+         _curHp += data.hp;
+         MaxStamina += data.stamina;
+         _curStamina += data.stamina;
+         Attack += data.attack;
+         Defence += data.defense;
+         
+         _lastBuffData = data;
+         _coroutine = StartCoroutine(BuffDurationTimerCoroutine(data.duration));
+    }
+    private void RemoveTempBuff(StatObjectSO data)
+    {
+        MaxHp -= data.hp;
+        _curHp -= data.hp;
+        MaxStamina -= data.stamina;
+        _curStamina -= data.stamina;
+        Attack -= data.attack;
+        Defence -= data.defense;
     }
 
-    private IEnumerator RemoveTempBuffCoroutine(int hp, int stamina, int atk, int def)
+    private IEnumerator BuffDurationTimerCoroutine(float duration)
     {
-        MaxHp -= hp;
-        _curHp -= hp;
-        MaxStamina -= stamina;
-        _curStamina -= stamina;
-        Attack -= atk;
-        Defence -= def;
-        yield break;
+        yield return new WaitForSeconds(duration);
+        RemoveTempBuff(_lastBuffData);
+        _coroutine = null;
     }
+
 }

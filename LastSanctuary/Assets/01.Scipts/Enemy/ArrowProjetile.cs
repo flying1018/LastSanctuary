@@ -5,32 +5,29 @@ using UnityEngine;
 public class ArrowProjectile : EnemyWeapon
 {
   private Rigidbody2D _rigidbody2D;
-  private GameObject _prefab;
+ 
   
-  public void Init(GameObject data)
+  
+  public void Init(int damage, float knockback)
   {
     _rigidbody2D = GetComponent<Rigidbody2D>();
-    _prefab = data;
+   Damage = damage;
+   KnockBackForce = knockback;
   }
 
   public void Shot(Vector2 dir, float arrowPower)
   {
+    _rigidbody2D.velocity = Vector2.zero;
     _rigidbody2D.AddForce(dir * arrowPower, ForceMode2D.Impulse);
   }
 
   public override void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.CompareTag(StringNameSpace.Tags.Ground))
+    if (other.CompareTag(StringNameSpace.Tags.Ground)||(other.CompareTag(StringNameSpace.Tags.Player)))
     {
       gameObject.SetActive(false);
-      ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.Arrow, _prefab, gameObject);
-      return;
+      ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.Arrow, gameObject, gameObject);
     }
-   base.OnTriggerEnter2D(other);
-   if (other.CompareTag(StringNameSpace.Tags.Player))
-   {
-     gameObject.SetActive(false);
-     ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.Arrow, gameObject, gameObject);
-   }
+    base.OnTriggerEnter2D(other);
   }
 }
