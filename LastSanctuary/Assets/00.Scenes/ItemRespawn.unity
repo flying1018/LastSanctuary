@@ -214,7 +214,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 43744594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f75590f35c5770648a67975a7d8ca73b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3eec581abafc4314baa19dd0ce550428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 3257877028325863478, guid: e4969a5067f05d54c95b271ca3e80912, type: 3}
@@ -884,7 +884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCondition: {fileID: 363282487}
-  inventory: {fileID: 0}
+  playerInventory: {fileID: 0}
 --- !u!4 &481483233
 Transform:
   m_ObjectHideFlags: 0
@@ -1025,7 +1025,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 879349706}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f75590f35c5770648a67975a7d8ca73b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3eec581abafc4314baa19dd0ce550428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 3257877028325863478, guid: e4969a5067f05d54c95b271ca3e80912, type: 3}

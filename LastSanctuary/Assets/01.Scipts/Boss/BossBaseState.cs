@@ -14,12 +14,12 @@ public class BossBaseState : IState
 
     public BossBaseState(BossStateMachine bossStateMachine)
     {
-        this._stateMachine = bossStateMachine;
         _boss = _stateMachine.Boss;
         _data = _boss.Data;
         _rigidbody = _boss.Rigidbody;
         _spriteRenderer =_boss.SpriteRenderer;
         _condition = _boss.Condition;
+        this._stateMachine = bossStateMachine;
     }
     
     public virtual void Enter()

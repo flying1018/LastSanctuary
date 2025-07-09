@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCondition : MonoBehaviour, IDamageable
+public class EnemyCondition : MonoBehaviour, IKnockBackable
 {
     //필드
     private Enemy _enemy;
@@ -66,11 +66,10 @@ public class EnemyCondition : MonoBehaviour, IDamageable
         ObjectPoolManager.Set(_enemy.Data._key, _enemy.gameObject, _enemy.gameObject);
     }
 
-    public void TakeDamage(int atk, DamageType type, Transform attackDir, float knockBackPower)
+    public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
     {
         if (IsInvincible) return;
         if (_isTakeDamageable) return;
-        StartCoroutine(DamageDelay_Coroutine());
         
         ApplyDamage(atk);
         if (_curHp <= 0)
@@ -79,16 +78,17 @@ public class EnemyCondition : MonoBehaviour, IDamageable
         }
         else
         {
-            if (knockBackPower>0)
-            {
-                ChangingHitState();
-                KnockBack(attackDir, knockBackPower);
-            }
-            else
-            {
-                OnHitEffected();
-            }
+            ChangingState();
         }
+    }
+
+    public void ApplyKnockBack(Transform attackDir, float knockBackPower)
+    {
+        Debug.Log("KnockBack");
+        Vector2 knockbackDir = (transform.position - attackDir.position);
+        knockbackDir.y = 0f;
+        _enemy.Rigidbody.AddForce(knockbackDir.normalized *  knockBackPower,ForceMode2D.Impulse);
+        StartCoroutine(DamageDelay_Coroutine());
     }
 
     public void ApplyDamage(int atk)
@@ -97,16 +97,9 @@ public class EnemyCondition : MonoBehaviour, IDamageable
         _curHp -= _damage;
         Debug.Log(_damage);
     }
-    public void KnockBack(Transform dir, float force)
-    {
-        Debug.Log("KnockBack");
-        Debug.Log(force);
-        Vector2 knockbackDir = (transform.position - dir.position);
-        knockbackDir.y = 0f;
-        _enemy.Rigidbody.AddForce(knockbackDir.normalized * force,ForceMode2D.Impulse);
-    }
+  
     
-    public void ChangingHitState()
+    public void ChangingState()
     {
         _enemy.StateMachine.ChangeState(_enemy.StateMachine.HitState);
     }

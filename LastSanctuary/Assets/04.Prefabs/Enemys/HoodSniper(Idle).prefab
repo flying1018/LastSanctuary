@@ -152,12 +152,12 @@ MonoBehaviour:
     hitParameter: Hit
     deathParameter: Death
   enemyData: {fileID: 11400000, guid: e2cdeebcee3a1cf43b4ac03ad42cb0cb, type: 2}
-  enemyPrefab: {fileID: 0}
   platformLayer:
     serializedVersion: 2
     m_Bits: 1280
   platformCheckDistance: 2
   idleType: 0
+  moveType: 0
   attackType: 1
 --- !u!1 &6224774757196196992
 GameObject:
@@ -168,7 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3932651908727566937}
-  - component: {fileID: 3242742080844075456}
+  - component: {fileID: 1299284665928902010}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -191,7 +191,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 246564995851524428}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3242742080844075456
+--- !u!114 &1299284665928902010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

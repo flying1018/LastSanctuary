@@ -11,6 +11,7 @@ public class BossSO : ScriptableObject
     public int hp;
     public int groggyGauge;
     public float groggyDuration;
+    public float damageDelay;
     
     [Header("Movement")]
     public float moveSpeed = 3f;

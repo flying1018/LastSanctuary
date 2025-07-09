@@ -14,21 +14,23 @@ public static class ObjectPoolManager
 
     public static GameObject Get(GameObject prefab, int id)
     {
-        poolDictionary.TryGetValue(id, out Queue<GameObject> objectQueue);
-        if (objectQueue != null && objectQueue.Count > 0)
+        if (poolDictionary.TryGetValue(id, out Queue<GameObject> objectQueue))
         {
-            DebugHelper.Log("기존 풀에서 재활용");
-            GameObject obj = objectQueue.Dequeue();
-            obj.SetActive(true);
-            return obj;
+            while (objectQueue.Count > 0)
+            { 
+                GameObject obj = objectQueue.Dequeue();
+                if (obj != null)
+                {
+                    DebugHelper.Log("기존 풀에서 재활용");
+                    obj.SetActive(true);
+                    return obj;
+                }
+            }
         }
-        else
-        {
-            DebugHelper.Log("최초 생성");
-            GameObject newObj = Object.Instantiate(prefab);
-            newObj.SetActive(true);
-            return newObj;
-        }
+        DebugHelper.Log("최초 생성");
+        GameObject newObj = Object.Instantiate(prefab);
+        newObj.SetActive(true);
+        return newObj;
     }
 
     public static void Set(int id, GameObject _prefab, GameObject gameObject)
@@ -46,11 +48,6 @@ public static class ObjectPoolManager
             Queue<GameObject> newQueue = new();
             newQueue.Enqueue(gameObject);
             poolDictionary.Add(id, newQueue);
-        }
-
-        static void Clear()
-        {
-            poolDictionary.Clear();
         }
     }
 }
