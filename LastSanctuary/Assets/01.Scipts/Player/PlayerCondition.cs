@@ -14,9 +14,13 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private StatObjectSO _lastBuffData;
     
     public int Attack { get; set; }
+    public int BuffAtk { get; set; }
     public int Defence{ get; set; }
+    public int BuffDef { get; set; }
     public float MaxStamina { get; set; }
+    public float BuffStamina { get; set; }
     public int MaxHp { get; set; }
+    public int BuffHp { get; set; }
     public bool IsPerfectGuard { get; set; }
     public bool IsGuard { get; set; }
     public bool IsInvincible { get; set; }
@@ -167,24 +171,21 @@ public class PlayerCondition : MonoBehaviour, IDamageable
             RemoveTempBuff(_lastBuffData);
         }
 
-        MaxHp += data.hp;
-         _curHp += data.hp;
-         MaxStamina += data.stamina;
-         _curStamina += data.stamina;
-         Attack += data.attack;
-         Defence += data.defense;
+        BuffHp += data.hp;
+         BuffStamina += data.stamina;
+         BuffAtk += data.attack;
+         BuffDef += data.defense;
          
          _lastBuffData = data;
          _coroutine = StartCoroutine(BuffDurationTimerCoroutine(data.duration));
     }
     private void RemoveTempBuff(StatObjectSO data)
     {
-        MaxHp -= data.hp;
-        _curHp -= data.hp;
-        MaxStamina -= data.stamina;
-        _curStamina -= data.stamina;
-        Attack -= data.attack;
-        Defence -= data.defense;
+        BuffHp -= data.hp;
+        BuffStamina -= data.stamina;
+        BuffAtk -= data.attack;
+        BuffDef -= data.defense;
+        //죽었을떄는 전체 초기화
     }
 
     private IEnumerator BuffDurationTimerCoroutine(float duration)
