@@ -38,6 +38,11 @@ public class Boss : MonoBehaviour
         StateMachine.ChangeState(StateMachine.IdleState); //대기상태 시작
     }
 
+    private void Start()
+    {
+        Target = FindObjectOfType<Player>().transform;
+    }
+
     private void Update()
     {
         StateMachine.HandleInput();

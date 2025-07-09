@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossIdleState : BossBaseState
 {
+    private float _time;
+    
     public BossIdleState(BossStateMachine bossStateMachine) : base(bossStateMachine)
     {
     }
@@ -12,6 +14,8 @@ public class BossIdleState : BossBaseState
     {
         Debug.Log("Boss idle state");
         StartAnimation(_boss.AnimationDB.IdleParameterHash);
+
+        _time = 0;
     }
 
     public override void Exit()
@@ -21,9 +25,17 @@ public class BossIdleState : BossBaseState
 
     public override void Update()
     {
+        base.Update();
+        
         if (_boss.Target)
         {
              _stateMachine.ChangeState(_stateMachine.ChaseState);
+        }
+        
+        _time += Time.deltaTime;
+        if (_time >= _data.attackIdleTime)
+        {
+            _stateMachine.ChangeState(_stateMachine.Attacks.Dequeue());
         }
     }
 }
