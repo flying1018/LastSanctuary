@@ -25,6 +25,8 @@ public class Boss : MonoBehaviour
 
     private void Awake()
     {
+        AnimationDB = new BossAnimationDB();
+        AnimationDB.Initailize();
         _polygonCollider = GetComponent<PolygonCollider2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();

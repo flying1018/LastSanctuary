@@ -29,12 +29,13 @@ public class BossIdleState : BossBaseState
         
         if (_boss.Target)
         {
-             _stateMachine.ChangeState(_stateMachine.ChaseState);
+             //_stateMachine.ChangeState(_stateMachine.ChaseState);
         }
         
         _time += Time.deltaTime;
         if (_time >= _data.attackIdleTime)
         {
+            if (_stateMachine.Attacks.Count <= 0) return;
             _stateMachine.ChangeState(_stateMachine.Attacks.Dequeue());
         }
     }
