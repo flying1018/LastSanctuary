@@ -7,6 +7,7 @@ using UnityEngine;
 public class UIManager : Singleton<UIManager>
 {
     [SerializeField] private UIManagerSO data;
+    [Header("RelicUI")]
     [SerializeField] private TextMeshProUGUI relicName;
     [SerializeField] private TextMeshProUGUI relicEffectText;
     [SerializeField] private TextMeshProUGUI relicDecsText;
@@ -19,6 +20,8 @@ public class UIManager : Singleton<UIManager>
     public PlayerCondition PlayerCondition { get; set; }
     public PlayerInventory PlayerInventory { get; set; }
     public UIManagerSO Data { get => data;}
+    
+    //RelicUI
     public TextMeshProUGUI RelicName { get => relicName;}
     public TextMeshProUGUI RelicEffectText { get => relicEffectText;}
     public TextMeshProUGUI RelicDecsText { get => relicDecsText;}
