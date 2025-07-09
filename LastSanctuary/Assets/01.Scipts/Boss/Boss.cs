@@ -22,9 +22,13 @@ public class Boss : MonoBehaviour
     public BossWeapon BossWeapon { get; set; }
     public GameObject Weapon { get; set; }
     public BossSO Data {get => bossData;}
-
+    public bool HasDetectedTarget { get; private set; } = false;
+    
     private void Awake()
     {
+        AnimationDB = new BossAnimationDB(); 
+        AnimationDB.Initailize(); 
+        
         _polygonCollider = GetComponent<PolygonCollider2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
@@ -37,7 +41,16 @@ public class Boss : MonoBehaviour
         StateMachine = new BossStateMachine(this);
         StateMachine.ChangeState(StateMachine.IdleState); //대기상태 시작
     }
-
+    
+    private void Start()
+    {
+        GameObject player = GameObject.FindWithTag(StringNameSpace.Tags.Player);
+        if (player != null)
+        {
+            Target = player.transform;
+        }
+    }
+    
     private void Update()
     {
         StateMachine.HandleInput();
@@ -51,4 +64,11 @@ public class Boss : MonoBehaviour
         //Debug.Log(StateMachine.currentState);
     }
     
+    public void DetectPlayer(Transform target)
+    {
+        if (HasDetectedTarget) return;
+    
+        HasDetectedTarget = true;
+        Target = target;
+    }
 }

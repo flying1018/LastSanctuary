@@ -14,4 +14,10 @@ public class BossSO : ScriptableObject
     
     [Header("Movement")]
     public float moveSpeed = 3f;
+    
+    [Header("Attack")]
+    public float attackRange = 50f;
+    
+    [field: Header("Anime Time")]
+    [field: SerializeField] public float spawnAnimeTime { get; private set; } = 10f;
 }
