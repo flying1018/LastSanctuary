@@ -13,5 +13,7 @@ public class UIStateMachine : StateMachine
         UIManager = uiManager;
         MainUI = new MainUI(this);
         RelicUI = new RelicUI(this);
+        
+        ChangeState(MainUI);
     }
 }

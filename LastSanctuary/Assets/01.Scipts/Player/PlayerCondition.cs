@@ -180,4 +180,14 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         Defence -= def;
         yield break;
     }
+
+    public float HpValue()
+    {
+        return (float)_curHp/MaxHp;
+    }
+
+    public float StaminaValue()
+    {
+        return (float)_curStamina/MaxStamina;
+    }
 }

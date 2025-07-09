@@ -17,6 +17,7 @@ public class PlayerHealState : PlayerGroundState
 
         _healTimer = _data.HealDuration;
         _condition.Heal(_data.HealAmount);  //인벤토리 물약의 힐량으로 교체 할거임.
+        _inventory.UsePotion();
     }
 
     public override void Exit()

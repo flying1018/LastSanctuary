@@ -13,4 +13,11 @@ public class UIManagerSO : ScriptableObject
     public GameObject statUIPrefab;
     public GameObject equipUIPrefab;
     public GameObject slotUIPrefab;
+
+    [Header("MainUI")] 
+    public int buffUINum;
+    public int conditionSize;
+    public GameObject buffUIPrefab;
+    public Sprite potionIcon;
+    public Sprite emptyPotionIcon;
 }

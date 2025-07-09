@@ -25,6 +25,7 @@ public class ItemManager : Singleton<ItemManager>
         //버프 적용
         if (data.duration > 0)
         {
+            UIManager.Instance.UpdateBuffUI(data);
             StartCoroutine(playerCondition.ApplyTempBuffCoroutine(data.hp, data.stamina, data.attack, 
                 data.defense, data.duration));
         }

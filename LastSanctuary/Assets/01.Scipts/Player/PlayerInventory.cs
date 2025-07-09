@@ -56,6 +56,13 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    public void UsePotion()
+    {
+        CurPotionNum--;
+        CurPotionNum = Mathf.Clamp(CurPotionNum, 0, MaxPotionNum);
+        UIManager.Instance.UpdatePotionUI();
+    }
+
     public void EquipRelic(CollectObjectSO data)
     {
         if (EquipRelics.Contains(data))

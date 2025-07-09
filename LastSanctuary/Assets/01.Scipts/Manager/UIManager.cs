@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
 {
     [SerializeField] private UIManagerSO data;
+    
     [Header("RelicUI")]
     [SerializeField] private TextMeshProUGUI relicName;
     [SerializeField] private TextMeshProUGUI relicEffectText;
@@ -14,6 +16,13 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private RectTransform statUIPivot;
     [SerializeField] private RectTransform equipUIPivot;
     [SerializeField] private RectTransform slotUIPivot;
+    
+    [Header("MainUI")]
+    [SerializeField] private RectTransform buffUIPivot;
+    [SerializeField] private ConditionUI hpUI;
+    [SerializeField] private ConditionUI staminaUI;
+    [SerializeField] private Image potionIcon;
+    [SerializeField] private TextMeshProUGUI potionText;
     
     
     public UIStateMachine UiStateMachine { get; set; }
@@ -28,6 +37,12 @@ public class UIManager : Singleton<UIManager>
     public RectTransform StatUIPivot { get => statUIPivot;}
     public RectTransform EquipUIPivot { get => equipUIPivot;}
     public RectTransform SlotUIPivot { get => slotUIPivot;}
+    //MainUI
+    public RectTransform BuffUIPivot { get => buffUIPivot;}
+    public Image PotionIcon { get => potionIcon;}
+    public TextMeshProUGUI PotionText { get => potionText;}
+    public ConditionUI HpUI { get => hpUI;}
+    public ConditionUI StaminaUI { get => staminaUI;}
 
 
     private void Start()
@@ -65,6 +80,16 @@ public class UIManager : Singleton<UIManager>
     public GameObject InstantiateUI(GameObject prefab,RectTransform parent)
     {
         return Instantiate(prefab,parent);
+    }
+
+    public void UpdatePotionUI()
+    {
+        UiStateMachine.MainUI.UpdatePotionText();
+    }
+
+    public void UpdateBuffUI(StatObjectSO data)
+    {
+        UiStateMachine.MainUI.UpdateBuffUI(data);
     }
 
     #endregion
