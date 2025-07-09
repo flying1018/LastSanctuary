@@ -10,7 +10,7 @@ public class BossIdleState : BossBaseState
 
     public override void Enter()
     {
-        Debug.Log("Boss idle state");
+        Debug.Log("대기상태 진입");
         StartAnimation(_boss.AnimationDB.IdleParameterHash);
     }
 
@@ -21,9 +21,19 @@ public class BossIdleState : BossBaseState
 
     public override void Update()
     {
-        if (_boss.Target)
+        if (!_boss.HasDetectedTarget)
         {
-             _stateMachine.ChangeState(_stateMachine.ChaseState);
+            float distance = Vector2.Distance(_boss.transform.position, _boss.Target.position);    // 감지 범위 안에 플레이어가 들어왔는지 확인
+            if (distance <= 20f) // 감지 범위 (유닛범위)
+            {
+                _boss.DetectPlayer(_boss.Target);
+                Debug.Log("플레이어 감지됨");
+            }
+        }
+
+        if (_boss.HasDetectedTarget)
+        {
+            _stateMachine.ChangeState(_stateMachine.ChaseState);
         }
     }
 }

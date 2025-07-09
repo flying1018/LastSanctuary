@@ -22,10 +22,11 @@ public class Boss : MonoBehaviour
     public BossWeapon BossWeapon { get; set; }
     public GameObject Weapon { get; set; }
     public BossSO Data {get => bossData;}
-
+    public bool HasDetectedTarget { get; private set; } = false;
+    
     private void Awake()
     {
-        AnimationDB = new BossAnimationDB();      // ✅ 이 줄을 꼭 넣어야 함
+        AnimationDB = new BossAnimationDB(); 
         AnimationDB.Initailize(); 
         
         _polygonCollider = GetComponent<PolygonCollider2D>();
@@ -43,11 +44,10 @@ public class Boss : MonoBehaviour
     
     private void Start()
     {
-        GameObject player = GameObject.FindWithTag("Player");
+        GameObject player = GameObject.FindWithTag(StringNameSpace.Tags.Player);
         if (player != null)
         {
             Target = player.transform;
-            Debug.Log("타겟설정: " + Target.name);
         }
     }
     
@@ -62,5 +62,13 @@ public class Boss : MonoBehaviour
     {
         StateMachine.PhysicsUpdate();
         //Debug.Log(StateMachine.currentState);
+    }
+    
+    public void DetectPlayer(Transform target)
+    {
+        if (HasDetectedTarget) return;
+    
+        HasDetectedTarget = true;
+        Target = target;
     }
 }
