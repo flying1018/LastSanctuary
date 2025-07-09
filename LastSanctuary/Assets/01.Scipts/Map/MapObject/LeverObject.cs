@@ -15,15 +15,11 @@ public class LeverObject : MonoBehaviour, IDamageable
         animator.SetBool("isOn", isOn);
     }
 
-    public void TakeDamage(int atk, DamageType type, Transform attacker, float knockBackPower)
+    public void TakeDamage(int atk, DamageType type, Transform attacker, float defpen)
     {
         if (_isMove) { return; }
         StartCoroutine(Toggle());
     }
-
-    public void ApplyDamage(int totalDamage) { }
-    public void KnockBack(Transform dir, float knockBackPower) { }
-    public void ChangingHitState() { }
 
     private IEnumerator Toggle()
     {

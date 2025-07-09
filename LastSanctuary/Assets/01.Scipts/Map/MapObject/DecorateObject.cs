@@ -9,7 +9,7 @@ public class DecorateObject : MonoBehaviour, IDamageable
 
     public GameObject brokenPrefab;
 
-    public void TakeDamage(int atk, DamageType type, Transform attackDir, float knockBackPower)
+    public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
     {
         if (isBroken) { return; }
 
@@ -43,20 +43,5 @@ public class DecorateObject : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(2f);
 
         brokenPrefab.SetActive(false);
-    }
-
-    public void ApplyDamage(int totalDamage)
-    {
-
-    }
-
-    public void KnockBack(Transform attackdir, float knockBackPower)
-    {
-        return;
-    }
-
-    public void ChangingHitState()
-    {
-        return;
     }
 }
