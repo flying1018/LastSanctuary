@@ -7,8 +7,6 @@ public class BossAnimationDB
     [SerializeField] private string spawnParameter = "Spawn";
     [SerializeField] private string idleParameter = "Idle";
     [SerializeField] private string walkParameter = "Walk";
-    [SerializeField] private string attack1Parameter = "Attack1";
-    [SerializeField] private string attack2Parameter = "Attack2";
     [SerializeField] private string deathParameter = "Death";
     [SerializeField] private string phaseShiftParameter = "PhaseShift";
     [SerializeField] private string groggyParameter = "Groggy";
@@ -18,8 +16,6 @@ public class BossAnimationDB
     public int SpawnParameterHash { get; private set; }
     public int IdleParameterHash { get; private set; }
     public int WalkParameterHash { get; private set; }
-    public int Attack1ParameterHash { get; private set; }
-    public int Attack2ParameterHash { get; private set; }
     public int DeathParameterHash { get; private set; }
     public int PhaseShiftParameterHash { get; private set; }
     public int GroggyParameterHash { get; private set; }
@@ -30,8 +26,6 @@ public class BossAnimationDB
         SpawnParameterHash = Animator.StringToHash(spawnParameter);
         IdleParameterHash = Animator.StringToHash(idleParameter);
         WalkParameterHash = Animator.StringToHash(walkParameter);
-        Attack1ParameterHash = Animator.StringToHash(attack1Parameter);
-        Attack2ParameterHash = Animator.StringToHash(attack2Parameter);
         DeathParameterHash = Animator.StringToHash(deathParameter);
         PhaseShiftParameterHash = Animator.StringToHash(phaseShiftParameter);
         GroggyParameterHash = Animator.StringToHash(groggyParameter);

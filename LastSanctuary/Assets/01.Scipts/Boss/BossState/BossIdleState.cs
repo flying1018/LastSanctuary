@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossIdleState : BossBaseState
 {
+    private float _time;
+    
     public BossIdleState(BossStateMachine bossStateMachine) : base(bossStateMachine)
     {
     }
@@ -12,6 +14,8 @@ public class BossIdleState : BossBaseState
     {
         Debug.Log("대기상태 진입");
         StartAnimation(_boss.AnimationDB.IdleParameterHash);
+
+        _time = 0;
     }
 
     public override void Exit()
@@ -21,19 +25,18 @@ public class BossIdleState : BossBaseState
 
     public override void Update()
     {
-        if (!_boss.HasDetectedTarget)
+        base.Update();
+        
+        if (_boss.Target)
         {
-            float distance = Vector2.Distance(_boss.transform.position, _boss.Target.position);    // 감지 범위 안에 플레이어가 들어왔는지 확인
-            if (distance <= 20f) // 감지 범위 (유닛범위)
-            {
-                _boss.DetectPlayer(_boss.Target);
-                Debug.Log("플레이어 감지됨");
-            }
+             _stateMachine.ChangeState(_stateMachine.ChaseState);
         }
-
-        if (_boss.HasDetectedTarget)
+        
+        _time += Time.deltaTime;
+        if (_time >= _data.attackIdleTime)
         {
-            _stateMachine.ChangeState(_stateMachine.ChaseState);
+            if (_stateMachine.Attacks.Count <= 0) return;
+            _stateMachine.ChangeState(_stateMachine.Attacks.Dequeue());
         }
     }
 }

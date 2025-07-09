@@ -28,7 +28,6 @@ public class Boss : MonoBehaviour
     {
         AnimationDB = new BossAnimationDB(); 
         AnimationDB.Initailize(); 
-        
         _polygonCollider = GetComponent<PolygonCollider2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
@@ -41,13 +40,10 @@ public class Boss : MonoBehaviour
         StateMachine = new BossStateMachine(this);
     }
     
+
     private void Start()
     {
-        GameObject player = GameObject.FindWithTag(StringNameSpace.Tags.Player);
-        if (player != null)
-        {
-            Target = player.transform;
-        }
+        Target = FindObjectOfType<Player>().transform;
     }
     
     private void Update()
@@ -62,6 +58,22 @@ public class Boss : MonoBehaviour
         StateMachine.PhysicsUpdate();
         //Debug.Log(StateMachine.currentState);
     }
+
+    #region need MonoBehaviour Method
+
+    public void BackJump()
+    {
+        Vector2 backDir = transform.position - Target.position;
+        backDir.y = Mathf.Abs(backDir.x);
+        Rigidbody.AddForce(backDir.normalized * Data.backJumpPower, ForceMode2D.Impulse);
+    }
+
+    public void StopMove()
+    {
+        Rigidbody.velocity = Vector2.zero;
+    }
+
+    #endregion
     
     public void DetectPlayer(Transform target)
     {

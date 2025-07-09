@@ -19,3 +19,16 @@ MonoBehaviour:
   groggyDuration: 5
   damageDelay: 0.2
   moveSpeed: 3
+  attackIdleTime: 1
+  attacks:
+  - multiplier: 0
+    knockbackForce: 0
+    coolTime: 3
+    animParameter: Attack1
+    attackAnim: {fileID: 7400000, guid: 3852d77dc4102194eb172f127a49af23, type: 2}
+  - multiplier: 0
+    knockbackForce: 0
+    coolTime: 10
+    animParameter: Attack2
+    attackAnim: {fileID: 7400000, guid: f01057286f56a7e48b86cce37d330c92, type: 2}
+  backJumpPower: 1000
