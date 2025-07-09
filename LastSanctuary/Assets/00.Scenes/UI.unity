@@ -4353,6 +4353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: ad0bc5dbfafa61b4388545191390cc17, type: 2}
   unifiedUI: {fileID: 1067982401}
+  exitButton: {fileID: 369563659}
   relicUI: {fileID: 865405731}
   relicName: {fileID: 265310169}
   relicEffectText: {fileID: 63735193}
