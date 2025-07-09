@@ -35,7 +35,6 @@ public class Boss : MonoBehaviour
         
         Condition.Init(this);
         StateMachine = new BossStateMachine(this);
-        StateMachine.ChangeState(StateMachine.IdleState); //대기상태 시작
     }
 
     private void Update()

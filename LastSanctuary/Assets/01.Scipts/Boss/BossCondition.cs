@@ -40,7 +40,7 @@ public class BossCondition : MonoBehaviour, IBossDamageable
     }
     
     
-    public void TakeDamage(int atk, DamageType type, Transform attackDir, float knockBackPower)
+    public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
     {
         if (_isTakeDamageable) return;
         Debug.Log(_curHp);
@@ -58,7 +58,10 @@ public class BossCondition : MonoBehaviour, IBossDamageable
         _groggyGauge += groggyDamage;
         Debug.Log(_groggyGauge);
         if (_groggyGauge >= _maxGroggyGauge)
+        {
+            _groggyGauge = 0;
             ChangingState();
+        }
         StartCoroutine(DamageDelay_Coroutine());
     }
     
@@ -78,7 +81,8 @@ public class BossCondition : MonoBehaviour, IBossDamageable
     
     public void ChangingState()
     {
-        //궁극기 맞을시도 전환
+        //궁극기 맞을시 1초간 전환
+    Debug.Log(_boss.StateMachine);
        _boss.StateMachine.ChangeState(_boss.StateMachine.GroggyState);
     }
 }

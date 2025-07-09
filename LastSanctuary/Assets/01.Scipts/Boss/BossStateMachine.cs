@@ -14,7 +14,7 @@ public class BossStateMachine : StateMachine
     {
         this.Boss = boss;
         IdleState = new BossIdleState(this);
-        ChaseState = new BossChaseState(this); //상태초기화
+        ChaseState = new BossChaseState(this); 
         GroggyState = new BossGroggyState(this);
         
         ChangeState(IdleState);
