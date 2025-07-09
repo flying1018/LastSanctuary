@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class BuffUI : MonoBehaviour
 {
+    [SerializeField] private float blinkTime;
+    [SerializeField] private float blickInterval;
+    
     public Image icon;
     public StatObjectSO data;
     
@@ -27,10 +30,11 @@ public class BuffUI : MonoBehaviour
             timer -= Time.deltaTime;
             yield return null;
 
-            if (timer <= 5)
+            //
+            if (timer <= blinkTime)
             {
                 blinkTimer += Time.deltaTime;
-                if (blinkTimer >= 0.2f)
+                if (blinkTimer >= blickInterval)
                 {
                     blinkTimer = 0f;
                     isVisible = !isVisible;

@@ -164,5 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa37306321055446aaf2b75b3fb6752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkTime: 5
+  blickInterval: 0.2
   icon: {fileID: 7018145022729979631}
   data: {fileID: 0}

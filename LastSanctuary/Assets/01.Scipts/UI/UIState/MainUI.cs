@@ -36,6 +36,23 @@ public class MainUI : UIBaseState
         _staminaConditionUI.SetCurValue(_playerCondition.StaminaValue());
     }
 
+    public override void Enter()
+    {
+        _uiManager.MainUI.SetActive(true);
+    }
+    public override void Exit()
+    {
+        _uiManager.MainUI.SetActive(false);
+    }
+
+    public override void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            _uiStateMachine.ChangeState(_uiStateMachine.RelicUI);
+        }
+    }
+
     public override void Update()
     {
         base.Update();
@@ -61,6 +78,7 @@ public class MainUI : UIBaseState
             if (buffUI.data == null)
             {
                 buffUI.SetBuff(data);
+                break;
             }
         }
     }

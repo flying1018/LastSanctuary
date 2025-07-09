@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -53,12 +54,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (UIManager.Instance.DontPlayerControl) return;
         StateMachine.HandleInput();
         StateMachine.Update();
     }
 
     private void FixedUpdate()
     {
+        if (UIManager.Instance.DontPlayerControl) return;
         StateMachine.PhysicsUpdate();
     }
 
