@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCondition : MonoBehaviour, IDamageable
+public class PlayerCondition : MonoBehaviour, IKnockBackable
 {
     private Player _player;
     private int _totaldamage;
@@ -53,7 +53,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(int atk, DamageType type, Transform dir = null,float force = 0f)
+    public void TakeDamage(int atk, DamageType type, Transform dir ,float defpen = 0)
     {
         if (IsInvincible) return;
         bool isFront = IsFront(dir);
@@ -68,12 +68,16 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         }
         else
         {
-            ChangingHitState();
-            if(force>0)
-                KnockBack(dir,force);
+            ChangingState();
         }
     }
-    
+
+    public void ApplyKnockBack(Transform attackDir, float knockBackPower)
+    {
+        if(knockBackPower>0)
+            KnockBack(attackDir,knockBackPower);
+    }
+
     public void PlayerRecovery()
     {
         _curHp = MaxHp;
@@ -150,7 +154,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         _player.Rigidbody.AddForce(knockback, ForceMode2D.Impulse);
     }
     //상태전환
-    public void ChangingHitState()
+    public void ChangingState()
     {
         _player.StateMachine.ChangeState(_player.StateMachine.HitState);
     }

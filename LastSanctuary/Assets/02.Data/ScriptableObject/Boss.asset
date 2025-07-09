@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: 0
   defense: 0
-  hp: 0
-  groggyGauge: 0
+  hp: 10000
+  groggyGauge: 100
+  groggyDuration: 5
+  damageDelay: 0.2
+  moveSpeed: 3
