@@ -9,6 +9,7 @@ public class BossStateMachine : StateMachine
     public BossIdleState IdleState {get; private set;}
     public BossChaseState ChaseState { get; private set; }
     public BossGroggyState GroggyState { get; private set; }
+    public BossSpawnState SpawnState { get; private set; }
 
     public BossStateMachine(Boss boss)
     {
@@ -16,7 +17,8 @@ public class BossStateMachine : StateMachine
         IdleState = new BossIdleState(this);
         ChaseState = new BossChaseState(this); 
         GroggyState = new BossGroggyState(this);
+        SpawnState = new BossSpawnState(this); 
         
-        ChangeState(IdleState);
+        ChangeState(SpawnState);
     }
 }

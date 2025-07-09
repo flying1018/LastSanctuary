@@ -19,7 +19,7 @@ MonoBehaviour:
   moveSpeed: 3
   cancelChaseTime: 3
   <patrolDistance>k__BackingField: 10
-  <HitDuration>k__BackingField: 0.2
+  <HitDuration>k__BackingField: 0.1
   attackDistance: 3
   attackDuration: 2
   knockbackForce: 10
@@ -31,3 +31,6 @@ MonoBehaviour:
   hitDuration: 0.5
   alphaValue: 0.5
   deathAnim: {fileID: 7400000, guid: 2fee7b95aee869640ab0bfeea263aabf, type: 2}
+  arrowPrefab: {fileID: 0}
+  arrowPoolId: 0
+  arrowPower: 0

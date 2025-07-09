@@ -10,7 +10,7 @@ public class PlayerCondition : MonoBehaviour, IKnockBackable
     private int _curHp;
     private float _curStamina;
     private int _staminaRecovery;
-    private Coroutine _coroutine;
+    private Coroutine _buffcoroutine;
     private StatObjectSO _lastBuffData;
     
     public int Attack { get; set; }
@@ -53,7 +53,7 @@ public class PlayerCondition : MonoBehaviour, IKnockBackable
         }
     }
 
-    public void TakeDamage(int atk, DamageType type, Transform dir ,float defpen = 0)
+    public void TakeDamage(int atk, DamageType type, Transform dir, float defpen = 0)
     {
         if (IsInvincible) return;
         bool isFront = IsFront(dir);
@@ -169,9 +169,9 @@ public class PlayerCondition : MonoBehaviour, IKnockBackable
     }
     public void ApplyTempBuff(StatObjectSO data)
     {
-        if (_coroutine != null)
+        if (_buffcoroutine != null)
         {
-            StopCoroutine(_coroutine);
+            StopCoroutine(_buffcoroutine);
             RemoveTempBuff(_lastBuffData);
         }
 
@@ -181,7 +181,7 @@ public class PlayerCondition : MonoBehaviour, IKnockBackable
          BuffDef += data.defense;
          
          _lastBuffData = data;
-         _coroutine = StartCoroutine(BuffDurationTimerCoroutine(data.duration));
+         _buffcoroutine = StartCoroutine(BuffDurationTimerCoroutine(data.duration));
     }
     private void RemoveTempBuff(StatObjectSO data)
     {
@@ -196,7 +196,7 @@ public class PlayerCondition : MonoBehaviour, IKnockBackable
     {
         yield return new WaitForSeconds(duration);
         RemoveTempBuff(_lastBuffData);
-        _coroutine = null;
+        _buffcoroutine = null;
     }
 
 }

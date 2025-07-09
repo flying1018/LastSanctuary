@@ -30,6 +30,12 @@ public class ComboAttackState : PlayerAttackState
         
         _time = 0;
         _animationTime = _attackInfo.animTime;
+
+        if (_attackInfo.attackIndex == 3)
+        {
+            _condition.IsInvincible = true;
+        }
+        
     }
 
     public override void Exit()
@@ -37,10 +43,13 @@ public class ComboAttackState : PlayerAttackState
         base.Exit();
         
         _player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, 0);
+        _condition.IsInvincible = false;
     }
 
     public override void HandleInput()
     {
+        Debug.Log(_condition.IsInvincible);
+        
         base.HandleInput();
         //다음 공격
         _time += Time.deltaTime;
@@ -85,6 +94,7 @@ public class ComboAttackState : PlayerAttackState
     public override void Update()
     {
         //스테미나 회복 막기용
+        _condition.InvincibleStart = Time.time;
     }
 
 

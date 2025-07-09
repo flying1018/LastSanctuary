@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectData: {fileID: 11400000, guid: de628b8ea8b70aa4fb088f89bf723331, type: 2}
-  isGet: 0
+  isGet: 1
 --- !u!58 &467538321641387105
 CircleCollider2D:
   m_ObjectHideFlags: 0
