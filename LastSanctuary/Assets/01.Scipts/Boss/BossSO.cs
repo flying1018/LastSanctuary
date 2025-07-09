@@ -29,4 +29,5 @@ public class BossSO : ScriptableObject
     [Header("AttackState")] 
     public float attackIdleTime;
     public BossAttackInfo[] attacks;
+    public float backJumpPower;
 }

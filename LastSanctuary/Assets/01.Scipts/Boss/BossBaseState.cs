@@ -41,6 +41,8 @@ public class BossBaseState : IState
     {
         if(_stateMachine.Attack1.CheckCoolTime())
             _stateMachine.Attacks.Enqueue(_stateMachine.Attack1);
+        if(_stateMachine.Attack2.CheckCoolTime())
+            _stateMachine.Attacks.Enqueue(_stateMachine.Attack2);
     }
 
     public virtual void PhysicsUpdate()

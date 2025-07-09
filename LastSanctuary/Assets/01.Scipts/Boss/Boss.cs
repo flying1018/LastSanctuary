@@ -57,5 +57,21 @@ public class Boss : MonoBehaviour
         StateMachine.PhysicsUpdate();
         //Debug.Log(StateMachine.currentState);
     }
+
+    #region need MonoBehaviour Method
+
+    public void BackJump()
+    {
+        Vector2 backDir = transform.position - Target.position;
+        backDir.y = Mathf.Abs(backDir.x);
+        Rigidbody.AddForce(backDir.normalized * Data.backJumpPower, ForceMode2D.Impulse);
+    }
+
+    public void StopMove()
+    {
+        Rigidbody.velocity = Vector2.zero;
+    }
+
+    #endregion
     
 }

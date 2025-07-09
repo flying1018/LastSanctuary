@@ -11,6 +11,7 @@ public class BossStateMachine : StateMachine
     public BossGroggyState GroggyState { get; private set; }
     public Queue<BossAttackState> Attacks { get; private set; }
     public BossAttackState Attack1 { get; private set; }
+    public BossAttackState Attack2 { get; private set; }
 
     
 
@@ -22,6 +23,7 @@ public class BossStateMachine : StateMachine
         GroggyState = new BossGroggyState(this);
         Attacks = new Queue<BossAttackState>();
         Attack1 = new BossAttackState(this, boss.Data.attacks[0]);
+        Attack2 = new BossAttackState(this, boss.Data.attacks[1]);
         
         ChangeState(IdleState);
     }
