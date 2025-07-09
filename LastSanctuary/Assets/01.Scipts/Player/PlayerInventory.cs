@@ -56,6 +56,13 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    public void UsePotion()
+    {
+        CurPotionNum--;
+        CurPotionNum = Mathf.Clamp(CurPotionNum, 0, MaxPotionNum);
+        UIManager.Instance.UpdatePotionUI();
+    }
+
     public void EquipRelic(CollectObjectSO data)
     {
         if (EquipRelics.Contains(data))
@@ -64,10 +71,10 @@ public class PlayerInventory : MonoBehaviour
         }
         else
         {
-            _playerCondition.Attack += data.attack;
-            _playerCondition.Defence += data.defense;
-            _playerCondition.MaxHp += data.hp;
-            _playerCondition.MaxStamina += data.stamina;
+            //_playerCondition.Attack += data.attack;
+            //_playerCondition.Defence += data.defense;
+            //_playerCondition.MaxHp += data.hp;
+            //_playerCondition.MaxStamina += data.stamina;
             EquipRelics.Add(data);
         }
         
@@ -75,10 +82,10 @@ public class PlayerInventory : MonoBehaviour
 
     public void UnEquipRelic(CollectObjectSO data)
     {
-        _playerCondition.Attack -= data.attack;
-        _playerCondition.Defence -= data.defense;
-        _playerCondition.MaxHp -= data.hp;
-        _playerCondition.MaxStamina -= data.stamina;
+        //_playerCondition.Attack -= data.attack;
+        //_playerCondition.Defence -= data.defense;
+        //_playerCondition.MaxHp -= data.hp;
+        //_playerCondition.MaxStamina -= data.stamina;
         EquipRelics.Remove(data);
     }
 

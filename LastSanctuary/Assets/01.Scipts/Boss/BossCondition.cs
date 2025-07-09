@@ -85,4 +85,5 @@ public class BossCondition : MonoBehaviour, IBossDamageable
     Debug.Log(_boss.StateMachine);
        _boss.StateMachine.ChangeState(_boss.StateMachine.GroggyState);
     }
+    
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCondition : MonoBehaviour, IKnockBackable
+public class PlayerCondition : MonoBehaviour, IDamageable
 {
     private Player _player;
     private int _totaldamage;
@@ -53,7 +53,8 @@ public class PlayerCondition : MonoBehaviour, IKnockBackable
         }
     }
 
-    public void TakeDamage(int atk, DamageType type, Transform dir, float defpen = 0)
+
+    public void TakeDamage(int atk, DamageType type, Transform dir ,float defpen = 0f)
     {
         if (IsInvincible) return;
         bool isFront = IsFront(dir);
@@ -197,6 +198,16 @@ public class PlayerCondition : MonoBehaviour, IKnockBackable
         yield return new WaitForSeconds(duration);
         RemoveTempBuff(_lastBuffData);
         _buffcoroutine = null;
+    }
+
+    public float HpValue()
+    {
+        return (float)_curHp / MaxHp;
+    }
+
+    public float StaminaValue()
+    {
+        return _curStamina / MaxStamina;
     }
 
 }

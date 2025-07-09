@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEditor.SceneTemplate;
 using UnityEngine;
 
-public class RelicUI : UIBaseState
+public class RelicUI : UnifiedUI
 {
     private List<StatUI> _statUIs;
     private List<EquipUI> _equipUIs;
@@ -14,9 +14,10 @@ public class RelicUI : UIBaseState
     private TextMeshProUGUI _relicName;
     private TextMeshProUGUI _relicEffect;
     private TextMeshProUGUI _relicDesc;
+
     public RelicUI(UIStateMachine uiStateMachine) : base(uiStateMachine)
     {
-        _statUIs  = new List<StatUI>();
+        _statUIs = new List<StatUI>();
         _equipUIs = new List<EquipUI>();
         _slotUIs = new List<SlotUI>();
         _relicName = _uiManager.RelicName;
@@ -26,8 +27,8 @@ public class RelicUI : UIBaseState
         //스탯 슬롯 생성
         for (int i = 0; i < _data.statNames.Length; i++)
         {
-            GameObject go = _uiManager.InstantiateUI(_data.statUIPrefab,_uiManager.StatUIPivot);
-            
+            GameObject go = _uiManager.InstantiateUI(_data.statUIPrefab, _uiManager.StatUIPivot);
+
             _statUIs.Add(go.GetComponent<StatUI>());
             _statUIs[i].statName.text = _data.statNames[i];
         }
@@ -35,27 +36,49 @@ public class RelicUI : UIBaseState
         //장비 슬롯 생성
         for (int i = 0; i < _data.equipNum; i++)
         {
-            GameObject go = _uiManager.InstantiateUI(_data.equipUIPrefab,_uiManager.EquipUIPivot);
-            
+            GameObject go = _uiManager.InstantiateUI(_data.equipUIPrefab, _uiManager.EquipUIPivot);
+
             _equipUIs.Add(go.GetComponent<EquipUI>());
-            
+
             int index = i;
             _equipUIs[i].OnSelect += () => OnSelect(_equipUIs[index].data);
             _equipUIs[i].OnEquip += () => OnEquip(_equipUIs[index].data);
         }
 
         //성물 슬롯 생성
-        for (int i = 0; i<_playerInventory.relics.Count; i++)
+        for (int i = 0; i < _playerInventory.relics.Count; i++)
         {
-            GameObject go = _uiManager.InstantiateUI(_data.slotUIPrefab,_uiManager.SlotUIPivot);
-            
+            GameObject go = _uiManager.InstantiateUI(_data.slotUIPrefab, _uiManager.SlotUIPivot);
+
             _slotUIs.Add(go.GetComponent<SlotUI>());
         }
-        
-        //testCode
+
+
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+        _uiManager.RelicUI.SetActive(true);
         UpdateStatus();
         UpdateSlot();
     }
+
+    public override void Exit()
+    {
+        base.Exit();
+        _uiManager.RelicUI.SetActive(false);
+    }
+
+    public override void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            _uiStateMachine.ChangeState(_uiStateMachine.MainUI);
+        }
+    }
+
+
 
     //스테이터스 갱신
     private void UpdateStatus()
@@ -69,7 +92,7 @@ public class RelicUI : UIBaseState
         _statUIs[1].relic.text = "+" + _playerInventory.EquipRelicDefense();
         _statUIs[2].relic.text = "+" + _playerInventory.EquipRelicHp();
         _statUIs[3].relic.text = "+" + _playerInventory.EquipRelicStamina();
-        
+
         //버프 효과 표시 필요
     }
 
@@ -81,7 +104,7 @@ public class RelicUI : UIBaseState
         _relicDesc.text = data.relicDesc;
     }
 
-    
+
     //우클릭 시 실행
     private void OnEquip(CollectObjectSO data)
     {
@@ -91,7 +114,8 @@ public class RelicUI : UIBaseState
             equipUI.data = null;
             equipUI.SetActive();
         }
-        for (int i =0;i<_playerInventory.EquipRelics.Count;i++)
+
+        for (int i = 0; i < _playerInventory.EquipRelics.Count; i++)
         {
             _equipUIs[i].data = _playerInventory.EquipRelics[i];
             _equipUIs[i].SetActive();
@@ -103,7 +127,7 @@ public class RelicUI : UIBaseState
     //성물 슬롯 갱신
     private void UpdateSlot()
     {
-        for (int i = 0; i<_playerInventory.relics.Count; i++)
+        for (int i = 0; i < _playerInventory.relics.Count; i++)
         {
             if (_playerInventory.relics[i].IsGet)
             {
@@ -115,13 +139,4 @@ public class RelicUI : UIBaseState
             }
         }
     }
-
-    public override void Enter()
-    {
-        base.Enter();
-        UpdateStatus();
-        UpdateSlot();
-    }
-    
-    
 }

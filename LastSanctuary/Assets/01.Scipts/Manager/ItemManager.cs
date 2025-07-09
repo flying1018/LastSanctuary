@@ -25,6 +25,7 @@ public class ItemManager : Singleton<ItemManager>
         //버프 적용
         if (data.duration > 0)
         {
+            UIManager.Instance.UpdateBuffUI(data);
             int StatObjectSO;
             playerCondition.ApplyTempBuff(data);
         }

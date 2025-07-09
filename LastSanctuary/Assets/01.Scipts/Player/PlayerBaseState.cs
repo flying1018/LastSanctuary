@@ -10,6 +10,7 @@ public class PlayerBaseState : IState
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
     protected PlayerCondition _condition;
+    protected PlayerInventory _inventory;
     protected Player _player;
     protected PlayerWeapon _playerWeapon;
     protected CapsuleCollider2D _capsuleCollider;
@@ -25,6 +26,7 @@ public class PlayerBaseState : IState
         _condition = _player.Condition;
         _playerWeapon = _player.PlayerWeapon;
         _capsuleCollider = _player.CapsuleCollider;
+        _inventory = _player.Inventory;
     }
 
     public virtual void Enter()
