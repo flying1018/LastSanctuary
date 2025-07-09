@@ -19,27 +19,27 @@ public class UIBaseState : IState
         _data = _uiManager.Data;
     }
     
-    public void Enter()
+    public virtual void Enter()
     {
 
     }
 
-    public void Exit()
+    public virtual void Exit()
     {
 
     }
 
-    public void HandleInput()
+    public virtual void HandleInput()
     {
 
     }
 
-    public void Update()
+    public  virtual void Update()
     {
 
     }
 
-    public void PhysicsUpdate()
+    public virtual void PhysicsUpdate()
     {
 
     }

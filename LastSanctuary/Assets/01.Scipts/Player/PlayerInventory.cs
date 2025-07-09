@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 public class PlayerInventory : MonoBehaviour
 {
     private PlayerCondition _playerCondition;
-    private List<CollectObjectSO> _equipRelics;
-    
+
     //일단은 직렬화 나중에 어드레서블로 변환
     public List<CollectObject> relics;
+    public List<CollectObjectSO> EquipRelics { get; private set; }
     public int MaxPotionNum { get; private set; }
     public int CurPotionNum { get; private set; }
 
@@ -23,17 +23,17 @@ public class PlayerInventory : MonoBehaviour
         MaxPotionNum = player.Data.potionNum;
         CurPotionNum = MaxPotionNum;
         _playerCondition = player.Condition;
-        _equipRelics = new List<CollectObjectSO>();
+        EquipRelics = new List<CollectObjectSO>();
     }
 
-    public void AddItem(CollectObjectSO collectObjectSO)
+    public void AddItem(CollectObjectSO data)
     {
-        switch (collectObjectSO.collectType)
+        switch (data.collectType)
         {
             case CollectType.Relic:
                 foreach (var relic in relics)
                 {
-                    if (collectObjectSO.index == relic.Data.index)
+                    if (data.index == relic.Data.index)
                     {
                         relic.IsGet = true;
                         break;
@@ -41,7 +41,7 @@ public class PlayerInventory : MonoBehaviour
                 }
                 break;
             case CollectType.Potion:
-                if (collectObjectSO.isMaxIncrease)
+                if (data.isMaxIncrease)
                 {
                     MaxPotionNum++;
                     CurPotionNum++;
@@ -56,21 +56,69 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public void EquipRelic(CollectObjectSO collectObjectSO)
+    public void EquipRelic(CollectObjectSO data)
     {
-        _playerCondition.Attack += collectObjectSO.attack;
-        _playerCondition.Defence += collectObjectSO.defense;
-        _playerCondition.MaxHp += collectObjectSO.hp;
-        _playerCondition.MaxStamina += collectObjectSO.stamina;
-        _equipRelics.Add(collectObjectSO);
+        if (EquipRelics.Contains(data))
+        {
+            UnEquipRelic(data);
+        }
+        else
+        {
+            _playerCondition.Attack += data.attack;
+            _playerCondition.Defence += data.defense;
+            _playerCondition.MaxHp += data.hp;
+            _playerCondition.MaxStamina += data.stamina;
+            EquipRelics.Add(data);
+        }
+        
     }
 
-    public void UnEquipRelic(CollectObjectSO collectObjectSO)
+    public void UnEquipRelic(CollectObjectSO data)
     {
-        _playerCondition.Attack -= collectObjectSO.attack;
-        _playerCondition.Defence -= collectObjectSO.defense;
-        _playerCondition.MaxHp -= collectObjectSO.hp;
-        _playerCondition.MaxStamina -= collectObjectSO.stamina;
-        _equipRelics.Remove(collectObjectSO);
+        _playerCondition.Attack -= data.attack;
+        _playerCondition.Defence -= data.defense;
+        _playerCondition.MaxHp -= data.hp;
+        _playerCondition.MaxStamina -= data.stamina;
+        EquipRelics.Remove(data);
+    }
+
+    public int EquipRelicAttack()
+    {
+        int sum = 0;
+        foreach (CollectObjectSO data in EquipRelics)
+        {
+            sum += data.attack;
+        }
+        return sum;
+    }
+    
+    public int EquipRelicDefense()
+    {
+        int sum = 0;
+        foreach (CollectObjectSO data in EquipRelics)
+        {
+            sum += data.defense;
+        }
+        return sum;
+    }
+    
+    public int EquipRelicHp()
+    {
+        int sum = 0;
+        foreach (CollectObjectSO data in EquipRelics)
+        {
+            sum += data.hp;
+        }
+        return sum;
+    }
+    
+    public int EquipRelicStamina()
+    {
+        int sum = 0;
+        foreach (CollectObjectSO data in EquipRelics)
+        {
+            sum += data.stamina;
+        }
+        return sum;
     }
 }
