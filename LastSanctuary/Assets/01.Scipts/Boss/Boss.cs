@@ -25,6 +25,9 @@ public class Boss : MonoBehaviour
 
     private void Awake()
     {
+        AnimationDB = new BossAnimationDB();      // ✅ 이 줄을 꼭 넣어야 함
+        AnimationDB.Initailize(); 
+        
         _polygonCollider = GetComponent<PolygonCollider2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
@@ -37,7 +40,17 @@ public class Boss : MonoBehaviour
         StateMachine = new BossStateMachine(this);
         StateMachine.ChangeState(StateMachine.IdleState); //대기상태 시작
     }
-
+    
+    private void Start()
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            Target = player.transform;
+            Debug.Log("타겟설정: " + Target.name);
+        }
+    }
+    
     private void Update()
     {
         StateMachine.HandleInput();
@@ -50,5 +63,4 @@ public class Boss : MonoBehaviour
         StateMachine.PhysicsUpdate();
         //Debug.Log(StateMachine.currentState);
     }
-    
 }
