@@ -71,7 +71,7 @@ public class EnemyCondition : MonoBehaviour, IKnockBackable
         if (IsInvincible) return;
         if (_isTakeDamageable) return;
         
-        ApplyDamage(atk);
+        ApplyDamage(atk,defpen);
         if (_curHp <= 0)
         {
             Death();
@@ -91,11 +91,10 @@ public class EnemyCondition : MonoBehaviour, IKnockBackable
         StartCoroutine(DamageDelay_Coroutine());
     }
 
-    public void ApplyDamage(int atk)
+    public void ApplyDamage(int atk, float defpen)
     {
-        _damage = atk;//계산식
+        _damage = (int)Math.Ceiling(atk -  _defense * (1-defpen));
         _curHp -= _damage;
-        Debug.Log(_damage);
     }
   
     

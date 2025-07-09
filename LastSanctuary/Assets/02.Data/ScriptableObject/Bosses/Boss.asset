@@ -19,6 +19,8 @@ MonoBehaviour:
   groggyDuration: 5
   damageDelay: 0.2
   moveSpeed: 3
+  attackRange: 50
+  <spawnAnimeTime>k__BackingField: 10
   attackIdleTime: 1
   attacks:
   - multiplier: 0
@@ -32,3 +34,4 @@ MonoBehaviour:
     animParameter: Attack2
     attackAnim: {fileID: 7400000, guid: f01057286f56a7e48b86cce37d330c92, type: 2}
   backJumpPower: 1000
+  defpen: 0.2

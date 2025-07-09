@@ -37,4 +37,5 @@ public class BossSO : ScriptableObject
     public float attackIdleTime;
     public BossAttackInfo[] attacks;
     public float backJumpPower;
+    public float defpen;
 }

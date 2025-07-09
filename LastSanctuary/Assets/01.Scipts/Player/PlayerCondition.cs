@@ -62,7 +62,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         if(TryGuard(atk,type, isFront))return;
         
         DamageType = type; //경직 시간 판단을 위한 대미지 타입
-        ApplyDamage(atk);
+        ApplyDamage(atk ,defpen);
         if (_curHp <= 0)
         {
             OnDie?.Invoke();
@@ -140,9 +140,9 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         return false;
     }
 
-    public void ApplyDamage(int atk)
+    public void ApplyDamage(int atk,float defpen = 0f)
     { 
-        _totaldamage = atk;//계산식
+        _totaldamage = atk;
         _curHp -= _totaldamage;
         Debug.Log($"대미지를 받음{_totaldamage}");
     }

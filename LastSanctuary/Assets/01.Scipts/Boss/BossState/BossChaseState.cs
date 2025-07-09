@@ -35,7 +35,7 @@ public class BossChaseState : BossBaseState
         
         if (distance <= _data.attackRange)// 일정 거리 안에 들어오면 Idle 상태로 전환
         {
-            Debug.Log("가까워짐 대기상태 진입");
+            //Debug.Log("가까워짐 대기상태 진입");
             _rigidbody.velocity = Vector2.zero;
             _stateMachine.ChangeState(_stateMachine.IdleState);
             return;

@@ -44,7 +44,7 @@ public class BossCondition : MonoBehaviour, IBossDamageable
     {
         if (_isTakeDamageable) return;
         Debug.Log(_curHp);
-        ApplyDamage(atk);
+        ApplyDamage(atk,defpen);
     }
     
     //보스 그로기 증가
@@ -65,15 +65,15 @@ public class BossCondition : MonoBehaviour, IBossDamageable
         StartCoroutine(DamageDelay_Coroutine());
     }
     
-    public void ApplyDamage(int atk)
+    public void ApplyDamage(int atk ,float defpen)
     {
         if (IsGroggy)
         {
-            _damage = (int)Math.Ceiling(atk * 1.5f); //계산식
+            _damage = (int)(Math.Ceiling((atk - _defence * (1 - defpen)) * 1.5f));
         }
         else
         {
-            _damage = atk;
+            _damage = (int)(Math.Ceiling(atk - _defence * (1 - defpen)));
         }
         _curHp = _damage;
         Debug.Log(_damage);
@@ -82,7 +82,7 @@ public class BossCondition : MonoBehaviour, IBossDamageable
     public void ChangingState()
     {
         //궁극기 맞을시 1초간 전환
-    Debug.Log(_boss.StateMachine);
+        Debug.Log(_boss.StateMachine);
        _boss.StateMachine.ChangeState(_boss.StateMachine.GroggyState);
     }
     
