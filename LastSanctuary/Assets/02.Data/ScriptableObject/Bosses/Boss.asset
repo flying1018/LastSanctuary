@@ -16,8 +16,8 @@ MonoBehaviour:
   _name: 
   attack: 10
   defense: 0
-  hp: 100
-  groggyGauge: 2
+  hp: 40
+  groggyGauge: 10
   groggyDuration: 5
   damageDelay: 0.2
   deathAnim: {fileID: 7400000, guid: f745dd3432f773c46807b3753e7880d9, type: 2}
