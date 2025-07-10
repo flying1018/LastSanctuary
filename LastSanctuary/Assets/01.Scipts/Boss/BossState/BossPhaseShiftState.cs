@@ -27,4 +27,9 @@ public class BossPhaseShiftState : BossBaseState
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
     }
+
+    public override void PhysicsUpdate()
+    {
+        
+    }
 }

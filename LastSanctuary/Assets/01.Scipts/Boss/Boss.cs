@@ -130,13 +130,13 @@ public class Boss : MonoBehaviour
 
     public void KinematicOn()
     {
-        _polygonCollider.isTrigger = true;
+        PolygonCollider.isTrigger = true;
         Rigidbody.bodyType = RigidbodyType2D.Kinematic;
     }
 
     public void KinematicOff()
     {
-        _polygonCollider.isTrigger = false;
+        PolygonCollider.isTrigger = false;
         Rigidbody.bodyType = RigidbodyType2D.Dynamic;
     }
 

@@ -20,25 +20,25 @@ MonoBehaviour:
   groggyGauge: 2
   groggyDuration: 5
   damageDelay: 0.2
+  deathAnim: {fileID: 7400000, guid: f745dd3432f773c46807b3753e7880d9, type: 2}
   moveSpeed: 3
   attackRange: 50
   <spawnAnimeTime>k__BackingField: 10
-  deathAnim: {fileID: 7400000, guid: f745dd3432f773c46807b3753e7880d9, type: 2}
   attackIdleTime: 1
   attacks:
   - multiplier: 1
     knockbackForce: 20
-    coolTime: 1
+    coolTime: 5
     animParameter: Attack1
     attackAnim: {fileID: 7400000, guid: 3852d77dc4102194eb172f127a49af23, type: 2}
   - multiplier: 1
     knockbackForce: 20
-    coolTime: 3
+    coolTime: 5
     animParameter: Attack2
     attackAnim: {fileID: 7400000, guid: f01057286f56a7e48b86cce37d330c92, type: 2}
   - multiplier: 1
     knockbackForce: 20
-    coolTime: 5
+    coolTime: 0
     animParameter: Attack3
     attackAnim: {fileID: 7400000, guid: 6c33d22002876bb4c811b29c853c46f9, type: 2}
   backJumpPower: 800

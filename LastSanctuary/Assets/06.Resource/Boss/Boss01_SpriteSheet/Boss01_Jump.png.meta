@@ -136,22 +136,337 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 
+      name: Boss01_Jump_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1567
+        y: 70
+        width: 64
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5e97eb03825dee720800000000000000
-      internalID: 2877471580529523173
+      spriteID: c0275a5e52881564c820d165d61d56c2
+      internalID: 87970744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss01_Jump_8
+      rect:
+        serializedVersion: 2
+        x: 1780
+        y: 71
+        width: 66
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96f44146bf6f3af43b971985b1413d17
+      internalID: 1632971322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss01_Jump_0
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 71
+        width: 62
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ed8dc4c3c68b154189847b1eeaa03e7
+      internalID: -1845502305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss01_Jump_1
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 70
+        width: 62
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c4c0cd8440b3454e99e2be9934e2e2a
+      internalID: 1753934107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss01_Jump_2
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 70
+        width: 62
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b9179ab6da6e55469e94343b8d942b9
+      internalID: 1465612281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss01_Jump_3
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 70
+        width: 62
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.7}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 081c749ce22d21d4384d8fc8c28dca48
+      internalID: -583966211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss01_Jump_4
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 70
+        width: 62
+        height: 31
+      alignment: 9
+      pivot: {x: 0.5, y: 0.7}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12f77d821eeaee44e82aa520af66cdaa
+      internalID: -1681033904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss01_Jump_5
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 70
+        width: 62
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.7}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39ee372a899d91f418fb21ef2ec4103f
+      internalID: -491544872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss01_Jump_6
+      rect:
+        serializedVersion: 2
+        x: 1354
+        y: 70
+        width: 62
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.7}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3b486d502657c0499af4051e1f3f2ed
+      internalID: 428778751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss01_Jump_9
+      rect:
+        serializedVersion: 2
+        x: 1993
+        y: 71
+        width: 68
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c470638462ffb4e42b9ad5765c6dad63
+      internalID: -580954683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss01_Jump_10
+      rect:
+        serializedVersion: 2
+        x: 2206
+        y: 72
+        width: 69
+        height: 83
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f6d959f00de9594bb5b4fd688595adc
+      internalID: 1916531890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss01_Jump_11
+      rect:
+        serializedVersion: 2
+        x: 2419
+        y: 73
+        width: 70
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6f89855edb4997438b3052d31f66f10
+      internalID: -1499045375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss01_Jump_12
+      rect:
+        serializedVersion: 2
+        x: 2632
+        y: 73
+        width: 72
+        height: 85
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2938bf88f91ee674db5bece505111717
+      internalID: 1258349196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss01_Jump_13
+      rect:
+        serializedVersion: 2
+        x: 2846
+        y: 73
+        width: 72
+        height: 86
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1b05a0357afb1946a73105349f12d15
+      internalID: -1639357722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss01_Jump_14
+      rect:
+        serializedVersion: 2
+        x: 3059
+        y: 73
+        width: 72
+        height: 87
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8296e115e25f054419c929942c2fa5e2
+      internalID: -1018602959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss01_Jump_15
+      rect:
+        serializedVersion: 2
+        x: 3274
+        y: 73
+        width: 72
+        height: 87
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49fcb2e518f832f47a610c5993ad7434
+      internalID: 539015191
       vertices: []
       indices: 
       edges: []
@@ -159,7 +474,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8060e8f7c8ed732478bc46aef3af755c
     internalID: 0
     vertices: []
     indices: 
@@ -167,7 +482,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      : 2877471580529523173
+      Boss01_Jump_0: -1845502305
+      Boss01_Jump_1: 1753934107
+      Boss01_Jump_10: 1916531890
+      Boss01_Jump_11: -1499045375
+      Boss01_Jump_12: 1258349196
+      Boss01_Jump_13: -1639357722
+      Boss01_Jump_14: -1018602959
+      Boss01_Jump_15: 539015191
+      Boss01_Jump_16: -639479701
+      Boss01_Jump_17: -846137759
+      Boss01_Jump_18: -1148776805
+      Boss01_Jump_19: -2086061728
+      Boss01_Jump_2: 1465612281
+      Boss01_Jump_20: 1948686152
+      Boss01_Jump_3: -583966211
+      Boss01_Jump_4: -1681033904
+      Boss01_Jump_5: -491544872
+      Boss01_Jump_6: 428778751
+      Boss01_Jump_7: 87970744
+      Boss01_Jump_8: 1632971322
+      Boss01_Jump_9: -580954683
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

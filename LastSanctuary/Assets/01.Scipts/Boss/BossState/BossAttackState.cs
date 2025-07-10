@@ -47,6 +47,11 @@ public class BossAttackState : BossBaseState
         }
     }
 
+    public override void PhysicsUpdate()
+    {
+        
+    }
+
     public bool CheckCoolTime()
     {
         _coolTime += Time.deltaTime;
@@ -60,4 +65,6 @@ public class BossAttackState : BossBaseState
             return false;
         }
     }
+    
+    
 }

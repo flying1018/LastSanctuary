@@ -33,7 +33,7 @@ public class BossChaseState : BossBaseState
 
     public override void PhysicsUpdate()
     {
-        Chase()
+        Chase();
     }
 
     public void Chase()

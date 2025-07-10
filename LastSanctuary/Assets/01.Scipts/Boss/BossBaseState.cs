@@ -21,6 +21,7 @@ public class BossBaseState : IState
         _data = _boss.Data;
         _rigidbody = _boss.Rigidbody;
         _spriteRenderer =_boss.SpriteRenderer;
+        _polygonCollider = _boss.PolygonCollider;
         _condition = _boss.Condition;
         _weapon = _boss.BossWeapon;
     }
