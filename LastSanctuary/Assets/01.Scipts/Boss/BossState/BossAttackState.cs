@@ -17,6 +17,9 @@ public class BossAttackState : BossBaseState
     public BossAttackState(BossStateMachine bossStateMachine, BossAttackInfo attackInfo) : base(bossStateMachine)
     {
         _attackInfo = attackInfo;
+        
+        _attackCoolTime = _attackInfo.coolTime;
+        _coolTime = 0;
     }
 
     public override void Enter()
@@ -42,6 +45,7 @@ public class BossAttackState : BossBaseState
     public bool CheckCoolTime()
     {
         _coolTime += Time.deltaTime;
+        //Debug.Log(_attackInfo.animParameter + " " + _coolTime + " " +_attackCoolTime);
         return _coolTime > _attackCoolTime;
     }
 }
