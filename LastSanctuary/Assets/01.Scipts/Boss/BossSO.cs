@@ -28,7 +28,7 @@ public class BossSO : ScriptableObject
     public float moveSpeed = 2f;
     
     [Header("Attack")]
-    public float attackRange = 10f;
+    public float attackRange = 2f;
     
     [field: Header("Spawn Time")]
     [field: SerializeField] public float spawnAnimeTime { get; private set; } = 10f;
