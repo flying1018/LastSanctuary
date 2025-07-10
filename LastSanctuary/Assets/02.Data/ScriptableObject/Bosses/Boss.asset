@@ -12,15 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4fdeda8d67d82d428a31ed163ad950e, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
+  _key: 0
+  _name: 
   attack: 10
   defense: 0
   hp: 100
-  groggyGauge: 100
+  groggyGauge: 2
   groggyDuration: 5
   damageDelay: 0.2
   moveSpeed: 3
   attackRange: 50
   <spawnAnimeTime>k__BackingField: 10
+  deathAnim: {fileID: 7400000, guid: f745dd3432f773c46807b3753e7880d9, type: 2}
   attackIdleTime: 1
   attacks:
   - multiplier: 1

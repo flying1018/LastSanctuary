@@ -60,9 +60,8 @@ public class EnemyCondition : MonoBehaviour, IKnockBackable
     }
     private IEnumerator Death_Coroutine()
     {
-        _enemy.Rigidbody.velocity = Vector2.zero;
-        _enemy.Animator.SetTrigger(_enemy.AnimationDB.DeathParameterHash);
         _enemy.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
+        _enemy.Animator.SetTrigger(_enemy.AnimationDB.DeathParameterHash);
         yield return new WaitForSeconds(_enemy.Data.deathTime);
         ObjectPoolManager.Set(_enemy.Data._key, _enemy.gameObject, _enemy.gameObject);
     }

@@ -14,6 +14,7 @@ public class BossIdleState : BossBaseState
     {
         Debug.Log("대기상태 진입");
         StartAnimation(_boss.AnimationDB.IdleParameterHash);
+        _rigidbody.velocity = Vector2.zero;
 
         _time = 0;
     }
@@ -27,13 +28,13 @@ public class BossIdleState : BossBaseState
     {
         base.Update();
         
-        if (_boss.Target)
+        if (!WithinChaseDistance()) //추적거리 외에 있을때
         {
-             //_stateMachine.ChangeState(_stateMachine.ChaseState);
+             _stateMachine.ChangeState(_stateMachine.ChaseState);
         }
         
         _time += Time.deltaTime;
-        if (_time >= _data.attackIdleTime)
+        if (_time >= _data.attackIdleTime && WithAttackDistance())
         {
             if (_stateMachine.Attacks.Count <= 0) return;
             _stateMachine.ChangeState(_stateMachine.Attacks.Dequeue());

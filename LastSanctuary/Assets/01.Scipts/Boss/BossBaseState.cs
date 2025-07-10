@@ -9,6 +9,7 @@ public class BossBaseState : IState
     protected BossSO _data;
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
+    protected PolygonCollider2D _polygonCollider;
     protected BossCondition _condition;
     protected Boss _boss;
     protected BossWeapon _weapon;
@@ -60,7 +61,7 @@ public class BossBaseState : IState
 
     public virtual void PhysicsUpdate()
     {
-
+        UpdateCollider();
     }
     
     protected void StartAnimation(int animatorHash)
@@ -71,5 +72,55 @@ public class BossBaseState : IState
     protected void StopAnimation(int animatorHash)
     {
         _boss.Animator.SetBool(animatorHash, false);
+    }
+
+    public void UpdateCollider()
+    {
+        Sprite sprite = _spriteRenderer.sprite;
+        _polygonCollider.pathCount = sprite.GetPhysicsShapeCount();
+
+        for (int i = 0; i < _polygonCollider.pathCount; i++)
+        {
+            List<Vector2> path = new List<Vector2>();
+            sprite.GetPhysicsShape(i, path);
+            if (_spriteRenderer.flipX)
+            {
+                for (int j = 0; j < path.Count; j++)
+                {
+                    Vector2 point = path[j];
+                    point.x *= -1;
+                    path[j] = point;
+                }
+            }
+            _polygonCollider.SetPath(0, path.ToArray());
+        }
+    }
+    
+    public void Move(Vector2 direction)
+    {
+        float xDirection = direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0; //보스 좌우 움직임
+        Vector2 moveVelocity = new Vector2(xDirection * _data.moveSpeed, _rigidbody.velocity.y);
+        _rigidbody.velocity = moveVelocity;
+    }
+
+    public void Rotate(Vector2 direction)
+    {
+        _spriteRenderer.flipX = direction.x < 0; //보스의 방향
+    }
+    
+    protected bool WithinChaseDistance()
+    {
+        if (_boss.Target == null) return false;
+
+        float distance = Vector2.Distance(_boss.transform.position, _boss.Target.transform.position);
+        return distance <= _data.attackRange/10;
+    }
+
+    protected bool WithAttackDistance()
+    {
+        if (_boss.Target == null) return false;
+
+        float distance = Vector2.Distance(_boss.transform.position, _boss.Target.transform.position);
+        return distance <= _data.attackRange/10;
     }
 }
