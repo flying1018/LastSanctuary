@@ -31,6 +31,11 @@ public class BossAttackState : BossBaseState
         //애니메이션 실행
         _boss.Animator.SetTrigger(_attackInfo.animParameter);
         _time = 0;
+        
+        //공격
+        _weapon.Damage = (int)(_data.attack * _attackInfo.multiplier);
+        _weapon.defpen = _data.defpen;
+        _weapon.KnockBackForce = _attackInfo.knockbackForce;
     }
 
     public override void Update()
@@ -45,7 +50,14 @@ public class BossAttackState : BossBaseState
     public bool CheckCoolTime()
     {
         _coolTime += Time.deltaTime;
-        //Debug.Log(_attackInfo.animParameter + " " + _coolTime + " " +_attackCoolTime);
-        return _coolTime > _attackCoolTime;
+        if (_coolTime > _attackCoolTime)
+        {
+            _coolTime = 0;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

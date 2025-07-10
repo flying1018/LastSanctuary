@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4fdeda8d67d82d428a31ed163ad950e, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  attack: 0
+  attack: 10
   defense: 0
   hp: 10000
   groggyGauge: 100
@@ -23,14 +23,14 @@ MonoBehaviour:
   <spawnAnimeTime>k__BackingField: 10
   attackIdleTime: 1
   attacks:
-  - multiplier: 0
-    knockbackForce: 0
-    coolTime: 5
+  - multiplier: 1
+    knockbackForce: 20
+    coolTime: 1
     animParameter: Attack1
     attackAnim: {fileID: 7400000, guid: 3852d77dc4102194eb172f127a49af23, type: 2}
-  - multiplier: 0
-    knockbackForce: 0
-    coolTime: 0
+  - multiplier: 1
+    knockbackForce: 20
+    coolTime: 3
     animParameter: Attack2
     attackAnim: {fileID: 7400000, guid: f01057286f56a7e48b86cce37d330c92, type: 2}
   backJumpPower: 800

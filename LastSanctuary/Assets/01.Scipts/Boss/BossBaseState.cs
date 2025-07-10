@@ -11,6 +11,7 @@ public class BossBaseState : IState
     protected SpriteRenderer _spriteRenderer;
     protected BossCondition _condition;
     protected Boss _boss;
+    protected BossWeapon _weapon;
 
     public BossBaseState(BossStateMachine bossStateMachine)
     {
@@ -20,6 +21,7 @@ public class BossBaseState : IState
         _rigidbody = _boss.Rigidbody;
         _spriteRenderer =_boss.SpriteRenderer;
         _condition = _boss.Condition;
+        _weapon = _boss.BossWeapon;
     }
     
     public virtual void Enter()
@@ -41,13 +43,16 @@ public class BossBaseState : IState
     {
         if (_stateMachine.Attack1.CheckCoolTime())
         {
+            Debug.Log("attack1");
             _stateMachine.Attacks.Enqueue(_stateMachine.Attack1);
         }
 
         if (_stateMachine.Attack2.CheckCoolTime())
-        {
+        {           
+            Debug.Log("attack2");
              _stateMachine.Attacks.Enqueue(_stateMachine.Attack2);
         }
+      
     }
 
     public virtual void PhysicsUpdate()
