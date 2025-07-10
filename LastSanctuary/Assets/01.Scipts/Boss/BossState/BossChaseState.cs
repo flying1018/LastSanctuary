@@ -23,23 +23,25 @@ public class BossChaseState : BossBaseState
         if (_boss.Target == null)
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
-            return;
+            return; 
         }
         
-        Vector2 bossPos = _boss.transform.position;
-        Vector2 targetPos = _boss.Target.position;
-        targetPos.y = bossPos.y;
-
-        float distance = Vector2.Distance(bossPos, targetPos);
-        
-        if (distance <= _data.attackRange)// 일정 거리 안에 들어오면 Idle 상태로 전환
+        if (WithinChaseDistance()) 
         {
-            _rigidbody.velocity = Vector2.zero;
             _stateMachine.ChangeState(_stateMachine.IdleState);
-            return;
         }
-        
-        Vector2 direction = (targetPos - bossPos).normalized;
-        _rigidbody.velocity = direction * _data.moveSpeed;
+    }
+
+    public override void PhysicsUpdate()
+    {
+        Vector2 direction = DirectionToTarget();
+        Move(direction);
+        Rotate(direction);
+    }
+    
+    public Vector2 DirectionToTarget()
+    {
+        if(_boss.Target == null) return Vector2.zero; //방어코드
+       return _boss.Target.position - _boss.transform.position; //플레이어 방향
     }
 }

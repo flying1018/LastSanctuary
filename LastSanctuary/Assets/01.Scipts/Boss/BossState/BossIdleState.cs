@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BossIdleState : BossBaseState
 {
-    private float _time;
-    
     public BossIdleState(BossStateMachine bossStateMachine) : base(bossStateMachine)
     {
     }
@@ -13,7 +11,7 @@ public class BossIdleState : BossBaseState
     public override void Enter()
     {
         StartAnimation(_boss.AnimationDB.IdleParameterHash);
-        _time = 0;
+        _rigidbody.velocity = Vector2.zero;
     }
 
     public override void Exit()
@@ -25,16 +23,16 @@ public class BossIdleState : BossBaseState
     {
         base.Update();
         
-        if (_boss.Target)
+        if (!WithinChaseDistance()) //추적거리 외에 있을때
         {
-             _stateMachine.ChangeState(_stateMachine.ChaseState);
+            Debug.Log("플레이어 인식");
+             _stateMachine.ChangeState(_stateMachine.ChaseState); //추적상태로 전환
         }
-        
-        _time += Time.deltaTime;
-        if (_time >= _data.attackIdleTime)
+
+        if (WithAttackDistance()) //공격거리 내에 있을때
         {
-            if (_stateMachine.Attacks.Count <= 0) return;
-            _stateMachine.ChangeState(_stateMachine.Attacks.Dequeue());
+            Debug.Log("공격시작");
+            _stateMachine.ChangeState(_stateMachine.Attack1);
         }
     }
 }

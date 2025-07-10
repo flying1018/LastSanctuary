@@ -20,10 +20,10 @@ MonoBehaviour:
   groggyGauge: 2
   groggyDuration: 5
   damageDelay: 0.2
-  deathAnim: {fileID: 7400000, guid: f745dd3432f773c46807b3753e7880d9, type: 2}
-  moveSpeed: 3
+  moveSpeed: 5
   attackRange: 50
   <spawnAnimeTime>k__BackingField: 10
+  deathAnim: {fileID: 7400000, guid: f745dd3432f773c46807b3753e7880d9, type: 2}
   attackIdleTime: 1
   attacks:
   - multiplier: 0
