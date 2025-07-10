@@ -16,6 +16,10 @@ public class BossAttackInfo
 [CreateAssetMenu(fileName = "Boss", menuName = "new Boss")]
 public class BossSO : ScriptableObject
 {
+    [Header("Info")]
+    public int _key;
+    public string _name;
+    
     [Header("Condition")] 
     public int attack;
     public int defense;
@@ -23,6 +27,9 @@ public class BossSO : ScriptableObject
     public int groggyGauge;
     public float groggyDuration;
     public float damageDelay;
+    
+    public AnimationClip deathAnim;
+    public float deathTime => deathAnim.length;
     
     [Header("Movement")]
     public float moveSpeed = 3f;

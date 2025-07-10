@@ -32,6 +32,19 @@ public class BossCondition : MonoBehaviour, IBossDamageable
         
         _isTakeDamageable = false;
     }
+    
+    private void Death()
+    {
+        StartCoroutine(Death_Coroutine());
+    }
+    private IEnumerator Death_Coroutine()
+    {
+        _boss.Animator.SetTrigger(_boss.AnimationDB.DeathParameterHash);
+        _boss.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
+        yield return new WaitForSeconds(_boss.Data.deathTime);
+        ObjectPoolManager.Set(_boss.Data._key, _boss.gameObject, _boss.gameObject);
+    }
+    
     private IEnumerator DamageDelay_Coroutine()
     {
         _isTakeDamageable = true;
@@ -44,6 +57,10 @@ public class BossCondition : MonoBehaviour, IBossDamageable
     {
         if (_isTakeDamageable) return;
         ApplyDamage(atk);
+        if (_curHp <= 0)
+        {
+            Death();
+        }
     }
     
     //보스 그로기 증가
