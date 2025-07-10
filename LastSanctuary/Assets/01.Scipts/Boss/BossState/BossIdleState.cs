@@ -13,7 +13,6 @@ public class BossIdleState : BossBaseState
     public override void Enter()
     {
         StartAnimation(_boss.AnimationDB.IdleParameterHash);
-
         _time = 0;
     }
 

@@ -23,6 +23,7 @@ public class BossGroggyState : BossBaseState
 
     public override void PhysicsUpdate()
     {
+        base.PhysicsUpdate();
         if (Time.time - _groggyStart >= _data.groggyDuration)
         {
             _condition.IsGroggy = false;
