@@ -43,8 +43,8 @@ public class BossCondition : MonoBehaviour, IBossDamageable
     public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
     {
         if (_isTakeDamageable) return;
-        Debug.Log(_curHp);
         ApplyDamage(atk,defpen);
+        StartCoroutine(DamageDelay_Coroutine());
     }
     
     //보스 그로기 증가
@@ -56,13 +56,16 @@ public class BossCondition : MonoBehaviour, IBossDamageable
         
         //공격당 그로기 1/2/5씩증가
         _groggyGauge += groggyDamage;
-        Debug.Log(_groggyGauge);
+        ChangeGroggyState();
+    }
+
+    public void ChangeGroggyState()
+    {
         if (_groggyGauge >= _maxGroggyGauge)
         {
             _groggyGauge = 0;
-            ChangingState();
+            _boss.StateMachine.ChangeState(_boss.StateMachine.GroggyState);
         }
-        StartCoroutine(DamageDelay_Coroutine());
     }
     
     public void ApplyDamage(int atk ,float defpen)
@@ -75,15 +78,16 @@ public class BossCondition : MonoBehaviour, IBossDamageable
         {
             _damage = (int)(Math.Ceiling(atk - _defence * (1 - defpen)));
         }
-        _curHp = _damage;
-        Debug.Log(_damage);
+        _curHp -= _damage;
+        ChangePhase2State();
     }
-    
-    public void ChangingState()
+
+    public void ChangePhase2State()
     {
-        //궁극기 맞을시 1초간 전환
-        Debug.Log(_boss.StateMachine);
-       _boss.StateMachine.ChangeState(_boss.StateMachine.GroggyState);
+        if (!_boss.Phase2 && _curHp <= _maxHp * _boss.Data.phaseShiftHpRatio)
+        {
+            _boss.StateMachine.ChangeState(_boss.StateMachine.PhaseShiftState);
+        }
     }
     
 }

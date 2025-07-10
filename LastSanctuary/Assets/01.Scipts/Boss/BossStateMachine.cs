@@ -14,6 +14,7 @@ public class BossStateMachine : StateMachine
     public BossAttackState Attack1 { get; private set; }
     public BossAttackState Attack2 { get; private set; }
     public BossAttackState Attack3 { get; private set; }
+    public BossPhaseShiftState PhaseShiftState { get; private set; }
 
     
 
@@ -28,6 +29,7 @@ public class BossStateMachine : StateMachine
         Attack1 = new BossAttackState(this, boss.Data.attacks[0]);
         Attack2 = new BossAttackState(this, boss.Data.attacks[1]);
         Attack3 = new BossAttackState(this, boss.Data.attacks[2]);
+        PhaseShiftState = new BossPhaseShiftState(this);
         
         ChangeState(IdleState);
     }

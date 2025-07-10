@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: 10
   defense: 0
-  hp: 10000
+  hp: 100
   groggyGauge: 100
   groggyDuration: 5
   damageDelay: 0.2
@@ -35,8 +35,10 @@ MonoBehaviour:
     attackAnim: {fileID: 7400000, guid: f01057286f56a7e48b86cce37d330c92, type: 2}
   - multiplier: 1
     knockbackForce: 20
-    coolTime: 3
+    coolTime: 5
     animParameter: Attack3
     attackAnim: {fileID: 7400000, guid: 6c33d22002876bb4c811b29c853c46f9, type: 2}
   backJumpPower: 800
   defpen: 0.2
+  phaseShiftHpRatio: 0
+  phaseShiftAnim: {fileID: 0}

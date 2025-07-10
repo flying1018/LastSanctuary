@@ -41,17 +41,17 @@ public class BossBaseState : IState
 
     public virtual void Update()
     {
-        // if (_stateMachine.Attack1.CheckCoolTime())
-        // {
-        //     _stateMachine.Attacks.Enqueue(_stateMachine.Attack1);
-        // }
-        //
-        // if (_stateMachine.Attack2.CheckCoolTime())
-        // {           
-        //      _stateMachine.Attacks.Enqueue(_stateMachine.Attack2);
-        // }
+        if (_stateMachine.Attack1.CheckCoolTime())
+        {
+            _stateMachine.Attacks.Enqueue(_stateMachine.Attack1);
+        }
         
-        if (_stateMachine.Attack3.CheckCoolTime())
+        if (_stateMachine.Attack2.CheckCoolTime())
+        {           
+             _stateMachine.Attacks.Enqueue(_stateMachine.Attack2);
+        }
+        
+        if (_boss.Phase2 && _stateMachine.Attack3.CheckCoolTime())
         {           
             _stateMachine.Attacks.Enqueue(_stateMachine.Attack3);
         }

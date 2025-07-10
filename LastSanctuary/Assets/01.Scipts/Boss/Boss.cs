@@ -23,7 +23,8 @@ public class Boss : MonoBehaviour
     public GameObject Weapon { get; set; }
     public BossSO Data {get => bossData;}
     public bool HasDetectedTarget { get; private set; } = false;
-    
+    public bool Phase2 { get; set; }
+
     private void Awake()
     {
         AnimationDB = new BossAnimationDB(); 
