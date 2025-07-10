@@ -10,7 +10,6 @@ public class BossChaseState : BossBaseState
     
     public override void Enter()
     {
-        Debug.Log("추적 시작");
         StartAnimation(_boss.AnimationDB.WalkParameterHash);
     }
     

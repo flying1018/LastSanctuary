@@ -32,6 +32,19 @@ public class BossCondition : MonoBehaviour, IBossDamageable
         
         _isTakeDamageable = false;
     }
+    
+    private void Death()
+    {
+        StartCoroutine(Death_Coroutine());
+    }
+    private IEnumerator Death_Coroutine()
+    {
+        _boss.Animator.SetTrigger(_boss.AnimationDB.DeathParameterHash);
+        _boss.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
+        yield return new WaitForSeconds(_boss.Data.deathTime);
+        ObjectPoolManager.Set(_boss.Data._key, _boss.gameObject, _boss.gameObject);
+    }
+    
     private IEnumerator DamageDelay_Coroutine()
     {
         _isTakeDamageable = true;
@@ -43,26 +56,30 @@ public class BossCondition : MonoBehaviour, IBossDamageable
     public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
     {
         if (_isTakeDamageable) return;
-        Debug.Log(_curHp);
         ApplyDamage(atk);
+        if (_curHp <= 0)
+        {
+            Death();
+        }
     }
     
     //보스 그로기 증가
     public void ApplyGroggy(int groggyDamage)
     {
         if (_isTakeDamageable) return;
+        StartCoroutine(DamageDelay_Coroutine());
+        if (IsGroggy) return;
         //퍼가시 그로기 10증가
         //궁극기시 그로기 20증가
         
         //공격당 그로기 1/2/5씩증가
         _groggyGauge += groggyDamage;
-        Debug.Log(_groggyGauge);
+        Debug.Log($"그로기 게이지{_groggyGauge}");
         if (_groggyGauge >= _maxGroggyGauge)
         {
             _groggyGauge = 0;
             ChangingState();
         }
-        StartCoroutine(DamageDelay_Coroutine());
     }
     
     public void ApplyDamage(int atk)
@@ -75,14 +92,13 @@ public class BossCondition : MonoBehaviour, IBossDamageable
         {
             _damage = atk;
         }
-        _curHp = _damage;
-        Debug.Log(_damage);
+        _curHp -= _damage;
+        Debug.Log($"데미지{_damage}");
     }
     
     public void ChangingState()
     {
         //궁극기 맞을시 1초간 전환
-    Debug.Log(_boss.StateMachine);
        _boss.StateMachine.ChangeState(_boss.StateMachine.GroggyState);
     }
     

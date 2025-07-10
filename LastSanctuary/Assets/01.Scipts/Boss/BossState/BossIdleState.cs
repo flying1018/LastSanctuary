@@ -10,7 +10,6 @@ public class BossIdleState : BossBaseState
 
     public override void Enter()
     {
-        Debug.Log("대기상태 진입");
         StartAnimation(_boss.AnimationDB.IdleParameterHash);
         _rigidbody.velocity = Vector2.zero;
     }

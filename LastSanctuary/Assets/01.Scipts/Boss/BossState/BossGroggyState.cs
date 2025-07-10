@@ -13,16 +13,17 @@ public class BossGroggyState : BossBaseState
     {
         _groggyStart = Time.time;
         _condition.IsGroggy = true;
-        Debug.Log("GroggyState Enter");
+        StartAnimation(_boss.AnimationDB.GroggyParameterHash);
     }
 
     public override void Exit()
     {
-        Debug.Log("GroggyState Exit");
+        StopAnimation(_boss.AnimationDB.GroggyParameterHash);
     }
 
     public override void PhysicsUpdate()
     {
+        base.PhysicsUpdate();
         if (Time.time - _groggyStart >= _data.groggyDuration)
         {
             _condition.IsGroggy = false;

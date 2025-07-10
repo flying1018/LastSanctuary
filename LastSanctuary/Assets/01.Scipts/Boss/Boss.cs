@@ -6,7 +6,6 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     //필드
-    private PolygonCollider2D _polygonCollider;
 
     //직렬화
     [field: SerializeField] public BossAnimationDB AnimationDB {get; private set;}
@@ -17,6 +16,7 @@ public class Boss : MonoBehaviour
     public Rigidbody2D Rigidbody {get; set;}
     public Animator Animator {get; set;}
     public SpriteRenderer SpriteRenderer { get; set; }
+    public PolygonCollider2D PolygonCollider {get; set;}
     public BossCondition Condition { get; set; }
     public Transform Target { get; set; }
     public BossWeapon BossWeapon { get; set; }
@@ -28,7 +28,7 @@ public class Boss : MonoBehaviour
     {
         AnimationDB = new BossAnimationDB(); 
         AnimationDB.Initailize(); 
-        _polygonCollider = GetComponent<PolygonCollider2D>();
+        PolygonCollider = GetComponent<PolygonCollider2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
