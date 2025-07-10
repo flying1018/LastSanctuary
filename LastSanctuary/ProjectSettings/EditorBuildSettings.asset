@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/00.Scenes/MainScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/00.Scenes/Tutorials_Map.unity
+    path: Assets/00.Scenes/TestMap.unity
     guid: b5da71aa799e0fc4e85f2902028426e8
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 232de7517ad4649fb8063cd224c42546, type: 2}
