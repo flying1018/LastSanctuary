@@ -40,5 +40,5 @@ MonoBehaviour:
     attackAnim: {fileID: 7400000, guid: 6c33d22002876bb4c811b29c853c46f9, type: 2}
   backJumpPower: 800
   defpen: 0.2
-  phaseShiftHpRatio: 0
-  phaseShiftAnim: {fileID: 0}
+  phaseShiftHpRatio: 0.5
+  phaseShiftAnim: {fileID: 7400000, guid: d781c0a65ca4bdf40ad84d4b0b6413a3, type: 2}
