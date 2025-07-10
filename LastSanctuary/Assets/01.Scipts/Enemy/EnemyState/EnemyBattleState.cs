@@ -35,8 +35,7 @@ public class EnemyBattleState : EnemyBaseState
         if ( WithinAttackDistnace() &&
              _stateMachine.attackCoolTime > _data.attackDuration)
         {
-            _stateMachine.ChangeState(_stateMachine.AttackState);       
+            _stateMachine.ChangeState(_stateMachine.AttackState);
         }
-        
     }
 }

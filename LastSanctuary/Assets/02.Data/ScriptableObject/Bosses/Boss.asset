@@ -18,7 +18,9 @@ MonoBehaviour:
   groggyGauge: 100
   groggyDuration: 5
   damageDelay: 0.2
-  moveSpeed: 3
+  moveSpeed: 5
+  attackRange: 50
+  <spawnAnimeTime>k__BackingField: 10
   attackIdleTime: 1
   attacks:
   - multiplier: 0
