@@ -43,7 +43,6 @@ public class BossCondition : MonoBehaviour, IBossDamageable
     public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
     {
         if (_isTakeDamageable) return;
-        Debug.Log(_curHp);
         ApplyDamage(atk);
     }
     
@@ -51,18 +50,19 @@ public class BossCondition : MonoBehaviour, IBossDamageable
     public void ApplyGroggy(int groggyDamage)
     {
         if (_isTakeDamageable) return;
+        StartCoroutine(DamageDelay_Coroutine());
+        if (IsGroggy) return;
         //퍼가시 그로기 10증가
         //궁극기시 그로기 20증가
         
         //공격당 그로기 1/2/5씩증가
         _groggyGauge += groggyDamage;
-        Debug.Log(_groggyGauge);
+        Debug.Log($"그로기 게이지{_groggyGauge}");
         if (_groggyGauge >= _maxGroggyGauge)
         {
             _groggyGauge = 0;
             ChangingState();
         }
-        StartCoroutine(DamageDelay_Coroutine());
     }
     
     public void ApplyDamage(int atk)
@@ -75,14 +75,13 @@ public class BossCondition : MonoBehaviour, IBossDamageable
         {
             _damage = atk;
         }
-        _curHp = _damage;
-        Debug.Log(_damage);
+        _curHp -= _damage;
+        Debug.Log($"데미지{_damage}");
     }
     
     public void ChangingState()
     {
         //궁극기 맞을시 1초간 전환
-    Debug.Log(_boss.StateMachine);
        _boss.StateMachine.ChangeState(_boss.StateMachine.GroggyState);
     }
     
