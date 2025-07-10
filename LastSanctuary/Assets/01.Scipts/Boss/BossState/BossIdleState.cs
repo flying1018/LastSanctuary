@@ -29,7 +29,7 @@ public class BossIdleState : BossBaseState
         
         if (_boss.Target)
         {
-             _stateMachine.ChangeState(_stateMachine.ChaseState);
+             //_stateMachine.ChangeState(_stateMachine.ChaseState);
         }
         
         _time += Time.deltaTime;

@@ -20,7 +20,7 @@ MonoBehaviour:
   cancelChaseTime: 3
   <patrolDistance>k__BackingField: 10
   <HitDuration>k__BackingField: 0.1
-  attackDistance: 3
+  attackDistance: 4
   attackDuration: 2
   knockbackForce: 10
   attackAnim: {fileID: 7400000, guid: e3899a35106287c4e80d62e6ade9488c, type: 2}

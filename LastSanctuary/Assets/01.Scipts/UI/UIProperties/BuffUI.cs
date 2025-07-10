@@ -13,7 +13,7 @@ public class BuffUI : MonoBehaviour
     
     public void SetBuff(StatObjectSO data)
     {
-        StartCoroutine(SetBuff_Coroutine(data));
+        UIManager.Instance.StartCoroutine(SetBuff_Coroutine(data));
     }
 
     IEnumerator SetBuff_Coroutine(StatObjectSO data)
