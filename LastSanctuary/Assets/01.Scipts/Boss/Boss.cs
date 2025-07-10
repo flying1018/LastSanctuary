@@ -58,9 +58,31 @@ public class Boss : MonoBehaviour
         StateMachine.PhysicsUpdate();
         //Debug.Log(StateMachine.currentState);
     }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        //충돌 복구 조건
+        //1. 플레이어 일것
+        //2. 3공격 패턴은 예외
+        if(other.CompareTag(StringNameSpace.Tags.Player) && 
+           StateMachine.currentState != StateMachine.Attack3)
+            KinematicOff();
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        //충돌 복구 조건
+        //1. 플레이어 일것
+        //2. 3공격 패턴은 예외
+        if(other.CompareTag(StringNameSpace.Tags.Player) && 
+           StateMachine.currentState != StateMachine.Attack3)
+            KinematicOff();
+    }
+
 
     #region need MonoBehaviour Method
 
+    //Attack2
     public void BackJump()
     {
         Vector2 backDir = transform.position - Target.position;
@@ -71,6 +93,50 @@ public class Boss : MonoBehaviour
     public void StopMove()
     {
         Rigidbody.velocity = Vector2.zero;
+    }
+    
+    //Attack3
+    private Coroutine _chasePlayerCoroutine;
+    public void ChasePlayer()
+    {
+        if (_chasePlayerCoroutine != null)
+        {
+            StopCoroutine(_chasePlayerCoroutine);
+            _chasePlayerCoroutine = null;
+        }
+        _chasePlayerCoroutine = StartCoroutine(ChasePlayer_Coroutine());
+    }
+
+    IEnumerator ChasePlayer_Coroutine()
+    {
+        while (true)
+        {
+            Vector2 targetX= Target.position;
+            targetX.y = transform.position.y;
+            transform.position = targetX;
+            yield return null;
+        }
+    }
+
+    public void StopChasePlayer()
+    {
+        if (_chasePlayerCoroutine != null)
+        {
+            StopCoroutine(_chasePlayerCoroutine);
+            _chasePlayerCoroutine = null;
+        }
+    }
+
+    public void KinematicOn()
+    {
+        _polygonCollider.isTrigger = true;
+        Rigidbody.bodyType = RigidbodyType2D.Kinematic;
+    }
+
+    public void KinematicOff()
+    {
+        _polygonCollider.isTrigger = false;
+        Rigidbody.bodyType = RigidbodyType2D.Dynamic;
     }
 
     #endregion
