@@ -34,7 +34,7 @@ MonoBehaviour:
       nextComboTime: 0.3
       staminaCost: 0
       attackForce: 0
-      knockbackForce: 2
+      knockbackForce: 1
       groggyDamage: 1
     - attackAnim: {fileID: 7400000, guid: 3c8ab8fd8e124cd47ba5909da708ef53, type: 2}
       attackIndex: 2
@@ -42,7 +42,7 @@ MonoBehaviour:
       nextComboTime: 0.3
       staminaCost: 0
       attackForce: 0
-      knockbackForce: 4
+      knockbackForce: 1
       groggyDamage: 2
     - attackAnim: {fileID: 7400000, guid: bdf51d02ce4552348ba6354a5c6370ff, type: 2}
       attackIndex: 3
@@ -50,11 +50,12 @@ MonoBehaviour:
       nextComboTime: 0
       staminaCost: 15
       attackForce: 10
-      knockbackForce: 1000
+      knockbackForce: 500
       groggyDamage: 5
+  Defpen: 0.25
   attackSound: {fileID: 8300000, guid: c2b5ad624bada8b4ca44af7c71df039c, type: 3}
   <LightHitDuration>k__BackingField: 0.2
-  <HeavyHitDuration>k__BackingField: 0.2
+  <HeavyHitDuration>k__BackingField: 0.5
   <invincibleDuration>k__BackingField: 1
   <hitSteminaRecovery>k__BackingField: 15
   <damageReduction>k__BackingField: 0.8

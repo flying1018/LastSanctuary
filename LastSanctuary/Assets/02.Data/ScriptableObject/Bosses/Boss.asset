@@ -14,26 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: 0
   _name: 
-  attack: 0
+  attack: 10
   defense: 0
-  hp: 100
-  groggyGauge: 2
+  hp: 40
+  groggyGauge: 10
   groggyDuration: 5
   damageDelay: 0.2
-  moveSpeed: 5
+  deathAnim: {fileID: 7400000, guid: f745dd3432f773c46807b3753e7880d9, type: 2}
+  moveSpeed: 3
   attackRange: 50
   <spawnAnimeTime>k__BackingField: 10
-  deathAnim: {fileID: 7400000, guid: f745dd3432f773c46807b3753e7880d9, type: 2}
   attackIdleTime: 1
   attacks:
-  - multiplier: 0
-    knockbackForce: 0
-    coolTime: 3
+  - multiplier: 1
+    knockbackForce: 20
+    coolTime: 5
     animParameter: Attack1
     attackAnim: {fileID: 7400000, guid: 3852d77dc4102194eb172f127a49af23, type: 2}
-  - multiplier: 0
-    knockbackForce: 0
-    coolTime: 10
+  - multiplier: 1
+    knockbackForce: 20
+    coolTime: 5
     animParameter: Attack2
     attackAnim: {fileID: 7400000, guid: f01057286f56a7e48b86cce37d330c92, type: 2}
-  backJumpPower: 1000
+  - multiplier: 1
+    knockbackForce: 20
+    coolTime: 0
+    animParameter: Attack3
+    attackAnim: {fileID: 7400000, guid: 6c33d22002876bb4c811b29c853c46f9, type: 2}
+  backJumpPower: 800
+  defpen: 0.2
+  phaseShiftHpRatio: 0.5
+  phaseShiftAnim: {fileID: 7400000, guid: d781c0a65ca4bdf40ad84d4b0b6413a3, type: 2}

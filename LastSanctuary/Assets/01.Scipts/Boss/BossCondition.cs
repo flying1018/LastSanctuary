@@ -56,50 +56,56 @@ public class BossCondition : MonoBehaviour, IBossDamageable
     public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
     {
         if (_isTakeDamageable) return;
-        ApplyDamage(atk);
+        ApplyDamage(atk,defpen);
         if (_curHp <= 0)
         {
             Death();
         }
+        StartCoroutine(DamageDelay_Coroutine());
     }
     
     //보스 그로기 증가
     public void ApplyGroggy(int groggyDamage)
     {
         if (_isTakeDamageable) return;
-        StartCoroutine(DamageDelay_Coroutine());
         if (IsGroggy) return;
         //퍼가시 그로기 10증가
         //궁극기시 그로기 20증가
         
         //공격당 그로기 1/2/5씩증가
         _groggyGauge += groggyDamage;
-        Debug.Log($"그로기 게이지{_groggyGauge}");
+        ChangeGroggyState();
+    }
+
+    public void ChangeGroggyState()
+    {
         if (_groggyGauge >= _maxGroggyGauge)
         {
             _groggyGauge = 0;
-            ChangingState();
+            _boss.StateMachine.ChangeState(_boss.StateMachine.GroggyState);
         }
     }
     
-    public void ApplyDamage(int atk)
+    public void ApplyDamage(int atk ,float defpen)
     {
         if (IsGroggy)
         {
-            _damage = (int)Math.Ceiling(atk * 1.5f); //계산식
+            _damage = (int)(Math.Ceiling((atk - _defence * (1 - defpen)) * 1.5f));
         }
         else
         {
-            _damage = atk;
+            _damage = (int)(Math.Ceiling(atk - _defence * (1 - defpen)));
         }
         _curHp -= _damage;
-        Debug.Log($"데미지{_damage}");
+        ChangePhase2State();
     }
-    
-    public void ChangingState()
+
+    public void ChangePhase2State()
     {
-        //궁극기 맞을시 1초간 전환
-       _boss.StateMachine.ChangeState(_boss.StateMachine.GroggyState);
+        if (!_boss.Phase2 && _curHp <= _maxHp * _boss.Data.phaseShiftHpRatio)
+        {
+            _boss.StateMachine.ChangeState(_boss.StateMachine.PhaseShiftState);
+        }
     }
     
 }

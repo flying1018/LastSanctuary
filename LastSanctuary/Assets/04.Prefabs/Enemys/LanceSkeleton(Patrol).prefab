@@ -234,6 +234,8 @@ MonoBehaviour:
     m_Bits: 1280
   platformCheckDistance: 2
   idleType: 1
+  moveType: 0
+  attackType: 0
 --- !u!1 &6224774757196196992
 GameObject:
   m_ObjectHideFlags: 0

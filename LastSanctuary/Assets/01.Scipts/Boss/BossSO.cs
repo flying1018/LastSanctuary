@@ -44,4 +44,10 @@ public class BossSO : ScriptableObject
     public float attackIdleTime;
     public BossAttackInfo[] attacks;
     public float backJumpPower;
+    public float defpen;
+
+    [Header("PhaseShiftState")] 
+    public float phaseShiftHpRatio;
+    public AnimationClip phaseShiftAnim;
+    public float PhaseShiftTime => phaseShiftAnim.length;
 }

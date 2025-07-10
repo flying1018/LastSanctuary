@@ -23,7 +23,6 @@ public class BossChaseState : BossBaseState
         if (_boss.Target == null)
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
-            return; 
         }
         
         if (WithinChaseDistance()) 
@@ -33,6 +32,11 @@ public class BossChaseState : BossBaseState
     }
 
     public override void PhysicsUpdate()
+    {
+        Chase();
+    }
+
+    public void Chase()
     {
         Vector2 direction = DirectionToTarget();
         Move(direction);
