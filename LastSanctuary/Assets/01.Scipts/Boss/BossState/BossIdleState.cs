@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BossIdleState : BossBaseState
 {
-    private float _time;
-    
     public BossIdleState(BossStateMachine bossStateMachine) : base(bossStateMachine)
     {
     }
@@ -14,8 +12,6 @@ public class BossIdleState : BossBaseState
     {
         Debug.Log("대기상태 진입");
         StartAnimation(_boss.AnimationDB.IdleParameterHash);
-
-        _time = 0;
     }
 
     public override void Exit()
@@ -29,14 +25,8 @@ public class BossIdleState : BossBaseState
         
         if (_boss.Target)
         {
-             _stateMachine.ChangeState(_stateMachine.ChaseState);
-        }
-        
-        _time += Time.deltaTime;
-        if (_time >= _data.attackIdleTime)
-        {
-            if (_stateMachine.Attacks.Count <= 0) return;
-            _stateMachine.ChangeState(_stateMachine.Attacks.Dequeue());
+            Debug.Log("플레이어 인식");
+             _stateMachine.ChangeState(_stateMachine.ChaseState); //추적상태로 전환
         }
     }
 }
