@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
@@ -34,7 +35,7 @@ public class UIManager : Singleton<UIManager>
     public UIStateMachine UiStateMachine { get; set; }
     public PlayerCondition PlayerCondition { get; set; }
     public PlayerInventory PlayerInventory { get; set; }
-    public PlayerController PlayerController { get; set; }
+    public PlayerInput PlayerInput { get; set; }
     public UIManagerSO Data { get => data;}
     
     //UnifiedUI
@@ -68,7 +69,7 @@ public class UIManager : Singleton<UIManager>
     {
         PlayerCondition = FindAnyObjectByType<PlayerCondition>();
         PlayerInventory = FindAnyObjectByType<PlayerInventory>();
-        PlayerController = FindAnyObjectByType<PlayerController>();
+        PlayerInput = FindAnyObjectByType<PlayerInput>();
         
         UiStateMachine = new UIStateMachine(this);
     }
