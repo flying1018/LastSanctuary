@@ -59,6 +59,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Condition.IsDeath) return; 
         StateMachine.PhysicsUpdate();
         //Debug.Log(StateMachine.currentState);
         //Debug.Log(StateMachine.attackCoolTime);

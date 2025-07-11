@@ -12,6 +12,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     
     //프로퍼티
     public bool IsInvincible { get; set; }
+    public bool IsDeath { get; set; }
 
     public void Init(Enemy enemy)
     {
@@ -24,6 +25,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         //_originColor = _enemy.SpriteRenderer.color;
         _isTakeDamageable = false;
         IsInvincible = false;
+        IsDeath = false;
     }
     // private void OnHitEffected()
     // {
@@ -50,6 +52,8 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     
     private IEnumerator Death_Coroutine()
     {
+        IsDeath = true;
+        _enemy.Rigidbody.velocity = Vector2.zero;
         _enemy.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
         _enemy.Animator.SetTrigger(_enemy.AnimationDB.DeathParameterHash);
         yield return new WaitForSeconds(_enemy.Data.deathTime);

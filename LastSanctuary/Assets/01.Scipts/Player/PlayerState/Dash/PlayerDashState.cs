@@ -5,16 +5,25 @@ using UnityEngine;
 public class PlayerDashState : PlayerBaseState
 {
     private Vector2 dir;
-    private float _elapsedTime;
+    private float _time;
     public PlayerDashState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
         base.Enter();
         
+        _player.Animator.SetTrigger(_player.AnimationDB.DashParameterHash);
+        
         _input.IsDash = false;
-        _elapsedTime = 0;
-        dir = _input.MoveInput.x < 0 ? Vector2.left : Vector2.right;
+        _time = 0;
+        if (_input.MoveInput.x == 0)
+        {
+            dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
+        }
+        else
+        { 
+            dir = _input.MoveInput.x < 0 ? Vector2.left : Vector2.right;
+        }
         Rotate(dir);
     }
 
@@ -22,19 +31,18 @@ public class PlayerDashState : PlayerBaseState
     {
         base.Exit();
         
-        _rigidbody.velocity = Vector2.zero;
+        Move(Vector2.zero);
     }
 
     public override void HandleInput()
     {
         if (_input.IsAttack)
         {
-            int index = _stateMachine.comboIndex = 2; //바로 3타로 연결
-            int cost = _data.attacks.GetAttackInfo(index).staminaCost;
+            int cost = _stateMachine.DashAttack.attackInfo.staminaCost;
             //스테미나가 충분하다면 3타 시작
             if (_condition.UsingStamina(cost))
             {
-                _stateMachine.ChangeState(_stateMachine.ComboAttack);
+                _stateMachine.ChangeState(_stateMachine.DashAttack);
             }
             
         }
@@ -42,8 +50,18 @@ public class PlayerDashState : PlayerBaseState
 
     public override void Update()
     {
-        _elapsedTime += Time.deltaTime;
-        if (_elapsedTime >= _data.dashTime)
+        _time += Time.deltaTime;
+        if (_time < _data.DashTime) return;
+
+        if (!_player.IsGround())
+        {
+            _stateMachine.ChangeState(_stateMachine.FallState);
+        }
+        else if (_input.MoveInput.x != 0)
+        {
+            _stateMachine.ChangeState(_stateMachine.MoveState);
+        }
+        else if (_input.MoveInput.x == 0)
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }

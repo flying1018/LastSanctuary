@@ -11,15 +11,16 @@ public class UnifiedUI : UIBaseState
 
     public override void Enter()
     {
-        _uiManager.DontPlayerControl = true; 
+        _uiManager.PlayerController.enabled = false;
         _uiManager.UnifiedUI.SetActive(true);
     }
 
     public override void Exit()
     {
-        _uiManager.DontPlayerControl = false;
+        _uiManager.PlayerController.enabled = true;
         _uiManager.UnifiedUI.SetActive(false);
     }
+    
     public void OnClickExitButton()
     {
         _uiStateMachine.ChangeState(_uiStateMachine.MainUI);

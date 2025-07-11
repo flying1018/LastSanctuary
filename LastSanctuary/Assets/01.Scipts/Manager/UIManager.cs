@@ -34,7 +34,7 @@ public class UIManager : Singleton<UIManager>
     public UIStateMachine UiStateMachine { get; set; }
     public PlayerCondition PlayerCondition { get; set; }
     public PlayerInventory PlayerInventory { get; set; }
-    public bool DontPlayerControl { get; set; }
+    public PlayerController PlayerController { get; set; }
     public UIManagerSO Data { get => data;}
     
     //UnifiedUI
@@ -68,6 +68,7 @@ public class UIManager : Singleton<UIManager>
     {
         PlayerCondition = FindAnyObjectByType<PlayerCondition>();
         PlayerInventory = FindAnyObjectByType<PlayerInventory>();
+        PlayerController = FindAnyObjectByType<PlayerController>();
         
         UiStateMachine = new UIStateMachine(this);
     }

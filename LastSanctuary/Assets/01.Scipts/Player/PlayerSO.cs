@@ -15,14 +15,7 @@ public class AttackInfo
     public float attackForce;   //공격시 전진 파워
     public float knockbackForce;//넉백 파워
     public int groggyDamage; //그로기 증가량
-}
-
-[Serializable]
-public class PlayerAttackData
-{
-    [field:SerializeField] public List<AttackInfo> AttackInfoDatas { get; private set; }
-    public int GetAttackInfoCount() { return AttackInfoDatas.Count; }
-    public AttackInfo GetAttackInfo(int index) { return AttackInfoDatas[index]; }
+    public bool isInvincible; //해당 공격 시 무적여부
 }
 
 [Serializable]
@@ -36,15 +29,17 @@ public class PlayerSO : ScriptableObject
     [field: Header("AirState")]
     [field: SerializeField][field: Range(0f, 100f)] public float jumpForce { get; private set; } = 10f;
 
-    [field: Header("DashState")]
-    [field: SerializeField][field: Range(0f, 1.5f)] public float dashTime { get; private set; } = 0.25f;
-    [field: SerializeField][field: Range(0f, 50f)] public float dashPower { get; private set; } = 20f;
-    [field: SerializeField][field: Range(0f, 1f)] public float dashCoolTime { get; private set; } = 0.5f;
-    [field: SerializeField] public int dashCost { get; private set; } = 25;
+    [Header("DashState")] 
+    public AnimationClip dashAnim;
+    public float DashTime => dashAnim.length;
+    public float dashPower;
+    public float dashCoolTime;
+    public int dashCost;
     
-    [field: Header("HealState")]
-    [field: SerializeField][field: Range(0f, 100f)] public int HealAmount{ get; private set; } = 15;
-    [field: SerializeField][field: Range(0f, 2f)] public float HealDuration{ get; private set; } = 3f;
+    [Header("HealState")]
+    public AnimationClip healAnim;
+    public float healTime => healAnim.length;
+
 
     [field: Header("GuardState")] 
     [field: SerializeField] public float perfectGuardWindow { get; private set; } = 0.2f;
@@ -55,10 +50,10 @@ public class PlayerSO : ScriptableObject
     
 
     [Header("AttackState")] 
-    [field: SerializeField] public PlayerAttackData attacks;
-
+    public AttackInfo[] attacks;
     public float Defpen;
     public AudioClip attackSound;
+    public AttackInfo dashAttack;
 
     [field: Header("HitState")]
     [field: SerializeField] public float LightHitDuration{ get; private set; } = 0.2f;
