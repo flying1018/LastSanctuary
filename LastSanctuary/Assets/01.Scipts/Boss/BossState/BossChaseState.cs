@@ -33,6 +33,7 @@ public class BossChaseState : BossBaseState
 
     public override void PhysicsUpdate()
     {
+        base.PhysicsUpdate();
         Chase();
     }
 
@@ -46,6 +47,6 @@ public class BossChaseState : BossBaseState
     public Vector2 DirectionToTarget()
     {
         if(_boss.Target == null) return Vector2.zero; //방어코드
-       return _boss.Target.position - _boss.transform.position; //플레이어 방향
+        return _boss.Target.position - _boss.transform.position; //플레이어 방향
     }
 }

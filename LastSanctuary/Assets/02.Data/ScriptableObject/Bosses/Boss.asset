@@ -16,8 +16,8 @@ MonoBehaviour:
   _name: 
   attack: 10
   defense: 0
-  hp: 40
-  groggyGauge: 10
+  hp: 300
+  groggyGauge: 50
   groggyDuration: 5
   damageDelay: 0.2
   deathAnim: {fileID: 7400000, guid: f745dd3432f773c46807b3753e7880d9, type: 2}
@@ -28,17 +28,17 @@ MonoBehaviour:
   attacks:
   - multiplier: 1
     knockbackForce: 20
-    coolTime: 5
+    coolTime: 2
     animParameter: Attack1
     attackAnim: {fileID: 7400000, guid: 3852d77dc4102194eb172f127a49af23, type: 2}
   - multiplier: 1
     knockbackForce: 20
-    coolTime: 5
+    coolTime: 3
     animParameter: Attack2
     attackAnim: {fileID: 7400000, guid: f01057286f56a7e48b86cce37d330c92, type: 2}
   - multiplier: 1
     knockbackForce: 20
-    coolTime: 0
+    coolTime: 4
     animParameter: Attack3
     attackAnim: {fileID: 7400000, guid: 6c33d22002876bb4c811b29c853c46f9, type: 2}
   backJumpPower: 800
