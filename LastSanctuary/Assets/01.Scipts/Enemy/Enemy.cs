@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
     {
         if (Condition.IsDeath) return; 
         StateMachine.PhysicsUpdate();
-        Debug.Log(StateMachine.currentState);
+        //Debug.Log(StateMachine.currentState);
         //Debug.Log(StateMachine.attackCoolTime);
     }
 

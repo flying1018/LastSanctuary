@@ -13,10 +13,10 @@ public class PlayerHealState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(_player.AnimationDB.HealParameterHash); //힐 애니메이션 시작
+        StartAnimation(_player.AnimationDB.HealParameterHash);
 
         _healTimer = _data.healTime;
-        _condition.Heal(_inventory.potionData.healAmount);  //인벤토리 물약의 힐량으로 교체 할거임.
+        _condition.Heal(); 
         _inventory.UsePotion();
     }
 
