@@ -25,7 +25,7 @@ public class Boss : MonoBehaviour
     public bool HasDetectedTarget { get; private set; } = false;
     public bool Phase2 { get; set; }
 
-    private void Awake()
+    private void Init()
     {
         AnimationDB = new BossAnimationDB(); 
         AnimationDB.Initailize(); 
@@ -42,9 +42,10 @@ public class Boss : MonoBehaviour
     }
     
 
-    private void Start()
+    private void OnEnable()
     {
         Target = FindObjectOfType<Player>().transform;
+        Init();
     }
     
     private void Update()
@@ -58,6 +59,7 @@ public class Boss : MonoBehaviour
     {
         StateMachine.PhysicsUpdate();
         //Debug.Log(StateMachine.currentState);
+
     }
     
     private void OnTriggerEnter2D(Collider2D other)

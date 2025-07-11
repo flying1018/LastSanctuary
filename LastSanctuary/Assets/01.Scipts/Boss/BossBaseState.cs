@@ -107,6 +107,10 @@ public class BossBaseState : IState
     public void Rotate(Vector2 direction)
     {
         _spriteRenderer.flipX = direction.x < 0; //보스의 방향
+        
+        //무기 회전
+        float angle = _spriteRenderer.flipX ? 180 : 0;
+        _boss.Weapon.transform.rotation = Quaternion.Euler(angle, 0, angle);
     }
     
     protected bool WithinChaseDistance()
