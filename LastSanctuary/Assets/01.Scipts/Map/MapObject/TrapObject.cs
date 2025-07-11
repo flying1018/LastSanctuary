@@ -15,7 +15,12 @@ public class TrapObject : MonoBehaviour
 
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
         {
-            idamageable.TakeDamage(damage, DamageType.Contact,transform,knockBackForce);
+            idamageable.TakeDamage(damage, DamageType.Contact,transform);
+        }
+
+        if (other.TryGetComponent(out IKnockBackable iknockBackable))
+        {
+            iknockBackable.ApplyKnockBack(transform, knockBackForce);
         }
     }
 }

@@ -370,6 +370,7 @@ MonoBehaviour:
     guardParameter: Guard
     dieParameter: '@Die'
     respawnParameter: Respawn
+    dashParameter: Dash
   playerData: {fileID: 11400000, guid: fa11ae5f2b2d74860ae80e96545967e4, type: 2}
   groundLayer:
     serializedVersion: 2
@@ -423,9 +424,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relics:
-  - {fileID: 300384178399270722, guid: 456fbb21799de9a4886a0c2ce133f814, type: 3}
-  - {fileID: 8335024016065937334, guid: 4221710ecd0118740b99608b3202c73b, type: 3}
-  - {fileID: 4142069125639008099, guid: 23cfab22bf215504d82155c17c8dcda5, type: 3}
+  - {fileID: 7587385377615055279, guid: ba78e566eb0ff46a2beda1230a8693c5, type: 3}
+  - {fileID: 2330817491757290249, guid: cf53d84a50e6b4206a47f48b32166def, type: 3}
+  - {fileID: 5190738252009608928, guid: 048255f31eacf4a96bfb45ebba775238, type: 3}
+  - {fileID: 2576745079987227804, guid: c27df6509375c4272b9c862fa26f7ccb, type: 3}
+  - {fileID: 2230708727084601388, guid: 1a6dd41e9ee82451386aff3adf2b47cd, type: 3}
+  - {fileID: 4153587035473072969, guid: f94746f82e28a4bf68e0c7e7d3dd50bb, type: 3}
   potionData: {fileID: 11400000, guid: d0e5759c6e6f81a40986cbcd2ab5109b, type: 2}
 --- !u!1 &3059308106813386624
 GameObject:

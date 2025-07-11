@@ -108,7 +108,6 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         if (force > 0)
         {
             Vector2 knockbackDir = (transform.position - dir.transform.position);
-            knockbackDir.y = 0f;
             Vector2 knockback = knockbackDir.normalized * force;
             _player.Rigidbody.AddForce(knockback, ForceMode2D.Impulse);
         }
