@@ -21,6 +21,8 @@ public class PlayerAnimationDB
     [SerializeField] private string guardParameter = "Guard";
     
     [SerializeField] private string dieParameter = "@Die";
+    [SerializeField] private string respawnParameter = "Respawn";
+    [SerializeField] private string dashParameter = "Dash";
 
 
     public int GroundParameterHash { get; private set; }
@@ -38,6 +40,8 @@ public class PlayerAnimationDB
     public int GuardParameterHash { get; private set; }
 
     public int DieParameterHash { get; private set; }
+    public int RespawnParameterHash { get; private set; }
+    public int DashParameterHash { get; private set; }
 
     public void Initailize()
     {
@@ -56,5 +60,7 @@ public class PlayerAnimationDB
         GuardParameterHash = Animator.StringToHash(guardParameter);
 
         DieParameterHash = Animator.StringToHash(dieParameter);
+        RespawnParameterHash = Animator.StringToHash(respawnParameter);
+        DashParameterHash = Animator.StringToHash(dashParameter);
     }
 }

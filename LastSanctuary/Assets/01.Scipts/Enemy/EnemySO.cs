@@ -34,7 +34,7 @@ public class EnemySO : ScriptableObject
     [Header("condition")]
     public int attack;
     public int hp;
-    public int defense;
+    public int defence;
     public float damageDelay;
     public float hitDuration;
     public float alphaValue;

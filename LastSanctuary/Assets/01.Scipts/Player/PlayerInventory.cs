@@ -10,6 +10,7 @@ public class PlayerInventory : MonoBehaviour
 
     //일단은 직렬화 나중에 어드레서블로 변환
     public List<CollectObject> relics;
+    public CollectObjectSO potionData;
     public List<CollectObjectSO> EquipRelics { get; private set; }
     public int MaxPotionNum { get; private set; }
     public int CurPotionNum { get; private set; }

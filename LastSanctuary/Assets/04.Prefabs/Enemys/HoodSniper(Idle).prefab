@@ -159,6 +159,7 @@ MonoBehaviour:
   idleType: 0
   moveType: 0
   attackType: 1
+  CapsuleCollider: {fileID: 1863970197372497707}
 --- !u!1 &6224774757196196992
 GameObject:
   m_ObjectHideFlags: 0

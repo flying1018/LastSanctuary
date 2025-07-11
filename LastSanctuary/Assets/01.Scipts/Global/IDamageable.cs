@@ -15,12 +15,12 @@ public interface IDamageable
  public void TakeDamage(int atk, DamageType type ,Transform attackDir, float defpen =0);
 }
 
-public interface IKnockBackable : IDamageable
+public interface IKnockBackable 
 {
     public void ApplyKnockBack(Transform attackDir, float knockBackPower);
 }
 
-public interface IBossDamageable : IDamageable
+public interface IGroggyable 
 {
    public void ApplyGroggy(int amount);
 }

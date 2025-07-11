@@ -11,7 +11,6 @@ public class EReturnState : EnemyBaseState
         StartAnimation(_enemy.AnimationDB.WalkParameterHash);
         
         _condition.IsInvincible = true;
-        _enemy.IsRight = !_enemy.IsRight;
         _enemy.Target = null;  
     }
 

@@ -27,6 +27,7 @@ public class Boss : MonoBehaviour
 
     private void Init()
     {
+        Phase2 = false;
         AnimationDB = new BossAnimationDB(); 
         AnimationDB.Initailize(); 
         PolygonCollider = GetComponent<PolygonCollider2D>();

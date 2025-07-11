@@ -17,6 +17,8 @@ public class EIdleState : EnemyBaseState
             _stateMachine.ChangeState(_stateMachine.DetectState);
         }
     }
+    
+    
 }
 
 public class EnemyIdleState : EIdleState
