@@ -15,10 +15,10 @@ MonoBehaviour:
   <moveSpeed>k__BackingField: 6
   moveSound: {fileID: 8300000, guid: 594fb34ab34a71d4caa854b31a755b5f, type: 3}
   <jumpForce>k__BackingField: 15
-  <dashTime>k__BackingField: 0.25
-  <dashPower>k__BackingField: 20
-  <dashCoolTime>k__BackingField: 0.5
-  <dashCost>k__BackingField: 25
+  dashAnim: {fileID: 7400000, guid: 20526e8ebcd8b154daef3662caa8a8a5, type: 2}
+  dashPower: 20
+  dashCoolTime: 0.5
+  dashCost: 25
   healAnim: {fileID: 7400000, guid: 52dc6dc8e8aaf90419bc5df20a09978b, type: 2}
   <perfectGuardWindow>k__BackingField: 0.2
   <perfactGuardStemina>k__BackingField: 30

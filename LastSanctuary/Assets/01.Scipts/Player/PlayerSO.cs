@@ -36,11 +36,12 @@ public class PlayerSO : ScriptableObject
     [field: Header("AirState")]
     [field: SerializeField][field: Range(0f, 100f)] public float jumpForce { get; private set; } = 10f;
 
-    [field: Header("DashState")]
-    [field: SerializeField][field: Range(0f, 1.5f)] public float dashTime { get; private set; } = 0.25f;
-    [field: SerializeField][field: Range(0f, 50f)] public float dashPower { get; private set; } = 20f;
-    [field: SerializeField][field: Range(0f, 1f)] public float dashCoolTime { get; private set; } = 0.5f;
-    [field: SerializeField] public int dashCost { get; private set; } = 25;
+    [Header("DashState")] 
+    public AnimationClip dashAnim;
+    public float DashTime => dashAnim.length;
+    public float dashPower;
+    public float dashCoolTime;
+    public int dashCost;
     
     [Header("HealState")]
     public AnimationClip healAnim;
@@ -56,8 +57,7 @@ public class PlayerSO : ScriptableObject
     
 
     [Header("AttackState")] 
-    [field: SerializeField] public PlayerAttackData attacks;
-
+    [SerializeField] public PlayerAttackData attacks;
     public float Defpen;
     public AudioClip attackSound;
 

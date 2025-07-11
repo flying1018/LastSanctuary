@@ -5,16 +5,25 @@ using UnityEngine;
 public class PlayerDashState : PlayerBaseState
 {
     private Vector2 dir;
-    private float _elapsedTime;
+    private float _time;
     public PlayerDashState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
         base.Enter();
         
+        _player.Animator.SetTrigger(_player.AnimationDB.DashParameterHash);
+        
         _input.IsDash = false;
-        _elapsedTime = 0;
-        dir = _input.MoveInput.x < 0 ? Vector2.left : Vector2.right;
+        _time = 0;
+        if (_input.MoveInput.x == 0)
+        {
+            dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
+        }
+        else
+        { 
+            dir = _input.MoveInput.x < 0 ? Vector2.left : Vector2.right;
+        }
         Rotate(dir);
     }
 
@@ -22,7 +31,7 @@ public class PlayerDashState : PlayerBaseState
     {
         base.Exit();
         
-        _rigidbody.velocity = Vector2.zero;
+        Move(Vector2.zero);
     }
 
     public override void HandleInput()
@@ -42,8 +51,8 @@ public class PlayerDashState : PlayerBaseState
 
     public override void Update()
     {
-        _elapsedTime += Time.deltaTime;
-        if (_elapsedTime >= _data.dashTime)
+        _time += Time.deltaTime;
+        if (_time >= _data.DashTime)
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
