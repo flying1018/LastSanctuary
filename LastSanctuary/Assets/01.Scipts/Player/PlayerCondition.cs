@@ -13,11 +13,10 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     private Player _player;
     private float _curStamina;
     private int _staminaRecovery;
-    private Coroutine _buffCoroutine;
-    private StatObjectSO _lastBuffData;
     private bool _isGuard;
     private bool _isPerfectGuard;
 
+    private Dictionary<StatObjectSO, Coroutine> _tempBuffs = new();
     
     //기본 스탯 프로퍼티
     public int MaxHp { get => _maxHp; set => _maxHp = value; }
@@ -184,19 +183,20 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     
     public void ApplyTempBuff(StatObjectSO data)
     {
-        if (_buffCoroutine != null)
+        if (_tempBuffs.TryGetValue(data, out Coroutine lastCoroutine))
         {
-            StopCoroutine(_buffCoroutine);
-            RemoveTempBuff(_lastBuffData);
+            StopCoroutine(lastCoroutine);
+            RemoveTempBuff(data);
+            _tempBuffs.Remove(data);
         }
 
         BuffHp += data.hp;
-        BuffStamina += data.stamina;
-        BuffAtk += data.attack;
-        BuffDef += data.defense;
-
-        _lastBuffData = data;
-        _buffCoroutine = StartCoroutine(BuffDurationTimerCoroutine(data.duration));
+         BuffStamina += data.stamina;
+         BuffAtk += data.attack;
+         BuffDef += data.defense;
+         
+         Coroutine newCoroutine = StartCoroutine(BuffDurationTimerCoroutine(data));
+         _tempBuffs[data] = newCoroutine;
     }
 
     private void RemoveTempBuff(StatObjectSO data)
@@ -208,11 +208,11 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         //죽었을떄는 전체 초기화
     }
 
-    private IEnumerator BuffDurationTimerCoroutine(float duration)
+    private IEnumerator BuffDurationTimerCoroutine(StatObjectSO data)
     {
-        yield return new WaitForSeconds(duration);
-        RemoveTempBuff(_lastBuffData);
-        _buffCoroutine = null;
+        yield return new WaitForSeconds(data.duration);
+        RemoveTempBuff(data);
+        _tempBuffs.Remove(data);
     }
 
     public float HpValue()
