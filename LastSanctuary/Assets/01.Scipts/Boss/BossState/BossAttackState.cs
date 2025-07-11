@@ -35,7 +35,7 @@ public class BossAttackState : BossBaseState
         //공격
         _weapon.Damage = (int)(_data.attack * _attackInfo.multiplier);
         _weapon.defpen = _data.defpen;
-        _weapon.KnockBackForce = _attackInfo.knockbackForce;
+        _weapon.knockBackForce = _attackInfo.knockbackForce;
     }
 
     public override void Update()
