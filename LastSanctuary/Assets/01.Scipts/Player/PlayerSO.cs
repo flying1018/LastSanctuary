@@ -15,14 +15,7 @@ public class AttackInfo
     public float attackForce;   //공격시 전진 파워
     public float knockbackForce;//넉백 파워
     public int groggyDamage; //그로기 증가량
-}
-
-[Serializable]
-public class PlayerAttackData
-{
-    [field:SerializeField] public List<AttackInfo> AttackInfoDatas { get; private set; }
-    public int GetAttackInfoCount() { return AttackInfoDatas.Count; }
-    public AttackInfo GetAttackInfo(int index) { return AttackInfoDatas[index]; }
+    public bool isInvincible; //해당 공격 시 무적여부
 }
 
 [Serializable]
@@ -57,9 +50,10 @@ public class PlayerSO : ScriptableObject
     
 
     [Header("AttackState")] 
-    [SerializeField] public PlayerAttackData attacks;
+    public AttackInfo[] attacks;
     public float Defpen;
     public AudioClip attackSound;
+    public AttackInfo dashAttack;
 
     [field: Header("HitState")]
     [field: SerializeField] public float LightHitDuration{ get; private set; } = 0.2f;

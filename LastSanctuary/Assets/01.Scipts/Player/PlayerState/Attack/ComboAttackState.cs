@@ -4,84 +4,45 @@ using UnityEngine;
 
 public class ComboAttackState : PlayerAttackState
 {
-    private AttackInfo _attackInfo;
-    private float _animationTime;
-    private float _time;
     private Vector2 _dir;
     
-    public ComboAttackState(PlayerStateMachine stateMachine) : base(stateMachine) { }
-
-    public override void Enter()
-    {
-        base.Enter();
-
-        //현재 공격 정보 가져오기
-        int comboIndex = _stateMachine.comboIndex;
-        _attackInfo = _player.Data.attacks.GetAttackInfo(comboIndex);
-
-        //무기에 대미지 전달
-        _playerWeapon.Damage = (int)((_condition.Attack + _inventory.EquipRelicAttack()) * _attackInfo.multiplier);
-        _playerWeapon.knockBackForce = _attackInfo.knockbackForce;
-        _playerWeapon.groggyDamage = _attackInfo.groggyDamage;
-        _playerWeapon.defpen = _data.Defpen;
-
-        
-        _player.Animator.SetInteger(_player.AnimationDB.ComboParameterHash, _attackInfo.attackIndex);
-        
-        _time = 0;
-        _animationTime = _attackInfo.animTime;
-
-        if (_attackInfo.attackIndex == 3)
-        {
-            _condition.IsInvincible = true;
-        }
-        
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-        
-        _player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, 0);
-        _condition.IsInvincible = false;
-    }
-
+    public ComboAttackState(PlayerStateMachine stateMachine, AttackInfo attackInfo) : base(stateMachine, attackInfo) { }
+    
     public override void HandleInput()
     {
         base.HandleInput();
         //다음 공격
         _time += Time.deltaTime;
-        
         //입력 시간 내에 공격 입력 시
-        if (_time <= (_animationTime + _attackInfo.nextComboTime) && _input.IsAttack)
+        if (_time <= (_animationTime + attackInfo.nextComboTime) && _input.IsAttack)
         {
             //애니메이션 끝나고 공격
             if (_time > _animationTime)
             {
                 //다음 공격 번호 가져오기
                 _stateMachine.comboIndex =
-                    _data.attacks.GetAttackInfoCount() <= _stateMachine.comboIndex + 1
+                    _stateMachine.ComboAttack.Count <= _stateMachine.comboIndex + 1
                         ? 0 : _stateMachine.comboIndex + 1;
-                
+
+                int cost = _stateMachine.ComboAttack[_stateMachine.comboIndex].attackInfo.staminaCost;
                 //다음 공격의 필요 스테미나가 충분하다면 공격
-                if (_condition.UsingStamina(_data.attacks.GetAttackInfo(_stateMachine.comboIndex).staminaCost))
+                if (_condition.UsingStamina(cost))
                 {
                     //다음 공격이 없으면 종료
                     if (_stateMachine.comboIndex == 0)
                     {
-                        _input.IsAttack = false;
                         _stateMachine.ChangeState(_stateMachine.IdleState);
                         return;
                     }
 
                     //다음 공격
-                    _stateMachine.ChangeState(_stateMachine.ComboAttack);
+                    _stateMachine.ChangeState(_stateMachine.ComboAttack[ _stateMachine.comboIndex]);
                 }
             }
 
         }
         //공격 종료
-        else if (_time > (_animationTime + _attackInfo.nextComboTime))
+        else if (_time > (_animationTime + attackInfo.nextComboTime))
         {
             _stateMachine.comboIndex = 0;
             _stateMachine.ChangeState(_stateMachine.IdleState);
@@ -91,9 +52,7 @@ public class ComboAttackState : PlayerAttackState
 
     public override void Update()
     {
-        //스테미나 회복 막기용
+        //무적 시간은 개선 필요
         _condition.InvincibleStart = Time.time;
     }
-
-
 }

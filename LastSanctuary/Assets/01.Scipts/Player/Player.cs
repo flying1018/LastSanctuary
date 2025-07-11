@@ -153,7 +153,11 @@ public class Player : MonoBehaviour
 
     public void ApplyAttackForce()
     {
-        AttackInfo attackInfo = Data.attacks.GetAttackInfo(StateMachine.comboIndex);
+        AttackInfo attackInfo = null;
+        if (StateMachine.currentState is PlayerAttackState attackState)
+        {
+            attackInfo = attackState.attackInfo;
+        }
         Vector2 direction = SpriteRenderer.flipX ? Vector2.left : Vector2.right;
         Rigidbody.AddForce(direction * attackInfo.attackForce, ForceMode2D.Impulse);
     }

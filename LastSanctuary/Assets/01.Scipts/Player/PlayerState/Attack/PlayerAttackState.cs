@@ -4,19 +4,36 @@ using UnityEngine;
 
 public class PlayerAttackState : PlayerBaseState
 {
-    private AttackInfo _attackInfo;
-    private float _animationTime;
-    private float _time;
-    
-    public PlayerAttackState(PlayerStateMachine stateMachine) : base(stateMachine) { }
+    public AttackInfo attackInfo;
+    protected float _time;
+    protected float _animationTime;
+
+    public PlayerAttackState(PlayerStateMachine stateMachine, AttackInfo attackInfo) : base(stateMachine)
+    {
+        this.attackInfo = attackInfo;
+        _time = 0;
+        _animationTime = attackInfo.animTime;
+    }
 
     public override void Enter()
     {
         base.Enter();
         _input.IsAttack = false;
         
-        //공격 상태 진입
+        //공격 상태 머신 진입
         StartAnimation(_player.AnimationDB.AttackParameterHash);
+        
+        //무기에 대미지 전달
+        _playerWeapon.Damage = (int)((_condition.Attack + _inventory.EquipRelicAttack()) * attackInfo.multiplier);
+        _playerWeapon.knockBackForce = attackInfo.knockbackForce;
+        _playerWeapon.groggyDamage = attackInfo.groggyDamage;
+        _playerWeapon.defpen = _data.Defpen;
+        
+        //애니메이션 실행
+        _player.Animator.SetInteger(_player.AnimationDB.ComboParameterHash, attackInfo.attackIndex);
+        _time = 0;
+        
+        _condition.IsInvincible = attackInfo.isInvincible;
     }
 
     public override void Exit()
@@ -24,6 +41,9 @@ public class PlayerAttackState : PlayerBaseState
         base.Exit();
         
         StopAnimation(_player.AnimationDB.AttackParameterHash);
+        
+        _player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, 0);
+        _condition.IsInvincible = false;
     }
 
     public override void HandleInput()
@@ -38,9 +58,20 @@ public class PlayerAttackState : PlayerBaseState
         }
     }
 
+    //스테미나 회복 막기
     public override void Update()
     {
+        //무적 시간은 개선 필요
+        _condition.InvincibleStart = Time.time;
+        
+        //공격 종료
+        _time += Time.deltaTime;
+        if (_time > (_animationTime + attackInfo.nextComboTime))
+        {
+            _stateMachine.ChangeState(_stateMachine.IdleState);
+        }
     }
+    
 
     public override void PhysicsUpdate()
     {
