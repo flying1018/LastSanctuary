@@ -11,13 +11,13 @@ public class UnifiedUI : UIBaseState
 
     public override void Enter()
     {
-        _uiManager.PlayerController.enabled = false;
+        _uiManager.PlayerInput.enabled = false;
         _uiManager.UnifiedUI.SetActive(true);
     }
 
     public override void Exit()
     {
-        _uiManager.PlayerController.enabled = true;
+        _uiManager.PlayerInput.enabled = true;
         _uiManager.UnifiedUI.SetActive(false);
     }
     
