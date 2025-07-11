@@ -7,6 +7,7 @@ public class LeverObject : MonoBehaviour, IDamageable
     [SerializeField] private bool isOn = false;
     [SerializeField] private Animator animator;
     [SerializeField] private AudioClip audioClip;
+    [SerializeField] private MoveObject[] _moveObjects;
 
     private bool _isMove;
 
@@ -28,6 +29,11 @@ public class LeverObject : MonoBehaviour, IDamageable
 
         isOn = !isOn;
         DebugHelper.Log($"레버 상태 : {isOn}임");
+
+        foreach (MoveObject _moveObject in _moveObjects)
+        {
+            _moveObject.MoveObj();
+        }
         UpdateVisual();
 
         yield return new WaitForSeconds(2f);
