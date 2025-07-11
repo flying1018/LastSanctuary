@@ -38,7 +38,6 @@ public class PlayerDashState : PlayerBaseState
     {
         if (_input.IsAttack)
         {
-
             int cost = _stateMachine.DashAttack.attackInfo.staminaCost;
             //스테미나가 충분하다면 3타 시작
             if (_condition.UsingStamina(cost))
@@ -52,7 +51,19 @@ public class PlayerDashState : PlayerBaseState
     public override void Update()
     {
         _time += Time.deltaTime;
-        if (_time >= _data.DashTime)
+        if (_time < _data.DashTime) return;
+
+        if (!_player.IsGround())
+        {
+            _stateMachine.ChangeState(_stateMachine.FallState);
+        }
+        
+        if (_input.MoveInput.x != 0)
+        {
+            _stateMachine.ChangeState(_stateMachine.MoveState);
+        }
+        
+        if (_input.MoveInput.x == 0)
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
