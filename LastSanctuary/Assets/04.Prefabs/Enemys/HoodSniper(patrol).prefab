@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7080938109545919741}
   - component: {fileID: 1348362879168003846}
   m_Layer: 0
-  m_Name: HoodSniper(Idle)
+  m_Name: HoodSniper(patrol)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.6, y: 3}
+  m_Size: {x: 0.6, y: 2}
   m_Direction: 0
 --- !u!50 &-5163532016691331955
 Rigidbody2D:
@@ -156,7 +156,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   platformCheckDistance: 2
-  idleType: 0
+  idleType: 1
   moveType: 0
   attackType: 1
   CapsuleCollider: {fileID: 1863970197372497707}

@@ -10,8 +10,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private int _curHp;
     private float _curStamina;
     private int _staminaRecovery;
-    private Coroutine _buffcoroutine;
-    private StatObjectSO _lastBuffData;
+    private Dictionary<StatObjectSO, Coroutine> _tempBuffs = new();
     
     public int Attack { get; set; }
     public int BuffAtk { get; set; }
@@ -170,10 +169,11 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     }
     public void ApplyTempBuff(StatObjectSO data)
     {
-        if (_buffcoroutine != null)
+        if (_tempBuffs.TryGetValue(data, out Coroutine lastCoroutine))
         {
-            StopCoroutine(_buffcoroutine);
-            RemoveTempBuff(_lastBuffData);
+            StopCoroutine(lastCoroutine);
+            RemoveTempBuff(data);
+            _tempBuffs.Remove(data);
         }
 
         BuffHp += data.hp;
@@ -181,8 +181,8 @@ public class PlayerCondition : MonoBehaviour, IDamageable
          BuffAtk += data.attack;
          BuffDef += data.defense;
          
-         _lastBuffData = data;
-         _buffcoroutine = StartCoroutine(BuffDurationTimerCoroutine(data.duration));
+         Coroutine newCoroutine = StartCoroutine(BuffDurationTimerCoroutine(data));
+         _tempBuffs[data] = newCoroutine;
     }
     private void RemoveTempBuff(StatObjectSO data)
     {
@@ -193,11 +193,11 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         //죽었을떄는 전체 초기화
     }
 
-    private IEnumerator BuffDurationTimerCoroutine(float duration)
+    private IEnumerator BuffDurationTimerCoroutine(StatObjectSO data)
     {
-        yield return new WaitForSeconds(duration);
-        RemoveTempBuff(_lastBuffData);
-        _buffcoroutine = null;
+        yield return new WaitForSeconds(data.duration);
+        RemoveTempBuff(data);
+        _tempBuffs.Remove(data);
     }
 
     public float HpValue()

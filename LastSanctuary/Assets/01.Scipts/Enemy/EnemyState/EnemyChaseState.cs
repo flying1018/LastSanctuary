@@ -73,6 +73,7 @@ public class EnemyChaseState : EChaseState
         }
 
         Vector2 direction = DirectionToTarget();
+        _enemy.IsRight = direction.x > 0 ? true : false;
         Move(direction);
         Rotate(direction);
     }
