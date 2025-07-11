@@ -15,8 +15,8 @@ public class PlayerHealState : PlayerGroundState
         base.Enter();
         StartAnimation(_player.AnimationDB.HealParameterHash); //힐 애니메이션 시작
 
-        _healTimer = _data.HealDuration;
-        _condition.Heal(_data.HealAmount);  //인벤토리 물약의 힐량으로 교체 할거임.
+        _healTimer = _data.healTime;
+        _condition.Heal(_inventory.potionData.healAmount);  //인벤토리 물약의 힐량으로 교체 할거임.
         _inventory.UsePotion();
     }
 

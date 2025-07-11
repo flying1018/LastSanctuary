@@ -42,9 +42,10 @@ public class PlayerSO : ScriptableObject
     [field: SerializeField][field: Range(0f, 1f)] public float dashCoolTime { get; private set; } = 0.5f;
     [field: SerializeField] public int dashCost { get; private set; } = 25;
     
-    [field: Header("HealState")]
-    [field: SerializeField][field: Range(0f, 100f)] public int HealAmount{ get; private set; } = 15;
-    [field: SerializeField][field: Range(0f, 2f)] public float HealDuration{ get; private set; } = 3f;
+    [Header("HealState")]
+    public AnimationClip healAnim;
+    public float healTime => healAnim.length;
+
 
     [field: Header("GuardState")] 
     [field: SerializeField] public float perfectGuardWindow { get; private set; } = 0.2f;

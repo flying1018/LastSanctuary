@@ -32,7 +32,7 @@ public class PlayerGroundState : PlayerBaseState
         }
 
 
-        if (_input.IsHeal)
+        if (_input.IsHeal && _inventory.CurPotionNum > 0)
         {
             _stateMachine.ChangeState(_stateMachine.HealState);
         }

@@ -19,8 +19,7 @@ MonoBehaviour:
   <dashPower>k__BackingField: 20
   <dashCoolTime>k__BackingField: 0.5
   <dashCost>k__BackingField: 25
-  <HealAmount>k__BackingField: 15
-  <HealDuration>k__BackingField: 2
+  healAnim: {fileID: 7400000, guid: 52dc6dc8e8aaf90419bc5df20a09978b, type: 2}
   <perfectGuardWindow>k__BackingField: 0.2
   <perfactGuardStemina>k__BackingField: 30
   <guardCost>k__BackingField: 30
