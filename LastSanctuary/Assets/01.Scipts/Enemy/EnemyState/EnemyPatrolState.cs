@@ -27,20 +27,17 @@ public class EnemyPatrolState : EIdleState
 
     public void Patrol()
     {
-        Vector2 pos =_enemy.transform.position;
-
-        float movedDistance = Mathf.Abs(pos.x - _spawnPoint.transform.position.x);
+        float movedDistance = Mathf.Abs(_enemy.transform.position.x - _spawnPoint.position.x);
         bool distanceExit = movedDistance >= _patrolDistance;
-
+        
+        Vector2 direction =_enemy.SpriteRenderer.flipX ? Vector2.left : Vector2.right;
         if (!_enemy.IsPlatform() || distanceExit)
         {
-            _enemy.IsRight = !_enemy.IsRight;
+            Rotate(-direction);
+            return;
         }
         
-        float dir = _enemy.IsRight ? 1 : -1;
-        Vector2 moveVelocity = new Vector2(dir * _data.moveSpeed, _rigidbody.velocity.y);
-        _rigidbody.velocity = moveVelocity;
-        
-        Rotate(moveVelocity);
+        Move(direction);
+        Rotate(direction);
     }
 }

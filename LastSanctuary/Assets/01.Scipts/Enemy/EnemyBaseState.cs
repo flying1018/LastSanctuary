@@ -54,8 +54,8 @@ public class EnemyBaseState : IState
     
     protected void Move(Vector2 direction)
     {
-        float xDirection = direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0;
-        Vector2 moveVelocity = new Vector2(xDirection * _data.moveSpeed, _rigidbody.velocity.y);
+        direction.y = 0;
+        Vector2 moveVelocity = new Vector2(direction.normalized.x * _data.moveSpeed, _rigidbody.velocity.y);
         _rigidbody.velocity = moveVelocity;
     }
 
@@ -67,6 +67,7 @@ public class EnemyBaseState : IState
 
     protected void Rotate(Vector2 direction)
     {
+        if(direction == Vector2.zero) return;
         _spriteRenderer.flipX = direction.x < 0;
         //무기 회전
         float angle = _spriteRenderer.flipX ? 180 : 0;

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 27b10f74af1af904c86c5e48ba76d02b
+guid: d9f7c3493be62bc4ba7435d5ce376dd8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -136,253 +136,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boss01_Move_0
+      name: heal_Sheet_0
       rect:
         serializedVersion: 2
-        x: 70
-        y: 70
-        width: 62
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 12
+        y: 0
+        width: 98
+        height: 88
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d6de10f92f1dac4c83f3def5a380b50
-      internalID: 386843943
+      spriteID: 1f0e8afe2de6ee54fae3696c9881aa66
+      internalID: -941886827
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss01_Move_1
+      name: heal_Sheet_1
       rect:
         serializedVersion: 2
-        x: 284
-        y: 70
-        width: 62
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 139
+        y: 0
+        width: 101
+        height: 89
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6f20c4d99f2dfe4c80f2e7390bf590f
-      internalID: 310777098
+      spriteID: c4eed0f27fa16d14e84348bbadb71c3f
+      internalID: 1265015287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss01_Move_2
+      name: heal_Sheet_3
       rect:
         serializedVersion: 2
-        x: 499
-        y: 70
-        width: 60
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 265
+        y: 0
+        width: 105
+        height: 89
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b136a7100c32164b9d8c23106782869
-      internalID: 1095183908
+      spriteID: 3887d8cf25a24b94cb6e2e7ab6686145
+      internalID: -1733173374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss01_Move_3
+      name: heal_Sheet_4
       rect:
         serializedVersion: 2
-        x: 713
-        y: 70
-        width: 62
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 392
+        y: 0
+        width: 106
+        height: 89
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e86948581f5d5834e9b1296edb114a04
-      internalID: 1733243516
+      spriteID: c6b9266036364794aa064b4a26f7c9ee
+      internalID: 971957383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss01_Move_4
+      name: heal_Sheet_5
       rect:
         serializedVersion: 2
-        x: 930
-        y: 70
-        width: 65
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 520
+        y: 0
+        width: 106
+        height: 89
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 642050da4df2db440967827a1dfcf281
-      internalID: -1621283125
+      spriteID: 4014f57622f488f49b18d1de0beb5343
+      internalID: 201554763
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss01_Move_5
+      name: heal_Sheet_6
       rect:
         serializedVersion: 2
-        x: 1148
-        y: 70
-        width: 65
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 648
+        y: 0
+        width: 106
+        height: 89
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b802da0dc5fa5494e8238ae3d90d65df
-      internalID: -1995597960
+      spriteID: 7ae185c1bfcf7324cb8b301a75012918
+      internalID: -1306664997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss01_Move_6
+      name: heal_Sheet_7
       rect:
         serializedVersion: 2
-        x: 1363
-        y: 70
-        width: 66
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 775
+        y: 0
+        width: 95
+        height: 88
+      alignment: 9
+      pivot: {x: 0.7, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 817ad2bb660856940b90f3329128ed7e
-      internalID: 695635175
+      spriteID: 5d5c47a3c039ab441be5763adce146ea
+      internalID: 472133157
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss01_Move_7
+      name: heal_Sheet_8
       rect:
         serializedVersion: 2
-        x: 1577
-        y: 70
-        width: 66
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 906
+        y: 0
+        width: 92
+        height: 88
+      alignment: 9
+      pivot: {x: 0.7, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbce597fa7a09ef4fbc83db060c096dc
-      internalID: 1861646048
+      spriteID: b37cb8bf924a87d4a84ba6cd2f7a3916
+      internalID: 113016886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss01_Move_8
+      name: heal_Sheet_9
       rect:
         serializedVersion: 2
-        x: 1790
-        y: 70
-        width: 66
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1034
+        y: 0
+        width: 92
+        height: 88
+      alignment: 9
+      pivot: {x: 0.7, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81f852dbf5075474182993c3f01ad552
-      internalID: 1942387709
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss01_Move_9
-      rect:
-        serializedVersion: 2
-        x: 2002
-        y: 70
-        width: 66
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6dec68ce6325fce409c70273e92b74a1
-      internalID: 710471910
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss01_Move_10
-      rect:
-        serializedVersion: 2
-        x: 2214
-        y: 70
-        width: 62
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 26df451aa8f2b5840855625eb19143b3
-      internalID: -1759149461
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss01_Move_11
-      rect:
-        serializedVersion: 2
-        x: 2425
-        y: 70
-        width: 62
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e64f0901c0ba1154386474b029eed2c3
-      internalID: 998775823
+      spriteID: ec00795a7ca76f04e899338a4164a4c5
+      internalID: -250987325
       vertices: []
       indices: 
       edges: []
@@ -398,18 +335,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Boss01_Move_0: 386843943
-      Boss01_Move_1: 310777098
-      Boss01_Move_10: -1759149461
-      Boss01_Move_11: 998775823
-      Boss01_Move_2: 1095183908
-      Boss01_Move_3: 1733243516
-      Boss01_Move_4: -1621283125
-      Boss01_Move_5: -1995597960
-      Boss01_Move_6: 695635175
-      Boss01_Move_7: 1861646048
-      Boss01_Move_8: 1942387709
-      Boss01_Move_9: 710471910
+      heal_Sheet_0: -941886827
+      heal_Sheet_1: 1265015287
+      heal_Sheet_2: -938998681
+      heal_Sheet_3: -1733173374
+      heal_Sheet_4: 971957383
+      heal_Sheet_5: 201554763
+      heal_Sheet_6: -1306664997
+      heal_Sheet_7: 472133157
+      heal_Sheet_8: 113016886
+      heal_Sheet_9: -250987325
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

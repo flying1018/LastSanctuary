@@ -3,18 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossCondition : MonoBehaviour, IBossDamageable
+public class BossCondition : Condition,IDamageable, IGroggyable
 {
     //필드
     private Boss _boss;
-    private int _attack;
-    private int _defence;
-    private int _maxHp;
-    private int _curHp;
     private int _maxGroggyGauge;
     private int _groggyGauge;
-    private bool _isTakeDamageable;
-    private int _damage;
     
     //프로퍼티
     public bool IsGroggy {get; set;}
@@ -22,18 +16,18 @@ public class BossCondition : MonoBehaviour, IBossDamageable
     public void Init(Boss boss)
     {
         _boss = boss;
+        
+        _maxHp = boss.Data.hp;
+        _curHp = _maxHp;
         _attack = boss.Data.attack;
         _defence = boss.Data.defense;
-        _maxHp = boss.Data.hp;
         _maxGroggyGauge = boss.Data.groggyGauge;
-        
-        _curHp = _maxHp;
         _groggyGauge = 0;
-        
+        _delay = boss.Data.damageDelay;
         _isTakeDamageable = false;
     }
     
-    private void Death()
+    public override void Death()
     {
         StartCoroutine(Death_Coroutine());
     }
@@ -45,14 +39,6 @@ public class BossCondition : MonoBehaviour, IBossDamageable
         ObjectPoolManager.Set(_boss.Data._key, _boss.gameObject, _boss.gameObject);
     }
     
-    private IEnumerator DamageDelay_Coroutine()
-    {
-        _isTakeDamageable = true;
-        yield return new WaitForSeconds(_boss.Data.damageDelay);
-        _isTakeDamageable = false;
-    }
-    
-    
     public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
     {
         if (_isTakeDamageable) return;
@@ -61,7 +47,6 @@ public class BossCondition : MonoBehaviour, IBossDamageable
         {
             Death();
         }
-        StartCoroutine(DamageDelay_Coroutine());
     }
     
     //보스 그로기 증가
@@ -88,21 +73,23 @@ public class BossCondition : MonoBehaviour, IBossDamageable
     
     public void ApplyDamage(int atk ,float defpen)
     {
+        int damage;
         if (IsGroggy)
         {
-            _damage = (int)(Math.Ceiling((atk - _defence * (1 - defpen)) * 1.5f));
+            damage = (int)(Math.Ceiling((atk - _defence * (1 - defpen)) * 1.5f));
         }
         else
         {
-            _damage = (int)(Math.Ceiling(atk - _defence * (1 - defpen)));
+            damage = (int)(Math.Ceiling(atk - _defence * (1 - defpen)));
         }
-        _curHp -= _damage;
+        _curHp -= damage;
         ChangePhase2State();
     }
 
     public void ChangePhase2State()
     {
-        if (!_boss.Phase2 && _curHp <= _maxHp * _boss.Data.phaseShiftHpRatio)
+        float phase2Hp = _maxHp * _boss.Data.phaseShiftHpRatio;
+        if (!_boss.Phase2 && _curHp <= phase2Hp)
         {
             _boss.StateMachine.ChangeState(_boss.StateMachine.PhaseShiftState);
         }
