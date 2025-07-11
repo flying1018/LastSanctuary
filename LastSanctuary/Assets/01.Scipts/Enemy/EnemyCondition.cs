@@ -88,7 +88,6 @@ public class EnemyCondition : MonoBehaviour, IKnockBackable
         Vector2 knockbackDir = (transform.position - attackDir.position);
         knockbackDir.y = 0f;
         _enemy.Rigidbody.AddForce(knockbackDir.normalized *  knockBackPower,ForceMode2D.Impulse);
-        StartCoroutine(DamageDelay_Coroutine());
     }
 
     public void ApplyDamage(int atk, float defpen)
@@ -101,5 +100,6 @@ public class EnemyCondition : MonoBehaviour, IKnockBackable
     public void ChangingState()
     {
         _enemy.StateMachine.ChangeState(_enemy.StateMachine.HitState);
+        StartCoroutine(DamageDelay_Coroutine());
     }
 }
