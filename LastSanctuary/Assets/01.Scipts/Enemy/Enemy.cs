@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -48,8 +49,8 @@ public class Enemy : MonoBehaviour
     public IdleType IdleType {get => idleType;}
     public MoveType MoveType {get => moveType;}
     public AttackType AttackType {get => attackType;}
-
     
+
     private void Update()
     {
         StateMachine.HandleInput();
@@ -71,7 +72,12 @@ public class Enemy : MonoBehaviour
         {
             if(other.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                damageable.TakeDamage(Data.attack,DamageType.Contact,transform,Data.knockbackForce);
+                damageable.TakeDamage(Data.attack,DamageType.Contact,transform);
+            }
+
+            if (other.gameObject.TryGetComponent(out IKnockBackable knockBackable))
+            {
+                knockBackable.ApplyKnockBack(transform,Data.knockbackForce);
             }
         }
     }
