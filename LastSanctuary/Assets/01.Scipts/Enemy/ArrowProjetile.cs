@@ -5,14 +5,13 @@ using UnityEngine;
 public class ArrowProjectile : EnemyWeapon
 {
   private Rigidbody2D _rigidbody2D;
- 
-  
-  
+
+
   public void Init(int damage, float knockback)
   {
     _rigidbody2D = GetComponent<Rigidbody2D>();
-   Damage = damage;
-   KnockBackForce = knockback;
+    Damage = damage;
+    knockBackForce = knockback;
   }
 
   public void Shot(Vector2 dir, float arrowPower)
@@ -23,11 +22,12 @@ public class ArrowProjectile : EnemyWeapon
 
   public override void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.CompareTag(StringNameSpace.Tags.Ground)||(other.CompareTag(StringNameSpace.Tags.Player)))
+    if (other.CompareTag(StringNameSpace.Tags.Ground) || (other.CompareTag(StringNameSpace.Tags.Player)))
     {
       gameObject.SetActive(false);
       ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.Arrow, gameObject, gameObject);
     }
+
     base.OnTriggerEnter2D(other);
   }
 }

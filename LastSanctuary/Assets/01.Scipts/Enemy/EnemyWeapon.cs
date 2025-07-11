@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyWeapon : MonoBehaviour
+public class EnemyWeapon : Weapon
 {
-    public int Damage { get; set;}
-    public float KnockBackForce { get; set;}
+
 
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
@@ -17,7 +16,7 @@ public class EnemyWeapon : MonoBehaviour
         }
         if (other.TryGetComponent(out IKnockBackable knockBackable))
         {
-            knockBackable.ApplyKnockBack(transform, KnockBackForce);
+            knockBackable.ApplyKnockBack(transform, knockBackForce);
         }
         
     }
