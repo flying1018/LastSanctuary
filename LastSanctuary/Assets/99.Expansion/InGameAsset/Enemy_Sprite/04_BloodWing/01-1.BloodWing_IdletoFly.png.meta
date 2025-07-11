@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -119,9 +119,253 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 01-1.BloodWing_IdletoFly_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 10
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9db6974136b21fc45bd6364e83b3cc6e
+      internalID: -1974087193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-1.BloodWing_IdletoFly_1
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 15
+        width: 11
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a98c642dfeebebc47b38f1cdad91d2f0
+      internalID: 1625682316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-1.BloodWing_IdletoFly_2
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 13
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d0f090fb2566e248a27937661e7dc58
+      internalID: -513179128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-1.BloodWing_IdletoFly_3
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 11
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 017d7526db7adef43957425f3a40bf66
+      internalID: 2091733617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-1.BloodWing_IdletoFly_4
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 13
+        width: 31
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb6d9826ac655994d84d5b6c8517dc73
+      internalID: -2142975020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-1.BloodWing_IdletoFly_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 15
+        width: 39
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea0dbcf0ea0699a41adad1ed72b1882e
+      internalID: 778100674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-1.BloodWing_IdletoFly_6
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 1
+        width: 26
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4556901689453e4ca2cc2b87ece9855
+      internalID: -1672016097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-1.BloodWing_IdletoFly_7
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 3
+        width: 25
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9f85fc388cbd434497a4e67c5373f80
+      internalID: 1981114844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-1.BloodWing_IdletoFly_8
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 4
+        width: 26
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8c17dff975e1bd4293723b86e173214
+      internalID: 454720443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-1.BloodWing_IdletoFly_9
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 6
+        width: 28
+        height: 20
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6146ce077503bde47a3b2baf53c059b9
+      internalID: -496274849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-1.BloodWing_IdletoFly_10
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 15
+        width: 37
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b8e5249ef6638a42b702054d32ecbc5
+      internalID: 424091895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +376,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      01-1.BloodWing_IdletoFly_0: -1974087193
+      01-1.BloodWing_IdletoFly_1: 1625682316
+      01-1.BloodWing_IdletoFly_10: 424091895
+      01-1.BloodWing_IdletoFly_2: -513179128
+      01-1.BloodWing_IdletoFly_3: 2091733617
+      01-1.BloodWing_IdletoFly_4: -2142975020
+      01-1.BloodWing_IdletoFly_5: 778100674
+      01-1.BloodWing_IdletoFly_6: -1672016097
+      01-1.BloodWing_IdletoFly_7: 1981114844
+      01-1.BloodWing_IdletoFly_8: 454720443
+      01-1.BloodWing_IdletoFly_9: -496274849
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

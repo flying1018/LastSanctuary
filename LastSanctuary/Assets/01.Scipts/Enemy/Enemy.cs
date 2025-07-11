@@ -18,6 +18,7 @@ public enum AttackType
 {
     Melee,
     Range,
+    Rush,
 }
 
 public class Enemy : MonoBehaviour
@@ -49,7 +50,6 @@ public class Enemy : MonoBehaviour
     public IdleType IdleType {get => idleType;}
     public MoveType MoveType {get => moveType;}
     public AttackType AttackType {get => attackType;}
-    
 
     private void Update()
     {
@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
     {
         if (Condition.IsDeath) return; 
         StateMachine.PhysicsUpdate();
-        //Debug.Log(StateMachine.currentState);
+        Debug.Log(StateMachine.currentState);
         //Debug.Log(StateMachine.attackCoolTime);
     }
 
@@ -80,12 +80,19 @@ public class Enemy : MonoBehaviour
                 knockBackable.ApplyKnockBack(transform,Data.knockbackForce);
             }
         }
+
+        if (StateMachine.currentState is EnemyRushAttack rushAttack)
+        {
+            rushAttack.StopMove();
+        }
     }
 
-    public void FireArrow()
+    public void Attack()
     {
         if (StateMachine.currentState is EnemyRangeAttackState rangeState)
             rangeState.FireArrow();
+        if (StateMachine.currentState is EnemyRushAttack rushAttack)
+            rushAttack.RushAttack();
     }
 
     #region  Need MonoBehaviour Method
@@ -139,6 +146,8 @@ public class Enemy : MonoBehaviour
                 return true;
             }
         }
+
+        Target = null;
         return false;
     }
     

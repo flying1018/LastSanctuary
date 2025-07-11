@@ -50,7 +50,7 @@ MonoBehaviour:
     nextComboTime: 0
     staminaCost: 15
     attackForce: 10
-    knockbackForce: 800
+    knockbackForce: 600
     groggyDamage: 5
     isInvincible: 1
   Defpen: 0.25
@@ -62,7 +62,7 @@ MonoBehaviour:
     nextComboTime: 0
     staminaCost: 15
     attackForce: 20
-    knockbackForce: 800
+    knockbackForce: 600
     groggyDamage: 5
     isInvincible: 1
   <LightHitDuration>k__BackingField: 0.2
