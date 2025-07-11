@@ -52,14 +52,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (UIManager.Instance.DontPlayerControl) return;
         StateMachine.HandleInput();
         StateMachine.Update();
     }
 
     private void FixedUpdate()
     {
-        if (UIManager.Instance.DontPlayerControl) return;
         StateMachine.PhysicsUpdate();
     }
 
