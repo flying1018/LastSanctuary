@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class SaveManager : Singleton<SaveManager>
 {
-    [SerializeField] private Vector2 _lastSavePos;
+    [SerializeField] private Transform _lastSavePos;
     protected override void Awake()
     {
         base.Awake();
@@ -44,12 +44,12 @@ public class SaveManager : Singleton<SaveManager>
 
     public void SetSavePoint(Vector2 pos)
     {
-        _lastSavePos = pos;
-        DebugHelper.Log($"새로운 세이브 {_lastSavePos}");
+        _lastSavePos.position = pos;
+        DebugHelper.Log($"새로운 세이브 {_lastSavePos.position}");
     }
 
     public Vector2 GetSavePoint()
     {
-        return _lastSavePos;
+        return _lastSavePos.position;
     }
 }

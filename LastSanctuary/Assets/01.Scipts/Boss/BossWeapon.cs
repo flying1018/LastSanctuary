@@ -11,7 +11,7 @@ public class BossWeapon : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Enemy)) return;
-        if (other.TryGetComponent(out IDamageable idamageable) )
+        if (other.TryGetComponent(out IDamageable idamageable))
         {
             idamageable.TakeDamage(Damage, DamageType.Attack,this.transform, defpen);
         }

@@ -24,9 +24,9 @@ MonoBehaviour:
   attackDuration: 2
   knockbackForce: 10
   attackAnim: {fileID: 7400000, guid: e3899a35106287c4e80d62e6ade9488c, type: 2}
-  attack: 10
+  attack: 20
   hp: 100
-  defense: 0
+  defence: 0
   damageDelay: 0.2
   hitDuration: 0.5
   alphaValue: 0.5

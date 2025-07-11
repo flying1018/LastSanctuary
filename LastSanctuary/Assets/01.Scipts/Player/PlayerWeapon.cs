@@ -13,20 +13,26 @@ public class PlayerWeapon : MonoBehaviour
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player)) return;
         
+        //공격
+        if (other.TryGetComponent(out IDamageable idamageable) )
+        {
+            idamageable.TakeDamage(Damage,DamageType.Attack,transform,defpen);
+        }
         //넉백
         if (other.TryGetComponent(out IKnockBackable iknockBackable))
         {
             iknockBackable.ApplyKnockBack(this.transform, knockBackForce);
         }
         //그로기
-        if (other.TryGetComponent(out IBossDamageable ibossdamageable))
+        if (other.TryGetComponent(out IGroggyable ibossdamageable))
         {
             ibossdamageable.ApplyGroggy(groggyDamage);
         }
-        //공격
-        if (other.TryGetComponent(out IDamageable idamageable) )
+
+        if (other.TryGetComponent(out Condition condition))
         {
-            idamageable.TakeDamage(Damage,DamageType.Attack,transform,defpen);
+            condition.DamageDelay();
         }
+        
     }
 }

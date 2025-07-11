@@ -48,8 +48,6 @@ public class Player : MonoBehaviour
         Inventory.Init(this);
         
         StateMachine = new PlayerStateMachine(this);
-
-        Condition.OnDie += OnDie;
     }
 
     private void Update()
@@ -153,47 +151,6 @@ public class Player : MonoBehaviour
     {
         return Physics2D.Raycast(transform.position, Vector2.down,
             (CapsuleCollider.size.y / 2) + groundCheckDistance, aerialPlatformLayer);
-    }
-
-    /// <summary>
-    /// 플레이어가 죽었을때 델리게이트로 호출
-    /// 플레이어의 인풋막고, Rigidbody도 멈춰놓음
-    /// </summary>
-    private void OnDie()
-    {
-        DebugHelper.Log("OnDie 호출됨");
-
-        Condition.IsInvincible = true;
-        Animator.SetTrigger(AnimationDB.DieParameterHash);
-        Input.enabled = false;
-
-        Rigidbody.velocity = Vector2.zero;
-        // 추후 죽었을때 표기되는 UI, 연출 추가 요망 (화면 암전 등)
-        StartCoroutine(Revive_Coroutine());
-    }
-
-    /// <summary>
-    /// 리스폰할때 실행되는 코루틴
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator Revive_Coroutine()
-    {
-        DebugHelper.Log("Revive_Coroutine 호출됨");
-
-        yield return new WaitForSeconds(2f); // 앞 애니메이션 대기
-
-        transform.position = SaveManager.Instance.GetSavePoint();
-        Animator.SetTrigger("Respawn");
-        yield return new WaitForSeconds(2f);
-
-        Condition.PlayerRecovery();
-        StateMachine.ChangeState(StateMachine.IdleState);
-        Animator.Rebind();
-
-        Input.enabled = true;
-        yield return new WaitForSeconds(0.5f);
-        Condition.IsInvincible = false;
-
     }
 
     public void ApplyAttackForce()

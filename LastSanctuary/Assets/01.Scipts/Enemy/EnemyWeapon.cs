@@ -10,15 +10,15 @@ public class EnemyWeapon : MonoBehaviour
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Enemy)) return;
+
         if (other.TryGetComponent(out IDamageable idamageable) )
         {
-            Debug.Log(idamageable + "는 " + Damage +"의 를 받았다.");
             idamageable.TakeDamage(Damage, DamageType.Attack,this.transform);
         }
-
         if (other.TryGetComponent(out IKnockBackable knockBackable))
         {
             knockBackable.ApplyKnockBack(transform, KnockBackForce);
         }
+        
     }
 }
