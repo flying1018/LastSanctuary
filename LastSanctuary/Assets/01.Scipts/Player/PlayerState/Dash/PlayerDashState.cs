@@ -57,13 +57,11 @@ public class PlayerDashState : PlayerBaseState
         {
             _stateMachine.ChangeState(_stateMachine.FallState);
         }
-        
-        if (_input.MoveInput.x != 0)
+        else if (_input.MoveInput.x != 0)
         {
             _stateMachine.ChangeState(_stateMachine.MoveState);
         }
-        
-        if (_input.MoveInput.x == 0)
+        else if (_input.MoveInput.x == 0)
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
