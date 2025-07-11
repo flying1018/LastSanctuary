@@ -43,7 +43,6 @@ public class Enemy : MonoBehaviour
     public Transform Target { get; set; }
     public Transform SpawnPoint { get; set; }
     public EnemyWeapon EnemyWeapon { get; set; }
-    public bool IsRight { get; set; } = true;
     public GameObject Weapon { get; set; }
     public EnemySO Data {get => enemyData;}
     public IdleType IdleType {get => idleType;}
@@ -99,15 +98,15 @@ public class Enemy : MonoBehaviour
         Condition.Init(this);
         StateMachine = new EnemyStateMachine(this);
     }
-    
+
     public bool IsPlatform()
     {
         float capsulsize = CapsuleCollider.size.x / 2;
-        float setX = IsRight ? capsulsize: -capsulsize;
+        float setX = SpriteRenderer.flipX ? -capsulsize : capsulsize;
         Vector2 newPos = new Vector2(transform.position.x + setX, transform.position.y);
         Debug.DrawRay(newPos, Vector2.down * platformCheckDistance, Color.red);
         return Physics2D.Raycast(newPos, Vector2.down,
-            platformCheckDistance,platformLayer);
+            platformCheckDistance, platformLayer);
     }
 
     public void SetCollisionEnabled(bool isEnabled)
