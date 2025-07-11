@@ -876,6 +876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOn: 0
   animator: {fileID: 291744622}
+  audioClip: {fileID: 0}
 --- !u!212 &291744625
 SpriteRenderer:
   m_ObjectHideFlags: 0
