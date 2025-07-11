@@ -24,7 +24,7 @@ public class PlayerAttackState : PlayerBaseState
         StartAnimation(_player.AnimationDB.AttackParameterHash);
         
         //무기에 대미지 전달
-        _playerWeapon.Damage = (int)((_condition.Attack + _inventory.EquipRelicAttack()) * attackInfo.multiplier);
+        _playerWeapon.Damage = (int)((_condition.Attack + _inventory.EquipRelicAttack() + _condition.BuffAtk) * attackInfo.multiplier);
         _playerWeapon.knockBackForce = attackInfo.knockbackForce;
         _playerWeapon.groggyDamage = attackInfo.groggyDamage;
         _playerWeapon.defpen = _data.Defpen;
