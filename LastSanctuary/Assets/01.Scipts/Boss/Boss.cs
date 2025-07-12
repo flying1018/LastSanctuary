@@ -60,7 +60,7 @@ public class Boss : MonoBehaviour
     private void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
-        Debug.Log(StateMachine.currentState);
+        //Debug.Log(StateMachine.currentState);
 
     }
     

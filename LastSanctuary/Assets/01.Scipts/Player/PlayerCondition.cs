@@ -183,7 +183,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         }
         return false;
     }
-    
+    //버프 적용
     public void ApplyTempBuff(StatObjectSO data)
     {
         if (_tempBuffs.TryGetValue(data, out Coroutine lastCoroutine))
@@ -201,7 +201,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
          Coroutine newCoroutine = StartCoroutine(BuffDurationTimerCoroutine(data));
          _tempBuffs[data] = newCoroutine;
     }
-
+    //버프 제거
     private void RemoveTempBuff(StatObjectSO data)
     {
         BuffHp -= data.hp;
@@ -210,7 +210,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         BuffDef -= data.defense;
         //죽었을떄는 전체 초기화
     }
-
+    //버프 지속시간 타이머
     private IEnumerator BuffDurationTimerCoroutine(StatObjectSO data)
     {
         yield return new WaitForSeconds(data.duration);
