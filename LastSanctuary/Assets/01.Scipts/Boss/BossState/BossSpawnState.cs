@@ -10,25 +10,28 @@ public class BossSpawnState : BossBaseState
 
     public override void Enter()
     {
-        Debug.Log("스폰상태 진입");
-        _elapsed = 0f;
-
-        StartAnimation(_boss.AnimationDB.SpawnParameterHash);
-        _rigidbody.velocity = Vector2.zero; // 움직임 정지
+        UpdateCollider();
+        _rigidbody.gravityScale = 15f;
+        _boss.Animator.SetTrigger(_boss.AnimationDB.SpawnParameterHash);
     }
 
     public override void Exit()
     {
-        StopAnimation(_boss.AnimationDB.SpawnParameterHash);
-        Debug.Log("스폰 상태 종료");
+        _rigidbody.gravityScale = 3f;
+        _boss.BossEvent.StartBattle();
     }
 
     public override void Update()
     {
         _elapsed += Time.deltaTime; 
-        if (_elapsed >= _data.spawnAnimeTime) //스폰 애니메이션 지속시간이 끝나면
+        if (_elapsed >= _data.SpawnAnimeTime) //스폰 애니메이션 지속시간이 끝나면
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
+    }
+
+    public override void PhysicsUpdate()
+    {
+        
     }
 }

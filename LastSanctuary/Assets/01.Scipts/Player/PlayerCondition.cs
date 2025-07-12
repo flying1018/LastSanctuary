@@ -9,7 +9,6 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     [SerializeField] private float respawnTime = 2f;
     [SerializeField] private float reviveInvincibleTime = 0.5f;
     
-    
     private Player _player;
     private float _curStamina;
     private int _staminaRecovery;
@@ -23,6 +22,9 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     public float MaxStamina { get; set; }
     public int Attack { get => _attack; set => _attack = value; }
     public int Defence { get => _defence; set => _defence = value; }
+    //성물로 증가 가능한 프로퍼티
+    public int HealAmonut { get; set; }
+    public float MaxUltimateGauge { get; set; }
     
     //버프 표시 프로퍼티
     public int BuffHp { get; set; }
@@ -50,6 +52,8 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         Attack = _player.Data.attack;
         _curHp = MaxHp;
         _curStamina = MaxStamina;
+        HealAmonut = _player.Data.healAmount;
+        MaxUltimateGauge = _player.Data.maxUltimateGauge;
     }
 
     private void Update()
@@ -119,11 +123,11 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         _curStamina = MaxStamina;
     }
     
-    public void Heal(int healAmount)
+    public void Heal()
     {
         if (_curHp < _maxHp)
         {
-            _curHp += healAmount;
+            _curHp += HealAmonut;
             _curHp = Mathf.Clamp(_curHp, 0, _maxHp);
         }
     }

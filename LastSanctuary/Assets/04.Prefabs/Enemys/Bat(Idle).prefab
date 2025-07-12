@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8912707365634536059}
   - component: {fileID: 7995237856167525000}
   - component: {fileID: 2406020538053831016}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bat(Idle)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,6 +125,11 @@ MonoBehaviour:
   platformCheckDistance: 10
   idleType: 0
   moveType: 1
+  attackType: 2
+  aerialPlatformLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  CapsuleCollider: {fileID: 0}
 --- !u!114 &7995237856167525000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +152,7 @@ Animator:
   m_GameObject: {fileID: 1748273169305724860}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a5cf0d67f8c6e4e489daa61656d897e8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -168,7 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7433476367284325732}
   - component: {fileID: 8225265994209256405}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,8 +217,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2230761353910399565}
   - component: {fileID: 2575019175853921997}
-  m_Layer: 0
-  m_Name: Circle
+  m_Layer: 11
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,7 +234,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.14754559}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 793396236764042023}
@@ -274,13 +279,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_SortingOrder: 50
+  m_Sprite: {fileID: -2126687407, guid: eb673a95be2eb4ab69524a1afab7e0d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.34375, y: 0.71875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

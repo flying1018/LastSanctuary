@@ -1,0 +1,139 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Cinemachine;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class BossEvent : MonoBehaviour
+{
+    private MoveObject[] _moveObjects;
+    private Boss _boss;
+    private Player _player;
+    private CinemachineVirtualCamera _bossCamera;
+    private SpriteRenderer _backGroundSprite;
+    private CinemachineBasicMultiChannelPerlin _perlin;
+
+    [Header("Boss Spawn")] 
+    [SerializeField] private float enterTime = 1f;
+    [SerializeField] private float blackDuration = 1f;
+    [SerializeField] private float blinkInterval;
+    [SerializeField] private GameObject[] parts;
+    [SerializeField] private float cameraShakeTime; 
+
+    private void Start()
+    {
+        _moveObjects = GetComponentsInChildren<MoveObject>();
+        _boss = FindAnyObjectByType<Boss>();
+        _boss.gameObject.SetActive(false);
+        _bossCamera = GetComponentInChildren<CinemachineVirtualCamera>();
+        _perlin = _bossCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        _backGroundSprite = GameObject.FindGameObjectWithTag(StringNameSpace.Tags.BackGround)
+            .GetComponent<SpriteRenderer>();
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag(StringNameSpace.Tags.Player))
+        {
+            _player = other.GetComponent<Player>();
+            StartCoroutine(Spawn_Coroutine());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag(StringNameSpace.Tags.Player))
+        {
+            _player = null;
+            _boss.gameObject.SetActive(false);
+            //벽 치우기
+            foreach (MoveObject moveObject in _moveObjects)
+            {
+                moveObject.MoveObj();
+            }
+        }
+    }
+
+    IEnumerator Spawn_Coroutine()
+    {
+        //플레이어가 입장 시 잠시 이동
+        yield return new WaitForSeconds(enterTime);
+
+        //벽이 올라와서 막힘
+        foreach (MoveObject moveObject in _moveObjects)
+        {
+            moveObject.MoveObj();
+        }
+
+        //UI 끄기
+        UIManager.Instance.OnOffUI(false);
+        //조작 불가
+        _player.PlayerInput.enabled = false;
+
+        //천천히 암전
+        Color originColor = _backGroundSprite.color;
+        float elapsed = 0f;
+        while (elapsed <= blackDuration)
+        {
+            elapsed += Time.deltaTime;
+            _backGroundSprite.color = Color.Lerp(originColor, Color.black, elapsed / blackDuration);
+            yield return null;
+        }
+
+        //사운드 연출 추가해야됨.
+
+        //카메라 변경
+        _bossCamera.Priority = 20;
+        yield return new WaitForSeconds(blackDuration);
+
+        //빨간색 순차적으로 점멸
+        foreach (GameObject part in parts)
+        {
+            part.SetActive(true);
+            yield return new WaitForSeconds(blinkInterval);
+        }
+
+        foreach (GameObject part in parts)
+        {
+            part.SetActive(false);
+        }
+
+        //색을 돌리기
+        elapsed = 0f;
+        while (elapsed <= blackDuration)
+        {
+            elapsed += Time.deltaTime;
+            _backGroundSprite.color = Color.Lerp(Color.black, originColor, elapsed / blackDuration);
+            yield return null;
+        }
+
+        _boss.gameObject.SetActive(true);
+        _boss.Init(this);
+    }
+
+    public void CameraShake(float duration = 1f, float amplitude = 2f,  float frequency = 2f)
+    {
+        StartCoroutine(CameraShake_Coroutine(duration, amplitude, frequency));
+    }
+
+    IEnumerator CameraShake_Coroutine(float duration, float amplitude ,  float frequency)
+    {
+        _perlin.m_AmplitudeGain = amplitude;
+        _perlin.m_FrequencyGain = frequency;
+        yield return new WaitForSeconds(duration);
+        _perlin.m_AmplitudeGain = 0;
+        _perlin.m_FrequencyGain = 0;
+    }
+
+    public void StartBattle()
+    {
+        UIManager.Instance.OnOffUI(true);
+        _player.PlayerInput.enabled = true;
+        _bossCamera.Priority = 0;
+    }
+
+
+
+}
