@@ -52,7 +52,7 @@ public class PlayerAttackState : PlayerBaseState
         {
             _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
         }
-        if (_input.IsGuarding && _stateMachine.comboIndex != 2)
+        if (_player.IsGround() &&_input.IsGuarding && _stateMachine.comboIndex != 2)
         {
             _stateMachine.ChangeState(_stateMachine.GuardState);
         }

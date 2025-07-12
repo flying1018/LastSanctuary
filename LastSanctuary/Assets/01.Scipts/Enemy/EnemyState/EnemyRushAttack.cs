@@ -37,8 +37,10 @@ public class EnemyRushAttack : EAttackState
     }
 
     //충돌 시 정지
-    public void StopMove()
+    public void KnuckBackMe(Transform target, float knockBackForce)
     {
+        Vector2 knockbackDir = _enemy.transform.position - target.position;
+        _rigidbody.velocity = knockbackDir.normalized * knockBackForce;
         _stateMachine.ChangeState(_stateMachine.BattleState);
     }
 }

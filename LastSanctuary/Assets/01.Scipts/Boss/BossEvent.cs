@@ -19,7 +19,8 @@ public class BossEvent : MonoBehaviour
     [SerializeField] private float blackDuration = 1f;
     [SerializeField] private float blinkInterval;
     [SerializeField] private GameObject[] parts;
-    [SerializeField] private float cameraShakeTime; 
+    [SerializeField] private float cameraShakeTime;
+    [SerializeField] private float targetLesSise = 7f;
 
     private void Start()
     {
@@ -98,6 +99,13 @@ public class BossEvent : MonoBehaviour
         foreach (GameObject part in parts)
         {
             part.SetActive(false);
+        }
+        
+        //카메라 줌 아웃
+        while (_bossCamera.m_Lens.OrthographicSize < targetLesSise)
+        {
+            _bossCamera.m_Lens.OrthographicSize += Time.deltaTime * 10;
+            yield return null;
         }
 
         //색을 돌리기
