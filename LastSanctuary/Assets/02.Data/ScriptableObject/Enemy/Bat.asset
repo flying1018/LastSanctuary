@@ -19,7 +19,7 @@ MonoBehaviour:
   moveSpeed: 3
   cancelChaseTime: 5
   <patrolDistance>k__BackingField: 6
-  <HitDuration>k__BackingField: 0.2
+  <HitDuration>k__BackingField: 0.1
   attackDistance: 8
   attackDuration: 3
   knockbackForce: 30
