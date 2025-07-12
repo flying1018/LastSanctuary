@@ -17,14 +17,14 @@ MonoBehaviour:
   detectTime: 0.2
   detectDistance: 10
   moveSpeed: 3
-  cancelChaseTime: 3
+  cancelChaseTime: 5
   <patrolDistance>k__BackingField: 6
-  <HitDuration>k__BackingField: 0.2
+  <HitDuration>k__BackingField: 0.1
   attackDistance: 8
   attackDuration: 3
-  knockbackForce: 10
+  knockbackForce: 30
   attackAnim: {fileID: 7400000, guid: 9bfbf15d9c5af0a4faf3399a46d06316, type: 2}
-  attack: 10
+  attack: 15
   hp: 100
   defence: 0
   damageDelay: 0.2
