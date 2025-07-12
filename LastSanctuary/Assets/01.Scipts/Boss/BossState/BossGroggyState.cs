@@ -26,9 +26,14 @@ public class BossGroggyState : BossBaseState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+        if (!_condition.IsAlive())
+        {
+            StopAnimation(_boss.AnimationDB.GroggyParameterHash);
+            return;
+        }
+
         if (Time.time - _groggyStart < _data.groggyDuration)
             return;
-            
         _condition.ChangePhase2State();
         _stateMachine.ChangeState(_stateMachine.IdleState);
         

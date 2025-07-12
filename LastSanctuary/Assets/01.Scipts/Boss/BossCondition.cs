@@ -33,8 +33,8 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     }
     private IEnumerator Death_Coroutine()
     {
-        _boss.Animator.SetTrigger(_boss.AnimationDB.DeathParameterHash);
         _boss.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
+        _boss.Animator.SetTrigger(_boss.AnimationDB.DeathParameterHash);
         _boss.BossEvent.OnTriggerBossDeath();
         yield return new WaitForSeconds(_boss.Data.deathTime);
         ObjectPoolManager.Set(_boss.Data._key, _boss.gameObject, _boss.gameObject);
@@ -42,17 +42,23 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     
     public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
     {
+        if (!IsAlive()) return;
         if (_isTakeDamageable) return;
         ApplyDamage(atk,defpen);
-        if (_curHp <= 0)
+        if (!IsAlive())
         {
             Death();
+        }
+        else
+        {
+            ChangePhase2State();
         }
     }
     
     //보스 그로기 증가
     public void ApplyGroggy(int groggyDamage)
     {
+        if(_curHp <= 0) return;
         if (_isTakeDamageable) return;
         if (IsGroggy) return;
         //퍼가시 그로기 10증가
@@ -84,16 +90,20 @@ public class BossCondition : Condition,IDamageable, IGroggyable
             damage = (int)(Math.Ceiling(atk - _defence * (1 - defpen)));
         }
         _curHp -= damage;
-        ChangePhase2State();
     }
 
     public void ChangePhase2State()
     {
+        if(!IsAlive()) return;
         float phase2Hp = _maxHp * _boss.Data.phaseShiftHpRatio;
         if (!_boss.Phase2 && _curHp <= phase2Hp)
         {
             _boss.StateMachine.ChangeState(_boss.StateMachine.PhaseShiftState);
         }
     }
-    
+
+    public bool IsAlive()
+    {
+        return _curHp > 0;
+    }
 }

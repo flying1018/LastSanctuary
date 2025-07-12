@@ -27342,6 +27342,7 @@ MonoBehaviour:
   - {fileID: 1575198949}
   cameraShakeTime: 0
   targetLesSise: 7
+  eventDuration: 2
 --- !u!4 &1454281341
 Transform:
   m_ObjectHideFlags: 0
