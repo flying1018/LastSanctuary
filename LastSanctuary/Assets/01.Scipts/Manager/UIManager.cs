@@ -32,7 +32,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI potionText;
     
     
-    public UIStateMachine UiStateMachine { get; set; }
+    public UIStateMachine StateMachine { get; set; }
     public PlayerCondition PlayerCondition { get; set; }
     public PlayerInventory PlayerInventory { get; set; }
     public PlayerInput PlayerInput { get; set; }
@@ -71,7 +71,7 @@ public class UIManager : Singleton<UIManager>
         PlayerInventory = FindAnyObjectByType<PlayerInventory>();
         PlayerInput = FindAnyObjectByType<PlayerInput>();
         
-        UiStateMachine = new UIStateMachine(this);
+        StateMachine = new UIStateMachine(this);
     }
 
     public int ShowWarpUI(WarpObject slectWarpObj)
@@ -81,13 +81,13 @@ public class UIManager : Singleton<UIManager>
 
     private void Update()
     {
-        UiStateMachine.HandleInput();
-        UiStateMachine.Update();
+        StateMachine.HandleInput();
+        StateMachine.Update();
     }
 
     private void FixedUpdate()
     {
-        UiStateMachine.PhysicsUpdate();
+        StateMachine.PhysicsUpdate();
     }
 
     #region Need MonoBehaviour Method
@@ -99,12 +99,24 @@ public class UIManager : Singleton<UIManager>
 
     public void UpdatePotionUI()
     {
-        UiStateMachine.MainUI.UpdatePotionText();
+        StateMachine.MainUI.UpdatePotionText();
     }
 
     public void UpdateBuffUI(StatObjectSO data)
     {
-        UiStateMachine.MainUI.UpdateBuffUI(data);
+        StateMachine.MainUI.UpdateBuffUI(data);
+    }
+
+    public void OnOffUI(bool isOn)
+    {
+        if (isOn)
+        {
+            StateMachine.ChangeState(StateMachine.MainUI);
+        }
+        else
+        {
+            StateMachine.ChangeState(StateMachine.OffUI);
+        }
     }
 
     #endregion

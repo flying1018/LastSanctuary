@@ -48,6 +48,9 @@ public class EnemyStateMachine : StateMachine
             case AttackType.Range:
                 AttackState = new EnemyRangeAttackState(this);
                 break;
+            case AttackType.Rush:
+                AttackState = new EnemyRushAttack(this);
+                break;
         }
         HitState = new EnemyHitState(this);
         DetectState = new EnemyDetectState(this);

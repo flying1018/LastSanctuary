@@ -45,4 +45,8 @@ public class EnemySO : ScriptableObject
     public GameObject arrowPrefab;
     public int arrowPoolId;
     public int arrowPower;
+
+    [Header("Rush Attack")]
+    public float rushSpeed;
+    
 }

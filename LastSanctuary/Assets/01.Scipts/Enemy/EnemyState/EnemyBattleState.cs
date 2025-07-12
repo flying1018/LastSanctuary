@@ -10,12 +10,18 @@ public class EnemyBattleState : EnemyBaseState
     
     public override void Enter()
     {
-        StartAnimation(_enemy.AnimationDB.IdleParameterHash);
+        if(_enemy.MoveType == MoveType.Fly)
+            StartAnimation(_enemy.AnimationDB.WalkParameterHash);
+        else if(_enemy.MoveType == MoveType.Walk)
+            StartAnimation(_enemy.AnimationDB.IdleParameterHash);
     }
 
     public override void Exit()
     {
-        StopAnimation(_enemy.AnimationDB.IdleParameterHash);
+        if(_enemy.MoveType == MoveType.Fly)
+            StopAnimation(_enemy.AnimationDB.WalkParameterHash);
+        else if(_enemy.MoveType == MoveType.Walk)
+            StopAnimation(_enemy.AnimationDB.IdleParameterHash);
     }
     
     public override void Update()

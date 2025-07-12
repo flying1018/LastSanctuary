@@ -31,16 +31,15 @@ public class BossSO : ScriptableObject
     public AnimationClip deathAnim;
     public float deathTime => deathAnim.length;
     
-    [Header("Movement")]
+    [Header("ChaseState")]
     public float moveSpeed = 2f;
     
-    [Header("Attack")]
-    public float attackRange = 2f;
-    
-    [field: Header("Spawn Time")]
-    [field: SerializeField] public float spawnAnimeTime { get; private set; } = 10f;
+    [Header("SpawnState")]
+    public AnimationClip spawnAnim;
+    public float SpawnAnimeTime {get => spawnAnim.length;}
 
     [Header("AttackState")] 
+    public float attackRange = 2f;
     public float attackIdleTime;
     public BossAttackInfo[] attacks;
     public float backJumpPower;
