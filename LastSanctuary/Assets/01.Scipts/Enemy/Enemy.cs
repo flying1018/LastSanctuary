@@ -66,13 +66,14 @@ public class Enemy : MonoBehaviour
         //Debug.Log(StateMachine.attackCoolTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
         {
             if(other.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                damageable.TakeDamage(Data.attack,DamageType.Contact,transform);
+                if(moveType == MoveType.Fly)
+                    damageable.TakeDamage(Data.attack,DamageType.Attack,transform);
             }
 
             if (other.gameObject.TryGetComponent(out IKnockBackable knockBackable))
@@ -83,7 +84,31 @@ public class Enemy : MonoBehaviour
 
         if (StateMachine.currentState is EnemyRushAttack rushAttack)
         {
-            rushAttack.StopMove();
+            rushAttack.KnuckBackMe(other.gameObject.transform,Data.knockbackForce);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
+        {
+            if(other.gameObject.TryGetComponent(out IDamageable damageable))
+            {
+                if(moveType == MoveType.Fly)
+                    damageable.TakeDamage(Data.attack,DamageType.Attack,transform);
+                else
+                    damageable.TakeDamage(Data.attack,DamageType.Contact,transform);
+            }
+
+            if (other.gameObject.TryGetComponent(out IKnockBackable knockBackable))
+            {
+                knockBackable.ApplyKnockBack(transform,Data.knockbackForce);
+            }
+        }
+
+        if (StateMachine.currentState is EnemyRushAttack rushAttack)
+        {
+            rushAttack.KnuckBackMe(other.gameObject.transform,Data.knockbackForce);
         }
     }
 

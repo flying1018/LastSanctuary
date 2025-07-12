@@ -63,7 +63,7 @@ public class EnemyChaseState : EChaseState
     }
 
     protected override void Chase()
-    {
+    {   
         if(_enemy.Target == null) return;
         if (!_enemy.IsPlatform())
         {
