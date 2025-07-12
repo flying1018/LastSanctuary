@@ -21,7 +21,7 @@ MonoBehaviour:
   <patrolDistance>k__BackingField: 10
   <HitDuration>k__BackingField: 0.1
   attackDistance: 5
-  attackDuration: 1
+  attackDuration: 1.5
   knockbackForce: 25
   attackAnim: {fileID: 7400000, guid: e3899a35106287c4e80d62e6ade9488c, type: 2}
   attack: 25

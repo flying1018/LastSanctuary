@@ -23,7 +23,7 @@ MonoBehaviour:
   healAnim: {fileID: 7400000, guid: 52dc6dc8e8aaf90419bc5df20a09978b, type: 2}
   <perfectGuardWindow>k__BackingField: 0.4
   <perfactGuardStemina>k__BackingField: 30
-  <guardCost>k__BackingField: 30
+  <guardCost>k__BackingField: 25
   guardSound: {fileID: 8300000, guid: fccd569122fc0274f9d1d0a123c097fd, type: 3}
   perfectGuardSound: {fileID: 8300000, guid: 731505f8c07211343975e575df86eb1c, type: 3}
   attacks:
