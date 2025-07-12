@@ -8,7 +8,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     //필드
     private Enemy _enemy;
     private Coroutine _hitEffectCoroutine;
-    //private Color _originColor;
+    private Color _originColor;
     
     //프로퍼티
     public bool IsInvincible { get; set; }
@@ -22,29 +22,11 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         _defence = _enemy.Data.defence;
         _curHp = _maxHp;
         _delay = _enemy.Data.damageDelay;
-        //_originColor = _enemy.SpriteRenderer.color;
+        _originColor = _enemy.SpriteRenderer.color;
         _isTakeDamageable = false;
         IsInvincible = false;
         IsDeath = false;
     }
-    // private void OnHitEffected()
-    // {
-    //     if (_hitEffectCoroutine != null)
-    //     {
-    //         StopCoroutine(_hitEffectCoroutine);
-    //         _hitEffectCoroutine = null;       
-    //     }
-    //     _hitEffectCoroutine = StartCoroutine(HitEffect_Coroutine());
-    // }
-    
-    // private IEnumerator HitEffect_Coroutine()
-    // {
-    //     SpriteRenderer sprite = _enemy.SpriteRenderer;
-    //     
-    //     sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, _enemy.Data.alphaValue);
-    //     yield return new WaitForSeconds(_enemy.Data.hitDuration);
-    //     sprite.color = _originColor;
-    // }
     public override void Death()
     {
         StartCoroutine(Death_Coroutine());
@@ -73,17 +55,42 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         }
         else
         {
-            _enemy.StateMachine.ChangeState(_enemy.StateMachine.HitState);
+            OnHitEffected();
         }
         
+    }
+    
+    private void OnHitEffected()
+    {
+        if (_hitEffectCoroutine != null)
+        {
+            StopCoroutine(_hitEffectCoroutine);
+            _hitEffectCoroutine = null;       
+        }
+        _hitEffectCoroutine = StartCoroutine(HitEffect_Coroutine());
+    }
+
+    private IEnumerator HitEffect_Coroutine()
+    {
+        SpriteRenderer sprite = _enemy.SpriteRenderer;
+        
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, _enemy.Data.alphaValue);
+        yield return new WaitForSeconds(_enemy.Data.hitDuration);
+        sprite.color = _originColor;
     }
 
     public void ApplyKnockBack(Transform attackDir, float knockBackPower)
     {
+        if (knockBackPower <= 0) return;
+        if (_curHp <= 0) return;
+        
         Vector2 knockbackDir = (transform.position - attackDir.position);
         knockbackDir.y = 0f;
+        _enemy.StateMachine.ChangeState(_enemy.StateMachine.HitState);
         _enemy.Rigidbody.AddForce(knockbackDir.normalized *  knockBackPower,ForceMode2D.Impulse);
+        
     }
+
 
     public void ApplyDamage(int atk, float defpen)
     {

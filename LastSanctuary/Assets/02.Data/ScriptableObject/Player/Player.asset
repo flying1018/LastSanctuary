@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <moveSpeed>k__BackingField: 6
   moveSound: {fileID: 8300000, guid: 594fb34ab34a71d4caa854b31a755b5f, type: 3}
-  <jumpForce>k__BackingField: 15
+  <jumpForce>k__BackingField: 12
   dashAnim: {fileID: 7400000, guid: 20526e8ebcd8b154daef3662caa8a8a5, type: 2}
   dashPower: 20
   dashCoolTime: 0.5
   dashCost: 25
   healAmount: 0
   healAnim: {fileID: 7400000, guid: 52dc6dc8e8aaf90419bc5df20a09978b, type: 2}
-  <perfectGuardWindow>k__BackingField: 0.2
+  <perfectGuardWindow>k__BackingField: 0.4
   <perfactGuardStemina>k__BackingField: 30
-  <guardCost>k__BackingField: 30
+  <guardCost>k__BackingField: 25
   guardSound: {fileID: 8300000, guid: fccd569122fc0274f9d1d0a123c097fd, type: 3}
   perfectGuardSound: {fileID: 8300000, guid: 731505f8c07211343975e575df86eb1c, type: 3}
   attacks:
@@ -33,7 +33,7 @@ MonoBehaviour:
     nextComboTime: 0.3
     staminaCost: 0
     attackForce: 0
-    knockbackForce: 1
+    knockbackForce: 0
     groggyDamage: 1
     isInvincible: 0
   - attackAnim: {fileID: 7400000, guid: 3c8ab8fd8e124cd47ba5909da708ef53, type: 2}
@@ -42,18 +42,18 @@ MonoBehaviour:
     nextComboTime: 0.3
     staminaCost: 0
     attackForce: 0
-    knockbackForce: 1
+    knockbackForce: 0
     groggyDamage: 2
     isInvincible: 0
   - attackAnim: {fileID: 7400000, guid: bdf51d02ce4552348ba6354a5c6370ff, type: 2}
     attackIndex: 3
     multiplier: 2
     nextComboTime: 0
-    staminaCost: 15
-    attackForce: 10
-    knockbackForce: 600
+    staminaCost: 25
+    attackForce: 3
+    knockbackForce: 30
     groggyDamage: 5
-    isInvincible: 1
+    isInvincible: 0
   Defpen: 0.25
   attackSound: {fileID: 8300000, guid: c2b5ad624bada8b4ca44af7c71df039c, type: 3}
   dashAttack:
@@ -63,7 +63,7 @@ MonoBehaviour:
     nextComboTime: 0
     staminaCost: 15
     attackForce: 20
-    knockbackForce: 600
+    knockbackForce: 150
     groggyDamage: 5
     isInvincible: 1
   maxUltimateGauge: 0

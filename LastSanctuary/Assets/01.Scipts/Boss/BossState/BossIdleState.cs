@@ -15,8 +15,6 @@ public class BossIdleState : BossBaseState
         Debug.Log("대기상태 진입");
         StartAnimation(_boss.AnimationDB.IdleParameterHash);
         _rigidbody.velocity = Vector2.zero;
-
-        _time = 0;
     }
 
     public override void Exit()
@@ -37,6 +35,8 @@ public class BossIdleState : BossBaseState
         if (_time >= _data.attackIdleTime && WithAttackDistance())
         {
             if (_stateMachine.Attacks.Count <= 0) return;
+            
+            _time = 0;
             _stateMachine.ChangeState(_stateMachine.Attacks.Dequeue());
         }
     }
