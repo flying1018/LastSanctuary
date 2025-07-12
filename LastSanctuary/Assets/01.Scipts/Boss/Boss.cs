@@ -12,6 +12,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private BossSO bossData;
 
     //프로퍼티
+    public BossEvent BossEvent { get; set; }
     public BossStateMachine StateMachine { get; set; }
     public Rigidbody2D Rigidbody {get; set;}
     public Animator Animator {get; set;}
@@ -22,11 +23,11 @@ public class Boss : MonoBehaviour
     public BossWeapon BossWeapon { get; set; }
     public GameObject Weapon { get; set; }
     public BossSO Data {get => bossData;}
-    public bool HasDetectedTarget { get; private set; } = false;
     public bool Phase2 { get; set; }
 
-    private void Init()
+    public void Init(BossEvent bossEvent)
     {
+        BossEvent = bossEvent;
         Phase2 = false;
         AnimationDB = new BossAnimationDB(); 
         AnimationDB.Initailize(); 
@@ -40,13 +41,13 @@ public class Boss : MonoBehaviour
         
         Condition.Init(this);
         StateMachine = new BossStateMachine(this);
+        
     }
     
 
     private void OnEnable()
     {
         Target = FindObjectOfType<Player>().transform;
-        Init();
     }
     
     private void Update()
@@ -59,7 +60,7 @@ public class Boss : MonoBehaviour
     private void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
-        //Debug.Log(StateMachine.currentState);
+        Debug.Log(StateMachine.currentState);
 
     }
     
@@ -142,14 +143,13 @@ public class Boss : MonoBehaviour
         PolygonCollider.isTrigger = false;
         Rigidbody.bodyType = RigidbodyType2D.Dynamic;
     }
+    
+    //연출
+    public void CameraShake()
+    {
+        BossEvent.CameraShake(); //안에 소리 길이를 매개변수로 넣어주면 됨.
+    }
 
     #endregion
     
-    public void DetectPlayer(Transform target)
-    {
-        if (HasDetectedTarget) return;
-    
-        HasDetectedTarget = true;
-        Target = target;
-    }
 }

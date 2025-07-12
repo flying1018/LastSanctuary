@@ -27,7 +27,6 @@ public static class ObjectPoolManager
                 }
             }
         }
-        DebugHelper.Log("최초 생성");
         GameObject newObj = Object.Instantiate(prefab);
         newObj.SetActive(true);
         return newObj;

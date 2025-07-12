@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour
     public PlayerSO Data { get => playerData; }
     public GameObject Weapon { get => weapon; }
     public PlayerInventory Inventory { get; set; }
+    public PlayerInput PlayerInput { get; set; }
 
 
     private void Awake()
@@ -43,6 +45,7 @@ public class Player : MonoBehaviour
         PlayerWeapon = GetComponentInChildren<PlayerWeapon>();
         weapon = PlayerWeapon.gameObject;
         Inventory = GetComponent<PlayerInventory>();
+        PlayerInput = GetComponent<PlayerInput>();
         
         AnimationDB.Initailize();
         Inventory.Init(this);

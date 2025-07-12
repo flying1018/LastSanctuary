@@ -37,6 +37,7 @@ public class PlayerSO : ScriptableObject
     public int dashCost;
     
     [Header("HealState")]
+    public int healAmount;
     public AnimationClip healAnim;
     public float healTime => healAnim.length;
 
@@ -54,6 +55,7 @@ public class PlayerSO : ScriptableObject
     public float Defpen;
     public AudioClip attackSound;
     public AttackInfo dashAttack;
+    public float maxUltimateGauge;
 
     [field: Header("HitState")]
     [field: SerializeField] public float LightHitDuration{ get; private set; } = 0.2f;
@@ -63,16 +65,15 @@ public class PlayerSO : ScriptableObject
     [field: SerializeField, Range(0f, 1f)] public float damageReduction { get; private set; } = 0.8f;
     public AudioClip hitSound;
 
-    [field: Header("Condition")]
-    [field: SerializeField] public int hp;
-    [field: SerializeField] public int attack;
-    [field: SerializeField] public int defense;
-    [field: SerializeField] public int stamina;
-    [field: SerializeField] public int staminaRecovery { get; private set; } = 15;
+    [Header("Condition")]
+    public int hp;
+    public int attack;
+    public int defense;
+    public int stamina;
+    public int staminaRecovery;
 
     [Header("Inventory")]
     public int potionNum;
-    public int relicNum;
 
 
 }

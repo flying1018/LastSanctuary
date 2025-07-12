@@ -17,7 +17,8 @@ public class EnemyHitState : EnemyBaseState
 
     public override void Exit()
     {
-        
+        if(_enemy.MoveType == MoveType.Fly)
+            Move(Vector2.zero);
     }
 
     public override void PhysicsUpdate()

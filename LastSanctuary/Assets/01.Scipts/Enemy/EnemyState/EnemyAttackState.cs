@@ -59,15 +59,6 @@ public class EAttackState : EnemyBaseState
         }
 
     }
-    
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-
-        //타겟을 향해서 보기
-        Vector2 direction = DirectionToTarget();
-        Rotate(direction);
-    }
 }
 
 public class EnemyAttackState : EAttackState
