@@ -19,7 +19,10 @@ public class BossEvent : MonoBehaviour
     [SerializeField] private float blackDuration = 1f;
     [SerializeField] private float blinkInterval;
     [SerializeField] private GameObject[] parts;
-    [SerializeField] private float cameraShakeTime; 
+    [SerializeField] private float cameraShakeTime;
+
+    [Header("Boss Death")]
+    [SerializeField] private float eventDuration = 2f;
 
     private void Start()
     {
@@ -134,6 +137,53 @@ public class BossEvent : MonoBehaviour
         _bossCamera.Priority = 0;
     }
 
+    public void OnTriggerBossDeath()
+    {
+        StartCoroutine(Death_coroution());
+    }
 
+    IEnumerator  Death_coroution()
+    {
+        //슬로우 모션
+        Time.timeScale = 0.2f;
+        float timer = 0f;
+        
+        //UI 끄기
+        UIManager.Instance.OnOffUI(false);
+        //조작 불가
+        _player.PlayerInput.enabled = false;
+        
+        //보스 포커싱
+        _bossCamera.Priority = 20;
+        
+        //순간 암전
+        Color originbackGroundColor = _backGroundSprite.color;
+        _backGroundSprite.color = Color.black;
+        
+        //빨간 실루엣
+        SpriteRenderer bossSprite = _boss.SpriteRenderer;
+        SpriteRenderer playerSprite = _player.SpriteRenderer;
+        Color originBossColor = bossSprite.color;
+        Color originPlayerColor = playerSprite.color;
+        bossSprite.color = Color.red;
+        playerSprite.color = Color.red;
+        
+        //연출 유지
+        while (timer < eventDuration)
+        {
+            timer += Time.unscaledDeltaTime;
+            yield return null;
+        }
 
+        //색 돌리기
+        Debug.Log("타임스케일 복구 직전: " + Time.timeScale);
+        Time.timeScale = 1f;
+        Debug.Log("타임스케일 복구 후: " + Time.timeScale);
+        _backGroundSprite.color = originbackGroundColor;
+        bossSprite.color = originBossColor;
+        playerSprite.color = originPlayerColor;
+        
+        StartBattle();
+        
+    }
 }

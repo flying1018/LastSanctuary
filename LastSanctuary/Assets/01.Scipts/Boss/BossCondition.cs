@@ -35,6 +35,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     {
         _boss.Animator.SetTrigger(_boss.AnimationDB.DeathParameterHash);
         _boss.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
+        _boss.BossEvent.OnTriggerBossDeath();
         yield return new WaitForSeconds(_boss.Data.deathTime);
         ObjectPoolManager.Set(_boss.Data._key, _boss.gameObject, _boss.gameObject);
     }
