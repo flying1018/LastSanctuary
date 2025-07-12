@@ -22,8 +22,8 @@ MonoBehaviour:
   damageDelay: 0.2
   deathAnim: {fileID: 7400000, guid: f745dd3432f773c46807b3753e7880d9, type: 2}
   moveSpeed: 3
-  attackRange: 50
-  <spawnAnimeTime>k__BackingField: 10
+  spawnAnim: {fileID: 7400000, guid: 0ff33004cb5ec2549a83d61c8990ee54, type: 2}
+  attackRange: 10
   attackIdleTime: 1
   attacks:
   - multiplier: 1

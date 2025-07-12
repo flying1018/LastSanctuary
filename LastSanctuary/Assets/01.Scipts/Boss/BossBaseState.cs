@@ -118,7 +118,7 @@ public class BossBaseState : IState
         if (_boss.Target == null) return false;
 
         float distance = Vector2.Distance(_boss.transform.position, _boss.Target.transform.position);
-        return distance <= _data.attackRange/10;
+        return distance <= _data.attackRange/2;
     }
 
     protected bool WithAttackDistance()
@@ -126,6 +126,6 @@ public class BossBaseState : IState
         if (_boss.Target == null) return false;
 
         float distance = Vector2.Distance(_boss.transform.position, _boss.Target.transform.position);
-        return distance <= _data.attackRange/10;
+        return distance <= _data.attackRange;
     }
 }

@@ -19,6 +19,7 @@ MonoBehaviour:
   dashPower: 20
   dashCoolTime: 0.5
   dashCost: 25
+  healAmount: 0
   healAnim: {fileID: 7400000, guid: 52dc6dc8e8aaf90419bc5df20a09978b, type: 2}
   <perfectGuardWindow>k__BackingField: 0.2
   <perfactGuardStemina>k__BackingField: 30
@@ -65,6 +66,7 @@ MonoBehaviour:
     knockbackForce: 600
     groggyDamage: 5
     isInvincible: 1
+  maxUltimateGauge: 0
   <LightHitDuration>k__BackingField: 0.2
   <HeavyHitDuration>k__BackingField: 0.5
   <invincibleDuration>k__BackingField: 1
@@ -75,6 +77,5 @@ MonoBehaviour:
   attack: 20
   defense: 5
   stamina: 100
-  <staminaRecovery>k__BackingField: 15
+  staminaRecovery: 15
   potionNum: 3
-  relicNum: 0

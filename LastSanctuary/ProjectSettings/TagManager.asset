@@ -9,6 +9,7 @@ TagManager:
   - SavePoint
   - Enemy
   - Ground
+  - BackGround
   layers:
   - Default
   - TransparentFX
@@ -22,8 +23,8 @@ TagManager:
   - Interactable
   - Ground
   - FlyEnemy
-  - 
-  - 
+  - PostProcess
+  - BackGround
   - 
   - 
   - 
