@@ -17,7 +17,7 @@ MonoBehaviour:
   attack: 10
   defense: 0
   hp: 800
-  groggyGauge: 50
+  groggyGauge: 1
   groggyDuration: 5
   damageDelay: 0.2
   deathAnim: {fileID: 7400000, guid: f745dd3432f773c46807b3753e7880d9, type: 2}
@@ -28,20 +28,29 @@ MonoBehaviour:
   attacks:
   - multiplier: 1
     knockbackForce: 20
-    coolTime: 2
+    coolTime: 5
     animParameter: Attack1
     attackAnim: {fileID: 7400000, guid: 3852d77dc4102194eb172f127a49af23, type: 2}
+    projectilePrefab: {fileID: 0}
+    projectilePoolId: 0
+    projectilePower: 0
   - multiplier: 1
     knockbackForce: 20
-    coolTime: 3
+    coolTime: 0
     animParameter: Attack2
     attackAnim: {fileID: 7400000, guid: f01057286f56a7e48b86cce37d330c92, type: 2}
+    projectilePrefab: {fileID: 1731905444369871071, guid: 04ab5d43bba433d4782c69b13723599c, type: 3}
+    projectilePoolId: 4
+    projectilePower: 20
   - multiplier: 1
     knockbackForce: 20
     coolTime: 4
     animParameter: Attack3
     attackAnim: {fileID: 7400000, guid: 6c33d22002876bb4c811b29c853c46f9, type: 2}
+    projectilePrefab: {fileID: 0}
+    projectilePoolId: 0
+    projectilePower: 0
   backJumpPower: 800
   defpen: 0.2
-  phaseShiftHpRatio: 0.5
+  phaseShiftHpRatio: 0.99
   phaseShiftAnim: {fileID: 7400000, guid: d781c0a65ca4bdf40ad84d4b0b6413a3, type: 2}
