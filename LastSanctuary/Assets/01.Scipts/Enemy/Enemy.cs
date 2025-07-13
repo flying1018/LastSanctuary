@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private IdleType idleType;
     [SerializeField] private MoveType moveType;
     [SerializeField] private AttackType attackType;
+    [SerializeField] private float patrolDistance = 5;
     
     //프로퍼티
     public CapsuleCollider2D CapsuleCollider;
@@ -50,6 +51,7 @@ public class Enemy : MonoBehaviour
     public IdleType IdleType {get => idleType;}
     public MoveType MoveType {get => moveType;}
     public AttackType AttackType {get => attackType;}
+    public float PatrolDistance { get; set; }
 
     private void Update()
     {
@@ -122,7 +124,7 @@ public class Enemy : MonoBehaviour
 
     #region  Need MonoBehaviour Method
     
-    public void Init(Transform spawnPoint)
+    public void Init(Transform spawnPoint, float distance)
     {
         SpawnPoint = spawnPoint;
         _capsuleCollider = GetComponent<CapsuleCollider2D>();
@@ -133,6 +135,7 @@ public class Enemy : MonoBehaviour
         EnemyWeapon = GetComponentInChildren<EnemyWeapon>();
         Weapon = EnemyWeapon.gameObject;
         AnimationDB.Initailize();
+        PatrolDistance = distance;
         
         Condition.Init(this);
         StateMachine = new EnemyStateMachine(this);
