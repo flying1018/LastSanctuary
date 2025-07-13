@@ -17,7 +17,7 @@ MonoBehaviour:
   attack: 20
   defense: 10
   hp: 1500
-  groggyGauge: 1
+  groggyGauge: 100
   groggyDuration: 5
   damageDelay: 0.17
   deathAnim: {fileID: 7400000, guid: f745dd3432f773c46807b3753e7880d9, type: 2}
@@ -43,5 +43,5 @@ MonoBehaviour:
     attackAnim: {fileID: 7400000, guid: 6c33d22002876bb4c811b29c853c46f9, type: 2}
   backJumpPower: 800
   defpen: 0.5
-  phaseShiftHpRatio: 0.99
+  phaseShiftHpRatio: 0.5
   phaseShiftAnim: {fileID: 7400000, guid: d781c0a65ca4bdf40ad84d4b0b6413a3, type: 2}
