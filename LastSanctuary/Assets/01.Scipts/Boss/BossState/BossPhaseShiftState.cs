@@ -15,12 +15,12 @@ public class BossPhaseShiftState : BossBaseState
     {
         _boss.Animator.SetTrigger(_boss.AnimationDB.PhaseShiftParameterHash);
 
+        _time = 0;
         _boss.Phase2 = true;
     }
 
     public override void Update()
     {
-        base.Update();
         _time += Time.deltaTime;
         if(_time > _animeTime)
         {

@@ -34,6 +34,10 @@ public class PlayerAttackState : PlayerBaseState
         _time = 0;
         
         _condition.IsInvincible = attackInfo.isInvincible;
+        
+        //사운드 추가
+        SoundClip = new AudioClip[1];
+        SoundClip[0] = _data.attackSound;
     }
 
     public override void Exit()

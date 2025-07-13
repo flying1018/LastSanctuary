@@ -20,6 +20,7 @@ public class BossChaseState : BossBaseState
     
     public override void Update()
     {
+        base.Update();
         if (_boss.Target == null)
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);

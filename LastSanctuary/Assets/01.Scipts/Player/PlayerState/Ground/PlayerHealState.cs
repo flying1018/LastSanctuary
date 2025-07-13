@@ -16,13 +16,13 @@ public class PlayerHealState : PlayerGroundState
         StartAnimation(_player.AnimationDB.HealParameterHash);
 
         _healTimer = _data.healTime;
-        _condition.Heal(); 
         _inventory.UsePotion();
     }
 
     public override void Exit()
     {
         base.Exit();
+        _condition.Heal(); 
         StopAnimation(_player.AnimationDB.HealParameterHash);
     }
 
