@@ -11,6 +11,10 @@ public class BossAttackInfo
     public string animParameter;
     public AnimationClip attackAnim;
     public float AnimTime => attackAnim.length;
+    //투사체 있는 경우
+    public GameObject projectilePrefab;
+    public int projectilePoolId;
+    public int projectilePower;
 }
 
 [CreateAssetMenu(fileName = "Boss", menuName = "new Boss")]
