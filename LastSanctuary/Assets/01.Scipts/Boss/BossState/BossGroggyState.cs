@@ -14,17 +14,12 @@ public class BossGroggyState : BossBaseState
         _groggyStart = Time.time;
         _condition.IsGroggy = true;
         StartAnimation(_boss.AnimationDB.GroggyParameterHash);
-        
-        Debug.Log("GroggyEnter");
     }
 
     public override void Exit()
     {
         _condition.IsGroggy = false;
         StopAnimation(_boss.AnimationDB.GroggyParameterHash);
-        
-        Debug.Log("GroggyExit");
-
     }
 
     public override void Update()
