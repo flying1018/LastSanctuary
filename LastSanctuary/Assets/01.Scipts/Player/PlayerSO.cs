@@ -24,7 +24,6 @@ public class PlayerSO : ScriptableObject
 {
     [field: Header("GroundState")]
     [field: SerializeField][field: Range(0f, 20f)] public float moveSpeed { get; private set; } = 6f;
-    public AudioClip moveSound;
 
     [field: Header("AirState")]
     [field: SerializeField][field: Range(0f, 100f)] public float jumpForce { get; private set; } = 10f;
@@ -46,14 +45,11 @@ public class PlayerSO : ScriptableObject
     [field: SerializeField] public float perfectGuardWindow { get; private set; } = 0.2f;
     [field: SerializeField] public int perfactGuardStemina { get; private set; } = 30;
     [field: SerializeField] public int guardCost { get; private set; } = 30;
-    public AudioClip guardSound;
-    public AudioClip perfectGuardSound;
     
 
     [Header("AttackState")] 
     public AttackInfo[] attacks;
     public float Defpen;
-    public AudioClip attackSound;
     public AttackInfo dashAttack;
     public float maxUltimateGauge;
 
@@ -63,7 +59,6 @@ public class PlayerSO : ScriptableObject
     [field: SerializeField] public float invincibleDuration { get; private set; } = 1f;
     [field: SerializeField] public int hitSteminaRecovery { get; private set; } = 15;
     [field: SerializeField, Range(0f, 1f)] public float damageReduction { get; private set; } = 0.8f;
-    public AudioClip hitSound;
 
     [Header("Condition")]
     public int hp;
@@ -74,6 +69,13 @@ public class PlayerSO : ScriptableObject
 
     [Header("Inventory")]
     public int potionNum;
+    
+    [Header("Sounds")]
+    public AudioClip moveSound;
+    public AudioClip guardSound;
+    public AudioClip perfectGuardSound;
+    public AudioClip attackSound;
+    public AudioClip hitSound;
 
 
 }

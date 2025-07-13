@@ -165,14 +165,22 @@ public class Player : MonoBehaviour
         Rigidbody.AddForce(direction * attackInfo.attackForce, ForceMode2D.Impulse);
     }
 
-    public void MoveSound()
+    public void PlaySFX1()
     {
-        SoundManager.Instance.PlaySFX(Data.moveSound);
+        if (StateMachine.currentState is PlayerBaseState playerBaseState)
+        {
+            if (playerBaseState.SoundClip.Length <= 0) return;
+            SoundManager.Instance.PlaySFX(playerBaseState.SoundClip[0]);
+        }
     }
 
-    public void AttackSound()
+    public void PlaySFX2()
     {
-        SoundManager.Instance.PlaySFX(Data.attackSound);
+        if (StateMachine.currentState is PlayerBaseState playerBaseState)
+        {
+            if (playerBaseState.SoundClip.Length <= 0) return;
+            SoundManager.Instance.PlaySFX(playerBaseState.SoundClip[1]);
+        }
     }
 
 

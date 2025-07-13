@@ -14,6 +14,8 @@ public class BossBaseState : IState
     protected Boss _boss;
     protected BossWeapon _weapon;
 
+    public List<AudioClip> SoundClip;
+
     public BossBaseState(BossStateMachine bossStateMachine)
     {
         this._stateMachine = bossStateMachine;
@@ -24,6 +26,7 @@ public class BossBaseState : IState
         _polygonCollider = _boss.PolygonCollider;
         _condition = _boss.Condition;
         _weapon = _boss.BossWeapon;
+        SoundClip = new List<AudioClip>();
     }
     
     public virtual void Enter()

@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerGroundState
 {
-    public PlayerMoveState(PlayerStateMachine stateMachine) : base(stateMachine) { }
+    public PlayerMoveState(PlayerStateMachine stateMachine) : base(stateMachine)
+    {
+    }
 
     public override void Enter()
     {
         base.Enter();
         StartAnimation(_player.AnimationDB.MoveParameterHash);
+        
+        SoundClip = new AudioClip[1];
+        SoundClip[0] = _data.moveSound;
     }
 
     public override void Exit()
