@@ -60,7 +60,6 @@ public class BossBaseState : IState
         {           
             _stateMachine.Attacks.Enqueue(_stateMachine.Attack3);
         }
-      
     }
 
     public virtual void PhysicsUpdate()

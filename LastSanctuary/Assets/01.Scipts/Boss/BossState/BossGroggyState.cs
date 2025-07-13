@@ -14,28 +14,31 @@ public class BossGroggyState : BossBaseState
         _groggyStart = Time.time;
         _condition.IsGroggy = true;
         StartAnimation(_boss.AnimationDB.GroggyParameterHash);
+        
+        Debug.Log("GroggyEnter");
     }
 
     public override void Exit()
     {
         _condition.IsGroggy = false;
         StopAnimation(_boss.AnimationDB.GroggyParameterHash);
+        
+        Debug.Log("GroggyExit");
 
     }
 
-    public override void PhysicsUpdate()
+    public override void Update()
     {
-        base.PhysicsUpdate();
-        if (!_condition.IsAlive())
-        {
-            StopAnimation(_boss.AnimationDB.GroggyParameterHash);
-            return;
-        }
-
         if (Time.time - _groggyStart < _data.groggyDuration)
             return;
-        _condition.ChangePhase2State();
-        _stateMachine.ChangeState(_stateMachine.IdleState);
+        if (_condition.IsPhaseShift())
+        {
+            _stateMachine.ChangeState(_stateMachine.PhaseShiftState);
+        }
+        else
+        { 
+            _stateMachine.ChangeState(_stateMachine.IdleState);
+        }
         
     }
 }

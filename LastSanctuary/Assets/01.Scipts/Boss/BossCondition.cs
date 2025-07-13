@@ -49,9 +49,9 @@ public class BossCondition : Condition,IDamageable, IGroggyable
         {
             Death();
         }
-        else
+        else if(!IsGroggy && IsPhaseShift())
         {
-            ChangePhase2State();
+            _boss.StateMachine.ChangeState(_boss.StateMachine.PhaseShiftState);
         }
     }
     
@@ -66,16 +66,21 @@ public class BossCondition : Condition,IDamageable, IGroggyable
         
         //공격당 그로기 1/2/5씩증가
         _groggyGauge += groggyDamage;
-        ChangeGroggyState();
+        if (ChangeGroggyState())
+        {
+            _boss.StateMachine.ChangeState(_boss.StateMachine.GroggyState);
+        }
     }
 
-    public void ChangeGroggyState()
+    public bool ChangeGroggyState()
     {
         if (_groggyGauge >= _maxGroggyGauge)
         {
             _groggyGauge = 0;
-            _boss.StateMachine.ChangeState(_boss.StateMachine.GroggyState);
+            return true;
         }
+
+        return false;
     }
     
     public void ApplyDamage(int atk ,float defpen)
@@ -92,14 +97,12 @@ public class BossCondition : Condition,IDamageable, IGroggyable
         _curHp -= damage;
     }
 
-    public void ChangePhase2State()
+    public bool IsPhaseShift()
     {
-        if(!IsAlive()) return;
+        if (!IsAlive()) return false; 
+        
         float phase2Hp = _maxHp * _boss.Data.phaseShiftHpRatio;
-        if (!_boss.Phase2 && _curHp <= phase2Hp)
-        {
-            _boss.StateMachine.ChangeState(_boss.StateMachine.PhaseShiftState);
-        }
+        return (!_boss.Phase2 && _curHp <= phase2Hp);
     }
 
     public bool IsAlive()

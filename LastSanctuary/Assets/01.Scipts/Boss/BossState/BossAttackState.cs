@@ -40,6 +40,7 @@ public class BossAttackState : BossBaseState
 
     public override void Update()
     {
+        base.Update();
         _time += Time.deltaTime;
         if (_time > _attackInfo.AnimTime)
         {

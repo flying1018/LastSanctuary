@@ -11,6 +11,11 @@ public class Weapon : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
+        //그로기
+        if (other.TryGetComponent(out IGroggyable ibossdamageable))
+        {
+            ibossdamageable.ApplyGroggy(groggyDamage);
+        }
         //공격
         if (other.TryGetComponent(out IDamageable idamageable) )
         {
@@ -20,11 +25,6 @@ public class Weapon : MonoBehaviour
         if (other.TryGetComponent(out IKnockBackable iknockBackable))
         {
             iknockBackable.ApplyKnockBack(this.transform, knockBackForce);
-        }
-        //그로기
-        if (other.TryGetComponent(out IGroggyable ibossdamageable))
-        {
-            ibossdamageable.ApplyGroggy(groggyDamage);
         }
     }
 }

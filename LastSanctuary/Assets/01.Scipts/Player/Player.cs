@@ -169,7 +169,7 @@ public class Player : MonoBehaviour
     {
         if (StateMachine.currentState is PlayerBaseState playerBaseState)
         {
-            if (playerBaseState.SoundClip.Length <= 0) return;
+            if (playerBaseState.SoundClip == null) return;
             SoundManager.Instance.PlaySFX(playerBaseState.SoundClip[0]);
         }
     }
@@ -178,7 +178,7 @@ public class Player : MonoBehaviour
     {
         if (StateMachine.currentState is PlayerBaseState playerBaseState)
         {
-            if (playerBaseState.SoundClip.Length <= 0) return;
+            if (playerBaseState.SoundClip == null) return;
             SoundManager.Instance.PlaySFX(playerBaseState.SoundClip[1]);
         }
     }
