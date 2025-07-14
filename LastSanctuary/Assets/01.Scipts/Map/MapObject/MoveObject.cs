@@ -12,6 +12,8 @@ public class MoveObject : MonoBehaviour
     }
 
     [SerializeField] private MoveObjType moveObjType;
+    [SerializeField] private GameObject[] TurnOff;
+    [SerializeField] private GameObject[] TurnOn;
 
     private bool _isTurnOn;
 
@@ -30,6 +32,10 @@ public class MoveObject : MonoBehaviour
                 break;
 
             case MoveObjType.Rope:
+                if (_isTurnOn) { return; }
+
+                StartCoroutine(MoveRope());
+                _isTurnOn = true;
                 break;
         }
     }
@@ -48,5 +54,20 @@ public class MoveObject : MonoBehaviour
         }
 
         transform.position = targetPos;
+    }
+
+    private IEnumerator MoveRope()
+    {
+        foreach (GameObject dummy in TurnOff)
+        {
+            dummy.SetActive(true);
+        }
+
+        foreach (GameObject dummy in TurnOn)
+        {
+            dummy.SetActive(false);
+        }
+
+        yield return null;
     }
 }
