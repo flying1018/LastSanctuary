@@ -18,8 +18,16 @@ public class BossPhaseShiftState : BossBaseState
         _time = 0;
         _boss.Phase2 = true;
         
+        //소리추가
         SoundClip[0] = _data.phaseShiftSound;
         _boss.PlaySFX1();
+        SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialPhaseShift);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBossPhase2);
     }
 
     public override void Update()

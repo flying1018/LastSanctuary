@@ -153,7 +153,7 @@ public class Boss : MonoBehaviour
 
     public void HowlingCameraShake()
     {
-        BossEvent.CameraShake(Data.howlingSound.length); 
+        BossEvent.CameraShake(Data.howlingSound.length/2); 
     }
     
     public void Attack()

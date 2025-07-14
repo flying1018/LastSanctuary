@@ -23,6 +23,9 @@ public class BossSpawnState : BossBaseState
     {
         _rigidbody.gravityScale = 3f;
         _boss.BossEvent.StartBattle();
+        
+        //브금 추가
+        SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBossPhase1);
     }
 
     public override void Update()

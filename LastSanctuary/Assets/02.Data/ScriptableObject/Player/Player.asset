@@ -67,7 +67,7 @@ MonoBehaviour:
   <HeavyHitDuration>k__BackingField: 0.5
   <invincibleDuration>k__BackingField: 1
   <hitSteminaRecovery>k__BackingField: 15
-  <damageReduction>k__BackingField: 0.8
+  <damageReduction>k__BackingField: 0.4
   hp: 100
   attack: 20
   defense: 5

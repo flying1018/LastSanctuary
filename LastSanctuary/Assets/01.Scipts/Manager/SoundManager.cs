@@ -81,6 +81,7 @@ public class SoundManager : Singleton<SoundManager>
         bgmSource.outputAudioMixerGroup = await ResourceLoader.LoadAssetAddress<AudioMixerGroup>(StringNameSpace.SoundAddress.BGMMixer);
         bgmSource.loop = true;
         bgmSource.playOnAwake = false;
+        bgmSource.volume = 0.5f;
 
         bgmSound = gameObject.AddComponent<BGMSound>();
         bgmSound.Init(bgmSource); // AudioSource 주입
