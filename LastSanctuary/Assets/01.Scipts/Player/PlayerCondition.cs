@@ -8,7 +8,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     [SerializeField] private float deathTime = 2f;
     [SerializeField] private float respawnTime = 2f;
     [SerializeField] private float reviveInvincibleTime = 0.5f;
-    
+
     private Player _player;
     private float _curStamina;
     private int _staminaRecovery;
@@ -16,31 +16,47 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     private bool _isPerfectGuard;
 
     private Dictionary<StatObjectSO, Coroutine> _tempBuffs = new();
-    
+
     //기본 스탯 프로퍼티
-    public int MaxHp { get => _maxHp; set => _maxHp = value; }
+    public int MaxHp
+    {
+        get => _maxHp;
+        set => _maxHp = value;
+    }
+
     public float MaxStamina { get; set; }
-    public int Attack { get => _attack; set => _attack = value; }
-    public int Defence { get => _defence; set => _defence = value; }
+
+    public int Attack
+    {
+        get => _attack;
+        set => _attack = value;
+    }
+
+    public int Defence
+    {
+        get => _defence;
+        set => _defence = value;
+    }
+
     //성물로 증가 가능한 프로퍼티
     public int HealAmonut { get; set; }
     public float MaxUltimateGauge { get; set; }
-    
+
     //버프 표시 프로퍼티
     public int BuffHp { get; set; }
     public float BuffStamina { get; set; }
     public int BuffAtk { get; set; }
     public int BuffDef { get; set; }
-    
+
     //가드 프로퍼티
     public DamageType DamageType { get; set; }
     public bool IsGuard { get; set; }
     public bool IsPerfectGuard { get; set; }
-    
+
     //무적 처리 프로퍼티
     public bool IsInvincible { get; set; }
     public float InvincibleStart { get; set; }
-    
+
 
     private void Awake()
     {
@@ -54,6 +70,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         _curStamina = MaxStamina;
         HealAmonut = _player.Data.healAmount;
         MaxUltimateGauge = _player.Data.maxUltimateGauge;
+        IsInvincible = false;
     }
 
     private void Update()
@@ -61,7 +78,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         //무적 해제
         if (IsInvincible)
         {
-            if ( Time.time - InvincibleStart >= _player.Data.invincibleDuration)
+            if (Time.time - InvincibleStart >= _player.Data.invincibleDuration)
             {
                 IsInvincible = false;
                 Debug.Log("무적 해제");
@@ -70,23 +87,23 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     }
 
 
-    public void TakeDamage(int atk, DamageType type, Transform dir ,float defpen = 0f)
+    public void TakeDamage(int atk, DamageType type, Transform dir, float defpen = 0f)
     {
         if (IsInvincible) return;
-        
+
         bool isFront = IsFront(dir);
         _isPerfectGuard = TryPerfectGuard(type, isFront);
         _isGuard = TryGuard(type, isFront);
-        
-        if(_isPerfectGuard)return;
+
+        if (_isPerfectGuard) return;
         if (_isGuard)
         {
             atk = Mathf.CeilToInt(atk * (1 - _player.Data.damageReduction));
             ApplyDamage(atk);
             return;
         }
-        
-        ApplyDamage(atk ,defpen);
+
+        ApplyDamage(atk, defpen);
         if (_curHp <= 0)
         {
             Death();
@@ -96,19 +113,19 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
             _player.StateMachine.ChangeState(_player.StateMachine.HitState);
         }
     }
-    
-    public void ApplyDamage(int atk,float defpen = 0f)
+
+    public void ApplyDamage(int atk, float defpen = 0f)
     {
-        int damage = (int)Math.Ceiling(atk -  _defence * (1-defpen));
+        int damage = (int)Math.Ceiling(atk - _defence * (1 - defpen));
         _curHp -= damage;
     }
-    
+
 
     public void ApplyKnockBack(Transform dir, float force)
     {
-        if(_isPerfectGuard)return;
+        if (_isPerfectGuard) return;
         if (_isGuard) return;
-        
+
         if (force > 0)
         {
             Vector2 knockbackDir = (transform.position - dir.transform.position);
@@ -122,7 +139,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         _curHp = _maxHp;
         _curStamina = MaxStamina;
     }
-    
+
     public void Heal()
     {
         if (_curHp < _maxHp)
@@ -131,7 +148,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
             _curHp = Mathf.Clamp(_curHp, 0, _maxHp);
         }
     }
-    
+
     public bool UsingStamina(int stamina)
     {
         if (_curStamina >= stamina)
@@ -139,6 +156,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
             _curStamina -= stamina;
             return true;
         }
+
         return false;
     }
 
@@ -151,7 +169,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
             _curStamina = Mathf.Clamp(_curStamina, 0, MaxStamina);
         }
     }
-    
+
     //정면 확인
     private bool IsFront(Transform dir)
     {
@@ -159,6 +177,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         bool playerDir = !_player.SpriteRenderer.flipX;
         return attackFromRight == playerDir;
     }
+
     //퍼펙트가드 확인
     private bool TryPerfectGuard(DamageType type, bool isFront)
     {
@@ -171,8 +190,10 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
             //보스 그로기 상승
             return true;
         }
+
         return false;
     }
+
     //가드 확인
     private bool TryGuard(DamageType type, bool isFront)
     {
@@ -181,8 +202,10 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
             _player.PlaySFX1();
             return true;
         }
+
         return false;
     }
+
     //버프 적용
     public void ApplyTempBuff(StatObjectSO data)
     {
@@ -194,13 +217,14 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         }
 
         BuffHp += data.hp;
-         BuffStamina += data.stamina;
-         BuffAtk += data.attack;
-         BuffDef += data.defense;
-         
-         Coroutine newCoroutine = StartCoroutine(BuffDurationTimerCoroutine(data));
-         _tempBuffs[data] = newCoroutine;
+        BuffStamina += data.stamina;
+        BuffAtk += data.attack;
+        BuffDef += data.defense;
+
+        Coroutine newCoroutine = StartCoroutine(BuffDurationTimerCoroutine(data));
+        _tempBuffs[data] = newCoroutine;
     }
+
     //버프 제거
     private void RemoveTempBuff(StatObjectSO data)
     {
@@ -210,6 +234,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         BuffDef -= data.defense;
         //죽었을떄는 전체 초기화
     }
+
     //버프 지속시간 타이머
     private IEnumerator BuffDurationTimerCoroutine(StatObjectSO data)
     {
@@ -227,20 +252,13 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     {
         return _curStamina / MaxStamina;
     }
-    
+
     /// <summary>
     /// 플레이어가 죽었을때 델리게이트로 호출
     /// 플레이어의 인풋막고, Rigidbody도 멈춰놓음
     /// </summary>
     public override void Death()
     {
-        DebugHelper.Log("OnDie 호출됨");
-
-        IsInvincible = true;
-        _player.Animator.SetTrigger(_player.AnimationDB.DieParameterHash);
-        _player.Input.enabled = false;
-
-        _player.Rigidbody.velocity = Vector2.zero;
         // 추후 죽었을때 표기되는 UI, 연출 추가 요망 (화면 암전 등)
         StartCoroutine(Revive_Coroutine());
     }
@@ -251,6 +269,22 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     /// <returns></returns>
     private IEnumerator Revive_Coroutine()
     {
+        //무적 처리
+        IsInvincible = true;
+        InvincibleStart = Time.time;
+        
+        //애니메이션 실행
+        _player.Animator.SetTrigger(_player.AnimationDB.DieParameterHash);
+        
+        //입력 막기
+        _player.PlayerInput.enabled = false;
+
+        //이동 정지
+        _player.Rigidbody.velocity = Vector2.zero;
+        
+        //사운드 실행
+        SoundManager.Instance.PlaySFX(_player.Data.deathSound);
+        
         yield return new WaitForSeconds(deathTime); // 앞 애니메이션 대기
 
         transform.position = SaveManager.Instance.GetSavePoint();
@@ -264,7 +298,5 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         _player.Input.enabled = true;
         yield return new WaitForSeconds(reviveInvincibleTime);
         IsInvincible = false;
-
     }
-
 }

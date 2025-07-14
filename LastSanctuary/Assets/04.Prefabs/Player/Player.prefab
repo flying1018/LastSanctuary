@@ -552,7 +552,7 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 512
-  groundCheckDistance: 0.1
+  groundCheckDistance: 0.2
   aerialPlatformLayer:
     serializedVersion: 2
     m_Bits: 256

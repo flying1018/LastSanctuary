@@ -17,11 +17,16 @@ public class PlayerHealState : PlayerGroundState
 
         _healTimer = _data.healTime;
         _inventory.UsePotion();
+        
+        //사운드 추가
+        SoundClip[0] = _data.healSound;
     }
 
     public override void Exit()
     {
         base.Exit();
+        
+        //체력 회복
         _condition.Heal(); 
         StopAnimation(_player.AnimationDB.HealParameterHash);
     }
