@@ -31,6 +31,7 @@ public class BossSO : ScriptableObject
     public int groggyGauge;
     public float groggyDuration;
     public float damageDelay;
+    public float alphaValue;
     
     public AnimationClip deathAnim;
     public float deathEventDuration; 
