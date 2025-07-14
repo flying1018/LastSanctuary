@@ -30,8 +30,8 @@ public class PlayerHitState : PlayerBaseState
                 break;
         }
         
+        //사운드
         SoundClip[0] = _data.hitSound;
-        
         _player.PlaySFX1();
     }
 

@@ -45,5 +45,9 @@ public class EnemySO : ScriptableObject
 
     [Header("Rush Attack")]
     public float rushSpeed;
-    
+
+    [Header("Sound")] 
+    public AudioClip attackSound;
+    public AudioClip hitSound;
+
 }

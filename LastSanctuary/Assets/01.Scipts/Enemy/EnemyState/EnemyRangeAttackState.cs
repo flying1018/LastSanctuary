@@ -22,5 +22,8 @@ public class EnemyRangeAttackState : EAttackState
             arrowPoProjectile.Init(_data.attack, _data.knockbackForce);
             arrowPoProjectile.Shot(dir, _data.arrowPower);
         }
+        
+        //사운드
+        _enemy.PlaySFX1();
     }
 }

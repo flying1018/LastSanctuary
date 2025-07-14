@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
+        Debug.Log(StateMachine.currentState);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -170,16 +171,21 @@ public class Player : MonoBehaviour
         if (StateMachine.currentState is PlayerBaseState playerBaseState)
         {
             if (playerBaseState.SoundClip == null) return;
+            Debug.Log(playerBaseState.SoundClip[0]);
             SoundManager.Instance.PlaySFX(playerBaseState.SoundClip[0]);
+
         }
     }
 
-    public void PlaySFX2()
+    public void PlaySFX2(AudioClip sound = null,float volume = 1f)
     {
         if (StateMachine.currentState is PlayerBaseState playerBaseState)
         {
             if (playerBaseState.SoundClip == null) return;
-            SoundManager.Instance.PlaySFX(playerBaseState.SoundClip[1]);
+            if(sound == null)
+                SoundManager.Instance.PlaySFX(playerBaseState.SoundClip[1],volume);
+            else
+                SoundManager.Instance.PlaySFX(sound,volume);
         }
     }
 

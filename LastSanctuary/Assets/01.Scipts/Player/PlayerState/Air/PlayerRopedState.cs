@@ -12,6 +12,8 @@ public class PlayerRopedState : PlayerAirState
         StartAnimation(_player.AnimationDB.RopedParameterHash);;
         
         _rigidbody.gravityScale = 0;
+        
+        SoundClip[0] = _data.ropeSound;
     }
     
     public override void Exit()
@@ -68,11 +70,14 @@ public class PlayerRopedState : PlayerAirState
     {
         //로프 x 좌표 고정
         if(_player.RopedPosition == Vector2.zero) return;
+        
+        //x 축 좌표 고정
         float ropeX = _player.RopedPosition.x + (_spriteRenderer.flipX ? +_capsuleCollider.size.x / 2 : -_capsuleCollider.size.x / 2); 
         _player.transform.position = new Vector2(ropeX, _player.transform.position.y);
         
-        float yDirection = direction.y > 0 ? 1 : direction.y < 0 ? -1 : 0;
-        Vector2 moveVelocity = new Vector2(_rigidbody.velocity.x, yDirection * _data.moveSpeed);
+        //y 축 좌표 고정
+        direction.x = 0;
+        Vector2 moveVelocity = new Vector2(_rigidbody.velocity.x, direction.normalized.y * _data.moveSpeed);
         _rigidbody.velocity = moveVelocity;
     }
 }

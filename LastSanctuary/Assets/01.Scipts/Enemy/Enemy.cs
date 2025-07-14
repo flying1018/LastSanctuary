@@ -114,6 +114,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
+    #region  Need MonoBehaviour Method
     public void Attack()
     {
         if (StateMachine.currentState is EnemyRangeAttackState rangeState)
@@ -121,8 +123,6 @@ public class Enemy : MonoBehaviour
         if (StateMachine.currentState is EnemyRushAttack rushAttack)
             rushAttack.RushAttack();
     }
-
-    #region  Need MonoBehaviour Method
     
     public void Init(Transform spawnPoint, float distance)
     {
@@ -177,6 +177,16 @@ public class Enemy : MonoBehaviour
 
         Target = null;
         return false;
+    }
+    
+    public void PlaySFX1()
+    {
+        if (StateMachine.currentState is PlayerBaseState playerBaseState)
+        {
+            if (playerBaseState.SoundClip == null) return;
+            SoundManager.Instance.PlaySFX(playerBaseState.SoundClip[0]);
+
+        }
     }
     
     #endregion
