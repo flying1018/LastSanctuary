@@ -39,6 +39,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         _enemy.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
         _enemy.Animator.SetTrigger(_enemy.AnimationDB.DeathParameterHash);
         yield return new WaitForSeconds(_enemy.Data.deathTime);
+        _enemy.SpawnPoint.GetComponent<EnemySpawnPoint>().isSpawn = false;
         ObjectPoolManager.Set(_enemy.Data._key, _enemy.gameObject, _enemy.gameObject);
     }
 
