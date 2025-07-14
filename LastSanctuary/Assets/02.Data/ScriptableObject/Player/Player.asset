@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   <moveSpeed>k__BackingField: 6
-  moveSound: {fileID: 8300000, guid: 594fb34ab34a71d4caa854b31a755b5f, type: 3}
   <jumpForce>k__BackingField: 13
   dashAnim: {fileID: 7400000, guid: 20526e8ebcd8b154daef3662caa8a8a5, type: 2}
   dashPower: 20
@@ -24,8 +23,6 @@ MonoBehaviour:
   <perfectGuardWindow>k__BackingField: 0.4
   <perfactGuardStemina>k__BackingField: 30
   <guardCost>k__BackingField: 25
-  guardSound: {fileID: 8300000, guid: fccd569122fc0274f9d1d0a123c097fd, type: 3}
-  perfectGuardSound: {fileID: 8300000, guid: 731505f8c07211343975e575df86eb1c, type: 3}
   attacks:
   - attackAnim: {fileID: 7400000, guid: a8f066d21fa2f8f4b8138e7f48ff46af, type: 2}
     attackIndex: 1
@@ -55,7 +52,6 @@ MonoBehaviour:
     groggyDamage: 5
     isInvincible: 0
   Defpen: 0.25
-  attackSound: {fileID: 8300000, guid: c2b5ad624bada8b4ca44af7c71df039c, type: 3}
   dashAttack:
     attackAnim: {fileID: 7400000, guid: ec5c2cbf39d0d7c4185a8542b0455c20, type: 2}
     attackIndex: 4
@@ -72,10 +68,21 @@ MonoBehaviour:
   <invincibleDuration>k__BackingField: 1
   <hitSteminaRecovery>k__BackingField: 15
   <damageReduction>k__BackingField: 0.8
-  hitSound: {fileID: 8300000, guid: f9277f2f29a788b48a02d30db503506a, type: 3}
   hp: 100
   attack: 20
   defense: 5
   stamina: 100
   staminaRecovery: 15
   potionNum: 3
+  moveSound: {fileID: 8300000, guid: 554b00a1816932c4dac4c62aa2a222ac, type: 3}
+  dashSound: {fileID: 8300000, guid: 55f8c9c9d44769f41b6d426cfd8c56a9, type: 3}
+  jumpSound: {fileID: 8300000, guid: 88b8978948694884da40287daa2f8731, type: 3}
+  attackSound: {fileID: 8300000, guid: d0bdd06f23819b343a87821769e1e063, type: 3}
+  guardSound: {fileID: 8300000, guid: 8ca16915b42589344ae289e10c6027c1, type: 3}
+  perfectGuardSound: {fileID: 8300000, guid: 61e9aeea63799d54abba62404839dc75, type: 3}
+  ropeSound: {fileID: 8300000, guid: c58dcf675b92c2241ba14a68ef75fab8, type: 3}
+  deathSound: {fileID: 8300000, guid: b65b0e01fefddb84692987980cad667d, type: 3}
+  arrowHitSound: {fileID: 8300000, guid: d1a6849676cb1dd42969940571daccd2, type: 3}
+  hitSound: {fileID: 8300000, guid: 474f73407786adf41953e0b8b86777ca, type: 3}
+  teleportStartSound: {fileID: 8300000, guid: 61012c41929ea52499cb03d531eb4db2, type: 3}
+  teleportEndSound: {fileID: 8300000, guid: 4cb92929d1092cf47bc611c19b0dd21c, type: 3}

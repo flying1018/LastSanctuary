@@ -72,10 +72,19 @@ public class PlayerSO : ScriptableObject
     
     [Header("Sounds")]
     public AudioClip moveSound;
+    public AudioClip dashSound;
+    public AudioClip jumpSound;
+    public AudioClip attackSound;
     public AudioClip guardSound;
     public AudioClip perfectGuardSound;
-    public AudioClip attackSound;
+    public AudioClip ropeSound;
+    public AudioClip deathSound;
+    public AudioClip arrowHitSound;
     public AudioClip hitSound;
+    
+    
+    public AudioClip teleportStartSound;
+    public AudioClip teleportEndSound;
 
 
 }

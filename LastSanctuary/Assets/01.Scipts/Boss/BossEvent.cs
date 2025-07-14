@@ -20,6 +20,7 @@ public class BossEvent : MonoBehaviour
     [Header("Boss Spawn")] 
     [SerializeField] private float enterTime = 1f;
     [SerializeField] private float blackDuration = 1f;
+    [SerializeField] private AudioClip howlingSound;
     [SerializeField] private float blinkInterval;
     [SerializeField] private GameObject[] parts;
     [SerializeField] private float cameraShakeTime;
@@ -93,6 +94,8 @@ public class BossEvent : MonoBehaviour
         }
 
         //사운드 연출 추가해야됨.
+        SoundManager.Instance.PlaySFX(howlingSound);
+        yield return new WaitForSeconds(howlingSound.length);
 
         //카메라 변경
         _bossCamera.Priority = 20;
@@ -126,6 +129,7 @@ public class BossEvent : MonoBehaviour
             yield return null;
         }
 
+        //보스 스폰 상태
         _boss.gameObject.SetActive(true);
         _boss.Init(this);
     }

@@ -1206,6 +1206,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.48333332
+    functionName: PlaySFX1
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.0166667
     functionName: ChasePlayer
     data: 
@@ -1215,6 +1222,13 @@ AnimationClip:
     messageOptions: 0
   - time: 2.6666667
     functionName: StopChasePlayer
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 3.1
+    functionName: PlaySFX2
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

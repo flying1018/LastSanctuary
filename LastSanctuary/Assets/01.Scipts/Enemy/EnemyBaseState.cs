@@ -23,6 +23,8 @@ public class EnemyBaseState : IState
         _spriteRenderer =_enemy.SpriteRenderer;
         _condition = _enemy.Condition;
         _spawnPoint = _enemy.SpawnPoint;
+
+        SoundClip = new AudioClip[10];
     }
     
     public virtual void Enter()

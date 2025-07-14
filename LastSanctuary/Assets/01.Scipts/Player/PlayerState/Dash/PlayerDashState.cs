@@ -25,6 +25,9 @@ public class PlayerDashState : PlayerBaseState
             dir = _input.MoveInput.x < 0 ? Vector2.left : Vector2.right;
         }
         Rotate(dir);
+        
+        SoundClip[0] = _data.dashSound;
+        _player.PlaySFX1();
     }
 
     public override void Exit()

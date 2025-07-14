@@ -15,6 +15,8 @@ public class BossAttackInfo
     public GameObject projectilePrefab;
     public int projectilePoolId;
     public int projectilePower;
+    //사운드
+    public AudioClip[] attackSounds;
 }
 
 [CreateAssetMenu(fileName = "Boss", menuName = "new Boss")]
@@ -55,4 +57,14 @@ public class BossSO : ScriptableObject
     public float phaseShiftHpRatio;
     public AnimationClip phaseShiftAnim;
     public float PhaseShiftTime => phaseShiftAnim.length;
+
+
+    [Header("Sound")] 
+    public AudioClip breathSound;
+    public AudioClip howlingSound;
+    public AudioClip jumpSound;
+    public AudioClip landingSound;
+    public AudioClip deathSound;
+    public AudioClip phaseShiftSound;
+    public AudioClip walkSound;
 }

@@ -24,6 +24,8 @@ public class EAttackState : EnemyBaseState
         //공격력 정보 넘겨주기
         _enemy.EnemyWeapon.Damage = _data.attack;
         _enemy.EnemyWeapon.knockBackForce = _data.knockbackForce;
+
+        SoundClip[0] = _data.attackSound;
     }
     
     public override void Exit()

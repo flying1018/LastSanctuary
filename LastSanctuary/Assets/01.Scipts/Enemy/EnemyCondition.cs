@@ -59,6 +59,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
             OnHitEffected();
         }
         
+        SoundManager.Instance.PlaySFX(_enemy.Data.hitSound);
     }
     
     private void OnHitEffected()

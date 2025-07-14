@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
+        //Debug.Log(StateMachine.currentState);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -171,6 +172,7 @@ public class Player : MonoBehaviour
         {
             if (playerBaseState.SoundClip == null) return;
             SoundManager.Instance.PlaySFX(playerBaseState.SoundClip[0]);
+
         }
     }
 

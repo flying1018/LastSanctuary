@@ -18,7 +18,6 @@ MonoBehaviour:
   detectDistance: 10
   moveSpeed: 3
   cancelChaseTime: 10
-  <patrolDistance>k__BackingField: 6
   <HitDuration>k__BackingField: 0.2
   attackDistance: 10
   attackDuration: 3
@@ -35,3 +34,5 @@ MonoBehaviour:
   arrowPoolId: 0
   arrowPower: 0
   rushSpeed: 200
+  attackSound: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 0c627532d49dd2b49baec69f27b7b7b9, type: 3}

@@ -13,6 +13,10 @@ public class BossSpawnState : BossBaseState
         UpdateCollider();
         _rigidbody.gravityScale = 15f;
         _boss.Animator.SetTrigger(_boss.AnimationDB.SpawnParameterHash);
+
+        SoundClip[0] = _data.landingSound;
+        SoundClip[1] = _data.breathSound;
+        SoundClip[2] = _data.howlingSound;
     }
 
     public override void Exit()

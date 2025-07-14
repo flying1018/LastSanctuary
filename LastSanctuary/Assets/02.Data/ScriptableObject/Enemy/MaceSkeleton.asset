@@ -18,8 +18,7 @@ MonoBehaviour:
   detectDistance: 7
   moveSpeed: 3
   cancelChaseTime: 5
-  <patrolDistance>k__BackingField: 10
-  <HitDuration>k__BackingField: 0.05
+  <HitDuration>k__BackingField: 0.1
   attackDistance: 5
   attackDuration: 1.5
   knockbackForce: 25
@@ -27,7 +26,7 @@ MonoBehaviour:
   attack: 25
   hp: 120
   defence: 0
-  damageDelay: 1.5
+  damageDelay: 0.2
   hitDuration: 0.5
   alphaValue: 0.5
   deathAnim: {fileID: 7400000, guid: 2fee7b95aee869640ab0bfeea263aabf, type: 2}
@@ -35,3 +34,5 @@ MonoBehaviour:
   arrowPoolId: 0
   arrowPower: 0
   rushSpeed: 0
+  attackSound: {fileID: 0}
+  hitSound: {fileID: 0}

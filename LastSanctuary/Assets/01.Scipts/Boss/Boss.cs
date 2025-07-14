@@ -145,15 +145,57 @@ public class Boss : MonoBehaviour
     }
     
     //연출
-    public void CameraShake()
+    public void LandingCameraShake()
     {
-        BossEvent.CameraShake(); //안에 소리 길이를 매개변수로 넣어주면 됨.
+        BossEvent.CameraShake();
+    }
+
+    public void HowlingCameraShake()
+    {
+        BossEvent.CameraShake(Data.howlingSound.length); 
     }
     
     public void Attack()
     {
         if (StateMachine.currentState is BossAttackState attack2)
             attack2.FireAttack2();
+    }
+    
+    public void PlaySFX1()
+    {
+        if (StateMachine.currentState is BossBaseState bossBaseState)
+        {
+            if (bossBaseState.SoundClip == null) return;
+            SoundManager.Instance.PlaySFX(bossBaseState.SoundClip[0]);
+
+        }
+    }
+
+    public void PlaySFX2()
+    {
+        if (StateMachine.currentState is BossBaseState bossBaseState)
+        {
+            if (bossBaseState.SoundClip == null) return;
+            SoundManager.Instance.PlaySFX(bossBaseState.SoundClip[1]);
+        }
+    }   
+    
+    public void PlaySFX3()
+    {
+        if (StateMachine.currentState is BossBaseState bossBaseState)
+        {
+            if (bossBaseState.SoundClip == null) return;
+            SoundManager.Instance.PlaySFX(bossBaseState.SoundClip[2]);
+        }
+    }    
+    
+    public void PlaySFX4()
+    {
+        if (StateMachine.currentState is BossBaseState bossBaseState)
+        {
+            if (bossBaseState.SoundClip == null) return;
+            SoundManager.Instance.PlaySFX(bossBaseState.SoundClip[3]);
+        }
     }
 
     #endregion
