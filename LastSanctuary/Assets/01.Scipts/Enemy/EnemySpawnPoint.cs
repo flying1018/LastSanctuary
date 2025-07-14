@@ -9,7 +9,8 @@ public class EnemySpawnPoint : MonoBehaviour
     private Enemy _enemy;
     private Coroutine _cancelChase;
     [SerializeField] private float patrolDistance = 10;
-    
+    public bool isSpawn {get; set;}
+
     //직렬화
     [SerializeField] private GameObject monster;
 
@@ -26,20 +27,13 @@ public class EnemySpawnPoint : MonoBehaviour
         _enemy = go.GetComponent<Enemy>();
         _enemy.Init(this.transform, patrolDistance);
         _enemy.SetCollisionEnabled(true);
+        isSpawn = true;
     }
 
     public void Respawn()
     {
-        if (_enemy == null)
-        {
+        if(!isSpawn)
             Spawn();
-        }
-        else
-        {
-            _enemy.transform.position = transform.position;
-            _enemy.gameObject.SetActive(true);
-            _enemy.Init(this.transform, patrolDistance);
-            _enemy.SetCollisionEnabled(true);
-        }
+    
     }
 }

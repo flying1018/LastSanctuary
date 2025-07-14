@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+
 
 public class MapManager : Singleton<MapManager>
 {
@@ -11,7 +11,12 @@ public class MapManager : Singleton<MapManager>
 
     public WarpObject selectWarpObj;
     public WarpObject targetWarpObj;
-    
+
+    private void Awake()
+    {
+        EnemySpawnPoints = new List<EnemySpawnPoint>(FindObjectsOfType<EnemySpawnPoint>());
+    }
+
     public void RespawnEnemies()
     {
         foreach (var spawnPoint in EnemySpawnPoints) spawnPoint.Respawn();
