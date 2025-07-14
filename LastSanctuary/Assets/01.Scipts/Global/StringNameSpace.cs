@@ -21,7 +21,7 @@ public static class StringNameSpace
 
         public const string SFXPrefab = "Assets/04.Prefabs/Global/SFX.prefab";
         
-        public const string BGM1 = "";
+        public const string TutorialBGM = "Assets/06.Resource/Sound/BGM/Tutorials_Sound.wav";
     }
 
     public static class Labels
