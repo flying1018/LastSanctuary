@@ -38,7 +38,10 @@ public class BossAttackState : BossBaseState
         _weapon.knockBackForce = _attackInfo.knockbackForce;
         
         //사운드
-        SoundClip[0] = _attackInfo.attackSound;
+        for (int i = 0;i<_attackInfo.attackSounds.Length;i++)
+        {
+            SoundClip[i] = _attackInfo.attackSounds[i];
+        }
     }
 
     public override void Update()

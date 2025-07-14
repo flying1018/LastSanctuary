@@ -16,7 +16,7 @@ public class BossAttackInfo
     public int projectilePoolId;
     public int projectilePower;
     //사운드
-    public AudioClip attackSound;
+    public AudioClip[] attackSounds;
 }
 
 [CreateAssetMenu(fileName = "Boss", menuName = "new Boss")]
@@ -64,9 +64,6 @@ public class BossSO : ScriptableObject
     public AudioClip howlingSound;
     public AudioClip jumpSound;
     public AudioClip landingSound;
-    public AudioClip attack1Sound;
-    public AudioClip attack2Sound;
-    public AudioClip attack3Sound;
     public AudioClip deathSound;
     public AudioClip phaseShiftSound;
     public AudioClip walkSound;
