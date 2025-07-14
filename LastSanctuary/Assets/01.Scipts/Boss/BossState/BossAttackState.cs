@@ -69,13 +69,14 @@ public class BossAttackState : BossBaseState
     
     public void FireAttack2()
     {
+        
+        float sizeX = _boss.SpriteRenderer.bounds.size.x /2;
         Transform firePoint = _boss.BossWeapon.transform;
 
         GameObject attack2 = ObjectPoolManager.Get(_attackInfo.projectilePrefab, _attackInfo.projectilePoolId);
         
-        attack2.transform.position = firePoint.position;
-
         Vector2 dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
+        attack2.transform.position = firePoint.position + (Vector3)(dir * sizeX);
         attack2.transform.right = dir;
 
         if (attack2.TryGetComponent(out ArrowProjectile arrowPoProjectile))
