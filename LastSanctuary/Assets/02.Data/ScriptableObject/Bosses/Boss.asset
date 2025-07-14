@@ -16,8 +16,8 @@ MonoBehaviour:
   _name: 
   attack: 35
   defense: 10
-  hp: 400
-  groggyGauge: 100
+  hp: 800
+  groggyGauge: 50
   groggyDuration: 5
   damageDelay: 0.17
   alphaValue: 0.5
@@ -71,3 +71,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: d6d6e76fb1f588446b05c8731b924cc3, type: 3}
   phaseShiftSound: {fileID: 8300000, guid: 81725d64760066d459db10145e794805, type: 3}
   walkSound: {fileID: 8300000, guid: 270f683745274b2499f9f72f95a60f56, type: 3}
+  materials:
+  - {fileID: 2100000, guid: 925d379cb152be54891be7a5c23adf6a, type: 2}
+  - {fileID: 2100000, guid: 19f0a6c5696afe54a8574a963f4c1a70, type: 2}
+  - {fileID: 2100000, guid: a10da65ad77caf64cbdf4e4fcfb69a74, type: 2}

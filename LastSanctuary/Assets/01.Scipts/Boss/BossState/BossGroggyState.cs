@@ -14,12 +14,18 @@ public class BossGroggyState : BossBaseState
         _groggyStart = Time.time;
         _condition.IsGroggy = true;
         StartAnimation(_boss.AnimationDB.GroggyParameterHash);
+        
+        //외곽선 변경
+        _spriteRenderer.material = _data.materials[2];
     }
 
     public override void Exit()
     {
         _condition.IsGroggy = false;
         StopAnimation(_boss.AnimationDB.GroggyParameterHash);
+        
+        //외곽선 복구
+        _spriteRenderer.material = _boss.Phase2 ? _data.materials[1] : _data.materials[0];
     }
 
     public override void Update()

@@ -28,6 +28,11 @@ public class BossPhaseShiftState : BossBaseState
     {
         base.Exit();
         SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBossPhase2);
+        
+        _stateMachine.Attacks.Clear();
+        _stateMachine.Attacks.Enqueue(_stateMachine.Attack3);
+
+        _spriteRenderer.material = _data.materials[1];
     }
 
     public override void Update()

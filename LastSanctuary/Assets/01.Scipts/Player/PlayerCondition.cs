@@ -295,7 +295,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         _player.StateMachine.ChangeState(_player.StateMachine.IdleState);
         _player.Animator.Rebind();
 
-        _player.Input.enabled = true;
+        _player.PlayerInput.enabled = true;
         yield return new WaitForSeconds(reviveInvincibleTime);
         IsInvincible = false;
     }
