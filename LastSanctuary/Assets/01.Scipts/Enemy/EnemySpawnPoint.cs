@@ -8,6 +8,7 @@ public class EnemySpawnPoint : MonoBehaviour
     //필드
     private Enemy _enemy;
     private Coroutine _cancelChase;
+    [SerializeField] private float patrolDistance = 10;
     
     //직렬화
     [SerializeField] private GameObject monster;
@@ -23,7 +24,7 @@ public class EnemySpawnPoint : MonoBehaviour
         GameObject go =ObjectPoolManager.Get(monster,(int)ObjectPoolManager.PoolingIndex.Monster);
         go.transform.position = transform.position;
         _enemy = go.GetComponent<Enemy>();
-        _enemy.Init(this.transform);
+        _enemy.Init(this.transform, patrolDistance);
         _enemy.SetCollisionEnabled(true);
     }
 
@@ -37,7 +38,7 @@ public class EnemySpawnPoint : MonoBehaviour
         {
             _enemy.transform.position = transform.position;
             _enemy.gameObject.SetActive(true);
-            _enemy.Init(this.transform);
+            _enemy.Init(this.transform, patrolDistance);
             _enemy.SetCollisionEnabled(true);
         }
     }

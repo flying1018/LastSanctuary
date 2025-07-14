@@ -14,6 +14,8 @@ public class PlayerBaseState : IState
     protected Player _player;
     protected PlayerWeapon _playerWeapon;
     protected CapsuleCollider2D _capsuleCollider;
+    
+    public AudioClip[] SoundClip;
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
@@ -102,6 +104,5 @@ public class PlayerBaseState : IState
             _player.Weapon.transform.rotation = Quaternion.Euler(angle, 0, angle);
             
         }
-
     }
 }

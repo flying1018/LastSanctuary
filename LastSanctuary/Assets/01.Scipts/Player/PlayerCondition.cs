@@ -164,7 +164,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     {
         if (IsPerfectGuard && type != DamageType.Contact && isFront)
         {
-            SoundManager.Instance.PlaySFX(_player.Data.perfectGuardSound);
+            _player.PlaySFX2();
             Debug.Log("perfect guard");
             _curStamina += _player.Data.perfactGuardStemina; //퍼펙트 가드시 스태미나회복
             //궁극기 게이지 회복
@@ -178,7 +178,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     {
         if (IsGuard && type != DamageType.Contact && isFront && UsingStamina(_player.Data.guardCost))
         {
-            SoundManager.Instance.PlaySFX(_player.Data.guardSound);
+            _player.PlaySFX1();
             return true;
         }
         return false;

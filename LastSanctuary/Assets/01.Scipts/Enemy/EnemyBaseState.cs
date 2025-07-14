@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBaseState : IState
@@ -10,6 +11,8 @@ public class EnemyBaseState : IState
     protected EnemyCondition _condition;
     protected Enemy _enemy;
     protected Transform _spawnPoint;
+    
+    public AudioClip[] SoundClip;
 
     public EnemyBaseState(EnemyStateMachine enemyStateMachine)
     {
@@ -20,7 +23,6 @@ public class EnemyBaseState : IState
         _spriteRenderer =_enemy.SpriteRenderer;
         _condition = _enemy.Condition;
         _spawnPoint = _enemy.SpawnPoint;
-        
     }
     
     public virtual void Enter()

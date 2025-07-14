@@ -12,7 +12,7 @@ public class EnemyPatrolState : EIdleState
     {
         StartAnimation(_enemy.AnimationDB.WalkParameterHash);
         
-        _patrolDistance = _data.patrolDistance;
+        _patrolDistance = _enemy.PatrolDistance;
     }
 
     public override void Exit()
@@ -34,6 +34,7 @@ public class EnemyPatrolState : EIdleState
         if (!_enemy.IsPlatform() || distanceExit)
         {
             Rotate(-direction);
+            Move(-direction);
             return;
         }
         

@@ -1945,11 +1945,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 198.8
+      value: 206.5
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.2
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27342,7 +27342,7 @@ MonoBehaviour:
   - {fileID: 1575198949}
   cameraShakeTime: 0
   targetLesSise: 7
-  eventDuration: 2
+  redeventDuration: 2
 --- !u!4 &1454281341
 Transform:
   m_ObjectHideFlags: 0

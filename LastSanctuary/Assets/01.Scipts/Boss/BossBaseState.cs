@@ -14,6 +14,8 @@ public class BossBaseState : IState
     protected Boss _boss;
     protected BossWeapon _weapon;
 
+    public AudioClip[] SoundClip;
+
     public BossBaseState(BossStateMachine bossStateMachine)
     {
         this._stateMachine = bossStateMachine;
@@ -57,7 +59,6 @@ public class BossBaseState : IState
         {           
             _stateMachine.Attacks.Enqueue(_stateMachine.Attack3);
         }
-      
     }
 
     public virtual void PhysicsUpdate()

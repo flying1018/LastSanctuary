@@ -17,6 +17,10 @@ public class PlayerGuardState : PlayerBaseState
         _guardStart = Time.time;
         _condition.IsPerfectGuard = true;
         _condition.IsGuard = true;
+        
+        SoundClip = new AudioClip[2];
+        SoundClip[0] = _data.guardSound;
+        SoundClip[1] = _data.perfectGuardSound;
 
     }
 

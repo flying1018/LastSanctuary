@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerHitState : PlayerBaseState
 {
-    public PlayerHitState(PlayerStateMachine stateMachine) : base(stateMachine) {}
+    public PlayerHitState(PlayerStateMachine stateMachine) : base(stateMachine)
+    {
+    }
     private float _hitStart;
     private float _hitDuration;
     public override void Enter()
@@ -28,8 +30,10 @@ public class PlayerHitState : PlayerBaseState
                 break;
         }
         
-        SoundManager.Instance.PlaySFX(_data.hitSound);
-
+        SoundClip = new AudioClip[1];
+        SoundClip[0] = _data.hitSound;
+        
+        _player.PlaySFX1();
     }
 
     public override void Exit()

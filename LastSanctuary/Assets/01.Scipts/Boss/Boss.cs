@@ -60,7 +60,7 @@ public class Boss : MonoBehaviour
     private void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
-        //Debug.Log(StateMachine.currentState);
+//        Debug.Log(StateMachine.currentState);
 
     }
     
@@ -148,6 +148,12 @@ public class Boss : MonoBehaviour
     public void CameraShake()
     {
         BossEvent.CameraShake(); //안에 소리 길이를 매개변수로 넣어주면 됨.
+    }
+    
+    public void Attack()
+    {
+        if (StateMachine.currentState is BossAttackState attack2)
+            attack2.FireAttack2();
     }
 
     #endregion

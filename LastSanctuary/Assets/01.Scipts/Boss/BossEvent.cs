@@ -23,7 +23,7 @@ public class BossEvent : MonoBehaviour
     [SerializeField] private float targetLesSise = 7f;
 
     [Header("Boss Death")]
-    [SerializeField] private float eventDuration = 2f;
+    [SerializeField] private float redeventDuration = 2f;
 
     private void Start()
     {
@@ -126,6 +126,7 @@ public class BossEvent : MonoBehaviour
 
     public void CameraShake(float duration = 1f, float amplitude = 2f,  float frequency = 2f)
     {
+        Debug.Log("CameraShake");
         StartCoroutine(CameraShake_Coroutine(duration, amplitude, frequency));
     }
 
@@ -152,6 +153,9 @@ public class BossEvent : MonoBehaviour
 
     IEnumerator  Death_coroution()
     {
+        //보스 포커싱
+        _bossCamera.Priority = 20;
+        
         //슬로우 모션
         Time.timeScale = 0.2f;
         float timer = 0f;
@@ -160,9 +164,6 @@ public class BossEvent : MonoBehaviour
         UIManager.Instance.OnOffUI(false);
         //조작 불가
         _player.PlayerInput.enabled = false;
-        
-        //보스 포커싱
-        _bossCamera.Priority = 20;
         
         //순간 암전
         Color originbackGroundColor = _backGroundSprite.color;
@@ -177,20 +178,26 @@ public class BossEvent : MonoBehaviour
         playerSprite.color = Color.red;
         
         //연출 유지
-        while (timer < eventDuration)
+        while (timer < redeventDuration)
         {
             timer += Time.unscaledDeltaTime;
             yield return null;
         }
 
         //색 돌리기
-        Debug.Log("타임스케일 복구 직전: " + Time.timeScale);
         Time.timeScale = 1f;
-        Debug.Log("타임스케일 복구 후: " + Time.timeScale);
         _backGroundSprite.color = originbackGroundColor;
         bossSprite.color = originBossColor;
         playerSprite.color = originPlayerColor;
-        
+
+        _boss.Animator.speed = 0f;
+        CameraShake();
+        while (timer < _boss.Data.deathEventDuration)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        _boss.Animator.speed = 1f;
         StartBattle();
         
     }

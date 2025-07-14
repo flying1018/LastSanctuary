@@ -11,6 +11,10 @@ public class BossAttackInfo
     public string animParameter;
     public AnimationClip attackAnim;
     public float AnimTime => attackAnim.length;
+    //투사체 있는 경우
+    public GameObject projectilePrefab;
+    public int projectilePoolId;
+    public int projectilePower;
 }
 
 [CreateAssetMenu(fileName = "Boss", menuName = "new Boss")]
@@ -29,7 +33,8 @@ public class BossSO : ScriptableObject
     public float damageDelay;
     
     public AnimationClip deathAnim;
-    public float deathTime => deathAnim.length;
+    public float deathEventDuration; 
+    public float deathTime => deathAnim.length + deathEventDuration;
     
     [Header("ChaseState")]
     public float moveSpeed = 2f;
