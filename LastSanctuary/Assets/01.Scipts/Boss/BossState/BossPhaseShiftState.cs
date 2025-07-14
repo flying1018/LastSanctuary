@@ -17,6 +17,9 @@ public class BossPhaseShiftState : BossBaseState
 
         _time = 0;
         _boss.Phase2 = true;
+        
+        SoundClip[0] = _data.phaseShiftSound;
+        _boss.PlaySFX1();
     }
 
     public override void Update()
