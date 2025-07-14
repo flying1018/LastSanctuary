@@ -24,7 +24,7 @@ public enum AttackType
 public class Enemy : MonoBehaviour
 {
     //필드
-    private CapsuleCollider2D _capsuleCollider;
+   
 
     //직렬화
     [field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float patrolDistance = 5;
     
     //프로퍼티
-    public CapsuleCollider2D CapsuleCollider;
+    public CapsuleCollider2D CapsuleCollider { get; set; }
     public EnemyStateMachine StateMachine { get; set; }
     public Rigidbody2D Rigidbody {get; set;}
     public Animator Animator {get; set;}
@@ -127,7 +127,7 @@ public class Enemy : MonoBehaviour
     public void Init(Transform spawnPoint, float distance)
     {
         SpawnPoint = spawnPoint;
-        _capsuleCollider = GetComponent<CapsuleCollider2D>();
+        CapsuleCollider = GetComponent<CapsuleCollider2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         Condition = GetComponent<EnemyCondition>();
@@ -136,6 +136,7 @@ public class Enemy : MonoBehaviour
         Weapon = EnemyWeapon.gameObject;
         AnimationDB.Initailize();
         PatrolDistance = distance;
+        CapsuleCollider.enabled = true;
         
         Condition.Init(this);
         StateMachine = new EnemyStateMachine(this);
