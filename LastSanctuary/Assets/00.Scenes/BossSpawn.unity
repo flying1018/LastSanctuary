@@ -1945,11 +1945,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -246
+      value: 201.4
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -46
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27334,6 +27334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enterTime: 1
   blackDuration: 1
+  howlingSound: {fileID: 8300000, guid: 79d147a33e9a45b469fe7d516304cc60, type: 3}
   blinkInterval: 0.8
   parts:
   - {fileID: 1723846534}

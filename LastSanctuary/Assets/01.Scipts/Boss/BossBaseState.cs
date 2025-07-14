@@ -26,6 +26,8 @@ public class BossBaseState : IState
         _polygonCollider = _boss.PolygonCollider;
         _condition = _boss.Condition;
         _weapon = _boss.BossWeapon;
+        
+        SoundClip = new AudioClip[10];
     }
     
     public virtual void Enter()
