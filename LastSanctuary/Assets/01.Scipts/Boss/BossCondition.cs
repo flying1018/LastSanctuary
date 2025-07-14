@@ -36,6 +36,10 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     }
     private IEnumerator Death_Coroutine()
     {
+        if (_boss.StateMachine.currentState is BossBaseState bossBaseState)
+        {
+            bossBaseState.SoundClip[0] = _boss.Data.deathSound;
+        }
         _boss.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
         _boss.Animator.SetTrigger(_boss.AnimationDB.DeathParameterHash);
         _boss.BossEvent.OnTriggerBossDeath();

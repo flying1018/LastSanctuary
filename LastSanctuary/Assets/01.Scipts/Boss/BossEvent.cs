@@ -92,6 +92,9 @@ public class BossEvent : MonoBehaviour
             _backGroundSprite.color = Color.Lerp(originColor, Color.black, elapsed / blackDuration);
             yield return null;
         }
+        
+        //배경음 종료
+        SoundManager.Instance.StopBGM();
 
         //카메라 변경
         _bossCamera.Priority = 20;

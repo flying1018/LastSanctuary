@@ -85,4 +85,9 @@ public class SoundManager : Singleton<SoundManager>
         bgmSound = gameObject.AddComponent<BGMSound>();
         bgmSound.Init(bgmSource); // AudioSource 주입
     }
+
+    public void StopBGM()
+    {
+        bgmSound.Stop();
+    }
 }
