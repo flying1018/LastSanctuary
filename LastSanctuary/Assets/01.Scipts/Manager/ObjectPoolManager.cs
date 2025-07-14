@@ -21,7 +21,6 @@ public static class ObjectPoolManager
                 GameObject obj = objectQueue.Dequeue();
                 if (obj != null)
                 {
-                    DebugHelper.Log("기존 풀에서 재활용");
                     obj.SetActive(true);
                     return obj;
                 }
@@ -38,12 +37,10 @@ public static class ObjectPoolManager
 
         if (poolDictionary.TryGetValue(id, out Queue<GameObject> objectQueue))
         {
-            DebugHelper.Log("기존 프리팹 회수");
             objectQueue.Enqueue(gameObject);
         }
         else
         {
-            DebugHelper.Log("새로운 프리팹 회수");
             Queue<GameObject> newQueue = new();
             newQueue.Enqueue(gameObject);
             poolDictionary.Add(id, newQueue);

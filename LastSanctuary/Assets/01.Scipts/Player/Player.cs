@@ -171,7 +171,6 @@ public class Player : MonoBehaviour
         if (StateMachine.currentState is PlayerBaseState playerBaseState)
         {
             if (playerBaseState.SoundClip == null) return;
-            Debug.Log(playerBaseState.SoundClip[0]);
             SoundManager.Instance.PlaySFX(playerBaseState.SoundClip[0]);
 
         }
