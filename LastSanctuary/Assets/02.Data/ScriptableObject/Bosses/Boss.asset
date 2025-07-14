@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: 0
   _name: 
-  attack: 20
+  attack: 35
   defense: 10
   hp: 400
   groggyGauge: 100
@@ -28,7 +28,7 @@ MonoBehaviour:
   attackRange: 13
   attackIdleTime: 1
   attacks:
-  - multiplier: 1
+  - multiplier: 1.2
     knockbackForce: 20
     coolTime: 3
     animParameter: Attack1
@@ -38,7 +38,7 @@ MonoBehaviour:
     projectilePower: 0
     attackSounds:
     - {fileID: 8300000, guid: 99763f3d71b0c18409c1621c2b27f676, type: 3}
-  - multiplier: 1
+  - multiplier: 1.5
     knockbackForce: 20
     coolTime: 3
     animParameter: Attack2
@@ -49,7 +49,7 @@ MonoBehaviour:
     attackSounds:
     - {fileID: 8300000, guid: 94643bcc75cfd7e40ba70900d44036d8, type: 3}
     - {fileID: 8300000, guid: 99c001b5140ffee4fb94380e55189221, type: 3}
-  - multiplier: 1
+  - multiplier: 1.7
     knockbackForce: 20
     coolTime: 7
     animParameter: Attack3
