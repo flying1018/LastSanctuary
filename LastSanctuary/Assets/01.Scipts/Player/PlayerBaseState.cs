@@ -29,6 +29,8 @@ public class PlayerBaseState : IState
         _playerWeapon = _player.PlayerWeapon;
         _capsuleCollider = _player.CapsuleCollider;
         _inventory = _player.Inventory;
+
+        SoundClip = new AudioClip[10];
     }
 
     public virtual void Enter()
@@ -88,8 +90,8 @@ public class PlayerBaseState : IState
 
     public void Move(Vector2 direction)
     {
-        float xDirection = direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0;
-        Vector2 moveVelocity = new Vector2(xDirection * _data.moveSpeed, _rigidbody.velocity.y);
+        direction.y = 0;
+        Vector2 moveVelocity = new Vector2(direction.normalized.x, _rigidbody.velocity.y);
         _rigidbody.velocity = moveVelocity;
     }
 

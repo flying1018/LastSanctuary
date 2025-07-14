@@ -100,8 +100,8 @@ public class BossBaseState : IState
     
     public void Move(Vector2 direction)
     {
-        float xDirection = direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0; //보스 좌우 움직임
-        Vector2 moveVelocity = new Vector2(xDirection * _data.moveSpeed, _rigidbody.velocity.y);
+        direction.y = 0;
+        Vector2 moveVelocity = new Vector2(direction.normalized.x * _data.moveSpeed, _rigidbody.velocity.y);
         _rigidbody.velocity = moveVelocity;
     }
 

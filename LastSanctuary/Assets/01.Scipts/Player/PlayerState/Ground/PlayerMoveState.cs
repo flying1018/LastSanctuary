@@ -13,7 +13,6 @@ public class PlayerMoveState : PlayerGroundState
         base.Enter();
         StartAnimation(_player.AnimationDB.MoveParameterHash);
         
-        SoundClip = new AudioClip[1];
         SoundClip[0] = _data.moveSound;
     }
 

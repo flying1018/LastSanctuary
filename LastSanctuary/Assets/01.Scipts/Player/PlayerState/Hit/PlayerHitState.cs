@@ -30,7 +30,6 @@ public class PlayerHitState : PlayerBaseState
                 break;
         }
         
-        SoundClip = new AudioClip[1];
         SoundClip[0] = _data.hitSound;
         
         _player.PlaySFX1();
