@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BossEvent : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class BossEvent : MonoBehaviour
     private CinemachineVirtualCamera _bossCamera;
     private SpriteRenderer _backGroundSprite;
     private CinemachineBasicMultiChannelPerlin _perlin;
+    private CinemachineBrain _brain;
+    private CinemachineBlendDefinition _originBlend;
 
     [Header("Boss Spawn")] 
     [SerializeField] private float enterTime = 1f;
@@ -21,9 +24,10 @@ public class BossEvent : MonoBehaviour
     [SerializeField] private GameObject[] parts;
     [SerializeField] private float cameraShakeTime;
     [SerializeField] private float targetLesSise = 7f;
-
+    
     [Header("Boss Death")]
-    [SerializeField] private float redeventDuration = 2f;
+    [SerializeField] private float sloweventDuration = 2f;
+    [SerializeField] private float cameraZoom = 5f;
 
     private void Start()
     {
@@ -34,6 +38,8 @@ public class BossEvent : MonoBehaviour
         _perlin = _bossCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _backGroundSprite = GameObject.FindGameObjectWithTag(StringNameSpace.Tags.BackGround)
             .GetComponent<SpriteRenderer>();
+        _brain = Camera.main.GetComponent<CinemachineBrain>();
+        _originBlend = _brain.m_DefaultBlend; //카메라 기본 설정
 
     }
 
@@ -124,9 +130,8 @@ public class BossEvent : MonoBehaviour
         _boss.Init(this);
     }
 
-    public void CameraShake(float duration = 1f, float amplitude = 2f,  float frequency = 2f)
+    public void CameraShake(float duration = 1f, float amplitude = 10f,  float frequency = 5f)
     {
-        Debug.Log("CameraShake");
         StartCoroutine(CameraShake_Coroutine(duration, amplitude, frequency));
     }
 
@@ -154,6 +159,9 @@ public class BossEvent : MonoBehaviour
     IEnumerator  Death_coroution()
     {
         //보스 포커싱
+        _brain.m_DefaultBlend = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.Cut, 0f);
+        _bossCamera.transform.position = new Vector3(_boss.transform.position.x, _boss.transform.position.y, _bossCamera.transform.position.z);
+        _bossCamera.m_Lens.OrthographicSize = cameraZoom;
         _bossCamera.Priority = 20;
         
         //슬로우 모션
@@ -178,7 +186,7 @@ public class BossEvent : MonoBehaviour
         playerSprite.color = Color.red;
         
         //연출 유지
-        while (timer < redeventDuration)
+        while (timer < sloweventDuration)
         {
             timer += Time.unscaledDeltaTime;
             yield return null;
@@ -191,13 +199,17 @@ public class BossEvent : MonoBehaviour
         playerSprite.color = originPlayerColor;
 
         _boss.Animator.speed = 0f;
+        yield return new WaitForSeconds(1f);
         CameraShake();
         while (timer < _boss.Data.deathEventDuration)
         {
             timer += Time.deltaTime;
             yield return null;
         }
+
+        _brain.m_DefaultBlend = _originBlend;
         _boss.Animator.speed = 1f;
+        yield return new WaitForSeconds(2f);
         StartBattle();
         
     }
