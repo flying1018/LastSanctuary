@@ -12,6 +12,8 @@ public class BossChaseState : BossBaseState
     {
         //애니메이션 실행
         StartAnimation(_boss.AnimationDB.WalkParameterHash);
+        
+        SoundClip[0] = _data.walkSound;
     }
     
     public override void Exit()

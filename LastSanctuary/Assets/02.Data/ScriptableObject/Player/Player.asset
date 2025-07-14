@@ -84,5 +84,6 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: b65b0e01fefddb84692987980cad667d, type: 3}
   arrowHitSound: {fileID: 8300000, guid: d1a6849676cb1dd42969940571daccd2, type: 3}
   hitSound: {fileID: 8300000, guid: 474f73407786adf41953e0b8b86777ca, type: 3}
+  healSound: {fileID: 8300000, guid: d4adbc096bba18641bb3db713a46b0ec, type: 3}
   teleportStartSound: {fileID: 8300000, guid: 61012c41929ea52499cb03d531eb4db2, type: 3}
   teleportEndSound: {fileID: 8300000, guid: 4cb92929d1092cf47bc611c19b0dd21c, type: 3}

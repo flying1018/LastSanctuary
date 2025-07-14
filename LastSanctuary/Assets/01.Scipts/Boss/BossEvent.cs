@@ -93,10 +93,6 @@ public class BossEvent : MonoBehaviour
             yield return null;
         }
 
-        //사운드 연출 추가해야됨.
-        SoundManager.Instance.PlaySFX(howlingSound);
-        yield return new WaitForSeconds(howlingSound.length);
-
         //카메라 변경
         _bossCamera.Priority = 20;
         yield return new WaitForSeconds(blackDuration);
