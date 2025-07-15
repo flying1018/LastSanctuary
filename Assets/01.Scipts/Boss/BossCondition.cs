@@ -10,7 +10,6 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     private int _maxGroggyGauge;
     private int _groggyGauge;
     private Coroutine _hitEffectCoroutine;
-    private Material _originMaterial;
     
     //프로퍼티
     public bool IsGroggy {get; set;}
@@ -27,7 +26,6 @@ public class BossCondition : Condition,IDamageable, IGroggyable
         _groggyGauge = 0;
         _delay = boss.Data.damageDelay;
         _isTakeDamageable = false;
-        _originMaterial = _boss.SpriteRenderer.material;
     }
     
     //죽었을 때
@@ -111,7 +109,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
         
         sprite.material = _boss.Data.materials[3];
         yield return new WaitForSeconds(_boss.Data.damageDelay);
-        sprite.material = _originMaterial;
+        sprite.material = _boss.Phase2 ? _boss.Data.materials[1] : _boss.Data.materials[0];
     }
     
     //보스 그로기 증가
