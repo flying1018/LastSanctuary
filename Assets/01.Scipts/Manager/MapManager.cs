@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// 맵의 배치된 오브젝트를 관리하는 맵 매니저
+/// </summary>
 public class MapManager : Singleton<MapManager>
 {
     [SerializeField] private List<EnemySpawnPoint> EnemySpawnPoints;
@@ -14,9 +16,11 @@ public class MapManager : Singleton<MapManager>
 
     private void Awake()
     {
+        //스폰 포인트 가져오기
         EnemySpawnPoints = new List<EnemySpawnPoint>(FindObjectsOfType<EnemySpawnPoint>());
     }
 
+    //몬스터 리스폰
     public void RespawnEnemies()
     {
         foreach (var spawnPoint in EnemySpawnPoints) spawnPoint.Respawn();
@@ -27,6 +31,9 @@ public class MapManager : Singleton<MapManager>
         foreach (var spawnPoint in ItemSpawnPoints) spawnPoint.Respawn(); 
     }
 
+    //워프 상호작용
+    //기획이 상호작용 시 활성화로 봐뀌었으니 필요 없어 보임.
+    //일단 코드의 의도도 잘 안보임.
     public void WarpInteract()
     {
         targetWarpObj = warpObjects[UIManager.Instance.ShowWarpUI(selectWarpObj) - 1];
