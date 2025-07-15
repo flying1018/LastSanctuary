@@ -6,8 +6,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+/// <summary>
+/// 보스 스폰과 이벤트를 담당하는 스크립트
+/// </summary>
 public class BossEvent : MonoBehaviour
 {
+    //필드
     private MoveObject[] _moveObjects;
     private Boss _boss;
     private Player _player;
@@ -30,6 +34,8 @@ public class BossEvent : MonoBehaviour
     [SerializeField] private float sloweventDuration = 2f;
     [SerializeField] private float cameraZoom = 5f;
     [SerializeField] private Material redSilhouette;
+    
+    //초기 설정
     private void Start()
     {
         _moveObjects = GetComponentsInChildren<MoveObject>();
@@ -41,11 +47,9 @@ public class BossEvent : MonoBehaviour
             .GetComponent<SpriteRenderer>();
         _brain = Camera.main.GetComponent<CinemachineBrain>();
         _originBlend = _brain.m_DefaultBlend; //카메라 기본 설정
-        
-        
-
     }
 
+    //플레이어 입장 시
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(StringNameSpace.Tags.Player))
@@ -55,6 +59,7 @@ public class BossEvent : MonoBehaviour
         }
     }
 
+    //플레이어 퇴장 시
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag(StringNameSpace.Tags.Player))
@@ -69,6 +74,7 @@ public class BossEvent : MonoBehaviour
         }
     }
 
+    //스폰 이벤트
     IEnumerator Spawn_Coroutine()
     {
         //플레이어가 입장 시 잠시 이동
@@ -109,6 +115,7 @@ public class BossEvent : MonoBehaviour
             yield return new WaitForSeconds(blinkInterval);
         }
 
+        //다시 끄기
         foreach (GameObject part in parts)
         {
             part.SetActive(false);
@@ -135,6 +142,7 @@ public class BossEvent : MonoBehaviour
         _boss.Init(this);
     }
 
+    //카메라 흔들림
     public void CameraShake(float duration = 1f, float amplitude = 10f,  float frequency = 5f)
     {
         StartCoroutine(CameraShake_Coroutine(duration, amplitude, frequency));
@@ -149,6 +157,7 @@ public class BossEvent : MonoBehaviour
         _perlin.m_FrequencyGain = 0;
     }
 
+    //UI 정상화와 플레이어 조작 가능
     public void StartBattle()
     {
         UIManager.Instance.OnOffUI(true);
@@ -156,6 +165,7 @@ public class BossEvent : MonoBehaviour
         _bossCamera.Priority = 0;
     }
 
+    //보스 사망 연출
     public void OnTriggerBossDeath()
     {
         StartCoroutine(Death_coroution());
@@ -213,15 +223,21 @@ public class BossEvent : MonoBehaviour
         //bossSprite.color = originBossColor;
         //playerSprite.color = originPlayerColor;
 
+        //보스 정지
         _boss.Animator.speed = 0f;
         yield return new WaitForSeconds(1f);
+        
+        //카메라 흔들림
         CameraShake();
+        
+        //죽는 이벤트 시간만큼 대기
         while (timer < _boss.Data.deathEventDuration)
         {
             timer += Time.deltaTime;
             yield return null;
         }
 
+        //설정 복구
         _brain.m_DefaultBlend = _originBlend;
         _boss.Animator.speed = 1f;
         yield return new WaitForSeconds(2f);

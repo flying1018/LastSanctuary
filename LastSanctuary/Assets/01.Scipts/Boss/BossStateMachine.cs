@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
+/// <summary>
+/// 보스의 상태머신
+/// </summary>
 public class BossStateMachine : StateMachine
 {
     public Boss Boss { get; private set; }
@@ -16,9 +20,7 @@ public class BossStateMachine : StateMachine
     public BossAttackState Attack3 { get; private set; }
     public BossPhaseShiftState PhaseShiftState { get; private set; }
 
-
     
-
     public BossStateMachine(Boss boss)
     {
         this.Boss = boss;

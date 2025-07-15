@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 보스 애니메이션에 필요한 스트링값을 해쉬 데이터로 전환하는 클래스
+/// </summary>
 public class BossAnimationDB
 {
     [SerializeField] private string spawnParameter = "Spawn";

@@ -4,38 +4,45 @@ using UnityEngine;
 
 public class BossGroggyState : BossBaseState
 {
+    private float _groggyStart;
+    
     public BossGroggyState(BossStateMachine bossStateMachine) : base(bossStateMachine)
     {
     }
 
-    private float _groggyStart;
     public override void Enter()
     {
+        //시간 설정
         _groggyStart = Time.time;
-        _condition.IsGroggy = true;
-        StartAnimation(_boss.AnimationDB.GroggyParameterHash);
         
-        //외곽선 변경
-        _spriteRenderer.material = _data.materials[2];
+        //그로기 시 대미지 증가를 위한 표시
+        _condition.IsGroggy = true;
+        
+        //애니 실행
+        StartAnimation(_boss.AnimationDB.GroggyParameterHash);
     }
 
     public override void Exit()
     {
+        //그로기 탈출
         _condition.IsGroggy = false;
-        StopAnimation(_boss.AnimationDB.GroggyParameterHash);
         
-        //외곽선 복구
-        _spriteRenderer.material = _boss.Phase2 ? _data.materials[1] : _data.materials[0];
+        //애니 정지
+        StopAnimation(_boss.AnimationDB.GroggyParameterHash);
     }
 
     public override void Update()
     {
+        //애니메이션 그로기 시간 끝나기 까지 기다리기
         if (Time.time - _groggyStart < _data.groggyDuration)
             return;
-        if (_condition.IsPhaseShift())
-        {
+        
+        //체력이 페이즈 변환 조건일 만족했을 때
+        if (_condition.CheckPhaseShift())
+        {   //페이즈 변환
             _stateMachine.ChangeState(_stateMachine.PhaseShiftState);
         }
+        //아니라면 대기
         else
         { 
             _stateMachine.ChangeState(_stateMachine.IdleState);
