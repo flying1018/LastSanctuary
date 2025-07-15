@@ -28,10 +28,9 @@ public class Boss : MonoBehaviour
 
     public void Init(BossEvent bossEvent)
     {
+        //필요한 프로퍼티 설정
         BossEvent = bossEvent;
-        Phase2 = false;
         AnimationDB = new BossAnimationDB(); 
-        AnimationDB.Initailize(); 
         PolygonCollider = GetComponent<PolygonCollider2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
@@ -40,14 +39,16 @@ public class Boss : MonoBehaviour
         BossWeapon = GetComponentInChildren<BossWeapon>();
         Weapon = BossWeapon.gameObject;
         
+        AnimationDB.Initailize(); 
         Condition.Init(this);
-        StateMachine = new BossStateMachine(this);
+        Phase2 = false;
         
+        StateMachine = new BossStateMachine(this);
     }
     
-
     private void OnEnable()
     {
+        //오브젝트 활성화 시 플레이어 찾기
         Target = FindObjectOfType<Player>().transform;
     }
     
@@ -56,8 +57,7 @@ public class Boss : MonoBehaviour
         StateMachine.HandleInput();
         StateMachine.Update();
     }
-
-
+    
     private void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
@@ -88,21 +88,37 @@ public class Boss : MonoBehaviour
 
     #region need MonoBehaviour Method
 
-    //Attack2
+    //통제로 개선 필요
+    //각각 상태마다 사용하는 애니메이션 이벤트가 다르기 때문에
+    //메서드는 하나만을 사용하고 분기는 상태로 하는것으로 하고 싶음.
+    
+    //Attack2에서 사용하는 애니메이션 이벤트
     public void BackJump()
-    {
+    {   
         Vector2 backDir = transform.position - Target.position;
         backDir.y = Mathf.Abs(backDir.x);
         Rigidbody.AddForce(backDir.normalized * Data.backJumpPower, ForceMode2D.Impulse);
+        
+        //플레이어가 가까이 붙었을 때 점프를 안하는 버그가 있음.
     }
 
+    //점프 멈추기
     public void StopMove()
     {
         Rigidbody.velocity = Vector2.zero;
     }
     
-    //Attack3
+    //투사체 날리기
+    public void Attack()
+    {
+        if (StateMachine.currentState is BossAttackState attack2)
+            attack2.FireProjectile();
+    }
+    
+    //Attack3에서 사용하는 이벤트
     private Coroutine _chasePlayerCoroutine;
+    
+    //플레이어에게 추적
     public void ChasePlayer()
     {
         if (_chasePlayerCoroutine != null)
@@ -124,6 +140,7 @@ public class Boss : MonoBehaviour
         }
     }
 
+    //추적 정지
     public void StopChasePlayer()
     {
         if (_chasePlayerCoroutine != null)
@@ -133,35 +150,33 @@ public class Boss : MonoBehaviour
         }
     }
 
+    //중력이 필요 없을 때
     public void KinematicOn()
     {
         PolygonCollider.isTrigger = true;
         Rigidbody.bodyType = RigidbodyType2D.Kinematic;
     }
 
+    //중력이 필요 할 때
     public void KinematicOff()
     {
         PolygonCollider.isTrigger = false;
         Rigidbody.bodyType = RigidbodyType2D.Dynamic;
     }
     
-    //연출
+    //연출용 애니메이션 이벤트
+    
+    //카메라 흔들기
     public void LandingCameraShake()
     {
         BossEvent.CameraShake();
     }
-
     public void HowlingCameraShake()
     {
         BossEvent.CameraShake(Data.howlingSound.length/2); 
     }
     
-    public void Attack()
-    {
-        if (StateMachine.currentState is BossAttackState attack2)
-            attack2.FireAttack2();
-    }
-    
+    //효과음 실행르 위한 메서드
     public void PlaySFX1()
     {
         if (StateMachine.currentState is BossBaseState bossBaseState)

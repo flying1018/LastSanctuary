@@ -12,7 +12,6 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     private Coroutine _hitEffectCoroutine;
     private Material _originMaterial;
     
-    
     //프로퍼티
     public bool IsGroggy {get; set;}
 
@@ -31,41 +30,71 @@ public class BossCondition : Condition,IDamageable, IGroggyable
         _originMaterial = _boss.SpriteRenderer.material;
     }
     
+    //죽었을 때
     public override void Death()
     {
         StartCoroutine(Death_Coroutine());
     }
     private IEnumerator Death_Coroutine()
     {
+        //죽을 때 필요한 소리 설정
         if (_boss.StateMachine.currentState is BossBaseState bossBaseState)
         {
             bossBaseState.SoundClip[0] = _boss.Data.deathSound;
         }
+        //애니메이션 실행
         _boss.Animator.SetTrigger(_boss.AnimationDB.DeathParameterHash);
-        _boss.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
+        //키네마틱 켜기
+        _boss.KinematicOn();
+        //보스 사망 연출
         _boss.BossEvent.OnTriggerBossDeath();
+        //죽는 시간 만큼 대기
         yield return new WaitForSeconds(_boss.Data.deathTime);
+        //제거
         ObjectPoolManager.Set(_boss.Data._key, _boss.gameObject, _boss.gameObject);
     }
     
+    //대미지 입을 때
     public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
     {
         if (!IsAlive()) return;
         if (_isTakeDamageable) return;
+        
+        //대미지 계산
         ApplyDamage(atk,defpen);
+        
+        //죽었을 때
         if (!IsAlive())
-        {
-            Death();
+        {   //죽음
+            Death(); 
         }
-        else if(!IsGroggy && IsPhaseShift())
-        {
+        //그로기 상태가 아니고 페이즈 변환 조건이 되면
+        else if(!IsGroggy && CheckPhaseShift())
+        {   //페이즈 변환 상태로 전환
             _boss.StateMachine.ChangeState(_boss.StateMachine.PhaseShiftState);
         }
         else
-        {
+        {   //피격 이펙트
             OnHitEffected();
         }
     }
+    
+    //대미지 계산
+    public void ApplyDamage(int atk ,float defpen)
+    {
+        int damage;
+        if (IsGroggy)
+        {
+            damage = (int)(Math.Ceiling((atk - _defence * (1 - defpen)) * 1.5f));
+        }
+        else
+        {
+            damage = (int)(Math.Ceiling(atk - _defence * (1 - defpen)));
+        }
+        _curHp -= damage;
+    }
+    
+    //피격 이펙트
     private void OnHitEffected()
     {
         if (_hitEffectCoroutine != null)
@@ -96,13 +125,14 @@ public class BossCondition : Condition,IDamageable, IGroggyable
         
         //공격당 그로기 1/2/5씩증가
         _groggyGauge += groggyDamage;
-        if (ChangeGroggyState())
+        if (CheckGroggyState())
         {
             _boss.StateMachine.ChangeState(_boss.StateMachine.GroggyState);
         }
     }
 
-    public bool ChangeGroggyState()
+    //그로기 상태로 가야 하는지 체크
+    public bool CheckGroggyState()
     {
         if (_groggyGauge >= _maxGroggyGauge)
         {
@@ -112,22 +142,9 @@ public class BossCondition : Condition,IDamageable, IGroggyable
 
         return false;
     }
-    
-    public void ApplyDamage(int atk ,float defpen)
-    {
-        int damage;
-        if (IsGroggy)
-        {
-            damage = (int)(Math.Ceiling((atk - _defence * (1 - defpen)) * 1.5f));
-        }
-        else
-        {
-            damage = (int)(Math.Ceiling(atk - _defence * (1 - defpen)));
-        }
-        _curHp -= damage;
-    }
 
-    public bool IsPhaseShift()
+    //페이즈 변환 상태로 가야 하는지 체크
+    public bool CheckPhaseShift()
     {
         if (!IsAlive()) return false; 
         
@@ -135,6 +152,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
         return (!_boss.Phase2 && _curHp <= phase2Hp);
     }
 
+    //살아 있는지 체크
     public bool IsAlive()
     {
         return _curHp > 0;

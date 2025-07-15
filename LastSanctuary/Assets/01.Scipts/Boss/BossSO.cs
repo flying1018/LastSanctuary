@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 보스의 공격 데이터
+/// </summary>
 [System.Serializable]
 public class BossAttackInfo
 {
@@ -19,6 +22,9 @@ public class BossAttackInfo
     public AudioClip[] attackSounds;
 }
 
+/// <summary>
+/// 보스의 초기 데이터
+/// </summary>
 [CreateAssetMenu(fileName = "Boss", menuName = "new Boss")]
 public class BossSO : ScriptableObject
 {

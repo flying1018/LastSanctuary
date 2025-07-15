@@ -24,6 +24,10 @@ public class BossAttackState : BossBaseState
 
     public override void Enter()
     {
+        //방향 설정
+        Vector2 dir = DirectionToTarget();
+        Rotate(dir);
+        
         //쿨타임 초기화
         _attackCoolTime = _attackInfo.coolTime;
         _coolTime = 0;
@@ -46,7 +50,7 @@ public class BossAttackState : BossBaseState
 
     public override void Update()
     {
-        base.Update();
+        //공격이 끝나면 대기 상태
         _time += Time.deltaTime;
         if (_time > _attackInfo.AnimTime)
         {
@@ -59,6 +63,7 @@ public class BossAttackState : BossBaseState
         
     }
 
+    //쿨타임 체크
     public bool CheckCoolTime()
     {
         _coolTime += Time.deltaTime;
@@ -73,18 +78,22 @@ public class BossAttackState : BossBaseState
         }
     }
     
-    public void FireAttack2()
+    //투사체 날리기
+    public void FireProjectile()
     {
-        
+        //투사체 생성 위치 설정
         float sizeX = _boss.SpriteRenderer.bounds.size.x /2;
         Transform firePoint = _boss.BossWeapon.transform;
 
+        //투사체 생성
         GameObject attack2 = ObjectPoolManager.Get(_attackInfo.projectilePrefab, _attackInfo.projectilePoolId);
         
+        //방향 설정
         Vector2 dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
         attack2.transform.position = firePoint.position + (Vector3)(dir * sizeX);
         attack2.transform.right = dir;
 
+        //
         if (attack2.TryGetComponent(out ArrowProjectile arrowPoProjectile))
         {
             arrowPoProjectile.Init(_data.attack, _attackInfo.knockbackForce);
