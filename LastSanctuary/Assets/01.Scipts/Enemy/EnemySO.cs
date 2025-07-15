@@ -20,6 +20,9 @@ public class EnemySO : ScriptableObject
 
     [field: Header("HitState")]
     [field: SerializeField] public float HitDuration{ get; private set; } = 0.5f;
+    
+    [Header("Material")]
+    public Material hitMaterial;
 
     [Header("attackState")] 
     public float attackDistance;

@@ -2167,11 +2167,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 160.8
+      value: 201.9
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.2
+      value: -14.2
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21289,6 +21289,7 @@ MonoBehaviour:
   targetLesSise: 7
   sloweventDuration: 2
   cameraZoom: 5
+  redSilhouette: {fileID: 2100000, guid: 2ff5d5dd8b39e394aabdd9f8aa41f11a, type: 2}
 --- !u!4 &562411485
 Transform:
   m_ObjectHideFlags: 0

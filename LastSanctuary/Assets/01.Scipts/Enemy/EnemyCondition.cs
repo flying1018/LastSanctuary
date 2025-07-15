@@ -8,7 +8,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     //필드
     private Enemy _enemy;
     private Coroutine _hitEffectCoroutine;
-    private Color _originColor;
+    private Material _originMaterial;
     
     //프로퍼티
     public bool IsInvincible { get; set; }
@@ -22,7 +22,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         _defence = _enemy.Data.defence;
         _curHp = _maxHp;
         _delay = _enemy.Data.damageDelay;
-        _originColor = _enemy.SpriteRenderer.color;
+        _originMaterial = _enemy.SpriteRenderer.material;
         _isTakeDamageable = false;
         IsInvincible = false;
         IsDeath = false;
@@ -75,10 +75,9 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     private IEnumerator HitEffect_Coroutine()
     {
         SpriteRenderer sprite = _enemy.SpriteRenderer;
-        
-        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, _enemy.Data.alphaValue);
+        sprite.material = _enemy.Data.hitMaterial;
         yield return new WaitForSeconds(_enemy.Data.hitDuration);
-        sprite.color = _originColor;
+        sprite.material = _originMaterial;
     }
 
     public void ApplyKnockBack(Transform attackDir, float knockBackPower)
