@@ -10,7 +10,8 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     private int _maxGroggyGauge;
     private int _groggyGauge;
     private Coroutine _hitEffectCoroutine;
-    private Color _originColor;
+    private Material _originMaterial;
+    
     
     //프로퍼티
     public bool IsGroggy {get; set;}
@@ -27,7 +28,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
         _groggyGauge = 0;
         _delay = boss.Data.damageDelay;
         _isTakeDamageable = false;
-        _originColor = _boss.SpriteRenderer.color;
+        _originMaterial = _boss.SpriteRenderer.material;
     }
     
     public override void Death()
@@ -79,9 +80,9 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     {
         SpriteRenderer sprite = _boss.SpriteRenderer;
         
-        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, _boss.Data.alphaValue);
+        sprite.material = _boss.Data.materials[3];
         yield return new WaitForSeconds(_boss.Data.damageDelay);
-        sprite.color = _originColor;
+        sprite.material = _originMaterial;
     }
     
     //보스 그로기 증가

@@ -29,7 +29,7 @@ public class BossEvent : MonoBehaviour
     [Header("Boss Death")]
     [SerializeField] private float sloweventDuration = 2f;
     [SerializeField] private float cameraZoom = 5f;
-
+    [SerializeField] private Material redSilhouette;
     private void Start()
     {
         _moveObjects = GetComponentsInChildren<MoveObject>();
@@ -41,6 +41,8 @@ public class BossEvent : MonoBehaviour
             .GetComponent<SpriteRenderer>();
         _brain = Camera.main.GetComponent<CinemachineBrain>();
         _originBlend = _brain.m_DefaultBlend; //카메라 기본 설정
+        
+        
 
     }
 
@@ -181,12 +183,19 @@ public class BossEvent : MonoBehaviour
         _backGroundSprite.color = Color.black;
         
         //빨간 실루엣
-        SpriteRenderer bossSprite = _boss.SpriteRenderer;
-        SpriteRenderer playerSprite = _player.SpriteRenderer;
-        Color originBossColor = bossSprite.color;
-        Color originPlayerColor = playerSprite.color;
-        bossSprite.color = Color.red;
-        playerSprite.color = Color.red;
+         SpriteRenderer bossSprite = _boss.SpriteRenderer;
+         SpriteRenderer playerSprite = _player.SpriteRenderer;
+         
+         Material originBossMaterial = bossSprite.material;
+         Material originplayerMaterial = playerSprite.material;
+         
+         bossSprite.material = redSilhouette;
+         playerSprite.material = redSilhouette;
+         
+        // Color originBossColor = bossSprite.color;
+        // Color originPlayerColor = playerSprite.color;
+        // bossSprite.color = Color.red;
+        // playerSprite.color = Color.red;
         
         //연출 유지
         while (timer < sloweventDuration)
@@ -198,8 +207,11 @@ public class BossEvent : MonoBehaviour
         //색 돌리기
         Time.timeScale = 1f;
         _backGroundSprite.color = originbackGroundColor;
-        bossSprite.color = originBossColor;
-        playerSprite.color = originPlayerColor;
+        bossSprite.material = originBossMaterial;
+        playerSprite.material = originplayerMaterial;
+        
+        //bossSprite.color = originBossColor;
+        //playerSprite.color = originPlayerColor;
 
         _boss.Animator.speed = 0f;
         yield return new WaitForSeconds(1f);
