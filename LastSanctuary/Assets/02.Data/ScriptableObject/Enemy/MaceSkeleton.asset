@@ -19,7 +19,7 @@ MonoBehaviour:
   moveSpeed: 3
   cancelChaseTime: 5
   <HitDuration>k__BackingField: 0.1
-  HitMaterial: {fileID: 2100000, guid: 1d6c919171b720f4698baec530ce9a22, type: 2}
+  hitMaterial: {fileID: 2100000, guid: 1d6c919171b720f4698baec530ce9a22, type: 2}
   attackDistance: 5
   attackDuration: 1.5
   knockbackForce: 25
