@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyRushAttack : EAttackState
 {
-    private float _rushSpeed;
     public EnemyRushAttack(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
     {
     }
@@ -13,13 +12,11 @@ public class EnemyRushAttack : EAttackState
     {
         //공격에 관련된 정보 초기화
         _time = 0;
-        _animtionTime = _data.AnimTime;
         _stateMachine.attackCoolTime = 0;
         
+        //애니메이션 시작
         StartAnimation(_enemy.AnimationDB.WalkParameterHash);;
         _enemy.Animator.SetTrigger(_enemy.AnimationDB.AttackParameterHash);
-        
-        _rushSpeed = _data.rushSpeed;
     }
 
     public override void Exit()
@@ -29,15 +26,16 @@ public class EnemyRushAttack : EAttackState
     }
 
 
+    //플레이어를 향해서 돌진
     public void RushAttack()
     {
         Vector2 direction = DirectionToTarget();
         Rotate(direction);
-        _rigidbody.AddForce(direction * _rushSpeed, ForceMode2D.Impulse);;
+        _rigidbody.AddForce(direction * _data.rushSpeed, ForceMode2D.Impulse);
     }
 
     //충돌 시 정지
-    public void KnuckBackMe(Transform target, float knockBackForce)
+    public void RushKnuckBack(Transform target, float knockBackForce)
     {
         Vector2 knockbackDir = _enemy.transform.position - target.position;
         _rigidbody.velocity = knockbackDir.normalized * knockBackForce;

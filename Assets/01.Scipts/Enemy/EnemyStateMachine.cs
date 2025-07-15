@@ -20,6 +20,7 @@ public class EnemyStateMachine : StateMachine
     {
         this.Enemy = enemy;
 
+        //타입에 따라 생성되는 상태 머신 변경
         switch (enemy.IdleType)
         {
             case IdleType.Idle:

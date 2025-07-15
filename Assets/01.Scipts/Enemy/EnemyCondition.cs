@@ -27,6 +27,8 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         IsInvincible = false;
         IsDeath = false;
     }
+    
+    //죽음 상태
     public override void Death()
     {
         StartCoroutine(Death_Coroutine());
@@ -38,11 +40,12 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         _enemy.Rigidbody.velocity = Vector2.zero;
         _enemy.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
         _enemy.Animator.SetTrigger(_enemy.AnimationDB.DeathParameterHash);
-        yield return new WaitForSeconds(_enemy.Data.deathTime);
+        yield return new WaitForSeconds(_enemy.Data.DeathTime);
         _enemy.SpawnPoint.GetComponent<EnemySpawnPoint>().isSpawn = false;
         ObjectPoolManager.Set(_enemy.Data._key, _enemy.gameObject, _enemy.gameObject);
     }
 
+    //대미지 입을 때
     public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
     {
         if (IsInvincible) return;
@@ -59,9 +62,11 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
             OnHitEffected();
         }
         
+        //대미지 입는 사운드
         SoundManager.Instance.PlaySFX(_enemy.Data.hitSound);
     }
     
+    //대미지 입는 이펙트
     private void OnHitEffected()
     {
         if (_hitEffectCoroutine != null)
@@ -71,7 +76,8 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         }
         _hitEffectCoroutine = StartCoroutine(HitEffect_Coroutine());
     }
-
+    
+    //스프라이트 흰색으로 점멸하는 코루틴
     private IEnumerator HitEffect_Coroutine()
     {
         SpriteRenderer sprite = _enemy.SpriteRenderer;
@@ -80,6 +86,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         sprite.material = _originMaterial;
     }
 
+    //넉백 처리하는 메서드
     public void ApplyKnockBack(Transform attackDir, float knockBackPower)
     {
         if (knockBackPower <= 0) return;
@@ -89,10 +96,10 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         knockbackDir.y = 0f;
         _enemy.StateMachine.ChangeState(_enemy.StateMachine.HitState);
         _enemy.Rigidbody.AddForce(knockbackDir.normalized *  knockBackPower,ForceMode2D.Impulse);
-        
     }
 
 
+    //대미지 계산
     public void ApplyDamage(int atk, float defpen)
     {
         int damage;

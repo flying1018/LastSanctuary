@@ -10,6 +10,7 @@ public class EReturnState : EnemyBaseState
     {
         StartAnimation(_enemy.AnimationDB.WalkParameterHash);
         
+        //복귀시 무적
         _condition.IsInvincible = true;
         _enemy.Target = null;  
     }
@@ -18,15 +19,19 @@ public class EReturnState : EnemyBaseState
     {
         StopAnimation(_enemy.AnimationDB.WalkParameterHash);
         
+        //무적 해제
         _condition.IsInvincible = false;
     }
     
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+        
+        //복귀
         Return();
     }
 
+    //복귀 가상 메서드
     protected virtual void Return()
     {
         
@@ -43,13 +48,17 @@ public class EnemyReturnState :EReturnState
 
     public override void Update()
     {
+        //공격 쿨타임 체크
         base.Update();
+        
+        //스폰포인트와 오차가 0.1f이라면
         if (Mathf.Abs(_enemy.transform.position.x - _spawnPoint.position.x) < 0.1f)
-        {
+        {   //대기
             _stateMachine.ChangeState(_stateMachine.IdleState);       
         }
     }
 
+    //스폰 포인트를 행햐서 복귀
     protected override void Return()
     {
         Vector2 direction = DirectionToSpawnPoint();

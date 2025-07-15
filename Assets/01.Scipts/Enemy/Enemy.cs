@@ -53,6 +53,25 @@ public class Enemy : MonoBehaviour
     public AttackType AttackType {get => attackType;}
     public float PatrolDistance { get; set; }
 
+    //생성 시
+    public void Init(Transform spawnPoint, float distance)
+    {
+        SpawnPoint = spawnPoint;
+        CapsuleCollider = GetComponent<CapsuleCollider2D>();
+        Rigidbody = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
+        Condition = GetComponent<EnemyCondition>();
+        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        EnemyWeapon = GetComponentInChildren<EnemyWeapon>();
+        Weapon = EnemyWeapon.gameObject;
+        AnimationDB.Initailize();
+        PatrolDistance = distance;
+        CapsuleCollider.enabled = true;
+        
+        Condition.Init(this);
+        StateMachine = new EnemyStateMachine(this);
+    }
+    
     private void Update()
     {
         StateMachine.HandleInput();
@@ -62,12 +81,12 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Condition.IsDeath) return; 
         StateMachine.PhysicsUpdate();
         //Debug.Log(StateMachine.currentState);
         //Debug.Log(StateMachine.attackCoolTime);
     }
 
+    //공중몹 충돌 시 넉백과 대미지
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
@@ -86,10 +105,12 @@ public class Enemy : MonoBehaviour
 
         if (StateMachine.currentState is EnemyRushAttack rushAttack)
         {
-            rushAttack.KnuckBackMe(other.gameObject.transform,Data.knockbackForce);
+            rushAttack.RushKnuckBack(other.gameObject.transform,Data.knockbackForce);
         }
     }
-
+    
+    
+    //몬스터와 충돌시 넉백과 대미지
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
@@ -110,12 +131,14 @@ public class Enemy : MonoBehaviour
 
         if (StateMachine.currentState is EnemyRushAttack rushAttack)
         {
-            rushAttack.KnuckBackMe(other.gameObject.transform,Data.knockbackForce);
+            rushAttack.RushKnuckBack(other.gameObject.transform,Data.knockbackForce);
         }
     }
 
 
     #region  Need MonoBehaviour Method
+    
+    //애니메이션 이벤트에서 사용하는 메서드
     public void Attack()
     {
         if (StateMachine.currentState is EnemyRangeAttackState rangeState)
@@ -124,34 +147,19 @@ public class Enemy : MonoBehaviour
             rushAttack.RushAttack();
     }
     
-    public void Init(Transform spawnPoint, float distance)
-    {
-        SpawnPoint = spawnPoint;
-        CapsuleCollider = GetComponent<CapsuleCollider2D>();
-        Rigidbody = GetComponent<Rigidbody2D>();
-        Animator = GetComponent<Animator>();
-        Condition = GetComponent<EnemyCondition>();
-        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        EnemyWeapon = GetComponentInChildren<EnemyWeapon>();
-        Weapon = EnemyWeapon.gameObject;
-        AnimationDB.Initailize();
-        PatrolDistance = distance;
-        CapsuleCollider.enabled = true;
-        
-        Condition.Init(this);
-        StateMachine = new EnemyStateMachine(this);
-    }
-
+    //이동 방향에 발판이 있는지 체크
     public bool IsPlatform()
     {
         float capsulsize = CapsuleCollider.size.x / 2;
         float setX = SpriteRenderer.flipX ? -capsulsize : capsulsize;
+        
         Vector2 newPos = new Vector2(transform.position.x + setX, transform.position.y);
-        Debug.DrawRay(newPos, Vector2.down * platformCheckDistance, Color.red);
+
         return Physics2D.Raycast(newPos, Vector2.down,
             platformCheckDistance, platformLayer);
     }
 
+    //키네마틱 화 진행되면 필요 없는 코드
     public void SetCollisionEnabled(bool isEnabled)
     {
         if (isEnabled)
@@ -164,6 +172,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //주변에 플레이어 있는지 확인
     public bool FindTarget()
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, Data.detectDistance, Vector2.down);
@@ -180,6 +189,7 @@ public class Enemy : MonoBehaviour
         return false;
     }
     
+    //사운드 실행 애니메이션 이벤트
     public void PlaySFX1()
     {
         if (StateMachine.currentState is PlayerBaseState playerBaseState)

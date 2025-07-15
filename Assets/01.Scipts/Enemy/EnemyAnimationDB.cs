@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// 몬스터에 필요한 애니메이션 해쉬값 
+/// </summary>
 [Serializable]
 public class EnemyAnimationDB
 {

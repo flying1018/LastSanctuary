@@ -38,6 +38,7 @@ public class EnemyBaseState : IState
     }
     public virtual void Update()
     {
+        //공격 쿨타임 체크
         _stateMachine.attackCoolTime += Time.deltaTime;
     }
     public virtual void PhysicsUpdate()
@@ -56,6 +57,7 @@ public class EnemyBaseState : IState
         _enemy.Animator.SetBool(animatorHash, false);
     }
     
+    //좌우 이동
     protected void Move(Vector2 direction)
     {
         direction.y = 0;
@@ -63,12 +65,14 @@ public class EnemyBaseState : IState
         _rigidbody.velocity = moveVelocity;
     }
 
+    //하늘 이동
     protected void Fly(Vector2 direction)
     {
         Vector2 moveVelocity = direction.normalized * _data.moveSpeed;
         _rigidbody.velocity = moveVelocity;
     }
 
+    //회전
     protected void Rotate(Vector2 direction)
     {
         if(direction == Vector2.zero) return;
@@ -96,12 +100,14 @@ public class EnemyBaseState : IState
         return distance <= _data.attackDistance;
     }
 
+    //타겟의 방향을 구하는 코드
     protected Vector2 DirectionToTarget()
     {
         if(_enemy.Target == null) return Vector2.zero;
-        return _enemy.Target.position  - _enemy.transform.position;
+        return (_enemy.Target.position  - _enemy.transform.position).normalized;
     }
 
+    //스폰 포인트 방향을 구하는 코드
     protected Vector2 DirectionToSpawnPoint()
     {
         return _spawnPoint.position - _enemy.transform.position;

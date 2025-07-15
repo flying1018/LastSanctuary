@@ -10,6 +10,7 @@ public class EnemyFlyChaseState : EChaseState
 
     public override void Exit()
     {
+        //나갈 때 정지
         base.Exit();
         Fly(Vector2.zero);
     }
@@ -17,6 +18,8 @@ public class EnemyFlyChaseState : EChaseState
     protected override void Chase()
     {
         if(_enemy.Target == null) return;
+        
+        //플레이어를 향해 이동
         Vector2 direction = DirectionToTarget();
         Fly(direction);
         Rotate(direction);

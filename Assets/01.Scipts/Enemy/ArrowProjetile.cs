@@ -5,8 +5,8 @@ using UnityEngine;
 public class ArrowProjectile : EnemyWeapon
 {
   private Rigidbody2D _rigidbody2D;
-
-
+  
+  //생성
   public void Init(int damage, float knockback)
   {
     _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -14,20 +14,24 @@ public class ArrowProjectile : EnemyWeapon
     knockBackForce = knockback;
   }
 
+  //발사
   public void Shot(Vector2 dir, float arrowPower)
   {
     _rigidbody2D.velocity = Vector2.zero;
     _rigidbody2D.AddForce(dir * arrowPower, ForceMode2D.Impulse);
   }
 
+  //충돌 시
   public override void OnTriggerEnter2D(Collider2D other)
   {
+    //대미지 처리
+    base.OnTriggerEnter2D(other);
+    
+    //충돌 시 파괴
     if (other.CompareTag(StringNameSpace.Tags.Ground) || (other.CompareTag(StringNameSpace.Tags.Player)))
     {
-      gameObject.SetActive(false);
       ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.Arrow, gameObject, gameObject);
     }
 
-    base.OnTriggerEnter2D(other);
   }
 }
