@@ -1,7 +1,12 @@
+
+/// <summary>
+/// 오류가 많은 스트링 값을 모아두는 클래스
+/// </summary>
 public static class StringNameSpace
 {
     public const string test = "Test/Prefabs/Cube";
 
+    //게임 데이터 경로
     public static class GameData
     {
         public const string SavePath = "/02.Data/GameData";
@@ -9,11 +14,13 @@ public static class StringNameSpace
         public const string MapItem = "MapItem.json";
     }
 
+    //Json 데이터 경로
     public static class JsonAddress
     {
         public const string EnemyJsonAddress = "Assets/02.Data/GameData/TestEnemyData.json";
     }
 
+    //사운드에 필요한 주소
     public static class SoundAddress
     {
         public const string MainMixer = "Assets/05.Input/MainMixer.mixer";
@@ -27,11 +34,13 @@ public static class StringNameSpace
         public const string TutorialBossPhase2 = "Assets/06.Resource/Sound/BGM/Boss01_Phase2.wav";
     }
 
+    //어드레서블에 필요한 라벨
     public static class Labels
     {
         public const string Relic = "Relic";
     }
 
+    //테그 정보
     public static class Tags
     {
         public const string Respawn = "Respawn";

@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// 플레이어, 몬스터, 보스 공통으로 사용되는 컨디션의 부모
+/// </summary>
 public abstract class Condition : MonoBehaviour
 {
     protected int _maxHp;

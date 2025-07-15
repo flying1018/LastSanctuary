@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 상태의 부모
+/// </summary>
 public interface IState
 {
     public void Enter();
@@ -10,6 +13,9 @@ public interface IState
     public void PhysicsUpdate();
 }
 
+/// <summary>
+/// 상태머신
+/// </summary>
 public abstract class StateMachine
 {
     public IState currentState;

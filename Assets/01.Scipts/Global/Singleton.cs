@@ -1,5 +1,10 @@
 using UnityEngine;
 
+
+/// <summary>
+/// 싱글톤 추상 클래스
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T _instance;

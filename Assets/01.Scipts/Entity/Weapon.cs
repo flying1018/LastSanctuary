@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 무기의 부모
+/// </summary>
 public class Weapon : MonoBehaviour
 {
     public int Damage { get; set;}
