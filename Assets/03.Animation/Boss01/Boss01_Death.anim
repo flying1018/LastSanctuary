@@ -119,7 +119,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 1.05
-    functionName: PlaySFX1
+    functionName: EventSFX1
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
