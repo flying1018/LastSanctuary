@@ -29,7 +29,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     }
     
     //죽었을 때
-    public override void Death()
+    public void Death()
     {
         StartCoroutine(Death_Coroutine());
     }

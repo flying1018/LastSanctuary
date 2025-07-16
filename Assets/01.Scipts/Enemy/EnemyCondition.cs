@@ -29,7 +29,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     }
     
     //죽음 상태
-    public override void Death()
+    public void Death()
     {
         StartCoroutine(Death_Coroutine());
     }
