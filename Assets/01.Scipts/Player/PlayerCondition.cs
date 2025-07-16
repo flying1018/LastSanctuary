@@ -94,7 +94,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         ApplyDamage(atk, defpen);
         if (_curHp <= 0)
         {
-            Death();
+            _player.StateMachine.ChangeState(_player.StateMachine.DeathState);
         }
         else
         {
@@ -245,56 +245,5 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     public float StaminaValue()
     {
         return _curStamina / MaxStamina;
-    }
-
-    /// <summary>
-    /// 플레이어가 죽었을때 델리게이트로 호출
-    /// 플레이어의 인풋막고, Rigidbody도 멈춰놓음
-    /// </summary>
-    public override void Death()
-    {
-        // 추후 죽었을때 표기되는 UI, 연출 추가 요망 (화면 암전 등)
-        StartCoroutine(Revive_Coroutine());
-    }
-
-    /// <summary>
-    /// 리스폰할때 실행되는 코루틴
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator Revive_Coroutine()
-    {
-        //무적 처리
-        IsInvincible = true;
-        InvincibleStart = Time.time;
-        
-        //애니메이션 실행
-        _player.Animator.SetTrigger(_player.AnimationDB.DieParameterHash);
-        
-        //입력 막기
-        _player.PlayerInput.enabled = false;
-
-        //이동 정지
-        _player.Rigidbody.velocity = Vector2.zero;
-        
-        //사운드 실행
-        SoundManager.Instance.PlaySFX(_player.Data.deathSound);
-        
-        // 앞 애니메이션 대기
-        yield return new WaitForSeconds(deathTime); 
-
-        //세이브 포인트로 위치 변경
-        transform.position = SaveManager.Instance.GetSavePoint();
-        _player.Animator.SetTrigger(_player.AnimationDB.RespawnParameterHash);
-        yield return new WaitForSeconds(respawnTime);
-
-        //체력 회복
-        PlayerRecovery();
-        _player.StateMachine.ChangeState(_player.StateMachine.IdleState);
-        _player.Animator.Rebind();
-
-        //조작 불가
-        _player.PlayerInput.enabled = true;
-        yield return new WaitForSeconds(reviveInvincibleTime);
-        IsInvincible = false;
     }
 }

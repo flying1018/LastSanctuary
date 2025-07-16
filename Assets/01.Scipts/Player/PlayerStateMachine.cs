@@ -19,6 +19,8 @@ public class PlayerStateMachine : StateMachine
     public PlayerHealState HealState { get; private set; }
     public PlayerHitState HitState { get; private set; }
     public PlayerRopedState RopedState { get; private set; }
+    public PlayerDeathState DeathState { get; private set; }
+    public PlayerRespawnState RespawnState { get; private set; }
     public int comboIndex;
 
     public PlayerStateMachine(Player player)
@@ -42,6 +44,8 @@ public class PlayerStateMachine : StateMachine
         GuardState = new PlayerGuardState(this);
         RopedState = new PlayerRopedState(this);
         HitState = new PlayerHitState(this);
+        DeathState = new PlayerDeathState(this);
+        RespawnState = new PlayerRespawnState(this);
         
         comboIndex = 0;
         ChangeState(IdleState); // 초기 상태

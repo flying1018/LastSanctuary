@@ -15,6 +15,8 @@ public class PlayerBaseState : IState
     protected PlayerWeapon _playerWeapon;
     protected CapsuleCollider2D _capsuleCollider;
 
+    protected float _time;
+
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
         this._stateMachine = stateMachine;

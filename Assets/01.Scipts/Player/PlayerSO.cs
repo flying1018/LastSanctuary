@@ -63,6 +63,13 @@ public class PlayerSO : ScriptableObject
     [field: SerializeField] public float invincibleDuration { get; private set; } = 1f;
     [field: SerializeField] public int hitSteminaRecovery { get; private set; } = 15;
     [field: SerializeField, Range(0f, 1f)] public float damageReduction { get; private set; } = 0.8f;
+    
+    
+    [Header("DeathState")]
+    public float deathTime;
+    
+    [Header("RespawnState")]
+    public float respawnTime;
 
     [Header("Condition")]
     public int hp;
