@@ -14,7 +14,7 @@ public class PlayerBaseState : IState
     protected Player _player;
     protected PlayerWeapon _playerWeapon;
     protected CapsuleCollider2D _capsuleCollider;
-    
+
     public AudioClip[] SoundClip;
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
@@ -65,8 +65,10 @@ public class PlayerBaseState : IState
     public virtual void PhysicsUpdate()
     {
         Move();
-        
-        if (!_player.IsGround()&&_rigidbody.velocity.y < -1f)
+        _player.Handler.ApplyGravity();
+
+
+        if (!_player.IsGround() && _rigidbody.velocity.y < -1f)
         {
             _stateMachine.ChangeState(_stateMachine.FallState);
         }
@@ -86,13 +88,15 @@ public class PlayerBaseState : IState
     {
         Move(_input.MoveInput);
         Rotate(_input.MoveInput);
+
+        Vector2 targetPosition = _player.Rigidbody.position + _player.Handler.velocity * Time.fixedDeltaTime;
+
+        _player.Rigidbody.MovePosition(targetPosition);
     }
 
     public void Move(Vector2 direction)
     {
-        direction.y = 0;
-        Vector2 moveVelocity = new Vector2(direction.normalized.x * _data.moveSpeed, _rigidbody.velocity.y);
-        _rigidbody.velocity = moveVelocity;
+        _player.Handler.velocity.x = direction.x * _data.moveSpeed;
     }
 
     public void Rotate(Vector2 direction)
@@ -104,7 +108,7 @@ public class PlayerBaseState : IState
             //무기 회전
             float angle = _spriteRenderer.flipX ? 180 : 0;
             _player.Weapon.transform.rotation = Quaternion.Euler(angle, 0, angle);
-            
+
         }
     }
 }
