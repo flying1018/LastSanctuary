@@ -190,13 +190,11 @@ public class Enemy : MonoBehaviour
     }
     
     //사운드 실행 애니메이션 이벤트
-    public void PlaySFX1()
+    public void EventSFX1()
     {
-        if (StateMachine.currentState is PlayerBaseState playerBaseState)
+        if (StateMachine.currentState is EnemyBaseState enemyBaseState)
         {
-            if (playerBaseState.SoundClip == null) return;
-            SoundManager.Instance.PlaySFX(playerBaseState.SoundClip[0]);
-
+            enemyBaseState.PlaySFX1();
         }
     }
     

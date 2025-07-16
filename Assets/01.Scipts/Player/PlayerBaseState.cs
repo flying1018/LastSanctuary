@@ -14,8 +14,6 @@ public class PlayerBaseState : IState
     protected Player _player;
     protected PlayerWeapon _playerWeapon;
     protected CapsuleCollider2D _capsuleCollider;
-    
-    public AudioClip[] SoundClip;
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
@@ -29,8 +27,6 @@ public class PlayerBaseState : IState
         _playerWeapon = _player.PlayerWeapon;
         _capsuleCollider = _player.CapsuleCollider;
         _inventory = _player.Inventory;
-
-        SoundClip = new AudioClip[10];
     }
 
     public virtual void Enter()
@@ -111,4 +107,7 @@ public class PlayerBaseState : IState
             
         }
     }
+
+    public virtual void PlaySFX1() { }
+    public virtual void PlaySFX2() { }
 }

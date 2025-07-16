@@ -25,8 +25,7 @@ public class PlayerDashState : PlayerBaseState
         Rotate(_dir);
         
         //효과음
-        SoundClip[0] = _data.dashSound;
-        _player.PlaySFX1();
+        PlaySFX1();
     }
 
     public override void Exit()
@@ -84,4 +83,8 @@ public class PlayerDashState : PlayerBaseState
         _rigidbody.velocity = _dir * _data.dashPower;
     }
 
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.dashSound);
+    }
 }

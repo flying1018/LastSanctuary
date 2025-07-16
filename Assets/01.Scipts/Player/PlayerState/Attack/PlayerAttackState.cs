@@ -36,9 +36,6 @@ public class PlayerAttackState : PlayerBaseState
         
         //무적 공격은 무적상태 추가
         _condition.IsInvincible = attackInfo.isInvincible;
-        
-        //사운드 추가
-        SoundClip[0] = _data.attackSound;
     }
 
     public override void Exit()
@@ -85,5 +82,10 @@ public class PlayerAttackState : PlayerBaseState
     public override void PhysicsUpdate()
     {
 
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.attackSound,0.2f);
     }
 }

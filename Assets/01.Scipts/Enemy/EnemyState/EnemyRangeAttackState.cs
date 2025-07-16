@@ -27,6 +27,6 @@ public class EnemyRangeAttackState : EAttackState
         }
         
         //사운드
-        _enemy.PlaySFX1();
+        //_enemy.PlaySFX1();
     }
 }

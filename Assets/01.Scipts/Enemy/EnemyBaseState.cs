@@ -12,7 +12,7 @@ public class EnemyBaseState : IState
     protected Enemy _enemy;
     protected Transform _spawnPoint;
     
-    public AudioClip[] SoundClip;
+
 
     public EnemyBaseState(EnemyStateMachine enemyStateMachine)
     {
@@ -23,8 +23,6 @@ public class EnemyBaseState : IState
         _spriteRenderer =_enemy.SpriteRenderer;
         _condition = _enemy.Condition;
         _spawnPoint = _enemy.SpawnPoint;
-
-        SoundClip = new AudioClip[10];
     }
     
     public virtual void Enter()
@@ -112,4 +110,7 @@ public class EnemyBaseState : IState
     {
         return _spawnPoint.position - _enemy.transform.position;
     }
+    
+    public virtual void PlaySFX1() { }
+    public virtual void PlaySFX2() { }
 }

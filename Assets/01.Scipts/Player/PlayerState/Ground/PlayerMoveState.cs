@@ -12,9 +12,6 @@ public class PlayerMoveState : PlayerGroundState
     {
         base.Enter();
         StartAnimation(_player.AnimationDB.MoveParameterHash);
-        
-        //효과음 설정
-        SoundClip[0] = _data.moveSound;
     }
 
     public override void Exit()
@@ -35,5 +32,10 @@ public class PlayerMoveState : PlayerGroundState
         {   //대기
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.moveSound);
     }
 }

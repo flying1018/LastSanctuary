@@ -23,9 +23,8 @@ public class PlayerJumpState : PlayerAirState
         _maxHoldTime = 0.2f;
         _keyHold = _input.IsLongJump;
         
-        //사운드
-        SoundClip[0] = _data.jumpSound;
-        _player.PlaySFX1();
+        //효과음 실행
+        PlaySFX1();
     }
 
     public override void Exit()
@@ -62,5 +61,10 @@ public class PlayerJumpState : PlayerAirState
         {
             _keyHold = false;
         }
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX( _data.jumpSound);
     }
 }

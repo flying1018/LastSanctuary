@@ -18,11 +18,6 @@ public class PlayerGuardState : PlayerBaseState
         _guardStart = Time.time;
         _condition.IsPerfectGuard = true;
         _condition.IsGuard = true;
-        
-        //방어 소리 설정
-        SoundClip[0] = _data.guardSound;
-        SoundClip[1] = _data.perfectGuardSound;
-
     }
 
     public override void Exit()
@@ -66,5 +61,15 @@ public class PlayerGuardState : PlayerBaseState
     public override void Update()
     {
         
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.guardSound);
+    }
+    
+    public override void PlaySFX2()
+    {
+        SoundManager.Instance.PlaySFX(_data.perfectGuardSound);
     }
 }

@@ -16,9 +16,6 @@ public class PlayerHealState : PlayerGroundState
         StartAnimation(_player.AnimationDB.HealParameterHash);
 
         _time = 0;
-        
-        //사운드 추가
-        SoundClip[0] = _data.healSound;
     }
 
     public override void Exit()
@@ -52,5 +49,10 @@ public class PlayerHealState : PlayerGroundState
     public override void PhysicsUpdate()
     {
 
+    }
+    
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.healSound);
     }
 }

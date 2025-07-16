@@ -22,9 +22,6 @@ public class EAttackState : EnemyBaseState
         //공격력 정보 넘겨주기
         _enemy.EnemyWeapon.Damage = _data.attack;
         _enemy.EnemyWeapon.knockBackForce = _data.knockbackForce;
-
-        //효과음 추가
-        SoundClip[0] = _data.attackSound;
     }
     
     public override void Exit()
@@ -60,6 +57,11 @@ public class EAttackState : EnemyBaseState
             _stateMachine.ChangeState(_stateMachine.ChaseState);
         }
 
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.attackSound);
     }
 }
 

@@ -12,9 +12,6 @@ public class PlayerRopedState : PlayerAirState
         StartAnimation(_player.AnimationDB.RopedParameterHash);;
         
         _rigidbody.gravityScale = 0;
-        
-        //사운드 추가
-        SoundClip[0] = _data.ropeSound;
     }
     
     public override void Exit()
@@ -88,5 +85,10 @@ public class PlayerRopedState : PlayerAirState
         direction.x = 0;
         Vector2 moveVelocity = new Vector2(_rigidbody.velocity.x, direction.normalized.y * _data.moveSpeed);
         _rigidbody.velocity = moveVelocity;
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX( _data.ropeSound);
     }
 }

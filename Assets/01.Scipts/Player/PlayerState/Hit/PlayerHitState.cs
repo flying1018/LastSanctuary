@@ -27,9 +27,7 @@ public class PlayerHitState : PlayerBaseState
                 break;
         }
         
-        //사운드
-        SoundClip[0] = _data.hitSound;
-        _player.PlaySFX1();
+        PlaySFX1();
     }
 
     public override void Exit()
@@ -44,7 +42,10 @@ public class PlayerHitState : PlayerBaseState
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
-        
+    }
 
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.hitSound);
     }
 }
