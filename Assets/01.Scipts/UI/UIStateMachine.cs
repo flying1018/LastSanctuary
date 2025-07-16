@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// UI의 상태머신
+/// </summary>
 public class UIStateMachine : StateMachine
 {
     public UIManager UIManager { get; private set; }

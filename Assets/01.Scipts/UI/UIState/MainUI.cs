@@ -47,8 +47,9 @@ public class MainUI : UIBaseState
 
     public override void HandleInput()
     {
+        //esc 이력 시
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
+        {   //성물 UI
             _uiStateMachine.ChangeState(_uiStateMachine.RelicUI);
         }
     }
@@ -62,6 +63,7 @@ public class MainUI : UIBaseState
         _staminaConditionUI.SetCurValue(_playerCondition.StaminaValue());
     }
     
+    //포션의 개수를 갱신
     public void UpdatePotionText()
     {
         _potionText.text = _playerInventory.CurPotionNum.ToString();
@@ -71,11 +73,12 @@ public class MainUI : UIBaseState
             _potionIcon.sprite = _data.emptyPotionIcon;
     }
 
+    //버프 갱신
     public void UpdateBuffUI(StatObjectSO data)
     {
         foreach (BuffUI buffUI in _buffUIs)
         {
-            if (buffUI.data == null)
+            if (buffUI.data == null || buffUI.data == data)
             {
                 buffUI.SetBuff(data);
                 break;

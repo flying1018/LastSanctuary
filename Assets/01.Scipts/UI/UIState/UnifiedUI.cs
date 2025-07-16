@@ -20,9 +20,20 @@ public class UnifiedUI : UIBaseState
         _uiManager.PlayerInput.enabled = true;
         _uiManager.UnifiedUI.SetActive(false);
     }
-    
+
+    //나가기 버튼
     public void OnClickExitButton()
     {
         _uiStateMachine.ChangeState(_uiStateMachine.MainUI);
     }
+    
+    public override void HandleInput()
+    {
+        //Esc 입력 시
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {   //메인 UI로 이동
+            _uiStateMachine.ChangeState(_uiStateMachine.MainUI);
+        }
+    }
+
 }

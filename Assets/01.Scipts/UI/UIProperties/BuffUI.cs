@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// MainUI에 있는 버프 표시 창
+/// </summary>
 public class BuffUI : MonoBehaviour
 {
     [SerializeField] private float blinkTime;
@@ -11,6 +14,7 @@ public class BuffUI : MonoBehaviour
     public Image icon;
     public StatObjectSO data;
     
+    //버프가 생겼을 시 표시
     public void SetBuff(StatObjectSO data)
     {
         UIManager.Instance.StartCoroutine(SetBuff_Coroutine(data));
