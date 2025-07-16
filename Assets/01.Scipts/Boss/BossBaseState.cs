@@ -19,8 +19,6 @@ public class BossBaseState : IState
     protected Boss _boss;
     protected BossWeapon _weapon;
 
-    public AudioClip[] SoundClip;
-
     public BossBaseState(BossStateMachine bossStateMachine)
     {
         this._stateMachine = bossStateMachine;
@@ -31,8 +29,6 @@ public class BossBaseState : IState
         _polygonCollider = _boss.PolygonCollider;
         _condition = _boss.Condition;
         _weapon = _boss.BossWeapon;
-        
-        SoundClip = new AudioClip[10];
     }
     
     public virtual void Enter()
@@ -153,4 +149,8 @@ public class BossBaseState : IState
         if(_boss.Target == null) return Vector2.zero; //방어코드
         return (_boss.Target.position - _boss.transform.position).normalized; //플레이어 방향
     }
+    
+    public virtual void PlaySFX1() { }
+    public virtual void PlaySFX2() { }
+    public virtual void PlaySFX3() { }
 }

@@ -177,42 +177,33 @@ public class Boss : MonoBehaviour
     }
     
     //효과음 실행르 위한 메서드
-    public void PlaySFX1()
+    //사운드 실행 애니메이션 이벤트
+    public void EventSFX1()
     {
         if (StateMachine.currentState is BossBaseState bossBaseState)
         {
-            if (bossBaseState.SoundClip == null) return;
-            SoundManager.Instance.PlaySFX(bossBaseState.SoundClip[0]);
-
+            bossBaseState.PlaySFX1();
         }
     }
 
-    public void PlaySFX2()
+    public void EventSFX2()
     {
         if (StateMachine.currentState is BossBaseState bossBaseState)
         {
-            if (bossBaseState.SoundClip == null) return;
-            SoundManager.Instance.PlaySFX(bossBaseState.SoundClip[1]);
-        }
-    }   
-    
-    public void PlaySFX3()
-    {
-        if (StateMachine.currentState is BossBaseState bossBaseState)
-        {
-            if (bossBaseState.SoundClip == null) return;
-            SoundManager.Instance.PlaySFX(bossBaseState.SoundClip[2]);
-        }
-    }    
-    
-    public void PlaySFX4()
-    {
-        if (StateMachine.currentState is BossBaseState bossBaseState)
-        {
-            if (bossBaseState.SoundClip == null) return;
-            SoundManager.Instance.PlaySFX(bossBaseState.SoundClip[3]);
+            bossBaseState.PlaySFX2();
         }
     }
+    
+    public void EventSFX3()
+    {
+        if (StateMachine.currentState is BossBaseState bossBaseState)
+        {
+            bossBaseState.PlaySFX3();
+        }
+    }
+    
+
+
 
     #endregion
     

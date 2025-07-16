@@ -18,11 +18,6 @@ public class BossSpawnState : BossBaseState
         
         //애니메이션 실행
         _boss.Animator.SetTrigger(_boss.AnimationDB.SpawnParameterHash);
-
-        //애니메이션 실행에 필요한 사운드
-        SoundClip[0] = _data.landingSound;
-        SoundClip[1] = _data.breathSound;
-        SoundClip[2] = _data.howlingSound;
     }
 
     public override void Exit()
@@ -51,5 +46,20 @@ public class BossSpawnState : BossBaseState
     public override void PhysicsUpdate()
     {
         //콜라이더 자동 변경 시 콜라이더가 사라지는 버그가 있어서 블락
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.landingSound);
+    }
+    
+    public override void PlaySFX2()
+    {
+        SoundManager.Instance.PlaySFX(_data.breathSound);
+    }
+    
+    public override void PlaySFX3()
+    {
+        SoundManager.Instance.PlaySFX(_data.howlingSound);
     }
 }

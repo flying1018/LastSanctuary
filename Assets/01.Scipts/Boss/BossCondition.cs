@@ -28,29 +28,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
         _isTakeDamageable = false;
     }
     
-    //죽었을 때
-    public void Death()
-    {
-        StartCoroutine(Death_Coroutine());
-    }
-    private IEnumerator Death_Coroutine()
-    {
-        //죽을 때 필요한 소리 설정
-        if (_boss.StateMachine.currentState is BossBaseState bossBaseState)
-        {
-            bossBaseState.SoundClip[0] = _boss.Data.deathSound;
-        }
-        //애니메이션 실행
-        _boss.Animator.SetTrigger(_boss.AnimationDB.DeathParameterHash);
-        //키네마틱 켜기
-        _boss.KinematicOn();
-        //보스 사망 연출
-        _boss.BossEvent.OnTriggerBossDeath();
-        //죽는 시간 만큼 대기
-        yield return new WaitForSeconds(_boss.Data.deathTime);
-        //제거
-        ObjectPoolManager.Set(_boss.Data._key, _boss.gameObject, _boss.gameObject);
-    }
+
     
     //대미지 입을 때
     public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
@@ -64,7 +42,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
         //죽었을 때
         if (!IsAlive())
         {   //죽음
-            Death(); 
+            _boss.StateMachine.ChangeState(_boss.StateMachine.DeathState);
         }
         //그로기 상태가 아니고 페이즈 변환 조건이 되면
         else if(!IsGroggy && CheckPhaseShift())
