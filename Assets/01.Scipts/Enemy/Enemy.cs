@@ -24,17 +24,18 @@ public enum AttackType
 public class Enemy : MonoBehaviour
 {
     //필드
-   
 
     //직렬화
     [field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
     [SerializeField] private EnemySO enemyData;
-    [SerializeField] private LayerMask platformLayer;
     [SerializeField] private float platformCheckDistance;
     [SerializeField] private IdleType idleType;
     [SerializeField] private MoveType moveType;
     [SerializeField] private AttackType attackType;
     [SerializeField] private float patrolDistance = 5;
+    [SerializeField] private LayerMask platformLayer;
+    [SerializeField] private float gravityScale = 9.8f;
+   
     
     //프로퍼티
     public CapsuleCollider2D CapsuleCollider { get; set; }
@@ -52,17 +53,20 @@ public class Enemy : MonoBehaviour
     public MoveType MoveType {get => moveType;}
     public AttackType AttackType {get => attackType;}
     public float PatrolDistance { get; set; }
+    public float VerticalVelocity { get; set; }
+    
 
     private void Update()
     {
         StateMachine.HandleInput();
         StateMachine.Update();
     }
-
-
+    
     private void FixedUpdate()
     {
-        if (Condition.IsDeath) return; 
+        if (Condition.IsDeath) return;
+
+        ApplyGravity();
         StateMachine.PhysicsUpdate();
         //Debug.Log(StateMachine.currentState);
         //Debug.Log(StateMachine.attackCoolTime);
@@ -142,6 +146,20 @@ public class Enemy : MonoBehaviour
         StateMachine = new EnemyStateMachine(this);
     }
 
+    private void ApplyGravity()
+    {
+        if(moveType == MoveType.Fly) return;
+        if (IsGrounded())
+        {
+            VerticalVelocity = 0f;
+        }
+        else
+        {
+            VerticalVelocity += Physics.gravity.y * Time.deltaTime;
+        }
+        
+    }
+
     public bool IsPlatform()
     {
         float capsulsize = CapsuleCollider.size.x / 2;
@@ -152,16 +170,12 @@ public class Enemy : MonoBehaviour
             platformCheckDistance, platformLayer);
     }
 
-    public void SetCollisionEnabled(bool isEnabled)
+    public bool IsGrounded()
     {
-        if (isEnabled)
-        {
-            Rigidbody.bodyType = RigidbodyType2D.Dynamic;
-        }
-        else
-        {
-            Rigidbody.bodyType = RigidbodyType2D.Kinematic;
-        }
+        Vector2 newPos = new Vector2(transform.position.x, transform.position.y);
+        Ray ray = new Ray(newPos, Vector2.down);
+        Debug.DrawRay(ray.origin,ray.direction * CapsuleCollider.size.y / 2, Color.red);
+        return Physics2D.Raycast(ray.origin,ray.direction,CapsuleCollider.size.y / 2,platformLayer);
     }
 
     public bool FindTarget()

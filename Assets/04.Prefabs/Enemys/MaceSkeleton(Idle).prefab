@@ -179,7 +179,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3153555157828818715}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -229,14 +229,18 @@ MonoBehaviour:
     hitParameter: Hit
     deathParameter: Death
   enemyData: {fileID: 11400000, guid: 79002608b4f4cac48b62fd38ebe5331e, type: 2}
-  platformLayer:
-    serializedVersion: 2
-    m_Bits: 1280
   platformCheckDistance: 2
   idleType: 0
   moveType: 0
   attackType: 0
   patrolDistance: 5
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 1280
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  gravityScale: 9.8
 --- !u!1 &6224774757196196992
 GameObject:
   m_ObjectHideFlags: 0
