@@ -63,6 +63,16 @@ MonoBehaviour:
     groggyDamage: 5
     isInvincible: 1
   maxUltimateGauge: 0
+  jumpAttack:
+    attackAnim: {fileID: 7400000, guid: fb83938d100c40e4b9e179de0fa7eb31, type: 2}
+    attackIndex: 5
+    multiplier: 1
+    nextComboTime: 0
+    staminaCost: 0
+    attackForce: 0
+    knockbackForce: 0
+    groggyDamage: 0
+    isInvincible: 0
   <LightHitDuration>k__BackingField: 0.2
   <HeavyHitDuration>k__BackingField: 0.5
   <invincibleDuration>k__BackingField: 1

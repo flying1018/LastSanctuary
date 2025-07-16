@@ -36,7 +36,7 @@ public class PlayerStateMachine : StateMachine
             new ComboAttackState(this, player.Data.attacks[1]),
             new ComboAttackState(this, player.Data.attacks[2])
         };
-        JumpAttack = new PlayerAttackState(this,player.Data.attacks[0]);
+        JumpAttack = new PlayerAttackState(this,player.Data.jumpAttack);
         DashAttack = new PlayerAttackState(this,player.Data.dashAttack);
         DashState = new PlayerDashState(this);
         FallState = new PlayerFallState(this);
