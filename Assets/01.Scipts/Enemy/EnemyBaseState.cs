@@ -11,6 +11,8 @@ public class EnemyBaseState : IState
     protected EnemyCondition _condition;
     protected Enemy _enemy;
     protected Transform _spawnPoint;
+
+    protected float _time;
     
 
 

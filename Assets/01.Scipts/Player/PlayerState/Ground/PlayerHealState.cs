@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerHealState : PlayerGroundState
 { 
-    private float _time;
-    
     public PlayerHealState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -16,6 +14,8 @@ public class PlayerHealState : PlayerGroundState
         StartAnimation(_player.AnimationDB.HealParameterHash);
 
         _time = 0;
+        
+        Debug.Log("heal enter");
     }
 
     public override void Exit()
@@ -27,6 +27,7 @@ public class PlayerHealState : PlayerGroundState
         _condition.Heal(); 
         
         StopAnimation(_player.AnimationDB.HealParameterHash);
+        Debug.Log("heal exit");
     }
 
     public override void HandleInput()
@@ -40,7 +41,7 @@ public class PlayerHealState : PlayerGroundState
         
         //힐 시간이 끝나면
         _time += Time.deltaTime;
-        if (_time <= _data.HealTime) 
+        if (_time > _data.HealTime) 
         {   //대기
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }

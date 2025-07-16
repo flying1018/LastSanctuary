@@ -28,23 +28,6 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         IsDeath = false;
     }
     
-    //죽음 상태
-    public void Death()
-    {
-        StartCoroutine(Death_Coroutine());
-    }
-    
-    private IEnumerator Death_Coroutine()
-    {
-        IsDeath = true;
-        _enemy.Rigidbody.velocity = Vector2.zero;
-        _enemy.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
-        _enemy.Animator.SetTrigger(_enemy.AnimationDB.DeathParameterHash);
-        yield return new WaitForSeconds(_enemy.Data.DeathTime);
-        _enemy.SpawnPoint.GetComponent<EnemySpawnPoint>().isSpawn = false;
-        ObjectPoolManager.Set(_enemy.Data._key, _enemy.gameObject, _enemy.gameObject);
-    }
-
     //대미지 입을 때
     public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
     {
@@ -55,7 +38,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         
         if (_curHp <= 0)
         {
-            Death();
+            _enemy.StateMachine.ChangeState(_enemy.StateMachine.DeathState);
         }
         else
         {
