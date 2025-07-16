@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class Boss : MonoBehaviour
     //직렬화
     [field: SerializeField] public BossAnimationDB AnimationDB {get; private set;}
     [SerializeField] private BossSO bossData;
+    [SerializeField] private LayerMask groundLayer;
+    //[SerializeField] private float gravityScale = 9.8f;
 
     //프로퍼티
     public BossEvent BossEvent { get; set; }
@@ -25,6 +28,7 @@ public class Boss : MonoBehaviour
     public GameObject Weapon { get; set; }
     public BossSO Data {get => bossData;}
     public bool Phase2 { get; set; }
+    public float VerticalVelocity { get; set;}
 
     public void Init(BossEvent bossEvent)
     {
@@ -60,6 +64,7 @@ public class Boss : MonoBehaviour
     
     private void FixedUpdate()
     {
+        ApplyGravity();
         StateMachine.PhysicsUpdate();
 //        Debug.Log(StateMachine.currentState);
 
@@ -72,7 +77,7 @@ public class Boss : MonoBehaviour
         //2. 3공격 패턴은 예외
         if(other.CompareTag(StringNameSpace.Tags.Player) && 
            StateMachine.currentState != StateMachine.Attack3)
-            KinematicOff();
+            ColliderisTriggerOff();
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -82,7 +87,7 @@ public class Boss : MonoBehaviour
         //2. 3공격 패턴은 예외
         if(other.CompareTag(StringNameSpace.Tags.Player) && 
            StateMachine.currentState != StateMachine.Attack3)
-            KinematicOff();
+            ColliderisTriggerOff();
     }
 
 
@@ -95,11 +100,31 @@ public class Boss : MonoBehaviour
     //Attack2에서 사용하는 애니메이션 이벤트
     public void BackJump()
     {   
-        Vector2 backDir = transform.position - Target.position;
-        backDir.y = Mathf.Abs(backDir.x);
-        Rigidbody.AddForce(backDir.normalized * Data.backJumpPower, ForceMode2D.Impulse);
-        
+        StartCoroutine(BackJumpCoroutine());
         //플레이어가 가까이 붙었을 때 점프를 안하는 버그가 있음.
+    }
+
+    private IEnumerator BackJumpCoroutine()
+    {
+        float duration = 0.6f;
+        float timer = 0f;
+
+        Vector2 startPos = Rigidbody.position;
+        Vector2 backDir = (startPos - (Vector2)Target.position).normalized;
+        Vector2 horizontalDir = new Vector2(backDir.x, 0f);
+        
+        while (timer < duration)
+        {
+            float t = timer / duration;
+            float x = Data.backjumpDistance * t;
+            float y = 4f * Data.backjumpHeight * t * (1f - t);
+            
+            Vector2 newPos = startPos + horizontalDir * x + Vector2.up * y;
+            Rigidbody.MovePosition(newPos);
+
+            timer += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     //점프 멈추기
@@ -149,19 +174,38 @@ public class Boss : MonoBehaviour
             _chasePlayerCoroutine = null;
         }
     }
-
+    
+    //중력
+    private void ApplyGravity()
+    {
+        if (IsGrounded())
+        {
+            VerticalVelocity = 0f;
+        }
+        else
+        {
+            VerticalVelocity += Physics.gravity.y * Time.deltaTime;
+        }
+    }
+    
+    //땅에 있는지
+    public bool IsGrounded()
+    {
+        Vector2 newPos = new Vector2(transform.position.x, transform.position.y);
+        Ray ray = new Ray(newPos, Vector2.down);
+        Debug.DrawRay(ray.origin,ray.direction * PolygonCollider.bounds.size.y / 2, Color.red);
+        return Physics2D.Raycast(ray.origin,ray.direction,PolygonCollider.bounds.size.y / 2,groundLayer);
+    }
     //중력이 필요 없을 때
-    public void KinematicOn()
+    public void ColliderisTriggerOn()
     {
         PolygonCollider.isTrigger = true;
-        Rigidbody.bodyType = RigidbodyType2D.Kinematic;
     }
 
     //중력이 필요 할 때
-    public void KinematicOff()
+    public void ColliderisTriggerOff()
     {
         PolygonCollider.isTrigger = false;
-        Rigidbody.bodyType = RigidbodyType2D.Dynamic;
     }
     
     //연출용 애니메이션 이벤트

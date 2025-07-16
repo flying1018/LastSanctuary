@@ -201,27 +201,15 @@ public class BossEvent : MonoBehaviour
          
          bossSprite.material = redSilhouette;
          playerSprite.material = redSilhouette;
-         
-        // Color originBossColor = bossSprite.color;
-        // Color originPlayerColor = playerSprite.color;
-        // bossSprite.color = Color.red;
-        // playerSprite.color = Color.red;
         
         //연출 유지
-        while (timer < sloweventDuration)
-        {
-            timer += Time.unscaledDeltaTime;
-            yield return null;
-        }
+        yield return new WaitForSecondsRealtime(sloweventDuration);
 
         //색 돌리기
         Time.timeScale = 1f;
         _backGroundSprite.color = originbackGroundColor;
         bossSprite.material = originBossMaterial;
         playerSprite.material = originplayerMaterial;
-        
-        //bossSprite.color = originBossColor;
-        //playerSprite.color = originPlayerColor;
 
         //보스 정지
         _boss.Animator.speed = 0f;
@@ -231,11 +219,7 @@ public class BossEvent : MonoBehaviour
         CameraShake();
         
         //죽는 이벤트 시간만큼 대기
-        while (timer < _boss.Data.deathEventDuration)
-        {
-            timer += Time.deltaTime;
-            yield return null;
-        }
+        yield return new WaitForSeconds(_boss.Data.deathEventDuration);
 
         //설정 복구
         _brain.m_DefaultBlend = _originBlend;
