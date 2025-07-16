@@ -6,7 +6,7 @@ public class PlayerJumpState : PlayerAirState
 {
     private float _maxHoldTime;
     private bool _keyHold;
-    
+
     public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
@@ -17,10 +17,14 @@ public class PlayerJumpState : PlayerAirState
         _input.IsJump = false;
         _maxHoldTime = 0.2f;
         _keyHold = _input.IsLongJump;
-        
+
         //사운드
         SoundClip[0] = _data.jumpSound;
         _player.PlaySFX1();
+
+        Vector2 velocity = _rigidbody.velocity;
+        velocity.y = _data.jumpForce;
+        _rigidbody.velocity = velocity;
     }
 
     public override void Exit()
@@ -32,7 +36,7 @@ public class PlayerJumpState : PlayerAirState
     public override void HandleInput()
     {
         base.HandleInput();
-        
+
         if (!_input.IsLongJump)
             _keyHold = _input.IsLongJump;
     }
@@ -49,7 +53,6 @@ public class PlayerJumpState : PlayerAirState
         if (_keyHold && _maxHoldTime > 0f)
         {
             _maxHoldTime -= Time.deltaTime;
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _data.jumpForce);
         }
         else
         {
