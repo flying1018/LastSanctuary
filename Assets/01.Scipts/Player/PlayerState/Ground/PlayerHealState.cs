@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHealState : PlayerGroundState
 { 
-    private float _healTimer;
+    private float _time;
     
     public PlayerHealState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -15,8 +15,7 @@ public class PlayerHealState : PlayerGroundState
         base.Enter();
         StartAnimation(_player.AnimationDB.HealParameterHash);
 
-        _healTimer = _data.healTime;
-        _inventory.UsePotion();
+        _time = 0;
         
         //사운드 추가
         SoundClip[0] = _data.healSound;
@@ -27,7 +26,9 @@ public class PlayerHealState : PlayerGroundState
         base.Exit();
         
         //체력 회복
+        _inventory.UsePotion();
         _condition.Heal(); 
+        
         StopAnimation(_player.AnimationDB.HealParameterHash);
     }
 
@@ -40,22 +41,16 @@ public class PlayerHealState : PlayerGroundState
     {
         base.Update();
         
-        _healTimer -= Time.deltaTime;
-
-        if (_healTimer <= 0f) //만약 힐 타임이 0보다 작으면
-        {
-            CompleteHeal(); //실행
+        //힐 시간이 끝나면
+        _time += Time.deltaTime;
+        if (_time <= _data.HealTime) 
+        {   //대기
+            _stateMachine.ChangeState(_stateMachine.IdleState);
         }
     }
 
     public override void PhysicsUpdate()
     {
 
-    }
-    
-    private void CompleteHeal()
-    {
-        //체력+힐값 적기.
-        _stateMachine.ChangeState(_stateMachine.IdleState); //힐이 끝나면 아이들 스테이트로
     }
 }

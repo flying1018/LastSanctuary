@@ -4,6 +4,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// 플레이어의 조작을 처리하는 메서드
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
     //필드

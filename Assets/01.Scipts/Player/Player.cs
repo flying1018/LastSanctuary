@@ -153,7 +153,10 @@ public class Player : MonoBehaviour
         return Physics2D.Raycast(transform.position, Vector2.down,
             (CapsuleCollider.size.y / 2) + groundCheckDistance, aerialPlatformLayer);
     }
-
+    
+    #endregion
+    
+    #region AnimationEvent Method
     public void ApplyAttackForce()
     {
         AttackInfo attackInfo = null;
@@ -183,7 +186,5 @@ public class Player : MonoBehaviour
             SoundManager.Instance.PlaySFX(playerBaseState.SoundClip[1]);
         }
     }
-
-
     #endregion
 }

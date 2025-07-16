@@ -30,6 +30,7 @@ public class CollectObject : MonoBehaviour, IInteractable, IComparable<CollectOb
         gameObject.SetActive(!isGet);
     }
 
+    //수집물 번호 정렬
     public int CompareTo(CollectObject other)
     {
         return collectData.index.CompareTo(other.collectData.index);

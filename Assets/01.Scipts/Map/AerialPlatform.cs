@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// 공중 발판
+/// </summary>
 public class AerialPlatform : MonoBehaviour
 {
     [SerializeField] private float downJumpTime;
@@ -16,6 +19,7 @@ public class AerialPlatform : MonoBehaviour
         _platformEffector2D = GetComponent<PlatformEffector2D>();
     }
 
+    //블럭 밑으로 내려가기
     public void DownJump()
     {
         StartCoroutine(DownJump_Coroutine());

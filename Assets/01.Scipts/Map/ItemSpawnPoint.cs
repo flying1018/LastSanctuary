@@ -8,7 +8,7 @@ public class ItemSpawnPoint : MonoBehaviour
     [SerializeField] private GameObject item;
     
     private GameObject curItem;
-    private Coroutine coroutine;
+    private Coroutine coroutine;    //어떤 코루틴인지 명시 필요
     [SerializeField] private float _respawnCoolTime = 10;
     
     
@@ -18,6 +18,7 @@ public class ItemSpawnPoint : MonoBehaviour
         Spawn();
     }
     
+    //아이템 스폰
     public void Spawn()
     {
         curItem =ObjectPoolManager.Get(item,(int)ObjectPoolManager.PoolingIndex.Item);
@@ -28,6 +29,7 @@ public class ItemSpawnPoint : MonoBehaviour
     }
     
 
+    //아이템 리스폰
     public void Respawn()
     {
         //리스폰시 동작중인 코루틴 정지

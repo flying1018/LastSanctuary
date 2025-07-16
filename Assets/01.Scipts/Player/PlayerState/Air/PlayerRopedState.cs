@@ -13,6 +13,7 @@ public class PlayerRopedState : PlayerAirState
         
         _rigidbody.gravityScale = 0;
         
+        //사운드 추가
         SoundClip[0] = _data.ropeSound;
     }
     
@@ -24,39 +25,47 @@ public class PlayerRopedState : PlayerAirState
         _rigidbody.gravityScale = 3;
     }
 
+    
     public override void HandleInput()
     {
+        //좌우 입력 중이고, 대쉬 키를 입력하면
         if (Mathf.Abs(_input.MoveInput.x) > 0 && 
             _input.IsDash && _condition.UsingStamina(_data.dashCost))
-        {
+        {   //대쉬
             _stateMachine.ChangeState(_stateMachine.DashState);
         }
 
+        //좌우 입력 중이고, 점프 키를 입력하면 
         if (_input.IsJump && Mathf.Abs(_input.MoveInput.x) > 0)
-        {
+        {   //점프
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
 
+        //아래키 입력 중이고 공중 발판 이 있을 때 공중 발판 뚫기
         if (_input.MoveInput.y < 0)
         {
             if (_player.AerialPlatform == null) return;
             _player.AerialPlatform.DownJump();
         }
 
-    }
-
-    public override void Update()
-    {
-        base.Update();
-        if(!_player.IsRoped)
-            _stateMachine.ChangeState(_stateMachine.IdleState);
+        //아래키 입력 중이고 바닥에 도달했을 때
         if (_input.MoveInput.y < 0 && _player.IsGround())
         {
             if(_player.IsAerialPlatform()) return;
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
     }
-    
+
+    public override void Update()
+    {
+        //스테미나 회복
+        base.Update();
+        
+        //로프에서 탈출 했을 때
+        if(!_player.IsRoped)
+            _stateMachine.ChangeState(_stateMachine.IdleState);
+        
+    }
     
     
     public override void PhysicsUpdate()

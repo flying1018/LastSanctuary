@@ -13,11 +13,13 @@ public class PlayerGuardState : PlayerBaseState
         base.Enter();
         StartAnimation(_player.AnimationDB.GuardParameterHash);
         
-        _rigidbody.velocity = Vector2.zero;
+        //방어에 필요한 데이터 설정
+        Move(Vector2.zero);
         _guardStart = Time.time;
         _condition.IsPerfectGuard = true;
         _condition.IsGuard = true;
         
+        //방어 소리 설정
         SoundClip[0] = _data.guardSound;
         SoundClip[1] = _data.perfectGuardSound;
 
@@ -28,19 +30,22 @@ public class PlayerGuardState : PlayerBaseState
         base.Exit();
         StopAnimation(_player.AnimationDB.GuardParameterHash);
         
+        //방어 종료
         _condition.IsGuard = false;
         _condition.IsPerfectGuard = false;
     }
 
     public override void HandleInput()
     {
+        //가드 해제 시
         if (!_input.IsGuarding)
-        {
+        {   //대기
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
+        //대쉬 키 입력 시 스테미나가 충분하면
         if (_input.IsDash && _condition.UsingStamina(_data.dashCost))
-        {
-            _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
+        {   //대쉬
+            _stateMachine.ChangeState(_stateMachine.DashState); 
         }
     }
     
@@ -49,6 +54,7 @@ public class PlayerGuardState : PlayerBaseState
         PerfectGuard();
     }
     
+    //퍼펙트 가드
     public void PerfectGuard()
     {
         if (Time.time - _guardStart >= _data.perfectGuardWindow)

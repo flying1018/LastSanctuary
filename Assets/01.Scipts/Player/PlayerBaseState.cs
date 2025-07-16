@@ -45,20 +45,22 @@ public class PlayerBaseState : IState
 
     public virtual void HandleInput()
     {
-
+        //대쉬 키 입력 시 스태미나가 충분하면
         if (_input.IsDash && _condition.UsingStamina(_data.dashCost))
-        {
-            _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
+        {   //대쉬
+            _stateMachine.ChangeState(_stateMachine.DashState); 
         }
-
+        
+        //로프에 닿고, 상하 키 입력 시
         if (_player.IsRoped && Mathf.Abs(_input.MoveInput.y) > 0f)
-        {
+        {   //로프 상태
             _stateMachine.ChangeState(_stateMachine.RopedState);
         }
     }
 
     public virtual void Update()
     {
+        //스태미나 회복
         _condition.RecoveryStamina();
     }
 
@@ -66,8 +68,9 @@ public class PlayerBaseState : IState
     {
         Move();
         
+        //떨어지기 시작하면
         if (!_player.IsGround()&&_rigidbody.velocity.y < -1f)
-        {
+        {   //떨어지는 상태
             _stateMachine.ChangeState(_stateMachine.FallState);
         }
     }
@@ -82,6 +85,7 @@ public class PlayerBaseState : IState
         _player.Animator.SetBool(animatorHash, false);
     }
 
+    //입력 값에 이동하는 메서드
     public void Move()
     {
         Move(_input.MoveInput);

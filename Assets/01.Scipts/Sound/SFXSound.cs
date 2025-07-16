@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// 효과음 실행하는 프리펩
+/// 효과음 실행하는 클래스
 /// </summary>
 public class SFXSound : MonoBehaviour
 {

@@ -8,6 +8,7 @@ public class PlayerAttackState : PlayerBaseState
     protected float _time;
     protected float _animationTime;
 
+    //생성자
     public PlayerAttackState(PlayerStateMachine stateMachine, AttackInfo attackInfo) : base(stateMachine)
     {
         this.attackInfo = attackInfo;
@@ -33,6 +34,7 @@ public class PlayerAttackState : PlayerBaseState
         _player.Animator.SetInteger(_player.AnimationDB.ComboParameterHash, attackInfo.attackIndex);
         _time = 0;
         
+        //무적 공격은 무적상태 추가
         _condition.IsInvincible = attackInfo.isInvincible;
         
         //사운드 추가
@@ -46,17 +48,21 @@ public class PlayerAttackState : PlayerBaseState
         StopAnimation(_player.AnimationDB.AttackParameterHash);
         
         _player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, 0);
+        
+        //무적 종료
         _condition.IsInvincible = false;
     }
 
     public override void HandleInput()
     {
+        //대쉬 키 입력 시 스태미나가 충분하면
         if (_input.IsDash && _condition.UsingStamina(_data.dashCost))
-        {
-            _stateMachine.ChangeState(_stateMachine.DashState); // 대시 상태로 전환
+        {   //대쉬
+            _stateMachine.ChangeState(_stateMachine.DashState);
         }
+        //공격 중 가드 가능
         if (_player.IsGround() &&_input.IsGuarding && _stateMachine.comboIndex != 2)
-        {
+        { 
             _stateMachine.ChangeState(_stateMachine.GuardState);
         }
     }

@@ -21,13 +21,10 @@ public class PlayerIdleState : PlayerGroundState
     public override void HandleInput()
     {
         base.HandleInput();
-    }
-
-    public override void Update()
-    {
-        base.Update();
+                
+        //좌우 키 입력시
         if (Mathf.Abs(_input.MoveInput.x) > 0f)
-        {
+        {   //좌우 이동
             _stateMachine.ChangeState(_stateMachine.MoveState);
         }
     }

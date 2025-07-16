@@ -18,6 +18,10 @@ public class AttackInfo
     public bool isInvincible; //해당 공격 시 무적여부
 }
 
+
+/// <summary>
+/// 플레이어의 필요한 데이터
+/// </summary>
 [Serializable]
 [CreateAssetMenu(fileName = "Player", menuName = "New Player")]
 public class PlayerSO : ScriptableObject
@@ -38,7 +42,7 @@ public class PlayerSO : ScriptableObject
     [Header("HealState")]
     public int healAmount;
     public AnimationClip healAnim;
-    public float healTime => healAnim.length;
+    public float HealTime => healAnim.length;
 
 
     [field: Header("GuardState")] 

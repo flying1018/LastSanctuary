@@ -3,13 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// 플레이어 애니메이션 해쉬 데이터
+/// </summary>
 [Serializable]
 public class PlayerAnimationDB
 {
     [SerializeField] private string groundParameter = "@Ground";
     [SerializeField] private string idleParameter = "Idle";
     [SerializeField] private string moveParameter = "Move";
-    [SerializeField] private string healParameter = "Heal"; //힐 애니메이션
+    [SerializeField] private string healParameter = "Heal"; 
     
     [SerializeField] private string airParameter = "@Air";
     [SerializeField] private string fallParameter = "Fall";
@@ -28,7 +32,7 @@ public class PlayerAnimationDB
     public int GroundParameterHash { get; private set; }
     public int IdleParameterHash { get; private set; }
     public int MoveParameterHash { get; private set; }
-    public int HealParameterHash { get; private set; } //힐 해시값
+    public int HealParameterHash { get; private set; } 
     
     public int AirParameterHash { get; private set; }
     public int FallParameterHash { get; private set; }

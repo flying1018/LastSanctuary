@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 플레이어의 상태 머신
+/// </summary>
 public class PlayerStateMachine : StateMachine
 {
     public Player Player { get; }

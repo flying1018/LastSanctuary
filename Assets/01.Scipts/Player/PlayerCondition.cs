@@ -18,25 +18,10 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     private Dictionary<StatObjectSO, Coroutine> _tempBuffs = new();
 
     //기본 스탯 프로퍼티
-    public int MaxHp
-    {
-        get => _maxHp;
-        set => _maxHp = value;
-    }
-
+    public int MaxHp { get => _maxHp; set => _maxHp = value; }
     public float MaxStamina { get; set; }
-
-    public int Attack
-    {
-        get => _attack;
-        set => _attack = value;
-    }
-
-    public int Defence
-    {
-        get => _defence;
-        set => _defence = value;
-    }
+    public int Attack { get => _attack; set => _attack = value; }
+    public int Defence { get => _defence; set => _defence = value; }
 
     //성물로 증가 가능한 프로퍼티
     public int HealAmonut { get; set; }
@@ -86,11 +71,13 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         }
     }
 
-
+    //대미지 처리
     public void TakeDamage(int atk, DamageType type, Transform dir, float defpen = 0f)
     {
+        //무적 일때
         if (IsInvincible) return;
-
+        
+        //가드 처리
         bool isFront = IsFront(dir);
         _isPerfectGuard = TryPerfectGuard(type, isFront);
         _isGuard = TryGuard(type, isFront);
@@ -103,6 +90,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
             return;
         }
 
+        //대미지 계산
         ApplyDamage(atk, defpen);
         if (_curHp <= 0)
         {
@@ -114,13 +102,14 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         }
     }
 
+    //대미지 계산
     public void ApplyDamage(int atk, float defpen = 0f)
     {
         int damage = (int)Math.Ceiling(atk - _defence * (1 - defpen));
         _curHp -= damage;
     }
 
-
+    //넉백 계산
     public void ApplyKnockBack(Transform dir, float force)
     {
         if (_isPerfectGuard) return;
@@ -134,12 +123,14 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         }
     }
 
+    //플레이어 회복
     public void PlayerRecovery()
     {
         _curHp = _maxHp;
         _curStamina = MaxStamina;
     }
 
+    //플레이어 체력 회복
     public void Heal()
     {
         if (_curHp < _maxHp)
@@ -149,6 +140,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         }
     }
 
+    //스테미나 사용
     public bool UsingStamina(int stamina)
     {
         if (_curStamina >= stamina)
@@ -243,11 +235,13 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         _tempBuffs.Remove(data);
     }
 
+    //UI에 사용되는 hp
     public float HpValue()
     {
         return (float)_curHp / MaxHp;
     }
 
+    //UI가 사용되는 스태미나
     public float StaminaValue()
     {
         return _curStamina / MaxStamina;
@@ -285,16 +279,20 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         //사운드 실행
         SoundManager.Instance.PlaySFX(_player.Data.deathSound);
         
-        yield return new WaitForSeconds(deathTime); // 앞 애니메이션 대기
+        // 앞 애니메이션 대기
+        yield return new WaitForSeconds(deathTime); 
 
+        //세이브 포인트로 위치 변경
         transform.position = SaveManager.Instance.GetSavePoint();
         _player.Animator.SetTrigger(_player.AnimationDB.RespawnParameterHash);
         yield return new WaitForSeconds(respawnTime);
 
+        //체력 회복
         PlayerRecovery();
         _player.StateMachine.ChangeState(_player.StateMachine.IdleState);
         _player.Animator.Rebind();
 
+        //조작 불가
         _player.PlayerInput.enabled = true;
         yield return new WaitForSeconds(reviveInvincibleTime);
         IsInvincible = false;
