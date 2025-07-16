@@ -155,7 +155,10 @@ public class Player : MonoBehaviour
         return Physics2D.Raycast(transform.position, Vector2.down,
             (CapsuleCollider.size.y / 2) + groundCheckDistance, aerialPlatformLayer);
     }
-
+    
+    #endregion
+    
+    #region AnimationEvent Method
     public void ApplyAttackForce()
     {
         AttackInfo attackInfo = null;
@@ -166,26 +169,21 @@ public class Player : MonoBehaviour
         Vector2 direction = SpriteRenderer.flipX ? Vector2.left : Vector2.right;
         Rigidbody.AddForce(direction * attackInfo.attackForce, ForceMode2D.Impulse);
     }
-
-    public void PlaySFX1()
+    
+    public void EventSFX1()
     {
         if (StateMachine.currentState is PlayerBaseState playerBaseState)
         {
-            if (playerBaseState.SoundClip == null) return;
-            SoundManager.Instance.PlaySFX(playerBaseState.SoundClip[0]);
-
+            playerBaseState.PlaySFX1();
         }
     }
 
-    public void PlaySFX2()
+    public void EventSFX2()
     {
         if (StateMachine.currentState is PlayerBaseState playerBaseState)
         {
-            if (playerBaseState.SoundClip == null) return;
-            SoundManager.Instance.PlaySFX(playerBaseState.SoundClip[1]);
+            playerBaseState.PlaySFX2();
         }
     }
-
-
     #endregion
 }

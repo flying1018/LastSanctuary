@@ -6,6 +6,9 @@ public enum CollectType
     Relic
 }
 
+/// <summary>
+/// 수집 오브젝트 데이터
+/// </summary>
 [CreateAssetMenu(fileName = "CollectObjectSO", menuName = "New CollectObjectSO")]
 public class CollectObjectSO : ScriptableObject
 {
@@ -15,7 +18,6 @@ public class CollectObjectSO : ScriptableObject
 
     [Header("Potion")]
     public bool isMaxIncrease;
-    public int healAmount;
     
     [Header("Relic")]
     public int index;

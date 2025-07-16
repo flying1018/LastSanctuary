@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class EnemyHitState : EnemyBaseState
 {
-    public EnemyHitState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
-    {
-    }
     private float _hitStart;
+    
+    public EnemyHitState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine) { }
+    
+    
     public override void Enter()
     {
         _enemy.Animator.SetTrigger(_enemy.AnimationDB.HitParameterHash);
@@ -17,12 +18,15 @@ public class EnemyHitState : EnemyBaseState
 
     public override void Exit()
     {
+        //공중 몬스터는 피격 시 정지
         if(_enemy.MoveType == MoveType.Fly)
             Move(Vector2.zero);
     }
 
+    //여긴 시간 체크가 물리 업데이트에서 되어 있음.
     public override void PhysicsUpdate()
     {
+        //
         if (Time.time - _hitStart >= _data.HitDuration)
         {
             _stateMachine.ChangeState(_stateMachine.BattleState);

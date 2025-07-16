@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Condition : MonoBehaviour
+
+/// <summary>
+/// 플레이어, 몬스터, 보스 공통으로 사용되는 컨디션의 부모
+/// </summary>
+public class Condition : MonoBehaviour
 {
     protected int _maxHp;
     protected int _curHp;
@@ -22,11 +26,4 @@ public abstract class Condition : MonoBehaviour
         yield return new WaitForSeconds(_delay);
         _isTakeDamageable = false;
     }
-
-    public abstract void Death();
-
-
-
-
-
 }

@@ -18,25 +18,10 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     private Dictionary<StatObjectSO, Coroutine> _tempBuffs = new();
 
     //기본 스탯 프로퍼티
-    public int MaxHp
-    {
-        get => _maxHp;
-        set => _maxHp = value;
-    }
-
+    public int MaxHp { get => _maxHp; set => _maxHp = value; }
     public float MaxStamina { get; set; }
-
-    public int Attack
-    {
-        get => _attack;
-        set => _attack = value;
-    }
-
-    public int Defence
-    {
-        get => _defence;
-        set => _defence = value;
-    }
+    public int Attack { get => _attack; set => _attack = value; }
+    public int Defence { get => _defence; set => _defence = value; }
 
     //성물로 증가 가능한 프로퍼티
     public int HealAmonut { get; set; }
@@ -86,11 +71,13 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         }
     }
 
-
+    //대미지 처리
     public void TakeDamage(int atk, DamageType type, Transform dir, float defpen = 0f)
     {
+        //무적 일때
         if (IsInvincible) return;
-
+        
+        //가드 처리
         bool isFront = IsFront(dir);
         _isPerfectGuard = TryPerfectGuard(type, isFront);
         _isGuard = TryGuard(type, isFront);
@@ -103,10 +90,11 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
             return;
         }
 
+        //대미지 계산
         ApplyDamage(atk, defpen);
         if (_curHp <= 0)
         {
-            Death();
+            _player.StateMachine.ChangeState(_player.StateMachine.DeathState);
         }
         else
         {
@@ -114,13 +102,14 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         }
     }
 
+    //대미지 계산
     public void ApplyDamage(int atk, float defpen = 0f)
     {
         int damage = (int)Math.Ceiling(atk - _defence * (1 - defpen));
         _curHp -= damage;
     }
 
-
+    //넉백 계산
     public void ApplyKnockBack(Transform dir, float force)
     {
         if (_isPerfectGuard) return;
@@ -134,12 +123,14 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         }
     }
 
+    //플레이어 회복
     public void PlayerRecovery()
     {
         _curHp = _maxHp;
         _curStamina = MaxStamina;
     }
 
+    //플레이어 체력 회복
     public void Heal()
     {
         if (_curHp < _maxHp)
@@ -149,6 +140,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         }
     }
 
+    //스테미나 사용
     public bool UsingStamina(int stamina)
     {
         if (_curStamina >= stamina)
@@ -183,7 +175,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     {
         if (IsPerfectGuard && type != DamageType.Contact && isFront)
         {
-            _player.PlaySFX2();
+            _player.EventSFX2();
             Debug.Log("perfect guard");
             _curStamina += _player.Data.perfactGuardStemina; //퍼펙트 가드시 스태미나회복
             //궁극기 게이지 회복
@@ -199,7 +191,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     {
         if (IsGuard && type != DamageType.Contact && isFront && UsingStamina(_player.Data.guardCost))
         {
-            _player.PlaySFX1();
+            _player.EventSFX1();
             return true;
         }
 
@@ -243,60 +235,15 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         _tempBuffs.Remove(data);
     }
 
+    //UI에 사용되는 hp
     public float HpValue()
     {
         return (float)_curHp / MaxHp;
     }
 
+    //UI가 사용되는 스태미나
     public float StaminaValue()
     {
         return _curStamina / MaxStamina;
-    }
-
-    /// <summary>
-    /// 플레이어가 죽었을때 델리게이트로 호출
-    /// 플레이어의 인풋막고, Rigidbody도 멈춰놓음
-    /// </summary>
-    public override void Death()
-    {
-        // 추후 죽었을때 표기되는 UI, 연출 추가 요망 (화면 암전 등)
-        StartCoroutine(Revive_Coroutine());
-    }
-
-    /// <summary>
-    /// 리스폰할때 실행되는 코루틴
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator Revive_Coroutine()
-    {
-        //무적 처리
-        IsInvincible = true;
-        InvincibleStart = Time.time;
-        
-        //애니메이션 실행
-        _player.Animator.SetTrigger(_player.AnimationDB.DieParameterHash);
-        
-        //입력 막기
-        _player.PlayerInput.enabled = false;
-
-        //이동 정지
-        _player.Rigidbody.velocity = Vector2.zero;
-        
-        //사운드 실행
-        SoundManager.Instance.PlaySFX(_player.Data.deathSound);
-        
-        yield return new WaitForSeconds(deathTime); // 앞 애니메이션 대기
-
-        transform.position = SaveManager.Instance.GetSavePoint();
-        _player.Animator.SetTrigger(_player.AnimationDB.RespawnParameterHash);
-        yield return new WaitForSeconds(respawnTime);
-
-        PlayerRecovery();
-        _player.StateMachine.ChangeState(_player.StateMachine.IdleState);
-        _player.Animator.Rebind();
-
-        _player.PlayerInput.enabled = true;
-        yield return new WaitForSeconds(reviveInvincibleTime);
-        IsInvincible = false;
     }
 }

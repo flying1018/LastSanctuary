@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//플레이어의 무기
 public class PlayerWeapon : Weapon
 {
     public override void OnTriggerEnter2D(Collider2D other)

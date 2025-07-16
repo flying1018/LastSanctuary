@@ -11,6 +11,7 @@ public class StatObject : MonoBehaviour, IInteractable
     public bool isGet;
     public bool IsGet { get => isGet; set => isGet = value; }
 
+    //상호작용 시
     public void Interact()
     {
         if (isGet) { return; }

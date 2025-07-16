@@ -16,7 +16,7 @@ MonoBehaviour:
   _name: 
   attack: 35
   defense: 10
-  hp: 800
+  hp: 200
   groggyGauge: 50
   groggyDuration: 5
   damageDelay: 0.17
@@ -60,7 +60,7 @@ MonoBehaviour:
     attackSounds:
     - {fileID: 8300000, guid: 94643bcc75cfd7e40ba70900d44036d8, type: 3}
     - {fileID: 8300000, guid: 81a4b608bc284764297d3dd1bf938ae9, type: 3}
-  backJumpPower: 800
+  backJumpPower: 1
   defpen: 0.5
   phaseShiftHpRatio: 0.5
   phaseShiftAnim: {fileID: 7400000, guid: d781c0a65ca4bdf40ad84d4b0b6413a3, type: 2}

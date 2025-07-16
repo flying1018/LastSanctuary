@@ -28,6 +28,7 @@ public class SoundManager : Singleton<SoundManager>
         PlayBGM(StringNameSpace.SoundAddress.TutorialBGM);
     }
     
+    //BGM 실행 메서드
     public async void PlayBGM(string key)
     {
         var clip = await ResourceLoader.LoadAssetAddress<AudioClip>(key);
@@ -40,14 +41,15 @@ public class SoundManager : Singleton<SoundManager>
         bgmSound.Play(clip);
     }
 
+    //효과음 실행 메서드
     public void PlaySFX(AudioClip clip, float volume = 1f)
     {
         GameObject sfxObj = Instantiate(sfxPrefab);
-        SFXSound sfx = sfxObj.GetComponent<SFXSound>();
-
-        sfx.Play(clip, volume);
+        if(sfxObj.TryGetComponent(out SFXSound sfx))
+            sfx.Play(clip, volume);
     }
 
+    //사운드 조절 메서드
     private float VolumeToDecibel(float volume) // 소리 100단위를 데시벨로 변환
     {
         return Mathf.Log10(Mathf.Clamp(volume, 0.0001f, 1f)) * 20f;
@@ -71,6 +73,7 @@ public class SoundManager : Singleton<SoundManager>
         }
     }
 
+    //생성
     public async Task Init()
     {
         GameObject obj = await ResourceLoader.LoadAssetAddress<GameObject>(StringNameSpace.SoundAddress.SFXPrefab);
@@ -87,6 +90,7 @@ public class SoundManager : Singleton<SoundManager>
         bgmSound.Init(bgmSource); // AudioSource 주입
     }
 
+    //BGM 정지
     public void StopBGM()
     {
         bgmSound.Stop();

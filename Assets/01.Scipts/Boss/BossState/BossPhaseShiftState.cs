@@ -20,8 +20,7 @@ public class BossPhaseShiftState : BossBaseState
         _boss.Phase2 = true;
         
         //효과음 실행
-        SoundClip[0] = _data.phaseShiftSound;
-        _boss.PlaySFX1();
+        PlaySFX1();
         
         //배경음 변경
         SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialPhaseShift);
@@ -54,5 +53,10 @@ public class BossPhaseShiftState : BossBaseState
     public override void PhysicsUpdate()
     {
         //콜라이더 자동 변경 시 콜라이더가 사라지는 버그가 있어서 블락
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.phaseShiftSound);
     }
 }

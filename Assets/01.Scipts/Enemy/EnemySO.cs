@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+/// <summary>
+/// 몬스터에 필요한 초기 데이터
+/// </summary>
 [Serializable]
 [CreateAssetMenu(fileName = "Enemy", menuName = "New Enemy")]
 public class EnemySO : ScriptableObject
@@ -29,7 +32,7 @@ public class EnemySO : ScriptableObject
     public float attackDuration;
     public float knockbackForce;
     public AnimationClip attackAnim;
-    public float AnimTime => attackAnim.length; 
+    public float AttackTime => attackAnim.length; 
     
     [Header("condition")]
     public int attack;
@@ -39,7 +42,7 @@ public class EnemySO : ScriptableObject
     public float hitDuration;
     public float alphaValue;
     public AnimationClip deathAnim;
-    public float deathTime => deathAnim.length;
+    public float DeathTime => deathAnim.length;
     
     [Header("Range Attack")]
     public GameObject arrowPrefab;

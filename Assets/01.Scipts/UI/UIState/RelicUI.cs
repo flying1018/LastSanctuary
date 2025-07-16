@@ -68,15 +68,6 @@ public class RelicUI : UnifiedUI
         _uiManager.RelicUI.SetActive(false);
     }
 
-    public override void HandleInput()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            _uiStateMachine.ChangeState(_uiStateMachine.MainUI);
-        }
-    }
-
-
 
     //스테이터스 갱신
     private void UpdateStatus()

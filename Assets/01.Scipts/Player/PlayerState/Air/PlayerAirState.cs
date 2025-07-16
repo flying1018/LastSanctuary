@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 플레이어가 공중에 있을 때 상태
+/// </summary>
 public class PlayerAirState : PlayerBaseState
 {
     public PlayerAirState(PlayerStateMachine stateMachine) : base(stateMachine) { }

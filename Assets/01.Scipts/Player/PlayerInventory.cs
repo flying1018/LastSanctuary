@@ -26,6 +26,7 @@ public class PlayerInventory : MonoBehaviour
         EquipRelics = new List<CollectObjectSO>();
     }
 
+    //아이템 습득
     public void AddItem(CollectObjectSO data)
     {
         switch (data.collectType)
@@ -56,6 +57,7 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    //포션 사용
     public void UsePotion()
     {
         CurPotionNum--;
@@ -63,6 +65,7 @@ public class PlayerInventory : MonoBehaviour
         UIManager.Instance.UpdatePotionUI();
     }
 
+    //렐릭 장착
     public void EquipRelic(CollectObjectSO data)
     {
         if (EquipRelics.Contains(data))
@@ -80,6 +83,7 @@ public class PlayerInventory : MonoBehaviour
         
     }
 
+    //장착 해제
     public void UnEquipRelic(CollectObjectSO data)
     {
         //_playerCondition.Attack -= data.attack;
@@ -89,6 +93,7 @@ public class PlayerInventory : MonoBehaviour
         EquipRelics.Remove(data);
     }
 
+    //성물로 인한 공격력 
     public int EquipRelicAttack()
     {
         int sum = 0;
@@ -99,6 +104,7 @@ public class PlayerInventory : MonoBehaviour
         return sum;
     }
     
+    //성물로 인한 방어력
     public int EquipRelicDefense()
     {
         int sum = 0;
@@ -109,6 +115,7 @@ public class PlayerInventory : MonoBehaviour
         return sum;
     }
     
+    //성물로 인한 체력
     public int EquipRelicHp()
     {
         int sum = 0;
@@ -119,6 +126,7 @@ public class PlayerInventory : MonoBehaviour
         return sum;
     }
     
+    //성물로 인한 스태미나
     public int EquipRelicStamina()
     {
         int sum = 0;

@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 플레이어의 상태 머신
+/// </summary>
 public class PlayerStateMachine : StateMachine
 {
     public Player Player { get; }
@@ -16,6 +19,8 @@ public class PlayerStateMachine : StateMachine
     public PlayerHealState HealState { get; private set; }
     public PlayerHitState HitState { get; private set; }
     public PlayerRopedState RopedState { get; private set; }
+    public PlayerDeathState DeathState { get; private set; }
+    public PlayerRespawnState RespawnState { get; private set; }
     public int comboIndex;
 
     public PlayerStateMachine(Player player)
@@ -31,7 +36,7 @@ public class PlayerStateMachine : StateMachine
             new ComboAttackState(this, player.Data.attacks[1]),
             new ComboAttackState(this, player.Data.attacks[2])
         };
-        JumpAttack = new PlayerAttackState(this,player.Data.attacks[0]);
+        JumpAttack = new PlayerAttackState(this,player.Data.jumpAttack);
         DashAttack = new PlayerAttackState(this,player.Data.dashAttack);
         DashState = new PlayerDashState(this);
         FallState = new PlayerFallState(this);
@@ -39,6 +44,8 @@ public class PlayerStateMachine : StateMachine
         GuardState = new PlayerGuardState(this);
         RopedState = new PlayerRopedState(this);
         HitState = new PlayerHitState(this);
+        DeathState = new PlayerDeathState(this);
+        RespawnState = new PlayerRespawnState(this);
         
         comboIndex = 0;
         ChangeState(IdleState); // 초기 상태

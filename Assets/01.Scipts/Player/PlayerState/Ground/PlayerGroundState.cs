@@ -22,29 +22,35 @@ public class PlayerGroundState : PlayerBaseState
 
     public override void HandleInput()
     {
+        //대쉬와 로프에 매달리기 가능
         base.HandleInput();
+        
+        //가드
         if (_input.IsGuarding)
         {
             _stateMachine.ChangeState(_stateMachine.GuardState);
         }
         
+        //점프
         if (_input.IsJump && _player.IsGround())
         {
             _stateMachine.ChangeState(_stateMachine.JumpState);
         }
 
-
+        //현재 포션이 충분하면 힐
         if (_input.IsHeal && _inventory.CurPotionNum > 0)
         {
             _stateMachine.ChangeState(_stateMachine.HealState);
         }
         
+        //공격
         if (_input.IsAttack)
         {
             _stateMachine.comboIndex = 0;
             _stateMachine.ChangeState(_stateMachine.ComboAttack[0]);
         }
-
+        
+        //아래 키 입력 시
         if (_input.MoveInput.y < 0)
         {
             if(_player.AerialPlatform == null) return;

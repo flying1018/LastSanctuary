@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// UI의 기초 상태
+/// </summary>
 public class UIBaseState : IState
 {
     protected UIStateMachine _uiStateMachine;

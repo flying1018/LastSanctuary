@@ -20,6 +20,7 @@ public class EnemySpawnPoint : MonoBehaviour
         Spawn();
     }
     
+    //몬스터 스폰
     public void Spawn()
     {
         GameObject go =ObjectPoolManager.Get(monster,(int)ObjectPoolManager.PoolingIndex.Monster);

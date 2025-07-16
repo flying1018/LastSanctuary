@@ -40,12 +40,6 @@ public class BossAttackState : BossBaseState
         _weapon.Damage = (int)(_data.attack * _attackInfo.multiplier);
         _weapon.defpen = _data.defpen;
         _weapon.knockBackForce = _attackInfo.knockbackForce;
-        
-        //사운드
-        for (int i = 0;i<_attackInfo.attackSounds.Length;i++)
-        {
-            SoundClip[i] = _attackInfo.attackSounds[i];
-        }
     }
 
     public override void Update()
@@ -99,6 +93,14 @@ public class BossAttackState : BossBaseState
             arrowPoProjectile.Shot(dir, _attackInfo.projectilePower);
         }
     }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_attackInfo.attackSounds[0]);
+    }
     
-    
+    public override void PlaySFX2()
+    {
+        SoundManager.Instance.PlaySFX(_attackInfo.attackSounds[1]);
+    }
 }

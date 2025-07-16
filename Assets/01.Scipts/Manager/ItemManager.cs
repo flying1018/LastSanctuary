@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 아이템의 기능을 담당해주는 아이템 매니저
+/// </summary>
 public class ItemManager : Singleton<ItemManager>
 {
     public PlayerCondition playerCondition;
     public PlayerInventory playerInventory;
-
-
+    
     protected override void Awake()
     {
         base.Awake();
@@ -20,6 +22,7 @@ public class ItemManager : Singleton<ItemManager>
         playerInventory = FindAnyObjectByType<PlayerInventory>();
     }
     
+    //스탯 오브젝트 기능
     public void UpgradeStat(StatObjectSO data)
     {
         //버프 적용
@@ -32,6 +35,7 @@ public class ItemManager : Singleton<ItemManager>
         
     }
 
+    //수집 오브젝트 인벤토리에 추가
     public void GetCollectItem(CollectObjectSO collectObjectSO)
     {
         playerInventory.AddItem(collectObjectSO);

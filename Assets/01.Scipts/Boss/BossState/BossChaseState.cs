@@ -12,8 +12,6 @@ public class BossChaseState : BossBaseState
     {
         //애니메이션 실행
         StartAnimation(_boss.AnimationDB.WalkParameterHash);
-        
-        SoundClip[0] = _data.walkSound;
     }
     
     public override void Exit()
@@ -46,5 +44,10 @@ public class BossChaseState : BossBaseState
         Vector2 direction = DirectionToTarget();    //타겟의 방향
         Move(direction);    //이동
         Rotate(direction);  //회전
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.walkSound);
     }
 }

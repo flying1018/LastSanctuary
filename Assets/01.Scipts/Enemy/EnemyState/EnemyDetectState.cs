@@ -14,10 +14,10 @@ public class EnemyDetectState : EnemyBaseState
         StartAnimation(_enemy.AnimationDB.IdleParameterHash);
         
         base.Enter();
-        //애니메이션 시작
+        
+        _time = 0;
         
         //유저 방향 확인
-        _time = 0;
         Vector2 direction = _enemy.Target.position - _enemy.transform.position;
         Rotate(direction);
     }
@@ -31,10 +31,13 @@ public class EnemyDetectState : EnemyBaseState
     
     public override void Update()
     {
+        //공격 쿨타임 체크
         base.Update();
+        
+        //인식 상태가 끝나면
         _time += Time.deltaTime;
         if (_time > _data.detectTime && _enemy.Target != null)
-        {
+        {   //추적
             _stateMachine.ChangeState(_stateMachine.ChaseState);
         }
     }

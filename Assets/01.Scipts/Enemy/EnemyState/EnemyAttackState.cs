@@ -4,7 +4,6 @@ using UnityEngine;
 public class EAttackState : EnemyBaseState
 {
     protected float _time;
-    protected float _animtionTime;
 
     public EAttackState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
     {
@@ -14,7 +13,6 @@ public class EAttackState : EnemyBaseState
     {
         //공격에 관련된 정보 초기화
         _time = 0;
-        _animtionTime = _data.AnimTime;
         _stateMachine.attackCoolTime = 0;
 
         //공격 중간은 Idle 애니메이션
@@ -24,8 +22,6 @@ public class EAttackState : EnemyBaseState
         //공격력 정보 넘겨주기
         _enemy.EnemyWeapon.Damage = _data.attack;
         _enemy.EnemyWeapon.knockBackForce = _data.knockbackForce;
-
-        SoundClip[0] = _data.attackSound;
     }
     
     public override void Exit()
@@ -37,9 +33,10 @@ public class EAttackState : EnemyBaseState
     {
         //에니메이션이 끝나야 쿨타임 체크
         _time += Time.deltaTime;
-        if (_time < _animtionTime)
+        if (_time < _data.AttackTime)
             return;
 
+        //공격 쿨타임 체크
         base.Update();
 
         //공격 쿨타임이 지나면
@@ -60,6 +57,11 @@ public class EAttackState : EnemyBaseState
             _stateMachine.ChangeState(_stateMachine.ChaseState);
         }
 
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.attackSound);
     }
 }
 

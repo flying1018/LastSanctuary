@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class ComboAttackState : PlayerAttackState
 {
-    private Vector2 _dir;
-    
     public ComboAttackState(PlayerStateMachine stateMachine, AttackInfo attackInfo) : base(stateMachine, attackInfo) { }
     
     public override void HandleInput()
     {
+        //대쉬나 가드로 전환 가능
         base.HandleInput();
+        
         //다음 공격
-        _time += Time.deltaTime;
         //입력 시간 내에 공격 입력 시
+        _time += Time.deltaTime;
         if (_time <= (_animationTime + attackInfo.nextComboTime) && _input.IsAttack)
         {
             //애니메이션 끝나고 공격

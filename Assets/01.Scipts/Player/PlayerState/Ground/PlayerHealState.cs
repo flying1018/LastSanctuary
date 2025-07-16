@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerHealState : PlayerGroundState
 { 
-    private float _healTimer;
-    
     public PlayerHealState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -15,11 +13,9 @@ public class PlayerHealState : PlayerGroundState
         base.Enter();
         StartAnimation(_player.AnimationDB.HealParameterHash);
 
-        _healTimer = _data.healTime;
-        _inventory.UsePotion();
+        _time = 0;
         
-        //사운드 추가
-        SoundClip[0] = _data.healSound;
+        Debug.Log("heal enter");
     }
 
     public override void Exit()
@@ -27,8 +23,11 @@ public class PlayerHealState : PlayerGroundState
         base.Exit();
         
         //체력 회복
+        _inventory.UsePotion();
         _condition.Heal(); 
+        
         StopAnimation(_player.AnimationDB.HealParameterHash);
+        Debug.Log("heal exit");
     }
 
     public override void HandleInput()
@@ -40,11 +39,11 @@ public class PlayerHealState : PlayerGroundState
     {
         base.Update();
         
-        _healTimer -= Time.deltaTime;
-
-        if (_healTimer <= 0f) //만약 힐 타임이 0보다 작으면
-        {
-            CompleteHeal(); //실행
+        //힐 시간이 끝나면
+        _time += Time.deltaTime;
+        if (_time > _data.HealTime) 
+        {   //대기
+            _stateMachine.ChangeState(_stateMachine.IdleState);
         }
     }
 
@@ -53,9 +52,8 @@ public class PlayerHealState : PlayerGroundState
 
     }
     
-    private void CompleteHeal()
+    public override void PlaySFX1()
     {
-        //체력+힐값 적기.
-        _stateMachine.ChangeState(_stateMachine.IdleState); //힐이 끝나면 아이들 스테이트로
+        SoundManager.Instance.PlaySFX(_data.healSound);
     }
 }

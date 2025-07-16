@@ -18,6 +18,10 @@ public class AttackInfo
     public bool isInvincible; //해당 공격 시 무적여부
 }
 
+
+/// <summary>
+/// 플레이어의 필요한 데이터
+/// </summary>
 [Serializable]
 [CreateAssetMenu(fileName = "Player", menuName = "New Player")]
 public class PlayerSO : ScriptableObject
@@ -39,7 +43,7 @@ public class PlayerSO : ScriptableObject
     [Header("HealState")]
     public int healAmount;
     public AnimationClip healAnim;
-    public float healTime => healAnim.length;
+    public float HealTime => healAnim.length;
 
 
     [field: Header("GuardState")] 
@@ -53,6 +57,7 @@ public class PlayerSO : ScriptableObject
     public float Defpen;
     public AttackInfo dashAttack;
     public float maxUltimateGauge;
+    public AttackInfo jumpAttack;
 
     [field: Header("HitState")]
     [field: SerializeField] public float LightHitDuration{ get; private set; } = 0.2f;
@@ -60,6 +65,13 @@ public class PlayerSO : ScriptableObject
     [field: SerializeField] public float invincibleDuration { get; private set; } = 1f;
     [field: SerializeField] public int hitSteminaRecovery { get; private set; } = 15;
     [field: SerializeField, Range(0f, 1f)] public float damageReduction { get; private set; } = 0.8f;
+    
+    
+    [Header("DeathState")]
+    public float deathTime;
+    
+    [Header("RespawnState")]
+    public float respawnTime;
 
     [Header("Condition")]
     public int hp;

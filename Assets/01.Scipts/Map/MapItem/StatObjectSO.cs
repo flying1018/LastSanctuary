@@ -1,5 +1,9 @@
 using UnityEngine;
 
+
+/// <summary>
+/// 스탯 오브젝트 데이터
+/// </summary>
 [CreateAssetMenu(fileName = "StatObjectSO", menuName = "New StatObjectSO")]
 public class StatObjectSO : ScriptableObject
 {
