@@ -65,6 +65,8 @@ public class PlayerBaseState : IState
     public virtual void PhysicsUpdate()
     {
         Move();
+        _player.Handler.ApplyGravity();
+
         
         //떨어지기 시작하면
         if (!_player.IsGround()&&_rigidbody.velocity.y < -1f)
@@ -88,13 +90,15 @@ public class PlayerBaseState : IState
     {
         Move(_input.MoveInput);
         Rotate(_input.MoveInput);
+
+        Vector2 targetPosition = _player.Rigidbody.position + _player.Handler.velocity * Time.fixedDeltaTime;
+
+        _player.Rigidbody.MovePosition(targetPosition);
     }
 
     public void Move(Vector2 direction)
     {
-        direction.y = 0;
-        Vector2 moveVelocity = new Vector2(direction.normalized.x * _data.moveSpeed, _rigidbody.velocity.y);
-        _rigidbody.velocity = moveVelocity;
+        _player.Handler.velocity.x = direction.x * _data.moveSpeed;
     }
 
     public void Rotate(Vector2 direction)

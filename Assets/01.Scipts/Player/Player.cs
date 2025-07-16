@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public CapsuleCollider2D CapsuleCollider;
     public PlayerStateMachine StateMachine { get; set; }
     public PlayerController Input { get; set; }
+    public PlayerHandler Handler { get; set; }
     public Rigidbody2D Rigidbody { get; set; }
     public Animator Animator { get; set; }
     public SpriteRenderer SpriteRenderer { get; set; }
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
     {
         CapsuleCollider = GetComponent<CapsuleCollider2D>();
         Input = GetComponent<PlayerController>();
+        Handler = GetComponent<PlayerHandler>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         Condition = GetComponent<PlayerCondition>();

@@ -81,7 +81,7 @@ public class PlayerAttackState : PlayerBaseState
 
     public override void PhysicsUpdate()
     {
-
+        _player.Handler.ApplyGravity();
     }
 
     public override void PlaySFX1()

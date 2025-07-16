@@ -10,7 +10,7 @@ public class PlayerJumpState : PlayerAirState
 {
     private float _maxHoldTime;
     private bool _keyHold;
-    
+
     public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
