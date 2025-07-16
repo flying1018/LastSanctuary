@@ -59,8 +59,8 @@ public class EnemyBaseState : IState
     protected void Move(Vector2 direction)
     {
         direction.y = 0;
-        Vector2 moveVelocity = new Vector2(direction.normalized.x * _data.moveSpeed, _rigidbody.velocity.y);
-        _rigidbody.velocity = moveVelocity;
+        Vector2 moveVelocity = new Vector2(direction.normalized.x * _data.moveSpeed, _enemy.VerticalVelocity);
+        _rigidbody.MovePosition(_rigidbody.position + moveVelocity * Time.deltaTime);
     }
 
     protected void Fly(Vector2 direction)

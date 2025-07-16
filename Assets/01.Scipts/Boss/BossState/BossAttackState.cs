@@ -60,7 +60,6 @@ public class BossAttackState : BossBaseState
 
     public override void PhysicsUpdate()
     {
-        
     }
 
     //쿨타임 체크

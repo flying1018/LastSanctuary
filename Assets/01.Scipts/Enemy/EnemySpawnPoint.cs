@@ -26,7 +26,6 @@ public class EnemySpawnPoint : MonoBehaviour
         go.transform.position = transform.position;
         _enemy = go.GetComponent<Enemy>();
         _enemy.Init(this.transform, patrolDistance);
-        _enemy.SetCollisionEnabled(true);
         isSpawn = true;
     }
 

@@ -56,8 +56,9 @@ public class BossSO : ScriptableObject
     public float attackRange = 2f;
     public float attackIdleTime;
     public BossAttackInfo[] attacks;
-    public float backJumpPower;
     public float defpen;
+    public float backjumpDistance = 3f;
+    public float backjumpHeight = 2f;
 
     [Header("PhaseShiftState")] 
     public float phaseShiftHpRatio;
