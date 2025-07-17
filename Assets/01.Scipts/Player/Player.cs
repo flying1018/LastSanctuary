@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask aerialPlatformLayer;
-    [SerializeField] private GameObject weapon;
 
     //프로퍼티
     public BoxCollider2D CapsuleCollider;
@@ -28,12 +27,11 @@ public class Player : MonoBehaviour
     public bool IsRoped { get; set; }
     public Vector2 RopedPosition { get; set; }
     public PlayerWeapon PlayerWeapon { get; set; }
-    //직렬화 데이터 프로퍼티
-    public PlayerSO Data { get => playerData; }
-    public GameObject Weapon { get => weapon; }
+    public GameObject Weapon { get; set; }
     public PlayerInventory Inventory { get; set; }
     public PlayerInput PlayerInput { get; set; }
-    public Vector2 gravityScale = Vector2.zero;
+    //직렬화 데이터 프로퍼티
+    public PlayerSO Data { get => playerData; }
 
 
     private void Awake()
@@ -46,7 +44,7 @@ public class Player : MonoBehaviour
         Condition = GetComponent<PlayerCondition>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         PlayerWeapon = GetComponentInChildren<PlayerWeapon>();
-        weapon = PlayerWeapon.gameObject;
+        Weapon = PlayerWeapon.gameObject;
         Inventory = GetComponent<PlayerInventory>();
         PlayerInput = GetComponent<PlayerInput>();
         
@@ -65,11 +63,11 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
-        Debug.Log(StateMachine.currentState);
+        //Debug.Log(StateMachine.currentState);
 
     }
 
-    
+    public Vector2 gravityScale = Vector2.zero;
     public Vector2 GroundDirection { get; set; }
     public Vector2 WallDirection { get; set; }
     public bool IsWall { get; set; }

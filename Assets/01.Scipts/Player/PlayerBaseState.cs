@@ -66,9 +66,11 @@ public class PlayerBaseState : IState
     {
         Move();
         
+
         //떨어지기 시작하면
-        if (!_player.IsGrounded)
+        if (!_player.IsGrounded && _player.gravityScale.y > 0.1f)
         {   //떨어지는 상태
+            _time = 0;
             _stateMachine.ChangeState(_stateMachine.FallState);
         }
     }
