@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject weapon;
 
     //프로퍼티
-    public BoxCollider2D CapsuleCollider;
+    public CapsuleCollider2D CapsuleCollider;
     public PlayerStateMachine StateMachine { get; set; }
     public PlayerController Input { get; set; }
     public PlayerHandler Handler { get; set; }
@@ -37,7 +38,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        CapsuleCollider = GetComponent<BoxCollider2D>();
+        CapsuleCollider = GetComponent<CapsuleCollider2D>();
         Input = GetComponent<PlayerController>();
         Handler = GetComponent<PlayerHandler>();
         Rigidbody = GetComponent<Rigidbody2D>();
@@ -68,7 +69,7 @@ public class Player : MonoBehaviour
     }
 
     
-    public Vector2 GroundPosition { get; set; }
+    public Vector2 GroundDirection { get; set; }
     public Vector2 WallDirection { get; set; }
     public bool IsWall { get; set; }
     public bool IsGrounded { get; set; }
@@ -104,13 +105,16 @@ public class Player : MonoBehaviour
             }
         }
 
+        Vector3 points = other.ClosestPoint(transform.position);
+        Debug.Log(points);
+        
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
         {
             Vector3 point = other.ClosestPoint(transform.position);
-            GroundPosition = point;
+            GroundDirection = point - transform.position;
             
             Vector2 position = transform.position;
-            position.y = point.y + CapsuleCollider.size.y / 2;
+            position.y = point.y + (GroundDirection.y < 0 ? CapsuleCollider.size.y / 2 : -CapsuleCollider.size.y/2);
             transform.position = position;
             
             IsGrounded = true;
@@ -127,6 +131,11 @@ public class Player : MonoBehaviour
             
             IsWall = true;
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -166,21 +175,6 @@ public class Player : MonoBehaviour
 
     #region Need MonoBehaviour Method
 
-    //바닥 확인
-    public bool IsGround()
-    {
-        Vector2 newPos = new Vector2(transform.position.x, transform.position.y-(CapsuleCollider.size.y/2));
-        Ray ray = new Ray(newPos, Vector2.down);
-        //return Physics2D.Raycast(ray.origin,ray.direction,groundCheckDistance, groundLayer);
-        return false;
-    }
-
-    //공중 발판 확인
-    public bool IsAerialPlatform()
-    {
-        return Physics2D.Raycast(transform.position, Vector2.down,
-            (CapsuleCollider.size.y / 2) + groundCheckDistance, aerialPlatformLayer);
-    }
     
     #endregion
     

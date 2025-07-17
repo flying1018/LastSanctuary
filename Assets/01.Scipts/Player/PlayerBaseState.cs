@@ -13,7 +13,7 @@ public class PlayerBaseState : IState
     protected PlayerInventory _inventory;
     protected Player _player;
     protected PlayerWeapon _playerWeapon;
-    protected BoxCollider2D _capsuleCollider;
+    protected CapsuleCollider2D _capsuleCollider;
 
     protected float _time;
 
@@ -68,7 +68,7 @@ public class PlayerBaseState : IState
 
         
         //떨어지기 시작하면
-        if (!_player.IsGround()&&_rigidbody.velocity.y < -1f)
+        if (!_player.IsGrounded)
         {   //떨어지는 상태
             _stateMachine.ChangeState(_stateMachine.FallState);
         }
@@ -84,7 +84,7 @@ public class PlayerBaseState : IState
         _player.Animator.SetBool(animatorHash, false);
     }
 
-    //입력 값에 이동하는 메서드
+    //캐릭터 기초 이동
     public void Move()
     {
         Rotate(_input.MoveInput);
@@ -94,10 +94,18 @@ public class PlayerBaseState : IState
         Move(x+y);
     }
 
+    //캐릭터의 이동 처리
     public void Move(Vector2 direction)
     {
-        if (_player.IsWall &&_player.WallDirection.normalized == _input.MoveInput.normalized) direction.x = 0;
-        if (_player.IsGrounded) direction.y = 0;
+        Vector2 horizontal = direction;
+        Vector2 vertical = direction;
+        
+        horizontal.y = 0;
+        vertical.x = 0;
+        
+        if (_player.IsWall &&_player.WallDirection.normalized == horizontal.normalized) direction.x = 0;
+        if (_player.IsGrounded && _player.GroundDirection.normalized == vertical.normalized) direction.y = 0;
+        
         _rigidbody.MovePosition(_rigidbody.position + direction * Time.fixedDeltaTime);
     }
 

@@ -20,7 +20,7 @@ public class PlayerJumpState : PlayerAirState
 
         //데이터 초기화
         _input.IsJump = false;
-        _maxHoldTime = 0.2f;
+        _maxHoldTime = 0.4f;
         _keyHold = _input.IsLongJump;
         
         //효과음 실행
@@ -36,6 +36,8 @@ public class PlayerJumpState : PlayerAirState
     public override void HandleInput()
     {
         base.HandleInput();
+
+        if (_maxHoldTime > 0.1f) return;
         
         //계속 누르고 있으면 점프 지속
         if (!_input.IsLongJump)
@@ -44,7 +46,6 @@ public class PlayerJumpState : PlayerAirState
 
     public override void PhysicsUpdate()
     {
-        base.PhysicsUpdate();
         Jump();
     }
     
@@ -52,14 +53,19 @@ public class PlayerJumpState : PlayerAirState
     //키를 누르고 있는 동안 점프력 증가
     void Jump()
     {
-        if (_keyHold && _maxHoldTime > 0f)
+        if (_keyHold && _maxHoldTime > 0.0f)
         {
             _maxHoldTime -= Time.deltaTime;
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _data.jumpForce);
+            
+            Rotate(_input.MoveInput);
+            Vector2 hor = Horizontal(_input.MoveInput, _data.moveSpeed);
+            Vector2 ver = Vertical(Vector2.up, _data.jumpForce);
+            Move(hor+ver);
         }
         else
         {
             _keyHold = false;
+            _stateMachine.ChangeState(_stateMachine.FallState);
         }
     }
 

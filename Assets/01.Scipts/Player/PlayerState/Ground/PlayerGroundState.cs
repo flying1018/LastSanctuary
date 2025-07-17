@@ -32,7 +32,7 @@ public class PlayerGroundState : PlayerBaseState
         }
         
         //점프
-        if (_input.IsJump && _player.IsGround())
+        if (_input.IsJump && _player.IsGrounded)
         {
             _stateMachine.ChangeState(_stateMachine.JumpState);
         }
