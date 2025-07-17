@@ -10,6 +10,7 @@ public class PlayerJumpState : PlayerAirState
 {
     private float _maxHoldTime;
     private bool _keyHold;
+    private float _jumpPower;
 
     public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
@@ -25,6 +26,9 @@ public class PlayerJumpState : PlayerAirState
         
         //효과음 실행
         PlaySFX1();
+        
+        //점프력
+        _jumpPower = _data.jumpForce;
     }
 
     public override void Exit()
@@ -59,8 +63,10 @@ public class PlayerJumpState : PlayerAirState
             
             Rotate(_input.MoveInput);
             Vector2 hor = Horizontal(_input.MoveInput, _data.moveSpeed);
-            Vector2 ver = Vertical(Vector2.up, _data.jumpForce);
+            Vector2 ver = Vertical(Vector2.up, _jumpPower);
             Move(hor+ver);
+
+            _jumpPower *= 0.9f;
         }
         else
         {

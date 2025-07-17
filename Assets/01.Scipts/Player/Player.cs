@@ -119,7 +119,6 @@ public class Player : MonoBehaviour
             transform.position = position;
             
             IsGrounded = true;
-            gravityScale = Vector2.zero;
         }
         
         //공중 발판 충돌 시
@@ -136,7 +135,6 @@ public class Player : MonoBehaviour
             
             IsGrounded = true;
             IsAerialPlatform = true;
-            gravityScale = Vector2.zero;
         }
         
         //벽과 충돌 시
@@ -165,6 +163,7 @@ public class Player : MonoBehaviour
             position.y = point.y + (GroundDirection.y < 0 ? CapsuleCollider.size.y / 2 : -CapsuleCollider.size.y/2);
             transform.position = position;
         }
+        
         
         //벽과 충돌 시
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Wall))

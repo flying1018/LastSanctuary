@@ -89,7 +89,13 @@ public class PlayerBaseState : IState
     {
         Rotate(_input.MoveInput);
         Vector2 x = Horizontal(_input.MoveInput, _data.moveSpeed);
-        _player.gravityScale += Vertical(Vector2.down, _data.gravityPower);
+        
+        //바닥에 있지 않으면
+        if(!_player.IsGrounded)
+            _player.gravityScale += Vertical(Vector2.down, _data.gravityPower);
+        else
+            _player.gravityScale = Vector2.zero;
+        
         Move(x+_player.gravityScale);
     }
 
