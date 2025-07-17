@@ -14,7 +14,7 @@ public class BossSpawnState : BossBaseState
         UpdateCollider();
         
         //빠르게 떨어지기
-        _rigidbody.gravityScale = 15f;
+        _boss.VerticalVelocity = -_data.spawnFallVelocity;
         
         //애니메이션 실행
         _boss.Animator.SetTrigger(_boss.AnimationDB.SpawnParameterHash);
@@ -45,6 +45,8 @@ public class BossSpawnState : BossBaseState
 
     public override void PhysicsUpdate()
     {
+        ApplyGravity();
+        Move(Vector2.zero);
         //콜라이더 자동 변경 시 콜라이더가 사라지는 버그가 있어서 블락
     }
 

@@ -12,7 +12,10 @@ public class BossPhaseShiftState : BossBaseState
     {
         //애니메이션 시작
         _boss.Animator.SetTrigger(_boss.AnimationDB.PhaseShiftParameterHash);
-
+        
+        //보스 페이즈 전환 연출
+        _boss.BossEvent.OnTriggerBossPhaseShift();
+        
         //시간 초기화 
         _time = 0;
         

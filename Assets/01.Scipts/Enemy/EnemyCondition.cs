@@ -74,11 +74,31 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     {
         if (knockBackPower <= 0) return;
         if (_curHp <= 0) return;
-        
-        Vector2 knockbackDir = (transform.position - attackDir.position);
-        knockbackDir.y = 0f;
         _enemy.StateMachine.ChangeState(_enemy.StateMachine.HitState);
-        _enemy.Rigidbody.AddForce(knockbackDir.normalized *  knockBackPower,ForceMode2D.Impulse);
+        StartCoroutine(KnokBack_Coroutine(attackDir, knockBackPower));
+    }
+
+    private IEnumerator KnokBack_Coroutine(Transform attackDir, float knockBackPower)
+    {
+        float timer = 0f;
+        Vector2 startPos = _enemy.Rigidbody.position;
+        
+        Vector2 knockbackDir = (startPos.x - attackDir.position.x) > 0 ? Vector2.right : Vector2.left;
+        knockbackDir.y = 0f;
+
+        while (timer < _enemy.Data.hitDuration)
+        {
+            float t = timer / _enemy.Data.hitDuration;
+            float distance = knockBackPower * t;
+            
+            Vector2 offset = knockbackDir * distance;
+            Vector2 newPos = startPos + offset;
+            
+            _enemy.Rigidbody.MovePosition(newPos);
+            
+            timer += Time.deltaTime;
+            yield return null;
+        }
     }
 
 
