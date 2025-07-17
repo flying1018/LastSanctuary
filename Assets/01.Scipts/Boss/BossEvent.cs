@@ -164,13 +164,32 @@ public class BossEvent : MonoBehaviour
         _player.PlayerInput.enabled = true;
         _bossCamera.Priority = 0;
     }
-
+    
+    //보스 페이즈전환 연출
+    public void OnTriggerBossPhaseShift()
+    {
+        StartCoroutine(PhaseShift_Coroutine());
+    }
+    IEnumerator PhaseShift_Coroutine()
+    {
+        //보스 포커싱
+        _brain.m_DefaultBlend = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.Cut, 0f);
+        _bossCamera.transform.position = new Vector3(_boss.transform.position.x, _boss.transform.position.y, _bossCamera.transform.position.z);
+        _bossCamera.m_Lens.OrthographicSize = cameraZoom;
+        _bossCamera.Priority = 20;
+        //UI 끄기
+        UIManager.Instance.OnOffUI(false);
+        //조작 불가
+        _player.PlayerInput.enabled = false;
+        yield return new WaitForSeconds(_boss.Data.PhaseShiftTime);
+        StartBattle();
+    }
+    
     //보스 사망 연출
     public void OnTriggerBossDeath()
     {
         StartCoroutine(Death_coroution());
     }
-
     IEnumerator  Death_coroution()
     {
         //보스 포커싱

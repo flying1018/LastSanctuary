@@ -64,7 +64,6 @@ public class Boss : MonoBehaviour
     
     private void FixedUpdate()
     {
-        ApplyGravity();
         StateMachine.PhysicsUpdate();
 //        Debug.Log(StateMachine.currentState);
 
@@ -110,7 +109,7 @@ public class Boss : MonoBehaviour
         float timer = 0f;
 
         Vector2 startPos = Rigidbody.position;
-        Vector2 backDir = (startPos - (Vector2)Target.position).normalized;
+        Vector2 backDir = (startPos.x - Target.position.x) > 0 ? Vector2.right : Vector2.left;
         Vector2 horizontalDir = new Vector2(backDir.x, 0f);
         
         while (timer < duration)
@@ -175,18 +174,6 @@ public class Boss : MonoBehaviour
         }
     }
     
-    //중력
-    private void ApplyGravity()
-    {
-        if (IsGrounded())
-        {
-            VerticalVelocity = 0f;
-        }
-        else
-        {
-            VerticalVelocity += Physics.gravity.y * Time.deltaTime;
-        }
-    }
     
     //땅에 있는지
     public bool IsGrounded()

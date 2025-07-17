@@ -20,7 +20,7 @@ public class PlayerMoveState : PlayerGroundState
         StopAnimation(_player.AnimationDB.MoveParameterHash);
         
         //나갈 때 이동 정지
-        Move(Vector2.zero);
+        //Move(Vector2.zero);
     }
 
     public override void HandleInput()
