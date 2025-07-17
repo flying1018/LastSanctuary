@@ -26,8 +26,9 @@ public class AttackInfo
 [CreateAssetMenu(fileName = "Player", menuName = "New Player")]
 public class PlayerSO : ScriptableObject
 {
-    [field: Header("GroundState")]
-    [field: SerializeField][field: Range(0f, 20f)] public float moveSpeed { get; private set; } = 6f;
+    [Header("GroundState")] 
+    public float moveSpeed;
+    public float gravityPower;
 
     [field: Header("AirState")]
     [field: SerializeField][field: Range(0f, 100f)] public float jumpForce { get; private set; } = 10f;

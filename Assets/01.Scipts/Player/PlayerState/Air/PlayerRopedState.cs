@@ -10,16 +10,12 @@ public class PlayerRopedState : PlayerAirState
     {
         base.Enter();
         StartAnimation(_player.AnimationDB.RopedParameterHash);;
-        
-        _rigidbody.gravityScale = 0;
     }
     
     public override void Exit()
     {
         base.Exit();
         StopAnimation(_player.AnimationDB.RopedParameterHash);;
-        
-        _rigidbody.gravityScale = 3;
     }
 
     
@@ -38,17 +34,16 @@ public class PlayerRopedState : PlayerAirState
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
 
-        //아래키 입력 중이고 공중 발판 이 있을 때 공중 발판 뚫기
+        //아래키 입력 중이고 공중 발판에 있을 때 공중 발판 뚫기
         if (_input.MoveInput.y < 0)
         {
-            if (_player.AerialPlatform == null) return;
-            _player.AerialPlatform.DownJump();
+            if (!_player.IsAerialPlatform) return;
+            _player.IsGrounded = false;
         }
 
         //아래키 입력 중이고 바닥에 도달했을 때
-        if (_input.MoveInput.y < 0 && _player.IsGround())
+        if (_input.MoveInput.y < 0 && _player.IsGrounded)
         {
-            if(_player.IsAerialPlatform()) return;
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
     }
@@ -68,11 +63,11 @@ public class PlayerRopedState : PlayerAirState
     public override void PhysicsUpdate()
     {
         Rotate(_input.MoveInput);
-        VerticalMove(_input.MoveInput);
+        RopeMove();
     }
 
     //상하 이동
-    void VerticalMove(Vector2 direction)
+    void RopeMove()
     {
         //로프 x 좌표 고정
         if(_player.RopedPosition == Vector2.zero) return;
@@ -82,9 +77,8 @@ public class PlayerRopedState : PlayerAirState
         _player.transform.position = new Vector2(ropeX, _player.transform.position.y);
         
         //y 축 좌표 고정
-        direction.x = 0;
-        Vector2 moveVelocity = new Vector2(_rigidbody.velocity.x, direction.normalized.y * _data.moveSpeed);
-        _rigidbody.velocity = moveVelocity;
+        Vector2 dir = Vertical(_input.MoveInput, _data.moveSpeed);
+        Move(dir);
     }
 
     public override void PlaySFX1()

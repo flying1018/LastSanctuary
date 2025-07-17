@@ -31,9 +31,6 @@ public class PlayerDashState : PlayerBaseState
     public override void Exit()
     {
         base.Exit();
-        
-        //현재 위치에 정지
-        Move(Vector2.zero);
     }
 
     public override void HandleInput()
@@ -56,7 +53,7 @@ public class PlayerDashState : PlayerBaseState
         if (_time < _data.DashTime) return;
 
         //공중이라면 
-        if (!_player.IsGround())
+        if (!_player.IsGrounded)
         {   //떨어지기
             _stateMachine.ChangeState(_stateMachine.FallState);
         }
@@ -80,7 +77,8 @@ public class PlayerDashState : PlayerBaseState
     //대쉬
     private void Dash()
     {
-        _rigidbody.velocity = _dir * _data.dashPower;
+        Vector2 hor = Horizontal(_dir, _data.dashPower);
+        Move(hor);
     }
 
     public override void PlaySFX1()

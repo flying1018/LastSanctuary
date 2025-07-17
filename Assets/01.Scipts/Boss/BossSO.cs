@@ -49,6 +49,7 @@ public class BossSO : ScriptableObject
     public float moveSpeed = 2f;
     
     [Header("SpawnState")]
+	public float spawnFallVelocity = 20f;
     public AnimationClip spawnAnim;
     public float SpawnAnimeTime {get => spawnAnim.length;}
 

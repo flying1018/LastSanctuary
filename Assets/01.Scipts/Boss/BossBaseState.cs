@@ -70,6 +70,22 @@ public class BossBaseState : IState
     {
         //콜라이더 형태 변경
         UpdateCollider();
+        ApplyGravity();
+    }
+
+  
+
+    //중력
+    public void ApplyGravity()
+    {
+        if (_boss.IsGrounded())
+        {
+            _boss.VerticalVelocity = 0f;
+        }
+        else
+        {
+            _boss.VerticalVelocity += Physics.gravity.y * Time.deltaTime;
+        }
     }
     
     //애니메이션 실행
