@@ -13,7 +13,7 @@ public class PlayerBaseState : IState
     protected PlayerInventory _inventory;
     protected Player _player;
     protected PlayerWeapon _playerWeapon;
-    protected CapsuleCollider2D _capsuleCollider;
+    protected BoxCollider2D _capsuleCollider;
 
     protected float _time;
 
@@ -65,7 +65,6 @@ public class PlayerBaseState : IState
     public virtual void PhysicsUpdate()
     {
         Move();
-
         
         //떨어지기 시작하면
         if (!_player.IsGrounded)
@@ -84,14 +83,14 @@ public class PlayerBaseState : IState
         _player.Animator.SetBool(animatorHash, false);
     }
 
+
     //캐릭터 기초 이동
     public void Move()
     {
         Rotate(_input.MoveInput);
         Vector2 x = Horizontal(_input.MoveInput, _data.moveSpeed);
-        Vector2 y = Vertical(Vector2.down, _data.gravityPower);
-        
-        Move(x+y);
+        _player.gravityScale += Vertical(Vector2.down, _data.gravityPower);
+        Move(x+_player.gravityScale);
     }
 
     //캐릭터의 이동 처리

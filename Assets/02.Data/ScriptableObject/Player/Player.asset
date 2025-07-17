@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   moveSpeed: 6
-  gravityPower: 29.43
-  <jumpForce>k__BackingField: 13
+  gravityPower: 19.6
+  <jumpForce>k__BackingField: 15
   <jumpBoost>k__BackingField: 2
   dashAnim: {fileID: 7400000, guid: 20526e8ebcd8b154daef3662caa8a8a5, type: 2}
   dashPower: 20

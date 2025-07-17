@@ -34,19 +34,18 @@ public class PlayerRopedState : PlayerAirState
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
 
-        //아래키 입력 중이고 공중 발판 이 있을 때 공중 발판 뚫기
+        //아래키 입력 중이고 공중 발판에 있을 때 공중 발판 뚫기
         if (_input.MoveInput.y < 0)
         {
-            if (_player.AerialPlatform == null) return;
-            _player.AerialPlatform.DownJump();
+            if (!_player.IsAerialPlatform) return;
+            _player.IsGrounded = false;
         }
 
         //아래키 입력 중이고 바닥에 도달했을 때
-        // if (_input.MoveInput.y < 0 && _player.IsGround())
-        // {
-        //     if(_player.IsAerialPlatform()) return;
-        //     _stateMachine.ChangeState(_stateMachine.IdleState);
-        // }
+        if (_input.MoveInput.y < 0 && _player.IsGrounded)
+        {
+            _stateMachine.ChangeState(_stateMachine.IdleState);
+        }
     }
 
     public override void Update()

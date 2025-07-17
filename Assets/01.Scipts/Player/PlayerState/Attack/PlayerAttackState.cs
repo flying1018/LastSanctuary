@@ -81,8 +81,8 @@ public class PlayerAttackState : PlayerBaseState
 
     public override void PhysicsUpdate()
     {
-        Vector2 dir = Vertical(Vector2.down, _data.gravityPower/2);
-        Move(dir);
+        _player.gravityScale += Vertical(Vector2.down, _data.gravityPower);
+        Move( _player.gravityScale);
     }
 
     public override void PlaySFX1()
