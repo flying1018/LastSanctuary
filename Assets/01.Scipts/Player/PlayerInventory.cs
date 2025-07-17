@@ -14,12 +14,12 @@ public class PlayerInventory : MonoBehaviour
     public int MaxPotionNum { get; private set; }
     public int CurPotionNum { get; private set; }
 
-    
+
     public async void Init(Player player)
     {
         //relics = await ResourceLoader.LoadAssetsLabel<CollectObject>(StringNameSpace.Labels.Relic);;
         relics.Sort();
-        
+
         MaxPotionNum = player.Data.potionNum;
         CurPotionNum = MaxPotionNum;
         _playerCondition = player.Condition;
@@ -80,7 +80,7 @@ public class PlayerInventory : MonoBehaviour
             //_playerCondition.MaxStamina += data.stamina;
             EquipRelics.Add(data);
         }
-        
+
     }
 
     //장착 해제
@@ -103,7 +103,7 @@ public class PlayerInventory : MonoBehaviour
         }
         return sum;
     }
-    
+
     //성물로 인한 방어력
     public int EquipRelicDefense()
     {
@@ -114,7 +114,7 @@ public class PlayerInventory : MonoBehaviour
         }
         return sum;
     }
-    
+
     //성물로 인한 체력
     public int EquipRelicHp()
     {
@@ -125,7 +125,7 @@ public class PlayerInventory : MonoBehaviour
         }
         return sum;
     }
-    
+
     //성물로 인한 스태미나
     public int EquipRelicStamina()
     {
@@ -135,5 +135,12 @@ public class PlayerInventory : MonoBehaviour
             sum += data.stamina;
         }
         return sum;
+    }
+
+    public void SupplyPotion()
+    {
+        CurPotionNum = MaxPotionNum;
+        UIManager.Instance.UpdatePotionUI();
+        DebugHelper.Log($"호출됨 현재 포션 :{CurPotionNum}");
     }
 }

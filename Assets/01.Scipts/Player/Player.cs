@@ -108,7 +108,7 @@ public class Player : MonoBehaviour
             RopedPosition = Vector2.zero;
         }
 
-        if (other.gameObject.layer == interactableLayer)
+        if ((interactableLayer.value & (1 << other.gameObject.layer)) != 0)
         {
             Input.InteractableTarget = null;
             Input.IsNearInteractable = false;
