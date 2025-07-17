@@ -31,9 +31,6 @@ public class PlayerDashState : PlayerBaseState
     public override void Exit()
     {
         base.Exit();
-        
-        //현재 위치에 정지
-        Move(Vector2.zero);
     }
 
     public override void HandleInput()

@@ -14,7 +14,6 @@ public class PlayerGuardState : PlayerBaseState
         StartAnimation(_player.AnimationDB.GuardParameterHash);
         
         //방어에 필요한 데이터 설정
-        Move(Vector2.zero);
         _guardStart = Time.time;
         _condition.IsPerfectGuard = true;
         _condition.IsGuard = true;

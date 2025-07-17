@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class Player : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject weapon;
 
     //프로퍼티
-    public CapsuleCollider2D CapsuleCollider;
+    public BoxCollider2D CapsuleCollider;
     public PlayerStateMachine StateMachine { get; set; }
     public PlayerController Input { get; set; }
     public PlayerHandler Handler { get; set; }
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        CapsuleCollider = GetComponent<CapsuleCollider2D>();
+        CapsuleCollider = GetComponent<BoxCollider2D>();
         Input = GetComponent<PlayerController>();
         Handler = GetComponent<PlayerHandler>();
         Rigidbody = GetComponent<Rigidbody2D>();
@@ -66,6 +67,11 @@ public class Player : MonoBehaviour
         //Debug.Log(StateMachine.currentState);
     }
 
+    
+    public Vector2 GroundPosition { get; set; }
+    public Vector2 WallDirection { get; set; }
+    public bool IsWall { get; set; }
+    public bool IsGrounded { get; set; }
     private void OnTriggerEnter2D(Collider2D other)
     {
         //사다리 판단
@@ -97,10 +103,35 @@ public class Player : MonoBehaviour
                 Input.IsSavePoint = true;
             }
         }
+
+        if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
+        {
+            Vector3 point = other.ClosestPoint(transform.position);
+            GroundPosition = point;
+            
+            Vector2 position = transform.position;
+            position.y = point.y + CapsuleCollider.size.y / 2;
+            transform.position = position;
+            
+            IsGrounded = true;
+        }
+        
+        if (other.gameObject.CompareTag(StringNameSpace.Tags.Wall))
+        {
+            Vector3 point = other.ClosestPoint(transform.position);
+            WallDirection = point - transform.position;
+
+            Vector2 position = transform.position;
+            position.x = point.x + (WallDirection.x < 0 ? CapsuleCollider.size.x / 2 : -CapsuleCollider.size.x/2);
+            transform.position = position;
+            
+            IsWall = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        
         //사다리 나가기
         if (other.CompareTag(StringNameSpace.Tags.Ladder))
         {
@@ -119,24 +150,18 @@ public class Player : MonoBehaviour
                 Input.IsSavePoint = false;
             }
         }
+        
+        if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
+        {
+            IsGrounded = false;
+        }
+        
+        if (other.gameObject.CompareTag(StringNameSpace.Tags.Wall))
+        {
+            IsWall = false;
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        //공중 발판 정보 가져오기
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
-        {
-            AerialPlatform = other.gameObject.GetComponent<AerialPlatform>();
-        }
-    }
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        //공중 발판 정보 초기화
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
-        {
-            AerialPlatform = null;
-        }
-    }
 
 
     #region Need MonoBehaviour Method
@@ -146,7 +171,8 @@ public class Player : MonoBehaviour
     {
         Vector2 newPos = new Vector2(transform.position.x, transform.position.y-(CapsuleCollider.size.y/2));
         Ray ray = new Ray(newPos, Vector2.down);
-        return Physics2D.Raycast(ray.origin,ray.direction,groundCheckDistance, groundLayer);
+        //return Physics2D.Raycast(ray.origin,ray.direction,groundCheckDistance, groundLayer);
+        return false;
     }
 
     //공중 발판 확인

@@ -13,7 +13,7 @@ public class PlayerBaseState : IState
     protected PlayerInventory _inventory;
     protected Player _player;
     protected PlayerWeapon _playerWeapon;
-    protected CapsuleCollider2D _capsuleCollider;
+    protected BoxCollider2D _capsuleCollider;
 
     protected float _time;
 
@@ -65,7 +65,6 @@ public class PlayerBaseState : IState
     public virtual void PhysicsUpdate()
     {
         Move();
-        _player.Handler.ApplyGravity();
 
         
         //떨어지기 시작하면
@@ -88,17 +87,30 @@ public class PlayerBaseState : IState
     //입력 값에 이동하는 메서드
     public void Move()
     {
-        Move(_input.MoveInput);
         Rotate(_input.MoveInput);
-
-        Vector2 targetPosition = _player.Rigidbody.position + _player.Handler.velocity * Time.fixedDeltaTime;
-
-        _player.Rigidbody.MovePosition(targetPosition);
+        Vector2 x = Horizontal(_input.MoveInput, _data.moveSpeed);
+        Vector2 y = Vertical(Vector2.down, _data.gravityPower);
+        
+        Move(x+y);
     }
 
     public void Move(Vector2 direction)
     {
-        _player.Handler.velocity.x = direction.x * _data.moveSpeed;
+        if (_player.IsWall &&_player.WallDirection.normalized == _input.MoveInput.normalized) direction.x = 0;
+        if (_player.IsGrounded) direction.y = 0;
+        _rigidbody.MovePosition(_rigidbody.position + direction * Time.fixedDeltaTime);
+    }
+
+    public Vector2 Horizontal(Vector2 direction, float power)
+    {
+        direction.y = 0;
+        return direction.normalized * power;
+    }
+
+    public Vector2 Vertical(Vector2 direction, float power)
+    {
+        direction.x = 0;
+        return direction.normalized * power;
     }
 
     public void Rotate(Vector2 direction)

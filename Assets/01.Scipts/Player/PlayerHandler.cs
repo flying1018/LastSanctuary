@@ -21,21 +21,6 @@ public class PlayerHandler : MonoBehaviour
 
     public void ApplyGravity()
     {
-        velocity = _player.Rigidbody.velocity;
 
-        if (!_player.IsGround())
-        {
-            currentVelocity += Physics2D.gravity.y * gravityPower * Time.deltaTime;
-
-            if (currentVelocity < maxFallSpeed) { currentVelocity = maxFallSpeed; }
-            velocity.y = currentVelocity;
-
-        }
-        else
-        {
-            if (currentVelocity < 0)
-                currentVelocity = 0;
-        }
-        velocity.y = currentVelocity;
     }
 }
