@@ -13,6 +13,7 @@ public class SavePoint : MonoBehaviour, IInteractable
 
         SaveManager.Instance.SetSavePoint(this.transform.position);
         ItemManager.Instance.playerCondition.PlayerRecovery(); // 회복
+        ItemManager.Instance.playerInventory.SupplyPotion();
         MapManager.Instance.RespawnEnemies();
         //MapManager.Instance.RespawnItems();
 
