@@ -8,9 +8,7 @@ using UnityEngine;
 /// </summary>
 public class PlayerJumpState : PlayerAirState
 {
-    private float _maxHoldTime;
-    private bool _keyHold;
-    private float _jumpPower;
+    private float _jumpDumping;
 
     public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
@@ -21,9 +19,7 @@ public class PlayerJumpState : PlayerAirState
 
         //데이터 초기화
         _input.IsJump = false;
-        _maxHoldTime = 0.4f;
-        _keyHold = _input.IsLongJump;
-        
+
         //효과음 실행
         PlaySFX1();
         
@@ -41,11 +37,13 @@ public class PlayerJumpState : PlayerAirState
     {
         base.HandleInput();
 
-        if (_maxHoldTime > 0.1f) return;
-        
-        //계속 누르고 있으면 점프 지속
-        if (!_input.IsLongJump)
-            _keyHold = _input.IsLongJump;
+
+        if (_input.IsHoldJump)
+            _jumpDumping = _data.holdJumpDuping;
+        else
+            _jumpDumping = _data.jumpDuping;
+
+
     }
 
     public override void PhysicsUpdate()
@@ -81,7 +79,7 @@ public class PlayerJumpState : PlayerAirState
             _move.Move(hor + ver);
 
             yield return null;
-            jumpPower *= _data.jumpDuping;
+            jumpPower *= _jumpDumping;
         }
 
         _move.addForceCoroutine = null;

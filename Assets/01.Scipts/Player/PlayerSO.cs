@@ -33,6 +33,7 @@ public class PlayerSO : ScriptableObject
     [Header("AirState")] 
     public float jumpForce;
     public float jumpDuping;
+    public float holdJumpDuping;
     public float fallJudgment;
 
     [Header("DashState")] 

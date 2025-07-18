@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public bool IsGuarding { get; set; }
     public bool IsDash { get; set; }
     public bool IsJump { get; set; }
-    public bool IsLongJump { get; set; }
+    public bool IsHoldJump { get; set; }
     public bool IsHeal { get; set; }
     public bool IsAttack { get; set; }
     public bool IsNearInteractable { get; set; }
@@ -54,12 +54,12 @@ public class PlayerController : MonoBehaviour
         }
         if (context.phase == InputActionPhase.Performed)
         {
-            IsLongJump = true;
+            IsHoldJump = true;
         }
         if (context.phase == InputActionPhase.Canceled)
         {
             IsJump = false;
-            IsLongJump = false;
+            IsHoldJump = false;
         }
 
     }
