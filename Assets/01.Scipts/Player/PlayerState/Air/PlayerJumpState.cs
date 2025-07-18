@@ -8,9 +8,7 @@ using UnityEngine;
 /// </summary>
 public class PlayerJumpState : PlayerAirState
 {
-    private float _maxHoldTime;
-    private bool _keyHold;
-    private float _jumpPower;
+    private float _jumpDumping;
 
     public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
@@ -21,14 +19,12 @@ public class PlayerJumpState : PlayerAirState
 
         //데이터 초기화
         _input.IsJump = false;
-        _maxHoldTime = 0.4f;
-        _keyHold = _input.IsLongJump;
-        
+
         //효과음 실행
         PlaySFX1();
         
-        //점프력
-        _jumpPower = _data.jumpForce;
+        //점프
+        Jump();
     }
 
     public override void Exit()
@@ -41,40 +37,52 @@ public class PlayerJumpState : PlayerAirState
     {
         base.HandleInput();
 
-        if (_maxHoldTime > 0.1f) return;
-        
-        //계속 누르고 있으면 점프 지속
-        if (!_input.IsLongJump)
-            _keyHold = _input.IsLongJump;
+
+        if (_input.IsHoldJump)
+            _jumpDumping = _data.holdJumpDuping;
+        else
+            _jumpDumping = _data.jumpDuping;
+
+
     }
 
     public override void PhysicsUpdate()
     {
-        Jump();
+        if(_move.addForceCoroutine != null) return;
+        base.PhysicsUpdate();
     }
     
     //점프
     //키를 누르고 있는 동안 점프력 증가
     void Jump()
     {
-        if (_keyHold && _maxHoldTime > 0.0f)
+        if (_move.addForceCoroutine != null)
         {
-            _maxHoldTime -= Time.deltaTime;
-            
-            Rotate(_input.MoveInput);
-            Vector2 hor = Horizontal(_input.MoveInput, _data.moveSpeed);
-            Vector2 ver = Vertical(Vector2.up, _jumpPower);
-            Move(hor+ver);
-
-            _jumpPower *= 0.9f;
+            _move.StopCoroutine(_move.addForceCoroutine);
+            _move.addForceCoroutine = null;
         }
-        else
-        {
-            _keyHold = false;
-            _stateMachine.ChangeState(_stateMachine.FallState);
-        }
+        
+        _move.addForceCoroutine = _move.StartCoroutine(Jump_Coroutine());
     }
 
+    IEnumerator Jump_Coroutine()
+    {
+        float jumpPower = _data.jumpForce;
+        while (jumpPower > 2f)
+        {
+            Rotate(_input.MoveInput);
+            Vector2 hor = _move.Horizontal(_input.MoveInput, _data.moveSpeed);
+            Vector2 ver = _move.Vertical(Vector2.up, jumpPower);
+            _move.Move(hor + ver);
+
+            yield return null;
+            jumpPower *= _jumpDumping;
+        }
+
+        _move.addForceCoroutine = null;
+    }
+    
+    
     public override void PlaySFX1()
     {
         SoundManager.Instance.PlaySFX( _data.jumpSound);

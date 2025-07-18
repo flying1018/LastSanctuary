@@ -114,12 +114,12 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     {
         if (_isPerfectGuard) return;
         if (_isGuard) return;
-
+        
         if (force > 0)
         {
             Vector2 knockbackDir = (transform.position - dir.transform.position);
             Vector2 knockback = knockbackDir.normalized * force;
-            _player.Rigidbody.AddForce(knockback, ForceMode2D.Impulse);
+            _player.Move.AddForce(knockback);
         }
     }
 

@@ -16,10 +16,9 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask aerialPlatformLayer;
 
     //프로퍼티
-    public BoxCollider2D CapsuleCollider;
+    public BoxCollider2D BoxCollider;
     public PlayerStateMachine StateMachine { get; set; }
     public PlayerController Input { get; set; }
-    public PlayerHandler Handler { get; set; }
     public Rigidbody2D Rigidbody { get; set; }
     public Animator Animator { get; set; }
     public SpriteRenderer SpriteRenderer { get; set; }
@@ -30,15 +29,15 @@ public class Player : MonoBehaviour
     public GameObject Weapon { get; set; }
     public PlayerInventory Inventory { get; set; }
     public PlayerInput PlayerInput { get; set; }
+    public KinematicMove Move { get; set; }
     //직렬화 데이터 프로퍼티
     public PlayerSO Data { get => playerData; }
 
 
     private void Awake()
     {
-        CapsuleCollider = GetComponent<BoxCollider2D>();
+        BoxCollider = GetComponent<BoxCollider2D>();
         Input = GetComponent<PlayerController>();
-        Handler = GetComponent<PlayerHandler>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         Condition = GetComponent<PlayerCondition>();
@@ -47,9 +46,11 @@ public class Player : MonoBehaviour
         Weapon = PlayerWeapon.gameObject;
         Inventory = GetComponent<PlayerInventory>();
         PlayerInput = GetComponent<PlayerInput>();
+        Move = GetComponent<KinematicMove>();
         
         AnimationDB.Initailize();
         Inventory.Init(this);
+        Move.Init(BoxCollider.size.x, BoxCollider.size.y,Rigidbody);
         
         StateMachine = new PlayerStateMachine(this);
     }
@@ -66,13 +67,6 @@ public class Player : MonoBehaviour
         //Debug.Log(StateMachine.currentState);
 
     }
-
-    public Vector2 gravityScale = Vector2.zero;
-    public Vector2 GroundDirection { get; set; }
-    public Vector2 WallDirection { get; set; }
-    public bool IsWall { get; set; }
-    public bool IsGrounded { get; set; }
-    public bool IsAerialPlatform { get; set; }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -105,74 +99,6 @@ public class Player : MonoBehaviour
                 Input.IsSavePoint = true;
             }
         }
-        
-        //바닥 충돌 시
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
-        {
-            Vector3 point = other.ClosestPoint(transform.position);
-            GroundDirection = point - transform.position;
-            
-            Vector2 position = transform.position;
-            position.y = point.y + (GroundDirection.y < 0 ? CapsuleCollider.size.y / 2 : -CapsuleCollider.size.y/2);
-            transform.position = position;
-            
-            IsGrounded = true;
-        }
-        
-        //공중 발판 충돌 시
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
-        {
-            Vector3 point = other.ClosestPoint(transform.position);
-            GroundDirection = point - (transform.position - new Vector3(0,CapsuleCollider.size.y / 3));
-
-            if (GroundDirection.y > 0) return; 
-            
-            Vector2 position = transform.position;
-            position.y = point.y + CapsuleCollider.size.y / 2;
-            transform.position = position;
-            
-            IsGrounded = true;
-            IsAerialPlatform = true;
-        }
-        
-        //벽과 충돌 시
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.Wall))
-        {
-            Vector3 point = other.ClosestPoint(transform.position);
-            WallDirection = point - transform.position;
-
-            Vector2 position = transform.position;
-            position.x = point.x + (WallDirection.x < 0 ? CapsuleCollider.size.x / 2 : -CapsuleCollider.size.x/2);
-            transform.position = position;
-            
-            IsWall = true;
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        //땅과 충돌 시
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
-        {
-            Vector3 point = other.ClosestPoint(transform.position);
-            GroundDirection = point - transform.position;
-            
-            Vector2 position = transform.position;
-            position.y = point.y + (GroundDirection.y < 0 ? CapsuleCollider.size.y / 2 : -CapsuleCollider.size.y/2);
-            transform.position = position;
-        }
-        
-        
-        //벽과 충돌 시
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.Wall))
-        {
-            Vector3 point = other.ClosestPoint(transform.position);
-            WallDirection = point - transform.position;
-
-            Vector2 position = transform.position;
-            position.x = point.x + (WallDirection.x < 0 ? CapsuleCollider.size.x / 2 : -CapsuleCollider.size.x/2);
-            transform.position = position;
-        }
     }
     
 
@@ -197,48 +123,22 @@ public class Player : MonoBehaviour
                 Input.IsSavePoint = false;
             }
         }
-        
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
-        {
-            IsGrounded = false;
-        }
-        
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
-        {
-            IsGrounded = false;
-            IsAerialPlatform = false;
-        }
-        
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.Wall))
-        {
-            IsWall = false;
-        }
     }
 
 
 
     #region Need MonoBehaviour Method
-
-    public bool IsGround()
-    {
-        Vector2 newPos = new Vector2(transform.position.x, transform.position.y - CapsuleCollider.size.y / 2);
-        Ray ray = new Ray(newPos, Vector3.down);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, CapsuleCollider.size.y / 2, groundLayer);
-        return hit;
-    }
+    
     
     #endregion
     
     #region AnimationEvent Method
-    public void ApplyAttackForce()
+    public void AnimationEvent1()
     {
-        AttackInfo attackInfo = null;
-        if (StateMachine.currentState is PlayerAttackState attackState)
+        if (StateMachine.currentState is PlayerBaseState playerBaseState)
         {
-            attackInfo = attackState.attackInfo;
+            playerBaseState.PlayEvent1();
         }
-        Vector2 direction = SpriteRenderer.flipX ? Vector2.left : Vector2.right;
-        Rigidbody.AddForce(direction * attackInfo.attackForce, ForceMode2D.Impulse);
     }
     
     public void EventSFX1()

@@ -27,7 +27,7 @@ public class EnemyHitState : EnemyBaseState
     public override void PhysicsUpdate()
     {
         //
-        if (Time.time - _hitStart >= _data.HitDuration)
+        if (Time.time - _hitStart >= _data.hitDuration)
         {
             _stateMachine.ChangeState(_stateMachine.BattleState);
         }

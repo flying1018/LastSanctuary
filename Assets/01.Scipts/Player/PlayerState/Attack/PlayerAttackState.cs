@@ -53,12 +53,12 @@ public class PlayerAttackState : PlayerBaseState
     public override void HandleInput()
     {
         //대쉬 키 입력 시 스태미나가 충분하면
-        if (_input.IsDash && _condition.UsingStamina(_data.dashCost))
+        if (_input.IsDash && _stateMachine.DashState.UseCanDash())
         {   //대쉬
             _stateMachine.ChangeState(_stateMachine.DashState);
         }
         //공격 중 가드 가능
-        if (_player.IsGrounded &&_input.IsGuarding && _stateMachine.comboIndex != 2)
+        if (_move.IsGrounded &&_input.IsGuarding && _stateMachine.comboIndex != 2)
         { 
             _stateMachine.ChangeState(_stateMachine.GuardState);
         }
@@ -74,15 +74,26 @@ public class PlayerAttackState : PlayerBaseState
         _time += Time.deltaTime;
         if (_time > (_animationTime + attackInfo.nextComboTime))
         {
-            _stateMachine.ChangeState(_stateMachine.IdleState);
+            if(_move.IsGrounded)
+                _stateMachine.ChangeState(_stateMachine.IdleState);
+            else
+                _stateMachine.ChangeState(_stateMachine.FallState);
+                
+            
         }
     }
     
 
     public override void PhysicsUpdate()
     {
-        _player.gravityScale += Vertical(Vector2.down, _data.gravityPower);
-        Move( _player.gravityScale);
+        
+    }
+    
+    //대쉬어택, 3타어택 공용으로 사용
+    public override void PlayEvent1()
+    {
+        Vector2 direction = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
+        _move.AddForce(direction * attackInfo.attackForce);
     }
 
     public override void PlaySFX1()
