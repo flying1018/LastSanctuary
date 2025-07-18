@@ -24,7 +24,7 @@ public class PlayerAirState : PlayerBaseState
     public override void HandleInput()
     {
         base.HandleInput();
-        if (_input.IsAttack)
+        if (_input.IsAttack && _stateMachine.JumpAttack.CanJumpAttack)
         {
             _stateMachine.ChangeState(_stateMachine.JumpAttack);
         }

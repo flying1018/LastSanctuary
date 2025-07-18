@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     public BoxCollider2D BoxCollider;
     public PlayerStateMachine StateMachine { get; set; }
     public PlayerController Input { get; set; }
-    public PlayerHandler Handler { get; set; }
     public Rigidbody2D Rigidbody { get; set; }
     public Animator Animator { get; set; }
     public SpriteRenderer SpriteRenderer { get; set; }
@@ -39,7 +38,6 @@ public class Player : MonoBehaviour
     {
         BoxCollider = GetComponent<BoxCollider2D>();
         Input = GetComponent<PlayerController>();
-        Handler = GetComponent<PlayerHandler>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         Condition = GetComponent<PlayerCondition>();
@@ -52,7 +50,7 @@ public class Player : MonoBehaviour
         
         AnimationDB.Initailize();
         Inventory.Init(this);
-        Move.Init(BoxCollider.size.x, BoxCollider.size.y,Rigidbody);;
+        Move.Init(BoxCollider.size.x, BoxCollider.size.y,Rigidbody);
         
         StateMachine = new PlayerStateMachine(this);
     }
@@ -130,27 +128,17 @@ public class Player : MonoBehaviour
 
 
     #region Need MonoBehaviour Method
-
-    public bool IsGround()
-    {
-        Vector2 newPos = new Vector2(transform.position.x, transform.position.y - BoxCollider.size.y / 2);
-        Ray ray = new Ray(newPos, Vector3.down);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, BoxCollider.size.y / 2, groundLayer);
-        return hit;
-    }
+    
     
     #endregion
     
     #region AnimationEvent Method
-    public void ApplyAttackForce()
+    public void AnimationEvent1()
     {
-        AttackInfo attackInfo = null;
-        if (StateMachine.currentState is PlayerAttackState attackState)
+        if (StateMachine.currentState is PlayerBaseState playerBaseState)
         {
-            attackInfo = attackState.attackInfo;
+            playerBaseState.PlayEvent1();
         }
-        Vector2 direction = SpriteRenderer.flipX ? Vector2.left : Vector2.right;
-        Rigidbody.AddForce(direction * attackInfo.attackForce, ForceMode2D.Impulse);
     }
     
     public void EventSFX1()

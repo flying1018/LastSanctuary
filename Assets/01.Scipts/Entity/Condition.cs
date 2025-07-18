@@ -14,10 +14,16 @@ public class Condition : MonoBehaviour
     protected int _defence;
     protected float _delay;
     protected bool _isTakeDamageable;
+    protected Coroutine _damageDelayCoroutine;
     
     public void DamageDelay()
     {
-        StartCoroutine(DamageDelay_Coroutine());
+        if (_damageDelayCoroutine != null)
+        {
+            StopCoroutine(_damageDelayCoroutine);
+            _damageDelayCoroutine = null;       
+        }
+        _damageDelayCoroutine = StartCoroutine(DamageDelay_Coroutine());
     }
     
     protected IEnumerator DamageDelay_Coroutine()

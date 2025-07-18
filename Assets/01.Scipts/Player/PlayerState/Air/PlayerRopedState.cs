@@ -9,13 +9,15 @@ public class PlayerRopedState : PlayerAirState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(_player.AnimationDB.RopedParameterHash);;
+        StartAnimation(_player.AnimationDB.RopedParameterHash);
+
+        _move.gravityScale = Vector2.zero;
     }
     
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(_player.AnimationDB.RopedParameterHash);;
+        StopAnimation(_player.AnimationDB.RopedParameterHash);
     }
 
     
@@ -23,7 +25,7 @@ public class PlayerRopedState : PlayerAirState
     {
         //좌우 입력 중이고, 대쉬 키를 입력하면
         if (Mathf.Abs(_input.MoveInput.x) > 0 && 
-            _input.IsDash && _condition.UsingStamina(_data.dashCost))
+            _input.IsDash && _stateMachine.DashState.UseCanDash())
         {   //대쉬
             _stateMachine.ChangeState(_stateMachine.DashState);
         }
@@ -31,7 +33,7 @@ public class PlayerRopedState : PlayerAirState
         //좌우 입력 중이고, 점프 키를 입력하면 
         if (_input.IsJump && Mathf.Abs(_input.MoveInput.x) > 0)
         {   //점프
-            _stateMachine.ChangeState(_stateMachine.IdleState);
+            _stateMachine.ChangeState(_stateMachine.JumpState);
         }
 
         //아래키 입력 중이고 공중 발판에 있을 때 공중 발판 뚫기

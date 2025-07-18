@@ -34,7 +34,11 @@ public class PlayerDeathState : PlayerBaseState
             _stateMachine.ChangeState(_stateMachine.RespawnState);   
         }
     }
-    public override void PhysicsUpdate() { }
+
+    public override void PhysicsUpdate()
+    {
+        ApplyGravity();
+    }
 
     public override void PlaySFX1()
     {

@@ -45,8 +45,8 @@ public class PlayerBaseState : IState
 
     public virtual void HandleInput()
     {
-        //대쉬 키 입력 시 스태미나가 충분하면
-        if (_input.IsDash && _condition.UsingStamina(_data.dashCost))
+        //대쉬 키 입력 시 쿨타임이 돌고 스태미나가 충분하면
+        if (_input.IsDash && _stateMachine.DashState.UseCanDash())
         {   //대쉬
             _stateMachine.ChangeState(_stateMachine.DashState); 
         }
@@ -70,7 +70,7 @@ public class PlayerBaseState : IState
         
 
         //떨어지기 시작하면
-        if (!_move.IsGrounded && _move.gravityScale.y < -_move.fallJudgment)
+        if (!_move.IsGrounded && _move.gravityScale.y < -_data.fallJudgment)
         {   //떨어지는 상태
             _time = 0;
             _stateMachine.ChangeState(_stateMachine.FallState);
@@ -104,6 +104,12 @@ public class PlayerBaseState : IState
         _move.Move(x + _move.gravityScale);
     }
 
+    public void ApplyGravity()
+    {
+        _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
+        _move.Move( _move.gravityScale);
+    }
+
     public void Rotate(Vector2 direction)
     {
         if (direction.x != 0)
@@ -117,6 +123,14 @@ public class PlayerBaseState : IState
         }
     }
 
+
+    #region AnimationEvent Method
+
+    public virtual void PlayEvent1() { }
+
     public virtual void PlaySFX1() { }
     public virtual void PlaySFX2() { }
+    
+    #endregion
+    
 }
