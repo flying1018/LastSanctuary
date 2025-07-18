@@ -71,6 +71,8 @@ public class BossEvent : MonoBehaviour
             {
                 moveObject.MoveObj();
             }
+            
+            SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBGM);
         }
     }
 
