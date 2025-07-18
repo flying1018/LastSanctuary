@@ -67,8 +67,8 @@ public class PlayerAttackState : PlayerBaseState
     //스테미나 회복 막기
     public override void Update()
     {
-        //무적 시간은 개선 필요
-        _condition.InvincibleStart = Time.time;
+        //무적
+        _condition.InvincibleFunc(_animationTime);
         
         //공격 종료
         _time += Time.deltaTime;

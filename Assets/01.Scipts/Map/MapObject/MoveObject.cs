@@ -12,8 +12,11 @@ public class MoveObject : MonoBehaviour
     }
 
     [SerializeField] private MoveObjType moveObjType;
+
     [SerializeField] private GameObject[] TurnOff;
     [SerializeField] private GameObject[] TurnOn;
+
+    [SerializeField] private float moveDistance = StringNameSpace.ValueSpace.MoveDistance;
 
     private bool _isTurnOn;
 
@@ -42,8 +45,15 @@ public class MoveObject : MonoBehaviour
 
     private IEnumerator MoveIronCage(bool _isTurnOn)
     {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if(!_isTurnOn) { spriteRenderer.sortingOrder = 0; }
+
         Vector3 startPos = transform.position;
-        Vector3 targetPos = new Vector3(startPos.x, _isTurnOn ? transform.position.y + -3.6f : transform.position.y + 3.6f, startPos.z);
+        Vector3 targetPos = new Vector3(
+            startPos.x,
+            _isTurnOn ? transform.position.y + -moveDistance : transform.position.y + moveDistance,
+            startPos.z);
+
         float elapsed = 0f;
 
         while (elapsed < 3.6f)
@@ -53,6 +63,7 @@ public class MoveObject : MonoBehaviour
             yield return null;
         }
 
+        if(_isTurnOn) { spriteRenderer.sortingOrder = 50; }
         transform.position = targetPos;
     }
 

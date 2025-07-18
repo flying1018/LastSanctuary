@@ -13,8 +13,8 @@ public class PlayerHitState : PlayerBaseState
     {
         //피격 애니메이션
         _hitStart = Time.time;
-        _condition.InvincibleStart = Time.time;
-        _condition.IsInvincible = true;
+
+        _condition.InvincibleFunc(_hitDuration);
         
         //공격 타입에 따른 경직 시간 설정
         switch (_condition.DamageType)

@@ -5,6 +5,13 @@ public class SavePoint : MonoBehaviour, IInteractable
 {
     public int index;
     private bool _isInteracted;
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     public void Interact()
     {
         DebugHelper.Log($"{this.name}의 Interact() 작동됨");
@@ -23,10 +30,12 @@ public class SavePoint : MonoBehaviour, IInteractable
     private IEnumerator SaveAnimation()
     {
         _isInteracted = true;
+        animator.SetBool("isInteract", true);
         //SoundManager.Instance.PlaySFX(StringNameSpace.SoundAddress.SavePointSFX);
 
         yield return new WaitForSeconds(2f);
 
         _isInteracted = false;
+        animator.SetBool("isInteract", false);
     }
 }

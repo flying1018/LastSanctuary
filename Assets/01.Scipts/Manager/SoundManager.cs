@@ -25,6 +25,7 @@ public class SoundManager : Singleton<SoundManager>
         DontDestroyOnLoad(gameObject);
         
         await Init();
+        
         PlayBGM(StringNameSpace.SoundAddress.TutorialBGM);
     }
     

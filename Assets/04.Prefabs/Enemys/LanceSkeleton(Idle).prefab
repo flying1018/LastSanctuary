@@ -166,7 +166,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -238,7 +238,6 @@ MonoBehaviour:
   moveType: 0
   attackType: 0
   patrolDistance: 5
-  gravityScale: 9.8
 --- !u!114 &-5461693888879340811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityScale: {x: 0, y: 0}
-  fallJudgment: 0
 --- !u!1 &6224774757196196992
 GameObject:
   m_ObjectHideFlags: 0
