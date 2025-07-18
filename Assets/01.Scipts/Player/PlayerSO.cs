@@ -30,9 +30,10 @@ public class PlayerSO : ScriptableObject
     public float moveSpeed;
     public float gravityPower;
 
-    [field: Header("AirState")]
-    [field: SerializeField][field: Range(0f, 100f)] public float jumpForce { get; private set; } = 10f;
-    [field: SerializeField][field: Range(0f, 10f)] public float jumpBoost { get; private set; } = 2f;
+    [Header("AirState")] 
+    public float jumpForce;
+    public float jumpDuping;
+    public float fallJudgment;
 
     [Header("DashState")] 
     public AnimationClip dashAnim;

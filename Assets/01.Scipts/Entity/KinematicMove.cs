@@ -9,7 +9,6 @@ public class KinematicMove : MonoBehaviour
     private Rigidbody2D _rigidbody;
     
     public Vector2 gravityScale = Vector2.zero;
-    public float fallJudgment;
     
     //프로퍼티
     public Vector2 GroundDirection { get; set; }
@@ -41,6 +40,7 @@ public class KinematicMove : MonoBehaviour
             position.y = point.y + SizeY / 2;
             transform.position = position;
             
+            gravityScale = Vector2.zero;
             IsGrounded = true;
         }
 
@@ -67,6 +67,7 @@ public class KinematicMove : MonoBehaviour
             position.y = point.y + SizeY / 2;
             transform.position = position;
             
+            gravityScale = Vector2.zero;
             IsGrounded = true;
             IsAerialPlatform = true;
         }
@@ -160,16 +161,16 @@ public class KinematicMove : MonoBehaviour
         return direction.normalized * speed;
     }
 
-    private Coroutine _addForceCoroutine;
+    public Coroutine addForceCoroutine;
     public void AddForce(Vector2 force,float dumping = 0.95f)
     {
-        if (_addForceCoroutine != null)
+        if (addForceCoroutine != null)
         {
-            StopCoroutine(_addForceCoroutine);
-            _addForceCoroutine = null;
+            StopCoroutine(addForceCoroutine);
+            addForceCoroutine = null;
         }
         
-        _addForceCoroutine = StartCoroutine(AddForce_Coroutine(force,dumping));;
+        addForceCoroutine = StartCoroutine(AddForce_Coroutine(force,dumping));;
     }
 
     IEnumerator AddForce_Coroutine(Vector2 force, float dumping)
@@ -180,5 +181,7 @@ public class KinematicMove : MonoBehaviour
             yield return null;
             force *= dumping;
         }
+        
+        addForceCoroutine = null;
     }
 }

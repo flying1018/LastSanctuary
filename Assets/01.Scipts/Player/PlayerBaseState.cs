@@ -70,7 +70,7 @@ public class PlayerBaseState : IState
         
 
         //떨어지기 시작하면
-        if (!_move.IsGrounded && _move.gravityScale.y < -_move.fallJudgment)
+        if (!_move.IsGrounded && _move.gravityScale.y < -_data.fallJudgment)
         {   //떨어지는 상태
             _time = 0;
             _stateMachine.ChangeState(_stateMachine.FallState);

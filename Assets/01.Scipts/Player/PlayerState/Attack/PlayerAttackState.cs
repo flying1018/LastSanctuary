@@ -74,20 +74,24 @@ public class PlayerAttackState : PlayerBaseState
         _time += Time.deltaTime;
         if (_time > (_animationTime + attackInfo.nextComboTime))
         {
-            _stateMachine.ChangeState(_stateMachine.IdleState);
+            if(_move.IsGrounded)
+                _stateMachine.ChangeState(_stateMachine.IdleState);
+            else
+                _stateMachine.ChangeState(_stateMachine.FallState);
+                
+            
         }
     }
     
 
     public override void PhysicsUpdate()
     {
-        _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
-        _move.Move( _move.gravityScale);
+        
     }
     
+    //대쉬어택, 3타어택 공용으로 사용
     public override void PlayEvent1()
     {
-        Debug.Log("play event 1");
         Vector2 direction = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
         _move.AddForce(direction * attackInfo.attackForce);
     }
