@@ -29,4 +29,13 @@ public class PlayerAirState : PlayerBaseState
             _stateMachine.ChangeState(_stateMachine.JumpAttack);
         }
     }
+
+    public override void Update()
+    {
+        base.Update();
+        if (_move.IsGrounded)
+        {
+            _stateMachine.ChangeState(_stateMachine.IdleState);       
+        }
+    }
 }

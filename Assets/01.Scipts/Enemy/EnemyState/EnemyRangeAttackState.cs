@@ -6,6 +6,13 @@ public class EnemyRangeAttackState : EAttackState
 {
     public EnemyRangeAttackState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine) {}
 
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+        Vector2 direction = DirectionToTarget();
+        Rotate(direction);
+    }
+
     //원거리 공격
     public void FireArrow()
     {

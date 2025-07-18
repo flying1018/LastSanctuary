@@ -6,6 +6,7 @@ using UnityEngine;
 public enum DamageType
 {
     Attack,
+    Range,
     Contact,
     Heavy,
 }
