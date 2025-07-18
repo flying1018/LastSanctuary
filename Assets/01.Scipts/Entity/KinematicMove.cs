@@ -101,6 +101,17 @@ public class KinematicMove : MonoBehaviour
             transform.position = position;
         }
         
+        //땅과 충돌 시
+        if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
+        {
+            Vector3 point = other.ClosestPoint(transform.position);
+            if (point.y > transform.position.y)
+            {
+                IsGrounded = false;
+                IsAerialPlatform = false;
+            }
+        }
+        
         
         //벽과 충돌 시
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Wall))

@@ -19,15 +19,15 @@ public class PlayerHitState : PlayerBaseState
         //공격 타입에 따른 경직 시간 설정
         switch (_condition.DamageType)
         {
-            case DamageType.Heavy:
-                _hitDuration = _data.HeavyHitDuration; //0.5f
+            case DamageType.Range:
+                _hitDuration = _data.LightHitDuration; //0.2f
+                PlaySFX2();
                 break;
             default:
                 _hitDuration = _data.LightHitDuration; //0.2f
+                PlaySFX1();
                 break;
         }
-        
-        PlaySFX1();
     }
 
     public override void Exit()
@@ -52,5 +52,10 @@ public class PlayerHitState : PlayerBaseState
     public override void PlaySFX1()
     {
         SoundManager.Instance.PlaySFX(_data.hitSound);
+    }
+
+    public override void PlaySFX2()
+    {
+        SoundManager.Instance.PlaySFX(_data.arrowHitSound);
     }
 }

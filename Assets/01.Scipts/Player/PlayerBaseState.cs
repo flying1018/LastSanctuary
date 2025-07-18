@@ -62,11 +62,6 @@ public class PlayerBaseState : IState
     {
         //스태미나 회복
         _condition.RecoveryStamina();
-    }
-
-    public virtual void PhysicsUpdate()
-    {
-        Move();
         
         //떨어지기 시작하면
         if (!_move.IsGrounded && _move.gravityScale.y < -_data.fallJudgment)
@@ -74,6 +69,11 @@ public class PlayerBaseState : IState
             _time = 0;
             _stateMachine.ChangeState(_stateMachine.FallState);
         }
+    }
+
+    public virtual void PhysicsUpdate()
+    {
+        Move();
     }
 
     protected void StartAnimation(int animatorHash)

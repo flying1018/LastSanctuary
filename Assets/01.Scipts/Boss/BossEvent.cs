@@ -82,6 +82,17 @@ public class BossEvent : MonoBehaviour
         
         //플레이어 이벤트 상태(조작 불가 + 업데이트, 물리 업데이트 막기)
         _player.EventProduction(true);
+
+        _player.StateMachine.ChangeState(_player.StateMachine.FallState);
+        //공중이라면 착지 시키기
+        Vector2 gravityScale = Vector2.zero;
+        gravityScale += _player.Move.Vertical(Vector2.down, _player.Data.gravityPower);
+        while (!_player.Move.IsGrounded)
+        {
+            _player.Move.Move(gravityScale);
+            yield return null;
+        }
+        
         //방향 계산
         Vector2 dir = _player.Move.Horizontal(playerPosition.position - _player.transform.position,_player.Data.moveSpeed);
         //거리 계산
