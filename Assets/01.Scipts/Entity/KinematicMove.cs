@@ -159,4 +159,26 @@ public class KinematicMove : MonoBehaviour
         direction.x = 0;
         return direction.normalized * speed;
     }
+
+    private Coroutine _addForceCoroutine;
+    public void AddForce(Vector2 force,float dumping = 0.95f)
+    {
+        if (_addForceCoroutine != null)
+        {
+            StopCoroutine(_addForceCoroutine);
+            _addForceCoroutine = null;
+        }
+        
+        _addForceCoroutine = StartCoroutine(AddForce_Coroutine(force,dumping));;
+    }
+
+    IEnumerator AddForce_Coroutine(Vector2 force, float dumping)
+    {
+        while (force.magnitude > 0.01f)
+        {
+            Move(force);
+            yield return null;
+            force *= dumping;
+        }
+    }
 }

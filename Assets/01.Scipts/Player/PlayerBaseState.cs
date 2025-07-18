@@ -117,6 +117,14 @@ public class PlayerBaseState : IState
         }
     }
 
+
+    #region AnimationEvent Method
+
+    public virtual void PlayEvent1() { }
+
     public virtual void PlaySFX1() { }
     public virtual void PlaySFX2() { }
+    
+    #endregion
+    
 }

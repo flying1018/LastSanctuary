@@ -84,6 +84,13 @@ public class PlayerAttackState : PlayerBaseState
         _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
         _move.Move( _move.gravityScale);
     }
+    
+    public override void PlayEvent1()
+    {
+        Debug.Log("play event 1");
+        Vector2 direction = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
+        _move.AddForce(direction * attackInfo.attackForce);
+    }
 
     public override void PlaySFX1()
     {
