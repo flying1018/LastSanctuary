@@ -104,6 +104,12 @@ public class PlayerBaseState : IState
         _move.Move(x + _move.gravityScale);
     }
 
+    public void ApplyGravity()
+    {
+        _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
+        _move.Move( _move.gravityScale);
+    }
+
     public void Rotate(Vector2 direction)
     {
         if (direction.x != 0)

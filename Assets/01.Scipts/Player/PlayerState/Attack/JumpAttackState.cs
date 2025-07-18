@@ -14,9 +14,8 @@ public class JumpAttackState : PlayerAttackState
     {
         //점프 유지
         if(_move.addForceCoroutine != null) return;
-        
-        //끝나면 떨어지기 시작
-        _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
-        _move.Move( _move.gravityScale);
+
+        //점프가 끝나면 떨어지기
+        ApplyGravity();
     }
 }

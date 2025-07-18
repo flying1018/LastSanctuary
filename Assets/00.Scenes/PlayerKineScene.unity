@@ -2265,7 +2265,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityScale: {x: 0, y: 0}
-  fallJudgment: 7
 --- !u!1001 &281462478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34669,7 +34668,7 @@ Transform:
   m_GameObject: {fileID: 2099964163}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40.62166, y: 88.52112, z: -0.030994803}
+  m_LocalPosition: {x: 40.67, y: 86.8, z: -0.030994803}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

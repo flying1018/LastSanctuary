@@ -44,6 +44,11 @@ public class PlayerHitState : PlayerBaseState
         }
     }
 
+    public override void PhysicsUpdate()
+    {
+        
+    }
+
     public override void PlaySFX1()
     {
         SoundManager.Instance.PlaySFX(_data.hitSound);

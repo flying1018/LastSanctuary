@@ -146,6 +146,8 @@ public class KinematicMove : MonoBehaviour
         if (IsWall && WallDirection.normalized == horizontal.normalized) direction.x = 0;
         if (IsGrounded && GroundDirection.normalized == vertical.normalized) direction.y = 0;
         
+        Debug.Log(direction);
+        
         _rigidbody.MovePosition(_rigidbody.position + direction * Time.fixedDeltaTime);
     }
 

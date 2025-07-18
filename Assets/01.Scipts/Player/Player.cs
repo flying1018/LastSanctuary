@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     public BoxCollider2D BoxCollider;
     public PlayerStateMachine StateMachine { get; set; }
     public PlayerController Input { get; set; }
-    public PlayerHandler Handler { get; set; }
     public Rigidbody2D Rigidbody { get; set; }
     public Animator Animator { get; set; }
     public SpriteRenderer SpriteRenderer { get; set; }
@@ -39,7 +38,6 @@ public class Player : MonoBehaviour
     {
         BoxCollider = GetComponent<BoxCollider2D>();
         Input = GetComponent<PlayerController>();
-        Handler = GetComponent<PlayerHandler>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         Condition = GetComponent<PlayerCondition>();
