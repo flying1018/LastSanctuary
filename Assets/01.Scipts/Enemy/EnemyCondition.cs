@@ -13,7 +13,8 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     //프로퍼티
     public bool IsInvincible { get; set; }
     public bool IsDeath { get; set; }
-
+    public bool IsKnockBack { get; set; }
+ 
     public void Init(Enemy enemy)
     {
         _enemy = enemy;
@@ -80,6 +81,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
 
     private IEnumerator KnokBack_Coroutine(Transform attackDir, float knockBackPower)
     {
+        IsKnockBack = true;
         float timer = 0f;
         Vector2 startPos = _enemy.Rigidbody.position;
         
@@ -88,17 +90,15 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
 
         while (timer < _enemy.Data.hitDuration)
         {
-            float t = timer / _enemy.Data.hitDuration;
-            float distance = knockBackPower * t;
-            
-            Vector2 offset = knockbackDir * distance;
-            Vector2 newPos = startPos + offset;
-            
-            _enemy.Rigidbody.MovePosition(newPos);
+            float knockbackSpeed = knockBackPower / _enemy.Data.hitDuration;
+
+            Vector2 newPos = knockbackDir.normalized * knockbackSpeed;
+            _enemy.Move.Move(newPos);
             
             timer += Time.deltaTime;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
+        IsKnockBack = false;
     }
 
 

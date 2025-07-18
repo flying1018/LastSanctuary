@@ -32,6 +32,9 @@ public class BossSO : ScriptableObject
     public int _key;
     public string _name;
     
+    [Header("Move")] 
+    public float gravityPower;
+    
     [Header("Condition")] 
     public int attack;
     public int defense;
