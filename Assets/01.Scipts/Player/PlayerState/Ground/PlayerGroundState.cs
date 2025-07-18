@@ -12,6 +12,9 @@ public class PlayerGroundState : PlayerBaseState
     {
         base.Enter();
         StartAnimation(_player.AnimationDB.GroundParameterHash);
+
+        //착지하면 점프 어택 초기화
+        _stateMachine.JumpAttack.CanJumpAttack = true;
     }   
 
     public override void Exit()
@@ -32,7 +35,7 @@ public class PlayerGroundState : PlayerBaseState
         }
         
         //점프
-        if (_input.IsJump && _player.IsGrounded)
+        if (_input.IsJump && _move.IsGrounded)
         {
             _stateMachine.ChangeState(_stateMachine.JumpState);
         }
@@ -53,8 +56,8 @@ public class PlayerGroundState : PlayerBaseState
         //아래 키 입력 시
         if (_input.MoveInput.y < 0)
         {
-            if(!_player.IsAerialPlatform) return;
-            _player.IsGrounded = false;
+            if(!_move.IsAerialPlatform) return;
+            _move.IsGrounded = false;
         }
     }
 }

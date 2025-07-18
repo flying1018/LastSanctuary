@@ -35,7 +35,7 @@ public class PlayerRespawnState : PlayerBaseState
         _time += Time.deltaTime;
         if (_time >= _data.respawnTime)
         {
-            _stateMachine.ChangeState(_stateMachine.IdleState);   
+            _stateMachine.ChangeState(_stateMachine.IdleState);
         }
     }
     public override void PhysicsUpdate() { }

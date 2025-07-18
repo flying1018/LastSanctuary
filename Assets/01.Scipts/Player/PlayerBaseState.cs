@@ -13,7 +13,8 @@ public class PlayerBaseState : IState
     protected PlayerInventory _inventory;
     protected Player _player;
     protected PlayerWeapon _playerWeapon;
-    protected BoxCollider2D _capsuleCollider;
+    protected BoxCollider2D _boxCollider;
+    protected KinematicMove _move;
 
     protected float _time;
 
@@ -27,8 +28,9 @@ public class PlayerBaseState : IState
         _spriteRenderer = _player.SpriteRenderer;
         _condition = _player.Condition;
         _playerWeapon = _player.PlayerWeapon;
-        _capsuleCollider = _player.CapsuleCollider;
+        _boxCollider = _player.BoxCollider;
         _inventory = _player.Inventory;
+        _move = _player.Move;
     }
 
     public virtual void Enter()
@@ -43,8 +45,8 @@ public class PlayerBaseState : IState
 
     public virtual void HandleInput()
     {
-        //대쉬 키 입력 시 스태미나가 충분하면
-        if (_input.IsDash && _condition.UsingStamina(_data.dashCost))
+        //대쉬 키 입력 시 쿨타임이 돌고 스태미나가 충분하면
+        if (_input.IsDash && _stateMachine.DashState.UseCanDash())
         {   //대쉬
             _stateMachine.ChangeState(_stateMachine.DashState); 
         }
@@ -68,7 +70,7 @@ public class PlayerBaseState : IState
         
 
         //떨어지기 시작하면
-        if (!_player.IsGrounded && _player.gravityScale.y > 0.1f)
+        if (!_move.IsGrounded && _move.gravityScale.y < -_data.fallJudgment)
         {   //떨어지는 상태
             _time = 0;
             _stateMachine.ChangeState(_stateMachine.FallState);
@@ -90,42 +92,22 @@ public class PlayerBaseState : IState
     public void Move()
     {
         Rotate(_input.MoveInput);
-        Vector2 x = Horizontal(_input.MoveInput, _data.moveSpeed);
+        
+        Vector2 x = _move.Horizontal(_input.MoveInput, _data.moveSpeed);
         
         //바닥에 있지 않으면
-        if(!_player.IsGrounded)
-            _player.gravityScale += Vertical(Vector2.down, _data.gravityPower);
+        if(!_move.IsGrounded)
+            _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
         else
-            _player.gravityScale = Vector2.zero;
+            _move.gravityScale = Vector2.zero;
         
-        Move(x+_player.gravityScale);
+        _move.Move(x + _move.gravityScale);
     }
 
-    //캐릭터의 이동 처리
-    public void Move(Vector2 direction)
+    public void ApplyGravity()
     {
-        Vector2 horizontal = direction;
-        Vector2 vertical = direction;
-        
-        horizontal.y = 0;
-        vertical.x = 0;
-        
-        if (_player.IsWall &&_player.WallDirection.normalized == horizontal.normalized) direction.x = 0;
-        if (_player.IsGrounded && _player.GroundDirection.normalized == vertical.normalized) direction.y = 0;
-        
-        _rigidbody.MovePosition(_rigidbody.position + direction * Time.fixedDeltaTime);
-    }
-
-    public Vector2 Horizontal(Vector2 direction, float power)
-    {
-        direction.y = 0;
-        return direction.normalized * power;
-    }
-
-    public Vector2 Vertical(Vector2 direction, float power)
-    {
-        direction.x = 0;
-        return direction.normalized * power;
+        _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
+        _move.Move( _move.gravityScale);
     }
 
     public void Rotate(Vector2 direction)
@@ -141,6 +123,14 @@ public class PlayerBaseState : IState
         }
     }
 
+
+    #region AnimationEvent Method
+
+    public virtual void PlayEvent1() { }
+
     public virtual void PlaySFX1() { }
     public virtual void PlaySFX2() { }
+    
+    #endregion
+    
 }

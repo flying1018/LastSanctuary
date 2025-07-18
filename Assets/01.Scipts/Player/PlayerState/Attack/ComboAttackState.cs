@@ -54,4 +54,9 @@ public class ComboAttackState : PlayerAttackState
     {
 
     }
+
+    public override void PhysicsUpdate()
+    {
+        
+    }
 }

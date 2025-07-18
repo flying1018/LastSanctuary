@@ -11,6 +11,7 @@ public class EnemyBaseState : IState
     protected EnemyCondition _condition;
     protected Enemy _enemy;
     protected Transform _spawnPoint;
+    protected KinematicMove _move;
 
     protected float _time;
     
@@ -25,6 +26,7 @@ public class EnemyBaseState : IState
         _spriteRenderer =_enemy.SpriteRenderer;
         _condition = _enemy.Condition;
         _spawnPoint = _enemy.SpawnPoint;
+        _move = _enemy.Move;
     }
     
     public virtual void Enter()
@@ -60,9 +62,13 @@ public class EnemyBaseState : IState
     //좌우 이동
     protected void Move(Vector2 direction)
     {
-        direction.y = 0;
-        Vector2 moveVelocity = new Vector2(direction.normalized.x * _data.moveSpeed, _enemy.VerticalVelocity);
-        _rigidbody.MovePosition(_rigidbody.position + moveVelocity * Time.deltaTime);
+        Vector2 x = _move.Horizontal(direction, _data.moveSpeed);
+        
+        if(!_move.IsGrounded)
+            _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
+        else
+            _move.gravityScale = Vector2.zero;
+        _move.Move(x + _move.gravityScale);
     }
 
     //하늘 이동
