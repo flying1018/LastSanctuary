@@ -13,6 +13,9 @@ public class EnemySO : ScriptableObject
     public int _key;
     public string _name;
 
+    [Header("Move")]
+    public float gravityPower;
+    
     [Header("DetectState")]
     public float detectTime;
     public float detectDistance;
@@ -20,9 +23,6 @@ public class EnemySO : ScriptableObject
     [Header("ChaseState")]
     public float moveSpeed;
     public float cancelChaseTime;
-
-    [field: Header("HitState")]
-    [field: SerializeField] public float HitDuration{ get; private set; } = 0.5f;
     
     [Header("Material")]
     public Material hitMaterial;
@@ -40,7 +40,6 @@ public class EnemySO : ScriptableObject
     public int defence;
     public float damageDelay;
     public float hitDuration;
-    public float alphaValue;
     public AnimationClip deathAnim;
     public float DeathTime => deathAnim.length;
     

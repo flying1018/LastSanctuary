@@ -65,7 +65,7 @@ public class EnemyChaseState : EChaseState
     {
         base.Exit();
         //나갈 때 정지
-        Move(Vector2.zero);
+       // Move(Vector2.zero);
     }
 
     protected override void Chase()

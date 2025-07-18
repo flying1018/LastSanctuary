@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private MoveType moveType;
     [SerializeField] private AttackType attackType;
     [SerializeField] private float patrolDistance = 5;
-    [SerializeField] private float gravityScale = 9.8f;
+    
    
     
     //프로퍼티
@@ -55,7 +55,8 @@ public class Enemy : MonoBehaviour
     public AttackType AttackType {get => attackType;}
     public float PatrolDistance { get; set; }
     public float VerticalVelocity { get; set; }
-    
+    public KinematicMove Move {get; set;}
+
 
     //생성 시
     public void Init(Transform spawnPoint, float distance)
@@ -71,7 +72,9 @@ public class Enemy : MonoBehaviour
         AnimationDB.Initailize();
         PatrolDistance = distance;
         CapsuleCollider.enabled = true;
+        Move = GetComponent<KinematicMove>();
         
+        Move.Init(CapsuleCollider.size.x, CapsuleCollider.size.y, Rigidbody);
         Condition.Init(this);
         StateMachine = new EnemyStateMachine(this);
     }
@@ -85,7 +88,6 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ApplyGravity();
         StateMachine.PhysicsUpdate();
         //Debug.Log(StateMachine.currentState);
         //Debug.Log(StateMachine.attackCoolTime);
@@ -150,20 +152,6 @@ public class Enemy : MonoBehaviour
         if (StateMachine.currentState is EnemyRushAttack rushAttack)
             rushAttack.RushAttack();
     }
-    
-    private void ApplyGravity()
-    {
-        if(moveType == MoveType.Fly) return;
-        if (IsGrounded())
-        {
-            VerticalVelocity = 0f;
-        }
-        else
-        {
-            VerticalVelocity += Physics.gravity.y * Time.deltaTime;
-        }
-        
-    }
 
     //이동 방향에 발판이 있는지 체크
     public bool IsPlatform()
@@ -176,15 +164,7 @@ public class Enemy : MonoBehaviour
         return Physics2D.Raycast(newPos, Vector2.down,
             platformCheckDistance, platformLayer);
     }
-
-    public bool IsGrounded()
-    {
-        Vector2 newPos = new Vector2(transform.position.x, transform.position.y);
-        Ray ray = new Ray(newPos, Vector2.down);
-        Debug.DrawRay(ray.origin,ray.direction * CapsuleCollider.size.y / 2, Color.red);
-        return Physics2D.Raycast(ray.origin,ray.direction,CapsuleCollider.size.y / 2,platformLayer);
-    }
-
+    
     //주변에 플레이어 있는지 확인
     public bool FindTarget()
     {

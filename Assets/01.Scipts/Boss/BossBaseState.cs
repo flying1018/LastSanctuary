@@ -18,6 +18,7 @@ public class BossBaseState : IState
     protected BossCondition _condition;
     protected Boss _boss;
     protected BossWeapon _weapon;
+    protected KinematicMove _move;
 
     public BossBaseState(BossStateMachine bossStateMachine)
     {
@@ -29,6 +30,7 @@ public class BossBaseState : IState
         _polygonCollider = _boss.PolygonCollider;
         _condition = _boss.Condition;
         _weapon = _boss.BossWeapon;
+        _move = _boss.Move;
     }
     
     public virtual void Enter()
@@ -70,23 +72,23 @@ public class BossBaseState : IState
     {
         //콜라이더 형태 변경
         UpdateCollider();
-        ApplyGravity();
+        //ApplyGravity();
     }
 
   
 
     //중력
-    public void ApplyGravity()
-    {
-        if (_boss.IsGrounded())
-        {
-            _boss.VerticalVelocity = 0f;
-        }
-        else
-        {
-            _boss.VerticalVelocity += Physics.gravity.y * Time.deltaTime;
-        }
-    }
+    // public void ApplyGravity()
+    // {
+    //     if (_boss.IsGrounded())
+    //     {
+    //         _boss.VerticalVelocity = 0f;
+    //     }
+    //     else
+    //     {
+    //         _boss.VerticalVelocity += Physics.gravity.y * Time.deltaTime;
+    //     }
+    // }
     
     //애니메이션 실행
     protected void StartAnimation(int animatorHash)
@@ -126,9 +128,13 @@ public class BossBaseState : IState
     //좌우 이동
     public void Move(Vector2 direction)
     {
-        direction.y = 0;
-        Vector2 moveVelocity = new Vector2(direction.normalized.x * _data.moveSpeed, _boss.VerticalVelocity);
-        _rigidbody.MovePosition(_rigidbody.position + moveVelocity * Time.deltaTime);
+        Vector2 x = _move.Horizontal(direction, _data.moveSpeed);
+        
+        if(!_move.IsGrounded)
+            _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
+        else
+            _move.gravityScale = Vector2.zero;
+        _move.Move(x + _move.gravityScale);
     }
 
     //보스 회전

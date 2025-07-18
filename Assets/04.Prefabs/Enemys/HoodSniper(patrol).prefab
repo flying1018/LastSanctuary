@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -5163532016691331955}
   - component: {fileID: 7080938109545919741}
   - component: {fileID: 1348362879168003846}
+  - component: {fileID: -1347563201355989540}
   m_Layer: 0
   m_Name: HoodSniper(patrol)
   m_TagString: Enemy
@@ -160,6 +161,21 @@ MonoBehaviour:
   moveType: 0
   attackType: 1
   patrolDistance: 5
+  gravityScale: 9.8
+--- !u!114 &-1347563201355989540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3153555157828818715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92fe8ceefb708a4588c4b16a01d2dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityScale: {x: 0, y: 0}
+  fallJudgment: 0
 --- !u!1 &6224774757196196992
 GameObject:
   m_ObjectHideFlags: 0
