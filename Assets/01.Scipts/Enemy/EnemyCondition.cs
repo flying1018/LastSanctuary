@@ -13,7 +13,6 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     //프로퍼티
     public bool IsInvincible { get; set; }
     public bool IsDeath { get; set; }
-    public bool IsKnockBack { get; set; }
  
     public void Init(Enemy enemy)
     {
@@ -75,32 +74,13 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     {
         if (knockBackPower <= 0) return;
         if (_curHp <= 0) return;
-        _enemy.StateMachine.ChangeState(_enemy.StateMachine.HitState);
-        StartCoroutine(KnokBack_Coroutine(attackDir, knockBackPower));
-    }
-
-    private IEnumerator KnokBack_Coroutine(Transform attackDir, float knockBackPower)
-    {
-        IsKnockBack = true;
-        float timer = 0f;
-        Vector2 startPos = _enemy.Rigidbody.position;
         
-        Vector2 knockbackDir = (startPos.x - attackDir.position.x) > 0 ? Vector2.right : Vector2.left;
-        knockbackDir.y = 0f;
-
-        while (timer < _enemy.Data.hitDuration)
-        {
-            float knockbackSpeed = knockBackPower / _enemy.Data.hitDuration;
-
-            Vector2 newPos = knockbackDir.normalized * knockbackSpeed;
-            _enemy.Move.Move(newPos);
-            
-            timer += Time.deltaTime;
-            yield return new WaitForFixedUpdate();
-        }
-        IsKnockBack = false;
+        Vector2 dir = (transform.position - attackDir.position).normalized;
+        Vector2 knockback = dir * knockBackPower;
+        _enemy.Move.AddForce(knockback);
+        _enemy.StateMachine.ChangeState(_enemy.StateMachine.HitState);
     }
-
+    
 
     //대미지 계산
     public void ApplyDamage(int atk, float defpen)

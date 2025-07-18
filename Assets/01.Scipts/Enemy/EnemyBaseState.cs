@@ -62,7 +62,6 @@ public class EnemyBaseState : IState
     //좌우 이동
     protected void Move(Vector2 direction)
     {
-        if(_condition.IsKnockBack) return;
         Vector2 x = _move.Horizontal(direction, _data.moveSpeed);
         
         if(!_move.IsGrounded)
