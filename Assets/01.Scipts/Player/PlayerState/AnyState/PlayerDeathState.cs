@@ -17,7 +17,7 @@ public class PlayerDeathState : PlayerBaseState
         
         //시간 체크
         _time = 0;
-        
+
         //무적 처리
         _condition.IsInvincible = true;
     }

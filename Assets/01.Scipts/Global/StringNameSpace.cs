@@ -27,7 +27,7 @@ public static class StringNameSpace
         public const string BGMMixer = "Assets/05.Input/MainMixer.mixer[BGMMixer]";
 
         public const string SFXPrefab = "Assets/04.Prefabs/Global/SFX.prefab";
-        
+
         public const string TutorialBGM = "Assets/06.Resource/Sound/BGM/Tutorials_Sound.wav";
         public const string TutorialBossPhase1 = "Assets/06.Resource/Sound/BGM/Boss01_Phase1.wav";
         public const string TutorialPhaseShift = "Assets/06.Resource/Sound/BGM/Boss01_PhaseShift.wav";
@@ -57,5 +57,10 @@ public static class StringNameSpace
         public const string BackGround = "BackGround";
         public const string Wall = "Wall";
 
+    }
+
+    public static class ValueSpace
+    {
+        public const float MoveDistance = 3.6f;
     }
 }

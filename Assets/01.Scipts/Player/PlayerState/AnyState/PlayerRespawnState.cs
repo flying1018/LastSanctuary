@@ -19,12 +19,13 @@ public class PlayerRespawnState : PlayerBaseState
     {
         //체력 회복
         _condition.PlayerRecovery();
-        
+
         //애니메이터 초기화
         _player.Animator.Rebind();
-        
         //조작 가능
         _player.PlayerInput.enabled = true;
+        
+        _condition.IsInvincible = false;
     }
 
     public override void HandleInput() { }

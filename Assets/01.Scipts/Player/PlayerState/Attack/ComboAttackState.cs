@@ -52,7 +52,6 @@ public class ComboAttackState : PlayerAttackState
 
     public override void Update()
     {
-        //무적 시간은 개선 필요
-        _condition.InvincibleStart = Time.time;
+
     }
 }
