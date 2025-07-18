@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: 0
   _name: 
+  gravityPower: 100
   attack: 35
   defense: 10
   hp: 200
@@ -24,6 +25,7 @@ MonoBehaviour:
   deathAnim: {fileID: 7400000, guid: f745dd3432f773c46807b3753e7880d9, type: 2}
   deathEventDuration: 3
   moveSpeed: 3
+  spawnFallVelocity: 20
   spawnAnim: {fileID: 7400000, guid: 0ff33004cb5ec2549a83d61c8990ee54, type: 2}
   attackRange: 13
   attackIdleTime: 1
@@ -60,8 +62,9 @@ MonoBehaviour:
     attackSounds:
     - {fileID: 8300000, guid: 94643bcc75cfd7e40ba70900d44036d8, type: 3}
     - {fileID: 8300000, guid: 81a4b608bc284764297d3dd1bf938ae9, type: 3}
-  backJumpPower: 1
   defpen: 0.5
+  backjumpDistance: 3
+  backjumpHeight: 2
   phaseShiftHpRatio: 0.5
   phaseShiftAnim: {fileID: 7400000, guid: d781c0a65ca4bdf40ad84d4b0b6413a3, type: 2}
   breathSound: {fileID: 8300000, guid: 4339960f031eb8e4f80c861fc4769350, type: 3}

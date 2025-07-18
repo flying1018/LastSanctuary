@@ -40,7 +40,6 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
 
     //무적 처리 프로퍼티
     public bool IsInvincible { get; set; }
-    public float InvincibleStart { get; set; }
 
 
     private void Awake()
@@ -58,17 +57,18 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
         IsInvincible = false;
     }
 
-    private void Update()
+    public void InvincibleFunc(float time)
     {
-        //무적 해제
-        if (IsInvincible)
-        {
-            if (Time.time - InvincibleStart >= _player.Data.invincibleDuration)
-            {
-                IsInvincible = false;
-                Debug.Log("무적 해제");
-            }
-        }
+        StartCoroutine(Invincible_Coroutine(time));
+    }
+    
+    public IEnumerator Invincible_Coroutine(float time)
+    {
+        DebugHelper.Log("무적시작");
+        IsInvincible = true;
+        yield return new WaitForSeconds(time);
+        DebugHelper.Log("무적해제");
+        IsInvincible = false;
     }
 
     //대미지 처리
@@ -76,7 +76,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     {
         //무적 일때
         if (IsInvincible) return;
-        
+
         //가드 처리
         bool isFront = IsFront(dir);
         _isPerfectGuard = TryPerfectGuard(type, isFront);
