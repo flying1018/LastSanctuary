@@ -116,8 +116,6 @@ public class KinematicMove : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        
-        
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
         {
             IsGrounded = false;
@@ -150,15 +148,15 @@ public class KinematicMove : MonoBehaviour
         _rigidbody.MovePosition(_rigidbody.position + direction * Time.fixedDeltaTime);
     }
 
-    public Vector2 Horizontal(Vector2 direction, float power)
+    public Vector2 Horizontal(Vector2 direction, float speed)
     {
         direction.y = 0;
-        return direction.normalized * power;
+        return direction.normalized * speed;
     }
 
-    public Vector2 Vertical(Vector2 direction, float power)
+    public Vector2 Vertical(Vector2 direction, float speed)
     {
         direction.x = 0;
-        return direction.normalized * power;
+        return direction.normalized * speed;
     }
 }

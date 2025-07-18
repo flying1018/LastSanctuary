@@ -92,6 +92,7 @@ public class PlayerBaseState : IState
     public void Move()
     {
         Rotate(_input.MoveInput);
+        
         Vector2 x = _move.Horizontal(_input.MoveInput, _data.moveSpeed);
         
         //바닥에 있지 않으면
