@@ -21,8 +21,8 @@ public class BossEvent : MonoBehaviour
     private CinemachineBrain _brain;
     private CinemachineBlendDefinition _originBlend;
 
-    [Header("Boss Spawn")] 
-    [SerializeField] private float enterTime = 1f;
+    [Header("Boss Spawn")]
+    [SerializeField] private Transform playerPosition;
     [SerializeField] private float blackDuration = 1f;
     [SerializeField] private AudioClip howlingSound;
     [SerializeField] private float blinkInterval;
@@ -77,19 +77,32 @@ public class BossEvent : MonoBehaviour
     //스폰 이벤트
     IEnumerator Spawn_Coroutine()
     {
-        //플레이어가 입장 시 잠시 이동
-        yield return new WaitForSeconds(enterTime);
+        //UI 끄기
+        UIManager.Instance.OnOffUI(false);
+        
+        //플레이어 이벤트 상태(조작 불가 + 업데이트, 물리 업데이트 막기)
+        _player.EventProduction(true);
+        //방향 계산
+        Vector2 dir = _player.Move.Horizontal(playerPosition.position - _player.transform.position,_player.Data.moveSpeed);
+        //거리 계산
+        float distance = Mathf.Abs(_player.transform.position.x - playerPosition.position.x);
+        //플레이어 걷기 상태
+        _player.StateMachine.ChangeState(_player.StateMachine.MoveState);
+        //실질적인 이동 처리
+        while (distance > 0.1f)
+        {
+            distance = Mathf.Abs(_player.transform.position.x - playerPosition.position.x);
+            _player.Move.Move(dir);
+            yield return null;
+        }
+        //대기 상태
+        _player.StateMachine.ChangeState(_player.StateMachine.IdleState);
 
         //벽이 올라와서 막힘
         foreach (MoveObject moveObject in _moveObjects)
         {
             moveObject.MoveObj();
         }
-
-        //UI 끄기
-        UIManager.Instance.OnOffUI(false);
-        //조작 불가
-        _player.PlayerInput.enabled = false;
 
         //천천히 암전
         Color originColor = _backGroundSprite.color;
@@ -161,7 +174,7 @@ public class BossEvent : MonoBehaviour
     public void StartBattle()
     {
         UIManager.Instance.OnOffUI(true);
-        _player.PlayerInput.enabled = true;
+        _player.EventProduction(false);
         _bossCamera.Priority = 0;
     }
     
