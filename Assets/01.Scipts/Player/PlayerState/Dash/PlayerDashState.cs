@@ -53,7 +53,7 @@ public class PlayerDashState : PlayerBaseState
         if (_time < _data.DashTime) return;
 
         //공중이라면 
-        if (!_player.IsGrounded)
+        if (!_move.IsGrounded)
         {   //떨어지기
             _stateMachine.ChangeState(_stateMachine.FallState);
         }
@@ -77,8 +77,8 @@ public class PlayerDashState : PlayerBaseState
     //대쉬
     private void Dash()
     {
-        Vector2 hor = Horizontal(_dir, _data.dashPower);
-        Move(hor);
+        Vector2 hor = _move.Horizontal(_dir, _data.dashPower);
+        _move.Move(hor);
     }
 
     public override void PlaySFX1()

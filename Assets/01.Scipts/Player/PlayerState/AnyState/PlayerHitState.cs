@@ -37,7 +37,6 @@ public class PlayerHitState : PlayerBaseState
 
     public override void Update()
     {
-        Debug.Log(_hitDuration);
         //경직 시간이 끝나면
         if (Time.time - _hitStart >= _hitDuration)
         {

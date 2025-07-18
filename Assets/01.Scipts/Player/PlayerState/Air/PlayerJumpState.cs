@@ -62,9 +62,9 @@ public class PlayerJumpState : PlayerAirState
             _maxHoldTime -= Time.deltaTime;
             
             Rotate(_input.MoveInput);
-            Vector2 hor = Horizontal(_input.MoveInput, _data.moveSpeed);
-            Vector2 ver = Vertical(Vector2.up, _jumpPower);
-            Move(hor+ver);
+            Vector2 hor = _move.Horizontal(_input.MoveInput, _data.moveSpeed);
+            Vector2 ver = _move.Vertical(Vector2.up, _jumpPower);
+            _move.Move(hor+ver);
 
             _jumpPower *= 0.9f;
         }

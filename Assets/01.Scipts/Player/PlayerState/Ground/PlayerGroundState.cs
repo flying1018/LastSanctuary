@@ -32,7 +32,7 @@ public class PlayerGroundState : PlayerBaseState
         }
         
         //점프
-        if (_input.IsJump && _player.IsGrounded)
+        if (_input.IsJump && _move.IsGrounded)
         {
             _stateMachine.ChangeState(_stateMachine.JumpState);
         }
@@ -53,8 +53,8 @@ public class PlayerGroundState : PlayerBaseState
         //아래 키 입력 시
         if (_input.MoveInput.y < 0)
         {
-            if(!_player.IsAerialPlatform) return;
-            _player.IsGrounded = false;
+            if(!_move.IsAerialPlatform) return;
+            _move.IsGrounded = false;
         }
     }
 }

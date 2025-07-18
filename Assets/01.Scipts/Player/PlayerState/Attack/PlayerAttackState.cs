@@ -58,7 +58,7 @@ public class PlayerAttackState : PlayerBaseState
             _stateMachine.ChangeState(_stateMachine.DashState);
         }
         //공격 중 가드 가능
-        if (_player.IsGrounded &&_input.IsGuarding && _stateMachine.comboIndex != 2)
+        if (_move.IsGrounded &&_input.IsGuarding && _stateMachine.comboIndex != 2)
         { 
             _stateMachine.ChangeState(_stateMachine.GuardState);
         }
@@ -81,8 +81,8 @@ public class PlayerAttackState : PlayerBaseState
 
     public override void PhysicsUpdate()
     {
-        _player.gravityScale += Vertical(Vector2.down, _data.gravityPower);
-        Move( _player.gravityScale);
+        _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
+        _move.Move( _move.gravityScale);
     }
 
     public override void PlaySFX1()
