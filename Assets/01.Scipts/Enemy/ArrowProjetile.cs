@@ -4,34 +4,45 @@ using UnityEngine;
 
 public class ArrowProjectile : EnemyWeapon
 {
-  private Rigidbody2D _rigidbody2D;
-  
-  //생성
-  public void Init(int damage, float knockback)
-  {
-    _rigidbody2D = GetComponent<Rigidbody2D>();
-    Damage = damage;
-    knockBackForce = knockback;
-  }
+    private Rigidbody2D _rigidbody2D;
 
-  //발사
-  public void Shot(Vector2 dir, float arrowPower)
-  {
-    _rigidbody2D.velocity = Vector2.zero;
-    _rigidbody2D.AddForce(dir * arrowPower, ForceMode2D.Impulse);
-  }
-
-  //충돌 시
-  public override void OnTriggerEnter2D(Collider2D other)
-  {
-    //대미지 처리
-    base.OnTriggerEnter2D(other);
-    
-    //충돌 시 파괴
-    if (other.CompareTag(StringNameSpace.Tags.Ground) || (other.CompareTag(StringNameSpace.Tags.Player)))
+    //생성
+    public void Init(int damage, float knockback)
     {
-      ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.Arrow, gameObject, gameObject);
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+        Damage = damage;
+        knockBackForce = knockback;
     }
 
-  }
+    //발사
+    public void Shot(Vector2 dir, float arrowPower)
+    {
+        _rigidbody2D.velocity = Vector2.zero;
+        _rigidbody2D.AddForce(dir * arrowPower, ForceMode2D.Impulse);
+    }
+
+    //충돌 시
+    public override void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag(StringNameSpace.Tags.Enemy)) return;
+        
+        //공격
+        if (other.TryGetComponent(out IDamageable idamageable))
+        {
+            idamageable.TakeDamage(Damage, DamageType.Range, transform, defpen);
+        }
+
+        //넉백
+        if (other.TryGetComponent(out IKnockBackable iknockBackable))
+        {
+            iknockBackable.ApplyKnockBack(this.transform, knockBackForce);
+        }
+
+
+        //충돌 시 파괴
+        if (other.CompareTag(StringNameSpace.Tags.Ground) || (other.CompareTag(StringNameSpace.Tags.Player)))
+        {
+            ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.Arrow, gameObject, gameObject);
+        }
+    }
 }

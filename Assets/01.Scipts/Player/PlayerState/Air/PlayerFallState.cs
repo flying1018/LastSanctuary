@@ -20,14 +20,4 @@ public class PlayerFallState : PlayerAirState
         base.Exit();
         StopAnimation(_player.AnimationDB.FallParameterHash);;
     }
-
-    public override void Update()
-    {
-        base.Update();
-        
-        if (_move.IsGrounded)
-        {
-            _stateMachine.ChangeState(_stateMachine.IdleState);
-        }
-    }
 }

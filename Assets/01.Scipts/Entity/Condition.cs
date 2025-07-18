@@ -31,5 +31,7 @@ public class Condition : MonoBehaviour
         _isTakeDamageable = true;
         yield return new WaitForSeconds(_delay);
         _isTakeDamageable = false;
+
+        _damageDelayCoroutine = null;
     }
 }

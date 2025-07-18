@@ -46,12 +46,23 @@ public class PlayerJumpState : PlayerAirState
 
     }
 
+    public override void Update()
+    {
+        //스태미나 회복
+        _condition.RecoveryStamina();
+        
+        //점프가 끝나기 전까진 상태 변환 없음.
+        if(_move.addForceCoroutine != null) return;
+        base.Update();
+    }
+
     public override void PhysicsUpdate()
     {
+        //점프가 끝나기 전까진 상태 변환 없음.
         if(_move.addForceCoroutine != null) return;
         base.PhysicsUpdate();
     }
-    
+
     //점프
     //키를 누르고 있는 동안 점프력 증가
     void Jump()

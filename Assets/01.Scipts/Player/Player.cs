@@ -57,15 +57,16 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (_eventProduction) return;   //이벤트 중에는 막기
         StateMachine.HandleInput();
         StateMachine.Update();
     }
 
     private void FixedUpdate()
     {
+        if (_eventProduction) return;   //이벤트 중에는 막기
         StateMachine.PhysicsUpdate();
         //Debug.Log(StateMachine.currentState);
-
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -128,7 +129,21 @@ public class Player : MonoBehaviour
 
 
     #region Need MonoBehaviour Method
-    
+
+    private bool _eventProduction = false;
+    public void EventProduction(bool onOff)
+    {
+        if (onOff)  //이벤트 시작
+        {
+            PlayerInput.enabled = false;
+            _eventProduction = true;
+        }
+        else    //이벤트 종료
+        {
+            PlayerInput.enabled = true;
+            _eventProduction = false;
+        }
+    }
     
     #endregion
     
