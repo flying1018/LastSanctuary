@@ -37,7 +37,7 @@ public class PlayerGuardState : PlayerBaseState
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
         //대쉬 키 입력 시 스테미나가 충분하면
-        if (_input.IsDash && _condition.UsingStamina(_data.dashCost))
+        if (_input.IsDash && _stateMachine.DashState.UseCanDash())
         {   //대쉬
             _stateMachine.ChangeState(_stateMachine.DashState); 
         }

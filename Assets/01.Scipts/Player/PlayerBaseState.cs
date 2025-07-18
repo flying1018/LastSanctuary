@@ -45,8 +45,8 @@ public class PlayerBaseState : IState
 
     public virtual void HandleInput()
     {
-        //대쉬 키 입력 시 스태미나가 충분하면
-        if (_input.IsDash && _condition.UsingStamina(_data.dashCost))
+        //대쉬 키 입력 시 쿨타임이 돌고 스태미나가 충분하면
+        if (_input.IsDash && _stateMachine.DashState.UseCanDash())
         {   //대쉬
             _stateMachine.ChangeState(_stateMachine.DashState); 
         }

@@ -25,7 +25,7 @@ public class PlayerRopedState : PlayerAirState
     {
         //좌우 입력 중이고, 대쉬 키를 입력하면
         if (Mathf.Abs(_input.MoveInput.x) > 0 && 
-            _input.IsDash && _condition.UsingStamina(_data.dashCost))
+            _input.IsDash && _stateMachine.DashState.UseCanDash())
         {   //대쉬
             _stateMachine.ChangeState(_stateMachine.DashState);
         }

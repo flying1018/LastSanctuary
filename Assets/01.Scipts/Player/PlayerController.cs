@@ -9,10 +9,6 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
-    //필드
-    private float _dashCoolTime;
-    private bool _dashCool;
-
     //프로퍼티
     public Vector2 MoveInput { get; set; }
     public IInteractable InteractableTarget { get; set; }
@@ -24,12 +20,7 @@ public class PlayerController : MonoBehaviour
     public bool IsAttack { get; set; }
     public bool IsNearInteractable { get; set; }
     public bool IsSavePoint { get; set; }
-
-
-    public void Start()
-    {
-        _dashCoolTime = GetComponent<Player>().Data.dashCoolTime;
-    }
+    
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -67,11 +58,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && !_dashCool)
+        if (context.phase == InputActionPhase.Started)
         {
             IsDash = true;
-            _dashCool = true;
-            Invoke(nameof(DashCoolTime), _dashCoolTime);
+
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
@@ -125,11 +115,6 @@ public class PlayerController : MonoBehaviour
 
             InteractableTarget.Interact();
         }
-    }
-
-    void DashCoolTime()
-    {
-        _dashCool = false;
     }
 
 }

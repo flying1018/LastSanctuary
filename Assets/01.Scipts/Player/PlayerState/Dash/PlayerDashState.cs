@@ -5,8 +5,12 @@ using UnityEngine;
 public class PlayerDashState : PlayerBaseState
 {
     private Vector2 _dir;
-    private float _time;
-    public PlayerDashState(PlayerStateMachine stateMachine) : base(stateMachine) { }
+    private bool _isDashCool;
+
+    public PlayerDashState(PlayerStateMachine stateMachine) : base(stateMachine)
+    {
+        _isDashCool = true;
+    }
 
     public override void Enter()
     {
@@ -14,8 +18,13 @@ public class PlayerDashState : PlayerBaseState
         
         _player.Animator.SetTrigger(_player.AnimationDB.DashParameterHash);
         
+        //데이터 초기화
         _input.IsDash = false;
         _time = 0;
+        
+        //쿨타임 체크
+        _player.StartCoroutine(CoolTime_Coroutine());
+        
         
         //입력이 있는지 없는지에 따라 방향 설정
         if (_input.MoveInput.x == 0)
@@ -84,5 +93,22 @@ public class PlayerDashState : PlayerBaseState
     public override void PlaySFX1()
     {
         SoundManager.Instance.PlaySFX(_data.dashSound);
+    }
+    
+    public bool UseCanDash()
+    {
+        if (_isDashCool && _condition.UsingStamina(_data.dashCost))
+            return true;
+        else
+            return false;
+            
+        
+    }
+
+    IEnumerator CoolTime_Coroutine()
+    {
+        _isDashCool = false;
+        yield return new WaitForSeconds(_data.dashCoolTime);
+        _isDashCool = true;
     }
 }
