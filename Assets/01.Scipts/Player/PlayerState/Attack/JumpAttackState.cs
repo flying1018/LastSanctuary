@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class JumpAttackState : PlayerAttackState
 {
+    public bool CanJumpAttack;
     public JumpAttackState(PlayerStateMachine stateMachine, AttackInfo attackInfo) : base(stateMachine, attackInfo)
     {
+        CanJumpAttack = true;
     }
-    
-    
+
+    public override void Enter()
+    {
+        base.Enter();
+
+        CanJumpAttack = false;
+    }
 
     public override void PhysicsUpdate()
     {

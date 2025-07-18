@@ -21,8 +21,10 @@ public class PlayerStateMachine : StateMachine
     public PlayerRopedState RopedState { get; private set; }
     public PlayerDeathState DeathState { get; private set; }
     public PlayerRespawnState RespawnState { get; private set; }
+    
     public int comboIndex;
-
+    
+    
     public PlayerStateMachine(Player player)
     {
         this.Player = player;

@@ -12,6 +12,9 @@ public class PlayerGroundState : PlayerBaseState
     {
         base.Enter();
         StartAnimation(_player.AnimationDB.GroundParameterHash);
+
+        //착지하면 점프 어택 초기화
+        _stateMachine.JumpAttack.CanJumpAttack = true;
     }   
 
     public override void Exit()

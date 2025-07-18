@@ -56,16 +56,13 @@ public class PlayerJumpState : PlayerAirState
     //키를 누르고 있는 동안 점프력 증가
     void Jump()
     {
-        
         if (_move.addForceCoroutine != null)
         {
-
             _move.StopCoroutine(_move.addForceCoroutine);
             _move.addForceCoroutine = null;
         }
         
         _move.addForceCoroutine = _move.StartCoroutine(Jump_Coroutine());
-        
     }
 
     IEnumerator Jump_Coroutine()
