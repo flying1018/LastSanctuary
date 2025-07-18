@@ -46,7 +46,10 @@ public class PlayerHitState : PlayerBaseState
 
     public override void PhysicsUpdate()
     {
-        
+        //넉백이 끝나면
+        if(_move.addForceCoroutine != null) return;
+        //중력 적용
+        ApplyGravity();
     }
 
     public override void PlaySFX1()
