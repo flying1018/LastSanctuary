@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Weapon : MonoBehaviour
 {
+    public Condition Condition { get; set; }
     public int Damage { get; set;}
     public float knockBackForce { get; set;}
     public int groggyDamage { get; set;}
@@ -14,6 +15,12 @@ public class Weapon : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
+        //가드
+        if (other.TryGetComponent(out IGuardable iguardable))
+        {
+            if (iguardable.ApplyGuard(Damage,Condition,transform,DamageType.Attack))
+                return;
+        }
         //그로기
         if (other.TryGetComponent(out IGroggyable ibossdamageable))
         {
@@ -22,7 +29,7 @@ public class Weapon : MonoBehaviour
         //공격
         if (other.TryGetComponent(out IDamageable idamageable) )
         {
-            idamageable.TakeDamage(Damage,DamageType.Attack,transform,defpen);
+            idamageable.TakeDamage(Damage,DamageType.Attack ,defpen);
         }
         //넉백
         if (other.TryGetComponent(out IKnockBackable iknockBackable))

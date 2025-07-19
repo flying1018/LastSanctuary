@@ -37,6 +37,7 @@ public class BossAttackState : BossBaseState
         _time = 0;
         
         //공격
+        _weapon.Condition = _condition;
         _weapon.Damage = (int)(_data.attack * _attackInfo.multiplier);
         _weapon.defpen = _data.defpen;
         _weapon.knockBackForce = _attackInfo.knockbackForce;

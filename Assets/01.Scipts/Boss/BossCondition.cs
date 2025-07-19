@@ -31,7 +31,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
 
     
     //대미지 입을 때
-    public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
+    public void TakeDamage(int atk, DamageType type, float defpen)
     {
         if (!IsAlive()) return;
         if (_isTakeDamageable) return;

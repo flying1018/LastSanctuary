@@ -7,7 +7,6 @@ public enum DamageType
 {
     Attack,
     Range,
-    Contact,
     Heavy,
 }
 
@@ -16,7 +15,7 @@ public enum DamageType
 /// </summary>
 public interface IDamageable
 {
- public void TakeDamage(int atk, DamageType type ,Transform attackDir, float defpen =0);
+ public void TakeDamage(int atk, DamageType type ,float defpen =0);
 }
 
 /// <summary>
@@ -34,4 +33,9 @@ public interface IKnockBackable
 public interface IGroggyable 
 {
    public void ApplyGroggy(int amount);
+}
+
+public interface IGuardable
+{
+    public bool ApplyGuard(int atk,Condition condition,Transform dir, DamageType type);
 }

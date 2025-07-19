@@ -9,7 +9,7 @@ public class DecorateObject : MonoBehaviour, IDamageable
 
     public GameObject brokenPrefab;
 
-    public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
+    public void TakeDamage(int atk, DamageType type, float defpen)
     {
         if (isBroken) { return; }
 

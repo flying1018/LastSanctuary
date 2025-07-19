@@ -93,14 +93,15 @@ public class Enemy : MonoBehaviour
         //Debug.Log(StateMachine.attackCoolTime);
     }
 
+        
+    //몬스터와 충돌시 넉백과 대미지
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
         {
             if(other.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                if(moveType == MoveType.Fly)
-                    damageable.TakeDamage(Data.attack,DamageType.Attack,transform);
+                damageable.TakeDamage(Data.attack,DamageType.Attack);
             }
 
             if (other.gameObject.TryGetComponent(out IKnockBackable knockBackable))
@@ -115,32 +116,6 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    
-    //몬스터와 충돌시 넉백과 대미지
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
-        {
-            if(other.gameObject.TryGetComponent(out IDamageable damageable))
-            {
-                if(moveType == MoveType.Fly)
-                    damageable.TakeDamage(Data.attack,DamageType.Attack,transform);
-                else
-                    damageable.TakeDamage(Data.attack,DamageType.Contact,transform);
-            }
-
-            if (other.gameObject.TryGetComponent(out IKnockBackable knockBackable))
-            {
-                knockBackable.ApplyKnockBack(transform,Data.knockbackForce);
-            }
-        }
-
-        if (StateMachine.currentState is EnemyRushAttack rushAttack)
-        {
-            rushAttack.RushKnuckBack(other.gameObject.transform,Data.knockbackForce);
-        }
-    }
-
 
     #region  Need MonoBehaviour Method
     

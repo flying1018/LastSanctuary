@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
         Move = GetComponent<KinematicMove>();
         
         AnimationDB.Initailize();
+        Condition.Init(this);
         Inventory.Init(this);
         Move.Init(BoxCollider.size.x, BoxCollider.size.y,Rigidbody);
         
@@ -118,13 +120,16 @@ public class Player : MonoBehaviour
     private bool _eventProduction = false;
     public void EventProduction(bool onOff)
     {
+        
         if (onOff)  //이벤트 시작
         {
+            UIManager.Instance.OnOffUI(false);
             PlayerInput.enabled = false;
             _eventProduction = true;
         }
         else    //이벤트 종료
         {
+            UIManager.Instance.OnOffUI(true);
             PlayerInput.enabled = true;
             _eventProduction = false;
         }

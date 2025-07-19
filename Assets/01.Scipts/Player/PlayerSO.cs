@@ -49,10 +49,11 @@ public class PlayerSO : ScriptableObject
     public float HealTime => healAnim.length;
 
 
-    [field: Header("GuardState")] 
-    [field: SerializeField] public float perfectGuardWindow { get; private set; } = 0.2f;
-    [field: SerializeField] public int perfactGuardStemina { get; private set; } = 30;
-    [field: SerializeField] public int guardCost { get; private set; } = 30;
+    [Header("GuardState")] 
+    public float perfectGuardWindow;
+    public int perfactGuardStemina;
+    public int perfactGuardGroggy;
+    public int guardCost;
     
 
     [Header("AttackState")] 
