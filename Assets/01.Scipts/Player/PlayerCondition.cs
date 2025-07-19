@@ -76,6 +76,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable
     {
         //무적 일때
         if (IsInvincible) return;
+        DamageType = type;
 
         //가드 처리
         bool isFront = IsFront(dir);
