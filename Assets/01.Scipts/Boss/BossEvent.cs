@@ -79,9 +79,6 @@ public class BossEvent : MonoBehaviour
     //스폰 이벤트
     IEnumerator Spawn_Coroutine()
     {
-        //UI 끄기
-        UIManager.Instance.OnOffUI(false);
-        
         //플레이어 이벤트 상태(조작 불가 + 업데이트, 물리 업데이트 막기)
         _player.EventProduction(true);
 
@@ -271,6 +268,18 @@ public class BossEvent : MonoBehaviour
         _boss.Animator.speed = 1f;
         yield return new WaitForSeconds(2f);
         StartBattle();
+        
+        
+        //문 열기
+        //벽이 올라와서 막힘
+        foreach (MoveObject moveObject in _moveObjects)
+        {
+            moveObject.MoveObj();
+        }
+
+        
+        //브금 복구
+        SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBGM);
         
     }
 }

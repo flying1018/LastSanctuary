@@ -29,7 +29,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     }
     
     //대미지 입을 때
-    public void TakeDamage(int atk, DamageType type, Transform attackDir, float defpen)
+    public void TakeDamage(int atk, DamageType type, float defpen)
     {
         if (IsInvincible) return;
         if (_isTakeDamageable) return;
@@ -88,5 +88,11 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         int damage;
         damage = (int)Math.Ceiling(atk -  _defence * (1-defpen));
         _curHp -= damage;
+    }
+    
+    //TestCode
+    public void ChangeHitState()
+    {
+        _enemy.StateMachine.ChangeState(_enemy.StateMachine.HitState);
     }
 }

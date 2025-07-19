@@ -16,11 +16,6 @@ public class BossDeathState : BossBaseState
         _boss.BossEvent.OnTriggerBossDeath();
     }
 
-    public override void Exit()
-    {
-        SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBGM);
-    }
-
     public override void Update()
     {
         _time += Time.deltaTime;

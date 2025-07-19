@@ -10,10 +10,16 @@ public class BossWeapon : Weapon
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Enemy)) return;
+        //가드
+        if (other.TryGetComponent(out IGuardable iguardable))
+        {
+            if (iguardable.ApplyGuard(Damage,Condition,transform,DamageType.Attack))
+                return;
+        }
         //공격
         if (other.TryGetComponent(out IDamageable idamageable) )
         {
-            idamageable.TakeDamage(Damage,DamageType.Heavy,transform,defpen);
+            idamageable.TakeDamage(Damage,DamageType.Heavy,defpen);
         }
         //넉백
         if (other.TryGetComponent(out IKnockBackable iknockBackable))

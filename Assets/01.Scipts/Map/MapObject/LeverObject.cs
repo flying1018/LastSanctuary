@@ -16,12 +16,6 @@ public class LeverObject : MonoBehaviour, IDamageable
         animator.SetBool("isOn", isOn);
     }
 
-    public void TakeDamage(int atk, DamageType type, Transform attacker, float defpen)
-    {
-        if (_isMove) { return; }
-        StartCoroutine(Toggle());
-    }
-
     private IEnumerator Toggle()
     {
         //SoundManager.Instance.PlaySFX(audioClip);
@@ -39,5 +33,11 @@ public class LeverObject : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(2f);
 
         _isMove = false;
+    }
+
+    public void TakeDamage(int atk, DamageType type, float defpen = 0)
+    {
+        if (_isMove) { return; }
+        StartCoroutine(Toggle());
     }
 }

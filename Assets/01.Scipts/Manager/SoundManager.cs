@@ -7,17 +7,14 @@ public class SoundManager : Singleton<SoundManager>
     // 사용할 사운드 종류들
     public enum SoundType
     {
-        BGM,
-        Effect,
+        BGMVolume,
+        SFXVolume,
     }
 
     public AudioMixer mixer;
     public GameObject sfxPrefab;
     private AudioSource bgmSource;
     private BGMSound bgmSound;
-    
-    private const string sfxVolumeName = "SFXVolume";
-    private const string bgmVolumeName = "BGMVolume";
 
     protected override async void Awake()
     {
@@ -63,15 +60,8 @@ public class SoundManager : Singleton<SoundManager>
     /// <param name="volume">얼마큼 조절할지 유무</param>
     public void SetVolume(SoundType type, float volume)
     {
-        switch (type)
-        {
-            case SoundType.BGM:
-                mixer.SetFloat(bgmVolumeName, VolumeToDecibel(volume));
-                break;
-            case SoundType.Effect:
-                mixer.SetFloat(sfxVolumeName, VolumeToDecibel(volume));
-                break;
-        }
+        mixer.SetFloat(SoundType.BGMVolume.ToString(), VolumeToDecibel(volume));
+        mixer.SetFloat(SoundType.SFXVolume.ToString(), VolumeToDecibel(volume));
     }
 
     //생성

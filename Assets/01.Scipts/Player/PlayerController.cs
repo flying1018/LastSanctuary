@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     public bool IsHeal { get; set; }
     public bool IsAttack { get; set; }
     public bool IsNearInteractable { get; set; }
-    public bool IsSavePoint { get; set; }
     
 
     public void OnMove(InputAction.CallbackContext context)

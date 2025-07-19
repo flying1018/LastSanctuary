@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
         Move = GetComponent<KinematicMove>();
         
         AnimationDB.Initailize();
+        Condition.Init(this);
         Inventory.Init(this);
         Move.Init(BoxCollider.size.x, BoxCollider.size.y,Rigidbody);
         
@@ -90,15 +92,6 @@ public class Player : MonoBehaviour
 
             Input.InteractableTarget = interactable; // PlayerController에서 Interact()을 하기위한 용도
             Input.IsNearInteractable = true;
-
-            /*
-            현재 IsSavePoint는 사용하지 않지만 
-            추후 저장에 사용할 수 있으니 보류
-            */
-            if (other.CompareTag(StringNameSpace.Tags.SavePoint))
-            {
-                Input.IsSavePoint = true;
-            }
         }
     }
     
@@ -117,12 +110,6 @@ public class Player : MonoBehaviour
         {
             Input.InteractableTarget = null;
             Input.IsNearInteractable = false;
-
-            //세이브 포인트 나가기
-            if (other.CompareTag(StringNameSpace.Tags.SavePoint))
-            {
-                Input.IsSavePoint = false;
-            }
         }
     }
 
@@ -133,13 +120,16 @@ public class Player : MonoBehaviour
     private bool _eventProduction = false;
     public void EventProduction(bool onOff)
     {
+        
         if (onOff)  //이벤트 시작
         {
+            UIManager.Instance.OnOffUI(false);
             PlayerInput.enabled = false;
             _eventProduction = true;
         }
         else    //이벤트 종료
         {
+            UIManager.Instance.OnOffUI(true);
             PlayerInput.enabled = true;
             _eventProduction = false;
         }

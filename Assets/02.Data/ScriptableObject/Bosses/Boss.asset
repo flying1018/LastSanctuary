@@ -46,7 +46,7 @@ MonoBehaviour:
     animParameter: Attack2
     attackAnim: {fileID: 7400000, guid: f01057286f56a7e48b86cce37d330c92, type: 2}
     projectilePrefab: {fileID: 1731905444369871071, guid: 04ab5d43bba433d4782c69b13723599c, type: 3}
-    projectilePoolId: 2
+    projectilePoolId: 4
     projectilePower: 80
     attackSounds:
     - {fileID: 8300000, guid: 94643bcc75cfd7e40ba70900d44036d8, type: 3}

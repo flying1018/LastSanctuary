@@ -26,10 +26,20 @@ public class ArrowProjectile : EnemyWeapon
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Enemy)) return;
         
+        //가드
+        if (other.TryGetComponent(out IGuardable iguardable))
+        {
+            if (iguardable.ApplyGuard(Damage, Condition, transform, DamageType.Range))
+            {
+                ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.Arrow, gameObject, gameObject);
+                return;
+            }
+        }
+        
         //공격
         if (other.TryGetComponent(out IDamageable idamageable))
         {
-            idamageable.TakeDamage(Damage, DamageType.Range, transform, defpen);
+            idamageable.TakeDamage(Damage, DamageType.Range, defpen);
         }
 
         //넉백

@@ -13,7 +13,7 @@ public class TrapObject : MonoBehaviour
 
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
         {
-            idamageable.TakeDamage(damage, DamageType.Contact, transform);
+            idamageable.TakeDamage(damage, DamageType.Attack);
 
             StartCoroutine(ReturnPlayer(other.transform));
         }
