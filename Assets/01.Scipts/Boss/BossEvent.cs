@@ -272,5 +272,8 @@ public class BossEvent : MonoBehaviour
         yield return new WaitForSeconds(2f);
         StartBattle();
         
+        //브금 복구
+        SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBGM);
+        
     }
 }
