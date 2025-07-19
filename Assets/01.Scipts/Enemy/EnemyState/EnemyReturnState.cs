@@ -53,8 +53,11 @@ public class EnemyReturnState :EReturnState
         
         //스폰포인트와 오차가 0.1f이라면
         if (Mathf.Abs(_enemy.transform.position.x - _spawnPoint.position.x) < 0.1f)
-        {   //대기
-            _stateMachine.ChangeState(_stateMachine.IdleState);       
+        {   
+            if(_enemy.FindTarget())
+                _stateMachine.ChangeState(_stateMachine.ChaseState);//추적
+            else
+                _stateMachine.ChangeState(_stateMachine.IdleState);//대기       
         }
     }
 

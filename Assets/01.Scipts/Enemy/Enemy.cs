@@ -168,18 +168,25 @@ public class Enemy : MonoBehaviour
     //주변에 플레이어 있는지 확인
     public bool FindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, Data.detectDistance, Vector2.down);
-        foreach (RaycastHit2D hit in hits)
+        // 정지된 상태에서 감지
+        Collider2D[] overlappingHits = Physics2D.OverlapCircleAll(transform.position, Data.detectDistance);
+
+        foreach (Collider2D hit in overlappingHits)
         {
-            if (hit.collider.CompareTag(StringNameSpace.Tags.Player))
+            if (hit.CompareTag(StringNameSpace.Tags.Player))
             {
                 Target = hit.transform;
                 return true;
             }
         }
 
-        Target = null;
         return false;
+    }
+    
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, Data.detectDistance);
     }
     
     //사운드 실행 애니메이션 이벤트
