@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BossIdleState : BossBaseState
 {
-    private float _time;
     
     public BossIdleState(BossStateMachine bossStateMachine) : base(bossStateMachine)
     {

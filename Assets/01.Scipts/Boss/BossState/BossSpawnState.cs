@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BossSpawnState : BossBaseState
 {
-    private float _time;
-
     public BossSpawnState(BossStateMachine stateMachine) : base(stateMachine) {}
 
     public override void Enter()

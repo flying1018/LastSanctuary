@@ -19,6 +19,8 @@ public class BossBaseState : IState
     protected Boss _boss;
     protected BossWeapon _weapon;
     protected KinematicMove _move;
+    
+    protected float _time;
 
     public BossBaseState(BossStateMachine bossStateMachine)
     {

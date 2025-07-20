@@ -7,7 +7,6 @@ public class BossAttackState : BossBaseState
 {
     //공격 시간 체크
     private BossAttackInfo _attackInfo;
-    private float _time;
     
     //공격 쿨타임 체크
     private float _attackCoolTime;
