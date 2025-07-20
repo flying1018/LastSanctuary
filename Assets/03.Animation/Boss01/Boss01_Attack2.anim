@@ -251,7 +251,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.41666666
-    functionName: BackJump
+    functionName: AnimationEvent1
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -259,13 +259,6 @@ AnimationClip:
     messageOptions: 0
   - time: 0.41666666
     functionName: EventSFX1
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.5666667
-    functionName: StopMove
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -279,7 +272,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.8666667
-    functionName: Attack
+    functionName: AnimationEvent2
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

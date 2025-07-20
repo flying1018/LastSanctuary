@@ -26,19 +26,24 @@ public class EnemyRushAttack : EAttackState
     }
 
 
+    public override void PlayEvent1()
+    {
+        RushAttack();
+    }
+
     //플레이어를 향해서 돌진
     public void RushAttack()
     {
         Vector2 direction = DirectionToTarget();
         Rotate(direction);
-        _rigidbody.AddForce(direction * _data.rushSpeed, ForceMode2D.Impulse);
+        _move.AddForce(direction * _data.rushSpeed);
     }
 
     //충돌 시 정지
     public void RushKnuckBack(Transform target, float knockBackForce)
     {
         Vector2 knockbackDir = _enemy.transform.position - target.position;
-        _rigidbody.velocity = knockbackDir.normalized * knockBackForce;
+        _move.AddForce(knockbackDir.normalized * knockBackForce);
         _stateMachine.ChangeState(_stateMachine.BattleState);
     }
 }

@@ -6,12 +6,11 @@ using UnityEngine;
 public class BossAttackState : BossBaseState
 {
     //공격 시간 체크
-    private BossAttackInfo _attackInfo;
+    protected BossAttackInfo _attackInfo;
     
     //공격 쿨타임 체크
-    private float _attackCoolTime;
-    private float _coolTime;
-    
+    protected float _attackCoolTime;
+    protected float _coolTime;
     
     public BossAttackState(BossStateMachine bossStateMachine, BossAttackInfo attackInfo) : base(bossStateMachine)
     {
@@ -68,29 +67,6 @@ public class BossAttackState : BossBaseState
         else
         {
             return false;
-        }
-    }
-    
-    //투사체 날리기
-    public void FireProjectile()
-    {
-        //투사체 생성 위치 설정
-        float sizeX = _boss.SpriteRenderer.bounds.size.x /2;
-        Transform firePoint = _boss.BossWeapon.transform;
-
-        //투사체 생성
-        GameObject attack2 = ObjectPoolManager.Get(_attackInfo.projectilePrefab, _attackInfo.projectilePoolId);
-        
-        //방향 설정
-        Vector2 dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
-        attack2.transform.position = firePoint.position + (Vector3)(dir * sizeX);
-        attack2.transform.right = dir;
-
-        //
-        if (attack2.TryGetComponent(out ArrowProjectile arrowPoProjectile))
-        {
-            arrowPoProjectile.Init(_data.attack, _attackInfo.knockbackForce);
-            arrowPoProjectile.Shot(dir, _attackInfo.projectilePower);
         }
     }
 

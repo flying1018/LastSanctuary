@@ -181,7 +181,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.41666666
-    functionName: LandingCameraShake
+    functionName: AnimationEvent1
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -195,7 +195,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 2.8833334
-    functionName: HowlingCameraShake
+    functionName: AnimationEvent2
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -47,6 +47,26 @@ public class BossSpawnState : BossBaseState
         //콜라이더 자동 변경 시 콜라이더가 사라지는 버그가 있어서 블락
     }
 
+    public override void PlayEvent1()
+    {
+        LandingCameraShake();
+    }
+    
+    public override void PlayEvent2()
+    {
+        HowlingCameraShake();
+    }
+
+    //카메라 흔들기
+    public void LandingCameraShake()
+    {
+        _boss.BossEvent.CameraShake();
+    }
+    public void HowlingCameraShake()
+    {
+        _boss.BossEvent.CameraShake(_data.howlingSound.length/2); 
+    }
+
     public override void PlaySFX1()
     {
         SoundManager.Instance.PlaySFX(_data.landingSound);

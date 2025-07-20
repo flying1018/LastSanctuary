@@ -118,15 +118,6 @@ public class Enemy : MonoBehaviour
     
 
     #region  Need MonoBehaviour Method
-    
-    //애니메이션 이벤트에서 사용하는 메서드
-    public void Attack()
-    {
-        if (StateMachine.currentState is EnemyRangeAttackState rangeState)
-            rangeState.FireArrow();
-        if (StateMachine.currentState is EnemyRushAttack rushAttack)
-            rushAttack.RushAttack();
-    }
 
     //이동 방향에 발판이 있는지 체크
     public bool IsPlatform()
@@ -163,6 +154,20 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, Data.detectDistance);
     }
+    
+
+    
+    #endregion
+    
+    #region AnimationEvent Method
+    
+    //애니메이션 이벤트에서 사용하는 메서드
+    public void AnimationEvent1()
+    {
+        if (StateMachine.currentState is EnemyBaseState enemyBaseState)
+            enemyBaseState.PlayEvent1();
+    }
+    
     
     //사운드 실행 애니메이션 이벤트
     public void EventSFX1()

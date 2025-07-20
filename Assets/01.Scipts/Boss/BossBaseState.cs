@@ -174,6 +174,10 @@ public class BossBaseState : IState
         return (_boss.Target.position - _boss.transform.position).normalized; //플레이어 방향
     }
     
+    public virtual void PlayEvent1() { }
+    public virtual void PlayEvent2() { }
+    public virtual void PlayEvent3() { }
+    
     public virtual void PlaySFX1() { }
     public virtual void PlaySFX2() { }
     public virtual void PlaySFX3() { }
