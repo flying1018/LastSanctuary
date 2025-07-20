@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class EChaseState : EnemyBaseState
 {
-    protected float _time;
     public EChaseState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
     {
     }
@@ -59,13 +58,6 @@ public class EnemyChaseState : EChaseState
 {
     public EnemyChaseState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine)
     {
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-        //나갈 때 정지
-       // Move(Vector2.zero);
     }
 
     protected override void Chase()

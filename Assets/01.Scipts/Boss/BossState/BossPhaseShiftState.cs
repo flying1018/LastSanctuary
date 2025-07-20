@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BossPhaseShiftState : BossBaseState
 {
-
-    private float _time;
     public BossPhaseShiftState(BossStateMachine bossStateMachine) : base(bossStateMachine) { }
 
     public override void Enter()

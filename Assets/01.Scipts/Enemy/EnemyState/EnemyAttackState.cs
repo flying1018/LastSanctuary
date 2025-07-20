@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class EAttackState : EnemyBaseState
 {
-    protected float _time;
 
     public EAttackState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
     {

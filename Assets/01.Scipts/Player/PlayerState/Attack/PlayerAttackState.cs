@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerAttackState : PlayerBaseState
 {
     public AttackInfo attackInfo;
-    protected float _time;
     protected float _animationTime;
 
     //생성자

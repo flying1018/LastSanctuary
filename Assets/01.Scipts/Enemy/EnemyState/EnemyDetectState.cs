@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyDetectState : EnemyBaseState
 {
-    private float _time;
     public EnemyDetectState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
     {
     }

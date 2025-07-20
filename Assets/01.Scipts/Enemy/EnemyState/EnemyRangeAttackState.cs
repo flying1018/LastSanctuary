@@ -13,6 +13,11 @@ public class EnemyRangeAttackState : EAttackState
         Rotate(direction);
     }
 
+    public override void PlayEvent1()
+    {
+        FireArrow();
+    }
+
     //원거리 공격
     public void FireArrow()
     {

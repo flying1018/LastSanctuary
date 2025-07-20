@@ -19,6 +19,8 @@ public class BossBaseState : IState
     protected Boss _boss;
     protected BossWeapon _weapon;
     protected KinematicMove _move;
+    
+    protected float _time;
 
     public BossBaseState(BossStateMachine bossStateMachine)
     {
@@ -171,6 +173,10 @@ public class BossBaseState : IState
         if(_boss.Target == null) return Vector2.zero; //방어코드
         return (_boss.Target.position - _boss.transform.position).normalized; //플레이어 방향
     }
+    
+    public virtual void PlayEvent1() { }
+    public virtual void PlayEvent2() { }
+    public virtual void PlayEvent3() { }
     
     public virtual void PlaySFX1() { }
     public virtual void PlaySFX2() { }

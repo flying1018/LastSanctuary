@@ -119,6 +119,12 @@ public class EnemyBaseState : IState
         return _spawnPoint.position - _enemy.transform.position;
     }
     
+    #region AnimationEvent Method
+
+    public virtual void PlayEvent1() { }
+
     public virtual void PlaySFX1() { }
     public virtual void PlaySFX2() { }
+    
+    #endregion
 }
