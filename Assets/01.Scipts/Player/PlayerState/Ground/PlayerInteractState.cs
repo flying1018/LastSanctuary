@@ -14,10 +14,10 @@ public class PlayerInteractState : PlayerGroundState
         base.Enter();
         
         _input.IsInteract = false;
+        _time = 0f;
 
         if (_player.InteractableTarget is SavePoint)
         {
-            Debug.Log(_player.InteractableTarget);
             StartAnimation(_player.AnimationDB.InteractionParameter);
 
             _interactTime = _data.InteractionTime;
@@ -48,5 +48,10 @@ public class PlayerInteractState : PlayerGroundState
         {
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
+    }
+
+    public override void HandleInput()
+    {
+        
     }
 }

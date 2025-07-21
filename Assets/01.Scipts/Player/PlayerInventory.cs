@@ -141,6 +141,5 @@ public class PlayerInventory : MonoBehaviour
     {
         CurPotionNum = MaxPotionNum;
         UIManager.Instance.UpdatePotionUI();
-        DebugHelper.Log($"호출됨 현재 포션 :{CurPotionNum}");
     }
 }

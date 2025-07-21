@@ -46,7 +46,6 @@ public class SaveManager : Singleton<SaveManager>
     public void SetSavePoint(Vector2 pos)
     {
         _lastSavePos.position = pos;
-        DebugHelper.Log($"새로운 세이브 {_lastSavePos.position}");
     }
 
     //세이브 포인틀 리턴
