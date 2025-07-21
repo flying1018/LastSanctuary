@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   gravityPower: 0.6
-  jumpForce: 60
+  jumpForce: 25
   jumpDuping: 0.93
   holdJumpDuping: 0.96
   fallJudgment: 7
