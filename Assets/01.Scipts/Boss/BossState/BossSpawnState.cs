@@ -8,9 +8,6 @@ public class BossSpawnState : BossBaseState
 
     public override void Enter()
     {
-        //콜라이더 형태 변경
-        UpdateCollider();
-        
         //빠르게 떨어지기
         _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
         

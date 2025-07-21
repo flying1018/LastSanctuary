@@ -26,7 +26,6 @@ public class EnemyHitState : EnemyBaseState
     //여긴 시간 체크가 물리 업데이트에서 되어 있음.
     public override void PhysicsUpdate()
     {
-        //
         if (Time.time - _hitStart >= _data.hitDuration)
         {
             _stateMachine.ChangeState(_stateMachine.BattleState);

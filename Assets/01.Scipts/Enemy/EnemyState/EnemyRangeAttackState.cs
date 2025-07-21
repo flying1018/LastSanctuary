@@ -38,6 +38,7 @@ public class EnemyRangeAttackState : EAttackState
             arrowProjectile.Shot(dir, _data.arrowPower);
         }
         
+        
         //사운드
         //_enemy.PlaySFX1();
     }

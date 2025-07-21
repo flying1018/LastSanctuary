@@ -59,6 +59,7 @@ public class BossSO : ScriptableObject
     [Header("AttackState")] 
     public float attackRange = 2f;
     public float attackIdleTime;
+    public float knockbackForce;
     public BossAttackInfo[] attacks;
     public float defpen;
     public float backjumpDistance = 3f;

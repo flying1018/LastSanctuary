@@ -5,6 +5,8 @@ using UnityEngine;
 public class BossGroggyState : BossBaseState
 {
     private float _groggyStart;
+    private Color _originColor;
+    private float _blinkLength = 2;
     
     public BossGroggyState(BossStateMachine bossStateMachine) : base(bossStateMachine)
     {
@@ -19,7 +21,10 @@ public class BossGroggyState : BossBaseState
         _condition.IsGroggy = true;
         
         //애니 실행
-        StartAnimation(_boss.AnimationDB.GroggyParameterHash);
+       _boss.Animator.SetTrigger(_boss.AnimationDB.GroggyParameterHash);
+        
+        //색상 저장
+        _originColor = _boss.SpriteRenderer.color;
     }
 
     public override void Exit()
@@ -27,12 +32,16 @@ public class BossGroggyState : BossBaseState
         //그로기 탈출
         _condition.IsGroggy = false;
         
-        //애니 정지
-        StopAnimation(_boss.AnimationDB.GroggyParameterHash);
+        //색상 변경
+        _boss.SpriteRenderer.color = _originColor;
     }
 
     public override void Update()
     {
+        //색상 점멸
+        float blinking = Mathf.PingPong(Time.time * _data.groggyDuration, _blinkLength);
+        _boss.SpriteRenderer.color = Color.Lerp(Color.red,_originColor, blinking);
+        
         //애니메이션 그로기 시간 끝나기 까지 기다리기
         if (Time.time - _groggyStart < _data.groggyDuration)
             return;
@@ -47,6 +56,5 @@ public class BossGroggyState : BossBaseState
         { 
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
-        
     }
 }
