@@ -3,12 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCondition : Condition, IDamageable, IKnockBackable,IGuardable
+public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardable
 {
-    [SerializeField] private float deathTime = 2f;
-    [SerializeField] private float respawnTime = 2f;
-    [SerializeField] private float reviveInvincibleTime = 0.5f;
-
     private Player _player;
     private float _curStamina;
     private int _staminaRecovery;
@@ -59,7 +55,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable,IGuardable
     {
         StartCoroutine(Invincible_Coroutine(time));
     }
-    
+
     public IEnumerator Invincible_Coroutine(float time)
     {
         IsInvincible = true;
@@ -68,10 +64,11 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable,IGuardable
     }
 
     #region Damage
-    
+
     //대미지 처리
     public void TakeDamage(int atk, DamageType type, float defpen = 0f)
     {
+        DebugHelper.Log($"현재 체력 {_curHp}");
         //무적 일때
         if (IsInvincible) return;
         DamageType = type;
@@ -93,7 +90,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable,IGuardable
         int damage = (int)Math.Ceiling(atk - _defence * (1 - defpen));
         _curHp -= damage;
     }
-    
+
     #endregion
 
     //넉백 계산
@@ -108,7 +105,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable,IGuardable
     }
 
     #region Condition
-    
+
     //플레이어 회복
     public void PlayerRecovery()
     {
@@ -150,7 +147,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable,IGuardable
     #endregion
 
     #region Buff
-    
+
     //버프 적용
     public void ApplyTempBuff(StatObjectSO data)
     {
@@ -168,6 +165,16 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable,IGuardable
 
         Coroutine newCoroutine = StartCoroutine(BuffDurationTimerCoroutine(data));
         _tempBuffs[data] = newCoroutine;
+    }
+
+    public void ApplyPermanent(StatObjectSO data)
+    {
+        DebugHelper.Log("호출됨");
+        MaxHp += data.hp;
+        _curHp += data.hp;
+        MaxStamina += data.stamina;
+        Attack += data.attack;
+        Defence += data.defense;
     }
 
     //버프 제거
@@ -190,7 +197,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable,IGuardable
     #endregion
 
     #region UI
-    
+
     //UI에 사용되는 hp
     public float HpValue()
     {
@@ -206,17 +213,17 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable,IGuardable
     #endregion
 
     #region Guard
-    
+
     public bool ApplyGuard(int atk, Condition condition, Transform dir, DamageType type)
     {
         bool isFront = IsFront(dir);
-        
+
         if (TryPerfectGuard(isFront))
         {
             _player.EventSFX2();
-            _curStamina += _player.Data.perfactGuardStemina; 
+            _curStamina += _player.Data.perfactGuardStemina;
             //궁극기 게이지 회복
-            
+
             if (condition is BossCondition bossCondition)
             {
                 //보스는 그로기 게이지 상승
@@ -229,16 +236,16 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable,IGuardable
                 //그로기 상태 미구현
                 enemyCondition.ChangeHitState();
             }
-            
+
             return true;
         }
         else if (TryGuard(isFront))
         {
             _player.EventSFX1();
-            
+
             atk = Mathf.CeilToInt(atk * (1 - _player.Data.damageReduction));
             ApplyDamage(atk);
-            
+
             if (_curHp <= 0)
             {
                 _player.StateMachine.ChangeState(_player.StateMachine.DeathState);
@@ -258,13 +265,13 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable,IGuardable
         bool playerDir = !_player.SpriteRenderer.flipX;
         return attackFromRight == playerDir;
     }
-    
+
     //퍼펙트가드 확인
     private bool TryPerfectGuard(bool isFront)
     {
         return IsPerfectGuard && isFront;
     }
-    
+
     //가드 확인
     private bool TryGuard(bool isFront)
     {
