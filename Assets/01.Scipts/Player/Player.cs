@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     public PlayerInventory Inventory { get; set; }
     public PlayerInput PlayerInput { get; set; }
     public KinematicMove Move { get; set; }
+    public IInteractable InteractableTarget { get; set; }
     //직렬화 데이터 프로퍼티
     public PlayerSO Data { get => playerData; }
 
@@ -82,23 +83,16 @@ public class Player : MonoBehaviour
 
         if ((interactableLayer.value & (1 << other.gameObject.layer)) != 0)
         {
-            IInteractable interactable = other.GetComponent<IInteractable>();
-
-            if (interactable == null)
+            if(other.TryGetComponent(out IInteractable interactable))
             {
-                DebugHelper.LogWarning("IInteractable 컴포넌트 안달려있음");
-                return;
+                InteractableTarget = interactable; // PlayerController에서 Interact()을 하기위한 용도
             }
-
-            Input.InteractableTarget = interactable; // PlayerController에서 Interact()을 하기위한 용도
-            Input.IsNearInteractable = true;
         }
     }
     
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        
         //사다리 나가기
         if (other.CompareTag(StringNameSpace.Tags.Ladder))
         {
@@ -108,8 +102,7 @@ public class Player : MonoBehaviour
 
         if ((interactableLayer.value & (1 << other.gameObject.layer)) != 0)
         {
-            Input.InteractableTarget = null;
-            Input.IsNearInteractable = false;
+            InteractableTarget = null;
         }
     }
 

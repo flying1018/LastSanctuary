@@ -14,6 +14,7 @@ public class PlayerAnimationDB
     [SerializeField] private string idleParameter = "Idle";
     [SerializeField] private string moveParameter = "Move";
     [SerializeField] private string healParameter = "Heal"; 
+    [SerializeField] private string interactionParameter = "Interaction"; 
     
     [SerializeField] private string airParameter = "@Air";
     [SerializeField] private string fallParameter = "Fall";
@@ -33,6 +34,7 @@ public class PlayerAnimationDB
     public int IdleParameterHash { get; private set; }
     public int MoveParameterHash { get; private set; }
     public int HealParameterHash { get; private set; } 
+    public int InteractionParameter { get; private set; } 
     
     public int AirParameterHash { get; private set; }
     public int FallParameterHash { get; private set; }
@@ -53,6 +55,7 @@ public class PlayerAnimationDB
         IdleParameterHash = Animator.StringToHash(idleParameter);
         MoveParameterHash = Animator.StringToHash(moveParameter);
         HealParameterHash = Animator.StringToHash(healParameter); 
+        InteractionParameter = Animator.StringToHash(interactionParameter);
         
         AirParameterHash = Animator.StringToHash(airParameter);
         FallParameterHash = Animator.StringToHash(fallParameter);
