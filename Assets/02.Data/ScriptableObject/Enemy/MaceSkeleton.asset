@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: 0
   _name: 
+  gravityPower: 9.8
   detectTime: 0.2
   detectDistance: 7
   moveSpeed: 3
   cancelChaseTime: 5
-  <HitDuration>k__BackingField: 0.1
   hitMaterial: {fileID: 2100000, guid: 1d6c919171b720f4698baec530ce9a22, type: 2}
   attackDistance: 5
   attackDuration: 1.5
@@ -29,7 +29,6 @@ MonoBehaviour:
   defence: 0
   damageDelay: 0.2
   hitDuration: 0.5
-  alphaValue: 0.5
   deathAnim: {fileID: 7400000, guid: 2fee7b95aee869640ab0bfeea263aabf, type: 2}
   arrowPrefab: {fileID: 0}
   arrowPoolId: 0

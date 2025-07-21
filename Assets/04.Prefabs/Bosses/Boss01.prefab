@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 1119625991052692558}
   - component: {fileID: 3900554615578015434}
   - component: {fileID: 210963048183828009}
-  - component: {fileID: 8200717487277087247}
+  - component: {fileID: 1630865445912036173}
   m_Layer: 0
   m_Name: Boss01
   m_TagString: Enemy
@@ -400,7 +400,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1024
-  gravityScale: 9.8
 --- !u!114 &3900554615578015434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,8 +433,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!60 &8200717487277087247
-PolygonCollider2D:
+--- !u!61 &1630865445912036173
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -476,11 +475,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 1}
-      - {x: -0.95105654, y: 0.30901697}
-      - {x: -0.5877852, y: -0.80901706}
-      - {x: 0.58778536, y: -0.80901694}
-      - {x: 0.9510565, y: 0.30901712}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.4}
+  m_EdgeRadius: 0

@@ -21,7 +21,7 @@ public class Boss : MonoBehaviour
     public Rigidbody2D Rigidbody {get; set;}
     public Animator Animator {get; set;}
     public SpriteRenderer SpriteRenderer { get; set; }
-    public PolygonCollider2D PolygonCollider {get; set;}
+    public BoxCollider2D BoxCollider {get; set;}
     public BossCondition Condition { get; set; }
     public Transform Target { get; set; }
     public BossWeapon BossWeapon { get; set; }
@@ -36,7 +36,7 @@ public class Boss : MonoBehaviour
         //필요한 프로퍼티 설정
         BossEvent = bossEvent;
         AnimationDB = new BossAnimationDB(); 
-        PolygonCollider = GetComponent<PolygonCollider2D>();
+        BoxCollider = GetComponent<BoxCollider2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -45,7 +45,7 @@ public class Boss : MonoBehaviour
         Weapon = BossWeapon.gameObject;
         Move = GetComponent<KinematicMove>();
         
-        Move.Init(PolygonCollider.bounds.size.x, PolygonCollider.bounds.size.y, Rigidbody);
+        Move.Init(BoxCollider.bounds.size.x, BoxCollider.bounds.size.y, Rigidbody);
         AnimationDB.Initailize(); 
         Condition.Init(this);
         Phase2 = false;
@@ -72,6 +72,27 @@ public class Boss : MonoBehaviour
 
     }
 
+    //보스와 충돌시 넉백과 대미지
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
+        {
+            if(other.gameObject.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.TakeDamage(Data.attack,DamageType.Attack);
+            }
+
+            if (other.gameObject.TryGetComponent(out IKnockBackable knockBackable))
+            {
+                knockBackable.ApplyKnockBack(transform,Data.knockbackForce);
+            }
+        }
+
+        if (StateMachine.currentState is EnemyRushAttack rushAttack)
+        {
+            rushAttack.RushKnuckBack(other.gameObject.transform,Data.knockbackForce);
+        }
+    }
 
     #region need MonoBehaviour Method
     
