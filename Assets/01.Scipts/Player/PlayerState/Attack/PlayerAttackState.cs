@@ -34,10 +34,8 @@ public class PlayerAttackState : PlayerBaseState
         _time = 0;
         
         //무적 공격은 무적상태 추가
-        _condition.IsInvincible = attackInfo.isInvincible;
-        
-        //test
-        SoundManager.Instance.MuffleSound(true);
+        if(attackInfo.isInvincible)
+            _condition.InvincibleFunc(_animationTime);
     }
 
     public override void Exit()
@@ -47,12 +45,6 @@ public class PlayerAttackState : PlayerBaseState
         StopAnimation(_player.AnimationDB.AttackParameterHash);
         
         _player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, 0);
-        
-        //무적 종료
-        _condition.IsInvincible = false;
-        
-        //test
-        SoundManager.Instance.MuffleSound(false);
     }
 
     public override void HandleInput()
@@ -72,9 +64,6 @@ public class PlayerAttackState : PlayerBaseState
     //스테미나 회복 막기
     public override void Update()
     {
-        //무적
-        _condition.InvincibleFunc(_animationTime);
-        
         //공격 종료
         _time += Time.deltaTime;
         if (_time > (_animationTime + attackInfo.nextComboTime))
@@ -83,8 +72,6 @@ public class PlayerAttackState : PlayerBaseState
                 _stateMachine.ChangeState(_stateMachine.IdleState);
             else
                 _stateMachine.ChangeState(_stateMachine.FallState);
-                
-            
         }
     }
     
