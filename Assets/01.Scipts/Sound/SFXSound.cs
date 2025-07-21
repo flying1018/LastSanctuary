@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -15,6 +16,13 @@ public class SFXSound : MonoBehaviour
         audioSource.clip = clip;
         audioSource.Play();
 
-        Destroy(gameObject, clip.length + 0.1f);
+        StartCoroutine(ReturnSFX(clip.length + 1f));
+    }
+
+    private IEnumerator ReturnSFX(float value)
+    {
+        yield return new WaitForSeconds(value);
+
+        ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.SFX, null, gameObject);
     }
 }

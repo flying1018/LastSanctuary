@@ -35,7 +35,7 @@ public class ItemManager : Singleton<ItemManager>
 
         if (data.isConsumable == false)
         {
-
+            playerCondition.ApplyPermanent(data);
         }
         
     }

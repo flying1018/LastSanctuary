@@ -91,6 +91,7 @@ public class Enemy : MonoBehaviour
         StateMachine.PhysicsUpdate();
         //Debug.Log(StateMachine.currentState);
         //Debug.Log(StateMachine.attackCoolTime);
+
     }
 
         

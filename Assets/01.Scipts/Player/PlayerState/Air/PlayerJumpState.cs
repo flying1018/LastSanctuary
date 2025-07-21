@@ -42,8 +42,6 @@ public class PlayerJumpState : PlayerAirState
             _jumpDumping = _data.holdJumpDuping;
         else
             _jumpDumping = _data.jumpDuping;
-
-
     }
 
     public override void Update()

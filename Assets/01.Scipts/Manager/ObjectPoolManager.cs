@@ -10,10 +10,11 @@ public static class ObjectPoolManager
         Arrow = 2,
         Item = 3,
         BossProjectile = 4,
+        SFX = 5,
     }
     private static Dictionary<int, Queue<GameObject>> poolDictionary = new();
 
-    
+
     //오브젝트 호출
     public static GameObject Get(GameObject prefab, int id)
     {
@@ -21,7 +22,7 @@ public static class ObjectPoolManager
         if (poolDictionary.TryGetValue(id, out Queue<GameObject> objectQueue))
         {
             while (objectQueue.Count > 0)
-            { 
+            {
                 GameObject obj = objectQueue.Dequeue();
                 if (obj != null)
                 {
@@ -30,7 +31,7 @@ public static class ObjectPoolManager
                 }
             }
         }
-        
+
         //딕셔너리에 없다면 생성
         GameObject newObj = Object.Instantiate(prefab);
         newObj.SetActive(true);
@@ -41,7 +42,7 @@ public static class ObjectPoolManager
     public static void Set(int id, GameObject _prefab, GameObject gameObject)
     {
         gameObject.SetActive(false);
-        
+
         //딕셔너리에 존재한다면 회수
         if (poolDictionary.TryGetValue(id, out Queue<GameObject> objectQueue))
         {
