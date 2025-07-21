@@ -22879,6 +22879,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1630865445912036173, guid: fbd6cacc9cbbc8843ae3666e84ab3dfc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4230989925986528542, guid: fbd6cacc9cbbc8843ae3666e84ab3dfc, type: 3}
       propertyPath: m_FlipX
       value: 1

@@ -6,6 +6,7 @@ public class BossGroggyState : BossBaseState
 {
     private float _groggyStart;
     private Color _originColor;
+    private float _blinkLength = 2;
     
     public BossGroggyState(BossStateMachine bossStateMachine) : base(bossStateMachine)
     {
@@ -22,9 +23,8 @@ public class BossGroggyState : BossBaseState
         //애니 실행
         StartAnimation(_boss.AnimationDB.GroggyParameterHash);
         
-        //색상 변경
+        //색상 저장
         _originColor = _boss.SpriteRenderer.color;
-        _boss.SpriteRenderer.color = Color.red;
     }
 
     public override void Exit()
@@ -41,6 +41,10 @@ public class BossGroggyState : BossBaseState
 
     public override void Update()
     {
+        //색상 점멸
+        float blinking = Mathf.PingPong(Time.time * _data.groggyDuration, _blinkLength);
+        _boss.SpriteRenderer.color = Color.Lerp(Color.red,_originColor, blinking);
+        
         //애니메이션 그로기 시간 끝나기 까지 기다리기
         if (Time.time - _groggyStart < _data.groggyDuration)
             return;
