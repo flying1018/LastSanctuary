@@ -13,7 +13,7 @@ public class EIdleState : EnemyBaseState
         
         //인식 조건
         //1. 플레이어가 인식범위 안에 있을 때
-        if (_enemy.FindTarget() && !WithinAttackDistnace())
+        if (_enemy.FindTarget())
         {   //인식 상태
             _stateMachine.ChangeState(_stateMachine.DetectState);
         }
