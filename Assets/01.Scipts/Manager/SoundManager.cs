@@ -15,6 +15,8 @@ public class SoundManager : Singleton<SoundManager>
     public GameObject sfxPrefab;
     private AudioSource bgmSource;
     private BGMSound bgmSound;
+    private AudioMixerSnapshot muffledSnapshot;
+    private AudioMixerSnapshot normalSnapshot;
 
     protected override async void Awake()
     {
@@ -70,6 +72,10 @@ public class SoundManager : Singleton<SoundManager>
         GameObject obj = await ResourceLoader.LoadAssetAddress<GameObject>(StringNameSpace.SoundAddress.SFXPrefab);
         sfxPrefab = obj;
         mixer = await ResourceLoader.LoadAssetAddress<AudioMixer>(StringNameSpace.SoundAddress.MainMixer);
+        
+        //머플 사운드 스냅샷 저장
+        muffledSnapshot = mixer.FindSnapshot("Muffled");
+        normalSnapshot = mixer.FindSnapshot("Normal");
 
         bgmSource = gameObject.AddComponent<AudioSource>();
         bgmSource.outputAudioMixerGroup = await ResourceLoader.LoadAssetAddress<AudioMixerGroup>(StringNameSpace.SoundAddress.BGMMixer);
@@ -85,5 +91,13 @@ public class SoundManager : Singleton<SoundManager>
     public void StopBGM()
     {
         bgmSound.Stop();
+    }
+    
+    public void MuffleSound(bool isMuffled)
+    {
+        if (isMuffled)
+            muffledSnapshot.TransitionTo(0f);
+        else
+            normalSnapshot.TransitionTo(0f);
     }
 }

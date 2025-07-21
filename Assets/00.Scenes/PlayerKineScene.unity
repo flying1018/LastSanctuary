@@ -2184,13 +2184,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1121873939615215274, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2675793038358586897, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 270181386}
     - targetCorrespondingSourceObject: {fileID: 2675793038358586897, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       insertIndex: -1
       addedObject: {fileID: 270181396}
@@ -2203,18 +2201,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2675793038358586897, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
   m_PrefabInstance: {fileID: 270181384}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &270181386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 270181385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78c25d02f100e4f60925422804f3bf46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &270181396
 BoxCollider2D:
   m_ObjectHideFlags: 0

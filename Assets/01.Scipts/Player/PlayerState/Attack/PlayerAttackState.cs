@@ -35,6 +35,9 @@ public class PlayerAttackState : PlayerBaseState
         
         //무적 공격은 무적상태 추가
         _condition.IsInvincible = attackInfo.isInvincible;
+        
+        //test
+        SoundManager.Instance.MuffleSound(true);
     }
 
     public override void Exit()
@@ -47,6 +50,9 @@ public class PlayerAttackState : PlayerBaseState
         
         //무적 종료
         _condition.IsInvincible = false;
+        
+        //test
+        SoundManager.Instance.MuffleSound(false);
     }
 
     public override void HandleInput()
