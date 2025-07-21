@@ -6,7 +6,7 @@ using UnityEngine;
 public class KinematicMove : MonoBehaviour
 {
     //필드
-    private Rigidbody2D _rigidbody;
+    protected Rigidbody2D _rigidbody;
     
     public Vector2 gravityScale = Vector2.zero;
     
@@ -71,8 +71,6 @@ public class KinematicMove : MonoBehaviour
             IsGrounded = true;
             IsAerialPlatform = true;
         }
-        
-        
         
         //벽과 충돌 시
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Wall))
@@ -146,7 +144,7 @@ public class KinematicMove : MonoBehaviour
     }
     
     //캐릭터의 이동 처리
-    public void Move(Vector2 direction)
+    public virtual void Move(Vector2 direction)
     {
         Vector2 horizontal = direction;
         Vector2 vertical = direction;
@@ -173,7 +171,7 @@ public class KinematicMove : MonoBehaviour
     }
 
     public Coroutine addForceCoroutine;
-    public void AddForce(Vector2 force,float dumping = 0.95f)
+    public virtual void AddForce(Vector2 force,float dumping = 0.95f)
     {
         if (addForceCoroutine != null)
         {

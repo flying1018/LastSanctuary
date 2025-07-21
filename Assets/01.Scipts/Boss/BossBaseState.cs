@@ -14,7 +14,7 @@ public class BossBaseState : IState
     protected BossSO _data;
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
-    protected PolygonCollider2D _polygonCollider;
+    protected BoxCollider2D _BoxCollider;
     protected BossCondition _condition;
     protected Boss _boss;
     protected BossWeapon _weapon;
@@ -29,7 +29,7 @@ public class BossBaseState : IState
         _data = _boss.Data;
         _rigidbody = _boss.Rigidbody;
         _spriteRenderer =_boss.SpriteRenderer;
-        _polygonCollider = _boss.PolygonCollider;
+        _BoxCollider = _boss.BoxCollider;
         _condition = _boss.Condition;
         _weapon = _boss.BossWeapon;
         _move = _boss.Move;
@@ -72,25 +72,7 @@ public class BossBaseState : IState
 
     public virtual void PhysicsUpdate()
     {
-        //콜라이더 형태 변경
-        UpdateCollider();
-        //ApplyGravity();
     }
-
-  
-
-    //중력
-    // public void ApplyGravity()
-    // {
-    //     if (_boss.IsGrounded())
-    //     {
-    //         _boss.VerticalVelocity = 0f;
-    //     }
-    //     else
-    //     {
-    //         _boss.VerticalVelocity += Physics.gravity.y * Time.deltaTime;
-    //     }
-    // }
     
     //애니메이션 실행
     protected void StartAnimation(int animatorHash)
@@ -102,29 +84,6 @@ public class BossBaseState : IState
     protected void StopAnimation(int animatorHash)
     {
         _boss.Animator.SetBool(animatorHash, false);
-    }
-
-    //콜라이더 형태 변경(폴리곤 콜라이더)
-    public void UpdateCollider()
-    {
-        Sprite sprite = _spriteRenderer.sprite;
-        _polygonCollider.pathCount = sprite.GetPhysicsShapeCount();
-
-        for (int i = 0; i < _polygonCollider.pathCount; i++)
-        {
-            List<Vector2> path = new List<Vector2>();
-            sprite.GetPhysicsShape(i, path);
-            if (_spriteRenderer.flipX)
-            {
-                for (int j = 0; j < path.Count; j++)
-                {
-                    Vector2 point = path[j];
-                    point.x *= -1;
-                    path[j] = point;
-                }
-            }
-            _polygonCollider.SetPath(0, path.ToArray());
-        }
     }
     
     //좌우 이동

@@ -75,7 +75,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         if (knockBackPower <= 0) return;
         if (_curHp <= 0) return;
         
-        Vector2 dir = (transform.position - attackDir.position).normalized;
+        Vector2 dir = new Vector2(transform.position.x - attackDir.position.x,0).normalized;
         Vector2 knockback = dir * knockBackPower;
         _enemy.Move.AddForce(knockback);
         _enemy.StateMachine.ChangeState(_enemy.StateMachine.HitState);
