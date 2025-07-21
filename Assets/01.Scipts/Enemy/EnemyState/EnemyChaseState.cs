@@ -74,8 +74,13 @@ public class EnemyChaseState : EChaseState
 
         //타겟을 향해 이동
         Vector2 direction = DirectionToTarget();
-        Move(direction);
+        
+        //좌우 거리가 너무 가까우면 이동하지 않음.
+        if (Mathf.Abs(direction.x) < 0.05) return;
+
         Rotate(direction);
+        Move(direction);
+        
     }
     
 }

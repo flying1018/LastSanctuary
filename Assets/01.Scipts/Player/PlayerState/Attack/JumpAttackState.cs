@@ -17,6 +17,11 @@ public class JumpAttackState : PlayerAttackState
         CanJumpAttack = false;
     }
 
+    public override void Update()
+    {
+        base.Update();
+    }
+
     public override void PhysicsUpdate()
     {
         //점프 유지

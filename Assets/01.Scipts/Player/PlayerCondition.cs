@@ -5,10 +5,6 @@ using UnityEngine;
 
 public class PlayerCondition : Condition, IDamageable, IKnockBackable,IGuardable
 {
-    [SerializeField] private float deathTime = 2f;
-    [SerializeField] private float respawnTime = 2f;
-    [SerializeField] private float reviveInvincibleTime = 0.5f;
-
     private Player _player;
     private float _curStamina;
     private int _staminaRecovery;

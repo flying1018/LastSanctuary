@@ -35,6 +35,11 @@ public class PlayerHitState : PlayerBaseState
         
     }
 
+    public override void HandleInput()
+    {
+        
+    }
+
     public override void Update()
     {
         //경직 시간이 끝나면
