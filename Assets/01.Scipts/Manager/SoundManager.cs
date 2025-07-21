@@ -19,10 +19,10 @@ public class SoundManager : Singleton<SoundManager>
 
     public AudioMixer mixer;
     public GameObject sfxPrefab;
-    private AudioSource bgmSource;
-    private BGMSound bgmSound;
-    private AudioMixerSnapshot muffledSnapshot;
-    private AudioMixerSnapshot normalSnapshot;
+    private AudioSource _bgmSource;
+    private BGMSound _bgmSound;
+    private AudioMixerSnapshot _muffledSnapshot;
+    private AudioMixerSnapshot _normalSnapshot;
 
     protected override async void Awake()
     {
@@ -44,7 +44,7 @@ public class SoundManager : Singleton<SoundManager>
             return;
         }
 
-        bgmSound.Play(clip);
+        _bgmSound.Play(clip);
     }
 
     //효과음 실행 메서드
@@ -80,30 +80,30 @@ public class SoundManager : Singleton<SoundManager>
         mixer = await ResourceLoader.LoadAssetAddress<AudioMixer>(StringNameSpace.SoundAddress.MainMixer);
         
         //머플 사운드 스냅샷 저장
-        normalSnapshot = mixer.FindSnapshot(SnepShotType.Normal.ToString());
-        muffledSnapshot = mixer.FindSnapshot(SnepShotType.Muffled.ToString());
+        _normalSnapshot = mixer.FindSnapshot(SnepShotType.Normal.ToString());
+        _muffledSnapshot = mixer.FindSnapshot(SnepShotType.Muffled.ToString());
 
-        bgmSource = gameObject.AddComponent<AudioSource>();
-        bgmSource.outputAudioMixerGroup = await ResourceLoader.LoadAssetAddress<AudioMixerGroup>(StringNameSpace.SoundAddress.BGMMixer);
-        bgmSource.loop = true;
-        bgmSource.playOnAwake = false;
-        bgmSource.volume = 0.5f;
+        _bgmSource = gameObject.AddComponent<AudioSource>();
+        _bgmSource.outputAudioMixerGroup = await ResourceLoader.LoadAssetAddress<AudioMixerGroup>(StringNameSpace.SoundAddress.BGMMixer);
+        _bgmSource.loop = true;
+        _bgmSource.playOnAwake = false;
+        _bgmSource.volume = 0.5f;
 
-        bgmSound = gameObject.AddComponent<BGMSound>();
-        bgmSound.Init(bgmSource); // AudioSource 주입
+        _bgmSound = gameObject.AddComponent<BGMSound>();
+        _bgmSound.Init(_bgmSource); // AudioSource 주입
     }
 
     //BGM 정지
     public void StopBGM()
     {
-        bgmSound.Stop();
+        _bgmSound.Stop();
     }
 
-    public void MuffleSound(bool isMuffled, float time = 0)
+    public void MuffleSound(bool isMuffled, float speed = 0)
     {
         if (isMuffled)
-            muffledSnapshot.TransitionTo(time);
+            _muffledSnapshot.TransitionTo(speed);
         else
-            normalSnapshot.TransitionTo(time);
+            _normalSnapshot.TransitionTo(speed);
     }
 }
