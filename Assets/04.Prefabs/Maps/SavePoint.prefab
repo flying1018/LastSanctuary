@@ -738,6 +738,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb2c1608a72954ec287d1d640ff40802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftPosition: {fileID: 4974271360189507160}
+  rightPosition: {fileID: 8900351172614283062}
   rope: {fileID: 3907826360582049886}
   enterTime: 0.5
   bell: {fileID: 7588520904427053177}

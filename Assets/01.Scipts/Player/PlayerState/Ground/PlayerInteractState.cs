@@ -16,20 +16,15 @@ public class PlayerInteractState : PlayerGroundState
         _input.IsInteract = false;
         _time = 0f;
 
-        if (_player.InteractableTarget is SavePoint)
+        if (_player.InteractableTarget is SavePoint savePoint)
         {
-            StartAnimation(_player.AnimationDB.InteractionParameter);
-
-            _interactTime = _data.InteractionTime;
+            InteractAnim = _player.StartCoroutine(Interact_Coroutine(savePoint));
         }
         else
         {
             _interactTime = 0;
+            _player.InteractableTarget.Interact();
         }
-        
-        
-        _player.InteractableTarget.Interact();
-        
     }
 
     public override void Exit()
@@ -43,6 +38,9 @@ public class PlayerInteractState : PlayerGroundState
     {
         base.Update();
         
+        if(InteractAnim != null) return;
+        
+        //애니메이션이 완전히 종료 후
         _time += Time.deltaTime;
         if (_interactTime < _time)
         {
@@ -53,5 +51,37 @@ public class PlayerInteractState : PlayerGroundState
     public override void HandleInput()
     {
         
+    }
+    
+    public override void PhysicsUpdate()
+    {
+        
+    }
+    
+    private Coroutine InteractAnim;
+    IEnumerator Interact_Coroutine(SavePoint savePoint)
+    {
+        Vector2 direction = (savePoint.NearPosition().position - _player.transform.position).normalized;
+        direction.y = 0;
+
+        StartAnimation(_player.AnimationDB.MoveParameterHash);
+        while (Mathf.Abs(savePoint.NearPosition().position.x - _player.transform.position.x) > 0.1f)
+        {
+            _move.Move(direction * _data.moveSpeed);
+            Rotate(direction);
+            yield return null;
+        }
+        StopAnimation(_player.AnimationDB.MoveParameterHash);
+
+        direction = (savePoint.transform.position - _player.transform.position).normalized;
+        Rotate(direction);
+        
+        StartAnimation(_player.AnimationDB.InteractionParameter);
+
+        _interactTime = _data.InteractionTime;
+        
+        savePoint.Interact();
+
+        InteractAnim = null;
     }
 }
