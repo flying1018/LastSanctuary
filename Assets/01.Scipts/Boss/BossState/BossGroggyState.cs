@@ -21,7 +21,7 @@ public class BossGroggyState : BossBaseState
         _condition.IsGroggy = true;
         
         //애니 실행
-        StartAnimation(_boss.AnimationDB.GroggyParameterHash);
+       _boss.Animator.SetTrigger(_boss.AnimationDB.GroggyParameterHash);
         
         //색상 저장
         _originColor = _boss.SpriteRenderer.color;
@@ -31,9 +31,6 @@ public class BossGroggyState : BossBaseState
     {
         //그로기 탈출
         _condition.IsGroggy = false;
-        
-        //애니 정지
-        StopAnimation(_boss.AnimationDB.GroggyParameterHash);
         
         //색상 변경
         _boss.SpriteRenderer.color = _originColor;
