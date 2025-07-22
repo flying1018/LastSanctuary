@@ -27,6 +27,8 @@ public class GameInitializer : MonoBehaviour
         //await SoundManager.Instance.Init();
         //await GameDB.Init();
 
+        // 
+
         InitEventSystem();
     }
     

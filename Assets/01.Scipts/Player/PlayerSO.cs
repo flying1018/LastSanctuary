@@ -62,6 +62,7 @@ public class PlayerSO : ScriptableObject
     public AttackInfo dashAttack;
     public float maxUltimateGauge;
     public AttackInfo jumpAttack;
+    public AttackInfo UltAttack;
 
     [field: Header("HitState")]
     [field: SerializeField] public float LightHitDuration{ get; private set; } = 0.2f;
