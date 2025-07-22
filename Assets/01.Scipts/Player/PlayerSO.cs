@@ -81,6 +81,9 @@ public class PlayerSO : ScriptableObject
     public AnimationClip interactionAnim;
     public float InteractionTime => interactionAnim.length;
 
+    [Header("TopAttackState")] 
+    public AttackInfo topAttack;
+
     [Header("Condition")]
     public int hp;
     public int attack;

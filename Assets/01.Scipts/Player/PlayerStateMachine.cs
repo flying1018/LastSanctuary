@@ -22,6 +22,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerDeathState DeathState { get; private set; }
     public PlayerRespawnState RespawnState { get; private set; }
     public PlayerInteractState InteractState { get; private set; }
+    public PlayerTopAttackState TopAttackState { get; private set; }
     
     public int comboIndex;
     
@@ -50,6 +51,7 @@ public class PlayerStateMachine : StateMachine
         DeathState = new PlayerDeathState(this);
         RespawnState = new PlayerRespawnState(this);
         InteractState = new PlayerInteractState(this);
+        TopAttackState = new PlayerTopAttackState(this, player.Data.topAttack);
         
         comboIndex = 0;
         ChangeState(IdleState); // 초기 상태

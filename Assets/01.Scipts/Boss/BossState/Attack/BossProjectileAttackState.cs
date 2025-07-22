@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileAttack : BossAttackState
+public class BossProjectileAttackState : BossAttackState
 {
-    public ProjectileAttack(BossStateMachine bossStateMachine, BossAttackInfo attackInfo) : base(bossStateMachine, attackInfo) { }
+    public BossProjectileAttackState(BossStateMachine bossStateMachine, BossAttackInfo attackInfo) : base(bossStateMachine, attackInfo) { }
 
     public override void PlayEvent1()
     {

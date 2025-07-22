@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpAttack : BossAttackState
+public class BossJumpAttackState : BossAttackState
 {
-    public JumpAttack(BossStateMachine bossStateMachine, BossAttackInfo attackInfo) : base(bossStateMachine, attackInfo) { }
+    public BossJumpAttackState(BossStateMachine bossStateMachine, BossAttackInfo attackInfo) : base(bossStateMachine, attackInfo) { }
     
     //Attack3에서 사용하는 이벤트
     private Coroutine _chasePlayerCoroutine;
