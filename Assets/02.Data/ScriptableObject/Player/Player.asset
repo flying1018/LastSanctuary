@@ -35,7 +35,7 @@ MonoBehaviour:
     nextComboTime: 0.3
     staminaCost: 0
     attackForce: 0
-    knockbackForce: 80
+    knockbackForce: 0
     groggyDamage: 1
     isInvincible: 0
   - attackAnim: {fileID: 7400000, guid: 3c8ab8fd8e124cd47ba5909da708ef53, type: 2}
@@ -44,7 +44,7 @@ MonoBehaviour:
     nextComboTime: 0.3
     staminaCost: 0
     attackForce: 0
-    knockbackForce: 80
+    knockbackForce: 0
     groggyDamage: 2
     isInvincible: 0
   - attackAnim: {fileID: 7400000, guid: bdf51d02ce4552348ba6354a5c6370ff, type: 2}
@@ -64,7 +64,7 @@ MonoBehaviour:
     nextComboTime: 0
     staminaCost: 15
     attackForce: 20
-    knockbackForce: 150
+    knockbackForce: 30
     groggyDamage: 5
     isInvincible: 1
   maxUltimateGauge: 0
@@ -78,8 +78,8 @@ MonoBehaviour:
     knockbackForce: 0
     groggyDamage: 0
     isInvincible: 0
-  <LightHitDuration>k__BackingField: 0.2
-  <HeavyHitDuration>k__BackingField: 0.5
+  <LightHitDuration>k__BackingField: 0.5
+  <HeavyHitDuration>k__BackingField: 1
   <invincibleDuration>k__BackingField: 1
   <hitSteminaRecovery>k__BackingField: 15
   <damageReduction>k__BackingField: 0.4

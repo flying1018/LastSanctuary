@@ -99,6 +99,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
         if (force > 0)
         {
             Vector2 knockbackDir = (transform.position - dir.transform.position);
+            knockbackDir.y = 0;
             Vector2 knockback = knockbackDir.normalized * force;
             _player.Move.AddForce(knockback);
         }
