@@ -19,7 +19,9 @@ public class PlayerController : MonoBehaviour
     public bool IsHeal { get; set; }
     public bool IsAttack { get; set; }
     public bool IsNearInteractable { get; set; }
-    
+    public bool IsUltimate { get; set; }
+    public bool CanUltimate { get; set; }
+
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -116,4 +118,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnUltimate(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started || CanUltimate)
+        {
+            IsUltimate = true;
+        }
+    }
 }
