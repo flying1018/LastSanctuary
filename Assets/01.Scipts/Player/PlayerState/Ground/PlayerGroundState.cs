@@ -59,5 +59,10 @@ public class PlayerGroundState : PlayerBaseState
             if(!_move.IsAerialPlatform) return;
             _move.IsGrounded = false;
         }
+
+        if (_player.InteractableTarget != null && _input.IsInteract)
+        {
+            _stateMachine.ChangeState(_stateMachine.InteractState);
+        }
     }
 }
