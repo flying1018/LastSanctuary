@@ -110,11 +110,6 @@ public class Enemy : MonoBehaviour
                 knockBackable.ApplyKnockBack(transform,Data.knockbackForce);
             }
         }
-
-        if (StateMachine.currentState is EnemyRushAttack rushAttack)
-        {
-            rushAttack.RushKnuckBack(other.gameObject.transform,Data.knockbackForce);
-        }
     }
     
 

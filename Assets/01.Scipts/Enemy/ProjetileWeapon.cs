@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowProjectile : EnemyWeapon
+public class ProjectileWeapon : EnemyWeapon
 {
     private Rigidbody2D _rigidbody2D;
     private KinematicMove _kinematicMove;

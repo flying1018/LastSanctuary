@@ -116,7 +116,7 @@ public class EnemyBaseState : IState
     //스폰 포인트 방향을 구하는 코드
     protected Vector2 DirectionToSpawnPoint()
     {
-        return _spawnPoint.position - _enemy.transform.position;
+        return (_spawnPoint.position - _enemy.transform.position).normalized;
     }
     
     #region AnimationEvent Method

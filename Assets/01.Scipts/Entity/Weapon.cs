@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 무기의 부모
 /// </summary>
-public class Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour
 {
     public Condition Condition { get; set; }
     public int Damage { get; set;}
@@ -18,8 +18,9 @@ public class Weapon : MonoBehaviour
         //가드
         if (other.TryGetComponent(out IGuardable iguardable))
         {
-            if (iguardable.ApplyGuard(Damage,Condition,transform,DamageType.Attack))
+            if (iguardable.ApplyGuard(Damage, Condition, transform, DamageType.Attack))
                 return;
+            
         }
         //그로기
         if (other.TryGetComponent(out IGroggyable ibossdamageable))

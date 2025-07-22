@@ -61,7 +61,7 @@ public class BossProjectileAttackState : BossAttackState
         attack2.transform.right = dir;
 
         //
-        if (attack2.TryGetComponent(out ArrowProjectile arrowPoProjectile))
+        if (attack2.TryGetComponent(out ProjectileWeapon arrowPoProjectile))
         {
             arrowPoProjectile.Init(_data.attack, _attackInfo.knockbackForce);
             arrowPoProjectile.Shot(dir, _attackInfo.projectilePower);

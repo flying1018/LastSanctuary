@@ -8,6 +8,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
     private Player _player;
     private float _curStamina;
     private int _staminaRecovery;
+    private float _enemyGroggyTime;
 
     private Dictionary<StatObjectSO, Coroutine> _tempBuffs = new();
 
@@ -49,6 +50,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
         HealAmonut = _player.Data.healAmount;
         MaxUltimateGauge = _player.Data.maxUltimateGauge;
         IsInvincible = false;
+        _enemyGroggyTime = 5;
     }
 
     public void InvincibleFunc(float time)
@@ -234,8 +236,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
             if (condition is EnemyCondition enemyCondition && type != DamageType.Range)
             {
                 //적은 그로기 처리
-                //그로기 상태 미구현
-                enemyCondition.ChangeHitState();
+                enemyCondition.ChangeGroggyState(_enemyGroggyTime);
             }
 
             return true;

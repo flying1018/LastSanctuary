@@ -32,7 +32,7 @@ public class EnemyRangeAttackState : EAttackState
         arrow.transform.right = dir;
 
         //투사체 발사
-        if (arrow.TryGetComponent(out ArrowProjectile arrowProjectile))
+        if (arrow.TryGetComponent(out ProjectileWeapon arrowProjectile))
         {
             arrowProjectile.Init(_data.attack, _data.knockbackForce);
             arrowProjectile.Shot(dir, _data.arrowPower);

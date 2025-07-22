@@ -59,10 +59,18 @@ public class PlayerSO : ScriptableObject
     [Header("AttackState")] 
     public AttackInfo[] attacks;
     public float Defpen;
-    public AttackInfo dashAttack;
     public float maxUltimateGauge;
+    
+    [Header("DashAttackState")] 
+    public AttackInfo dashAttack;
+    
+    [Header("JumpAttackState")] 
     public AttackInfo jumpAttack;
 
+    [Header("TopAttackState")] 
+    public AttackInfo topAttack;
+    
+    
     [field: Header("HitState")]
     [field: SerializeField] public float LightHitDuration{ get; private set; } = 0.2f;
     [field: SerializeField] public float HeavyHitDuration{ get; private set; } = 0.2f;
@@ -81,8 +89,6 @@ public class PlayerSO : ScriptableObject
     public AnimationClip interactionAnim;
     public float InteractionTime => interactionAnim.length;
 
-    [Header("TopAttackState")] 
-    public AttackInfo topAttack;
 
     [Header("Condition")]
     public int hp;

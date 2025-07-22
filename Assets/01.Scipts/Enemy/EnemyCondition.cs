@@ -13,6 +13,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     //프로퍼티
     public bool IsInvincible { get; set; }
     public bool IsDeath { get; set; }
+    public float GroggyTime { get; set; }
  
     public void Init(Enemy enemy)
     {
@@ -26,6 +27,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         _isTakeDamageable = false;
         IsInvincible = false;
         IsDeath = false;
+        GroggyTime = 0;
     }
     
     //대미지 입을 때
@@ -91,8 +93,10 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     }
     
     //TestCode
-    public void ChangeHitState()
+    public void ChangeGroggyState(float groggyTime)
     {
-        _enemy.StateMachine.ChangeState(_enemy.StateMachine.HitState);
+        DebugHelper.Log("Groggy");
+        GroggyTime = groggyTime;
+        _enemy.StateMachine.ChangeState(_enemy.StateMachine.GroggyState);
     }
 }

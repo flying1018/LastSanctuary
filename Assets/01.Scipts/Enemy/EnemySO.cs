@@ -32,7 +32,10 @@ public class EnemySO : ScriptableObject
     public float attackDuration;
     public float knockbackForce;
     public AnimationClip attackAnim;
-    public float AttackTime => attackAnim.length; 
+    public float AttackTime => attackAnim.length;
+
+    [Header("GroggyState")]
+    public float blinkLength;
     
     [Header("condition")]
     public int attack;

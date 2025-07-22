@@ -13,6 +13,7 @@ public class EnemyStateMachine : StateMachine
     public EnemyDetectState DetectState { get; private set;}
     public EnemyBattleState BattleState { get; private set;}
     public EnemyDeathState DeathState { get; private set;}
+    public EnemyGroggyState GroggyState { get; private set;}
     
 
     public float attackCoolTime;
@@ -58,6 +59,7 @@ public class EnemyStateMachine : StateMachine
         DetectState = new EnemyDetectState(this);
         BattleState = new EnemyBattleState(this);
         DeathState = new EnemyDeathState(this);
+        GroggyState = new EnemyGroggyState(this);
         
         ChangeState(IdleState);
     }

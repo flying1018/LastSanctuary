@@ -11,7 +11,6 @@ public class PlayerHitState : PlayerBaseState
     private float _hitDuration;
     public override void Enter()
     {
-        Debug.Log("hit");
         _player.Animator.SetTrigger(_player.AnimationDB.HitParameterHash);
         
         //피격 애니메이션
@@ -45,8 +44,6 @@ public class PlayerHitState : PlayerBaseState
 
     public override void Update()
     {
-        Debug.Log(Time.time - _hitStart);
-        Debug.Log(_hitDuration);
         //경직 시간이 끝나면
         if (Time.time - _hitStart >= _hitDuration)
         {

@@ -24,6 +24,7 @@ MonoBehaviour:
   attackDuration: 3
   knockbackForce: 5
   attackAnim: {fileID: 7400000, guid: 32f545428e2fedc4fa0fae19f49bdcb7, type: 2}
+  blinkLength: 0.3
   attack: 36
   hp: 100
   defence: 0
