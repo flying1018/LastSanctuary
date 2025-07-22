@@ -86,6 +86,16 @@ MonoBehaviour:
   deathTime: 2
   respawnTime: 2
   interactionAnim: {fileID: 7400000, guid: 6b4cb65176225f64dbb39f0b25730cf3, type: 2}
+  topAttack:
+    attackAnim: {fileID: 7400000, guid: cbdcd516d24c3354bbf3ec8e4db03db7, type: 2}
+    attackIndex: 6
+    multiplier: 1
+    nextComboTime: 0
+    staminaCost: 0
+    attackForce: 0
+    knockbackForce: 0
+    groggyDamage: 1
+    isInvincible: 0
   hp: 100
   attack: 20
   defense: 5
