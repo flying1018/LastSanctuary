@@ -77,6 +77,10 @@ public class PlayerSO : ScriptableObject
     
     [Header("RespawnState")]
     public float respawnTime;
+    
+    [Header("InteractState")]
+    public AnimationClip interactionAnim;
+    public float InteractionTime => interactionAnim.length;
 
     [Header("Condition")]
     public int hp;

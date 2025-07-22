@@ -11,16 +11,15 @@ public class PlayerController : MonoBehaviour
 {
     //프로퍼티
     public Vector2 MoveInput { get; set; }
-    public IInteractable InteractableTarget { get; set; }
     public bool IsGuarding { get; set; }
     public bool IsDash { get; set; }
     public bool IsJump { get; set; }
     public bool IsHoldJump { get; set; }
     public bool IsHeal { get; set; }
     public bool IsAttack { get; set; }
-    public bool IsNearInteractable { get; set; }
     public bool IsUltimate { get; set; }
     public bool CanUltimate { get; set; }
+    public bool IsInteract { get; set; }
 
 
     public void OnMove(InputAction.CallbackContext context)
@@ -112,9 +111,11 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-            if (!IsNearInteractable || InteractableTarget == null) { return; } // 방어코드
-
-            InteractableTarget.Interact();
+            IsInteract = true;
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            IsInteract = false;
         }
     }
 
