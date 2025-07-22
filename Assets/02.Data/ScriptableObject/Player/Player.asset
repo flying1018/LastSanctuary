@@ -57,6 +57,7 @@ MonoBehaviour:
     groggyDamage: 5
     isInvincible: 0
   Defpen: 0.25
+  maxUltimateGauge: 0
   dashAttack:
     attackAnim: {fileID: 7400000, guid: ec5c2cbf39d0d7c4185a8542b0455c20, type: 2}
     attackIndex: 4
@@ -67,7 +68,6 @@ MonoBehaviour:
     knockbackForce: 30
     groggyDamage: 5
     isInvincible: 1
-  maxUltimateGauge: 0
   jumpAttack:
     attackAnim: {fileID: 7400000, guid: fb83938d100c40e4b9e179de0fa7eb31, type: 2}
     attackIndex: 5
@@ -78,14 +78,6 @@ MonoBehaviour:
     knockbackForce: 0
     groggyDamage: 0
     isInvincible: 0
-  <LightHitDuration>k__BackingField: 0.5
-  <HeavyHitDuration>k__BackingField: 1
-  <invincibleDuration>k__BackingField: 1
-  <hitSteminaRecovery>k__BackingField: 15
-  <damageReduction>k__BackingField: 0.4
-  deathTime: 2
-  respawnTime: 2
-  interactionAnim: {fileID: 7400000, guid: 6b4cb65176225f64dbb39f0b25730cf3, type: 2}
   topAttack:
     attackAnim: {fileID: 7400000, guid: cbdcd516d24c3354bbf3ec8e4db03db7, type: 2}
     attackIndex: 6
@@ -96,6 +88,31 @@ MonoBehaviour:
     knockbackForce: 0
     groggyDamage: 1
     isInvincible: 0
+  groggyAttackPrefab: {fileID: 0}
+  prefabIndex: 0
+  animInterval: 0
+  groggyAttack:
+    attackAnim: {fileID: 0}
+    attackIndex: 7
+    multiplier: 0.5
+    nextComboTime: 0
+    staminaCost: 0
+    attackForce: 1
+    knockbackForce: 5
+    groggyDamage: 0
+    isInvincible: 1
+  groggyTime: 5
+  detectionRange: 5
+  hidingTime: 3
+  attackInterval: 0.2
+  <LightHitDuration>k__BackingField: 1
+  <HeavyHitDuration>k__BackingField: 1
+  <invincibleDuration>k__BackingField: 1
+  <hitSteminaRecovery>k__BackingField: 15
+  <damageReduction>k__BackingField: 0.4
+  deathTime: 2
+  respawnTime: 2
+  interactionAnim: {fileID: 7400000, guid: 6b4cb65176225f64dbb39f0b25730cf3, type: 2}
   hp: 100
   attack: 20
   defense: 5

@@ -46,7 +46,7 @@ public class PlayerGroundState : PlayerBaseState
             _stateMachine.ChangeState(_stateMachine.HealState);
         }
         
-        //위키를 누르고 공격 입력 시
+        //위 키를 누르고 공격 입력 시
         if (_input.MoveInput.y > 0 && _input.IsAttack)
         {
             _stateMachine.ChangeState(_stateMachine.TopAttackState);

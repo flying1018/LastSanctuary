@@ -50,7 +50,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
         HealAmonut = _player.Data.healAmount;
         MaxUltimateGauge = _player.Data.maxUltimateGauge;
         IsInvincible = false;
-        _enemyGroggyTime = 5;
+        _enemyGroggyTime = _player.Data.groggyTime;
     }
 
     public void InvincibleFunc(float time)

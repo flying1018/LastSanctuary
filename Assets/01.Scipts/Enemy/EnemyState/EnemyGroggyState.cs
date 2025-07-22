@@ -35,7 +35,7 @@ public class EnemyGroggyState : EnemyBaseState
         float blinking = Mathf.PingPong(_time * _condition.GroggyTime, _data.blinkLength);
         //숫자 1로 기준으로 변색 됨으로 계산
         blinking *= (1/ _data.blinkLength);
-        _enemy.SpriteRenderer.color = Color.Lerp(Color.red, _originColor, blinking);
+        _enemy.SpriteRenderer.color = Color.Lerp(Color.black, _originColor, blinking);
         
         //시간 종료 시 다시 전투
         if (_time > _condition.GroggyTime)

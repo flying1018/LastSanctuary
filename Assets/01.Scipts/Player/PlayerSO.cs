@@ -69,6 +69,16 @@ public class PlayerSO : ScriptableObject
 
     [Header("TopAttackState")] 
     public AttackInfo topAttack;
+
+    [Header("GroggAttackState")] 
+    public GameObject groggyAttackPrefab;
+    public int prefabIndex;
+    public float animInterval;
+    public AttackInfo groggyAttack;
+    public float groggyTime;
+    public float detectionRange;
+    public float hidingTime;
+    public float attackInterval;
     
     
     [field: Header("HitState")]

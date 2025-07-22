@@ -36,6 +36,8 @@ public class PlayerAttackState : PlayerBaseState
         //무적 공격은 무적상태 추가
         if(attackInfo.isInvincible)
             _condition.InvincibleFunc(_animationTime);
+        
+ 
     }
 
     public override void Exit()
@@ -45,6 +47,8 @@ public class PlayerAttackState : PlayerBaseState
         StopAnimation(_player.AnimationDB.AttackParameterHash);
         
         _player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, 0);
+        
+        SoundManager.Instance.MuffleSound(false);
     }
 
     public override void HandleInput()
@@ -91,5 +95,6 @@ public class PlayerAttackState : PlayerBaseState
     public override void PlaySFX1()
     {
         SoundManager.Instance.PlaySFX(_data.attackSound,0.2f);
+        SoundManager.Instance.MuffleSound(true,0.3f);
     }
 }

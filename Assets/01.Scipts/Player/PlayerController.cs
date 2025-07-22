@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public bool IsHeal { get; set; }
     public bool IsAttack { get; set; }
     public bool IsInteract { get; set; }
+    public bool IsGroggyAttack { get; set; }
     
 
     public void OnMove(InputAction.CallbackContext context)
@@ -114,6 +115,18 @@ public class PlayerController : MonoBehaviour
         else if (context.phase == InputActionPhase.Canceled)
         {
             IsInteract = false;
+        }
+    }
+
+    public void OnGroggyAttack(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            IsGroggyAttack = true;
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            IsGroggyAttack = false;
         }
     }
 
