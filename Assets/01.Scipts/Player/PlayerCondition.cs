@@ -9,6 +9,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
     private float _curStamina;
     private int _staminaRecovery;
     private float _enemyGroggyTime;
+    private float _curUltimate;
 
     private Dictionary<StatObjectSO, Coroutine> _tempBuffs = new();
 
@@ -17,6 +18,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
     public float MaxStamina { get; set; }
     public int Attack { get => _attack; set => _attack = value; }
     public int Defence { get => _defence; set => _defence = value; }
+    public float Ultimate { get => _curUltimate; set => _curUltimate = value; }
 
     //성물로 증가 가능한 프로퍼티
     public int HealAmonut { get; set; }
@@ -51,6 +53,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
         MaxUltimateGauge = _player.Data.maxUltimateGauge;
         IsInvincible = false;
         _enemyGroggyTime = _player.Data.groggyTime;
+        _curUltimate = 0f; // 궁극기 게이지 보존된다면 수정 필요
     }
 
     public void InvincibleFunc(float time)
@@ -101,7 +104,6 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
         if (force > 0)
         {
             Vector2 knockbackDir = (transform.position - dir.transform.position);
-            knockbackDir.y = 0;
             Vector2 knockback = knockbackDir.normalized * force;
             _player.Move.AddForce(knockback);
         }

@@ -11,8 +11,9 @@ public class PlayerStateMachine : StateMachine
     public PlayerMoveState MoveState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
     public List<ComboAttackState> ComboAttack { get; private set; }
-    public JumpAttackState JumpAttack {get; private set;}
-    public DashAttackState DashAttack {get; private set;}
+    public JumpAttackState JumpAttack { get; private set; }
+    public DashAttackState DashAttack { get; private set; }
+    public UltimateState UltState { get; private set; }
     public PlayerDashState DashState { get; private set; }
     public PlayerGuardState GuardState { get; private set; }
     public PlayerFallState FallState { get; private set; }
@@ -25,8 +26,8 @@ public class PlayerStateMachine : StateMachine
     public PlayerTopAttackState TopAttackState { get; private set; }
     
     public int comboIndex;
-    
-    
+
+
     public PlayerStateMachine(Player player)
     {
         this.Player = player;
@@ -40,8 +41,9 @@ public class PlayerStateMachine : StateMachine
             new ComboAttackState(this, player.Data.attacks[1]),
             new ComboAttackState(this, player.Data.attacks[2])
         };
-        JumpAttack = new JumpAttackState(this,player.Data.jumpAttack);
-        DashAttack = new DashAttackState(this,player.Data.dashAttack);
+        JumpAttack = new JumpAttackState(this, player.Data.jumpAttack);
+        DashAttack = new DashAttackState(this, player.Data.dashAttack);
+        UltState = new UltimateState(this, player.Data.UltAttack);
         DashState = new PlayerDashState(this);
         FallState = new PlayerFallState(this);
         HealState = new PlayerHealState(this);

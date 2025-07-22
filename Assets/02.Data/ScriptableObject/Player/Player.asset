@@ -53,7 +53,7 @@ MonoBehaviour:
     nextComboTime: 0
     staminaCost: 25
     attackForce: 20
-    knockbackForce: 30
+    knockbackForce: 10
     groggyDamage: 5
     isInvincible: 0
   Defpen: 0.25
@@ -65,9 +65,10 @@ MonoBehaviour:
     nextComboTime: 0
     staminaCost: 15
     attackForce: 20
-    knockbackForce: 30
+    knockbackForce: 10
     groggyDamage: 5
     isInvincible: 1
+  maxUltimateGauge: 0
   jumpAttack:
     attackAnim: {fileID: 7400000, guid: fb83938d100c40e4b9e179de0fa7eb31, type: 2}
     attackIndex: 5

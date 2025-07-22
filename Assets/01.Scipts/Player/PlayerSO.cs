@@ -66,6 +66,7 @@ public class PlayerSO : ScriptableObject
     
     [Header("JumpAttackState")] 
     public AttackInfo jumpAttack;
+    public AttackInfo UltAttack;
 
     [Header("TopAttackState")] 
     public AttackInfo topAttack;
