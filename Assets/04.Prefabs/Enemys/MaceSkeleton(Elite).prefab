@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: -5163532016691331955}
   - component: {fileID: 7080938109545919741}
   - component: {fileID: 1348362879168003846}
-  - component: {fileID: -2573332689567985419}
+  - component: {fileID: -2082015503057076982}
   m_Layer: 0
   m_Name: MaceSkeleton(Elite)
   m_TagString: Enemy
@@ -238,7 +238,7 @@ MonoBehaviour:
   moveType: 0
   attackType: 0
   patrolDistance: 5
---- !u!114 &-2573332689567985419
+--- !u!114 &-2082015503057076982
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -247,10 +247,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3153555157828818715}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c92fe8ceefb708a4588c4b16a01d2dad, type: 3}
+  m_Script: {fileID: 11500000, guid: e290d575f8473a24689bd350d6469240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gravityScale: {x: 0, y: 0}
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 1280
+  platformCheckDistance: 2
 --- !u!1 &6224774757196196992
 GameObject:
   m_ObjectHideFlags: 0

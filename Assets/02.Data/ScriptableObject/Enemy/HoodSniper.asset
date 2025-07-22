@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: 0
   _name: 
-  gravityPower: 0
+  gravityPower: 9.8
   detectTime: 0.2
   detectDistance: 15
   moveSpeed: 3
