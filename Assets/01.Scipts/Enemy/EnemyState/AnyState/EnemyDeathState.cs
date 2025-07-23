@@ -23,6 +23,9 @@ public class EnemyDeathState : EnemyBaseState
         //애니메이터 초기화
         _enemy.Animator.Rebind();
         
+        //골드 드랍
+        ItemManager.Instance.GetGold(_data.dropGold);
+        
         //오브젝트 회수
         ObjectPoolManager.Set(_enemy.Data._key, _enemy.gameObject, _enemy.gameObject);
     }

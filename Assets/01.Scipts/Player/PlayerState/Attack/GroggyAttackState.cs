@@ -130,7 +130,7 @@ public class GroggyAttackState : PlayerAttackState
     private Vector3 DirectionToTarget()
     {
         Vector3 dir = _player.Target.transform.position - _player.transform.position;
-        Debug.Log(dir);
+
         dir.y = 0;
         dir.z = 0;
         return dir.normalized;

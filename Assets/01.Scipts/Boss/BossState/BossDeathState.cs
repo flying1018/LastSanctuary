@@ -11,6 +11,10 @@ public class BossDeathState : BossBaseState
     {        
         //애니메이션 실행
         _boss.Animator.SetTrigger(_boss.AnimationDB.DeathParameterHash);
+        
+        //보스 골드 드랍
+        ItemManager.Instance.GetGold(_data.dropGold);
+        
         //보스 사망 연출
         _boss.BossEvent.OnTriggerBossDeath();
     }

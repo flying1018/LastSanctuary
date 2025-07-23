@@ -30,6 +30,7 @@ MonoBehaviour:
   defence: 0
   damageDelay: 0.2
   hitDuration: 0.5
+  dropGold: 500
   deathAnim: {fileID: 7400000, guid: 0fac523e93c832f48a68b6d9e46457d3, type: 2}
   arrowPrefab: {fileID: 0}
   arrowPoolId: 0

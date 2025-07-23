@@ -30,10 +30,12 @@ MonoBehaviour:
   defence: 0
   damageDelay: 0.2
   hitDuration: 0.5
+  dropGold: 500
   deathAnim: {fileID: 7400000, guid: e8de934768cde414686f91b0fd9abc0a, type: 2}
   arrowPrefab: {fileID: 0}
   arrowPoolId: 0
   arrowPower: 0
-  rushSpeed: 0
+  flyingHeight: 0
+  flyingSpeed: 0
   attackSound: {fileID: 0}
   hitSound: {fileID: 8300000, guid: a248bdfb703162542864bddb16791cbe, type: 3}

@@ -44,8 +44,9 @@ public class EnemySO : ScriptableObject
     [Header("HitState")]
     public float damageDelay;
     public float hitDuration;
-    
-    [Header("DeathState")]
+
+    [Header("DeathState")] 
+    public int dropGold;
     public AnimationClip deathAnim;
     public float DeathTime => deathAnim.length;
     

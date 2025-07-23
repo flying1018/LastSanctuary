@@ -7,12 +7,19 @@ using System.Threading.Tasks;
 public class PlayerInventory : MonoBehaviour
 {
     private PlayerCondition _playerCondition;
+    private int _gold;
 
     //일단은 직렬화 나중에 어드레서블로 변환
     public List<CollectObject> relics;
     public List<CollectObjectSO> EquipRelics { get; private set; }
     public int MaxPotionNum { get; private set; }
     public int CurPotionNum { get; private set; }
+
+    public int Gold
+    {
+        get { return _gold; } 
+        set { _gold = Mathf.Max(0, value); }
+    }
 
 
     public async void Init(Player player)
@@ -75,10 +82,6 @@ public class PlayerInventory : MonoBehaviour
         }
         else
         {
-            //_playerCondition.Attack += data.attack;
-            //_playerCondition.Defence += data.defense;
-            //_playerCondition.MaxHp += data.hp;
-            //_playerCondition.MaxStamina += data.stamina;
             EquipRelics.Add(data);
         }
 
@@ -87,10 +90,6 @@ public class PlayerInventory : MonoBehaviour
     //장착 해제
     public void UnEquipRelic(CollectObjectSO data)
     {
-        //_playerCondition.Attack -= data.attack;
-        //_playerCondition.Defence -= data.defense;
-        //_playerCondition.MaxHp -= data.hp;
-        //_playerCondition.MaxStamina -= data.stamina;
         EquipRelics.Remove(data);
     }
 
