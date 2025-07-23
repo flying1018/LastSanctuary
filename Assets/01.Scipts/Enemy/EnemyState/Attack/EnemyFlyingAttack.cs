@@ -6,6 +6,8 @@ public class EnemyFlyingAttack : EAttackState
 {
     private Vector2 _targetDir;
     
+    public Vector2 PrevDir { get; private set; }
+    
     public EnemyFlyingAttack(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
     {
     }
@@ -28,6 +30,10 @@ public class EnemyFlyingAttack : EAttackState
         }
         
         _targetDir = DirectionToTarget();
+        _targetDir.y = 0;
+        _targetDir.Normalize();
+        
+        PrevDir = _targetDir;
     }
     
     public override void Exit()
@@ -37,7 +43,6 @@ public class EnemyFlyingAttack : EAttackState
 
     public override void Update()
     {
-        _time += Time.deltaTime;
     }
 
     public override void PhysicsUpdate()
@@ -48,11 +53,14 @@ public class EnemyFlyingAttack : EAttackState
     //포물선 그리면서 돌진
     private void FlyingAttack()
     {
-        float x = _targetDir.x > 0 ? _data.flyingAttackDistance : -_data.flyingAttackDistance;
+        _time += Time.fixedDeltaTime;
+        
+        float x = _targetDir.x > 0 ? _data.attackDistance : -_data.attackDistance;
         float y = -_data.flyingHeight + _data.flyingHeight * _time;
         
         Vector2 direction = new Vector2(x, y);
         _move.Move(direction.normalized * _data.flyingSpeed);
+        Rotate(direction);
     }
 
     public void ChangeIdleState()
