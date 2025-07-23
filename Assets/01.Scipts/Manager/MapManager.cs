@@ -10,14 +10,23 @@ public class MapManager : Singleton<MapManager>
     [SerializeField] private List<EnemySpawnPoint> EnemySpawnPoints;
     [SerializeField] private List<ItemSpawnPoint> ItemSpawnPoints;
     [SerializeField] private List<WarpObject> warpObjects;
+    [SerializeField] private bool isBossAlive;
 
     public WarpObject selectWarpObj;
     public WarpObject targetWarpObj;
+    
+    public static bool IsBossAlive { get; private set; }
 
     private void Awake()
     {
         //스폰 포인트 가져오기
         EnemySpawnPoints = new List<EnemySpawnPoint>(FindObjectsOfType<EnemySpawnPoint>());
+        IsBossAlive = isBossAlive; //테스트용 
+    }
+
+    public static void SetBossDead()
+    {
+        IsBossAlive = false;
     }
 
     //몬스터 리스폰

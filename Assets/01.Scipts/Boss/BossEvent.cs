@@ -20,6 +20,8 @@ public class BossEvent : MonoBehaviour
     private CinemachineBasicMultiChannelPerlin _perlin;
     private CinemachineBrain _brain;
     private CinemachineBlendDefinition _originBlend;
+    private Vector3 _originCameraPosition;
+    private float _originCameraSize;
 
     [Header("Boss Spawn")]
     [SerializeField] private Transform playerPosition;
@@ -27,13 +29,13 @@ public class BossEvent : MonoBehaviour
     [SerializeField] private AudioClip howlingSound;
     [SerializeField] private float blinkInterval;
     [SerializeField] private GameObject[] parts;
-    [SerializeField] private float cameraShakeTime;
     [SerializeField] private float targetLesSise = 7f;
     
     [Header("Boss Death")]
     [SerializeField] private float sloweventDuration = 2f;
     [SerializeField] private float cameraZoom = 5f;
     [SerializeField] private Material redSilhouette;
+    [SerializeField] private float shakeDuration;
     
     //초기 설정
     private void Start()
@@ -46,17 +48,23 @@ public class BossEvent : MonoBehaviour
         _backGroundSprite = GameObject.FindGameObjectWithTag(StringNameSpace.Tags.BackGround)
             .GetComponent<SpriteRenderer>();
         _brain = Camera.main.GetComponent<CinemachineBrain>();
-        _originBlend = _brain.m_DefaultBlend; //카메라 기본 설정
+        
+        //카메라 기본 설정
+        _originBlend = _brain.m_DefaultBlend; 
+        _originCameraPosition = _bossCamera.transform.position;
+        _originCameraSize = _bossCamera.m_Lens.OrthographicSize;
     }
 
     //플레이어 입장 시
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(StringNameSpace.Tags.Player))
-        {
-            _player = other.GetComponent<Player>();
-            StartCoroutine(Spawn_Coroutine());
-        }
+            if(MapManager.IsBossAlive == false) return;
+            if (other.CompareTag(StringNameSpace.Tags.Player))
+            {
+                _player = other.GetComponent<Player>();
+                StartCoroutine(Spawn_Coroutine());
+            }
+        
     }
 
     //플레이어 퇴장 시
@@ -79,6 +87,13 @@ public class BossEvent : MonoBehaviour
     //스폰 이벤트
     IEnumerator Spawn_Coroutine()
     {
+        //카메라 초기화 
+        _bossCamera.transform.position = _originCameraPosition;
+        _bossCamera.m_Lens.OrthographicSize = _originCameraSize;
+        
+        //외곽선 변경
+        //_boss.SpriteRenderer.material = _boss.Data.materials[0];
+        
         //플레이어 이벤트 상태(조작 불가 + 업데이트, 물리 업데이트 막기)
         _player.EventProduction(true);
 
@@ -258,7 +273,11 @@ public class BossEvent : MonoBehaviour
         yield return new WaitForSeconds(1f);
         
         //카메라 흔들림
-        CameraShake();
+        CameraShake(shakeDuration);
+        yield return new WaitForSeconds(shakeDuration);
+        
+        //아이템 드롬
+        _boss.ItemDropper.DropItems();
         
         //죽는 이벤트 시간만큼 대기
         yield return new WaitForSeconds(_boss.Data.deathEventDuration);

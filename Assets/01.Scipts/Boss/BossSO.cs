@@ -46,7 +46,7 @@ public class BossSO : ScriptableObject
     
     public AnimationClip deathAnim;
     public float deathEventDuration; 
-    public float deathTime => deathAnim.length + deathEventDuration;
+    public float deathTime => deathAnim.length + deathEventDuration + 2;
     
     [Header("ChaseState")]
     public float moveSpeed = 2f;
