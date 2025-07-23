@@ -30,6 +30,7 @@ public class Boss : MonoBehaviour
     public bool Phase2 { get; set; }
     public float VerticalVelocity { get; set;}
     public KinematicMove Move {get; set;}
+    public BossItemDropper ItemDropper {get; set;}
 
     public void Init(BossEvent bossEvent)
     {
@@ -43,6 +44,7 @@ public class Boss : MonoBehaviour
         Condition = GetComponent<BossCondition>();
         BossWeapon = GetComponentInChildren<BossWeapon>();
         Weapon = BossWeapon.gameObject;
+        ItemDropper = GetComponent<BossItemDropper>();
         Move = GetComponent<KinematicMove>();
         
         Move.Init(BoxCollider.bounds.size.x, BoxCollider.bounds.size.y, Rigidbody);

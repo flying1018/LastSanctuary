@@ -34,6 +34,7 @@ public class BossEvent : MonoBehaviour
     [SerializeField] private float sloweventDuration = 2f;
     [SerializeField] private float cameraZoom = 5f;
     [SerializeField] private Material redSilhouette;
+    [SerializeField] private float shakeDuration;
     
     //초기 설정
     private void Start()
@@ -258,8 +259,10 @@ public class BossEvent : MonoBehaviour
         yield return new WaitForSeconds(1f);
         
         //카메라 흔들림
-        CameraShake();
-        
+        CameraShake(shakeDuration);
+        yield return new WaitForSeconds(shakeDuration);
+        //아이템 드롬
+        _boss.ItemDropper.DropItems();
         //죽는 이벤트 시간만큼 대기
         yield return new WaitForSeconds(_boss.Data.deathEventDuration);
 
