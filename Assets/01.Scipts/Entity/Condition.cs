@@ -8,8 +8,8 @@ using UnityEngine;
 /// </summary>
 public class Condition : MonoBehaviour
 {
-    protected int _maxHp;
-    protected int _curHp;
+    protected float _maxHp;
+    protected float _curHp;
     protected int _attack;
     protected int _defence;
     protected float _delay;

@@ -14,11 +14,13 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
     private Dictionary<StatObjectSO, Coroutine> _tempBuffs = new();
 
     //기본 스탯 프로퍼티
-    public int MaxHp { get => _maxHp; set => _maxHp = value; }
+    public float MaxHp { get => _maxHp; set => _maxHp = value; }
+    public float CurHp { get => _curHp; set => _curHp = value; }
     public float MaxStamina { get; set; }
     public int Attack { get => _attack; set => _attack = value; }
     public int Defence { get => _defence; set => _defence = value; }
     public float Ultimate { get => _curUltimate; set => _curUltimate = value; }
+
 
     //성물로 증가 가능한 프로퍼티
     public int HealAmonut { get; set; }
