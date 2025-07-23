@@ -27,7 +27,7 @@ public class PlayerAttackState : PlayerBaseState
         _playerWeapon.Damage = (int)((_condition.Attack + _inventory.EquipRelicAttack() + _condition.BuffAtk) * attackInfo.multiplier);
         _playerWeapon.knockBackForce = attackInfo.knockbackForce;
         _playerWeapon.groggyDamage = attackInfo.groggyDamage;
-        _playerWeapon.defpen = _data.Defpen;
+        _playerWeapon.defpen = _data.defpen;
         
         //애니메이션 실행
         _player.Animator.SetInteger(_player.AnimationDB.ComboParameterHash, attackInfo.attackIndex);
@@ -36,6 +36,8 @@ public class PlayerAttackState : PlayerBaseState
         //무적 공격은 무적상태 추가
         if(attackInfo.isInvincible)
             _condition.InvincibleFunc(_animationTime);
+        
+ 
     }
 
     public override void Exit()

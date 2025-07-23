@@ -13,6 +13,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     //프로퍼티
     public bool IsInvincible { get; set; }
     public bool IsDeath { get; set; }
+    public float GroggyTime { get; set; }
  
     public void Init(Enemy enemy)
     {
@@ -26,6 +27,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         _isTakeDamageable = false;
         IsInvincible = false;
         IsDeath = false;
+        GroggyTime = 0;
     }
     
     //대미지 입을 때
@@ -38,7 +40,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         
         if (_curHp <= 0)
         {
-            _enemy.StateMachine.ChangeState(_enemy.StateMachine.DeathState);
+            Death();
         }
         else
         {
@@ -90,9 +92,17 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         _curHp -= damage;
     }
     
-    //TestCode
-    public void ChangeHitState()
+    //그로기 상태로 변환
+    public void ChangeGroggyState(float groggyTime)
     {
-        _enemy.StateMachine.ChangeState(_enemy.StateMachine.HitState);
+        GroggyTime = groggyTime;
+        _enemy.StateMachine.ChangeState(_enemy.StateMachine.GroggyState);
+    }
+    
+    //죽음 처리
+    public void Death()
+    {
+        _curHp = 0;
+        _enemy.StateMachine.ChangeState(_enemy.StateMachine.DeathState);
     }
 }

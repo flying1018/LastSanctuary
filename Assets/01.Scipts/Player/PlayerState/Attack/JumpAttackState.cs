@@ -19,7 +19,12 @@ public class JumpAttackState : PlayerAttackState
 
     public override void Update()
     {
+        if (_move.IsGrounded)
+        {
+            _stateMachine.ChangeState(_stateMachine.IdleState);
+        }
         base.Update();
+        
     }
 
     public override void PhysicsUpdate()

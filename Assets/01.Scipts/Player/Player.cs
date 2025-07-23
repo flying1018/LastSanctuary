@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     public PlayerInput PlayerInput { get; set; }
     public KinematicMove Move { get; set; }
     public IInteractable InteractableTarget { get; set; }
+    public GameObject Target { get; set; }
     //직렬화 데이터 프로퍼티
     public PlayerSO Data { get => playerData; }
 
@@ -126,6 +127,30 @@ public class Player : MonoBehaviour
             PlayerInput.enabled = true;
             _eventProduction = false;
         }
+    }
+    
+    //주변에 플레이어 있는지 확인
+    public bool FindTarget()
+    {
+        // 정지된 상태에서 감지
+        Collider2D[] overlappingHits = Physics2D.OverlapCircleAll(transform.position, Data.detectionRange);
+
+        foreach (Collider2D hit in overlappingHits)
+        {
+            if (hit.CompareTag(StringNameSpace.Tags.Enemy))
+            {
+                Target = hit.gameObject;
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, Data.detectionRange);
     }
     
     #endregion

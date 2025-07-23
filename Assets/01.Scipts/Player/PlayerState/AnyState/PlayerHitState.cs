@@ -11,6 +11,8 @@ public class PlayerHitState : PlayerBaseState
     private float _hitDuration;
     public override void Enter()
     {
+        _player.Animator.SetTrigger(_player.AnimationDB.HitParameterHash);
+        
         //피격 애니메이션
         _hitStart = Time.time;
 
