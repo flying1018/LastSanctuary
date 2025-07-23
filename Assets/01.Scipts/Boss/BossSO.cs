@@ -42,11 +42,12 @@ public class BossSO : ScriptableObject
     public int groggyGauge;
     public float groggyDuration;
     public float damageDelay;
-    public float alphaValue;
     
+    [Header("DeathState")]
+    public int dropGold;
     public AnimationClip deathAnim;
     public float deathEventDuration; 
-    public float deathTime => deathAnim.length + deathEventDuration;
+    public float deathTime => deathAnim.length + deathEventDuration + 2;
     
     [Header("ChaseState")]
     public float moveSpeed = 2f;

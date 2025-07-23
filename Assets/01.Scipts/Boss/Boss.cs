@@ -8,7 +8,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     //필드
-
+    private Vector3 _spawnPoint;
     //직렬화
     [field: SerializeField] public BossAnimationDB AnimationDB {get; private set;}
     [SerializeField] private BossSO bossData;
@@ -30,6 +30,7 @@ public class Boss : MonoBehaviour
     public bool Phase2 { get; set; }
     public float VerticalVelocity { get; set;}
     public KinematicMove Move {get; set;}
+    public BossItemDropper ItemDropper {get; set;}
 
     public void Init(BossEvent bossEvent)
     {
@@ -43,6 +44,8 @@ public class Boss : MonoBehaviour
         Condition = GetComponent<BossCondition>();
         BossWeapon = GetComponentInChildren<BossWeapon>();
         Weapon = BossWeapon.gameObject;
+        ItemDropper = GetComponent<BossItemDropper>();
+        transform.position = _spawnPoint;
         Move = GetComponent<KinematicMove>();
         
         Move.Init(BoxCollider.bounds.size.x, BoxCollider.bounds.size.y, Rigidbody);
@@ -52,7 +55,12 @@ public class Boss : MonoBehaviour
         
         StateMachine = new BossStateMachine(this);
     }
-    
+
+    private void Start()
+    {
+        _spawnPoint = this.transform.position;
+    }
+
     private void OnEnable()
     {
         //오브젝트 활성화 시 플레이어 찾기
@@ -86,11 +94,6 @@ public class Boss : MonoBehaviour
             {
                 knockBackable.ApplyKnockBack(transform,Data.knockbackForce);
             }
-        }
-
-        if (StateMachine.currentState is EnemyRushAttack rushAttack)
-        {
-            rushAttack.RushKnuckBack(other.gameObject.transform,Data.knockbackForce);
         }
     }
 

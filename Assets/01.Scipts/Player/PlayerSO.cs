@@ -58,12 +58,30 @@ public class PlayerSO : ScriptableObject
 
     [Header("AttackState")] 
     public AttackInfo[] attacks;
-    public float Defpen;
-    public AttackInfo dashAttack;
+    public float defpen;
     public float maxUltimateGauge;
+    
+    [Header("DashAttackState")] 
+    public AttackInfo dashAttack;
+    
+    [Header("JumpAttackState")] 
     public AttackInfo jumpAttack;
     public AttackInfo UltAttack;
 
+    [Header("TopAttackState")] 
+    public AttackInfo topAttack;
+
+    [Header("GroggAttackState")] 
+    public GameObject groggyAttackPrefab;
+    public int prefabId;
+    public float groggyAnimInterval;
+    public AttackInfo groggyAttack;
+    public float groggyTime;
+    public float detectionRange;
+    public float hidingTime;
+    public float groggyAttackInterval;
+    
+    
     [field: Header("HitState")]
     [field: SerializeField] public float LightHitDuration{ get; private set; } = 0.2f;
     [field: SerializeField] public float HeavyHitDuration{ get; private set; } = 0.2f;
@@ -81,6 +99,7 @@ public class PlayerSO : ScriptableObject
     [Header("InteractState")]
     public AnimationClip interactionAnim;
     public float InteractionTime => interactionAnim.length;
+
 
     [Header("Condition")]
     public int hp;
@@ -108,6 +127,11 @@ public class PlayerSO : ScriptableObject
     
     public AudioClip teleportStartSound;
     public AudioClip teleportEndSound;
+    
+    
+    [Header("Material")]
+    public Material defaultMaterial;
+    public Material transparentMaterial;
 
 
 }

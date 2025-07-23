@@ -45,6 +45,26 @@ public class PlayerGroundState : PlayerBaseState
         {
             _stateMachine.ChangeState(_stateMachine.HealState);
         }
+
+        if (_player.FindTarget() && _input.IsGroggyAttack)
+        {
+            if (_player.Target.TryGetComponent(out Enemy enemy))
+            {
+                if(enemy.StateMachine.currentState is EnemyGroggyState)
+                    _stateMachine.ChangeState(_stateMachine.GroggyAttackState);
+            }
+            if (_player.Target.TryGetComponent(out Boss boss))
+            {
+                if(boss.StateMachine.currentState is BossGroggyState)
+                    _stateMachine.ChangeState(_stateMachine.GroggyAttackState);
+            }
+        }
+        
+        //위 키를 누르고 공격 입력 시
+        if (_input.MoveInput.y > 0 && _input.IsAttack)
+        {
+            _stateMachine.ChangeState(_stateMachine.TopAttackState);
+        }
         
         //공격
         if (_input.IsAttack)
@@ -60,6 +80,7 @@ public class PlayerGroundState : PlayerBaseState
             _move.IsGrounded = false;
         }
 
+        //상호작용 키 입력 시 
         if (_player.InteractableTarget != null && _input.IsInteract)
         {
             _stateMachine.ChangeState(_stateMachine.InteractState);

@@ -11,6 +11,7 @@ public static class ObjectPoolManager
         Item = 3,
         BossProjectile = 4,
         SFX = 5,
+        PlayerAttack = 6,
     }
     private static Dictionary<int, Queue<GameObject>> poolDictionary = new();
 

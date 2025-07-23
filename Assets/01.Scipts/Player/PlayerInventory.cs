@@ -7,12 +7,19 @@ using System.Threading.Tasks;
 public class PlayerInventory : MonoBehaviour
 {
     private PlayerCondition _playerCondition;
+    private int _gold;
 
     //일단은 직렬화 나중에 어드레서블로 변환
     public List<CollectObject> relics;
     public List<CollectObjectSO> EquipRelics { get; private set; }
     public int MaxPotionNum { get; private set; }
     public int CurPotionNum { get; private set; }
+
+    public int Gold
+    {
+        get { return _gold; } 
+        set { _gold = Mathf.Max(0, value); }
+    }
 
 
     public async void Init(Player player)
@@ -53,6 +60,7 @@ public class PlayerInventory : MonoBehaviour
                     CurPotionNum++;
                     CurPotionNum = Mathf.Clamp(CurPotionNum, 0, MaxPotionNum);
                 }
+                UIManager.Instance.UpdatePotionUI();
                 break;
         }
     }
@@ -141,7 +149,8 @@ public class PlayerInventory : MonoBehaviour
         }
         return sum;
     }
-
+    
+    //포션 최대치로 회복
     public void SupplyPotion()
     {
         CurPotionNum = MaxPotionNum;

@@ -46,6 +46,12 @@ public class ItemManager : Singleton<ItemManager>
         playerInventory.AddItem(collectObjectSO);
     }
 
+    public void GetGold(int amount)
+    {
+        playerInventory.Gold += amount;
+        UIManager.Instance.StateMachine.MainUI.UpdateGoldText();
+    }
+
 
 
 }

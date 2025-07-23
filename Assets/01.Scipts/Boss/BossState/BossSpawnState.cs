@@ -41,7 +41,6 @@ public class BossSpawnState : BossBaseState
     public override void PhysicsUpdate()
     {
         Move(_move.gravityScale);
-        //콜라이더 자동 변경 시 콜라이더가 사라지는 버그가 있어서 블락
     }
 
     public override void PlayEvent1()

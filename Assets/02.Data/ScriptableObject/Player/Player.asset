@@ -35,7 +35,7 @@ MonoBehaviour:
     nextComboTime: 0.3
     staminaCost: 0
     attackForce: 0
-    knockbackForce: 10
+    knockbackForce: 0
     groggyDamage: 1
     isInvincible: 0
   - attackAnim: {fileID: 7400000, guid: 3c8ab8fd8e124cd47ba5909da708ef53, type: 2}
@@ -44,7 +44,7 @@ MonoBehaviour:
     nextComboTime: 0.3
     staminaCost: 0
     attackForce: 0
-    knockbackForce: 10
+    knockbackForce: 0
     groggyDamage: 2
     isInvincible: 0
   - attackAnim: {fileID: 7400000, guid: bdf51d02ce4552348ba6354a5c6370ff, type: 2}
@@ -56,7 +56,8 @@ MonoBehaviour:
     knockbackForce: 10
     groggyDamage: 5
     isInvincible: 0
-  Defpen: 0.25
+  defpen: 0
+  maxUltimateGauge: 0
   dashAttack:
     attackAnim: {fileID: 7400000, guid: ec5c2cbf39d0d7c4185a8542b0455c20, type: 2}
     attackIndex: 4
@@ -64,10 +65,9 @@ MonoBehaviour:
     nextComboTime: 0
     staminaCost: 15
     attackForce: 20
-    knockbackForce: 150
+    knockbackForce: 10
     groggyDamage: 5
     isInvincible: 1
-  maxUltimateGauge: 0
   jumpAttack:
     attackAnim: {fileID: 7400000, guid: fb83938d100c40e4b9e179de0fa7eb31, type: 2}
     attackIndex: 5
@@ -88,8 +88,35 @@ MonoBehaviour:
     knockbackForce: 0
     groggyDamage: 0
     isInvincible: 0
-  <LightHitDuration>k__BackingField: 0.2
-  <HeavyHitDuration>k__BackingField: 0.5
+  topAttack:
+    attackAnim: {fileID: 7400000, guid: cbdcd516d24c3354bbf3ec8e4db03db7, type: 2}
+    attackIndex: 6
+    multiplier: 1
+    nextComboTime: 0
+    staminaCost: 0
+    attackForce: 0
+    knockbackForce: 0
+    groggyDamage: 1
+    isInvincible: 0
+  groggyAttackPrefab: {fileID: 4232177779540841221, guid: 6e243fd6a47e6684ba9bf7b6cb7e60c8, type: 3}
+  prefabId: 6
+  groggyAnimInterval: 0.2
+  groggyAttack:
+    attackAnim: {fileID: 7400000, guid: 556e6092d14c0be4e9231422d08e78af, type: 2}
+    attackIndex: 7
+    multiplier: 1
+    nextComboTime: 0
+    staminaCost: 0
+    attackForce: 1
+    knockbackForce: 5
+    groggyDamage: 0
+    isInvincible: 1
+  groggyTime: 5
+  detectionRange: 5
+  hidingTime: 3
+  groggyAttackInterval: 0.3
+  <LightHitDuration>k__BackingField: 1
+  <HeavyHitDuration>k__BackingField: 1
   <invincibleDuration>k__BackingField: 1
   <hitSteminaRecovery>k__BackingField: 15
   <damageReduction>k__BackingField: 0.4
@@ -115,3 +142,5 @@ MonoBehaviour:
   healSound: {fileID: 8300000, guid: d4adbc096bba18641bb3db713a46b0ec, type: 3}
   teleportStartSound: {fileID: 8300000, guid: 61012c41929ea52499cb03d531eb4db2, type: 3}
   teleportEndSound: {fileID: 8300000, guid: 4cb92929d1092cf47bc611c19b0dd21c, type: 3}
+  defaultMaterial: {fileID: 2100000, guid: 4b8e4564344994245855150f74caab25, type: 2}
+  transparentMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}

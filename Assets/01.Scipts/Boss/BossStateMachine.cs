@@ -15,9 +15,9 @@ public class BossStateMachine : StateMachine
     public BossGroggyState GroggyState { get; private set; }
     public BossSpawnState SpawnState { get; private set; }
     public Queue<BossAttackState> Attacks { get; private set; }
-    public ChopDownAttack Attack1 { get; private set; }
-    public ProjectileAttack Attack2 { get; private set; }
-    public JumpAttack Attack3 { get; private set; }
+    public BossChopDownAttackState Attack1 { get; private set; }
+    public BossProjectileAttackState Attack2 { get; private set; }
+    public BossJumpAttackState Attack3 { get; private set; }
     public BossPhaseShiftState PhaseShiftState { get; private set; }
     public BossDeathState DeathState { get; private set; }
 
@@ -30,9 +30,9 @@ public class BossStateMachine : StateMachine
         GroggyState = new BossGroggyState(this);
         SpawnState = new BossSpawnState(this); 
         Attacks = new Queue<BossAttackState>();
-        Attack1 = new ChopDownAttack(this, boss.Data.attacks[0]);
-        Attack2 = new ProjectileAttack(this, boss.Data.attacks[1]);
-        Attack3 = new JumpAttack(this, boss.Data.attacks[2]);
+        Attack1 = new BossChopDownAttackState(this, boss.Data.attacks[0]);
+        Attack2 = new BossProjectileAttackState(this, boss.Data.attacks[1]);
+        Attack3 = new BossJumpAttackState(this, boss.Data.attacks[2]);
         PhaseShiftState = new BossPhaseShiftState(this);
         DeathState = new BossDeathState(this);
         
