@@ -41,16 +41,6 @@ public class EnemyIdleState : EIdleState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        
-        //대기 상태일 때 그 위치에서 대기
-        switch (_enemy.MoveType)
-        {
-            case MoveType.Walk:
-                Move(Vector2.zero);
-                break;
-            case MoveType.Fly:
-                Fly(Vector2.zero);
-                break;
-        }
+        Move(Vector2.zero);
     }
 }

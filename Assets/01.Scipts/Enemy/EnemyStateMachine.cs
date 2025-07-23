@@ -32,17 +32,8 @@ public class EnemyStateMachine : StateMachine
                 IdleState = new EnemyPatrolState(this);
                 break;
         }
-        switch (enemy.MoveType)
-        {
-            case MoveType.Walk:
-                ChaseState = new EnemyChaseState(this);
-                ReturnState = new EnemyReturnState(this);
-                break;
-            case MoveType.Fly:
-                ChaseState = new EnemyFlyChaseState(this);
-                ReturnState = new EnemyFlyReturnState(this);
-                break;
-        }
+        ChaseState = new EnemyChaseState(this);
+        ReturnState = new EnemyReturnState(this);
         switch (enemy.AttackType)
         {
             case AttackType.Melee:

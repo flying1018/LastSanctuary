@@ -6,12 +6,7 @@ public enum IdleType
 {
     Idle,
     Patrol,
-}
-
-public enum MoveType
-{
-    Walk,
-    Fly,
+    FlyIdle,
 }
 
 public enum AttackType
@@ -32,11 +27,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private LayerMask platformLayer;
     [SerializeField] private float platformCheckDistance;
     [SerializeField] private IdleType idleType;
-    [SerializeField] private MoveType moveType;
     [SerializeField] private AttackType attackType;
     [SerializeField] private float patrolDistance = 5;
     
-   
     
     //프로퍼티
     public CapsuleCollider2D CapsuleCollider { get; set; }
@@ -49,13 +42,12 @@ public class Enemy : MonoBehaviour
     public Transform SpawnPoint { get; set; }
     public EnemyWeapon EnemyWeapon { get; set; }
     public GameObject Weapon { get; set; }
+    public float PatrolDistance { get; set; }
+    public KinematicMove Move {get; set;}
+    //직렬화 데이터
     public EnemySO Data {get => enemyData;}
     public IdleType IdleType {get => idleType;}
-    public MoveType MoveType {get => moveType;}
     public AttackType AttackType {get => attackType;}
-    public float PatrolDistance { get; set; }
-    public float VerticalVelocity { get; set; }
-    public KinematicMove Move {get; set;}
 
 
     //생성 시
