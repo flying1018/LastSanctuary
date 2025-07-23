@@ -51,8 +51,10 @@ public class EnemySO : ScriptableObject
     public int arrowPoolId;
     public int arrowPower;
 
-    [Header("Rush Attack")]
-    public float rushSpeed;
+    [Header("Flying Attack")] 
+    public float flyingAttackDistance;
+    public float flyingHeight;
+    public float flyingSpeed;
 
     [Header("Sound")] 
     public AudioClip attackSound;

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2406020538053831016}
   - component: {fileID: 5815088360185114722}
   m_Layer: 11
-  m_Name: Bat(Idle)
+  m_Name: BloodWing(Idle)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,6 @@ MonoBehaviour:
     m_Bits: 1280
   platformCheckDistance: 10
   idleType: 0
-  moveType: 1
   attackType: 2
   patrolDistance: 5
 --- !u!114 &7995237856167525000
@@ -185,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7433476367284325732}
   - component: {fileID: 7633928009784155903}
-  - component: {fileID: 5662524757925216172}
+  - component: {fileID: 7670445638048680209}
   m_Layer: 11
   m_Name: Weapon
   m_TagString: Untagged
@@ -236,7 +235,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5662524757925216172
+--- !u!114 &7670445638048680209
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,7 +244,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1835956362531672718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85551ef387ee74947b15f1ade631f362, type: 3}
+  m_Script: {fileID: 11500000, guid: 508ad80baf6f07c4cbd43bdab3f3880a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2086825603629075517

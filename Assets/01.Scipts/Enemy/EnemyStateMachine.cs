@@ -10,7 +10,7 @@ public class EnemyStateMachine : StateMachine
     public EAttackState AttackState { get; private set;}
     public EReturnState ReturnState { get; private set;}
     public EnemyHitState HitState { get; private set;}
-    public EnemyDetectState DetectState { get; private set;}
+    public EDetectState DetectState { get; private set;}
     public EnemyBattleState BattleState { get; private set;}
     public EnemyDeathState DeathState { get; private set;}
     public EnemyGroggyState GroggyState { get; private set;}
@@ -32,22 +32,24 @@ public class EnemyStateMachine : StateMachine
                 IdleState = new EnemyPatrolState(this);
                 break;
         }
-        ChaseState = new EnemyChaseState(this);
-        ReturnState = new EnemyReturnState(this);
         switch (enemy.AttackType)
         {
             case AttackType.Melee:
+                DetectState = new EnemyDetectState(this);
                 AttackState = new EnemyAttackState(this);
                 break;
             case AttackType.Range:
+                DetectState = new EnemyDetectState(this);
                 AttackState = new EnemyRangeAttackState(this);
                 break;
-            case AttackType.Rush:
-                AttackState = new EnemyRushAttack(this);
+            case AttackType.Flying:
+                DetectState = new EnemyFlyingDetectState(this);
+                AttackState = new EnemyFlyingAttack(this);
                 break;
         }
+        ChaseState = new EnemyChaseState(this);
+        ReturnState = new EnemyReturnState(this);
         HitState = new EnemyHitState(this);
-        DetectState = new EnemyDetectState(this);
         BattleState = new EnemyBattleState(this);
         DeathState = new EnemyDeathState(this);
         GroggyState = new EnemyGroggyState(this);

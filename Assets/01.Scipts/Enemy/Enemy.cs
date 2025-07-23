@@ -6,14 +6,13 @@ public enum IdleType
 {
     Idle,
     Patrol,
-    FlyIdle,
 }
 
 public enum AttackType
 {
     Melee,
     Range,
-    Rush,
+    Flying,
 }
 
 public class Enemy : MonoBehaviour

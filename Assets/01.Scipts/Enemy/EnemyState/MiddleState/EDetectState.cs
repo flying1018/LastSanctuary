@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDetectState : EnemyBaseState
+public class EDetectState : EnemyBaseState
 {
-    public EnemyDetectState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
+    public EDetectState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
     {
     }
 
@@ -27,6 +27,13 @@ public class EnemyDetectState : EnemyBaseState
 
         StopAnimation(_enemy.AnimationDB.IdleParameterHash);
     }
+}
+
+//지상 몬스터 용
+public class EnemyDetectState : EDetectState
+{
+    public EnemyDetectState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine) { }
+    
     
     public override void Update()
     {

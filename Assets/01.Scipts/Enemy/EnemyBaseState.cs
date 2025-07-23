@@ -71,13 +71,6 @@ public class EnemyBaseState : IState
         _move.Move(x + _move.gravityScale);
     }
 
-    //하늘 이동
-    protected void Fly(Vector2 direction)
-    {
-        Vector2 moveVelocity = direction.normalized * _data.moveSpeed;
-        _rigidbody.velocity = moveVelocity;
-    }
-
     //회전
     protected void Rotate(Vector2 direction)
     {
