@@ -74,10 +74,11 @@ public class PlayerInventory : MonoBehaviour
         }
         else
         {
-            //_playerCondition.Attack += data.attack;
-            //_playerCondition.Defence += data.defense;
-            //_playerCondition.MaxHp += data.hp;
-            //_playerCondition.MaxStamina += data.stamina;
+            _playerCondition.Attack += data.attack;
+            _playerCondition.Defence += data.defense;
+            _playerCondition.MaxHp += data.hp;
+            _playerCondition.CurHp += data.hp;
+            _playerCondition.MaxStamina += data.stamina;
             EquipRelics.Add(data);
         }
 
@@ -86,10 +87,14 @@ public class PlayerInventory : MonoBehaviour
     //장착 해제
     public void UnEquipRelic(CollectObjectSO data)
     {
-        //_playerCondition.Attack -= data.attack;
-        //_playerCondition.Defence -= data.defense;
-        //_playerCondition.MaxHp -= data.hp;
-        //_playerCondition.MaxStamina -= data.stamina;
+        _playerCondition.Attack -= data.attack;
+        _playerCondition.Defence -= data.defense;
+        _playerCondition.MaxHp -= data.hp;
+        if (_playerCondition.CurHp < data.hp)
+        {
+            _playerCondition.CurHp = 1f;
+        }
+        _playerCondition.MaxStamina -= data.stamina;
         EquipRelics.Remove(data);
     }
 

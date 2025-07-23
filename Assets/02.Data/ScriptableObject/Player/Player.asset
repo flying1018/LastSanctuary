@@ -78,6 +78,16 @@ MonoBehaviour:
     knockbackForce: 0
     groggyDamage: 0
     isInvincible: 0
+  UltAttack:
+    attackAnim: {fileID: 0}
+    attackIndex: 0
+    multiplier: 0
+    nextComboTime: 0
+    staminaCost: 0
+    attackForce: 0
+    knockbackForce: 0
+    groggyDamage: 0
+    isInvincible: 0
   <LightHitDuration>k__BackingField: 0.2
   <HeavyHitDuration>k__BackingField: 0.5
   <invincibleDuration>k__BackingField: 1
