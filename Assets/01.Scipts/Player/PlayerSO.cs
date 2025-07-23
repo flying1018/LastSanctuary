@@ -58,7 +58,7 @@ public class PlayerSO : ScriptableObject
 
     [Header("AttackState")] 
     public AttackInfo[] attacks;
-    public float Defpen;
+    public float defpen;
     public float maxUltimateGauge;
     
     [Header("DashAttackState")] 
@@ -73,13 +73,13 @@ public class PlayerSO : ScriptableObject
 
     [Header("GroggAttackState")] 
     public GameObject groggyAttackPrefab;
-    public int prefabIndex;
-    public float animInterval;
+    public int prefabId;
+    public float groggyAnimInterval;
     public AttackInfo groggyAttack;
     public float groggyTime;
     public float detectionRange;
     public float hidingTime;
-    public float attackInterval;
+    public float groggyAttackInterval;
     
     
     [field: Header("HitState")]
@@ -127,6 +127,11 @@ public class PlayerSO : ScriptableObject
     
     public AudioClip teleportStartSound;
     public AudioClip teleportEndSound;
+    
+    
+    [Header("Material")]
+    public Material defaultMaterial;
+    public Material transparentMaterial;
 
 
 }

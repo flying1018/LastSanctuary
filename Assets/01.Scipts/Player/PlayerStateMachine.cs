@@ -24,6 +24,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerRespawnState RespawnState { get; private set; }
     public PlayerInteractState InteractState { get; private set; }
     public PlayerTopAttackState TopAttackState { get; private set; }
+    public GroggyAttackState GroggyAttackState { get; private set; }
     
     public int comboIndex;
 
@@ -54,6 +55,7 @@ public class PlayerStateMachine : StateMachine
         RespawnState = new PlayerRespawnState(this);
         InteractState = new PlayerInteractState(this);
         TopAttackState = new PlayerTopAttackState(this, player.Data.topAttack);
+        GroggyAttackState = new GroggyAttackState(this, player.Data.groggyAttack);
         
         comboIndex = 0;
         ChangeState(IdleState); // 초기 상태

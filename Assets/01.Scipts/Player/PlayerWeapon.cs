@@ -6,17 +6,17 @@ using UnityEngine;
 public class PlayerWeapon : Weapon
 {
     //필드
-    private SpriteRenderer _spriteRenderer;
     private Coroutine _groggyAttackCoroutine;
     private WaitForSeconds _waitAnimSec;
     private int _objectPoolId;
     
+    
     //직렬화
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite[] sprites;
 
-    public void Init(float animInterval, int id)
+    public void GroggyAttackInit(float animInterval, int id)
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         _waitAnimSec = new WaitForSeconds(animInterval);
         _objectPoolId = id;
     }
@@ -47,11 +47,11 @@ public class PlayerWeapon : Weapon
     
     IEnumerator GroggyAttack_Coroutine()
     {
-        _spriteRenderer.sprite = sprites[0];
+        spriteRenderer.sprite = sprites[0];
         yield return _waitAnimSec;
-        _spriteRenderer.sprite = sprites[1];
+        spriteRenderer.sprite = sprites[1];
         yield return _waitAnimSec;
-        _spriteRenderer.sprite = sprites[2];
+        spriteRenderer.sprite = sprites[2];
         yield return _waitAnimSec;
 
         _groggyAttackCoroutine = null;

@@ -56,7 +56,7 @@ MonoBehaviour:
     knockbackForce: 10
     groggyDamage: 5
     isInvincible: 0
-  Defpen: 0.25
+  defpen: 0
   maxUltimateGauge: 0
   dashAttack:
     attackAnim: {fileID: 7400000, guid: ec5c2cbf39d0d7c4185a8542b0455c20, type: 2}
@@ -68,11 +68,20 @@ MonoBehaviour:
     knockbackForce: 10
     groggyDamage: 5
     isInvincible: 1
-  maxUltimateGauge: 0
   jumpAttack:
     attackAnim: {fileID: 7400000, guid: fb83938d100c40e4b9e179de0fa7eb31, type: 2}
     attackIndex: 5
     multiplier: 1
+    nextComboTime: 0
+    staminaCost: 0
+    attackForce: 0
+    knockbackForce: 0
+    groggyDamage: 0
+    isInvincible: 0
+  UltAttack:
+    attackAnim: {fileID: 0}
+    attackIndex: 0
+    multiplier: 0
     nextComboTime: 0
     staminaCost: 0
     attackForce: 0
@@ -89,13 +98,13 @@ MonoBehaviour:
     knockbackForce: 0
     groggyDamage: 1
     isInvincible: 0
-  groggyAttackPrefab: {fileID: 0}
-  prefabIndex: 0
-  animInterval: 0
+  groggyAttackPrefab: {fileID: 4232177779540841221, guid: 6e243fd6a47e6684ba9bf7b6cb7e60c8, type: 3}
+  prefabId: 6
+  groggyAnimInterval: 0.2
   groggyAttack:
-    attackAnim: {fileID: 0}
+    attackAnim: {fileID: 7400000, guid: 556e6092d14c0be4e9231422d08e78af, type: 2}
     attackIndex: 7
-    multiplier: 0.5
+    multiplier: 1
     nextComboTime: 0
     staminaCost: 0
     attackForce: 1
@@ -105,7 +114,7 @@ MonoBehaviour:
   groggyTime: 5
   detectionRange: 5
   hidingTime: 3
-  attackInterval: 0.2
+  groggyAttackInterval: 0.3
   <LightHitDuration>k__BackingField: 1
   <HeavyHitDuration>k__BackingField: 1
   <invincibleDuration>k__BackingField: 1
@@ -133,3 +142,5 @@ MonoBehaviour:
   healSound: {fileID: 8300000, guid: d4adbc096bba18641bb3db713a46b0ec, type: 3}
   teleportStartSound: {fileID: 8300000, guid: 61012c41929ea52499cb03d531eb4db2, type: 3}
   teleportEndSound: {fileID: 8300000, guid: 4cb92929d1092cf47bc611c19b0dd21c, type: 3}
+  defaultMaterial: {fileID: 2100000, guid: 4b8e4564344994245855150f74caab25, type: 2}
+  transparentMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}

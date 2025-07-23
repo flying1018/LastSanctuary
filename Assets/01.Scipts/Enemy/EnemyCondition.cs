@@ -40,7 +40,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         
         if (_curHp <= 0)
         {
-            _enemy.StateMachine.ChangeState(_enemy.StateMachine.DeathState);
+            Death();
         }
         else
         {
@@ -92,11 +92,17 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         _curHp -= damage;
     }
     
-    //TestCode
+    //그로기 상태로 변환
     public void ChangeGroggyState(float groggyTime)
     {
-        DebugHelper.Log("Groggy");
         GroggyTime = groggyTime;
         _enemy.StateMachine.ChangeState(_enemy.StateMachine.GroggyState);
+    }
+    
+    //죽음 처리
+    public void Death()
+    {
+        _curHp = 0;
+        _enemy.StateMachine.ChangeState(_enemy.StateMachine.DeathState);
     }
 }
