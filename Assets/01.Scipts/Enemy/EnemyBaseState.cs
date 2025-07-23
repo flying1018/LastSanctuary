@@ -68,6 +68,8 @@ public class EnemyBaseState : IState
             _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
         else
             _move.gravityScale = Vector2.zero;
+        
+        
         _move.Move(x + _move.gravityScale);
     }
 
