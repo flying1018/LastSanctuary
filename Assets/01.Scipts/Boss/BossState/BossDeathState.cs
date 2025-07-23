@@ -17,6 +17,8 @@ public class BossDeathState : BossBaseState
         
         //보스 사망 연출
         _boss.BossEvent.OnTriggerBossDeath();
+        //보스 사망 체크
+        MapManager.SetBossDead();
     }
 
     public override void Update()
