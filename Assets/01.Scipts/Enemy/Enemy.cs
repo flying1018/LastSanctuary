@@ -109,7 +109,7 @@ public class Enemy : MonoBehaviour
     //이동 방향에 발판이 있는지 체크
     public bool IsPlatform()
     {
-        float capsulsize = CapsuleCollider.size.x / 2;
+        float capsulsize = CapsuleCollider.size.x;
         float setX = SpriteRenderer.flipX ? -capsulsize : capsulsize;
         
         Vector2 newPos = new Vector2(transform.position.x + setX, transform.position.y);
