@@ -30,6 +30,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private ConditionUI staminaUI;
     [SerializeField] private Image potionIcon;
     [SerializeField] private TextMeshProUGUI potionText;
+    [SerializeField] private TextMeshProUGUI goldText;
     
     
     public UIStateMachine StateMachine { get; set; }
@@ -55,6 +56,7 @@ public class UIManager : Singleton<UIManager>
     public RectTransform BuffUIPivot { get => buffUIPivot;}
     public Image PotionIcon { get => potionIcon;}
     public TextMeshProUGUI PotionText { get => potionText;}
+    public TextMeshProUGUI GoldText { get => goldText;}
     public ConditionUI HpUI { get => hpUI;}
     public ConditionUI StaminaUI { get => staminaUI;}
 

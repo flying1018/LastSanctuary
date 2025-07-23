@@ -136,7 +136,8 @@ public class PlayerInventory : MonoBehaviour
         }
         return sum;
     }
-
+    
+    //포션 최대치로 회복
     public void SupplyPotion()
     {
         CurPotionNum = MaxPotionNum;
