@@ -95,11 +95,6 @@ public class Boss : MonoBehaviour
                 knockBackable.ApplyKnockBack(transform,Data.knockbackForce);
             }
         }
-
-        if (StateMachine.currentState is EnemyRushAttack rushAttack)
-        {
-            rushAttack.RushKnuckBack(other.gameObject.transform,Data.knockbackForce);
-        }
     }
 
     #region need MonoBehaviour Method

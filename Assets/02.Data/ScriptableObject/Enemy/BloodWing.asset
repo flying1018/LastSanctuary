@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe245788b651394e8fcb8b034fc10ec, type: 3}
+  m_Name: BloodWing
+  m_EditorClassIdentifier: 
+  _key: 0
+  _name: 
+  gravityPower: 0
+  detectTime: 0.2
+  detectDistance: 10
+  moveSpeed: 3
+  cancelChaseTime: 10
+  hitMaterial: {fileID: 2100000, guid: 1d6c919171b720f4698baec530ce9a22, type: 2}
+  attackDistance: 10
+  attackDuration: 3
+  knockbackForce: 10
+  attackAnim: {fileID: 7400000, guid: 9bfbf15d9c5af0a4faf3399a46d06316, type: 2}
+  blinkLength: 0.3
+  attack: 10
+  hp: 100
+  defence: 0
+  damageDelay: 0.2
+  hitDuration: 0.5
+  dropGold: 500
+  deathAnim: {fileID: 7400000, guid: 0fac523e93c832f48a68b6d9e46457d3, type: 2}
+  arrowPrefab: {fileID: 0}
+  arrowPoolId: 0
+  arrowPower: 0
+  flyingHeight: 20
+  flyingSpeed: 10
+  attackSound: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 0c627532d49dd2b49baec69f27b7b7b9, type: 3}

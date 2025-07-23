@@ -91,6 +91,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""GroggyAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""11dd3f2b-5c56-49db-83dc-66d50e348cba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Ultimate"",
                     ""type"": ""Button"",
                     ""id"": ""6a944d68-699f-4b99-9913-0fa3689e7bc8"",
@@ -224,6 +233,17 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""0b653991-fb43-4e87-ad37-128cb76d5f1d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GroggyAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""7385378d-ec4c-49cb-a5ff-2a53bf9dc70f"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
@@ -247,6 +267,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
+        m_Player_GroggyAttack = m_Player.FindAction("GroggyAttack", throwIfNotFound: true);
         m_Player_Ultimate = m_Player.FindAction("Ultimate", throwIfNotFound: true);
     }
 
@@ -316,6 +337,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Interaction;
+    private readonly InputAction m_Player_GroggyAttack;
     private readonly InputAction m_Player_Ultimate;
     public struct PlayerActions
     {
@@ -328,6 +350,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
+        public InputAction @GroggyAttack => m_Wrapper.m_Player_GroggyAttack;
         public InputAction @Ultimate => m_Wrapper.m_Player_Ultimate;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -359,6 +382,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Interaction.started += instance.OnInteraction;
             @Interaction.performed += instance.OnInteraction;
             @Interaction.canceled += instance.OnInteraction;
+            @GroggyAttack.started += instance.OnGroggyAttack;
+            @GroggyAttack.performed += instance.OnGroggyAttack;
+            @GroggyAttack.canceled += instance.OnGroggyAttack;
             @Ultimate.started += instance.OnUltimate;
             @Ultimate.performed += instance.OnUltimate;
             @Ultimate.canceled += instance.OnUltimate;
@@ -387,6 +413,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Interaction.started -= instance.OnInteraction;
             @Interaction.performed -= instance.OnInteraction;
             @Interaction.canceled -= instance.OnInteraction;
+            @GroggyAttack.started -= instance.OnGroggyAttack;
+            @GroggyAttack.performed -= instance.OnGroggyAttack;
+            @GroggyAttack.canceled -= instance.OnGroggyAttack;
             @Ultimate.started -= instance.OnUltimate;
             @Ultimate.performed -= instance.OnUltimate;
             @Ultimate.canceled -= instance.OnUltimate;
@@ -416,6 +445,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
+        void OnGroggyAttack(InputAction.CallbackContext context);
         void OnUltimate(InputAction.CallbackContext context);
     }
 }

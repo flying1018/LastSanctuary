@@ -8,16 +8,19 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
     private Player _player;
     private float _curStamina;
     private int _staminaRecovery;
+    private float _enemyGroggyTime;
     private float _curUltimate;
 
     private Dictionary<StatObjectSO, Coroutine> _tempBuffs = new();
 
     //기본 스탯 프로퍼티
-    public int MaxHp { get => _maxHp; set => _maxHp = value; }
+    public float MaxHp { get => _maxHp; set => _maxHp = value; }
+    public float CurHp { get => _curHp; set => _curHp = value; }
     public float MaxStamina { get; set; }
     public int Attack { get => _attack; set => _attack = value; }
     public int Defence { get => _defence; set => _defence = value; }
     public float Ultimate { get => _curUltimate; set => _curUltimate = value; }
+
 
     //성물로 증가 가능한 프로퍼티
     public int HealAmonut { get; set; }
@@ -51,6 +54,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
         HealAmonut = _player.Data.healAmount;
         MaxUltimateGauge = _player.Data.maxUltimateGauge;
         IsInvincible = false;
+        _enemyGroggyTime = _player.Data.groggyTime;
         _curUltimate = 0f; // 궁극기 게이지 보존된다면 수정 필요
     }
 
@@ -236,8 +240,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
             if (condition is EnemyCondition enemyCondition && type != DamageType.Range)
             {
                 //적은 그로기 처리
-                //그로기 상태 미구현
-                enemyCondition.ChangeHitState();
+                enemyCondition.ChangeGroggyState(_enemyGroggyTime);
             }
 
             return true;

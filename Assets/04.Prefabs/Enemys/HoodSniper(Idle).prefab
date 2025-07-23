@@ -177,7 +177,7 @@ MonoBehaviour:
   platformLayer:
     serializedVersion: 2
     m_Bits: 1280
-  platformCheckDistance: 2
+  platformCheckDistance: 2.5
 --- !u!1 &6224774757196196992
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +294,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 80
   m_Sprite: {fileID: 689180027, guid: 1206612ea594dc844bb384b05dbf9f01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

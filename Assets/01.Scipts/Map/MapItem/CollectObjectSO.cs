@@ -18,6 +18,7 @@ public class CollectObjectSO : ScriptableObject
 
     [Header("Potion")]
     public bool isMaxIncrease;
+    public Sprite potionIcon;
     
     [Header("Relic")]
     public int index;

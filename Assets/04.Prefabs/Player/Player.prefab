@@ -479,6 +479,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 867664f9-eee4-4274-8f89-eaaf40aac3ca
     m_ActionName: Player/Interaction[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8202824365084005588}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnGroggyAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 11dd3f2b-5c56-49db-83dc-66d50e348cba
+    m_ActionName: Player/GroggyAttack[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -512,6 +528,7 @@ MonoBehaviour:
     dieParameter: '@Die'
     respawnParameter: Respawn
     dashParameter: Dash
+    hitParameter: Hit
   playerData: {fileID: 11400000, guid: fa11ae5f2b2d74860ae80e96545967e4, type: 2}
   groundLayer:
     serializedVersion: 2

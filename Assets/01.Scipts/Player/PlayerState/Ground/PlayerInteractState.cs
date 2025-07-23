@@ -18,7 +18,7 @@ public class PlayerInteractState : PlayerGroundState
 
         if (_player.InteractableTarget is SavePoint savePoint)
         {
-            InteractAnim = _player.StartCoroutine(Interact_Coroutine(savePoint));
+            _interactAnim = _player.StartCoroutine(Interact_Coroutine(savePoint));
         }
         else
         {
@@ -38,7 +38,7 @@ public class PlayerInteractState : PlayerGroundState
     {
         base.Update();
         
-        if(InteractAnim != null) return;
+        if(_interactAnim != null) return;
         
         //애니메이션이 완전히 종료 후
         _time += Time.deltaTime;
@@ -58,7 +58,7 @@ public class PlayerInteractState : PlayerGroundState
         
     }
     
-    private Coroutine InteractAnim;
+    private Coroutine _interactAnim;
     IEnumerator Interact_Coroutine(SavePoint savePoint)
     {
         Vector2 direction = (savePoint.NearPosition().position - _player.transform.position).normalized;
@@ -82,6 +82,6 @@ public class PlayerInteractState : PlayerGroundState
         
         savePoint.Interact();
 
-        InteractAnim = null;
+        _interactAnim = null;
     }
 }

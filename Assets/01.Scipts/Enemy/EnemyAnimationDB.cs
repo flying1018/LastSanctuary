@@ -15,6 +15,7 @@ public class EnemyAnimationDB
     [SerializeField] private string attackParameter = "Attack";
     [SerializeField] private string hitParameter = "Hit";
     [SerializeField] private string deathParameter = "Death";
+    [SerializeField] private string groggyParameter = "Groggy";
 
 
 
@@ -23,6 +24,7 @@ public class EnemyAnimationDB
     public int AttackParameterHash { get; private set; }
     public int HitParameterHash { get; private set; }
     public int DeathParameterHash { get; private set; }
+    public int GroggyParameterHash { get; private set; }
 
 
     public void Initailize()
@@ -32,5 +34,6 @@ public class EnemyAnimationDB
         AttackParameterHash = Animator.StringToHash(attackParameter);
         HitParameterHash = Animator.StringToHash(hitParameter);
         DeathParameterHash = Animator.StringToHash(deathParameter);
+        GroggyParameterHash = Animator.StringToHash(groggyParameter);
     }
 }

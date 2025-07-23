@@ -68,14 +68,9 @@ public class EnemyBaseState : IState
             _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
         else
             _move.gravityScale = Vector2.zero;
+        
+        
         _move.Move(x + _move.gravityScale);
-    }
-
-    //하늘 이동
-    protected void Fly(Vector2 direction)
-    {
-        Vector2 moveVelocity = direction.normalized * _data.moveSpeed;
-        _rigidbody.velocity = moveVelocity;
     }
 
     //회전
@@ -116,7 +111,7 @@ public class EnemyBaseState : IState
     //스폰 포인트 방향을 구하는 코드
     protected Vector2 DirectionToSpawnPoint()
     {
-        return _spawnPoint.position - _enemy.transform.position;
+        return (_spawnPoint.position - _enemy.transform.position).normalized;
     }
     
     #region AnimationEvent Method

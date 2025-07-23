@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// 몬스터에 필요한 초기 데이터
@@ -32,14 +31,22 @@ public class EnemySO : ScriptableObject
     public float attackDuration;
     public float knockbackForce;
     public AnimationClip attackAnim;
-    public float AttackTime => attackAnim.length; 
+    public float AttackTime => attackAnim.length;
+
+    [Header("GroggyState")]
+    public float blinkLength;
     
     [Header("condition")]
     public int attack;
     public int hp;
     public int defence;
+    
+    [Header("HitState")]
     public float damageDelay;
     public float hitDuration;
+
+    [Header("DeathState")] 
+    public int dropGold;
     public AnimationClip deathAnim;
     public float DeathTime => deathAnim.length;
     
@@ -48,8 +55,9 @@ public class EnemySO : ScriptableObject
     public int arrowPoolId;
     public int arrowPower;
 
-    [Header("Rush Attack")]
-    public float rushSpeed;
+    [Header("Flying Attack")] 
+    public float flyingHeight;
+    public float flyingSpeed;
 
     [Header("Sound")] 
     public AudioClip attackSound;

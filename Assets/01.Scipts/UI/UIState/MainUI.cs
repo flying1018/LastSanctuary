@@ -8,6 +8,7 @@ public class MainUI : UIBaseState
 {
     private Image _potionIcon;
     private TextMeshProUGUI _potionText;
+    private TextMeshProUGUI _goldText;
     private List<BuffUI> _buffUIs;
     private ConditionUI _hpConditionUI;
     private ConditionUI _staminaConditionUI;
@@ -19,6 +20,7 @@ public class MainUI : UIBaseState
         _potionText = _uiManager.PotionText;
         _hpConditionUI = _uiManager.HpUI;
         _staminaConditionUI = _uiManager.StaminaUI;
+        _goldText = _uiManager.GoldText;
         
         _buffUIs = new List<BuffUI>();
         for (int i = 0; i < _data.buffUINum; i++)
@@ -34,6 +36,7 @@ public class MainUI : UIBaseState
         _hpConditionUI.SetCurValue(_playerCondition.HpValue());
         _staminaConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.MaxStamina);
         _staminaConditionUI.SetCurValue(_playerCondition.StaminaValue());
+        _goldText.text = _playerInventory.Gold.ToString();
     }
 
     public override void Enter()
@@ -71,6 +74,12 @@ public class MainUI : UIBaseState
             _potionIcon.sprite = _data.potionIcon;
         else
             _potionIcon.sprite = _data.emptyPotionIcon;
+    }
+    
+    //골드 수를 갱신
+    public void UpdateGoldText()
+    {
+        _goldText.text = _playerInventory.Gold.ToString();
     }
 
     //버프 갱신
