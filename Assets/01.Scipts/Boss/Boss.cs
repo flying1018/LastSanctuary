@@ -8,7 +8,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     //필드
-
+    private Vector3 _spawnPoint;
     //직렬화
     [field: SerializeField] public BossAnimationDB AnimationDB {get; private set;}
     [SerializeField] private BossSO bossData;
@@ -45,6 +45,7 @@ public class Boss : MonoBehaviour
         BossWeapon = GetComponentInChildren<BossWeapon>();
         Weapon = BossWeapon.gameObject;
         ItemDropper = GetComponent<BossItemDropper>();
+        transform.position = _spawnPoint;
         Move = GetComponent<KinematicMove>();
         
         Move.Init(BoxCollider.bounds.size.x, BoxCollider.bounds.size.y, Rigidbody);
@@ -54,7 +55,12 @@ public class Boss : MonoBehaviour
         
         StateMachine = new BossStateMachine(this);
     }
-    
+
+    private void Start()
+    {
+        _spawnPoint = this.transform.position;
+    }
+
     private void OnEnable()
     {
         //오브젝트 활성화 시 플레이어 찾기

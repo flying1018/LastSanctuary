@@ -13,6 +13,8 @@ public class BossDeathState : BossBaseState
         _boss.Animator.SetTrigger(_boss.AnimationDB.DeathParameterHash);
         //보스 사망 연출
         _boss.BossEvent.OnTriggerBossDeath();
+        //보스 사망 체크
+        MapManager.SetBossDead();
     }
 
     public override void Update()
