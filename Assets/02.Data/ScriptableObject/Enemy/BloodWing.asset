@@ -34,8 +34,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 0}
   arrowPoolId: 0
   arrowPower: 0
-  flyingAttackDistance: 2
-  flyingHeight: 1
-  flyingSpeed: 5
+  flyingHeight: 20
+  flyingSpeed: 10
   attackSound: {fileID: 0}
   hitSound: {fileID: 8300000, guid: 0c627532d49dd2b49baec69f27b7b7b9, type: 3}

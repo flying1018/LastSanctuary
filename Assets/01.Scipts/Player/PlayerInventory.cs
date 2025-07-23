@@ -53,6 +53,7 @@ public class PlayerInventory : MonoBehaviour
                     CurPotionNum++;
                     CurPotionNum = Mathf.Clamp(CurPotionNum, 0, MaxPotionNum);
                 }
+                UIManager.Instance.UpdatePotionUI();
                 break;
         }
     }
