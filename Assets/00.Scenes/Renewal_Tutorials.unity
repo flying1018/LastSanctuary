@@ -226,7 +226,7 @@ MonoBehaviour:
   EnemySpawnPoints: []
   ItemSpawnPoints: []
   warpObjects: []
-  isBossAlive: 0
+  isBossAlive: 1
   selectWarpObj: {fileID: 0}
   targetWarpObj: {fileID: 0}
 --- !u!4 &123986373
@@ -115886,11 +115886,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13
+      value: -11.64
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.12
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.z
