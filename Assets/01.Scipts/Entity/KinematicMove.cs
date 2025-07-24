@@ -144,6 +144,7 @@ public class KinematicMove : MonoBehaviour
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
         {
+            if (IsAerialPlatform) return;
             IsGrounded = false;
         }
         

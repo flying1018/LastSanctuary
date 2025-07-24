@@ -22,6 +22,13 @@ public class PlayerDeathState : PlayerBaseState
         _condition.IsInvincible = true;
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+        
+        MapManager.Instance.RespawnEnemies();
+    }
+
     //모든 조작 및 물리 상태 막기
     public override void HandleInput() { }
 

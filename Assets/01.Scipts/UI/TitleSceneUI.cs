@@ -11,7 +11,7 @@ public class TitleSceneUI : MonoBehaviour
     public void OnClickGameStart()
     {
         //테스트용
-        SceneManager.LoadScene(StringNameSpace.Scenes.NewTutorials);
+        SceneManager.LoadScene(StringNameSpace.Scenes.RenewalTutorials);
     }
     
 }
