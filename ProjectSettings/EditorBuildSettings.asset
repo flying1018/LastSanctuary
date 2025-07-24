@@ -6,13 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/00.Scenes/NewTutorials.unity
-    guid: 3e51bd41e22c95e41a1fc245d4e19565
-  - enabled: 1
     path: Assets/00.Scenes/TitleScene.unity
     guid: a0fc13cde07262940a66c1270cf3ddf0
   - enabled: 1
-    path: Assets/00.Scenes/Enemy Boss Fix.unity
-    guid: 09dc3134e4e8a124dbb5ca9cc72a2c26
+    path: Assets/00.Scenes/Renewal_Tutorials.unity
+    guid: 17fd55e0ade4c53428bc1724db82128d
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 232de7517ad4649fb8063cd224c42546, type: 2}

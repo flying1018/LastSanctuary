@@ -63,7 +63,7 @@ public static class StringNameSpace
     //씬 정보
     public static class Scenes
     {
-        public const string NewTutorials = "NewTutorials";
+        public const string RenewalTutorials = "Renewal_Tutorials";
     }
 
     public static class ValueSpace

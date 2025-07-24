@@ -36,8 +36,7 @@ public class PlayerJumpState : PlayerAirState
     public override void HandleInput()
     {
         base.HandleInput();
-
-
+        
         if (_input.IsHoldJump)
             _jumpDumping = _data.holdJumpDuping;
         else
@@ -59,6 +58,7 @@ public class PlayerJumpState : PlayerAirState
         //점프가 끝나기 전까진 상태 변환 없음.
         if(_move.addForceCoroutine != null) return;
         base.PhysicsUpdate();
+        
     }
 
     //점프
