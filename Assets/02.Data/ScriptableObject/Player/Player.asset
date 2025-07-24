@@ -18,6 +18,7 @@ MonoBehaviour:
   jumpDuping: 0.93
   holdJumpDuping: 0.96
   fallJudgment: 7
+  downJumpTime: 0.2
   dashAnim: {fileID: 7400000, guid: 20526e8ebcd8b154daef3662caa8a8a5, type: 2}
   dashPower: 20
   dashCoolTime: 0.5
