@@ -23,9 +23,11 @@ public class ItemSpawnPoint : MonoBehaviour
     {
         curItem =ObjectPoolManager.Get(item,(int)ObjectPoolManager.PoolingIndex.Item);
         curItem.transform.position = transform.position;
-        
-        StatObject statObject = curItem.GetComponent<StatObject>();
-        statObject.OnInteracte += () => coroutine = StartCoroutine(RespawmCoroutine());
+
+        if (curItem.TryGetComponent(out StatObject statObject))
+        { 
+            statObject.OnInteracte += () => coroutine = StartCoroutine(RespawmCoroutine());
+        }
     }
     
 

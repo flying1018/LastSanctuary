@@ -495,6 +495,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 11dd3f2b-5c56-49db-83dc-66d50e348cba
     m_ActionName: Player/GroggyAttack[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6a944d68-699f-4b99-9913-0fa3689e7bc8
+    m_ActionName: Player/Ultimate[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -627,7 +631,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.5}
+  m_Size: {x: 1, y: 2.3}
   m_EdgeRadius: 0
 --- !u!114 &6856114705449192394
 MonoBehaviour:
@@ -767,6 +771,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e805740af841bd3438b051d1b4fafe85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  sprites: []
 --- !u!50 &938602627411954642
 Rigidbody2D:
   serializedVersion: 4

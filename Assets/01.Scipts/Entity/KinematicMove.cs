@@ -117,24 +117,13 @@ public class KinematicMove : MonoBehaviour
         if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
         {
             Vector3 point = other.ClosestPoint(transform.position);
-            GroundDirection = point - (transform.position - new Vector3(0,SizeY / 3f));
-
-            if (GroundDirection.y >= 0)
-            {
-                IsGrounded = false;
-                IsAerialPlatform = false;
-            }
-            else
-            {
-                Vector2 position = transform.position;
-                position.y = point.y + SizeY / 2;
-                transform.position = position;
-                
-                IsGrounded = true;
-                IsAerialPlatform = true;
-            }
-
-  
+            GroundDirection = point - (transform.position - new Vector3(0,SizeY / 3));
+            
+            if (GroundDirection.y > 0) return; 
+            
+            Vector2 position = transform.position;
+            position.y = point.y + SizeY / 2;
+            transform.position = position;
         }
         
         
