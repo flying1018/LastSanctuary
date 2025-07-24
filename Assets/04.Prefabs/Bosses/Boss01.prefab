@@ -136,7 +136,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 925d379cb152be54891be7a5c23adf6a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -159,7 +159,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -1603400233, guid: 5e4c06737edd3c942aa3f7974b2f3304, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.9375, y: 1.40625}
@@ -318,6 +318,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &3609969336750191853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8617638883515162977}
+  m_Layer: 0
+  m_Name: ItemDropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8617638883515162977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3609969336750191853}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.04, y: -0.41, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4479920597923524145}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4938275199986230608
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,6 +363,8 @@ GameObject:
   - component: {fileID: 3900554615578015434}
   - component: {fileID: 210963048183828009}
   - component: {fileID: 1630865445912036173}
+  - component: {fileID: 390536238904548190}
+  - component: {fileID: 5323315833894694255}
   m_Layer: 0
   m_Name: Boss01
   m_TagString: Enemy
@@ -355,6 +388,7 @@ Transform:
   - {fileID: 103140824763510856}
   - {fileID: 6464638119810744875}
   - {fileID: 5823522210937144706}
+  - {fileID: 8617638883515162977}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &5987565369630589868
@@ -478,3 +512,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1.4}
   m_EdgeRadius: 0
+--- !u!114 &390536238904548190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4938275199986230608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92fe8ceefb708a4588c4b16a01d2dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityScale: {x: 0, y: 0}
+--- !u!114 &5323315833894694255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4938275199986230608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f6ec19f510503469bd6e1584b278fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  relicItems:
+  - {fileID: 4525773854370757086, guid: ba78e566eb0ff46a2beda1230a8693c5, type: 3}
+  - {fileID: 1277652407626446751, guid: cf53d84a50e6b4206a47f48b32166def, type: 3}
+  - {fileID: 945913013097137193, guid: 048255f31eacf4a96bfb45ebba775238, type: 3}
+  statItems:
+  - {fileID: 7142327278872833692, guid: 18b0774b268164072bc3050373b21c5e, type: 3}
+  - {fileID: 7142327278872833692, guid: 99e2bfc00b2334b8aad40337f66183b5, type: 3}
+  spawnPoint: {fileID: 8617638883515162977}
+  dropRange: 1.5
+  jumpHeight: 5
+  jumpDuration: 1.5
+  minDrop: 10
+  maxDrop: 11

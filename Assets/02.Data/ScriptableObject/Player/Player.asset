@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   gravityPower: 0.6
-  jumpForce: 25
+  jumpForce: 27
   jumpDuping: 0.93
   holdJumpDuping: 0.96
   fallJudgment: 7
@@ -101,7 +101,7 @@ MonoBehaviour:
     isInvincible: 0
   groggyAttackPrefab: {fileID: 4232177779540841221, guid: 6e243fd6a47e6684ba9bf7b6cb7e60c8, type: 3}
   prefabId: 6
-  groggyAnimInterval: 0.2
+  groggyAnimInterval: 0.1
   groggyAttack:
     attackAnim: {fileID: 7400000, guid: 556e6092d14c0be4e9231422d08e78af, type: 2}
     attackIndex: 7
@@ -115,7 +115,7 @@ MonoBehaviour:
   groggyTime: 5
   detectionRange: 5
   hidingTime: 3
-  groggyAttackInterval: 0.3
+  groggyAttackInterval: 0.15
   <LightHitDuration>k__BackingField: 1
   <HeavyHitDuration>k__BackingField: 1
   <invincibleDuration>k__BackingField: 1

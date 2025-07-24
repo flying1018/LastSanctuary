@@ -45,7 +45,7 @@ public class Boss : MonoBehaviour
         BossWeapon = GetComponentInChildren<BossWeapon>();
         Weapon = BossWeapon.gameObject;
         ItemDropper = GetComponent<BossItemDropper>();
-        transform.position = _spawnPoint;
+        //transform.position = _spawnPoint;
         Move = GetComponent<KinematicMove>();
         
         Move.Init(BoxCollider.bounds.size.x, BoxCollider.bounds.size.y, Rigidbody);
@@ -56,10 +56,7 @@ public class Boss : MonoBehaviour
         StateMachine = new BossStateMachine(this);
     }
 
-    private void Start()
-    {
-        _spawnPoint = this.transform.position;
-    }
+
 
     private void OnEnable()
     {
