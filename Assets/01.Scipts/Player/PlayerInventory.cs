@@ -17,7 +17,7 @@ public class PlayerInventory : MonoBehaviour
 
     public int Gold
     {
-        get { return _gold; } 
+        get { return _gold; }
         set { _gold = Mathf.Max(0, value); }
     }
 
@@ -82,11 +82,34 @@ public class PlayerInventory : MonoBehaviour
         }
         else
         {
-            _playerCondition.Attack += data.attack;
-            _playerCondition.Defence += data.defense;
-            _playerCondition.MaxHp += data.hp;
-            _playerCondition.CurHp += data.hp;
-            _playerCondition.MaxStamina += data.stamina;
+            switch (data.statType)
+            {
+                case StatType.None:
+                    DebugHelper.LogError("StatType이 None임");
+                    break;
+                case StatType.Atk:
+                    _playerCondition.Attack += data.amount;
+                    break;
+                case StatType.Def:
+                    _playerCondition.Defence += data.amount;
+                    break;
+                case StatType.Stamina:
+                    _playerCondition.MaxStamina += data.amount;
+                    break;
+                case StatType.Hp:
+                    _playerCondition.MaxHp += data.amount;
+                    _playerCondition.CurHp += data.amount;
+                    break;
+                case StatType.Recovery:
+                    _playerCondition.HealAmonut += data.amount;
+                    break;
+                case StatType.Ultimit:
+                    _playerCondition.MaxUltimateGauge -= data.amount;
+                    if (_playerCondition.CurUltimate >= _playerCondition.MaxUltimateGauge)
+                        _playerCondition.CurUltimate = _playerCondition.MaxUltimateGauge;
+                    break;
+            }
+
             EquipRelics.Add(data);
         }
 
@@ -95,14 +118,36 @@ public class PlayerInventory : MonoBehaviour
     //장착 해제
     public void UnEquipRelic(CollectObjectSO data)
     {
-        _playerCondition.Attack -= data.attack;
-        _playerCondition.Defence -= data.defense;
-        _playerCondition.MaxHp -= data.hp;
-        if (_playerCondition.CurHp < data.hp)
+        switch (data.statType)
         {
-            _playerCondition.CurHp = 1f;
+            case StatType.None:
+                DebugHelper.LogError("StatType이 None임");
+                break;
+            case StatType.Atk:
+                _playerCondition.Attack -= data.amount;
+                break;
+            case StatType.Def:
+                _playerCondition.Defence -= data.amount;
+                break;
+            case StatType.Stamina:
+                _playerCondition.MaxStamina -= data.amount;
+                break;
+            case StatType.Hp:
+                _playerCondition.MaxHp -= data.amount;
+                _playerCondition.CurHp -= data.amount;
+                if (_playerCondition.CurHp <= 0f)
+                {
+                    _playerCondition.CurHp = 1f;
+                }
+                break;
+            case StatType.Recovery:
+                _playerCondition.HealAmonut -= data.amount;
+                break;
+            case StatType.Ultimit:
+                _playerCondition.MaxUltimateGauge += data.amount;
+                break;
         }
-        _playerCondition.MaxStamina -= data.stamina;
+
         EquipRelics.Remove(data);
     }
 
@@ -112,7 +157,8 @@ public class PlayerInventory : MonoBehaviour
         int sum = 0;
         foreach (CollectObjectSO data in EquipRelics)
         {
-            sum += data.attack;
+            if (data.statType != StatType.Atk) { continue; }
+            sum += data.amount;
         }
         return sum;
     }
@@ -123,7 +169,8 @@ public class PlayerInventory : MonoBehaviour
         int sum = 0;
         foreach (CollectObjectSO data in EquipRelics)
         {
-            sum += data.defense;
+            if (data.statType != StatType.Def) { continue; }
+            sum += data.amount;
         }
         return sum;
     }
@@ -134,7 +181,8 @@ public class PlayerInventory : MonoBehaviour
         int sum = 0;
         foreach (CollectObjectSO data in EquipRelics)
         {
-            sum += data.hp;
+            if (data.statType != StatType.Hp) { continue; }
+            sum += data.amount;
         }
         return sum;
     }
@@ -145,11 +193,12 @@ public class PlayerInventory : MonoBehaviour
         int sum = 0;
         foreach (CollectObjectSO data in EquipRelics)
         {
-            sum += data.stamina;
+            if (data.statType != StatType.Stamina) { continue; }
+            sum += data.amount;
         }
         return sum;
     }
-    
+
     //포션 최대치로 회복
     public void SupplyPotion()
     {

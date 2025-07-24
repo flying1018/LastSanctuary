@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3e0f2895c8d4651b818dc864c0e262, type: 3}
   m_Name: Ult_Cst_RL
   m_EditorClassIdentifier: 
-  UID: T001
+  UID: T006
   collectType: 1
   isMaxIncrease: 0
-  healAmount: 0
+  potionIcon: {fileID: 0}
   index: 5
   relicName: "\uAC80\uC740 \uC0C8\uBCBD"
   effectDesc: "\uC7A5\uCC29\uC2DC \uAD81\uADF9\uAE30 \uBC1C\uB3D9 \uC694\uAD6C \uC218\uCE58
@@ -26,3 +26,5 @@ MonoBehaviour:
   defense: 0
   hp: 0
   stamina: 0
+  ult: 100
+  isSpecial: 1
