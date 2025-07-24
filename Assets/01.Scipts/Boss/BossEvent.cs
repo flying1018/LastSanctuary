@@ -90,9 +90,7 @@ public class BossEvent : MonoBehaviour
         //카메라 초기화 
         _bossCamera.transform.position = _originCameraPosition;
         _bossCamera.m_Lens.OrthographicSize = _originCameraSize;
-        
-        //외곽선 변경
-        //_boss.SpriteRenderer.material = _boss.Data.materials[0];
+        _brain.m_DefaultBlend = _originBlend; 
         
         //플레이어 이벤트 상태(조작 불가 + 업데이트, 물리 업데이트 막기)
         _player.EventProduction(true);
