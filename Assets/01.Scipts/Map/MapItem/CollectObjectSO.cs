@@ -6,6 +6,17 @@ public enum CollectType
     Relic
 }
 
+public enum StatType
+{
+    None,
+    Atk,
+    Def,
+    Stamina,
+    Hp,
+    Recovery,
+    Ultimit,
+}
+
 /// <summary>
 /// 수집 오브젝트 데이터
 /// </summary>
@@ -19,16 +30,14 @@ public class CollectObjectSO : ScriptableObject
     [Header("Potion")]
     public bool isMaxIncrease;
     public Sprite potionIcon;
-    
+
     [Header("Relic")]
     public int index;
     public string relicName;
     public string effectDesc;
     public string relicDesc;
     public Sprite relicSprite;
-    public int attack;
-    public int defense;
-    public int hp;
-    public int stamina;
-    
+
+    public StatType statType;
+    public int amount;
 }
