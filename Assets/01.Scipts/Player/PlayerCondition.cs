@@ -19,7 +19,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
     public float MaxStamina { get; set; }
     public int Attack { get => _attack; set => _attack = value; }
     public int Defence { get => _defence; set => _defence = value; }
-    public float Ultimate { get => _curUltimate; set => _curUltimate = value; }
+    public float CurUltimate { get => _curUltimate; set => _curUltimate = value; }
 
 
     //성물로 증가 가능한 프로퍼티
@@ -123,6 +123,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
     //플레이어 체력 회복
     public void Heal()
     {
+        DebugHelper.Log($"현재 회복량 : {HealAmonut}");
         if (_curHp < _maxHp)
         {
             _curHp += HealAmonut;
