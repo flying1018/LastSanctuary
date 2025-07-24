@@ -438,7 +438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &278691681082118080
@@ -723,6 +723,7 @@ MonoBehaviour:
   buffUIPivot: {fileID: 1639578515745457478}
   hpUI: {fileID: 5017060446381967822}
   staminaUI: {fileID: 3492376537194234891}
+  ultimateConditionUI: {fileID: 2168642614697974113}
   potionIcon: {fileID: 4028807872812371080}
   potionText: {fileID: 4811953423336304751}
   goldText: {fileID: 314044017701503849}
@@ -1042,7 +1043,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -10, y: 0}
-  m_SizeDelta: {x: 20.000008, y: 0}
+  m_SizeDelta: {x: 14, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &2374317529338884431
 CanvasRenderer:
@@ -1153,7 +1154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2021522840552205220
@@ -4030,7 +4031,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -10, y: 0}
-  m_SizeDelta: {x: 20.000008, y: 0}
+  m_SizeDelta: {x: 14, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &7940336733873030906
 CanvasRenderer:
@@ -4524,7 +4525,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -10, y: 0}
-  m_SizeDelta: {x: 20.000008, y: 0}
+  m_SizeDelta: {x: 14, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &3754763181407371866
 CanvasRenderer:

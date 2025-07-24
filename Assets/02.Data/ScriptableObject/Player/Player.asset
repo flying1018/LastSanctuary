@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   gravityPower: 0.6
-  jumpForce: 30
+  jumpForce: 25
   jumpDuping: 0.93
   holdJumpDuping: 0.96
   fallJudgment: 7
@@ -80,7 +80,7 @@ MonoBehaviour:
     groggyDamage: 0
     isInvincible: 0
   UltAttack:
-    attackAnim: {fileID: 0}
+    attackAnim: {fileID: 7400000, guid: c05d47f87607ceb4ca0211b1bfe8e7bd, type: 2}
     attackIndex: 0
     multiplier: 0
     nextComboTime: 0
