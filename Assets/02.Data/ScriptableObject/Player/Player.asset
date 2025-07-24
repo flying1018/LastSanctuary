@@ -57,7 +57,7 @@ MonoBehaviour:
     groggyDamage: 5
     isInvincible: 0
   defpen: 0
-  maxUltimateGauge: 0
+  maxUltimateGauge: 100
   dashAttack:
     attackAnim: {fileID: 7400000, guid: ec5c2cbf39d0d7c4185a8542b0455c20, type: 2}
     attackIndex: 4

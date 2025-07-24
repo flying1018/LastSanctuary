@@ -2870,6 +2870,7 @@ MonoBehaviour:
   EnemySpawnPoints: []
   ItemSpawnPoints: []
   warpObjects: []
+  isBossAlive: 0
   selectWarpObj: {fileID: 0}
   targetWarpObj: {fileID: 0}
 --- !u!1 &264657713
@@ -6116,6 +6117,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2019086048596025569, guid: b42efae5cbf6edc448eff2ee2a538551, type: 3}
   m_PrefabInstance: {fileID: 619611448}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &621152643 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2168642614697974113, guid: 855e5eb8bcb01fb4b8ac6aae284da4bb, type: 3}
+  m_PrefabInstance: {fileID: 1775487852}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f59d77d80fb53044abd1aea0d800ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &628524880 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5088055405002192178, guid: 4653b3b449fac104cb979968fa51464b, type: 3}
@@ -12631,11 +12643,11 @@ MonoBehaviour:
   - {fileID: 142139316}
   - {fileID: 831900259}
   - {fileID: 2113485464}
-  cameraShakeTime: 0
   targetLesSise: 7
   sloweventDuration: 2
   cameraZoom: 5
   redSilhouette: {fileID: 2100000, guid: 2ff5d5dd8b39e394aabdd9f8aa41f11a, type: 2}
+  shakeDuration: 0
 --- !u!4 &1408059189
 Transform:
   m_ObjectHideFlags: 0
@@ -33954,6 +33966,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 4457109098035011348, guid: 855e5eb8bcb01fb4b8ac6aae284da4bb, type: 3}
+      propertyPath: ultimateConditionUI
+      value: 
+      objectReference: {fileID: 621152643}
     - target: {fileID: 4776970490122015056, guid: 855e5eb8bcb01fb4b8ac6aae284da4bb, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

@@ -12,6 +12,7 @@ public class MainUI : UIBaseState
     private List<BuffUI> _buffUIs;
     private ConditionUI _hpConditionUI;
     private ConditionUI _staminaConditionUI;
+    private ConditionUI _UltimateConditionUI;
     
     public MainUI(UIStateMachine uiStateMachine) : base(uiStateMachine)
     {
@@ -20,8 +21,9 @@ public class MainUI : UIBaseState
         _potionText = _uiManager.PotionText;
         _hpConditionUI = _uiManager.HpUI;
         _staminaConditionUI = _uiManager.StaminaUI;
+        _UltimateConditionUI = _uiManager.UltimateConditionUI;
         _goldText = _uiManager.GoldText;
-        
+
         _buffUIs = new List<BuffUI>();
         for (int i = 0; i < _data.buffUINum; i++)
         {
@@ -36,11 +38,14 @@ public class MainUI : UIBaseState
         _hpConditionUI.SetCurValue(_playerCondition.HpValue());
         _staminaConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.MaxStamina);
         _staminaConditionUI.SetCurValue(_playerCondition.StaminaValue());
+        _UltimateConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.MaxUltimateGauge);
+        _UltimateConditionUI.SetCurValue(_playerCondition.UltimateValue());
         _goldText.text = _playerInventory.Gold.ToString();
     }
 
     public override void Enter()
     {
+        _UltimateConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.MaxUltimateGauge);
         _uiManager.MainUI.SetActive(true);
     }
     public override void Exit()
@@ -60,10 +65,11 @@ public class MainUI : UIBaseState
     public override void Update()
     {
         base.Update();
-        
+
         //UI 갱신
         _hpConditionUI.SetCurValue(_playerCondition.HpValue());
         _staminaConditionUI.SetCurValue(_playerCondition.StaminaValue());
+        _UltimateConditionUI.SetCurValue(_playerCondition.UltimateValue());
     }
     
     //포션의 개수를 갱신
