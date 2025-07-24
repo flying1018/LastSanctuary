@@ -27,7 +27,7 @@ public class KinematicMove : MonoBehaviour
         _rigidbody = rigidbody;
     }
     
-    private void OnTriggerEnter2D(Collider2D other)
+    protected void OnTriggerEnter2D(Collider2D other)
     {
         
         //바닥 충돌 시
@@ -86,7 +86,7 @@ public class KinematicMove : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    protected void OnTriggerStay2D(Collider2D other)
     {
         //땅과 충돌 시
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
@@ -124,7 +124,7 @@ public class KinematicMove : MonoBehaviour
     }
     
 
-    private void OnTriggerExit2D(Collider2D other)
+    protected void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
         {
