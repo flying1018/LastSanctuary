@@ -21,9 +21,5 @@ MonoBehaviour:
   effectDesc: "\uC7A5\uCC29\uC2DC \uBC29\uC5B4\uB825 5 \uC99D\uAC00"
   relicDesc: "\uBC30\uACBD\uC124\uBA85 \uC5C6\uC74C."
   relicSprite: {fileID: 21300000, guid: ffe11183f04554de196946acf121e6c5, type: 3}
-  attack: 0
-  defense: 5
-  hp: 0
-  stamina: 0
-  ult: 0
-  isSpecial: 0
+  statType: 2
+  amount: 5

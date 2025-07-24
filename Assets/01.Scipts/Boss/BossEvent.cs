@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
+
 
 /// <summary>
 /// 보스 스폰과 이벤트를 담당하는 스크립트
@@ -26,7 +23,6 @@ public class BossEvent : MonoBehaviour
     [Header("Boss Spawn")]
     [SerializeField] private Transform playerPosition;
     [SerializeField] private float blackDuration = 1f;
-    [SerializeField] private AudioClip howlingSound;
     [SerializeField] private float blinkInterval;
     [SerializeField] private GameObject[] parts;
     [SerializeField] private float targetLesSise = 7f;

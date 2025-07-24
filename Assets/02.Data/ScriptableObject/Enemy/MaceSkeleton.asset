@@ -28,7 +28,7 @@ MonoBehaviour:
   attack: 25
   hp: 120
   defence: 0
-  damageDelay: 0.2
+  damageDelay: 0.1
   hitDuration: 0.5
   dropGold: 500
   deathAnim: {fileID: 7400000, guid: 2fee7b95aee869640ab0bfeea263aabf, type: 2}
