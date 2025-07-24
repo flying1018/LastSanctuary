@@ -5,19 +5,19 @@ public class CollectObject : MonoBehaviour, IInteractable, IComparable<CollectOb
 {
     [SerializeField] private CollectObjectSO collectData;
     
-    public bool isGet;
+    private bool _isGet;
     
     //프로퍼티
     public CollectObjectSO Data { get => collectData; }
-    public bool IsGet { get => isGet; set => isGet = value; }
+    public bool IsGet { get => _isGet; set => _isGet = value; }
 
     //충돌한 플레이어의 PlayerInventory 정보를 받아서 처리해도 될듯.
     public void Interact()
     {
-        if (isGet) { return; }
+        if (_isGet) { return; }
 
         ItemManager.Instance.GetCollectItem(collectData);
-        isGet = true;
+        _isGet = true;
 
         SetActive();
     }
@@ -27,7 +27,7 @@ public class CollectObject : MonoBehaviour, IInteractable, IComparable<CollectOb
     /// </summary>
     public void SetActive()
     {
-        gameObject.SetActive(!isGet);
+        gameObject.SetActive(!_isGet);
     }
 
     //수집물 번호 정렬

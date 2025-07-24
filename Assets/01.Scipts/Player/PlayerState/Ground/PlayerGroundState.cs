@@ -77,7 +77,7 @@ public class PlayerGroundState : PlayerBaseState
         if (_input.MoveInput.y < 0)
         {
             if(!_move.IsAerialPlatform) return;
-            _move.IsGrounded = false;
+            _stateMachine.ChangeState(_stateMachine.DownJumpState);
         }
 
         //상호작용 키 입력 시 

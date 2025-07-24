@@ -79,7 +79,7 @@ public class KinematicMove : MonoBehaviour
             WallDirection = point - transform.position;
 
             Vector2 position = transform.position;
-            position.x = point.x + (WallDirection.x < 0 ? SizeX : -SizeX/2);
+            position.x = point.x + (WallDirection.x < 0 ? SizeX/2 : -SizeX/2);
             transform.position = position;
             
             IsWall = true;
@@ -95,19 +95,35 @@ public class KinematicMove : MonoBehaviour
             GroundDirection = point - transform.position;
             
             Vector2 position = transform.position;
-            position.y = point.y + (GroundDirection.y < 0 ? SizeY / 2 : -SizeY/2);
+            position.y = point.y + SizeY / 2;
+            transform.position = position;
+            
+            IsGrounded = true;
+        }
+        
+        
+        //천장과 충돌 시
+        if (other.gameObject.CompareTag(StringNameSpace.Tags.Celling))
+        {
+            Vector3 point = other.ClosestPoint(transform.position);
+            GroundDirection = point - transform.position;
+            
+            Vector2 position = transform.position;
+            position.y = point.y - SizeY / 2;
             transform.position = position;
         }
         
-        //땅과 충돌 시
+        //공중 발판과 충돌 시
         if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
         {
             Vector3 point = other.ClosestPoint(transform.position);
-            if (point.y > transform.position.y)
-            {
-                IsGrounded = false;
-                IsAerialPlatform = false;
-            }
+            GroundDirection = point - (transform.position - new Vector3(0,SizeY / 3));
+            
+            if (GroundDirection.y > 0) return; 
+            
+            Vector2 position = transform.position;
+            position.y = point.y + SizeY / 2;
+            transform.position = position;
         }
         
         
@@ -128,6 +144,7 @@ public class KinematicMove : MonoBehaviour
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
         {
+            if (IsAerialPlatform) return;
             IsGrounded = false;
         }
         

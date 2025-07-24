@@ -30,11 +30,16 @@ public class PlayerSO : ScriptableObject
     public float moveSpeed;
     public float gravityPower;
 
-    [Header("AirState")] 
+    [Header("JumpState")] 
     public float jumpForce;
     public float jumpDuping;
     public float holdJumpDuping;
+    
+    [Header("FallState")]
     public float fallJudgment;
+
+    [Header("DownJumpState")] 
+    public float downJumpTime;
 
     [Header("DashState")] 
     public AnimationClip dashAnim;

@@ -59,6 +59,12 @@ public static class StringNameSpace
         public const string Celling = "Celling";
 
     }
+    
+    //씬 정보
+    public static class Scenes
+    {
+        public const string RenewalTutorials = "Renewal_Tutorials";
+    }
 
     public static class ValueSpace
     {

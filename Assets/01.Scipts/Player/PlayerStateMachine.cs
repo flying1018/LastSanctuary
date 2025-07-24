@@ -10,6 +10,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
+    public PlayerDownJumpState DownJumpState { get; private set; }
     public List<ComboAttackState> ComboAttack { get; private set; }
     public JumpAttackState JumpAttack { get; private set; }
     public DashAttackState DashAttack { get; private set; }
@@ -36,6 +37,7 @@ public class PlayerStateMachine : StateMachine
         IdleState = new PlayerIdleState(this);
         MoveState = new PlayerMoveState(this);
         JumpState = new PlayerJumpState(this);
+        DownJumpState = new PlayerDownJumpState(this);
         ComboAttack = new List<ComboAttackState>
         {
             new ComboAttackState(this, player.Data.attacks[0]),

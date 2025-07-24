@@ -30,8 +30,8 @@ public class PlayerRopedState : PlayerAirState
             _stateMachine.ChangeState(_stateMachine.DashState);
         }
 
-        //좌우 입력 중이고, 점프 키를 입력하면 
-        if (_input.IsJump && Mathf.Abs(_input.MoveInput.x) > 0)
+        //점프 키를 입력하면 
+        if (_input.IsJump)
         {   //점프
             _stateMachine.ChangeState(_stateMachine.JumpState);
         }
