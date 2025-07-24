@@ -7,12 +7,16 @@ public class UltimateState : PlayerBaseState
     private float _animationTime;
     public UltimateState(PlayerStateMachine stateMachine, AttackInfo attackInfo) : base(stateMachine)
     {
-
+        _animationTime = attackInfo.animTime * 5f;
     }
 
     public override void Enter()
     {
         base.Enter();
+        _condition.CurUltimate = 0f;
+        _condition.InvincibleFunc(_animationTime);
+
+
     }
 
     public override void Exit()
@@ -34,5 +38,10 @@ public class UltimateState : PlayerBaseState
     public override void PhysicsUpdate()
     {
 
+    }
+
+    IEnumerator UltimateSkill_Coroutine()
+    {
+        yield return null;
     }
 }
