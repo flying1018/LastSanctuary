@@ -79,16 +79,6 @@ MonoBehaviour:
     knockbackForce: 0
     groggyDamage: 0
     isInvincible: 0
-  UltAttack:
-    attackAnim: {fileID: 7400000, guid: c05d47f87607ceb4ca0211b1bfe8e7bd, type: 2}
-    attackIndex: 0
-    multiplier: 0
-    nextComboTime: 0
-    staminaCost: 0
-    attackForce: 0
-    knockbackForce: 0
-    groggyDamage: 0
-    isInvincible: 0
   topAttack:
     attackAnim: {fileID: 7400000, guid: cbdcd516d24c3354bbf3ec8e4db03db7, type: 2}
     attackIndex: 6
@@ -111,11 +101,21 @@ MonoBehaviour:
     attackForce: 1
     knockbackForce: 5
     groggyDamage: 0
-    isInvincible: 1
+    isInvincible: 0
   groggyTime: 5
   detectionRange: 5
   hidingTime: 3
   groggyAttackInterval: 0.15
+  UltAttack:
+    attackAnim: {fileID: 7400000, guid: 1b15b0d3195f54e7d898c9aeb9060295, type: 2}
+    attackIndex: 8
+    multiplier: 1
+    nextComboTime: 0
+    staminaCost: 0
+    attackForce: 1
+    knockbackForce: 5
+    groggyDamage: 0
+    isInvincible: 0
   <LightHitDuration>k__BackingField: 1
   <HeavyHitDuration>k__BackingField: 1
   <invincibleDuration>k__BackingField: 1
