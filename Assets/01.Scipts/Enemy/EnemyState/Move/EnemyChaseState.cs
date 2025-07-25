@@ -67,7 +67,6 @@ public class EnemyChaseState : EChaseState
         //절벽에 다다르면 정지
         if (!_enemy.IsPlatform())
         {
-            Debug.Log(_enemy.IsPlatform());
             Move(Vector2.zero);
             Rotate(Vector2.zero);
             return;

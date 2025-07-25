@@ -13,6 +13,9 @@ public class EReturnState : EnemyBaseState
         //복귀시 무적
         _condition.IsInvincible = true;
         _enemy.Target = null;  
+        
+        //회복
+        _condition.Recovery();
     }
 
     public override void Exit()

@@ -105,4 +105,10 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
         _curHp = 0;
         _enemy.StateMachine.ChangeState(_enemy.StateMachine.DeathState);
     }
+    
+    //회복
+    public void Recovery()
+    {
+        _curHp = _maxHp;
+    }
 }

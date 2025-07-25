@@ -27,7 +27,7 @@ public class KinematicMove : MonoBehaviour
         _rigidbody = rigidbody;
     }
     
-    protected void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         
         //바닥 충돌 시
@@ -55,23 +55,6 @@ public class KinematicMove : MonoBehaviour
             transform.position = position;
         }
         
-        //공중 발판 충돌 시
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
-        {
-            Vector3 point = other.ClosestPoint(transform.position);
-            GroundDirection = point - (transform.position - new Vector3(0,SizeY / 3));
-
-            if (GroundDirection.y > 0) return; 
-            
-            Vector2 position = transform.position;
-            position.y = point.y + SizeY / 2;
-            transform.position = position;
-            
-            gravityScale = Vector2.zero;
-            IsGrounded = true;
-            IsAerialPlatform = true;
-        }
-        
         //벽과 충돌 시
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Wall))
         {
@@ -86,7 +69,7 @@ public class KinematicMove : MonoBehaviour
         }
     }
 
-    protected void OnTriggerStay2D(Collider2D other)
+    protected virtual void OnTriggerStay2D(Collider2D other)
     {
         //땅과 충돌 시
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
@@ -113,19 +96,6 @@ public class KinematicMove : MonoBehaviour
             transform.position = position;
         }
         
-        //공중 발판과 충돌 시
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
-        {
-            Vector3 point = other.ClosestPoint(transform.position);
-            GroundDirection = point - (transform.position - new Vector3(0,SizeY / 3));
-            
-            if (GroundDirection.y > 0) return; 
-            
-            Vector2 position = transform.position;
-            position.y = point.y + SizeY / 2;
-            transform.position = position;
-        }
-        
         
         //벽과 충돌 시
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Wall))
@@ -140,18 +110,12 @@ public class KinematicMove : MonoBehaviour
     }
     
 
-    protected void OnTriggerExit2D(Collider2D other)
+    protected virtual void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
         {
             if (IsAerialPlatform) return;
             IsGrounded = false;
-        }
-        
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
-        {
-            IsGrounded = false;
-            IsAerialPlatform = false;
         }
         
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Wall))

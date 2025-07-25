@@ -75,7 +75,6 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
     //대미지 처리
     public void TakeDamage(int atk, DamageType type, float defpen = 0f)
     {
-        DebugHelper.Log($"현재 체력 {_curHp}");
         //무적 일때
         if (IsInvincible) return;
         DamageType = type;
