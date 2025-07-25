@@ -13,6 +13,9 @@ public class UIManager : Singleton<UIManager>
     [Header("UnifiedUI")]
     [SerializeField] private GameObject unifiedUI;
     [SerializeField] private Button exitButton;
+    [SerializeField] private Button relicUIButton;
+    [SerializeField] private Button skillUIButton;
+    [SerializeField] private Button settingUIButton;
     
     [Header("RelicUI")]
     [SerializeField] private GameObject relicUI;
@@ -33,7 +36,21 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI potionText;
     [SerializeField] private TextMeshProUGUI goldText;
     
-    
+    [Header("SettingUI")]
+    [SerializeField] private GameObject settingUI;
+    [SerializeField] private TextMeshProUGUI  resolutionText;
+    [SerializeField] private TextMeshProUGUI  fullscreenText;
+    [SerializeField] private Slider bgmVolume;
+    [SerializeField] private Slider sfxVolume;
+    //다른 UI에서는 필요없는거라 일단 빼놨습니다(의견 나눠봐야될듯)
+    [SerializeField] private Button leftButton;
+    [SerializeField] private Button rightButton;
+    [SerializeField] private Button fullscreenButtonA;
+    [SerializeField] private Button fullscreenButtonB;
+    [SerializeField] private Slider bgmSlider;
+    [SerializeField] private Slider sfxSlider;
+
+
     public UIStateMachine StateMachine { get; set; }
     public PlayerCondition PlayerCondition { get; set; }
     public PlayerInventory PlayerInventory { get; set; }
@@ -43,6 +60,9 @@ public class UIManager : Singleton<UIManager>
     //UnifiedUI
     public GameObject UnifiedUI { get => unifiedUI;}
     public Button ExitButton { get => exitButton;}
+    public Button RelicUIButton { get => relicUIButton;}
+    public Button SkillUIButton { get => skillUIButton;}
+    public Button SettingUIButton { get => settingUIButton;}
     
     //RelicUI
     public GameObject RelicUI { get => relicUI;}
@@ -62,6 +82,19 @@ public class UIManager : Singleton<UIManager>
     public ConditionUI StaminaUI { get => staminaUI;}
     public ConditionUI UltimateConditionUI { get => ultimateConditionUI; }
 
+    //SettingUI
+    public GameObject SettingUI { get => settingUI;}
+    public TextMeshProUGUI ResolutionText { get => resolutionText;}
+    public TextMeshProUGUI FullscreenText { get => fullscreenText;}
+    public Slider BgmVolume { get => bgmVolume;}
+    public Slider SfxVolume { get => sfxVolume;}
+    //임시
+    public Button LeftButton { get => leftButton;}
+    public Button RightButton { get => rightButton;}
+    public Button FullscreenButtonA { get => fullscreenButtonA;}
+    public Button FullscreenButtonB { get => fullscreenButtonB;}
+    public Slider BgmSlider { get => bgmSlider;}
+    public Slider SfxSlider { get => sfxSlider;}
 
     private void Start()
     {

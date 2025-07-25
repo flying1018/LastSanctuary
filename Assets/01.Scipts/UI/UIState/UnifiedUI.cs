@@ -7,6 +7,9 @@ public class UnifiedUI : UIBaseState
     public UnifiedUI(UIStateMachine uiStateMachine) : base(uiStateMachine)
     {
         _uiManager.ExitButton.onClick.AddListener(OnClickExitButton);
+        _uiManager.RelicUIButton.onClick.AddListener(OnClickRelicUIButton);
+        _uiManager.SkillUIButton.onClick.AddListener(OnClickSkillUIButton);
+        _uiManager.SettingUIButton.onClick.AddListener(OnClickSettingUIButton);
     }
 
     public override void Enter()
@@ -19,6 +22,22 @@ public class UnifiedUI : UIBaseState
     {
         _uiManager.PlayerInput.enabled = true;
         _uiManager.UnifiedUI.SetActive(false);
+    }
+    //성물 버튼
+    public void OnClickRelicUIButton()
+    {
+        _uiStateMachine.ChangeState(_uiStateMachine.RelicUI);
+    }
+    //스킬 버튼
+    public void OnClickSkillUIButton()
+    {
+       // _uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
+       //아직 없음
+    }
+    //설정 버튼
+    public void OnClickSettingUIButton()
+    {
+        _uiStateMachine.ChangeState(_uiStateMachine.SettingUI);
     }
 
     //나가기 버튼
