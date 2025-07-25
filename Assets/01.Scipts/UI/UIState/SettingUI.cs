@@ -43,10 +43,22 @@ public class SettingUI : UnifiedUI
             _uiManager.SettingUI.SetActive(false);
         }
 
+        public override void HandleInput()
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                //성물 UI로 이동
+                _uiStateMachine.ChangeState(_uiStateMachine.RelicUI);
+            }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {   //스킬 UI로 이동
+                //_uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
+            }
+        }
+
         private void SetupSettings()
         {
             InitResolution();
-            
         }
 
         
@@ -100,7 +112,8 @@ public class SettingUI : UnifiedUI
             Resolution res = _resolutions[_curResolutionIndex];
             Screen.SetResolution(res.width, res.height, _isFullScreen);
             _resolution.text = $"{res.width} x {res.height}";
-            _fullscreen.text = $"{Screen.fullScreen}";
+            _fullscreen.text = _isFullScreen ? "전체화면" : "창모드";
+            Debug.Log($"{_isFullScreen}{_fullscreen.text}");
         }
         
         public void OnBGMVolumeChange(float value)

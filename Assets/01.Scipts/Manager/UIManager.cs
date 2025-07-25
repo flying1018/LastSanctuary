@@ -13,6 +13,9 @@ public class UIManager : Singleton<UIManager>
     [Header("UnifiedUI")]
     [SerializeField] private GameObject unifiedUI;
     [SerializeField] private Button exitButton;
+    [SerializeField] private Button relicUIButton;
+    [SerializeField] private Button skillUIButton;
+    [SerializeField] private Button settingUIButton;
     
     [Header("RelicUI")]
     [SerializeField] private GameObject relicUI;
@@ -57,6 +60,9 @@ public class UIManager : Singleton<UIManager>
     //UnifiedUI
     public GameObject UnifiedUI { get => unifiedUI;}
     public Button ExitButton { get => exitButton;}
+    public Button RelicUIButton { get => relicUIButton;}
+    public Button SkillUIButton { get => skillUIButton;}
+    public Button SettingUIButton { get => settingUIButton;}
     
     //RelicUI
     public GameObject RelicUI { get => relicUI;}
