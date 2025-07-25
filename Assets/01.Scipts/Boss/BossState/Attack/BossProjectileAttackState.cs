@@ -32,7 +32,7 @@ public class BossProjectileAttackState : BossAttackState
         float x = targetDir.x > 0 ? -_data.backjumpDistance: _data.backjumpDistance;
         Vector2 jumpDir = new Vector2(x, _data.backjumpHeight);
         
-        //점프 시간 계산 포물선을 그리기 위해선 2번 반복 4로 하면 원을 그림.
+        //점프 시간 계산 포물선을 그리기 위해선 2번 반복
         float duration = 2/_data.backjumpSpeed;
         
         while (_time < duration)
