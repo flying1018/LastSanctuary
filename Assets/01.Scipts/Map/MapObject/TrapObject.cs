@@ -6,6 +6,7 @@ public class TrapObject : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private Transform returnPostion;
+    [SerializeField] private float returnTime;
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -21,7 +22,7 @@ public class TrapObject : MonoBehaviour
 
     public IEnumerator ReturnPlayer(Transform playerTrans)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(returnTime);
         playerTrans.position = returnPostion.position;
     }
 }

@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     public GameObject Weapon { get; set; }
     public PlayerInventory Inventory { get; set; }
     public PlayerInput PlayerInput { get; set; }
-    public KinematicMove Move { get; set; }
+    public PlayerKinematicMove Move { get; set; }
     public IInteractable InteractableTarget { get; set; }
     public GameObject Target { get; set; }
     //직렬화 데이터 프로퍼티
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         Weapon = PlayerWeapon.gameObject;
         Inventory = GetComponent<PlayerInventory>();
         PlayerInput = GetComponent<PlayerInput>();
-        Move = GetComponent<KinematicMove>();
+        Move = GetComponent<PlayerKinematicMove>();
         
         AnimationDB.Initailize();
         Condition.Init(this);

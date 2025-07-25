@@ -152,13 +152,13 @@ MonoBehaviour:
     attackParameter: Attack
     hitParameter: Hit
     deathParameter: Death
+    groggyParameter: Groggy
   enemyData: {fileID: 11400000, guid: e2cdeebcee3a1cf43b4ac03ad42cb0cb, type: 2}
   platformLayer:
     serializedVersion: 2
     m_Bits: 1280
   platformCheckDistance: 2
   idleType: 0
-  moveType: 0
   attackType: 0
   patrolDistance: 5
 --- !u!114 &-7906679617074323180
@@ -204,7 +204,7 @@ Transform:
   m_GameObject: {fileID: 6224774757196196992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

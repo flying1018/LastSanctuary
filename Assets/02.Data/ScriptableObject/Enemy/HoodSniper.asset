@@ -16,11 +16,11 @@ MonoBehaviour:
   _name: 
   gravityPower: 0.6
   detectTime: 0.2
-  detectDistance: 10
+  detectDistance: 15
   moveSpeed: 3
   cancelChaseTime: 3
   hitMaterial: {fileID: 2100000, guid: 1d6c919171b720f4698baec530ce9a22, type: 2}
-  attackDistance: 15
+  attackDistance: 20
   attackDuration: 3
   knockbackForce: 5
   attackAnim: {fileID: 7400000, guid: 32f545428e2fedc4fa0fae19f49bdcb7, type: 2}

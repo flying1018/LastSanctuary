@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyKinematicMove : KinematicMove
+public class EnemyKinematicMove : PlayerKinematicMove
 {
     [SerializeField] private LayerMask platformLayer;
     [SerializeField] private float platformCheckDistance = 2f;
