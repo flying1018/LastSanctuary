@@ -35,7 +35,7 @@ public class PlayerAirState : PlayerBaseState
         base.Update();
         if (_move.IsGrounded)
         {
-            _stateMachine.ChangeState(_stateMachine.IdleState);       
+            _stateMachine.ChangeState(_stateMachine.IdleState);      
         }
     }
 }

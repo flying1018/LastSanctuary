@@ -9,8 +9,12 @@ using UnityEngine;
 public class PlayerJumpState : PlayerAirState
 {
     private float _jumpDumping;
+    private WaitForFixedUpdate _waitFixedUpdate;
 
-    public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine) { }
+    public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine)
+    {
+        _waitFixedUpdate = new WaitForFixedUpdate();
+    }
 
     public override void Enter()
     {
@@ -23,6 +27,7 @@ public class PlayerJumpState : PlayerAirState
         //효과음 실행
         PlaySFX1();
         
+        
         //점프
         Jump();
     }
@@ -31,6 +36,7 @@ public class PlayerJumpState : PlayerAirState
     {
         base.Exit();
         StopAnimation(_player.AnimationDB.JumpParameterHash);
+
     }
 
     public override void HandleInput()
@@ -38,9 +44,9 @@ public class PlayerJumpState : PlayerAirState
         base.HandleInput();
         
         if (_input.IsHoldJump)
-            _jumpDumping = _data.holdJumpDuping;
+            _jumpDumping = _data.holdJumpDuping;    
         else
-            _jumpDumping = _data.jumpDuping;
+            _jumpDumping = _data.jumpDuping;        
     }
 
     public override void Update()
@@ -49,7 +55,8 @@ public class PlayerJumpState : PlayerAirState
         _condition.RecoveryStamina();
         
         //점프가 끝나기 전까진 상태 변환 없음.
-        if(_move.addForceCoroutine != null) return;
+        _time += Time.deltaTime;
+        if (_move.addForceCoroutine != null) return;
         base.Update();
     }
 
@@ -76,7 +83,9 @@ public class PlayerJumpState : PlayerAirState
 
     IEnumerator Jump_Coroutine()
     {
+        _jumpDumping = _data.holdJumpDuping;
         float jumpPower = _data.jumpForce;
+        
         while (jumpPower > 2f)
         {
             Rotate(_input.MoveInput);
@@ -84,9 +93,10 @@ public class PlayerJumpState : PlayerAirState
             Vector2 ver = _move.Vertical(Vector2.up, jumpPower);
             _move.Move(hor + ver);
 
-            yield return new WaitForFixedUpdate();
+            yield return _waitFixedUpdate;
             jumpPower *= _jumpDumping;
         }
+        
 
         _move.addForceCoroutine = null;
     }
