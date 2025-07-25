@@ -84,7 +84,7 @@ public class PlayerJumpState : PlayerAirState
             Vector2 ver = _move.Vertical(Vector2.up, jumpPower);
             _move.Move(hor + ver);
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
             jumpPower *= _jumpDumping;
         }
 
