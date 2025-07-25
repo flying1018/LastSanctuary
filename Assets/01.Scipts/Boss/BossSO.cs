@@ -63,8 +63,11 @@ public class BossSO : ScriptableObject
     public float knockbackForce;
     public BossAttackInfo[] attacks;
     public float defpen;
-    public float backjumpDistance = 3f;
-    public float backjumpHeight = 2f;
+
+    [Header("Attack2")] 
+    public float backjumpDistance;
+    public float backjumpHeight;
+    public float backjumpSpeed;
 
     [Header("PhaseShiftState")] 
     public float phaseShiftHpRatio;

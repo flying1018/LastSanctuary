@@ -27,7 +27,7 @@ MonoBehaviour:
   moveSpeed: 3
   spawnFallVelocity: 20
   spawnAnim: {fileID: 7400000, guid: 0ff33004cb5ec2549a83d61c8990ee54, type: 2}
-  attackRange: 13
+  attackRange: 11
   attackIdleTime: 1
   knockbackForce: 40
   attacks:
@@ -64,8 +64,9 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 94643bcc75cfd7e40ba70900d44036d8, type: 3}
     - {fileID: 8300000, guid: 81a4b608bc284764297d3dd1bf938ae9, type: 3}
   defpen: 0.5
-  backjumpDistance: 6
-  backjumpHeight: 2
+  backjumpDistance: 4
+  backjumpHeight: 8
+  backjumpSpeed: 2
   phaseShiftHpRatio: 0.5
   phaseShiftAnim: {fileID: 7400000, guid: d781c0a65ca4bdf40ad84d4b0b6413a3, type: 2}
   breathSound: {fileID: 8300000, guid: 4339960f031eb8e4f80c861fc4769350, type: 3}
