@@ -99,6 +99,8 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
 
     #endregion
 
+    #region KnockBack
+    
     //넉백 계산
     public void ApplyKnockBack(Transform dir, float force)
     {
@@ -109,6 +111,8 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
             _player.Move.AddForce(knockback);
         }
     }
+    
+    #endregion
 
     #region Condition
 

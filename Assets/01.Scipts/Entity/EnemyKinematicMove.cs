@@ -9,13 +9,13 @@ public class EnemyKinematicMove : PlayerKinematicMove
     
     public override void AddForce(Vector2 force, float dumping = 0.95f)
     {
-        if (addForceCoroutine != null)
+        if (AddForceCoroutine != null)
         {
-            StopCoroutine(addForceCoroutine);
-            addForceCoroutine = null;
+            StopCoroutine(AddForceCoroutine);
+            AddForceCoroutine = null;
         }
 
-        addForceCoroutine = StartCoroutine(EnemyAddForce_Coroutine(force, dumping));
+        AddForceCoroutine = StartCoroutine(EnemyAddForce_Coroutine(force, dumping));
     }
 
     private IEnumerator EnemyAddForce_Coroutine(Vector2 force, float dumping)
@@ -37,7 +37,7 @@ public class EnemyKinematicMove : PlayerKinematicMove
             force *= dumping;
         }
 
-        addForceCoroutine = null;
+        AddForceCoroutine = null;
     }
     
     public bool IsOnPlatform(Vector2 nextPosition)

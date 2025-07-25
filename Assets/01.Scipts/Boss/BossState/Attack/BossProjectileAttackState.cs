@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class BossProjectileAttackState : BossAttackState
 {
-    private WaitForFixedUpdate _wait;
-    
     public BossProjectileAttackState(BossStateMachine bossStateMachine, BossAttackInfo attackInfo) : base(
-        bossStateMachine, attackInfo)
-    {
-        _wait = new WaitForFixedUpdate();
-    }
+        bossStateMachine, attackInfo) { }
 
     public override void PlayEvent1()
     {
@@ -47,7 +42,7 @@ public class BossProjectileAttackState : BossAttackState
             jumpDir.y = _data.backjumpHeight -  _data.backjumpHeight * _time * _data.backjumpSpeed;
             
             _move.Move(jumpDir * _data.backjumpSpeed);
-            yield return _wait;
+            yield return _move.WaitFixedUpdate;
         }
 
     }
