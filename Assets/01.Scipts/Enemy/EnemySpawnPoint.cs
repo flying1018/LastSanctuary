@@ -34,6 +34,12 @@ public class EnemySpawnPoint : MonoBehaviour
     {
         if(!isSpawn)
             Spawn();
+        else
+        {
+            //살아 있는 몬스터 위치 초기화
+            _enemy.transform.position = transform.position;
+            _enemy.StateMachine.ChangeState(_enemy.StateMachine.IdleState);
+        }
     
     }
 }
