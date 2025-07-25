@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5966390114363052952}
   m_Layer: 0
   m_Name: IronCage
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,3 +144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveObjType: 1
+  TurnOff: []
+  TurnOn: []
+  moveDistance: 3.6

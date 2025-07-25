@@ -21,7 +21,7 @@ public class MapManager : Singleton<MapManager>
     {
         //스폰 포인트 가져오기
         EnemySpawnPoints = new List<EnemySpawnPoint>(FindObjectsOfType<EnemySpawnPoint>());
-        IsBossAlive = isBossAlive; //테스트용 
+        IsBossAlive = true;
     }
 
     public static void SetBossDead()

@@ -14,7 +14,6 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject unifiedUI;
     [SerializeField] private Button exitButton;
     
-    
     [Header("RelicUI")]
     [SerializeField] private GameObject relicUI;
     [SerializeField] private TextMeshProUGUI relicName;
@@ -29,6 +28,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private RectTransform buffUIPivot;
     [SerializeField] private ConditionUI hpUI;
     [SerializeField] private ConditionUI staminaUI;
+    [SerializeField] private ConditionUI ultimateConditionUI;
     [SerializeField] private Image potionIcon;
     [SerializeField] private TextMeshProUGUI potionText;
     [SerializeField] private TextMeshProUGUI goldText;
@@ -74,6 +74,8 @@ public class UIManager : Singleton<UIManager>
     public TextMeshProUGUI GoldText { get => goldText;}
     public ConditionUI HpUI { get => hpUI;}
     public ConditionUI StaminaUI { get => staminaUI;}
+    public ConditionUI UltimateConditionUI { get => ultimateConditionUI; }
+
     //SettingUI
     public GameObject SettingUI { get => settingUI;}
     public TextMeshProUGUI ResolutionText { get => resolutionText;}

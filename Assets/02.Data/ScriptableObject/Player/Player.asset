@@ -15,8 +15,8 @@ MonoBehaviour:
   moveSpeed: 6
   gravityPower: 0.6
   jumpForce: 25
-  jumpDuping: 0.93
-  holdJumpDuping: 0.96
+  jumpDuping: 0.87
+  holdJumpDuping: 0.9
   fallJudgment: 7
   downJumpTime: 0.2
   dashAnim: {fileID: 7400000, guid: 20526e8ebcd8b154daef3662caa8a8a5, type: 2}
@@ -58,7 +58,7 @@ MonoBehaviour:
     groggyDamage: 5
     isInvincible: 0
   defpen: 0
-  maxUltimateGauge: 0
+  maxUltimateGauge: 100
   dashAttack:
     attackAnim: {fileID: 7400000, guid: ec5c2cbf39d0d7c4185a8542b0455c20, type: 2}
     attackIndex: 4
@@ -80,7 +80,7 @@ MonoBehaviour:
     groggyDamage: 0
     isInvincible: 0
   UltAttack:
-    attackAnim: {fileID: 0}
+    attackAnim: {fileID: 7400000, guid: c05d47f87607ceb4ca0211b1bfe8e7bd, type: 2}
     attackIndex: 0
     multiplier: 0
     nextComboTime: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
     isInvincible: 0
   groggyAttackPrefab: {fileID: 4232177779540841221, guid: 6e243fd6a47e6684ba9bf7b6cb7e60c8, type: 3}
   prefabId: 6
-  groggyAnimInterval: 0.2
+  groggyAnimInterval: 0.1
   groggyAttack:
     attackAnim: {fileID: 7400000, guid: 556e6092d14c0be4e9231422d08e78af, type: 2}
     attackIndex: 7
@@ -115,7 +115,7 @@ MonoBehaviour:
   groggyTime: 5
   detectionRange: 5
   hidingTime: 3
-  groggyAttackInterval: 0.3
+  groggyAttackInterval: 0.15
   <LightHitDuration>k__BackingField: 1
   <HeavyHitDuration>k__BackingField: 1
   <invincibleDuration>k__BackingField: 1
