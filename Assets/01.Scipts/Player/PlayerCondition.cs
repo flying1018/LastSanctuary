@@ -222,6 +222,11 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
         return _curStamina / MaxStamina;
     }
 
+    public float UltimateValue()
+    {
+        return _curUltimate / MaxUltimateGauge;
+    }
+
     #endregion
 
     #region Guard

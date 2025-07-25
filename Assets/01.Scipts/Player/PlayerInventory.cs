@@ -145,6 +145,7 @@ public class PlayerInventory : MonoBehaviour
                 break;
             case StatType.Ultimit:
                 _playerCondition.MaxUltimateGauge += data.amount;
+                
                 break;
         }
 

@@ -7,7 +7,7 @@ public class PlayerGroundState : PlayerBaseState
     public PlayerGroundState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
-    
+
     public override void Enter()
     {
         base.Enter();
@@ -15,7 +15,7 @@ public class PlayerGroundState : PlayerBaseState
 
         //착지하면 점프 어택 초기화
         _stateMachine.JumpAttack.CanJumpAttack = true;
-    }   
+    }
 
     public override void Exit()
     {
@@ -27,13 +27,19 @@ public class PlayerGroundState : PlayerBaseState
     {
         //대쉬와 로프에 매달리기 가능
         base.HandleInput();
-        
+
         //가드
         if (_input.IsGuarding)
         {
             _stateMachine.ChangeState(_stateMachine.GuardState);
         }
-        
+
+        //궁극기
+        if (_input.IsUltimate && (_condition.CurUltimate >= _condition.MaxUltimateGauge))
+        {
+            _stateMachine.ChangeState(_stateMachine.UltState);
+        }
+
         //점프
         if (_input.IsJump && _move.IsGrounded)
         {
@@ -50,33 +56,33 @@ public class PlayerGroundState : PlayerBaseState
         {
             if (_player.Target.TryGetComponent(out Enemy enemy))
             {
-                if(enemy.StateMachine.currentState is EnemyGroggyState)
+                if (enemy.StateMachine.currentState is EnemyGroggyState)
                     _stateMachine.ChangeState(_stateMachine.GroggyAttackState);
             }
             if (_player.Target.TryGetComponent(out Boss boss))
             {
-                if(boss.StateMachine.currentState is BossGroggyState)
+                if (boss.StateMachine.currentState is BossGroggyState)
                     _stateMachine.ChangeState(_stateMachine.GroggyAttackState);
             }
         }
-        
+
         //위 키를 누르고 공격 입력 시
         if (_input.MoveInput.y > 0 && _input.IsAttack)
         {
             _stateMachine.ChangeState(_stateMachine.TopAttackState);
         }
-        
+
         //공격
         if (_input.IsAttack)
         {
             _stateMachine.comboIndex = 0;
             _stateMachine.ChangeState(_stateMachine.ComboAttack[0]);
         }
-        
+
         //아래 키 입력 시
         if (_input.MoveInput.y < 0)
         {
-            if(!_move.IsAerialPlatform) return;
+            if (!_move.IsAerialPlatform) return;
             _stateMachine.ChangeState(_stateMachine.DownJumpState);
         }
 
