@@ -69,5 +69,6 @@ public static class StringNameSpace
     public static class ValueSpace
     {
         public const float MoveDistance = 3.6f;
+        public const float UltimateValue = 10f;
     }
 }

@@ -9,8 +9,8 @@ public class PlayerWeapon : Weapon
     private Coroutine _groggyAttackCoroutine;
     private WaitForSeconds _waitAnimSec;
     private int _objectPoolId;
-    
-    
+
+
     //직렬화
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite[] sprites;
@@ -20,18 +20,26 @@ public class PlayerWeapon : Weapon
         _waitAnimSec = new WaitForSeconds(animInterval);
         _objectPoolId = id;
     }
-    
+
     public override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player)) return;
-        
+
         base.OnTriggerEnter2D(other);
 
         if (other.TryGetComponent(out Condition condition))
         {
             condition.DamageDelay();
         }
-        
+
+        if (other.CompareTag(StringNameSpace.Tags.Enemy))
+        {
+            if (Condition is PlayerCondition dummy)
+            {
+                dummy.CurUltimate = Mathf.Clamp(dummy.CurUltimate + StringNameSpace.ValueSpace.UltimateValue, 0, dummy.MaxUltimateGauge);
+            }
+        }
+
     }
 
     public void GroggyAttack()
@@ -44,7 +52,7 @@ public class PlayerWeapon : Weapon
 
         _groggyAttackCoroutine = StartCoroutine(GroggyAttack_Coroutine());
     }
-    
+
     IEnumerator GroggyAttack_Coroutine()
     {
         spriteRenderer.sprite = sprites[0];

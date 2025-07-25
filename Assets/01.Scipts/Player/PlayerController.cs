@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public bool IsUltimate { get; set; }
     public bool IsInteract { get; set; }
     public bool IsGroggyAttack { get; set; }
-    
+
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -135,7 +135,13 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
+            DebugHelper.Log("궁극기 버튼 누름");
             IsUltimate = true;
         }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            IsUltimate = false;
+        }
+
     }
 }

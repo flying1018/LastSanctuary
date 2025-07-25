@@ -71,7 +71,7 @@ public class PlayerSO : ScriptableObject
     
     [Header("JumpAttackState")] 
     public AttackInfo jumpAttack;
-    public AttackInfo UltAttack;
+    
 
     [Header("TopAttackState")] 
     public AttackInfo topAttack;
@@ -85,6 +85,9 @@ public class PlayerSO : ScriptableObject
     public float detectionRange;
     public float hidingTime;
     public float groggyAttackInterval;
+
+    [Header("UltimateAttackState")]
+    public AttackInfo UltAttack;
     
     
     [field: Header("HitState")]

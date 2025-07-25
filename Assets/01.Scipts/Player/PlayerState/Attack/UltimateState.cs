@@ -15,7 +15,7 @@ public class UltimateState : PlayerBaseState
         base.Enter();
         _condition.CurUltimate = 0f;
         _condition.InvincibleFunc(_animationTime);
-
+        _player.Animator.SetTrigger("Ultimate");  
 
     }
 
