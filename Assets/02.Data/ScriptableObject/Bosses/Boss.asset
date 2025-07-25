@@ -29,7 +29,7 @@ MonoBehaviour:
   spawnAnim: {fileID: 7400000, guid: 0ff33004cb5ec2549a83d61c8990ee54, type: 2}
   attackRange: 11
   attackIdleTime: 1
-  knockbackForce: 40
+  knockbackForce: 5
   attacks:
   - multiplier: 1.2
     knockbackForce: 20

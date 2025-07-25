@@ -16,7 +16,7 @@ MonoBehaviour:
   gravityPower: 0.6
   jumpForce: 25
   jumpDuping: 0.87
-  holdJumpDuping: 0.9
+  holdJumpDuping: 0.92
   fallJudgment: 7
   downJumpTime: 0.2
   dashAnim: {fileID: 7400000, guid: 20526e8ebcd8b154daef3662caa8a8a5, type: 2}
@@ -53,8 +53,8 @@ MonoBehaviour:
     multiplier: 2
     nextComboTime: 0
     staminaCost: 25
-    attackForce: 20
-    knockbackForce: 10
+    attackForce: 3
+    knockbackForce: 5
     groggyDamage: 5
     isInvincible: 0
   defpen: 0
@@ -65,8 +65,8 @@ MonoBehaviour:
     multiplier: 2
     nextComboTime: 0
     staminaCost: 15
-    attackForce: 20
-    knockbackForce: 10
+    attackForce: 15
+    knockbackForce: 5
     groggyDamage: 5
     isInvincible: 1
   jumpAttack:
