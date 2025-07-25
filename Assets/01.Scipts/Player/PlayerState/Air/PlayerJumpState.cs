@@ -23,6 +23,7 @@ public class PlayerJumpState : PlayerAirState
         //효과음 실행
         PlaySFX1();
         
+        
         //점프
         Jump();
     }
@@ -31,6 +32,7 @@ public class PlayerJumpState : PlayerAirState
     {
         base.Exit();
         StopAnimation(_player.AnimationDB.JumpParameterHash);
+
     }
 
     public override void HandleInput()
@@ -38,9 +40,9 @@ public class PlayerJumpState : PlayerAirState
         base.HandleInput();
         
         if (_input.IsHoldJump)
-            _jumpDumping = _data.holdJumpDuping;
+            _jumpDumping = _data.holdJumpDuping;    
         else
-            _jumpDumping = _data.jumpDuping;
+            _jumpDumping = _data.jumpDuping;        
     }
 
     public override void Update()
@@ -49,14 +51,15 @@ public class PlayerJumpState : PlayerAirState
         _condition.RecoveryStamina();
         
         //점프가 끝나기 전까진 상태 변환 없음.
-        if(_move.addForceCoroutine != null) return;
+        _time += Time.deltaTime;
+        if (_move.AddForceCoroutine != null) return;
         base.Update();
     }
 
     public override void PhysicsUpdate()
     {
         //점프가 끝나기 전까진 상태 변환 없음.
-        if(_move.addForceCoroutine != null) return;
+        if(_move.AddForceCoroutine != null) return;
         base.PhysicsUpdate();
         
     }
@@ -65,18 +68,20 @@ public class PlayerJumpState : PlayerAirState
     //키를 누르고 있는 동안 점프력 증가
     void Jump()
     {
-        if (_move.addForceCoroutine != null)
+        if (_move.AddForceCoroutine != null)
         {
-            _move.StopCoroutine(_move.addForceCoroutine);
-            _move.addForceCoroutine = null;
+            _move.StopCoroutine(_move.AddForceCoroutine);
+            _move.AddForceCoroutine = null;
         }
         
-        _move.addForceCoroutine = _move.StartCoroutine(Jump_Coroutine());
+        _move.AddForceCoroutine = _move.StartCoroutine(Jump_Coroutine());
     }
 
     IEnumerator Jump_Coroutine()
     {
+        _jumpDumping = _data.holdJumpDuping;
         float jumpPower = _data.jumpForce;
+        
         while (jumpPower > 2f)
         {
             Rotate(_input.MoveInput);
@@ -84,11 +89,12 @@ public class PlayerJumpState : PlayerAirState
             Vector2 ver = _move.Vertical(Vector2.up, jumpPower);
             _move.Move(hor + ver);
 
-            yield return new WaitForFixedUpdate();
+            yield return _move.WaitFixedUpdate;
             jumpPower *= _jumpDumping;
         }
+        
 
-        _move.addForceCoroutine = null;
+        _move.AddForceCoroutine = null;
     }
     
     

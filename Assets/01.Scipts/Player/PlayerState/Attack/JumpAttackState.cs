@@ -30,7 +30,7 @@ public class JumpAttackState : PlayerAttackState
     public override void PhysicsUpdate()
     {
         //점프 유지
-        if(_move.addForceCoroutine != null) return;
+        if(_move.AddForceCoroutine != null) return;
 
         //점프가 끝나면 떨어지기
         ApplyGravity();

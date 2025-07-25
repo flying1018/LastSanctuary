@@ -13,6 +13,9 @@ public class PlayerRespawnState : PlayerBaseState
         
         //애니메이션 실행
         _player.Animator.SetTrigger(_player.AnimationDB.RespawnParameterHash);
+        
+        //적 부활
+        MapManager.Instance.RespawnEnemies();
     }
 
     public override void Exit()

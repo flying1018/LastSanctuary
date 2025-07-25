@@ -14,7 +14,7 @@ public class PlayerBaseState : IState
     protected Player _player;
     protected PlayerWeapon _playerWeapon;
     protected BoxCollider2D _boxCollider;
-    protected KinematicMove _move;
+    protected PlayerKinematicMove _move;
 
     protected float _time;
 

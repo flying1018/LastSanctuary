@@ -9,6 +9,7 @@ public class KinematicMove : MonoBehaviour
     protected Rigidbody2D _rigidbody;
     
     public Vector2 gravityScale = Vector2.zero;
+    public readonly WaitForFixedUpdate WaitFixedUpdate = new WaitForFixedUpdate();
     
     //프로퍼티
     public Vector2 GroundDirection { get; set; }
@@ -27,7 +28,7 @@ public class KinematicMove : MonoBehaviour
         _rigidbody = rigidbody;
     }
     
-    protected void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         
         //바닥 충돌 시
@@ -55,23 +56,6 @@ public class KinematicMove : MonoBehaviour
             transform.position = position;
         }
         
-        //공중 발판 충돌 시
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
-        {
-            Vector3 point = other.ClosestPoint(transform.position);
-            GroundDirection = point - (transform.position - new Vector3(0,SizeY / 3));
-
-            if (GroundDirection.y > 0) return; 
-            
-            Vector2 position = transform.position;
-            position.y = point.y + SizeY / 2;
-            transform.position = position;
-            
-            gravityScale = Vector2.zero;
-            IsGrounded = true;
-            IsAerialPlatform = true;
-        }
-        
         //벽과 충돌 시
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Wall))
         {
@@ -86,7 +70,7 @@ public class KinematicMove : MonoBehaviour
         }
     }
 
-    protected void OnTriggerStay2D(Collider2D other)
+    protected virtual void OnTriggerStay2D(Collider2D other)
     {
         //땅과 충돌 시
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
@@ -113,19 +97,6 @@ public class KinematicMove : MonoBehaviour
             transform.position = position;
         }
         
-        //공중 발판과 충돌 시
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
-        {
-            Vector3 point = other.ClosestPoint(transform.position);
-            GroundDirection = point - (transform.position - new Vector3(0,SizeY / 3));
-            
-            if (GroundDirection.y > 0) return; 
-            
-            Vector2 position = transform.position;
-            position.y = point.y + SizeY / 2;
-            transform.position = position;
-        }
-        
         
         //벽과 충돌 시
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Wall))
@@ -140,18 +111,12 @@ public class KinematicMove : MonoBehaviour
     }
     
 
-    protected void OnTriggerExit2D(Collider2D other)
+    protected virtual void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
         {
             if (IsAerialPlatform) return;
             IsGrounded = false;
-        }
-        
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.AerialPlatform))
-        {
-            IsGrounded = false;
-            IsAerialPlatform = false;
         }
         
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Wall))
@@ -187,16 +152,16 @@ public class KinematicMove : MonoBehaviour
         return direction.normalized * speed;
     }
 
-    public Coroutine addForceCoroutine;
+    public Coroutine AddForceCoroutine;
     public virtual void AddForce(Vector2 force,float dumping = 0.95f)
     {
-        if (addForceCoroutine != null)
+        if (AddForceCoroutine != null)
         {
-            StopCoroutine(addForceCoroutine);
-            addForceCoroutine = null;
+            StopCoroutine(AddForceCoroutine);
+            AddForceCoroutine = null;
         }
         
-        addForceCoroutine = StartCoroutine(AddForce_Coroutine(force,dumping));;
+        AddForceCoroutine = StartCoroutine(AddForce_Coroutine(force,dumping));;
     }
 
     IEnumerator AddForce_Coroutine(Vector2 force, float dumping)
@@ -204,10 +169,35 @@ public class KinematicMove : MonoBehaviour
         while (force.magnitude > 0.01f)
         {
             Move(force);
-            yield return null;
+            yield return WaitFixedUpdate;
             force *= dumping;
         }
         
-        addForceCoroutine = null;
+        AddForceCoroutine = null;
+    }
+    
+    //중력을 적용하는 AddForce
+    public virtual void GravityAddForce(Vector2 force,float gravityPower,float dumping = 0.95f)
+    {
+        if (AddForceCoroutine != null)
+        {
+            StopCoroutine(AddForceCoroutine);
+            AddForceCoroutine = null;
+        }
+        
+        AddForceCoroutine = StartCoroutine(GravityAddForce_Coroutine(force,gravityPower,dumping));
+    }
+
+    IEnumerator GravityAddForce_Coroutine(Vector2 force,float gravityPower ,float dumping)
+    {
+        while (force.magnitude > 0.01f)
+        {
+            gravityScale += Vector2.down * gravityPower;
+            Move(force + gravityScale);
+            yield return WaitFixedUpdate;
+            force *= dumping;
+        }
+        
+        AddForceCoroutine = null;
     }
 }

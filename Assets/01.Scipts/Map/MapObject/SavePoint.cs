@@ -9,6 +9,7 @@ public class SavePoint : MonoBehaviour, IInteractable
     private Coroutine _interactCoroutine;
     private Coroutine _bellCoroutine;
     private Coroutine _effectCoroutine;
+    private BoxCollider2D _boxCollider;
 
     [Header("interact Animation")]
     [SerializeField] private Transform leftPosition;
@@ -21,6 +22,11 @@ public class SavePoint : MonoBehaviour, IInteractable
     [SerializeField] private float bellRotateSpeed;
     [SerializeField] private SpriteRenderer effect;
     [SerializeField] private float targetAlpha;
+    
+    private void Start()
+    {
+        _boxCollider = GetComponent<BoxCollider2D>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -56,11 +62,16 @@ public class SavePoint : MonoBehaviour, IInteractable
         }
     }
 
+    private Vector2 SavePosition()
+    {
+        return new Vector2(transform.position.x, transform.position.y - _boxCollider.size.y/2);
+    }
+
     public void Interact()
     {
         if (_isInteracted) { return; }
 
-        SaveManager.Instance.SetSavePoint(this.transform.position);
+        SaveManager.Instance.SetSavePoint(SavePosition());
         ItemManager.Instance.playerCondition.PlayerRecovery(); // 회복
         ItemManager.Instance.playerInventory.SupplyPotion();
         MapManager.Instance.RespawnEnemies();
