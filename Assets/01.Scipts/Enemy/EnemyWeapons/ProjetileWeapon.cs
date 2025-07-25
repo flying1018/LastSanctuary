@@ -5,20 +5,12 @@ using UnityEngine;
 public class ProjectileWeapon : EnemyWeapon
 {
     private Rigidbody2D _rigidbody2D;
-    private KinematicMove _kinematicMove;
 
     //생성
     public void Init(int damage, float knockback)
     {
-        _kinematicMove = GetComponent<KinematicMove>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
 
-        BoxCollider2D collider = GetComponent<BoxCollider2D>();
-        float sizeX = collider.size.x * transform.localScale.x;
-        float sizeY = collider.size.y * transform.localScale.y;
-        _kinematicMove.Init(sizeX, sizeY, _rigidbody2D);
-
-        DebugHelper.Log($"{sizeX} {sizeY}");
         Damage = damage;
         knockBackForce = knockback;
     }
@@ -26,8 +18,7 @@ public class ProjectileWeapon : EnemyWeapon
     //발사
     public void Shot(Vector2 dir, float arrowPower)
     {
-        _kinematicMove.gravityScale = Vector2.zero;
-        _kinematicMove.AddForce(dir * arrowPower, 1f);
+        _rigidbody2D.velocity = dir * arrowPower;
     }
 
     //충돌 시

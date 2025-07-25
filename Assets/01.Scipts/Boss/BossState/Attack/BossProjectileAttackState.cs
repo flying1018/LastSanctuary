@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BossProjectileAttackState : BossAttackState
 {
-    public BossProjectileAttackState(BossStateMachine bossStateMachine, BossAttackInfo attackInfo) : base(bossStateMachine, attackInfo) { }
+    public BossProjectileAttackState(BossStateMachine bossStateMachine, BossAttackInfo attackInfo) : base(
+        bossStateMachine, attackInfo) { }
 
     public override void PlayEvent1()
     {
@@ -24,25 +25,26 @@ public class BossProjectileAttackState : BossAttackState
 
     private IEnumerator BackJumpCoroutine()
     {
-        float duration = 0.6f;
-        float timer = 0f;
-
-        Vector2 startPos = _rigidbody.position;
-        Vector2 backDir = (startPos - (Vector2)_boss.Target.position);
-        Vector2 horizontalDir = new Vector2(backDir.normalized.x, 0f);
+        _time = 0;
         
-        while (timer < duration)
+        //플레이어의 반대 방향
+        Vector2 targetDir = _boss.Target.position - _boss.transform.position;
+        float x = targetDir.x > 0 ? -_data.backjumpDistance: _data.backjumpDistance;
+        Vector2 jumpDir = new Vector2(x, _data.backjumpHeight);
+        
+        //점프 시간 계산 포물선을 그리기 위해선 2번 반복
+        float duration = 2/_data.backjumpSpeed;
+        
+        while (_time < duration)
         {
-            float t = timer / duration;
-            float x = _data.backjumpDistance * t;
-            float y = 4f * _data.backjumpHeight * t * (1f - t);
-            
-            Vector2 newPos = startPos + horizontalDir * x + Vector2.up * y;
-            _rigidbody.MovePosition(newPos);
+            _time += Time.deltaTime;
 
-            timer += Time.fixedDeltaTime;
-            yield return new WaitForFixedUpdate();
+            jumpDir.y = _data.backjumpHeight -  _data.backjumpHeight * _time * _data.backjumpSpeed;
+            
+            _move.Move(jumpDir * _data.backjumpSpeed);
+            yield return _move.WaitFixedUpdate;
         }
+
     }
     
     //투사체 날리기

@@ -28,6 +28,7 @@ public class PlayerAttackState : PlayerBaseState
         _playerWeapon.knockBackForce = attackInfo.knockbackForce;
         _playerWeapon.groggyDamage = attackInfo.groggyDamage;
         _playerWeapon.defpen = _data.defpen;
+        _playerWeapon.Condition = _condition;
         
         //애니메이션 실행
         _player.Animator.SetInteger(_player.AnimationDB.ComboParameterHash, attackInfo.attackIndex);

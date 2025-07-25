@@ -141,6 +141,16 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, Data.detectDistance);
     }
+
+    //위치와 상태 초기화
+    public void ResetPosition()
+    {
+        Target = null;
+        transform.position = SpawnPoint.position;
+        StateMachine.ChangeState(StateMachine.IdleState);
+        
+        Condition.Recovery();
+    }
     
 
     
