@@ -175,4 +175,29 @@ public class KinematicMove : MonoBehaviour
         
         AddForceCoroutine = null;
     }
+    
+    //중력을 적용하는 AddForce
+    public virtual void GravityAddForce(Vector2 force,float gravityPower,float dumping = 0.95f)
+    {
+        if (AddForceCoroutine != null)
+        {
+            StopCoroutine(AddForceCoroutine);
+            AddForceCoroutine = null;
+        }
+        
+        AddForceCoroutine = StartCoroutine(GravityAddForce_Coroutine(force,gravityPower,dumping));
+    }
+
+    IEnumerator GravityAddForce_Coroutine(Vector2 force,float gravityPower ,float dumping)
+    {
+        while (force.magnitude > 0.01f)
+        {
+            gravityScale += Vector2.down * gravityPower;
+            Move(force + gravityScale);
+            yield return WaitFixedUpdate;
+            force *= dumping;
+        }
+        
+        AddForceCoroutine = null;
+    }
 }
