@@ -9,6 +9,7 @@ public class KinematicMove : MonoBehaviour
     protected Rigidbody2D _rigidbody;
     
     public Vector2 gravityScale = Vector2.zero;
+    public readonly WaitForFixedUpdate WaitFixedUpdate = new WaitForFixedUpdate();
     
     //프로퍼티
     public Vector2 GroundDirection { get; set; }
@@ -151,16 +152,16 @@ public class KinematicMove : MonoBehaviour
         return direction.normalized * speed;
     }
 
-    public Coroutine addForceCoroutine;
+    public Coroutine AddForceCoroutine;
     public virtual void AddForce(Vector2 force,float dumping = 0.95f)
     {
-        if (addForceCoroutine != null)
+        if (AddForceCoroutine != null)
         {
-            StopCoroutine(addForceCoroutine);
-            addForceCoroutine = null;
+            StopCoroutine(AddForceCoroutine);
+            AddForceCoroutine = null;
         }
         
-        addForceCoroutine = StartCoroutine(AddForce_Coroutine(force,dumping));;
+        AddForceCoroutine = StartCoroutine(AddForce_Coroutine(force,dumping));;
     }
 
     IEnumerator AddForce_Coroutine(Vector2 force, float dumping)
@@ -168,10 +169,35 @@ public class KinematicMove : MonoBehaviour
         while (force.magnitude > 0.01f)
         {
             Move(force);
-            yield return null;
+            yield return WaitFixedUpdate;
             force *= dumping;
         }
         
-        addForceCoroutine = null;
+        AddForceCoroutine = null;
+    }
+    
+    //중력을 적용하는 AddForce
+    public virtual void GravityAddForce(Vector2 force,float gravityPower,float dumping = 0.95f)
+    {
+        if (AddForceCoroutine != null)
+        {
+            StopCoroutine(AddForceCoroutine);
+            AddForceCoroutine = null;
+        }
+        
+        AddForceCoroutine = StartCoroutine(GravityAddForce_Coroutine(force,gravityPower,dumping));
+    }
+
+    IEnumerator GravityAddForce_Coroutine(Vector2 force,float gravityPower ,float dumping)
+    {
+        while (force.magnitude > 0.01f)
+        {
+            gravityScale += Vector2.down * gravityPower;
+            Move(force + gravityScale);
+            yield return WaitFixedUpdate;
+            force *= dumping;
+        }
+        
+        AddForceCoroutine = null;
     }
 }

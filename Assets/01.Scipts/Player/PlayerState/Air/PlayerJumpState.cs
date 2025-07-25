@@ -9,12 +9,8 @@ using UnityEngine;
 public class PlayerJumpState : PlayerAirState
 {
     private float _jumpDumping;
-    private WaitForFixedUpdate _waitFixedUpdate;
 
-    public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine)
-    {
-        _waitFixedUpdate = new WaitForFixedUpdate();
-    }
+    public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
@@ -56,14 +52,14 @@ public class PlayerJumpState : PlayerAirState
         
         //점프가 끝나기 전까진 상태 변환 없음.
         _time += Time.deltaTime;
-        if (_move.addForceCoroutine != null) return;
+        if (_move.AddForceCoroutine != null) return;
         base.Update();
     }
 
     public override void PhysicsUpdate()
     {
         //점프가 끝나기 전까진 상태 변환 없음.
-        if(_move.addForceCoroutine != null) return;
+        if(_move.AddForceCoroutine != null) return;
         base.PhysicsUpdate();
         
     }
@@ -72,13 +68,13 @@ public class PlayerJumpState : PlayerAirState
     //키를 누르고 있는 동안 점프력 증가
     void Jump()
     {
-        if (_move.addForceCoroutine != null)
+        if (_move.AddForceCoroutine != null)
         {
-            _move.StopCoroutine(_move.addForceCoroutine);
-            _move.addForceCoroutine = null;
+            _move.StopCoroutine(_move.AddForceCoroutine);
+            _move.AddForceCoroutine = null;
         }
         
-        _move.addForceCoroutine = _move.StartCoroutine(Jump_Coroutine());
+        _move.AddForceCoroutine = _move.StartCoroutine(Jump_Coroutine());
     }
 
     IEnumerator Jump_Coroutine()
@@ -93,12 +89,12 @@ public class PlayerJumpState : PlayerAirState
             Vector2 ver = _move.Vertical(Vector2.up, jumpPower);
             _move.Move(hor + ver);
 
-            yield return _waitFixedUpdate;
+            yield return _move.WaitFixedUpdate;
             jumpPower *= _jumpDumping;
         }
         
 
-        _move.addForceCoroutine = null;
+        _move.AddForceCoroutine = null;
     }
     
     
