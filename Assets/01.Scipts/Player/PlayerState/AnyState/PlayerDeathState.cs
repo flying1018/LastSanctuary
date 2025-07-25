@@ -20,6 +20,13 @@ public class PlayerDeathState : PlayerBaseState
 
         //무적 처리
         _condition.IsInvincible = true;
+        
+        //물리 없애기
+        if (_move.AddForceCoroutine != null)
+        {
+            _move.StopCoroutine(_move.AddForceCoroutine);
+            _move.AddForceCoroutine = null;
+        }
     }
 
     //모든 조작 및 물리 상태 막기
