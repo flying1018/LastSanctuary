@@ -145,3 +145,4 @@ MonoBehaviour:
   teleportEndSound: {fileID: 8300000, guid: 4cb92929d1092cf47bc611c19b0dd21c, type: 3}
   defaultMaterial: {fileID: 2100000, guid: 4b8e4564344994245855150f74caab25, type: 2}
   transparentMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  cameraDiff: 3

@@ -141,5 +141,8 @@ public class PlayerSO : ScriptableObject
     public Material defaultMaterial;
     public Material transparentMaterial;
 
+    [Header("PlayerCamera")] 
+    public float cameraDiff;
+
 
 }

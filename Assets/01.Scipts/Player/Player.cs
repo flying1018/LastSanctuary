@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     public PlayerKinematicMove Move { get; set; }
     public IInteractable InteractableTarget { get; set; }
     public GameObject Target { get; set; }
+    public PlayerCamera Camera { get; set; }
     //직렬화 데이터 프로퍼티
     public PlayerSO Data { get => playerData; }
 
@@ -50,10 +51,12 @@ public class Player : MonoBehaviour
         Inventory = GetComponent<PlayerInventory>();
         PlayerInput = GetComponent<PlayerInput>();
         Move = GetComponent<PlayerKinematicMove>();
+        Camera = GetComponentInChildren<PlayerCamera>();
         
         AnimationDB.Initailize();
         Condition.Init(this);
         Inventory.Init(this);
+        Camera.Init(this);
         Move.Init(BoxCollider.size.x, BoxCollider.size.y,Rigidbody);
         
         StateMachine = new PlayerStateMachine(this);
