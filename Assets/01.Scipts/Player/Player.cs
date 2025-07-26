@@ -74,6 +74,7 @@ public class Player : MonoBehaviour
         if (_eventProduction) return;   //이벤트 중에는 막기
         StateMachine.PhysicsUpdate();
         //Debug.Log(StateMachine.currentState);
+        Debug.Log(Move.IsGrounded);
     }
     
     private void OnTriggerEnter2D(Collider2D other)
