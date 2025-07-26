@@ -19,6 +19,8 @@ public class BossDeathState : BossBaseState
         _boss.BossEvent.OnTriggerBossDeath();
         //보스 사망 체크
         MapManager.SetBossDead();
+        //보스 콜라이더 끄기
+        _boxCollider.enabled = false;
     }
 
     public override void Update()
