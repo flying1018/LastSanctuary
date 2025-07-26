@@ -547,6 +547,7 @@ MonoBehaviour:
     dashParameter: Dash
     hitParameter: Hit
   playerData: {fileID: 11400000, guid: fa11ae5f2b2d74860ae80e96545967e4, type: 2}
+  playerAttackData: {fileID: 11400000, guid: 126adbf347b373d47be532d1249df4e5, type: 2}
   groundLayer:
     serializedVersion: 2
     m_Bits: 1280
@@ -557,7 +558,6 @@ MonoBehaviour:
   aerialPlatformLayer:
     serializedVersion: 2
     m_Bits: 256
-  BoxCollider: {fileID: 0}
 --- !u!114 &8202824365084005588
 MonoBehaviour:
   m_ObjectHideFlags: 0

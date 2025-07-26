@@ -61,43 +61,13 @@ public class PlayerSO : ScriptableObject
     public int perfactGuardGroggy;
     public int guardCost;
     
-
-    [Header("AttackState")] 
-    public AttackInfo[] attacks;
-    public float defpen;
-    public float maxUltimateGauge;
     
-    [Header("DashAttackState")] 
-    public AttackInfo dashAttack;
-    
-    [Header("JumpAttackState")] 
-    public AttackInfo jumpAttack;
-    
-
-    [Header("TopAttackState")] 
-    public AttackInfo topAttack;
-
-    [Header("GroggAttackState")] 
-    public GameObject groggyAttackPrefab;
-    public int prefabId;
-    public float groggyAnimInterval;
-    public AttackInfo groggyAttack;
-    public float groggyTime;
-    public float detectionRange;
-    public float hidingTime;
-    public float groggyAttackInterval;
-
-    [Header("UltimateAttackState")]
-    public AttackInfo UltAttack;
-    public float ultimateValue;
-    
-    
-    [field: Header("HitState")]
-    [field: SerializeField] public float LightHitDuration{ get; private set; } = 0.2f;
-    [field: SerializeField] public float HeavyHitDuration{ get; private set; } = 0.2f;
-    [field: SerializeField] public float invincibleDuration { get; private set; } = 1f;
-    [field: SerializeField] public int hitSteminaRecovery { get; private set; } = 15;
-    [field: SerializeField, Range(0f, 1f)] public float damageReduction { get; private set; } = 0.8f;
+    [Header("HitState")]
+    public float lightHitDuration;
+    public float heavyHitDuration;
+    public float invincibleDuration;
+    public int hitStaminaRecovery;
+    public float damageReduction;
     
     
     [Header("DeathState")]
@@ -145,6 +115,40 @@ public class PlayerSO : ScriptableObject
 
     [Header("PlayerCamera")] 
     public float cameraDiff;
-
-
 }
+
+
+[Serializable]
+[CreateAssetMenu(fileName = "PlayerAttack", menuName = "New PlayerAttack")]
+public class PlayerAttackSO : ScriptableObject
+{
+    [Header("AttackState")] 
+    public AttackInfo[] attacks;
+    public float defpen;
+    public float maxUltimateGauge;
+    
+    [Header("DashAttackState")] 
+    public AttackInfo dashAttack;
+    
+    [Header("JumpAttackState")] 
+    public AttackInfo jumpAttack;
+    
+
+    [Header("TopAttackState")] 
+    public AttackInfo topAttack;
+
+    [Header("GroggAttackState")] 
+    public GameObject groggyAttackPrefab;
+    public int prefabId;
+    public float groggyAnimInterval;
+    public AttackInfo groggyAttack;
+    public float groggyTime;
+    public float detectionRange;
+    public float hidingTime;
+    public float groggyAttackInterval;
+
+    [Header("UltimateAttackState")]
+    public AttackInfo UltAttack;
+    public float ultimateValue;
+}
+

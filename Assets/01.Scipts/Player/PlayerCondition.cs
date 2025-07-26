@@ -56,9 +56,9 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
         _curHp = MaxHp;
         _curStamina = MaxStamina;
         HealAmonut = _player.Data.healAmount;
-        MaxUltimateGauge = _player.Data.maxUltimateGauge;
+        MaxUltimateGauge = _player.AttackData.maxUltimateGauge;
         IsInvincible = false;
-        _enemyGroggyTime = _player.Data.groggyTime;
+        _enemyGroggyTime = _player.AttackData.groggyTime;
         _curUltimate = 0f; // 궁극기 게이지 보존된다면 수정 필요
     }
 

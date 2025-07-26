@@ -10,7 +10,7 @@ public class GroggyAttackState : PlayerAttackState
     public GroggyAttackState(PlayerStateMachine stateMachine, AttackInfo attackInfo) : base(stateMachine, attackInfo)
     {
         _angles = new float[] { 0f, 30f, 150f, 0f, 180f, -30f, -150f };
-        _waitIntervalSec = new WaitForSeconds(_data.groggyAttackInterval);
+        _waitIntervalSec = new WaitForSeconds(_attackData.groggyAttackInterval);
     }
     
     public override void Enter()
@@ -92,11 +92,11 @@ public class GroggyAttackState : PlayerAttackState
 
     private void GroggyAttackEffect(float angle)
     {
-        GameObject go = ObjectPoolManager.Get(_data.groggyAttackPrefab, _data.prefabId);
+        GameObject go = ObjectPoolManager.Get(_attackData.groggyAttackPrefab, _attackData.prefabId);
         if (go.TryGetComponent(out PlayerWeapon weapon))
         {
             //그로기 애니메이션에 필요한 정보
-            weapon.GroggyAttackInit(_data.groggyAnimInterval,_data.prefabId);
+            weapon.GroggyAttackInit(_attackData.groggyAnimInterval,_attackData.prefabId);
             
             //무기에 대미지 전달
             weapon.WeaponInfo = _player.WeaponInfo;
