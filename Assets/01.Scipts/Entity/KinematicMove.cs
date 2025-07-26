@@ -16,7 +16,6 @@ public class KinematicMove : MonoBehaviour
     public Vector2 WallDirection { get; set; }
     public bool IsWall { get; set; }
     public bool IsGrounded { get; set; }
-    public bool IsAerialPlatform { get; set; }
     public float SizeX { get; set; }
     public float SizeY { get; set; }
 
@@ -115,7 +114,6 @@ public class KinematicMove : MonoBehaviour
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Ground))
         {
-            if (IsAerialPlatform) return;
             IsGrounded = false;
         }
         

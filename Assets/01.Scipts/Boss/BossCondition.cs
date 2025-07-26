@@ -31,13 +31,13 @@ public class BossCondition : Condition,IDamageable, IGroggyable
 
     
     //대미지 입을 때
-    public void TakeDamage(int atk, DamageType type, float defpen)
+    public void TakeDamage(WeaponInfo weaponInfo)
     {
         if (!IsAlive()) return;
         if (_isTakeDamageable) return;
         
         //대미지 계산
-        ApplyDamage(atk,defpen);
+        ApplyDamage(weaponInfo.Attack,weaponInfo.Defpen);
         
         //죽었을 때
         if (!IsAlive())
@@ -91,7 +91,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     }
     
     //보스 그로기 증가
-    public void ApplyGroggy(int groggyDamage)
+    public void ApplyGroggy(WeaponInfo weaponInfo)
     {
         if(_curHp <= 0) return;
         if (_isTakeDamageable) return;
@@ -100,7 +100,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
         //궁극기시 그로기 20증가
         
         //공격당 그로기 1/2/5씩증가
-        _groggyGauge += groggyDamage;
+        _groggyGauge += weaponInfo.GroggyDamage;
         if (CheckGroggyState())
         {
             _boss.StateMachine.ChangeState(_boss.StateMachine.GroggyState);

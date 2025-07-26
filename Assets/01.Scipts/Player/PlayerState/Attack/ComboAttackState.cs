@@ -14,7 +14,7 @@ public class ComboAttackState : PlayerAttackState
         //다음 공격
         //입력 시간 내에 공격 입력 시
         _time += Time.deltaTime;
-        if (_time <= (_animationTime + attackInfo.nextComboTime) && _input.IsAttack)
+        if (_time <= (_animationTime + AttackInfo.nextComboTime) && _input.IsAttack)
         {
             //애니메이션 끝나고 공격
             if (_time > _animationTime)
@@ -24,7 +24,7 @@ public class ComboAttackState : PlayerAttackState
                     _stateMachine.ComboAttack.Count <= _stateMachine.comboIndex + 1
                         ? 0 : _stateMachine.comboIndex + 1;
 
-                int cost = _stateMachine.ComboAttack[_stateMachine.comboIndex].attackInfo.staminaCost;
+                int cost = _stateMachine.ComboAttack[_stateMachine.comboIndex].AttackInfo.staminaCost;
                 //다음 공격의 필요 스테미나가 충분하다면 공격
                 if (_condition.UsingStamina(cost))
                 {
@@ -42,7 +42,7 @@ public class ComboAttackState : PlayerAttackState
 
         }
         //공격 종료
-        else if (_time > (_animationTime + attackInfo.nextComboTime))
+        else if (_time > (_animationTime + AttackInfo.nextComboTime))
         {
             _stateMachine.comboIndex = 0;
             _stateMachine.ChangeState(_stateMachine.IdleState);

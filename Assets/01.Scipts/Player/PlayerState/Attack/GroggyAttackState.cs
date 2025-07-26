@@ -57,6 +57,11 @@ public class GroggyAttackState : PlayerAttackState
         _player.SpriteRenderer.material = _data.transparentMaterial;
         _player.SpriteRenderer.color = new Color(1, 1, 1, 0);
         
+        //공격력 설정
+        _player.WeaponInfo.Attack = (int)((_condition.Attack + _inventory.EquipRelicAttack() + _condition.BuffAtk) * AttackInfo.multiplier);
+        _player.WeaponInfo.KnockBackForce = AttackInfo.knockbackForce;
+        _player.WeaponInfo.GroggyDamage = AttackInfo.groggyDamage;
+        
         //연출 및 공격
         foreach (float angle in _angles )
         {
@@ -92,11 +97,10 @@ public class GroggyAttackState : PlayerAttackState
         {
             //그로기 애니메이션에 필요한 정보
             weapon.GroggyAttackInit(_data.groggyAnimInterval,_data.prefabId);
+            
             //무기에 대미지 전달
-            weapon.Damage = (int)((_condition.Attack + _inventory.EquipRelicAttack() + _condition.BuffAtk) * attackInfo.multiplier);
-            weapon.knockBackForce = attackInfo.knockbackForce;
-            weapon.groggyDamage = attackInfo.groggyDamage;
-            weapon.defpen = _data.defpen;
+            weapon.WeaponInfo = _player.WeaponInfo;
+            
             //애니메이션 실행
             weapon.GroggyAttack();
         }

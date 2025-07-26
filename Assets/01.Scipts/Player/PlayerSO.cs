@@ -88,6 +88,7 @@ public class PlayerSO : ScriptableObject
 
     [Header("UltimateAttackState")]
     public AttackInfo UltAttack;
+    public float ultimateValue;
     
     
     [field: Header("HitState")]
@@ -140,6 +141,9 @@ public class PlayerSO : ScriptableObject
     [Header("Material")]
     public Material defaultMaterial;
     public Material transparentMaterial;
+
+    [Header("PlayerCamera")] 
+    public float cameraDiff;
 
 
 }
