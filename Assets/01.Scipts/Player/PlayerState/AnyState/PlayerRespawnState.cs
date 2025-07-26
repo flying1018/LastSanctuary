@@ -16,6 +16,8 @@ public class PlayerRespawnState : PlayerBaseState
         
         //적 부활
         MapManager.Instance.RespawnEnemies();
+        //포션 개수 회복
+        _inventory.SupplyPotion();
     }
 
     public override void Exit()
@@ -27,7 +29,7 @@ public class PlayerRespawnState : PlayerBaseState
         _player.Animator.Rebind();
         //조작 가능
         _player.PlayerInput.enabled = true;
-        
+        //무적 종료
         _condition.IsInvincible = false;
     }
 

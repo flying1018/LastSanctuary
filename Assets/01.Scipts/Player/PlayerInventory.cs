@@ -7,18 +7,29 @@ using System.Threading.Tasks;
 public class PlayerInventory : MonoBehaviour
 {
     private PlayerCondition _playerCondition;
+    private UIManager _uiManager;
     private int _gold;
+    private int _curPotionNum;
 
     //일단은 직렬화 나중에 어드레서블로 변환
     public List<CollectObject> relics;
     public List<CollectObjectSO> EquipRelics { get; private set; }
     public int MaxPotionNum { get; private set; }
-    public int CurPotionNum { get; private set; }
+    public int CurPotionNum
+    {
+        get =>  _curPotionNum;
+        set => _curPotionNum = Mathf.Clamp(value, 0, MaxPotionNum);
+    }
 
     public int Gold
     {
         get { return _gold; }
         set { _gold = Mathf.Max(0, value); }
+    }
+
+    public void Start()
+    {
+        _uiManager = UIManager.Instance;
     }
 
 
@@ -53,14 +64,12 @@ public class PlayerInventory : MonoBehaviour
                 {
                     MaxPotionNum++;
                     CurPotionNum++;
-                    CurPotionNum = Mathf.Clamp(CurPotionNum, 0, MaxPotionNum);
                 }
                 else
                 {
                     CurPotionNum++;
-                    CurPotionNum = Mathf.Clamp(CurPotionNum, 0, MaxPotionNum);
                 }
-                UIManager.Instance.UpdatePotionUI();
+                _uiManager.StateMachine.MainUI.UpdatePotionText();
                 break;
         }
     }
@@ -70,7 +79,7 @@ public class PlayerInventory : MonoBehaviour
     {
         CurPotionNum--;
         CurPotionNum = Mathf.Clamp(CurPotionNum, 0, MaxPotionNum);
-        UIManager.Instance.UpdatePotionUI();
+        _uiManager.StateMachine.MainUI.UpdatePotionText();
     }
 
     //렐릭 장착
@@ -204,6 +213,6 @@ public class PlayerInventory : MonoBehaviour
     public void SupplyPotion()
     {
         CurPotionNum = MaxPotionNum;
-        UIManager.Instance.UpdatePotionUI();
+        _uiManager.StateMachine.MainUI.UpdatePotionText();
     }
 }

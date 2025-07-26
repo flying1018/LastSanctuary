@@ -131,7 +131,6 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
     //플레이어 체력 회복
     public void Heal()
     {
-        DebugHelper.Log($"현재 회복량 : {HealAmonut}");
         if (_curHp < _maxHp)
         {
             _curHp += HealAmonut;
@@ -185,7 +184,6 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
 
     public void ApplyPermanent(StatObjectSO data)
     {
-        DebugHelper.Log("호출됨");
         MaxHp += data.hp;
         _curHp += data.hp;
         MaxStamina += data.stamina;
