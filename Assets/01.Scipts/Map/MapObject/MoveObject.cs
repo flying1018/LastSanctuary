@@ -81,4 +81,9 @@ public class MoveObject : MonoBehaviour
 
         yield return null;
     }
+    
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
 }
