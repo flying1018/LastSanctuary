@@ -34,11 +34,12 @@ public class BossAttackState : BossBaseState
         _boss.Animator.SetTrigger(_attackInfo.animParameter);
         _time = 0;
         
-        //공격
-        _weapon.Condition = _condition;
-        _weapon.Damage = (int)(_data.attack * _attackInfo.multiplier);
-        _weapon.defpen = _data.defpen;
-        _weapon.knockBackForce = _attackInfo.knockbackForce;
+        //공격 정보 설정 후 전달
+        _boss.WeaponInfo.Attack = (int)(_data.attack * _attackInfo.multiplier);
+        _boss.WeaponInfo.KnockBackForce = _attackInfo.knockbackForce;
+        _boss.WeaponInfo.DamageType = DamageType.Heavy;
+        
+        _weapon.WeaponInfo = _boss.WeaponInfo;
     }
 
     public override void Update()

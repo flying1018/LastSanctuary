@@ -9,8 +9,7 @@ public class PlayerWeapon : Weapon
     private Coroutine _groggyAttackCoroutine;
     private WaitForSeconds _waitAnimSec;
     private int _objectPoolId;
-
-
+    
     //직렬화
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite[] sprites;
@@ -34,9 +33,9 @@ public class PlayerWeapon : Weapon
 
         if (other.CompareTag(StringNameSpace.Tags.Enemy))
         {
-            if (Condition is PlayerCondition dummy)
+            if (WeaponInfo.Condition is PlayerCondition dummy)
             {
-                dummy.CurUltimate = Mathf.Clamp(dummy.CurUltimate + StringNameSpace.ValueSpace.UltimateValue, 0, dummy.MaxUltimateGauge);
+                dummy.CurUltimate += WeaponInfo.UltimateValue;
             }
         }
 

@@ -35,7 +35,7 @@ public class LeverObject : MonoBehaviour, IDamageable
         _isMove = false;
     }
 
-    public void TakeDamage(int atk, DamageType type, float defpen = 0)
+    public void TakeDamage(WeaponInfo weaponInfo)
     {
         if (_isMove) { return; }
         StartCoroutine(Toggle());

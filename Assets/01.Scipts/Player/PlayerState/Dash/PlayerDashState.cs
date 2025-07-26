@@ -46,7 +46,7 @@ public class PlayerDashState : PlayerBaseState
     {
         if (_input.IsAttack)
         {
-            int cost = _stateMachine.DashAttack.attackInfo.staminaCost;
+            int cost = _stateMachine.DashAttack.AttackInfo.staminaCost;
             //스테미나가 충분하다면 대쉬 공격
             if (_condition.UsingStamina(cost))
             {

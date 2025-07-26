@@ -88,6 +88,7 @@ public class PlayerSO : ScriptableObject
 
     [Header("UltimateAttackState")]
     public AttackInfo UltAttack;
+    public float ultimateValue;
     
     
     [field: Header("HitState")]

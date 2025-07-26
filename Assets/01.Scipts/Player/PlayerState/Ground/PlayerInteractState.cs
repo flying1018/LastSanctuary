@@ -16,6 +16,7 @@ public class PlayerInteractState : PlayerGroundState
         _input.IsInteract = false;
         _time = 0f;
 
+        //세이브 포인트만 상호작용 애니메이션 실행
         if (_player.InteractableTarget is SavePoint savePoint)
         {
             _interactAnim = _player.StartCoroutine(Interact_Coroutine(savePoint));

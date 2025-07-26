@@ -18,7 +18,7 @@ public enum AttackType
 public class Enemy : MonoBehaviour
 {
     //필드
-   
+    public WeaponInfo WeaponInfo;
 
     //직렬화
     [field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
@@ -65,6 +65,14 @@ public class Enemy : MonoBehaviour
         CapsuleCollider.enabled = true;
         Move = GetComponent<KinematicMove>();
         
+        //무기 데이터 설정
+        WeaponInfo = new WeaponInfo();
+        WeaponInfo.Condition = Condition;
+        WeaponInfo.Attack = Data.attack;
+        WeaponInfo.KnockBackForce = Data.knockbackForce;
+        WeaponInfo.DamageType = DamageType.Attack;
+       
+        
         Move.Init(CapsuleCollider.size.x, CapsuleCollider.size.y, Rigidbody);
         Condition.Init(this);
         StateMachine = new EnemyStateMachine(this);
@@ -93,12 +101,12 @@ public class Enemy : MonoBehaviour
         {
             if(other.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                damageable.TakeDamage(Data.attack,DamageType.Attack);
+                damageable.TakeDamage(WeaponInfo);
             }
 
             if (other.gameObject.TryGetComponent(out IKnockBackable knockBackable))
             {
-                knockBackable.ApplyKnockBack(transform,Data.knockbackForce);
+                knockBackable.ApplyKnockBack(WeaponInfo,transform);
             }
         }
     }

@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PlayerAttackState : PlayerBaseState
 {
-    public AttackInfo attackInfo;
+    public AttackInfo AttackInfo;
     protected float _animationTime;
 
     //생성자
     public PlayerAttackState(PlayerStateMachine stateMachine, AttackInfo attackInfo) : base(stateMachine)
     {
-        this.attackInfo = attackInfo;
+        this.AttackInfo = attackInfo;
         _time = 0;
         _animationTime = attackInfo.animTime;
+        
     }
 
     public override void Enter()
@@ -24,18 +25,18 @@ public class PlayerAttackState : PlayerBaseState
         StartAnimation(_player.AnimationDB.AttackParameterHash);
         
         //무기에 대미지 전달
-        _playerWeapon.Damage = (int)((_condition.Attack + _inventory.EquipRelicAttack() + _condition.BuffAtk) * attackInfo.multiplier);
-        _playerWeapon.knockBackForce = attackInfo.knockbackForce;
-        _playerWeapon.groggyDamage = attackInfo.groggyDamage;
-        _playerWeapon.defpen = _data.defpen;
-        _playerWeapon.Condition = _condition;
+        _player.WeaponInfo.Attack = (int)((_condition.Attack + _inventory.EquipRelicAttack() + _condition.BuffAtk) * AttackInfo.multiplier);
+        _player.WeaponInfo.KnockBackForce = AttackInfo.knockbackForce;
+        _player.WeaponInfo.GroggyDamage = AttackInfo.groggyDamage;
+        
+        _playerWeapon.WeaponInfo = _player.WeaponInfo;
         
         //애니메이션 실행
-        _player.Animator.SetInteger(_player.AnimationDB.ComboParameterHash, attackInfo.attackIndex);
+        _player.Animator.SetInteger(_player.AnimationDB.ComboParameterHash, AttackInfo.attackIndex);
         _time = 0;
         
         //무적 공격은 무적상태 추가
-        if(attackInfo.isInvincible)
+        if(AttackInfo.isInvincible)
             _condition.InvincibleFunc(_animationTime);
         
  
@@ -69,7 +70,7 @@ public class PlayerAttackState : PlayerBaseState
     {
         //공격 종료
         _time += Time.deltaTime;
-        if (_time > (_animationTime + attackInfo.nextComboTime))
+        if (_time > (_animationTime + AttackInfo.nextComboTime))
         {
             if(_move.IsGrounded)
                 _stateMachine.ChangeState(_stateMachine.IdleState);
@@ -88,7 +89,7 @@ public class PlayerAttackState : PlayerBaseState
     public override void PlayEvent1()
     {
         Vector2 direction = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
-        _move.AddForce(direction * attackInfo.attackForce);
+        _move.AddForce(direction * AttackInfo.attackForce);
     }
 
     public override void PlaySFX1()

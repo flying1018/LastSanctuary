@@ -57,7 +57,7 @@ MonoBehaviour:
     knockbackForce: 5
     groggyDamage: 5
     isInvincible: 0
-  defpen: 0
+  defpen: 0.2
   maxUltimateGauge: 100
   dashAttack:
     attackAnim: {fileID: 7400000, guid: ec5c2cbf39d0d7c4185a8542b0455c20, type: 2}
@@ -116,6 +116,7 @@ MonoBehaviour:
     knockbackForce: 5
     groggyDamage: 0
     isInvincible: 0
+  ultimateValue: 10
   <LightHitDuration>k__BackingField: 1
   <HeavyHitDuration>k__BackingField: 1
   <invincibleDuration>k__BackingField: 1

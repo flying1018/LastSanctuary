@@ -9,11 +9,13 @@ public class Boss : MonoBehaviour
 {
     //필드
     private Vector3 _spawnPoint;
+
+    public WeaponInfo WeaponInfo;
+    
     //직렬화
     [field: SerializeField] public BossAnimationDB AnimationDB {get; private set;}
     [SerializeField] private BossSO bossData;
     [SerializeField] private LayerMask groundLayer;
-    
 
     //프로퍼티
     public BossEvent BossEvent { get; set; }
@@ -32,6 +34,7 @@ public class Boss : MonoBehaviour
     public KinematicMove Move {get; set;}
     public BossItemDropper ItemDropper {get; set;}
 
+
     public void Init(BossEvent bossEvent)
     {
         //필요한 프로퍼티 설정
@@ -47,6 +50,14 @@ public class Boss : MonoBehaviour
         ItemDropper = GetComponent<BossItemDropper>();
         //transform.position = _spawnPoint;
         Move = GetComponent<KinematicMove>();
+        
+        //무기 데이터 설정
+        WeaponInfo = new WeaponInfo();
+        WeaponInfo.Condition = Condition;
+        WeaponInfo.Attack = Data.attack;
+        WeaponInfo.Defpen = Data.defpen;
+        WeaponInfo.KnockBackForce = Data.knockbackForce;
+        WeaponInfo.DamageType = DamageType.Attack;
         
         Move.Init(BoxCollider.bounds.size.x, BoxCollider.bounds.size.y, Rigidbody);
         AnimationDB.Initailize(); 
@@ -84,12 +95,12 @@ public class Boss : MonoBehaviour
         {
             if(other.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                damageable.TakeDamage(Data.attack,DamageType.Attack);
+                damageable.TakeDamage(WeaponInfo);
             }
 
             if (other.gameObject.TryGetComponent(out IKnockBackable knockBackable))
             {
-                knockBackable.ApplyKnockBack(transform,Data.knockbackForce);
+                knockBackable.ApplyKnockBack(WeaponInfo,transform);
             }
         }
     }

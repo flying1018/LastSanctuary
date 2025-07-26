@@ -8,6 +8,9 @@ using UnityEngine.Tilemaps;
 
 public class Player : MonoBehaviour
 {
+    //필드
+    public WeaponInfo WeaponInfo;
+    
     //직렬화
     [field: SerializeField] public PlayerAnimationDB AnimationDB { get; private set; }
     [SerializeField] private PlayerSO playerData;
@@ -52,6 +55,13 @@ public class Player : MonoBehaviour
         PlayerInput = GetComponent<PlayerInput>();
         Move = GetComponent<PlayerKinematicMove>();
         Camera = GetComponentInChildren<PlayerCamera>();
+        
+        //무기 대미지 설정
+        WeaponInfo = new WeaponInfo();
+        WeaponInfo.Defpen = Data.defpen;
+        WeaponInfo.Condition = Condition;
+        WeaponInfo.DamageType = DamageType.Attack;
+        WeaponInfo.UltimateValue = Data.ultimateValue;
         
         AnimationDB.Initailize();
         Condition.Init(this);

@@ -19,7 +19,11 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
     public float MaxStamina { get; set; }
     public int Attack { get => _attack; set => _attack = value; }
     public int Defence { get => _defence; set => _defence = value; }
-    public float CurUltimate { get => _curUltimate; set => _curUltimate = value; }
+    public float CurUltimate 
+    { 
+        get => _curUltimate; 
+        set => _curUltimate = Mathf.Clamp(value , 0, MaxUltimateGauge);
+    }
 
 
     //성물로 증가 가능한 프로퍼티
@@ -73,13 +77,13 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
     #region Damage
 
     //대미지 처리
-    public void TakeDamage(int atk, DamageType type, float defpen = 0f)
+    public void TakeDamage(WeaponInfo weaponInfo)
     {
         //무적 일때
         if (IsInvincible) return;
-        DamageType = type;
+        DamageType = weaponInfo.DamageType;
         //대미지 계산
-        ApplyDamage(atk, defpen);
+        ApplyDamage(weaponInfo.Attack, weaponInfo.Defpen);
         if (_curHp <= 0)
         {
             _player.StateMachine.ChangeState(_player.StateMachine.DeathState);
@@ -102,13 +106,13 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
     #region KnockBack
     
     //넉백 계산
-    public void ApplyKnockBack(Transform dir, float force)
+    public void ApplyKnockBack(WeaponInfo weaponInfo ,Transform dir)
     {
-        if (force > 0)
+        if (weaponInfo.KnockBackForce > 0)
         {
             Vector2 knockbackDir = (transform.position - dir.transform.position);
             knockbackDir.y = 0;
-            Vector2 knockback = knockbackDir.normalized * force;
+            Vector2 knockback = knockbackDir.normalized * weaponInfo.KnockBackForce;
             _player.Move.GravityAddForce(knockback,_player.Data.gravityPower);
         }
     }
@@ -231,7 +235,7 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
 
     #region Guard
 
-    public bool ApplyGuard(int atk, Condition condition, Transform dir, DamageType type)
+    public bool ApplyGuard(WeaponInfo weaponInfo,Transform dir)
     {
         bool isFront = IsFront(dir);
 
@@ -241,13 +245,14 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
             _curStamina += _player.Data.perfactGuardStemina;
             //궁극기 게이지 회복
 
-            if (condition is BossCondition bossCondition)
+            if (weaponInfo.Condition is BossCondition bossCondition)
             {
                 //보스는 그로기 게이지 상승
-                bossCondition.ApplyGroggy(_player.Data.perfactGuardGroggy);
+                _player.WeaponInfo.GroggyDamage = _player.Data.perfactGuardGroggy;
+                bossCondition.ApplyGroggy(_player.WeaponInfo);
             }
 
-            if (condition is EnemyCondition enemyCondition && type != DamageType.Range)
+            if (weaponInfo.Condition is EnemyCondition enemyCondition && weaponInfo.DamageType != DamageType.Range)
             {
                 //적은 그로기 처리
                 enemyCondition.ChangeGroggyState(_enemyGroggyTime);
@@ -259,8 +264,8 @@ public class PlayerCondition : Condition, IDamageable, IKnockBackable, IGuardabl
         {
             _player.EventSFX1();
 
-            atk = Mathf.CeilToInt(atk * (1 - _player.Data.damageReduction));
-            ApplyDamage(atk);
+            weaponInfo.Attack = Mathf.CeilToInt(weaponInfo.Attack * (1 - _player.Data.damageReduction));
+            ApplyDamage(weaponInfo.Attack);
 
             if (_curHp <= 0)
             {

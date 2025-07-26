@@ -31,12 +31,12 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     }
     
     //대미지 입을 때
-    public void TakeDamage(int atk, DamageType type, float defpen)
+    public void TakeDamage(WeaponInfo weaponInfo)
     {
         if (IsInvincible) return;
         if (_isTakeDamageable) return;
         
-        ApplyDamage(atk,defpen);
+        ApplyDamage(weaponInfo.Attack,weaponInfo.Defpen);
         
         if (_curHp <= 0)
         {
@@ -72,13 +72,13 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     }
 
     //넉백 처리하는 메서드
-    public void ApplyKnockBack(Transform attackDir, float knockBackPower)
+    public void ApplyKnockBack(WeaponInfo weaponInfo, Transform attackDir)
     {
-        if (knockBackPower <= 0) return;
+        if (weaponInfo.KnockBackForce <= 0) return;
         if (_curHp <= 0) return;
         
         Vector2 dir = new Vector2(transform.position.x - attackDir.position.x,0).normalized;
-        Vector2 knockback = dir * knockBackPower;
+        Vector2 knockback = dir * weaponInfo.KnockBackForce;
         _enemy.Move.AddForce(knockback);
         _enemy.StateMachine.ChangeState(_enemy.StateMachine.HitState);
     }

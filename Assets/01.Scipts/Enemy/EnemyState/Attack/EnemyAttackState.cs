@@ -19,9 +19,7 @@ public class EAttackState : EnemyBaseState
         _enemy.Animator.SetTrigger(_enemy.AnimationDB.AttackParameterHash);
 
         //공격력 정보 넘겨주기
-        _enemy.EnemyWeapon.Condition = _condition;
-        _enemy.EnemyWeapon.Damage = _data.attack;
-        _enemy.EnemyWeapon.knockBackForce = _data.knockbackForce;
+        _enemy.EnemyWeapon.WeaponInfo = _enemy.WeaponInfo;
     }
     
     public override void Exit()
