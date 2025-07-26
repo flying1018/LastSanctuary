@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   gravityPower: 0.6
+  inputTimeLimit: 0.4
   jumpForce: 25
   jumpDuping: 0.87
   holdJumpDuping: 0.92

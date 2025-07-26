@@ -31,6 +31,7 @@ public class PlayerSO : ScriptableObject
     public float gravityPower;
 
     [Header("JumpState")] 
+    public float inputTimeLimit;
     public float jumpForce;
     public float jumpDuping;
     public float holdJumpDuping;
