@@ -40,13 +40,13 @@ public class PlayerStateMachine : StateMachine
         DownJumpState = new PlayerDownJumpState(this);
         ComboAttack = new List<ComboAttackState>
         {
-            new ComboAttackState(this, player.Data.attacks[0]),
-            new ComboAttackState(this, player.Data.attacks[1]),
-            new ComboAttackState(this, player.Data.attacks[2])
+            new ComboAttackState(this, player.AttackData.attacks[0]),
+            new ComboAttackState(this, player.AttackData.attacks[1]),
+            new ComboAttackState(this, player.AttackData.attacks[2])
         };
-        JumpAttack = new JumpAttackState(this, player.Data.jumpAttack);
-        DashAttack = new DashAttackState(this, player.Data.dashAttack);
-        UltState = new UltimateState(this, player.Data.UltAttack);
+        JumpAttack = new JumpAttackState(this, player.AttackData.jumpAttack);
+        DashAttack = new DashAttackState(this, player.AttackData.dashAttack);
+        UltState = new UltimateState(this, player.AttackData.UltAttack);
         DashState = new PlayerDashState(this);
         FallState = new PlayerFallState(this);
         HealState = new PlayerHealState(this);
@@ -56,8 +56,8 @@ public class PlayerStateMachine : StateMachine
         DeathState = new PlayerDeathState(this);
         RespawnState = new PlayerRespawnState(this);
         InteractState = new PlayerInteractState(this);
-        TopAttackState = new PlayerTopAttackState(this, player.Data.topAttack);
-        GroggyAttackState = new GroggyAttackState(this, player.Data.groggyAttack);
+        TopAttackState = new PlayerTopAttackState(this, player.AttackData.topAttack);
+        GroggyAttackState = new GroggyAttackState(this, player.AttackData.groggyAttack);
         
         comboIndex = 0;
         ChangeState(IdleState); // 초기 상태

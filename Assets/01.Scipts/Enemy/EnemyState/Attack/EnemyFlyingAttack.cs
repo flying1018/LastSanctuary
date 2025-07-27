@@ -21,9 +21,6 @@ public class EnemyFlyingAttack : EAttackState
         StartAnimation(_enemy.AnimationDB.AttackParameterHash);
 
         //공격력 정보 넘겨주기
-        _enemy.EnemyWeapon.Condition = _condition;
-        _enemy.EnemyWeapon.Damage = _data.attack;
-        _enemy.EnemyWeapon.knockBackForce = _data.knockbackForce;
         if (_enemy.EnemyWeapon is FlyingWeapon weapon)
         {
             weapon.Init(this);

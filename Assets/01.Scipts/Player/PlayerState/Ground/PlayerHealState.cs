@@ -14,8 +14,6 @@ public class PlayerHealState : PlayerGroundState
         StartAnimation(_player.AnimationDB.HealParameterHash);
 
         _time = 0;
-        
-        Debug.Log("heal enter");
     }
 
     public override void Exit()
@@ -24,10 +22,10 @@ public class PlayerHealState : PlayerGroundState
         
         //체력 회복
         _inventory.UsePotion();
+        
         _condition.Heal(); 
         
         StopAnimation(_player.AnimationDB.HealParameterHash);
-        Debug.Log("heal exit");
     }
 
     public override void HandleInput()

@@ -16,6 +16,8 @@ public class BossSpawnState : BossBaseState
         
         //애니메이션 실행
         _boss.Animator.SetTrigger(_boss.AnimationDB.SpawnParameterHash);
+        //보스 콜라이더 켜기
+        _boxCollider.enabled = true;
     }
 
     public override void Exit()

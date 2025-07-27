@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 100ed01159a22fc43ad5ae4ad1bba056, type: 3}
+  m_Name: PlayerAttack
+  m_EditorClassIdentifier: 
+  attacks:
+  - attackAnim: {fileID: 7400000, guid: a8f066d21fa2f8f4b8138e7f48ff46af, type: 2}
+    attackIndex: 1
+    multiplier: 1
+    nextComboTime: 0.1
+    staminaCost: 0
+    attackForce: 0
+    knockbackForce: 0
+    groggyDamage: 1
+    isInvincible: 0
+  - attackAnim: {fileID: 7400000, guid: 3c8ab8fd8e124cd47ba5909da708ef53, type: 2}
+    attackIndex: 2
+    multiplier: 1.5
+    nextComboTime: 0.1
+    staminaCost: 0
+    attackForce: 0
+    knockbackForce: 0
+    groggyDamage: 2
+    isInvincible: 0
+  - attackAnim: {fileID: 7400000, guid: bdf51d02ce4552348ba6354a5c6370ff, type: 2}
+    attackIndex: 3
+    multiplier: 2
+    nextComboTime: 0
+    staminaCost: 15
+    attackForce: 3
+    knockbackForce: 10
+    groggyDamage: 5
+    isInvincible: 0
+  defpen: 0.25
+  maxUltimateGauge: 100
+  dashAttack:
+    attackAnim: {fileID: 7400000, guid: ec5c2cbf39d0d7c4185a8542b0455c20, type: 2}
+    attackIndex: 4
+    multiplier: 2
+    nextComboTime: 0
+    staminaCost: 15
+    attackForce: 7
+    knockbackForce: 10
+    groggyDamage: 5
+    isInvincible: 1
+  jumpAttack:
+    attackAnim: {fileID: 7400000, guid: fb83938d100c40e4b9e179de0fa7eb31, type: 2}
+    attackIndex: 5
+    multiplier: 1
+    nextComboTime: 0
+    staminaCost: 0
+    attackForce: 0
+    knockbackForce: 0
+    groggyDamage: 1
+    isInvincible: 0
+  topAttack:
+    attackAnim: {fileID: 7400000, guid: cbdcd516d24c3354bbf3ec8e4db03db7, type: 2}
+    attackIndex: 6
+    multiplier: 1
+    nextComboTime: 0
+    staminaCost: 0
+    attackForce: 0
+    knockbackForce: 0
+    groggyDamage: 1
+    isInvincible: 0
+  groggyAttackPrefab: {fileID: 4232177779540841221, guid: 6e243fd6a47e6684ba9bf7b6cb7e60c8, type: 3}
+  prefabId: 6
+  groggyAnimInterval: 0.15
+  groggyAttack:
+    attackAnim: {fileID: 7400000, guid: 556e6092d14c0be4e9231422d08e78af, type: 2}
+    attackIndex: 7
+    multiplier: 0.5
+    nextComboTime: 0
+    staminaCost: 0
+    attackForce: 3
+    knockbackForce: 0
+    groggyDamage: 2
+    isInvincible: 1
+  groggyTime: 3
+  detectionRange: 5
+  hidingTime: 0
+  groggyAttackInterval: 0.15
+  UltAttack:
+    attackAnim: {fileID: 7400000, guid: 1b15b0d3195f54e7d898c9aeb9060295, type: 2}
+    attackIndex: 8
+    multiplier: 1
+    nextComboTime: 0
+    staminaCost: 0
+    attackForce: 0
+    knockbackForce: 0
+    groggyDamage: 0
+    isInvincible: 1
+  ultimateValue: 10

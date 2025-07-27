@@ -15,7 +15,7 @@ public enum DamageType
 /// </summary>
 public interface IDamageable
 {
- public void TakeDamage(int atk, DamageType type ,float defpen =0);
+ public void TakeDamage(WeaponInfo weaponInfo);
 }
 
 /// <summary>
@@ -23,7 +23,7 @@ public interface IDamageable
 /// </summary>
 public interface IKnockBackable 
 {
-    public void ApplyKnockBack(Transform attackDir, float knockBackPower);
+    public void ApplyKnockBack(WeaponInfo weaponInfo, Transform attackDir);
 }
 
 
@@ -32,10 +32,10 @@ public interface IKnockBackable
 /// </summary>
 public interface IGroggyable 
 {
-   public void ApplyGroggy(int amount);
+   public void ApplyGroggy(WeaponInfo weaponInfo);
 }
 
 public interface IGuardable
 {
-    public bool ApplyGuard(int atk,Condition condition,Transform dir, DamageType type);
+    public bool ApplyGuard(WeaponInfo weaponInfo,Transform dir);
 }

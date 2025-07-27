@@ -135,18 +135,6 @@ public class UIManager : Singleton<UIManager>
         return Instantiate(prefab,parent);
     }
 
-    //포션 갯수 갱신
-    public void UpdatePotionUI()
-    {
-        StateMachine.MainUI.UpdatePotionText();
-    }
-
-    //버프 UI 갱신
-    public void UpdateBuffUI(StatObjectSO data)
-    {
-        StateMachine.MainUI.UpdateBuffUI(data);
-    }
-
     //UI를 껏다켜는 메서드
     public void OnOffUI(bool isOn)
     {

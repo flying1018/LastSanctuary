@@ -5,7 +5,21 @@ using UnityEngine;
 public class BossJumpAttackState : BossAttackState
 {
     public BossJumpAttackState(BossStateMachine bossStateMachine, BossAttackInfo attackInfo) : base(bossStateMachine, attackInfo) { }
+
+    public override void Enter()
+    {
+        base.Enter();
+        
+        _boxCollider.enabled = false;
+    }
     
+    public override void Exit()
+    {
+        base.Exit();
+        
+        _boxCollider.enabled = true;
+    }
+
     //Attack3에서 사용하는 이벤트
     private Coroutine _chasePlayerCoroutine;
 

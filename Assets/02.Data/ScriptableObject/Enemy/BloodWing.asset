@@ -22,7 +22,7 @@ MonoBehaviour:
   hitMaterial: {fileID: 2100000, guid: 1d6c919171b720f4698baec530ce9a22, type: 2}
   attackDistance: 10
   attackDuration: 3
-  knockbackForce: 10
+  knockbackForce: 5
   attackAnim: {fileID: 7400000, guid: 9bfbf15d9c5af0a4faf3399a46d06316, type: 2}
   blinkLength: 0.3
   attack: 10

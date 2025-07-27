@@ -8,16 +8,20 @@ using UnityEngine.Tilemaps;
 
 public class Player : MonoBehaviour
 {
+    //필드
+    public WeaponInfo WeaponInfo;
+    
     //직렬화
     [field: SerializeField] public PlayerAnimationDB AnimationDB { get; private set; }
     [SerializeField] private PlayerSO playerData;
+    [SerializeField] private PlayerAttackSO playerAttackData;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask aerialPlatformLayer;
 
     //프로퍼티
-    public BoxCollider2D BoxCollider;
+    public BoxCollider2D BoxCollider { get; set; }
     public PlayerStateMachine StateMachine { get; set; }
     public PlayerController Input { get; set; }
     public Rigidbody2D Rigidbody { get; set; }
@@ -33,8 +37,10 @@ public class Player : MonoBehaviour
     public PlayerKinematicMove Move { get; set; }
     public IInteractable InteractableTarget { get; set; }
     public GameObject Target { get; set; }
+    public PlayerCamera Camera { get; set; }
     //직렬화 데이터 프로퍼티
     public PlayerSO Data { get => playerData; }
+    public PlayerAttackSO AttackData { get => playerAttackData; }
 
 
     private void Awake()
@@ -50,10 +56,19 @@ public class Player : MonoBehaviour
         Inventory = GetComponent<PlayerInventory>();
         PlayerInput = GetComponent<PlayerInput>();
         Move = GetComponent<PlayerKinematicMove>();
+        Camera = GetComponentInChildren<PlayerCamera>();
+        
+        //무기 대미지 설정
+        WeaponInfo = new WeaponInfo();
+        WeaponInfo.Defpen = AttackData.defpen;
+        WeaponInfo.Condition = Condition;
+        WeaponInfo.DamageType = DamageType.Attack;
+        WeaponInfo.UltimateValue = AttackData.ultimateValue;
         
         AnimationDB.Initailize();
-        Condition.Init(this);
         Inventory.Init(this);
+        Condition.Init(this);
+        Camera.Init(this);
         Move.Init(BoxCollider.size.x, BoxCollider.size.y,Rigidbody);
         
         StateMachine = new PlayerStateMachine(this);
@@ -133,7 +148,7 @@ public class Player : MonoBehaviour
     public bool FindTarget()
     {
         // 정지된 상태에서 감지
-        Collider2D[] overlappingHits = Physics2D.OverlapCircleAll(transform.position, Data.detectionRange);
+        Collider2D[] overlappingHits = Physics2D.OverlapCircleAll(transform.position, AttackData.detectionRange);
 
         foreach (Collider2D hit in overlappingHits)
         {
@@ -150,7 +165,7 @@ public class Player : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, Data.detectionRange);
+        Gizmos.DrawWireSphere(transform.position, AttackData.detectionRange);
     }
     
     #endregion

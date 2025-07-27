@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,9 @@ public class Condition : MonoBehaviour
     
     public void DamageDelay()
     {
+        //오브젝트가 꺼졌을 때 실행하지 않음.
+        if(!gameObject.activeInHierarchy) return;
+        
         if (_damageDelayCoroutine != null)
         {
             StopCoroutine(_damageDelayCoroutine);
@@ -34,4 +38,6 @@ public class Condition : MonoBehaviour
 
         _damageDelayCoroutine = null;
     }
+
+
 }

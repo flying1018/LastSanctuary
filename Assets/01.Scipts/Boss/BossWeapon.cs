@@ -13,18 +13,18 @@ public class BossWeapon : Weapon
         //가드
         if (other.TryGetComponent(out IGuardable iguardable))
         {
-            if (iguardable.ApplyGuard(Damage,Condition,transform,DamageType.Attack))
+            if (iguardable.ApplyGuard(WeaponInfo,transform))
                 return;
         }
         //공격
         if (other.TryGetComponent(out IDamageable idamageable) )
         {
-            idamageable.TakeDamage(Damage,DamageType.Heavy,defpen);
+            idamageable.TakeDamage(WeaponInfo);
         }
         //넉백
         if (other.TryGetComponent(out IKnockBackable iknockBackable))
         {
-            iknockBackable.ApplyKnockBack(this.transform, knockBackForce);
+            iknockBackable.ApplyKnockBack(WeaponInfo,transform);
         }
     }
 }

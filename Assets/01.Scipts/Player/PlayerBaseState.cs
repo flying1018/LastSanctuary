@@ -15,6 +15,8 @@ public class PlayerBaseState : IState
     protected PlayerWeapon _playerWeapon;
     protected BoxCollider2D _boxCollider;
     protected PlayerKinematicMove _move;
+    protected PlayerCamera _camera;
+    protected PlayerAttackSO _attackData;
 
     protected float _time;
 
@@ -31,6 +33,8 @@ public class PlayerBaseState : IState
         _boxCollider = _player.BoxCollider;
         _inventory = _player.Inventory;
         _move = _player.Move;
+        _camera = _player.Camera;
+        _attackData = _player.AttackData;
     }
 
     public virtual void Enter()
@@ -118,7 +122,8 @@ public class PlayerBaseState : IState
             //무기 회전
             float angle = _spriteRenderer.flipX ? 180 : 0;
             _player.Weapon.transform.rotation = Quaternion.Euler(angle, 0, angle);
-            
+            //카메라 회전
+            _camera.RotateCamera(direction);
         }
     }
 

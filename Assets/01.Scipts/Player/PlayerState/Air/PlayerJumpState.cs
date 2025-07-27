@@ -23,6 +23,8 @@ public class PlayerJumpState : PlayerAirState
         //효과음 실행
         PlaySFX1();
         
+        //시간 초기화
+        _time = 0;
         
         //점프
         Jump();
@@ -37,12 +39,18 @@ public class PlayerJumpState : PlayerAirState
 
     public override void HandleInput()
     {
-        base.HandleInput();
-        
         if (_input.IsHoldJump)
             _jumpDumping = _data.holdJumpDuping;    
         else
-            _jumpDumping = _data.jumpDuping;        
+            _jumpDumping = _data.jumpDuping;    
+        
+        //일정 시간 다른 조작을 막음.
+        _time += Time.deltaTime;
+        if(_time < _data.inputTimeLimit) return;
+        
+        base.HandleInput();
+        
+    
     }
 
     public override void Update()
@@ -51,7 +59,6 @@ public class PlayerJumpState : PlayerAirState
         _condition.RecoveryStamina();
         
         //점프가 끝나기 전까진 상태 변환 없음.
-        _time += Time.deltaTime;
         if (_move.AddForceCoroutine != null) return;
         base.Update();
     }

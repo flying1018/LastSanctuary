@@ -10,7 +10,7 @@ public class GroggyAttackState : PlayerAttackState
     public GroggyAttackState(PlayerStateMachine stateMachine, AttackInfo attackInfo) : base(stateMachine, attackInfo)
     {
         _angles = new float[] { 0f, 30f, 150f, 0f, 180f, -30f, -150f };
-        _waitIntervalSec = new WaitForSeconds(_data.groggyAttackInterval);
+        _waitIntervalSec = new WaitForSeconds(_attackData.groggyAttackInterval);
     }
     
     public override void Enter()
@@ -57,6 +57,11 @@ public class GroggyAttackState : PlayerAttackState
         _player.SpriteRenderer.material = _data.transparentMaterial;
         _player.SpriteRenderer.color = new Color(1, 1, 1, 0);
         
+        //공격력 설정
+        _player.WeaponInfo.Attack = (int)(_condition.TotalAttack * AttackInfo.multiplier);
+        _player.WeaponInfo.KnockBackForce = AttackInfo.knockbackForce;
+        _player.WeaponInfo.GroggyDamage = AttackInfo.groggyDamage;
+        
         //연출 및 공격
         foreach (float angle in _angles )
         {
@@ -87,16 +92,15 @@ public class GroggyAttackState : PlayerAttackState
 
     private void GroggyAttackEffect(float angle)
     {
-        GameObject go = ObjectPoolManager.Get(_data.groggyAttackPrefab, _data.prefabId);
+        GameObject go = ObjectPoolManager.Get(_attackData.groggyAttackPrefab, _attackData.prefabId);
         if (go.TryGetComponent(out PlayerWeapon weapon))
         {
             //그로기 애니메이션에 필요한 정보
-            weapon.GroggyAttackInit(_data.groggyAnimInterval,_data.prefabId);
+            weapon.GroggyAttackInit(_attackData.groggyAnimInterval,_attackData.prefabId);
+            
             //무기에 대미지 전달
-            weapon.Damage = (int)((_condition.Attack + _inventory.EquipRelicAttack() + _condition.BuffAtk) * attackInfo.multiplier);
-            weapon.knockBackForce = attackInfo.knockbackForce;
-            weapon.groggyDamage = attackInfo.groggyDamage;
-            weapon.defpen = _data.defpen;
+            weapon.WeaponInfo = _player.WeaponInfo;
+            
             //애니메이션 실행
             weapon.GroggyAttack();
         }
