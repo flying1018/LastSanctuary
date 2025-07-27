@@ -16,6 +16,7 @@ public class PlayerBaseState : IState
     protected BoxCollider2D _boxCollider;
     protected PlayerKinematicMove _move;
     protected PlayerCamera _camera;
+    protected PlayerAttackSO _attackData;
 
     protected float _time;
 
@@ -33,6 +34,7 @@ public class PlayerBaseState : IState
         _inventory = _player.Inventory;
         _move = _player.Move;
         _camera = _player.Camera;
+        _attackData = _player.AttackData;
     }
 
     public virtual void Enter()

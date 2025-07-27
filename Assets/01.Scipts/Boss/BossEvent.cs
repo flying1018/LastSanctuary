@@ -170,6 +170,7 @@ public class BossEvent : MonoBehaviour
         }
 
         //보스 스폰 상태
+        _boss.transform.position = transform.position;
         _boss.gameObject.SetActive(true);
         _boss.Init(this);
     }

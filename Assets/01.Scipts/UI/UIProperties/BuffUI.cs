@@ -17,6 +17,7 @@ public class BuffUI : MonoBehaviour
     //버프가 생겼을 시 표시
     public void SetBuff(StatObjectSO data)
     {
+        //오브젝트가 껏다 켜질 때 코루틴이 멈추므로 UIManager를 통해서 실행
         UIManager.Instance.StartCoroutine(SetBuff_Coroutine(data));
     }
 

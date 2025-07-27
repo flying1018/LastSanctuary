@@ -14,7 +14,7 @@ public class BossBaseState : IState
     protected BossSO _data;
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
-    protected BoxCollider2D _BoxCollider;
+    protected BoxCollider2D _boxCollider;
     protected BossCondition _condition;
     protected Boss _boss;
     protected BossWeapon _weapon;
@@ -29,7 +29,7 @@ public class BossBaseState : IState
         _data = _boss.Data;
         _rigidbody = _boss.Rigidbody;
         _spriteRenderer =_boss.SpriteRenderer;
-        _BoxCollider = _boss.BoxCollider;
+        _boxCollider = _boss.BoxCollider;
         _condition = _boss.Condition;
         _weapon = _boss.BossWeapon;
         _move = _boss.Move;

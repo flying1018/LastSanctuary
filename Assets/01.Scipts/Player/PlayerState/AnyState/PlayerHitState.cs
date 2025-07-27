@@ -22,11 +22,11 @@ public class PlayerHitState : PlayerBaseState
         switch (_condition.DamageType)
         {
             case DamageType.Range:
-                _hitDuration = _data.LightHitDuration; //0.2f
+                _hitDuration = _data.lightHitDuration; //0.2f
                 PlaySFX2();
                 break;
             default:
-                _hitDuration = _data.LightHitDuration; //0.2f
+                _hitDuration = _data.lightHitDuration; //0.2f
                 PlaySFX1();
                 break;
         }

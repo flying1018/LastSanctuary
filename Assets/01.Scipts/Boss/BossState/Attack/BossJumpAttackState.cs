@@ -10,14 +10,14 @@ public class BossJumpAttackState : BossAttackState
     {
         base.Enter();
         
-        _BoxCollider.enabled = false;
+        _boxCollider.enabled = false;
     }
     
     public override void Exit()
     {
         base.Exit();
         
-        _BoxCollider.enabled = true;
+        _boxCollider.enabled = true;
     }
 
     //Attack3에서 사용하는 이벤트
