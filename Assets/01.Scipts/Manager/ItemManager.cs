@@ -12,8 +12,9 @@ public class ItemManager : Singleton<ItemManager>
     public PlayerInventory playerInventory;
     public UIManager uiManager;
 
-    public void Start()
+    protected override void Awake()
     {
+        base.Awake();
         Init();
     }
 

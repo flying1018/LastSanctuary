@@ -58,7 +58,7 @@ public class GroggyAttackState : PlayerAttackState
         _player.SpriteRenderer.color = new Color(1, 1, 1, 0);
         
         //공격력 설정
-        _player.WeaponInfo.Attack = (int)((_condition.Attack + _inventory.EquipRelicAttack() + _condition.BuffAtk) * AttackInfo.multiplier);
+        _player.WeaponInfo.Attack = (int)(_condition.TotalAttack * AttackInfo.multiplier);
         _player.WeaponInfo.KnockBackForce = AttackInfo.knockbackForce;
         _player.WeaponInfo.GroggyDamage = AttackInfo.groggyDamage;
         

@@ -66,8 +66,8 @@ public class Player : MonoBehaviour
         WeaponInfo.UltimateValue = AttackData.ultimateValue;
         
         AnimationDB.Initailize();
-        Condition.Init(this);
         Inventory.Init(this);
+        Condition.Init(this);
         Camera.Init(this);
         Move.Init(BoxCollider.size.x, BoxCollider.size.y,Rigidbody);
         

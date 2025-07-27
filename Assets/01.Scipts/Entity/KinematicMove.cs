@@ -182,7 +182,6 @@ public class KinematicMove : MonoBehaviour
             StopCoroutine(AddForceCoroutine);
             AddForceCoroutine = null;
         }
-        
         AddForceCoroutine = StartCoroutine(GravityAddForce_Coroutine(force,gravityPower,dumping));
     }
 

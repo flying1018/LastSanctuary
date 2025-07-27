@@ -78,7 +78,6 @@ public class PlayerInventory : MonoBehaviour
     public void UsePotion()
     {
         CurPotionNum--;
-        CurPotionNum = Mathf.Clamp(CurPotionNum, 0, MaxPotionNum);
         _uiManager.StateMachine.MainUI.UpdatePotionText();
     }
 
@@ -96,26 +95,13 @@ public class PlayerInventory : MonoBehaviour
                 case StatType.None:
                     DebugHelper.LogError("StatType이 None임");
                     break;
-                case StatType.Atk:
-                    _playerCondition.Attack += data.amount;
-                    break;
-                case StatType.Def:
-                    _playerCondition.Defence += data.amount;
-                    break;
-                case StatType.Stamina:
-                    _playerCondition.MaxStamina += data.amount;
-                    break;
-                case StatType.Hp:
-                    _playerCondition.MaxHp += data.amount;
-                    _playerCondition.CurHp += data.amount;
-                    break;
                 case StatType.Recovery:
                     _playerCondition.HealAmonut += data.amount;
                     break;
                 case StatType.Ultimit:
-                    _playerCondition.MaxUltimateGauge -= data.amount;
-                    if (_playerCondition.CurUltimate >= _playerCondition.MaxUltimateGauge)
-                        _playerCondition.CurUltimate = _playerCondition.MaxUltimateGauge;
+                    _playerCondition.MaxUltimate -= data.amount;
+                    if (_playerCondition.CurUltimate >= _playerCondition.MaxUltimate)
+                        _playerCondition.CurUltimate = _playerCondition.MaxUltimate;
                     break;
             }
 
@@ -132,28 +118,11 @@ public class PlayerInventory : MonoBehaviour
             case StatType.None:
                 DebugHelper.LogError("StatType이 None임");
                 break;
-            case StatType.Atk:
-                _playerCondition.Attack -= data.amount;
-                break;
-            case StatType.Def:
-                _playerCondition.Defence -= data.amount;
-                break;
-            case StatType.Stamina:
-                _playerCondition.MaxStamina -= data.amount;
-                break;
-            case StatType.Hp:
-                _playerCondition.MaxHp -= data.amount;
-                _playerCondition.CurHp -= data.amount;
-                if (_playerCondition.CurHp <= 0f)
-                {
-                    _playerCondition.CurHp = 1f;
-                }
-                break;
             case StatType.Recovery:
                 _playerCondition.HealAmonut -= data.amount;
                 break;
             case StatType.Ultimit:
-                _playerCondition.MaxUltimateGauge += data.amount;
+                _playerCondition.MaxUltimate += data.amount;
                 
                 break;
         }

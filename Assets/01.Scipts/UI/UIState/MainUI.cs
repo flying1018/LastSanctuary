@@ -33,19 +33,22 @@ public class MainUI : UIBaseState
 
         //데이터 셋팅
         _potionIcon.sprite = _data.potionIcon;
-        _potionText.text = _playerInventory.CurPotionNum.ToString();
-        _hpConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.MaxHp);
-        _hpConditionUI.SetCurValue(_playerCondition.HpValue());
-        _staminaConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.MaxStamina);
-        _staminaConditionUI.SetCurValue(_playerCondition.StaminaValue());
-        _ultimateConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.MaxUltimateGauge);
-        _ultimateConditionUI.SetCurValue(_playerCondition.UltimateValue());
-        _goldText.text = _playerInventory.Gold.ToString();
     }
 
     public override void Enter()
     {
-        _ultimateConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.MaxUltimateGauge);
+        //text 설정
+        _potionText.text = _playerInventory.CurPotionNum.ToString();
+        _goldText.text = _playerInventory.Gold.ToString();
+        
+        //hp 설정
+        _hpConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.TotalHp);
+        _hpConditionUI.SetCurValue(_playerCondition.HpValue());
+        _staminaConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.TotalStamina);
+        _staminaConditionUI.SetCurValue(_playerCondition.StaminaValue());
+        _ultimateConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.MaxUltimate);
+        _ultimateConditionUI.SetCurValue(_playerCondition.UltimateValue());
+        
         _uiManager.MainUI.SetActive(true);
     }
     public override void Exit()
