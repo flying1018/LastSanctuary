@@ -95,7 +95,10 @@ public class RelicUI : UnifiedUI
         _statUIs[2].relic.text = "+" + _playerInventory.EquipHp;
         _statUIs[3].relic.text = "+" + _playerInventory.EquipStamina;
 
-        //버프 효과 표시 필요
+        _statUIs[0].buff.text = "+" + _playerCondition.BuffAtk;
+        _statUIs[1].buff.text = "+" + _playerCondition.BuffDef;
+        _statUIs[2].buff.text = "+" + _playerCondition.BuffHp;
+        _statUIs[3].buff.text = "+" + _playerCondition.BuffStamina;
     }
 
     //좌클릭 시 실행
