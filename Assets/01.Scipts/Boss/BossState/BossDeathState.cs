@@ -28,7 +28,7 @@ public class BossDeathState : BossBaseState
         _time += Time.deltaTime;
         if (_time > _data.deathTime)
         {
-            ObjectPoolManager.Set(_boss.Data._key, _boss.gameObject, _boss.gameObject);
+            ObjectPoolManager.Set(_boss.gameObject, _boss.Data._key);
         }
     }
 }

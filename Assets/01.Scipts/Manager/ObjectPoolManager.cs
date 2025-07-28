@@ -40,7 +40,7 @@ public static class ObjectPoolManager
     }
 
     //오브젝트 회수
-    public static void Set(int id, GameObject _prefab, GameObject gameObject)
+    public static void Set(GameObject gameObject, int id)
     {
         gameObject.SetActive(false);
 

@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
 {
     //필드
     public WeaponInfo WeaponInfo;
+    private EnemySpawnPoint _enemySpawnPoint;
 
     //직렬화
     [field: SerializeField] public EnemyAnimationDB AnimationDB {get; private set;}
@@ -38,7 +39,7 @@ public class Enemy : MonoBehaviour
     public SpriteRenderer SpriteRenderer { get; set; }
     public EnemyCondition Condition { get; set; }
     public Transform Target { get; set; }
-    public Transform SpawnPoint { get; set; }
+    public Transform SpawnPointPos { get; set; }
     public EnemyWeapon EnemyWeapon { get; set; }
     public GameObject Weapon { get; set; }
     public float PatrolDistance { get; set; }
@@ -48,22 +49,26 @@ public class Enemy : MonoBehaviour
     public IdleType IdleType {get => idleType;}
     public AttackType AttackType {get => attackType;}
 
-
-    //생성 시
-    public void Init(Transform spawnPoint, float distance)
+    public void Awake()
     {
-        SpawnPoint = spawnPoint;
         CapsuleCollider = GetComponent<CapsuleCollider2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         Condition = GetComponent<EnemyCondition>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         EnemyWeapon = GetComponentInChildren<EnemyWeapon>();
-        Weapon = EnemyWeapon.gameObject;
-        AnimationDB.Initailize();
-        PatrolDistance = distance;
-        CapsuleCollider.enabled = true;
         Move = GetComponent<KinematicMove>();
+        AnimationDB.Initailize();
+    }
+
+    //생성 시
+    public void Init(EnemySpawnPoint spawnPoint)
+    {
+        _enemySpawnPoint = spawnPoint;
+        SpawnPointPos = spawnPoint.transform;
+        Weapon = EnemyWeapon.gameObject;
+        PatrolDistance = spawnPoint.PatrolDistance;
+        CapsuleCollider.enabled = true;
         
         //무기 데이터 설정
         WeaponInfo = new WeaponInfo();
@@ -154,7 +159,7 @@ public class Enemy : MonoBehaviour
     public void ResetPosition()
     {
         Target = null;
-        transform.position = SpawnPoint.position;
+        transform.position = SpawnPointPos.position;
         StateMachine.ChangeState(StateMachine.IdleState);
         
         Condition.Recovery();

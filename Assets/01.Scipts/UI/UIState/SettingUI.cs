@@ -45,6 +45,7 @@ public class SettingUI : UnifiedUI
 
         public override void HandleInput()
         {
+            base.HandleInput();
             if (Input.GetKeyDown(KeyCode.E))
             {
                 //성물 UI로 이동
@@ -118,14 +119,14 @@ public class SettingUI : UnifiedUI
         
         public void OnBGMVolumeChange(float value)
         {
-            SoundManager.Instance.SetVolume(SoundManager.SoundType.BGMVolume, value);
+            SoundManager.Instance.SetVolume(SoundManager.SoundType.BGMMixer, value);
             Debug.Log($"배경음 볼륨: {value:F2}");
         }
         
         
         public void OnSFXVolumeChange(float value)
         {
-            SoundManager.Instance.SetVolume(SoundManager.SoundType.SFXVolume, value);
+            SoundManager.Instance.SetVolume(SoundManager.SoundType.SFXMixer, value);
             Debug.Log($"효과음 볼륨: {value:F2}");
         }
         
@@ -134,10 +135,15 @@ public class SettingUI : UnifiedUI
         {
           float bgmVolumeValue, sfxVolumeValue;
           
-          SoundManager.Instance.mixer.GetFloat(SoundManager.SoundType.BGMVolume.ToString(), out bgmVolumeValue);
-          SoundManager.Instance.mixer.GetFloat(SoundManager.SoundType.SFXVolume.ToString(), out sfxVolumeValue);
-          
-          _bgmVolume.value = bgmVolumeValue;
-          _sfxVolume.value = sfxVolumeValue;
+          SoundManager.Instance.mixer.GetFloat(SoundManager.SoundType.BGMMixer.ToString(), out bgmVolumeValue);
+          SoundManager.Instance.mixer.GetFloat(SoundManager.SoundType.SFXMixer.ToString(), out sfxVolumeValue);
+
+          _bgmVolume.value = DbToLinear(bgmVolumeValue);
+          _sfxVolume.value = DbToLinear(sfxVolumeValue);
+        }
+
+        private float DbToLinear(float db)
+        {
+            return Mathf.Pow(10f, db / 20f);
         }
 }

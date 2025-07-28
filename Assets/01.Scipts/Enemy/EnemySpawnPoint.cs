@@ -3,16 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType
+{
+    Normal,
+    Elite,
+}
+
 public class EnemySpawnPoint : MonoBehaviour
 {
     //필드
     private Enemy _enemy;
     private Coroutine _cancelChase;
-    [SerializeField] private float patrolDistance = 10;
     public bool isSpawn {get; set;}
 
     //직렬화
     [SerializeField] private GameObject monster;
+    [SerializeField] private float patrolDistance = 10;
+    [SerializeField] private EnemyType enemyType;
+    public EnemyType Enemytype => enemyType;
+    public float PatrolDistance => patrolDistance;
 
     private void Start()
     {
@@ -26,7 +35,7 @@ public class EnemySpawnPoint : MonoBehaviour
         GameObject go =ObjectPoolManager.Get(monster,(int)ObjectPoolManager.PoolingIndex.Monster);
         go.transform.position = transform.position;
         _enemy = go.GetComponent<Enemy>();
-        _enemy.Init(this.transform, patrolDistance);
+        _enemy.Init(this);
         isSpawn = true;
     }
 

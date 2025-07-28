@@ -23,6 +23,6 @@ public class SFXSound : MonoBehaviour
     {
         yield return new WaitForSeconds(value);
 
-        ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.SFX, null, gameObject);
+        ObjectPoolManager.Set(gameObject,(int)ObjectPoolManager.PoolingIndex.SFX);
     }
 }
