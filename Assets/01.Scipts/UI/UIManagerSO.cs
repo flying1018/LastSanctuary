@@ -17,6 +17,8 @@ public class UIManagerSO : ScriptableObject
     public GameObject statUIPrefab;
     public GameObject equipUIPrefab;
     public GameObject slotUIPrefab;
+    public string leftClickDesc;
+    public string rightClickDesc;
 
     [Header("MainUI")] 
     public int buffUINum;

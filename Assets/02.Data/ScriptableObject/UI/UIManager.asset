@@ -22,6 +22,8 @@ MonoBehaviour:
   statUIPrefab: {fileID: 819825158840137022, guid: 22341d572293d6e428e7a97b27ba635e, type: 3}
   equipUIPrefab: {fileID: 7505059567028691083, guid: e77f58111ab52754f93611a0082027c9, type: 3}
   slotUIPrefab: {fileID: 6861087890945916903, guid: a0dbed150bcee3e4cbf6c93e9928e771, type: 3}
+  leftClickDesc: "\uC120\uD0DD"
+  rightClickDesc: "\uC7A5\uCC29/\uD574\uC81C"
   buffUINum: 4
   conditionSize: 4
   buffUIPrefab: {fileID: 2791636121712924179, guid: 4426144abcac7604199140d70059f7c3, type: 3}

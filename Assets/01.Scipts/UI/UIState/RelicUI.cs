@@ -61,7 +61,15 @@ public class RelicUI : UnifiedUI
     public override void Enter()
     {
         base.Enter();
+
+        _mouseLeftDesc.text = "선택";
+        _mouseRightDesc.text = "장착/해제";
+        _mouseLeft.SetActive(true);
+        _mouseRight.SetActive(true);
+        
+        
         _uiManager.RelicUI.SetActive(true);
+        
         UpdateStatus();
         UpdateSlot();
     }
