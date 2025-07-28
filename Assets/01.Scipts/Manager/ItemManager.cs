@@ -39,6 +39,7 @@ public class ItemManager : Singleton<ItemManager>
         {
             playerCondition.ApplyPermanent(data);
         }
+        uiManager.StateMachine.MainUI.UpdateCondition();
         
     }
 

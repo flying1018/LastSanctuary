@@ -41,13 +41,8 @@ public class MainUI : UIBaseState
         _potionText.text = _playerInventory.CurPotionNum.ToString();
         _goldText.text = _playerInventory.Gold.ToString();
         
-        //hp 설정
-        _hpConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.TotalHp);
-        _hpConditionUI.SetCurValue(_playerCondition.HpValue());
-        _staminaConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.TotalStamina);
-        _staminaConditionUI.SetCurValue(_playerCondition.StaminaValue());
-        _ultimateConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.MaxUltimate);
-        _ultimateConditionUI.SetCurValue(_playerCondition.UltimateValue());
+        //컨디션 설정
+        UpdateCondition();
         
         _uiManager.MainUI.SetActive(true);
     }
@@ -103,6 +98,13 @@ public class MainUI : UIBaseState
                 break;
             }
         }
+    }
+
+    public void UpdateCondition()
+    {
+        _hpConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.TotalHp);
+        _staminaConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.TotalStamina);
+        _ultimateConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.MaxUltimate);
     }
     
     
