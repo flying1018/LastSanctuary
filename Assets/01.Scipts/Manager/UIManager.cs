@@ -46,13 +46,16 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI  fullscreenText;
     [SerializeField] private Slider bgmVolume;
     [SerializeField] private Slider sfxVolume;
-    //다른 UI에서는 필요없는거라 일단 빼놨습니다(의견 나눠봐야될듯)
+    
     [SerializeField] private Button leftButton;
     [SerializeField] private Button rightButton;
     [SerializeField] private Button fullscreenButtonA;
     [SerializeField] private Button fullscreenButtonB;
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private Slider sfxSlider;
+    [SerializeField] private Button titleButton;
+    [SerializeField] private Button initButton;
+    [SerializeField] private Button revertButton;
 
 
     public UIStateMachine StateMachine { get; set; }
@@ -95,13 +98,15 @@ public class UIManager : Singleton<UIManager>
     public TextMeshProUGUI FullscreenText { get => fullscreenText;}
     public Slider BgmVolume { get => bgmVolume;}
     public Slider SfxVolume { get => sfxVolume;}
-    //임시
     public Button LeftButton { get => leftButton;}
     public Button RightButton { get => rightButton;}
     public Button FullscreenButtonA { get => fullscreenButtonA;}
     public Button FullscreenButtonB { get => fullscreenButtonB;}
     public Slider BgmSlider { get => bgmSlider;}
     public Slider SfxSlider { get => sfxSlider;}
+    public Button TitleButton { get => titleButton;}
+    public Button InitButton { get => initButton;}
+    public Button ReverButton { get => revertButton;}
 
     private void Start()
     {

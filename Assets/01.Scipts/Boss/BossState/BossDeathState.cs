@@ -10,6 +10,7 @@ public class BossDeathState : BossBaseState
     public override void Enter()
     {        
         //애니메이션 실행
+        _boss.Animator.Rebind();
         _boss.Animator.SetTrigger(_boss.AnimationDB.DeathParameterHash);
         
         //보스 골드 드랍
