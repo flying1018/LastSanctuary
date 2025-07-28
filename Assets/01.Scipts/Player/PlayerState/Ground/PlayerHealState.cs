@@ -49,7 +49,6 @@ public class PlayerHealState : PlayerGroundState
     {
         //체력 회복
         _inventory.UsePotion();
-        _condition.Heal(); 
     }
     
     public override void PlaySFX1()

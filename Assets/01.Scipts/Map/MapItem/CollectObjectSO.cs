@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum CollectType
@@ -15,6 +16,13 @@ public enum StatType
     Hp,
     Recovery,
     Ultimit,
+}
+
+[Serializable]
+public struct StatDelta
+{
+    public StatType statType;
+    public int amount;
 }
 
 /// <summary>
@@ -37,7 +45,5 @@ public class CollectObjectSO : ScriptableObject
     public string effectDesc;
     public string relicDesc;
     public Sprite relicSprite;
-
-    public StatType statType;
-    public int amount;
+    public StatDelta[] statDeltas;
 }

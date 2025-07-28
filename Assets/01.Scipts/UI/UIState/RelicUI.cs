@@ -90,10 +90,10 @@ public class RelicUI : UnifiedUI
         _statUIs[2].basic.text = _playerCondition.MaxHp.ToString();
         _statUIs[3].basic.text = _playerCondition.MaxStamina.ToString();
 
-        _statUIs[0].relic.text = "+" + _playerInventory.EquipRelicAttack();
-        _statUIs[1].relic.text = "+" + _playerInventory.EquipRelicDefense();
-        _statUIs[2].relic.text = "+" + _playerInventory.EquipRelicHp();
-        _statUIs[3].relic.text = "+" + _playerInventory.EquipRelicStamina();
+        _statUIs[0].relic.text = "+" + _playerInventory.EquipAtk;
+        _statUIs[1].relic.text = "+" + _playerInventory.EquipDef;
+        _statUIs[2].relic.text = "+" + _playerInventory.EquipHp;
+        _statUIs[3].relic.text = "+" + _playerInventory.EquipStamina;
 
         //버프 효과 표시 필요
     }

@@ -29,14 +29,13 @@ public class ItemManager : Singleton<ItemManager>
     public void UpgradeStat(StatObjectSO data)
     {
         //버프 적용
-        if (data.duration > 0)
+        if (data.isConsumable)
         {
             uiManager.StateMachine.MainUI.UpdateBuffUI(data);
             playerCondition.ApplyTempBuff(data);
         }
-        //지속시간 0이면(보다 작으면)영구 적용 또는 즉시 적용 (궁극기 회복등)
-
-        if (data.isConsumable == false)
+        //영구 스탯
+        else
         {
             playerCondition.ApplyPermanent(data);
         }
