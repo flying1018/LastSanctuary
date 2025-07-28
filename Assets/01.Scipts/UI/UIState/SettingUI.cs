@@ -72,7 +72,7 @@ public class SettingUI : UnifiedUI
             InitResolution();
             InitSettings();
         }
-
+        //타이틀로 이동
         private void ReturnToTitle()
         {
             SceneManager.LoadScene(StringNameSpace.Scenes.TitleScene);
