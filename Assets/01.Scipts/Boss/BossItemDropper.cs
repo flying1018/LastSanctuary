@@ -48,7 +48,7 @@ public class BossItemDropper : MonoBehaviour
    //하나씩 생성
    private void DropItem(GameObject prefab, Vector3 spawnPos, Vector3 dropPos)
    {
-      GameObject item = ObjectPoolManager.Get(prefab, (int)ObjectPoolManager.PoolingIndex.Item);
+      GameObject item = ObjectPoolManager.Get(prefab, (int)PoolingIndex.Item);
       item.transform.position = spawnPos;
       StartCoroutine(DropEvent_Coroutine(item, spawnPos, dropPos));
    }

@@ -50,7 +50,7 @@ public class SoundManager : Singleton<SoundManager>
     //효과음 실행 메서드
     public void PlaySFX(AudioClip clip, float volume = 1f)
     {
-        GameObject sfxObj = ObjectPoolManager.Get(sfxPrefab, (int)ObjectPoolManager.PoolingIndex.SFX);
+        GameObject sfxObj = ObjectPoolManager.Get(sfxPrefab, (int)PoolingIndex.SFX);
         if(sfxObj.TryGetComponent(out SFXSound sfx))
             sfx.Play(clip, volume);
     }
