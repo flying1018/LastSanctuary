@@ -20,11 +20,6 @@ public class PlayerHealState : PlayerGroundState
     {
         base.Exit();
         
-        //체력 회복
-        _inventory.UsePotion();
-        
-        _condition.Heal(); 
-        
         StopAnimation(_player.AnimationDB.HealParameterHash);
     }
 
@@ -48,6 +43,13 @@ public class PlayerHealState : PlayerGroundState
     public override void PhysicsUpdate()
     {
 
+    }
+
+    public override void PlayEvent1()
+    {
+        //체력 회복
+        _inventory.UsePotion();
+        _condition.Heal(); 
     }
     
     public override void PlaySFX1()
