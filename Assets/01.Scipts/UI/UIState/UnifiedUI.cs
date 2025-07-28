@@ -1,21 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UnifiedUI : UIBaseState
 {
+    protected GameObject _mouseLeft;
+    protected TextMeshProUGUI _mouseLeftDesc;
+    protected GameObject _mouseRight;
+    protected TextMeshProUGUI _mouseRightDesc;
+    protected RectTransform _centerLine;
+    
     public UnifiedUI(UIStateMachine uiStateMachine) : base(uiStateMachine)
     {
         _uiManager.ExitButton.onClick.AddListener(OnClickExitButton);
         _uiManager.RelicUIButton.onClick.AddListener(OnClickRelicUIButton);
         _uiManager.SkillUIButton.onClick.AddListener(OnClickSkillUIButton);
         _uiManager.SettingUIButton.onClick.AddListener(OnClickSettingUIButton);
+        
+        _mouseLeft = _uiManager.MouseLeft;
+        _mouseRight= _uiManager.MouseRight;
+        _mouseLeftDesc = _mouseLeft.GetComponentInChildren<TextMeshProUGUI>();
+        _mouseRightDesc = _mouseRight.GetComponentInChildren<TextMeshProUGUI>();
+
+        _centerLine = _uiManager.CenterLinePos;
     }
 
     public override void Enter()
     {
+        _centerLine.localPosition = Vector3.zero;
+        
         _uiManager.PlayerInput.enabled = false;
         _uiManager.UnifiedUI.SetActive(true);
+        
     }
 
     public override void Exit()

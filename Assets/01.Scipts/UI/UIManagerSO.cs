@@ -13,9 +13,12 @@ public class UIManagerSO : ScriptableObject
     [Header("RelicUI")]
     public string[] statNames; 
     public int equipNum;    //장비칸 수
+    public int nonLockEquip;
     public GameObject statUIPrefab;
     public GameObject equipUIPrefab;
     public GameObject slotUIPrefab;
+    public string relicLeftClickDesc;
+    public string relicRightClickDesc;
 
     [Header("MainUI")] 
     public int buffUINum;
@@ -23,4 +26,10 @@ public class UIManagerSO : ScriptableObject
     public GameObject buffUIPrefab;
     public Sprite potionIcon;
     public Sprite emptyPotionIcon;
+
+    [Header("SkillUI")] 
+    public float centerLinePosition;
+    public string skillLeftClickDesc;
+    public string sKillRightClickDesc;
+    
 }

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e3e0f2895c8d4651b818dc864c0e262, type: 3}
-  m_Name: CurPotion
+  m_Name: Pot_Upg
   m_EditorClassIdentifier: 
   UID: 
   collectType: 0
-  isMaxIncrease: 0
-  potionIcon: {fileID: 21300000, guid: 540ff9c315ead48f6b0a7cba9ae834bc, type: 3}
+  isMaxIncrease: 1
+  potionIcon: {fileID: 21300000, guid: 1a7c69454da764d84a471156fe9c61c9, type: 3}
   index: 0
   relicName: 
   effectDesc: 

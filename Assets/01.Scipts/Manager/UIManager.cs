@@ -16,6 +16,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Button relicUIButton;
     [SerializeField] private Button skillUIButton;
     [SerializeField] private Button settingUIButton;
+    [SerializeField] private GameObject mouseLeft;
+    [SerializeField] private GameObject mouseRight;
+    [SerializeField] private RectTransform centerLinePos;
+    
     
     [Header("RelicUI")]
     [SerializeField] private GameObject relicUI;
@@ -66,6 +70,9 @@ public class UIManager : Singleton<UIManager>
     public Button RelicUIButton { get => relicUIButton;}
     public Button SkillUIButton { get => skillUIButton;}
     public Button SettingUIButton { get => settingUIButton;}
+    public GameObject MouseLeft { get => mouseLeft;}
+    public GameObject MouseRight { get => mouseRight;}  
+    public RectTransform CenterLinePos { get => centerLinePos;}
     
     //RelicUI
     public GameObject RelicUI { get => relicUI;}

@@ -29,7 +29,7 @@ public partial class PlayerCondition : Condition
     }
     public float TotalHp
     {
-        get => _maxHp + _player.Inventory.EquipRelicHp() + BuffHp;
+        get => _maxHp + _player.Inventory.EquipHp + BuffHp;
     }
     public float MaxStamina
     {
@@ -43,7 +43,7 @@ public partial class PlayerCondition : Condition
     }
     public float TotalStamina
     {
-        get => MaxStamina + BuffStamina + _player.Inventory.EquipRelicStamina();
+        get => MaxStamina + BuffStamina + _player.Inventory.EquipStamina;
     }
 
     //공격력 방어력 프로퍼티
@@ -55,7 +55,7 @@ public partial class PlayerCondition : Condition
 
     public int TotalAttack
     {
-        get => _attack + BuffAtk + _player.Inventory.EquipRelicAttack();
+        get => _attack + BuffAtk + _player.Inventory.EquipAtk;
     }
     public int Defence
     {
@@ -64,7 +64,7 @@ public partial class PlayerCondition : Condition
     }
     public int TotalDefence
     {
-        get => _defence + BuffDef + _player.Inventory.EquipRelicDefense();
+        get => _defence + BuffDef + _player.Inventory.EquipDef;
     }
     
     //성물로 증가 가능한 프로퍼티
@@ -135,11 +135,25 @@ public partial class PlayerCondition : Condition
             _tempBuffs.Remove(data);
         }
 
-        BuffHp += data.hp;
-        CurHp += data.hp;
-        BuffStamina += data.stamina;
-        BuffAtk += data.attack;
-        BuffDef += data.defense;
+        foreach (StatDelta stat in data.statDeltas)
+        {
+            switch (stat.statType)
+            {
+                case StatType.Hp:
+                    BuffHp += stat.amount;
+                    CurHp += stat.amount;
+                    break;
+                case StatType.Stamina:
+                    BuffStamina += stat.amount;
+                    break;
+                case StatType.Atk :
+                    BuffAtk += stat.amount;
+                    break;
+                case StatType.Def :
+                    BuffDef += stat.amount;
+                    break;
+            }
+        }
 
         Coroutine newCoroutine = StartCoroutine(BuffDurationTimerCoroutine(data));
         _tempBuffs[data] = newCoroutine;
@@ -147,21 +161,52 @@ public partial class PlayerCondition : Condition
 
     public void ApplyPermanent(StatObjectSO data)
     {
-        MaxHp += data.hp;
-        CurHp += data.hp;
-        MaxStamina += data.stamina;
-        Attack += data.attack;
-        Defence += data.defense;
+        foreach (StatDelta stat in data.statDeltas)
+        {
+            switch (stat.statType)
+            {
+                case StatType.Hp:
+                    MaxHp += stat.amount;
+                    CurHp += stat.amount;
+                    break;
+                case StatType.Stamina:
+                    MaxStamina += stat.amount;
+                    break;
+                case StatType.Atk :
+                    Attack += stat.amount;
+                    break;
+                case StatType.Def :
+                    Defence += stat.amount;
+                    break;
+                case StatType.Ultimit:
+                    CurUltimate = MaxUltimate;
+                    break;
+            }
+        }
     }
 
     //버프 제거
     private void RemoveTempBuff(StatObjectSO data)
     {
-        BuffHp -= data.hp;
-        CurHp -= data.hp;
-        BuffStamina -= data.stamina;
-        BuffAtk -= data.attack;
-        BuffDef -= data.defense;
+        foreach (StatDelta stat in data.statDeltas)
+        {
+            switch (stat.statType)
+            {
+                case StatType.Hp:
+                    BuffHp -= stat.amount;
+                    CurHp -= stat.amount;
+                    break;
+                case StatType.Stamina:
+                    BuffStamina -= stat.amount;
+                    break;
+                case StatType.Atk :
+                    BuffAtk -= stat.amount;
+                    break;
+                case StatType.Def :
+                    BuffDef -= stat.amount;
+                    break;
+            }
+        }
         //죽었을떄는 전체 초기화
     }
 

@@ -24,7 +24,7 @@ public class EnemyRangeAttackState : EAttackState
         Transform firePoint = _enemy.EnemyWeapon.transform;
 
         //오브젝트 생성
-        GameObject arrow = ObjectPoolManager.Get(_data.arrowPrefab, _data.arrowPoolId);
+        GameObject arrow = ObjectPoolManager.Get(_data.arrowPrefab, (int)PoolingIndex.Arrow);
         arrow.transform.position = firePoint.position;
 
         //쏘는 방향 설정
@@ -34,7 +34,7 @@ public class EnemyRangeAttackState : EAttackState
         //투사체 발사
         if (arrow.TryGetComponent(out ProjectileWeapon arrowProjectile))
         {
-            arrowProjectile.Init(_data.attack, _data.knockbackForce);
+            arrowProjectile.Init(_data.attack, _data.knockbackForce,PoolingIndex.Arrow);
             arrowProjectile.Shot(dir, _data.arrowPower);
         }
         

@@ -8,15 +8,21 @@ public class StatObject : MonoBehaviour, IInteractable
     
     [SerializeField] private StatObjectSO statData;
     
-    public bool isGet;
-    public bool IsGet { get => isGet; set => isGet = value; }
+    private bool _isGet;
+    public bool IsGet { get => _isGet; set => _isGet = value; }
+
+    private void Awake()
+    {
+        GetComponent<SpriteRenderer>().sprite = statData.icon;
+    }
+
 
     //상호작용 시
     public void Interact()
     {
-        if (isGet) { return; }
+        if (_isGet) { return; }
         
-        isGet = true;
+        _isGet = true;
         ItemManager.Instance.UpgradeStat(statData);
         OnInteracte?.Invoke();
         gameObject.SetActive(false);
@@ -27,6 +33,6 @@ public class StatObject : MonoBehaviour, IInteractable
     /// </summary>
     public void SetActive()
     {
-        gameObject.SetActive(!isGet);
+        gameObject.SetActive(!_isGet);
     }
 }

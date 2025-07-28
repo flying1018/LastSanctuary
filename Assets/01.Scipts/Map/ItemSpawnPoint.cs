@@ -21,7 +21,7 @@ public class ItemSpawnPoint : MonoBehaviour
     //아이템 스폰
     public void Spawn()
     {
-        curItem =ObjectPoolManager.Get(item,(int)ObjectPoolManager.PoolingIndex.Item);
+        curItem =ObjectPoolManager.Get(item,(int)PoolingIndex.Item);
         curItem.transform.position = transform.position;
 
         if (curItem.TryGetComponent(out StatObject statObject))

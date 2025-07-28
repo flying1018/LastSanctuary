@@ -55,7 +55,7 @@ public class BossProjectileAttackState : BossAttackState
         Transform firePoint = _boss.BossWeapon.transform;
 
         //투사체 생성
-        GameObject attack2 = ObjectPoolManager.Get(_attackInfo.projectilePrefab, _attackInfo.projectilePoolId);
+        GameObject attack2 = ObjectPoolManager.Get(_attackInfo.projectilePrefab,(int)PoolingIndex.BossProjectile);
         
         //방향 설정
         Vector2 dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
@@ -65,7 +65,7 @@ public class BossProjectileAttackState : BossAttackState
         //
         if (attack2.TryGetComponent(out ProjectileWeapon arrowPoProjectile))
         {
-            arrowPoProjectile.Init(_data.attack, _attackInfo.knockbackForce);
+            arrowPoProjectile.Init(_data.attack, _attackInfo.knockbackForce,PoolingIndex.BossProjectile);
             arrowPoProjectile.Shot(dir, _attackInfo.projectilePower);
         }
     }
