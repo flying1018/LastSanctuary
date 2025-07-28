@@ -19,7 +19,8 @@ public class PlayerAnimationDB
     [SerializeField] private string airParameter = "@Air";
     [SerializeField] private string fallParameter = "Fall";
     [SerializeField] private string jumpParameter = "Jump";
-    [SerializeField] private string ropedParameter = "Roped";
+    [SerializeField] private string ropeIdleParameter = "RopeIdle";
+    [SerializeField] private string ropeMoveParameter = "RopeMove";
 
     [SerializeField] private string attackParameter = "@Attack";
     [SerializeField] private string comboParameter = "Combo";
@@ -40,7 +41,8 @@ public class PlayerAnimationDB
     public int AirParameterHash { get; private set; }
     public int FallParameterHash { get; private set; }
     public int JumpParameterHash { get; private set; }
-    public int RopedParameterHash { get; private set; }
+    public int RopeIdleParameterHash { get; private set; }
+    public int RopeMoveParameterHash { get; private set; }
 
     public int AttackParameterHash { get; private set; }
     public int ComboParameterHash { get; private set; }   
@@ -62,7 +64,8 @@ public class PlayerAnimationDB
         AirParameterHash = Animator.StringToHash(airParameter);
         FallParameterHash = Animator.StringToHash(fallParameter);
         JumpParameterHash = Animator.StringToHash(jumpParameter);
-        RopedParameterHash = Animator.StringToHash(ropedParameter);       
+        RopeIdleParameterHash = Animator.StringToHash(ropeIdleParameter);       
+        RopeMoveParameterHash = Animator.StringToHash(ropeMoveParameter);       
 
         AttackParameterHash = Animator.StringToHash(attackParameter);
         ComboParameterHash = Animator.StringToHash(comboParameter);  
