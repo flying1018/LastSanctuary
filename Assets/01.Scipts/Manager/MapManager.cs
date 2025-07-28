@@ -10,7 +10,8 @@ public class MapManager : Singleton<MapManager>
     [SerializeField] private List<EnemySpawnPoint> EnemySpawnPoints;
     [SerializeField] private List<ItemSpawnPoint> ItemSpawnPoints;
     [SerializeField] private List<WarpObject> warpObjects;
-    [SerializeField] private bool isBossAlive;
+
+    private List<EnemySpawnPoint> deadElites = new List<EnemySpawnPoint>();
 
     public WarpObject selectWarpObj;
     public WarpObject targetWarpObj;
@@ -29,10 +30,22 @@ public class MapManager : Singleton<MapManager>
         IsBossAlive = false;
     }
 
+    public void SetEliteDead(EnemySpawnPoint spawnPoint)
+    {
+        if (!deadElites.Contains(spawnPoint))
+            deadElites.Add(spawnPoint);
+    }
+
     //몬스터 리스폰
     public void RespawnEnemies()
     {
-        foreach (var spawnPoint in EnemySpawnPoints) spawnPoint.Respawn();
+        foreach (var spawnPoint in EnemySpawnPoints)
+        {
+            if (spawnPoint.Enemytype == EnemyType.Elite && deadElites.Contains(spawnPoint))
+                continue;
+            
+            spawnPoint.Respawn();
+        }
     }
 
     public void RespawnItems()

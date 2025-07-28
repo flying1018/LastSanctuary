@@ -30,15 +30,12 @@ public class Boss : MonoBehaviour
     public GameObject Weapon { get; set; }
     public BossSO Data {get => bossData;}
     public bool Phase2 { get; set; }
-    public float VerticalVelocity { get; set;}
     public KinematicMove Move {get; set;}
     public BossItemDropper ItemDropper {get; set;}
 
-
-    public void Init(BossEvent bossEvent)
+    public void Awake()
     {
         //필요한 프로퍼티 설정
-        BossEvent = bossEvent;
         AnimationDB = new BossAnimationDB(); 
         BoxCollider = GetComponent<BoxCollider2D>();
         Rigidbody = GetComponent<Rigidbody2D>();
@@ -48,9 +45,12 @@ public class Boss : MonoBehaviour
         BossWeapon = GetComponentInChildren<BossWeapon>();
         Weapon = BossWeapon.gameObject;
         ItemDropper = GetComponent<BossItemDropper>();
-        //transform.position = _spawnPoint;
         Move = GetComponent<KinematicMove>();
-        
+    }
+
+    public void Init(BossEvent bossEvent)
+    {
+        BossEvent = bossEvent;
         //무기 데이터 설정
         WeaponInfo = new WeaponInfo();
         WeaponInfo.Condition = Condition;

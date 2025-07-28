@@ -62,6 +62,6 @@ public class PlayerWeapon : Weapon
         yield return _waitAnimSec;
 
         _groggyAttackCoroutine = null;
-        ObjectPoolManager.Set(_objectPoolId, gameObject, gameObject);
+        ObjectPoolManager.Set(gameObject, _objectPoolId);
     }
 }

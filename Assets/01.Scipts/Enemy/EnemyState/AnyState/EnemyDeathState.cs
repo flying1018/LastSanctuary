@@ -18,7 +18,14 @@ public class EnemyDeathState : EnemyBaseState
     public override void Exit()
     {
         //스폰 포인트에 사망 처리
-        _spawnPoint.GetComponent<EnemySpawnPoint>().isSpawn = false;
+        var spawnPoint = _spawnPoint.GetComponent<EnemySpawnPoint>();
+        
+        //엘리트 구분
+        if (spawnPoint.Enemytype == EnemyType.Elite)
+        {
+            MapManager.Instance.SetEliteDead(spawnPoint);
+        }
+        spawnPoint.isSpawn = false;
         
         //애니메이터 초기화
         _enemy.Animator.Rebind();
@@ -27,7 +34,7 @@ public class EnemyDeathState : EnemyBaseState
         ItemManager.Instance.GetGold(_data.dropGold);
         
         //오브젝트 회수
-        ObjectPoolManager.Set(_enemy.Data._key, _enemy.gameObject, _enemy.gameObject);
+        ObjectPoolManager.Set(_enemy.gameObject, _enemy.Data._key);
     }
 
     public override void HandleInput() { }

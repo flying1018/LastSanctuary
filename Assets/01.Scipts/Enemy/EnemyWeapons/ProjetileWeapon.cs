@@ -32,7 +32,7 @@ public class ProjectileWeapon : EnemyWeapon
         {
             if (iguardable.ApplyGuard(WeaponInfo, transform))
             {
-                ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.Arrow, gameObject, gameObject);
+                ObjectPoolManager.Set(gameObject, (int)ObjectPoolManager.PoolingIndex.Arrow);
                 return;
             }
         }
@@ -56,7 +56,7 @@ public class ProjectileWeapon : EnemyWeapon
            other.CompareTag(StringNameSpace.Tags.Celling) ||
            other.CompareTag(StringNameSpace.Tags.Player))
         {
-            ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.Arrow, gameObject, gameObject);
+            ObjectPoolManager.Set(gameObject, (int)ObjectPoolManager.PoolingIndex.Arrow);
         }
     }
 }
