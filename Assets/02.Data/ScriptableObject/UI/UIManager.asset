@@ -18,6 +18,7 @@ MonoBehaviour:
   - "\uCD5C\uB300 \uCCB4\uB825"
   - "\uCD5C\uB300 \uC2A4\uD0DC\uBBF8\uB098"
   equipNum: 5
+  nonLockEquip: 2
   statUIPrefab: {fileID: 819825158840137022, guid: 22341d572293d6e428e7a97b27ba635e, type: 3}
   equipUIPrefab: {fileID: 7505059567028691083, guid: e77f58111ab52754f93611a0082027c9, type: 3}
   slotUIPrefab: {fileID: 6861087890945916903, guid: a0dbed150bcee3e4cbf6c93e9928e771, type: 3}

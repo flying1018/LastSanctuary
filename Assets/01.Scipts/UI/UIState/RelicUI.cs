@@ -39,8 +39,12 @@ public class RelicUI : UnifiedUI
             _equipUIs.Add(go.GetComponent<EquipUI>());
 
             int index = i;
-            _equipUIs[i].OnSelect += () => OnSelect(_equipUIs[index].data);
-            _equipUIs[i].OnEquip += () => OnEquip(_equipUIs[index].data);
+            _equipUIs[i].OnSelect += () => OnSelect(_equipUIs[index].Data);
+            _equipUIs[i].OnEquip += () => OnEquip(_equipUIs[index].Data);
+            //장비칸 잠그기
+            if (i < _data.nonLockEquip) _equipUIs[i].SetLock(false);
+            else _equipUIs[i].SetLock(true);
+            
         }
 
         //성물 슬롯 생성
@@ -85,16 +89,19 @@ public class RelicUI : UnifiedUI
     //스테이터스 갱신
     private void UpdateStatus()
     {
+        //기초 스탯
         _statUIs[0].basic.text = _playerCondition.Attack.ToString();
         _statUIs[1].basic.text = _playerCondition.Defence.ToString();
         _statUIs[2].basic.text = _playerCondition.MaxHp.ToString();
         _statUIs[3].basic.text = _playerCondition.MaxStamina.ToString();
 
+        //성물 스탯
         _statUIs[0].relic.text = "+" + _playerInventory.EquipAtk;
         _statUIs[1].relic.text = "+" + _playerInventory.EquipDef;
         _statUIs[2].relic.text = "+" + _playerInventory.EquipHp;
         _statUIs[3].relic.text = "+" + _playerInventory.EquipStamina;
 
+        //버프 스탯
         _statUIs[0].buff.text = "+" + _playerCondition.BuffAtk;
         _statUIs[1].buff.text = "+" + _playerCondition.BuffDef;
         _statUIs[2].buff.text = "+" + _playerCondition.BuffHp;
@@ -113,20 +120,34 @@ public class RelicUI : UnifiedUI
     //우클릭 시 실행
     private void OnEquip(CollectObjectSO data)
     {
-        _playerInventory.EquipRelic(data);
         foreach (EquipUI equipUI in _equipUIs)
         {
-            equipUI.data = null;
-            equipUI.SetActive();
+            if (equipUI.Data == data)
+            {
+                _playerInventory.UnEquipRelic(data);
+                equipUI.Data = null;
+                equipUI.SetActive();
+                UpdateStatus();
+                return;
+            }
         }
-
-        for (int i = 0; i < _playerInventory.EquipRelics.Count; i++)
+        
+        foreach (EquipUI equipUI in _equipUIs)
         {
-            _equipUIs[i].data = _playerInventory.EquipRelics[i];
-            _equipUIs[i].SetActive();
+            if(equipUI.IsLock)
+            {
+                break;
+            }
+            else if (equipUI.Data == null)
+            {
+                _playerInventory.EquipRelic(data);
+                equipUI.Data = data;
+                equipUI.SetActive();
+                UpdateStatus();
+                break;
+            }
         }
-
-        UpdateStatus();
+        
     }
 
     //성물 슬롯 갱신

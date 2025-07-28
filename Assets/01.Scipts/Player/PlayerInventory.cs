@@ -43,6 +43,11 @@ public class PlayerInventory : MonoBehaviour
     {
         //relics = await ResourceLoader.LoadAssetsLabel<CollectObject>(StringNameSpace.Labels.Relic);;
         relics.Sort();
+        //test
+        foreach (var relic in relics)
+        {
+            relic.IsGet = true;
+        }
 
         MaxPotionNum = player.Data.potionNum;
         CurPotionNum = MaxPotionNum;
@@ -91,34 +96,26 @@ public class PlayerInventory : MonoBehaviour
     //렐릭 장착
     public void EquipRelic(CollectObjectSO data)
     {
-        if (EquipRelics.Contains(data))
+        foreach (StatDelta stat in data.statDeltas)
         {
-            UnEquipRelic(data);
-        }
-        else
-        {
-            foreach (StatDelta stat  in data.statDeltas)
+            switch (stat.statType)
             {
-                switch (stat.statType)
-                {
-                    case StatType.None:
-                        DebugHelper.LogError("StatType이 None임");
-                        break;
-                    case StatType.Recovery:
-                        _playerCondition.HealAmonut += stat.amount;
-                        break;
-                    case StatType.Ultimit:
-                        _playerCondition.MaxUltimate -= stat.amount;
-                        if (_playerCondition.CurUltimate >= _playerCondition.MaxUltimate)
-                            _playerCondition.CurUltimate = _playerCondition.MaxUltimate;
-                        break;
-                }
+                case StatType.None:
+                    DebugHelper.LogError("StatType이 None임");
+                    break;
+                case StatType.Recovery:
+                    _playerCondition.HealAmonut += stat.amount;
+                    break;
+                case StatType.Ultimit:
+                    _playerCondition.MaxUltimate -= stat.amount;
+                    if (_playerCondition.CurUltimate >= _playerCondition.MaxUltimate)
+                        _playerCondition.CurUltimate = _playerCondition.MaxUltimate;
+                    break;
             }
-            EquipRelics.Add(data);
         }
 
+        EquipRelics.Add(data);
         EquipRelicStat();
-
     }
 
     //장착 해제
@@ -142,6 +139,7 @@ public class PlayerInventory : MonoBehaviour
         }
 
         EquipRelics.Remove(data);
+        EquipRelicStat();
     }
 
     //성물로 인한 공격력 

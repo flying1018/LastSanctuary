@@ -13,6 +13,7 @@ public class UIManagerSO : ScriptableObject
     [Header("RelicUI")]
     public string[] statNames; 
     public int equipNum;    //장비칸 수
+    public int nonLockEquip;
     public GameObject statUIPrefab;
     public GameObject equipUIPrefab;
     public GameObject slotUIPrefab;
