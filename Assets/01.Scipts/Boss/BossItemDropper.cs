@@ -15,25 +15,27 @@ public class BossItemDropper : MonoBehaviour
    [SerializeField] private float jumpDuration;
    [SerializeField] private int minDrop;
    [SerializeField] private int maxDrop;
-
+   [SerializeField] private Sprite circleSprite;
+   //파티클
+   [SerializeField] private GameObject highlight;
    //드롭될 아이템 설정
    public void DropItems()
    {
       Vector3 spawnPos = spawnPoint.position;
-      List<GameObject> dropItems = new List<GameObject>();
+      List<(GameObject obj, bool isRelic)> dropItems = new List<(GameObject, bool)>();
       
       //렐릭
       if (relicItems.Count > 0)
       {
          int relicIndex = Random.Range(0, relicItems.Count);
-         dropItems.Add(relicItems[relicIndex]);
+         dropItems.Add((relicItems[relicIndex], true));
       }
       //스탯
       int dropCount = Random.Range(minDrop, maxDrop+1);
       for (int i = 0; i < dropCount; i++)
       {
          int statIndex = Random.Range(0, statItems.Count);
-         dropItems.Add(statItems[statIndex]);
+         dropItems.Add((statItems[statIndex], false));
       }
       //드롭 위치
       float offsetX = -((dropItems.Count - 1) * dropRange) / 2f;
@@ -42,18 +44,28 @@ public class BossItemDropper : MonoBehaviour
       {
          Vector3 traget = new Vector3(offsetX + i * dropRange,0,0);
          Vector3 dropPos = spawnPos + traget;
-         DropItem(dropItems[i], spawnPos, dropPos);
+         DropItem(dropItems[i].obj, spawnPos, dropPos, dropItems[i].isRelic);
       }
    }
    //하나씩 생성
-   private void DropItem(GameObject prefab, Vector3 spawnPos, Vector3 dropPos)
+   private void DropItem(GameObject prefab, Vector3 spawnPos, Vector3 dropPos, bool isRelic)
    {
       GameObject item = ObjectPoolManager.Get(prefab, (int)ObjectPoolManager.PoolingIndex.Item);
       item.transform.position = spawnPos;
-      StartCoroutine(DropEvent_Coroutine(item, spawnPos, dropPos));
+
+      if (isRelic)
+      {
+         SpriteRenderer sprite = item.GetComponent<SpriteRenderer>();
+         sprite.sprite = circleSprite;
+         sprite.color = new Color(1f,1f,0,0.5f);
+         GameObject effect = Instantiate(highlight, item.transform);
+         effect.transform.localPosition = Vector3.zero;
+      }
+
+      StartCoroutine(DropEvent_Coroutine(item, spawnPos, dropPos, isRelic));
    }
    //아이템 분수 연출
-   private IEnumerator DropEvent_Coroutine(GameObject item, Vector3 spawnPos, Vector3 dropPos)
+   private IEnumerator DropEvent_Coroutine(GameObject item, Vector3 spawnPos, Vector3 dropPos, bool isRelic)
    {
       float time = 0f;
 
@@ -68,5 +80,13 @@ public class BossItemDropper : MonoBehaviour
          yield return null;
       }
       item.transform.position = dropPos;
+      
+      if (isRelic)
+      {
+         CollectObject obj = item.GetComponent<CollectObject>();
+         SpriteRenderer sprite = item.GetComponent<SpriteRenderer>();
+         sprite.sprite = obj.Data.relicSprite;
+         sprite.color = Color.white;
+      }
    }
 }
