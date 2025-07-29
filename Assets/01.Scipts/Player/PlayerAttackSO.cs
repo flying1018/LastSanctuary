@@ -22,22 +22,22 @@ public class AttackInfo
 [CreateAssetMenu(fileName = "PlayerAttack", menuName = "New PlayerAttack")]
 public class PlayerAttackSO : ScriptableObject
 {
-    [Header("AttackState")] 
+    [Header("AttackState")]
     public AttackInfo[] attacks;
     public float defpen;
     public float maxUltimateGauge;
-    
-    [Header("DashAttackState")] 
-    public AttackInfo dashAttack;
-    
-    [Header("JumpAttackState")] 
-    public AttackInfo jumpAttack;
-    
 
-    [Header("TopAttackState")] 
+    [Header("DashAttackState")]
+    public AttackInfo dashAttack;
+
+    [Header("JumpAttackState")]
+    public AttackInfo jumpAttack;
+
+
+    [Header("TopAttackState")]
     public AttackInfo topAttack;
 
-    [Header("GroggAttackState")] 
+    [Header("GroggAttackState")]
     public GameObject groggyAttackPrefab;
     public int prefabId;
     public float groggyAnimInterval;
@@ -50,4 +50,7 @@ public class PlayerAttackSO : ScriptableObject
     [Header("UltimateAttackState")]
     public AttackInfo UltAttack;
     public float ultimateValue;
+    public float ultDefpen;
+    public GameObject laserPrefab;
+
 }
