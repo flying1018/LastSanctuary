@@ -15,7 +15,7 @@ public class SettingUI : UnifiedUI
         //설정 값
         private Resolution[] _resolutions;
         private int _curResolutionIndex = 0;
-        private bool _isFullScreen = true;
+        private bool _isFullScreen;
         //초기 설정
         private int _defaultResolutionIndex;
         private bool _defaultFullscreen;
@@ -85,6 +85,7 @@ public class SettingUI : UnifiedUI
             _defaultFullscreen = _isFullScreen;
             _defaultBgmVolume = _bgmVolume.value;
             _defaultSfxVolume = _sfxVolume.value;
+            ApplySettings();
         }
 
         //설정 되돌리기
@@ -120,7 +121,6 @@ public class SettingUI : UnifiedUI
                     _curResolutionIndex = i;
                 }
             }
-            ApplySettings();
         }
 
         public void OnClickLeft()
@@ -128,14 +128,12 @@ public class SettingUI : UnifiedUI
             _curResolutionIndex--;
             if (_curResolutionIndex < 0)
                 _curResolutionIndex = _resolutions.Length - 1;
-            ApplySettings();
         }
         public void OnClickRight()
         {
             _curResolutionIndex++;
             if (_curResolutionIndex >= _resolutions.Length)
                 _curResolutionIndex = 0;
-            ApplySettings();
         }
         //전체화면 설정
         public void OnClickScreen()
