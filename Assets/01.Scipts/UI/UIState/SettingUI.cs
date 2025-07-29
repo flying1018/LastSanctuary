@@ -35,9 +35,9 @@ public class SettingUI : UnifiedUI
           _uiManager.FullscreenButtonB.onClick.AddListener(OnClickScreen);
           _uiManager.BgmSlider.onValueChanged.AddListener(OnBGMVolumeChange);
           _uiManager.SfxSlider.onValueChanged.AddListener(OnSFXVolumeChange);
-          _uiManager.TitleButton.onClick.AddListener(ReturnToTitle);
-          _uiManager.InitButton.onClick.AddListener(InitSettings);
-          _uiManager.ReverButton.onClick.AddListener(RevertSettings);
+          //_uiManager.TitleButton.onClick.AddListener(ReturnToTitle);
+          //_uiManager.InitButton.onClick.AddListener(InitSettings);
+          //_uiManager.ReverButton.onClick.AddListener(RevertSettings);
         }
 
         public override void Enter()
@@ -151,7 +151,6 @@ public class SettingUI : UnifiedUI
             Screen.SetResolution(res.width, res.height, _isFullScreen);
             _resolution.text = $"{res.width} x {res.height}";
             _fullscreen.text = _isFullScreen ? "전체화면" : "창모드";
-            Debug.Log($"{_isFullScreen}{_fullscreen.text}");
         }
         
         //배경음 설정

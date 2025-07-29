@@ -718,6 +718,7 @@ MonoBehaviour:
   settingUIButton: {fileID: 1837047884762626907}
   mouseLeft: {fileID: 2289289253456896585}
   mouseRight: {fileID: 6381870269587897976}
+  centerLinePos: {fileID: 0}
   relicUI: {fileID: 2657624814197779227}
   relicName: {fileID: 1191113593429827878}
   relicEffectText: {fileID: 6080189595040791053}
@@ -744,6 +745,9 @@ MonoBehaviour:
   fullscreenButtonB: {fileID: 3174318317699536382}
   bgmSlider: {fileID: 6765847016529493726}
   sfxSlider: {fileID: 7677482161600161089}
+  titleButton: {fileID: 0}
+  initButton: {fileID: 0}
+  revertButton: {fileID: 0}
 --- !u!1 &711967194978998084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,7 +1333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5168395705431976885
 RectTransform:
   m_ObjectHideFlags: 0

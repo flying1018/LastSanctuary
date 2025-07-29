@@ -62,8 +62,8 @@ public class RelicUI : UnifiedUI
     {
         base.Enter();
 
-        _mouseLeftDesc.text = "선택";
-        _mouseRightDesc.text = "장착/해제";
+        _mouseLeftDesc.text = _data.relicLeftClickDesc;
+        _mouseRightDesc.text = _data.relicRightClickDesc;
         _mouseLeft.SetActive(true);
         _mouseRight.SetActive(true);
         
