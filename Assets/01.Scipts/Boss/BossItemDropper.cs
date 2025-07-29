@@ -50,7 +50,7 @@ public class BossItemDropper : MonoBehaviour
    //하나씩 생성
    private void DropItem(GameObject prefab, Vector3 spawnPos, Vector3 dropPos, bool isRelic)
    {
-      GameObject item = ObjectPoolManager.Get(prefab, (int)ObjectPoolManager.PoolingIndex.Item);
+      GameObject item = ObjectPoolManager.Get(prefab, (int)PoolingIndex.Item);
       item.transform.position = spawnPos;
 
       if (isRelic)

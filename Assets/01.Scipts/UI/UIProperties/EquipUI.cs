@@ -11,32 +11,52 @@ public class EquipUI : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private string defaultText;
+    [SerializeField] private Image icon;
+    [SerializeField] private TextMeshProUGUI desc;
+    [SerializeField] private Image lockImage;
     
-    public Image icon;
-    public TextMeshProUGUI desc;
-    public CollectObjectSO data;
-    public Action OnSelect;
-    public Action OnEquip;
+    //프로퍼티
+    public CollectObjectSO Data { get; set; }
+    public Action OnSelect { get; set; }
+    public Action OnEquip { get; set; }
+    public bool IsLock { get; set; }
     
     //장비 장착 시
     public void SetActive()
     {
-        if (data == null)
+        if (Data == null)
         {
             icon.sprite = defaultSprite;
             desc.text = defaultText;
         }
         else
         {
-            icon.sprite = data.relicSprite;
-            desc.text = data.effectDesc;
+            icon.sprite = Data.relicSprite;
+            desc.text = Data.effectDesc;
+        }
+    }
+
+    public void SetLock(bool isLock)
+    {
+        IsLock = isLock;
+        if (IsLock)
+        {
+            icon.sprite = lockImage.sprite;
+            lockImage.gameObject.SetActive(true);
+            desc.text = "";
+        }
+        else
+        {
+            icon.sprite = defaultSprite;
+            lockImage.gameObject.SetActive(false);
+            desc.text = defaultText;
         }
     }
     
     //클릭 이벤트 추가
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(!data) return;
+        if(!Data) return;
         //좌클릭 시
         if (eventData.button == PointerEventData.InputButton.Left)
         {

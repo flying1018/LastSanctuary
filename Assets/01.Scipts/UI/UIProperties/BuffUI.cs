@@ -50,5 +50,6 @@ public class BuffUI : MonoBehaviour
 
         icon.gameObject.SetActive(false);
         this.data = null;
+        UIManager.Instance.StateMachine.MainUI.UpdateCondition();
     }
 }

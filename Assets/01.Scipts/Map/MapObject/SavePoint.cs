@@ -9,6 +9,7 @@ public class SavePoint : MonoBehaviour, IInteractable
     private Coroutine _interactCoroutine;
     private Coroutine _bellCoroutine;
     private Coroutine _effectCoroutine;
+    private bool _isEffectOn;
     private BoxCollider2D _boxCollider;
 
     [Header("interact Animation")]
@@ -92,9 +93,6 @@ public class SavePoint : MonoBehaviour, IInteractable
         //초기 설정
         rope.transform.localPosition = Vector3.zero;
         bell.transform.rotation = Quaternion.identity;
-        Color color = effect.color;
-        color.a = 0;
-        effect.color = color;
         
         yield return new WaitForSeconds(enterTime);
         
@@ -132,6 +130,8 @@ public class SavePoint : MonoBehaviour, IInteractable
 
     IEnumerator Effect_Coroutine()
     {
+        if (_isEffectOn) { yield break; }
+        
         Color color = effect.color;
         
         while(targetAlpha > effect.color.a)
@@ -141,14 +141,7 @@ public class SavePoint : MonoBehaviour, IInteractable
             yield return null;
         }
 
-        while (effect.color.a != 0)
-        {
-            color.a -= Time.deltaTime * targetAlpha;
-            effect.color = color;
-            yield return null;
-        }
-
-        _effectCoroutine = null;
+        _isEffectOn = true;
     }
 
     IEnumerator ShakeBell_Coroutine()

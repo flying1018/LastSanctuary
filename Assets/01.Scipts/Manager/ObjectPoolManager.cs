@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PoolingIndex
+{
+    Monster = 1,
+    Arrow = 2,
+    Item = 3,
+    BossProjectile = 4,
+    SFX = 5,
+    PlayerAttack = 6,
+}
+
 public static class ObjectPoolManager
 {
-    public enum PoolingIndex
-    {
-        Monster = 1,
-        Arrow = 2,
-        Item = 3,
-        BossProjectile = 4,
-        SFX = 5,
-        PlayerAttack = 6,
-    }
     private static Dictionary<int, Queue<GameObject>> poolDictionary = new();
 
 
