@@ -43,4 +43,18 @@ public class SkillUI : UnifiedUI
     {
         _skillDescUI.SetSkillDesc(sellect);
     }
+    
+    public override void HandleInput()
+    {
+        base.HandleInput();
+        if (Input.GetKeyDown(KeyCode.E))
+        {   //셋팅 UI로 이동
+            _uiStateMachine.ChangeState(_uiStateMachine.SettingUI);
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {   //성물 UI로 이동
+            _uiStateMachine.ChangeState(_uiStateMachine.RelicUI);
+        }
+        
+    }
 }

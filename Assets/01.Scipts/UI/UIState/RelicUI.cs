@@ -85,7 +85,7 @@ public class RelicUI : UnifiedUI
         base.HandleInput();
         if (Input.GetKeyDown(KeyCode.E))
         {   //스킬 UI로 이동
-            //_uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
+            _uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {   //설정 UI로 이동
