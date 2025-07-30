@@ -53,9 +53,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Button fullscreenButtonB;
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private Slider sfxSlider;
-    //[SerializeField] private Button titleButton;
-    //[SerializeField] private Button initButton;
-    //[SerializeField] private Button revertButton;
+    [SerializeField] private Button titleButton;
+    [SerializeField] private Button initButton;
+    [SerializeField] private Button revertButton;
     
     [Header("SkillUI")]
     [SerializeField] private GameObject skillUI;
@@ -107,9 +107,9 @@ public class UIManager : Singleton<UIManager>
     public Button FullscreenButtonB { get => fullscreenButtonB;}
     public Slider BgmSlider { get => bgmSlider;}
     public Slider SfxSlider { get => sfxSlider;}
-    //public Button TitleButton { get => titleButton;}
-    //public Button InitButton { get => initButton;}
-    //public Button ReverButton { get => revertButton;}
+    public Button TitleButton { get => titleButton;}
+    public Button InitButton { get => initButton;}
+    public Button ReverButton { get => revertButton;}
     
     //SkillUI
     public GameObject SkillUI { get => skillUI;}

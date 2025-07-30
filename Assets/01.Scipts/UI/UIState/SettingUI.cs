@@ -35,9 +35,9 @@ public class SettingUI : UnifiedUI
           _uiManager.FullscreenButtonB.onClick.AddListener(OnClickScreen);
           _uiManager.BgmSlider.onValueChanged.AddListener(OnBGMVolumeChange);
           _uiManager.SfxSlider.onValueChanged.AddListener(OnSFXVolumeChange);
-          //_uiManager.TitleButton.onClick.AddListener(ReturnToTitle);
-          //_uiManager.InitButton.onClick.AddListener(InitSettings);
-          //_uiManager.ReverButton.onClick.AddListener(RevertSettings);
+          _uiManager.TitleButton.onClick.AddListener(ReturnToTitle);
+          _uiManager.InitButton.onClick.AddListener(InitSettings);
+          _uiManager.ReverButton.onClick.AddListener(RevertSettings);
         }
 
         public override void Enter()
