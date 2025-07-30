@@ -12,6 +12,9 @@ public static class StringNameSpace
         public const string SavePath = "/02.Data/GameData";
 
         public const string MapItem = "MapItem.json";
+        public const string PlayerStat = "PlayerStat.json";
+        public const string Gimmick = "MapGimmickItem.json";
+        public const string Collect = "Collect.json";
     }
 
     //Json 데이터 경로

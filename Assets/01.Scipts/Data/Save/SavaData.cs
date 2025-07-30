@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+public class SavaData
+{
+    public MapItemData MapItem;
+    public PlayerStatData PlayerStat;
+    public GimmickData Gimmick;
+    public CollectData Collect;
+}
+
+[System.Serializable]
 public class MapItemData
 {
     #region 플레이어의 맵 정보
@@ -26,5 +35,23 @@ public class MapItemData
         PlayerGold = _playerGold;
         IsPlayerHaveRelic = _isPlayerHaveRelic;
     }
+}
+
+
+public class PlayerStatData
+{
 
 }
+
+[System.Serializable]
+public class GimmickData
+{
+
+}
+
+[System.Serializable]
+public class CollectData
+{
+
+}
+

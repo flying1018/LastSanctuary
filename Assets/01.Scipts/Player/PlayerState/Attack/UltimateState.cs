@@ -17,7 +17,7 @@ public class UltimateState : PlayerAttackState
         _ultWeaponInfo = new WeaponInfo
         {
             Condition = _condition, // 플레이어 컨디션
-            Attack = (int)(_condition.TotalAttack * AttackInfo.multiplier), 
+            Attack = (int)(_condition.TotalAttack * AttackInfo.multiplier),
             KnockBackForce = AttackInfo.knockbackForce,
             GroggyDamage = AttackInfo.groggyDamage,
             Defpen = _attackData.ultDefpen,
@@ -32,13 +32,15 @@ public class UltimateState : PlayerAttackState
         _condition.CurUltimate = 0f;
         _player.Animator.SetTrigger("Ultimate");
 
-
         _laserObj = Object.Instantiate(_attackData.laserPrefab);
         _laserObj.transform.position = _player.transform.position +
             (_player.SpriteRenderer.flipX ? Vector3.left : Vector3.right) * _range / 2f;
 
-        _laserObj.transform.rotation = Quaternion.identity;
-        _laserObj.transform.localScale = new Vector3(_range, _width, 1);
+        _laserObj.transform.rotation =
+        Quaternion.Euler(0f, 0f,
+        _player.SpriteRenderer.flipX ? -90f : 90f);
+
+        _laserObj.transform.localScale = Vector3.one;
 
         _laserCollider = _laserObj.GetComponent<Collider2D>();
         _laserCollider.enabled = true;
@@ -102,7 +104,7 @@ public class UltimateState : PlayerAttackState
 
         // 궁극기 종료 후 상태 Idle 등으로
         _stateMachine.ChangeState(_stateMachine.IdleState);
-    
+
     }
 
     private void OnDrawGizmos()
