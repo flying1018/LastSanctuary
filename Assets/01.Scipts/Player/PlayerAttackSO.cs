@@ -26,13 +26,15 @@ public class PlayerAttackSO : ScriptableObject
     public AttackInfo[] attacks;
     public float defpen;
     public float maxUltimateGauge;
+
+    [Header("StrongAttack")] 
+    public AttackInfo strongAttack;
     
     [Header("DashAttackState")] 
     public AttackInfo dashAttack;
     
     [Header("JumpAttackState")] 
     public AttackInfo jumpAttack;
-    
 
     [Header("TopAttackState")] 
     public AttackInfo topAttack;

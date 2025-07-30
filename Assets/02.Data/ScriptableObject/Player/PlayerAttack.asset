@@ -31,7 +31,10 @@ MonoBehaviour:
     knockbackForce: 0
     groggyDamage: 2
     isInvincible: 0
-  - attackAnim: {fileID: 7400000, guid: bdf51d02ce4552348ba6354a5c6370ff, type: 2}
+  defpen: 0.25
+  maxUltimateGauge: 100
+  strongAttack:
+    attackAnim: {fileID: 7400000, guid: bdf51d02ce4552348ba6354a5c6370ff, type: 2}
     attackIndex: 3
     multiplier: 2
     nextComboTime: 0
@@ -40,8 +43,6 @@ MonoBehaviour:
     knockbackForce: 10
     groggyDamage: 5
     isInvincible: 0
-  defpen: 0.25
-  maxUltimateGauge: 100
   dashAttack:
     attackAnim: {fileID: 7400000, guid: ec5c2cbf39d0d7c4185a8542b0455c20, type: 2}
     attackIndex: 4

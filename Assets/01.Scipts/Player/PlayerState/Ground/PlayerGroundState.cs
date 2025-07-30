@@ -28,6 +28,8 @@ public class PlayerGroundState : PlayerBaseState
         //대쉬와 로프에 매달리기 가능
         base.HandleInput();
 
+        InputDash();
+
         //가드
         if (_input.IsGuarding)
         {

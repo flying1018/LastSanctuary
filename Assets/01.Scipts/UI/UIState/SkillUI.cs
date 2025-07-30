@@ -81,6 +81,7 @@ public class SkillUI : UnifiedUI
         if (_playerInventory.UseGold(sellect.NeedGold))
         {
             _playerSkill.GetSkill(sellect.Skill).open = true;
+            _playerSkill.SetSkillData(sellect.Skill);
             sellect.Unlock();
         }
         //골드 부족 알림창이 있으면 좋을 듯?

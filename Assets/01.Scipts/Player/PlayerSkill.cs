@@ -57,4 +57,15 @@ public class PlayerSkill : MonoBehaviour
         return _skills[(int)skill];
     }
 
+    public void SetSkillData(Skill skill)
+    {
+        switch (skill)
+        {
+            case Skill.StrAttackStmDown:
+                Debug.Log("asdasd");
+                _player.StateMachine.StrongAttack.CostDown(10);
+                break;
+        }
+    }
+
 }
