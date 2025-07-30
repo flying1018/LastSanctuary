@@ -36,6 +36,9 @@ public class PlayerInventory : MonoBehaviour
     public void Start()
     {
         _uiManager = UIManager.Instance;
+        
+        //test Code
+        _gold = 100000;
     }
 
 
@@ -43,7 +46,8 @@ public class PlayerInventory : MonoBehaviour
     {
         //relics = await ResourceLoader.LoadAssetsLabel<CollectObject>(StringNameSpace.Labels.Relic);;
         relics.Sort();
-        //test
+        
+        //test Code
         foreach (var relic in relics)
         {
             relic.IsGet = true;
@@ -181,5 +185,15 @@ public class PlayerInventory : MonoBehaviour
     {
         CurPotionNum = MaxPotionNum;
         _uiManager.StateMachine.MainUI.UpdatePotionText();
+    }
+
+    public bool UseGold(int gold)
+    {
+        if(Gold>=gold)
+        {
+            Gold -= gold;
+            return true;
+        }
+        return false;
     }
 }

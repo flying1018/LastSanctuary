@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [field: SerializeField] public PlayerAnimationDB AnimationDB { get; private set; }
     [SerializeField] private PlayerSO playerData;
     [SerializeField] private PlayerAttackSO playerAttackData;
+    [SerializeField] private PlayerSkillSO playerSkillData;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private float groundCheckDistance;
@@ -38,9 +39,12 @@ public class Player : MonoBehaviour
     public IInteractable InteractableTarget { get; set; }
     public GameObject Target { get; set; }
     public PlayerCamera Camera { get; set; }
+
+    public PlayerSkill Skill { get; set; }
     //직렬화 데이터 프로퍼티
     public PlayerSO Data { get => playerData; }
     public PlayerAttackSO AttackData { get => playerAttackData; }
+    public PlayerSkillSO SkillData { get => playerSkillData; }
 
 
     private void Awake()
@@ -57,6 +61,7 @@ public class Player : MonoBehaviour
         PlayerInput = GetComponent<PlayerInput>();
         Move = GetComponent<PlayerKinematicMove>();
         Camera = GetComponentInChildren<PlayerCamera>();
+        Skill = GetComponent<PlayerSkill>();
         
         //무기 대미지 설정
         WeaponInfo = new WeaponInfo();
@@ -69,6 +74,7 @@ public class Player : MonoBehaviour
         Inventory.Init(this);
         Condition.Init(this);
         Camera.Init(this);
+        Skill.Init(this);
         Move.Init(BoxCollider.size.x, BoxCollider.size.y,Rigidbody);
         
         StateMachine = new PlayerStateMachine(this);
@@ -192,6 +198,14 @@ public class Player : MonoBehaviour
         if (StateMachine.currentState is PlayerBaseState playerBaseState)
         {
             playerBaseState.PlaySFX2();
+        }
+    }
+    
+    public void EventSFX3()
+    {
+        if (StateMachine.currentState is PlayerBaseState playerBaseState)
+        {
+            playerBaseState.PlaySFX3();
         }
     }
     #endregion

@@ -62,13 +62,13 @@ public class PlayerGuardState : PlayerBaseState
         
     }
 
-    public override void PlaySFX1()
-    {
-        SoundManager.Instance.PlaySFX(_data.guardSound);
-    }
-    
     public override void PlaySFX2()
     {
         SoundManager.Instance.PlaySFX(_data.perfectGuardSound);
     }
+    public override void PlaySFX3()
+    {
+        SoundManager.Instance.PlaySFX(_data.guardSound);
+    }
+    
 }

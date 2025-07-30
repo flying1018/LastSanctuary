@@ -10,7 +10,6 @@ public partial class PlayerCondition : Condition
     private float _curStamina;
     private float _maxStamina;
     private int _staminaRecovery;
-    private float _enemyGroggyTime;
     private float _curUltimate;
     private float _maxUltimate;
 

@@ -52,14 +52,4 @@ public class MapManager : Singleton<MapManager>
     {
         foreach (var spawnPoint in ItemSpawnPoints) spawnPoint.Respawn(); 
     }
-
-    //워프 상호작용
-    //기획이 상호작용 시 활성화로 봐뀌었으니 필요 없어 보임.
-    //일단 코드의 의도도 잘 안보임.
-    public void WarpInteract()
-    {
-        targetWarpObj = warpObjects[UIManager.Instance.ShowWarpUI(selectWarpObj) - 1];
-        //player.transform.position = targetWarpObj.WarpTransform.position;
-
-    }
 }

@@ -64,6 +64,7 @@ public class UIManager : Singleton<UIManager>
     public UIStateMachine StateMachine { get; set; }
     public PlayerCondition PlayerCondition { get; set; }
     public PlayerInventory PlayerInventory { get; set; }
+    public PlayerSkill PlayerSkill { get; set; }
     public PlayerInput PlayerInput { get; set; }
     public UIManagerSO Data { get => data;}
     
@@ -125,14 +126,11 @@ public class UIManager : Singleton<UIManager>
         PlayerCondition = FindAnyObjectByType<PlayerCondition>();
         PlayerInventory = FindAnyObjectByType<PlayerInventory>();
         PlayerInput = FindAnyObjectByType<PlayerInput>();
+        PlayerSkill = FindAnyObjectByType<PlayerSkill>();
         
         StateMachine = new UIStateMachine(this);
     }
-
-    public int ShowWarpUI(WarpObject slectWarpObj)
-    {
-        return 1;
-    }
+    
 
     private void Update()
     {

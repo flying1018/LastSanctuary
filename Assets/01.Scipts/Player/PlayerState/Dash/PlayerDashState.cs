@@ -44,15 +44,7 @@ public class PlayerDashState : PlayerBaseState
 
     public override void HandleInput()
     {
-        if (_input.IsAttack)
-        {
-            int cost = _stateMachine.DashAttack.AttackInfo.staminaCost;
-            //스테미나가 충분하다면 대쉬 공격
-            if (_condition.UsingStamina(cost))
-            {
-                _stateMachine.ChangeState(_stateMachine.DashAttack);
-            }
-        }
+        InputDashAttack();
     }
 
     public override void Update()
@@ -88,6 +80,20 @@ public class PlayerDashState : PlayerBaseState
     {
         Vector2 hor = _move.Horizontal(_dir, _data.dashPower);
         _move.Move(hor);
+    }
+
+    private void InputDashAttack()
+    {
+        //스킬 오픈 여부
+        if(!_skill.GetSkill(Skill.DashAttack).open) return;
+        if (_input.IsAttack)
+        {
+            //스테미나가 충분하다면 대쉬 공격
+            if (_stateMachine.DashAttack.UseCanDashAttack())
+            {
+                _stateMachine.ChangeState(_stateMachine.DashAttack);
+            }
+        }
     }
 
     public override void PlaySFX1()
