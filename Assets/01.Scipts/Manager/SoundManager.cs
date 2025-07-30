@@ -7,8 +7,8 @@ public class SoundManager : Singleton<SoundManager>
     // 사용할 사운드 종류들
     public enum SoundType
     {
-        BGMVolume,
-        SFXVolume,
+        BGMMixer,
+        SFXMixer,
     }
     
     public enum SnepShotType
@@ -50,7 +50,7 @@ public class SoundManager : Singleton<SoundManager>
     //효과음 실행 메서드
     public void PlaySFX(AudioClip clip, float volume = 1f)
     {
-        GameObject sfxObj = ObjectPoolManager.Get(sfxPrefab, (int)ObjectPoolManager.PoolingIndex.SFX);
+        GameObject sfxObj = ObjectPoolManager.Get(sfxPrefab, (int)PoolingIndex.SFX);
         if(sfxObj.TryGetComponent(out SFXSound sfx))
             sfx.Play(clip, volume);
     }
@@ -68,8 +68,7 @@ public class SoundManager : Singleton<SoundManager>
     /// <param name="volume">얼마큼 조절할지 유무</param>
     public void SetVolume(SoundType type, float volume)
     {
-        mixer.SetFloat(SoundType.BGMVolume.ToString(), VolumeToDecibel(volume));
-        mixer.SetFloat(SoundType.SFXVolume.ToString(), VolumeToDecibel(volume));
+        mixer.SetFloat(type.ToString(), VolumeToDecibel(volume));
     }
 
     //생성

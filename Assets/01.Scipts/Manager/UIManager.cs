@@ -16,6 +16,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Button relicUIButton;
     [SerializeField] private Button skillUIButton;
     [SerializeField] private Button settingUIButton;
+    [SerializeField] private GameObject mouseLeft;
+    [SerializeField] private GameObject mouseRight;
+    [SerializeField] private RectTransform centerLinePos;
+    
     
     [Header("RelicUI")]
     [SerializeField] private GameObject relicUI;
@@ -42,13 +46,19 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI  fullscreenText;
     [SerializeField] private Slider bgmVolume;
     [SerializeField] private Slider sfxVolume;
-    //다른 UI에서는 필요없는거라 일단 빼놨습니다(의견 나눠봐야될듯)
+    
     [SerializeField] private Button leftButton;
     [SerializeField] private Button rightButton;
     [SerializeField] private Button fullscreenButtonA;
     [SerializeField] private Button fullscreenButtonB;
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private Slider sfxSlider;
+    [SerializeField] private Button titleButton;
+    [SerializeField] private Button initButton;
+    [SerializeField] private Button revertButton;
+    
+    [Header("SkillUI")]
+    [SerializeField] private GameObject skillUI;
 
 
     public UIStateMachine StateMachine { get; set; }
@@ -63,6 +73,9 @@ public class UIManager : Singleton<UIManager>
     public Button RelicUIButton { get => relicUIButton;}
     public Button SkillUIButton { get => skillUIButton;}
     public Button SettingUIButton { get => settingUIButton;}
+    public GameObject MouseLeft { get => mouseLeft;}
+    public GameObject MouseRight { get => mouseRight;}  
+    public RectTransform CenterLinePos { get => centerLinePos;}
     
     //RelicUI
     public GameObject RelicUI { get => relicUI;}
@@ -88,13 +101,18 @@ public class UIManager : Singleton<UIManager>
     public TextMeshProUGUI FullscreenText { get => fullscreenText;}
     public Slider BgmVolume { get => bgmVolume;}
     public Slider SfxVolume { get => sfxVolume;}
-    //임시
     public Button LeftButton { get => leftButton;}
     public Button RightButton { get => rightButton;}
     public Button FullscreenButtonA { get => fullscreenButtonA;}
     public Button FullscreenButtonB { get => fullscreenButtonB;}
     public Slider BgmSlider { get => bgmSlider;}
     public Slider SfxSlider { get => sfxSlider;}
+    public Button TitleButton { get => titleButton;}
+    public Button InitButton { get => initButton;}
+    public Button ReverButton { get => revertButton;}
+    
+    //SkillUI
+    public GameObject SkillUI { get => skillUI;}
 
     private void Start()
     {

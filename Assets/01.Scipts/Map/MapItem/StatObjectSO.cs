@@ -13,9 +13,6 @@ public class StatObjectSO : ScriptableObject
     public Sprite icon;
 
     [Header("스탯")]
-    public int attack;
-    public int defense;
-    public int hp;
-    public int stamina;
+    public StatDelta[] statDeltas;
     public float duration;
 }

@@ -25,7 +25,7 @@ public class EnemyBaseState : IState
         _rigidbody = _enemy.Rigidbody;
         _spriteRenderer =_enemy.SpriteRenderer;
         _condition = _enemy.Condition;
-        _spawnPoint = _enemy.SpawnPoint;
+        _spawnPoint = _enemy.SpawnPointPos;
         _move = _enemy.Move;
     }
     

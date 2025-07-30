@@ -20,7 +20,8 @@ public class PlayerStateMachine : StateMachine
     public PlayerFallState FallState { get; private set; }
     public PlayerHealState HealState { get; private set; }
     public PlayerHitState HitState { get; private set; }
-    public PlayerRopedState RopedState { get; private set; }
+    public PlayerRopeIdleState RopeIdleState { get; private set; }
+    public PlayerRopeMoveState RopeMoveState { get; private set; }
     public PlayerDeathState DeathState { get; private set; }
     public PlayerRespawnState RespawnState { get; private set; }
     public PlayerInteractState InteractState { get; private set; }
@@ -51,7 +52,8 @@ public class PlayerStateMachine : StateMachine
         FallState = new PlayerFallState(this);
         HealState = new PlayerHealState(this);
         GuardState = new PlayerGuardState(this);
-        RopedState = new PlayerRopedState(this);
+        RopeIdleState = new PlayerRopeIdleState(this);
+        RopeMoveState = new PlayerRopeMoveState(this);
         HitState = new PlayerHitState(this);
         DeathState = new PlayerDeathState(this);
         RespawnState = new PlayerRespawnState(this);

@@ -10,6 +10,7 @@ public class BossDeathState : BossBaseState
     public override void Enter()
     {        
         //애니메이션 실행
+        _boss.Animator.Rebind();
         _boss.Animator.SetTrigger(_boss.AnimationDB.DeathParameterHash);
         
         //보스 골드 드랍
@@ -28,7 +29,7 @@ public class BossDeathState : BossBaseState
         _time += Time.deltaTime;
         if (_time > _data.deathTime)
         {
-            ObjectPoolManager.Set(_boss.Data._key, _boss.gameObject, _boss.gameObject);
+            ObjectPoolManager.Set(_boss.gameObject, _boss.Data._key);
         }
     }
 }

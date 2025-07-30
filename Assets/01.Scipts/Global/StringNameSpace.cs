@@ -67,6 +67,7 @@ public static class StringNameSpace
     public static class Scenes
     {
         public const string RenewalTutorials = "Renewal_Tutorials";
+        public const string TitleScene = "TitleScene";
     }
 
     public static class ValueSpace

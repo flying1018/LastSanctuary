@@ -5,15 +5,17 @@ using UnityEngine;
 public class ProjectileWeapon : EnemyWeapon
 {
     private Rigidbody2D _rigidbody2D;
+    private PoolingIndex _poolingIndex;
 
     //생성
-    public void Init(int attack, float knockback)
+    public void Init(int attack, float knockback,PoolingIndex poolingIndex)
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
 
         WeaponInfo.Attack = attack;
         WeaponInfo.KnockBackForce = knockback;
         WeaponInfo.DamageType = DamageType.Range;
+        _poolingIndex = poolingIndex;
     }
 
     //발사
@@ -32,7 +34,7 @@ public class ProjectileWeapon : EnemyWeapon
         {
             if (iguardable.ApplyGuard(WeaponInfo, transform))
             {
-                ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.Arrow, gameObject, gameObject);
+                ObjectPoolManager.Set(gameObject, (int)_poolingIndex);
                 return;
             }
         }
@@ -56,7 +58,7 @@ public class ProjectileWeapon : EnemyWeapon
            other.CompareTag(StringNameSpace.Tags.Celling) ||
            other.CompareTag(StringNameSpace.Tags.Player))
         {
-            ObjectPoolManager.Set((int)ObjectPoolManager.PoolingIndex.Arrow, gameObject, gameObject);
+            ObjectPoolManager.Set(gameObject, (int)_poolingIndex);
         }
     }
 }

@@ -27,6 +27,12 @@ public class PlayerInventory : MonoBehaviour
         set { _gold = Mathf.Max(0, value); }
     }
 
+    public int EquipHp { get; private set; }
+    public int EquipStamina { get; private set; }
+    public int EquipAtk { get; private set; }
+    public int EquipDef { get; private set; }
+    
+
     public void Start()
     {
         _uiManager = UIManager.Instance;
@@ -37,6 +43,11 @@ public class PlayerInventory : MonoBehaviour
     {
         //relics = await ResourceLoader.LoadAssetsLabel<CollectObject>(StringNameSpace.Labels.Relic);;
         relics.Sort();
+        //test
+        foreach (var relic in relics)
+        {
+            relic.IsGet = true;
+        }
 
         MaxPotionNum = player.Data.potionNum;
         CurPotionNum = MaxPotionNum;
@@ -77,6 +88,7 @@ public class PlayerInventory : MonoBehaviour
     //포션 사용
     public void UsePotion()
     {
+        _playerCondition.Heal(); 
         CurPotionNum--;
         _uiManager.StateMachine.MainUI.UpdatePotionText();
     }
@@ -84,98 +96,84 @@ public class PlayerInventory : MonoBehaviour
     //렐릭 장착
     public void EquipRelic(CollectObjectSO data)
     {
-        if (EquipRelics.Contains(data))
+        foreach (StatDelta stat in data.statDeltas)
         {
-            UnEquipRelic(data);
-        }
-        else
-        {
-            switch (data.statType)
+            switch (stat.statType)
             {
                 case StatType.None:
                     DebugHelper.LogError("StatType이 None임");
                     break;
                 case StatType.Recovery:
-                    _playerCondition.HealAmonut += data.amount;
+                    _playerCondition.HealAmonut += stat.amount;
                     break;
                 case StatType.Ultimit:
-                    _playerCondition.MaxUltimate -= data.amount;
+                    _playerCondition.MaxUltimate -= stat.amount;
                     if (_playerCondition.CurUltimate >= _playerCondition.MaxUltimate)
                         _playerCondition.CurUltimate = _playerCondition.MaxUltimate;
                     break;
             }
-
-            EquipRelics.Add(data);
         }
 
+        EquipRelics.Add(data);
+        EquipRelicStat();
     }
 
     //장착 해제
     public void UnEquipRelic(CollectObjectSO data)
     {
-        switch (data.statType)
+        foreach (StatDelta stat in data.statDeltas)
         {
-            case StatType.None:
-                DebugHelper.LogError("StatType이 None임");
-                break;
-            case StatType.Recovery:
-                _playerCondition.HealAmonut -= data.amount;
-                break;
-            case StatType.Ultimit:
-                _playerCondition.MaxUltimate += data.amount;
-                
-                break;
+            switch (stat.statType)
+            {
+                case StatType.None:
+                    DebugHelper.LogError("StatType이 None임");
+                    break;
+                case StatType.Recovery:
+                    _playerCondition.HealAmonut -= stat.amount;
+                    break;
+                case StatType.Ultimit:
+                    _playerCondition.MaxUltimate += stat.amount;
+
+                    break;
+            }
         }
 
         EquipRelics.Remove(data);
+        EquipRelicStat();
     }
 
     //성물로 인한 공격력 
-    public int EquipRelicAttack()
+    public void EquipRelicStat()
     {
-        int sum = 0;
+        EquipAtk = 0;
+        EquipDef = 0;
+        EquipHp = 0;
+        EquipStamina = 0;
+        
         foreach (CollectObjectSO data in EquipRelics)
         {
-            if (data.statType != StatType.Atk) { continue; }
-            sum += data.amount;
+            foreach (StatDelta stat in data.statDeltas)
+            {
+                switch (stat.statType)
+                {
+                    case StatType.None:
+                        DebugHelper.LogError("타입이 None");
+                        break;
+                    case StatType.Atk:
+                        EquipAtk += stat.amount;
+                        break;
+                    case StatType.Def:
+                        EquipDef += stat.amount;
+                        break;
+                    case StatType.Hp:
+                        EquipHp += stat.amount;
+                        break;
+                    case StatType.Stamina:
+                        EquipStamina += stat.amount;
+                        break;
+                }
+            }
         }
-        return sum;
-    }
-
-    //성물로 인한 방어력
-    public int EquipRelicDefense()
-    {
-        int sum = 0;
-        foreach (CollectObjectSO data in EquipRelics)
-        {
-            if (data.statType != StatType.Def) { continue; }
-            sum += data.amount;
-        }
-        return sum;
-    }
-
-    //성물로 인한 체력
-    public int EquipRelicHp()
-    {
-        int sum = 0;
-        foreach (CollectObjectSO data in EquipRelics)
-        {
-            if (data.statType != StatType.Hp) { continue; }
-            sum += data.amount;
-        }
-        return sum;
-    }
-
-    //성물로 인한 스태미나
-    public int EquipRelicStamina()
-    {
-        int sum = 0;
-        foreach (CollectObjectSO data in EquipRelics)
-        {
-            if (data.statType != StatType.Stamina) { continue; }
-            sum += data.amount;
-        }
-        return sum;
     }
 
     //포션 최대치로 회복

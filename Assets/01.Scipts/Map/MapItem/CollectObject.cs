@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class CollectObject : MonoBehaviour, IInteractable, IComparable<CollectObject>
 {
-    [SerializeField] private CollectObjectSO collectData;
-    
+    //필드
     private bool _isGet;
+    
+    //직렬화
+    [SerializeField] private CollectObjectSO collectData;
     
     //프로퍼티
     public CollectObjectSO Data { get => collectData; }

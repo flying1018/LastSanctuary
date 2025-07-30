@@ -58,7 +58,7 @@ public class PlayerBaseState : IState
         //로프에 닿고, 상하 키 입력 시
         if (_player.IsRoped && Mathf.Abs(_input.MoveInput.y) > 0f)
         {   //로프 상태
-            _stateMachine.ChangeState(_stateMachine.RopedState);
+            _stateMachine.ChangeState(_stateMachine.RopeMoveState);
         }
     }
 
