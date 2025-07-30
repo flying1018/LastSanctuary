@@ -19,7 +19,7 @@ public class AttackInfo
 }
 
 [Serializable]
-[CreateAssetMenu(fileName = "PlayerAttack", menuName = "New PlayerAttack")]
+[CreateAssetMenu(fileName = "PlayerAttack", menuName = "Player/New PlayerAttack")]
 public class PlayerAttackSO : ScriptableObject
 {
     [Header("AttackState")] 

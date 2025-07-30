@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [field: SerializeField] public PlayerAnimationDB AnimationDB { get; private set; }
     [SerializeField] private PlayerSO playerData;
     [SerializeField] private PlayerAttackSO playerAttackData;
+    [SerializeField] private PlayerSkillSO playerSkillData;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private float groundCheckDistance;
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
     //직렬화 데이터 프로퍼티
     public PlayerSO Data { get => playerData; }
     public PlayerAttackSO AttackData { get => playerAttackData; }
+    public PlayerSkillSO SkillData { get => playerSkillData; }
 
 
     private void Awake()

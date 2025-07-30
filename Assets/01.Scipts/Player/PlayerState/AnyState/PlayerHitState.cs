@@ -16,20 +16,26 @@ public class PlayerHitState : PlayerBaseState
         //피격 애니메이션
         _hitStart = Time.time;
 
-        _condition.InvincibleFunc(_hitDuration);
         
         //공격 타입에 따른 경직 시간 설정
         switch (_condition.DamageType)
         {
             case DamageType.Range:
-                _hitDuration = _data.lightHitDuration; //0.2f
+                _hitDuration = _data.lightHitDuration; //0.5f
+                PlaySFX2();
+                break;
+            case DamageType.Heavy:
+                _hitDuration = _data.heavyHitDuration; //1f
                 PlaySFX2();
                 break;
             default:
-                _hitDuration = _data.lightHitDuration; //0.2f
+                _hitDuration = _data.lightHitDuration; //0.5f
                 PlaySFX1();
                 break;
         }
+        
+        //무적 시간 시작
+        _condition.InvincibleFunc(_data.invincibleDuration);
     }
 
     public override void Exit()

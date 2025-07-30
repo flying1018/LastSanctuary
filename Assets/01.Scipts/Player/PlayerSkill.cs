@@ -38,10 +38,15 @@ public class PlayerSkill : MonoBehaviour
 {
     private Player _player;
     private SkillInfo[] _skills;
+    private PlayerSkillSO _skillData;
+    
+    public float DamageReduceRate { get; private set; }
+    public float GroggyTime { get; private set; }
     
     public void Init(Player player)
     {
         _player = player;
+        _skillData = _player.SkillData;
         
         _skills = new SkillInfo[Enum.GetValues(typeof(Skill)).Length];
         foreach (Skill skill in Enum.GetValues(typeof(Skill)))
@@ -50,6 +55,9 @@ public class PlayerSkill : MonoBehaviour
             _skills[ (int)skill ].skill = skill;
             _skills[ (int)skill ].open = false;
         }
+
+        DamageReduceRate = _player.Data.damageReduction;
+        GroggyTime = _player.AttackData.groggyTime;
     }
 
     public SkillInfo GetSkill(Skill skill)
@@ -62,8 +70,13 @@ public class PlayerSkill : MonoBehaviour
         switch (skill)
         {
             case Skill.StrAttackStmDown:
-                Debug.Log("asdasd");
-                _player.StateMachine.StrongAttack.CostDown(10);
+                _player.StateMachine.StrongAttack.CostDown(_skillData.downStaminaCost);
+                break;
+            case Skill.GuardDamDecUp:
+                DamageReduceRate = _skillData.reduceDamageRate;
+                break;
+            case Skill.ExecutionTimeUp:
+                GroggyTime = _skillData.groggyTime;
                 break;
         }
     }
