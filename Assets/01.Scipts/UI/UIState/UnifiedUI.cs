@@ -47,9 +47,8 @@ public class UnifiedUI : UIBaseState
     }
     //스킬 버튼
     public void OnClickSkillUIButton()
-    {
-       // _uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
-       //아직 없음
+    { 
+        _uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
     }
     //설정 버튼
     public void OnClickSettingUIButton()

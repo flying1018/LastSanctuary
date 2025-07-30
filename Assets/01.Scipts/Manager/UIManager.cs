@@ -56,6 +56,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Button titleButton;
     [SerializeField] private Button initButton;
     [SerializeField] private Button revertButton;
+    
+    [Header("SkillUI")]
+    [SerializeField] private GameObject skillUI;
 
 
     public UIStateMachine StateMachine { get; set; }
@@ -107,6 +110,9 @@ public class UIManager : Singleton<UIManager>
     public Button TitleButton { get => titleButton;}
     public Button InitButton { get => initButton;}
     public Button ReverButton { get => revertButton;}
+    
+    //SkillUI
+    public GameObject SkillUI { get => skillUI;}
 
     private void Start()
     {

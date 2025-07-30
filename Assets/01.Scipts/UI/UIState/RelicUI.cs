@@ -62,8 +62,8 @@ public class RelicUI : UnifiedUI
     {
         base.Enter();
 
-        _mouseLeftDesc.text = "선택";
-        _mouseRightDesc.text = "장착/해제";
+        _mouseLeftDesc.text = _data.relicLeftClickDesc;
+        _mouseRightDesc.text = _data.relicRightClickDesc;
         _mouseLeft.SetActive(true);
         _mouseRight.SetActive(true);
         
@@ -85,7 +85,7 @@ public class RelicUI : UnifiedUI
         base.HandleInput();
         if (Input.GetKeyDown(KeyCode.E))
         {   //스킬 UI로 이동
-            //_uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
+            _uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {   //설정 UI로 이동

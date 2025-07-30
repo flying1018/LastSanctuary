@@ -63,7 +63,7 @@ public class SettingUI : UnifiedUI
             }
             if (Input.GetKeyDown(KeyCode.Q))
             {   //스킬 UI로 이동
-                //_uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
+                _uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
             }
         }
         //초기 설정
