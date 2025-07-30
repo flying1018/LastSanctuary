@@ -25,7 +25,7 @@ public class TutorialUITrigger : MonoBehaviour
             if (hasTriggeed) return;
             hasTriggeed = true;
         }
-        tutoriaManager.ShowUI(UIIndex);
+        tutoriaManager.ShowUI(UIIndex, UItype);
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -36,6 +36,5 @@ public class TutorialUITrigger : MonoBehaviour
             tutoriaManager.HideUI();
         }
     }
-
-
+    
 }

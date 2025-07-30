@@ -92,7 +92,7 @@ public class DebugWindow : EditorWindow
         EditorGUILayout.LabelField("세이브 테스트");
         if (GUILayout.Button("세이브"))
         {
-            SaveManager.Instance.SaveMapItem();
+            SaveManager.Instance.SaveGame(2);
         }
     }
 }
