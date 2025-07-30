@@ -15,7 +15,7 @@ public class SettingUI : UnifiedUI
         //설정 값
         private Resolution[] _resolutions;
         private int _curResolutionIndex = 0;
-        private bool _isFullScreen = true;
+        private bool _isFullScreen;
         //초기 설정
         private int _defaultResolutionIndex;
         private bool _defaultFullscreen;
@@ -78,13 +78,16 @@ public class SettingUI : UnifiedUI
             SceneManager.LoadScene(StringNameSpace.Scenes.TitleScene);
         }
 
-        //초기값 설정
+        //초기값 설정, 옵션 저장
         private void InitSettings()
         {
             _defaultResolutionIndex = _curResolutionIndex;
             _defaultFullscreen = _isFullScreen;
             _defaultBgmVolume = _bgmVolume.value;
             _defaultSfxVolume = _sfxVolume.value;
+            Resolution res = _resolutions[_curResolutionIndex];
+            Screen.SetResolution(res.width, res.height, _isFullScreen);
+            ApplySettingTexts();
         }
 
         //설정 되돌리기
@@ -94,7 +97,7 @@ public class SettingUI : UnifiedUI
             _isFullScreen = _defaultFullscreen;
             SoundManager.Instance.SetVolume(SoundManager.SoundType.BGMMixer, _defaultBgmVolume);
             SoundManager.Instance.SetVolume(SoundManager.SoundType.SFXMixer, _defaultSfxVolume);
-            ApplySettings();
+            ApplySettingTexts();
             LoadSliderSet();
         }
 
@@ -120,7 +123,6 @@ public class SettingUI : UnifiedUI
                     _curResolutionIndex = i;
                 }
             }
-            ApplySettings();
         }
 
         public void OnClickLeft()
@@ -128,27 +130,26 @@ public class SettingUI : UnifiedUI
             _curResolutionIndex--;
             if (_curResolutionIndex < 0)
                 _curResolutionIndex = _resolutions.Length - 1;
-            ApplySettings();
+            ApplySettingTexts();
         }
         public void OnClickRight()
         {
             _curResolutionIndex++;
             if (_curResolutionIndex >= _resolutions.Length)
                 _curResolutionIndex = 0;
-            ApplySettings();
+            ApplySettingTexts();
         }
         //전체화면 설정
         public void OnClickScreen()
         {
             _isFullScreen = !_isFullScreen;
-            ApplySettings();
+            ApplySettingTexts();
         }
 
         //설정 화면
-        public void ApplySettings()
+        public void ApplySettingTexts()
         {
             Resolution res = _resolutions[_curResolutionIndex];
-            Screen.SetResolution(res.width, res.height, _isFullScreen);
             _resolution.text = $"{res.width} x {res.height}";
             _fullscreen.text = _isFullScreen ? "전체화면" : "창모드";
         }
