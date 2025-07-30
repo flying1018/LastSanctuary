@@ -86,7 +86,7 @@ MonoBehaviour:
     knockbackForce: 0
     groggyDamage: 2
     isInvincible: 1
-  groggyTime: 3
+  groggyTime: 1
   detectionRange: 5
   hidingTime: 0
   groggyAttackInterval: 0.15
