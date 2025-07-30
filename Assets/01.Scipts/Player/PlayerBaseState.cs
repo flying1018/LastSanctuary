@@ -138,6 +138,7 @@ public class PlayerBaseState : IState
 
     public virtual void PlaySFX1() { }
     public virtual void PlaySFX2() { }
+    public virtual void PlaySFX3() { }
     
     #endregion
     

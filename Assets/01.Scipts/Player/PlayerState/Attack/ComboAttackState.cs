@@ -25,7 +25,6 @@ public class ComboAttackState : PlayerAttackState
                         ? 0 : _stateMachine.comboIndex + 1;
 
                 int cost = _stateMachine.ComboAttack[_stateMachine.comboIndex].StaminaCost;
-                Debug.Log(cost);
                 //다음 공격의 필요 스테미나가 충분하다면 공격
                 if (_condition.UsingStamina(cost))
                 {

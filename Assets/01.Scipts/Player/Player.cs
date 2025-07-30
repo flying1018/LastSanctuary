@@ -198,5 +198,13 @@ public class Player : MonoBehaviour
             playerBaseState.PlaySFX2();
         }
     }
+    
+    public void EventSFX3()
+    {
+        if (StateMachine.currentState is PlayerBaseState playerBaseState)
+        {
+            playerBaseState.PlaySFX3();
+        }
+    }
     #endregion
 }

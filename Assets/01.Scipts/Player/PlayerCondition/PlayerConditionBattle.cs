@@ -110,7 +110,7 @@ public partial class PlayerCondition : IDamageable, IKnockBackable,IGuardable
         }
         else if (TryGuard(isFront))
         {
-            _player.EventSFX1();
+            _player.EventSFX3();
 
             weaponInfo.Attack = Mathf.CeilToInt(weaponInfo.Attack * (1 - _player.Data.damageReduction));
             ApplyDamage(weaponInfo.Attack);

@@ -55,19 +55,7 @@ public class PlayerGroundState : PlayerBaseState
             _stateMachine.ChangeState(_stateMachine.HealState);
         }
 
-        if (_player.FindTarget() && _input.IsGroggyAttack)
-        {
-            if (_player.Target.TryGetComponent(out Enemy enemy))
-            {
-                if (enemy.StateMachine.currentState is EnemyGroggyState)
-                    _stateMachine.ChangeState(_stateMachine.GroggyAttackState);
-            }
-            if (_player.Target.TryGetComponent(out Boss boss))
-            {
-                if (boss.StateMachine.currentState is BossGroggyState)
-                    _stateMachine.ChangeState(_stateMachine.GroggyAttackState);
-            }
-        }
+        InputExecution();
 
         //위 키를 누르고 공격 입력 시
         if (_input.MoveInput.y > 0 && _input.IsAttack)
@@ -93,6 +81,27 @@ public class PlayerGroundState : PlayerBaseState
         if (_player.InteractableTarget != null && _input.IsInteract)
         {
             _stateMachine.ChangeState(_stateMachine.InteractState);
+        }
+    }
+
+    public void InputExecution()
+    {
+        if (_player.FindTarget() && _input.IsGroggyAttack)
+        {
+            //보스에게 그로기 어택
+            if (_player.Target.TryGetComponent(out Boss boss))
+            {
+                if (boss.StateMachine.currentState is BossGroggyState)
+                    _stateMachine.ChangeState(_stateMachine.GroggyAttackState);
+            }
+            
+            //스킬 해금 시 몬스터에게도 사용 가능
+            if(!_skill.GetSkill(Skill.Execution).open) return;
+            if (_player.Target.TryGetComponent(out Enemy enemy))
+            {
+                if (enemy.StateMachine.currentState is EnemyGroggyState)
+                    _stateMachine.ChangeState(_stateMachine.GroggyAttackState);
+            }
         }
     }
 }
