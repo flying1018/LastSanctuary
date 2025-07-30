@@ -14,33 +14,6 @@ public class SaveManager : Singleton<SaveManager>
         base.Awake();
         DontDestroyOnLoad(gameObject);
     }
-    
-    public void SaveMapItem()
-    {
-        MapItemData data = new MapItemData(
-            1f, 1f, false, 100, false
-        );
-
-        string json = JsonConvert.SerializeObject(data, Formatting.Indented);
-
-        DebugHelper.Log(json);
-        JsonSaver.MapItemToJson(json);
-    }
-
-    public void SaveMapGimmick()
-    {
-        
-    }
-
-    public void SavePlayerCollect()
-    {
-
-    }
-
-    public void SavePlayerStatObject()
-    {
-        
-    }
 
     //세이브 포인트 지정
     public void SetSavePoint(Vector2 pos)
@@ -52,5 +25,59 @@ public class SaveManager : Singleton<SaveManager>
     public Vector2 GetSavePoint()
     {
         return _lastSavePos.position;
+    }
+
+    public void SaveGame(int index)
+    {
+        var mapItem = SaveMapItemData();
+        var playerStat = SavePlayerStatData();
+        var gimmick = GatherGimmickData();
+        var collect = GatherCollectData();
+
+        if (index == 1)
+        {
+            string playerStatJson = JsonConvert.SerializeObject(playerStat, Formatting.Indented);
+            string gimmickJson = JsonConvert.SerializeObject(gimmick, Formatting.Indented);
+            string collectJson = JsonConvert.SerializeObject(collect, Formatting.Indented);
+
+            JsonSaver.PlayerStatObjectToJson(playerStatJson);
+            JsonSaver.MapGimmickToJson(gimmickJson);
+            JsonSaver.PlayerCollectToJson(collectJson);
+        }
+        else if (index == 2)
+        {
+
+            string playerStatJson = JsonConvert.SerializeObject(playerStat, Formatting.Indented);
+            string mapItemJson = JsonConvert.SerializeObject(mapItem, Formatting.Indented);
+
+            DebugHelper.Log(mapItemJson);
+            JsonSaver.MapItemToJson(mapItemJson);
+            JsonSaver.PlayerStatObjectToJson(playerStatJson);
+        }
+        else { return; }
+    }
+
+    private MapItemData SaveMapItemData()
+    {
+        Vector2 pos = _lastSavePos.position;
+        // bool clear = 
+        // int gold = 
+        // bool haveRelic = 
+        return new MapItemData(pos.x, pos.y, true, 100, true);
+    }
+
+    private PlayerStatData SavePlayerStatData()
+    {
+        return null;
+    }
+
+    private GimmickData GatherGimmickData()
+    {
+        return null;
+    }
+
+    private CollectData GatherCollectData()
+    {
+        return null;
     }
 }

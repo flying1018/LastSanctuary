@@ -92,7 +92,7 @@ MonoBehaviour:
   UltAttack:
     attackAnim: {fileID: 7400000, guid: 1b15b0d3195f54e7d898c9aeb9060295, type: 2}
     attackIndex: 8
-    multiplier: 1
+    multiplier: 20
     nextComboTime: 0
     staminaCost: 0
     attackForce: 0
@@ -100,3 +100,5 @@ MonoBehaviour:
     groggyDamage: 0
     isInvincible: 1
   ultimateValue: 10
+  ultDefpen: 0
+  laserPrefab: {fileID: 3831501438011429933, guid: 15be0f0d53dbb418f8a1841825e5afec, type: 3}
