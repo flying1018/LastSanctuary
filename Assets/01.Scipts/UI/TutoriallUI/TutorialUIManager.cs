@@ -7,17 +7,23 @@ using UnityEngine.UI;
 
 public class TutorialUIManager : MonoBehaviour
 { 
-    [SerializeField] private GameObject UIGuideIcon;
-    [SerializeField] private Image uiIcon;
-    [SerializeField] private GameObject UIGuideImage;
-    [SerializeField] private Image uiImage;
-    //UI 스프라이트 및 위치
-    [SerializeField] private List<Sprite> uiSprites;
+    //UI 프리펩 및 위치
+    [SerializeField] private List<GameObject> uiPrefabs;
     [SerializeField] private List<Transform> uiTransforms;
+    [SerializeField] private GameObject tGuideUI;
     [SerializeField] private Transform uiParent;
+
+    private GameObject curUI;
+    
     private void Awake()
     {
         uiTransforms.Clear();
+        uiPrefabs.Clear();
+        
+        foreach (Transform guide in tGuideUI.transform)
+        {
+            uiPrefabs.Add(guide.gameObject);
+        }
         foreach (Transform trigger in uiParent)
         {
             if(trigger.childCount > 0)
@@ -31,27 +37,28 @@ public class TutorialUIManager : MonoBehaviour
     {
         HideUI();
         
-      Sprite sprite = uiSprites[index];
+      curUI = uiPrefabs[index];
 
       if (type == TUItype.Repeat)
       {
-          uiIcon.sprite = sprite;
           if (index < uiTransforms.Count && uiTransforms[index] != null)
           {
-              UIGuideIcon.transform.position = uiTransforms[index].position;
+               curUI.transform.position = uiTransforms[index].position;
           }
-          UIGuideIcon.SetActive(true);
       }
       else if (type == TUItype.Once)
       {
-          uiImage.sprite = sprite;
-          UIGuideImage.SetActive(true);
+         curUI.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
       }
+      curUI.SetActive(true);
     }
 
     public void HideUI()
     {
-        UIGuideIcon.SetActive(false);
-        UIGuideImage.SetActive(false);
+        if (curUI != null)
+        {
+            curUI.SetActive(false);
+            curUI = null;
+        }
     }
 }
