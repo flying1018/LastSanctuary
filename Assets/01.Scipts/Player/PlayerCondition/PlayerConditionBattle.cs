@@ -70,6 +70,7 @@ public partial class PlayerCondition : IDamageable, IKnockBackable,IGuardable
     //넉백 계산
     public void ApplyKnockBack(WeaponInfo weaponInfo ,Transform dir)
     {
+        if(DontKnockBack) return;
         if (weaponInfo.KnockBackForce > 0)
         {
             Vector2 knockbackDir = (transform.position - dir.transform.position);
