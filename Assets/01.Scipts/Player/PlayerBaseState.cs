@@ -17,6 +17,7 @@ public class PlayerBaseState : IState
     protected PlayerKinematicMove _move;
     protected PlayerCamera _camera;
     protected PlayerAttackSO _attackData;
+    protected PlayerSkill _skill;
 
     protected float _time;
 
@@ -35,6 +36,7 @@ public class PlayerBaseState : IState
         _move = _player.Move;
         _camera = _player.Camera;
         _attackData = _player.AttackData;
+        _skill = _player.Skill;
     }
 
     public virtual void Enter()
@@ -49,12 +51,6 @@ public class PlayerBaseState : IState
 
     public virtual void HandleInput()
     {
-        //대쉬 키 입력 시 쿨타임이 돌고 스태미나가 충분하면
-        if (_input.IsDash && _stateMachine.DashState.UseCanDash())
-        {   //대쉬
-            _stateMachine.ChangeState(_stateMachine.DashState); 
-        }
-        
         //로프에 닿고, 상하 키 입력 시
         if (_player.IsRoped && Mathf.Abs(_input.MoveInput.y) > 0f)
         {   //로프 상태
@@ -127,6 +123,14 @@ public class PlayerBaseState : IState
         }
     }
 
+    public void InputDash()
+    {
+        //대쉬 키 입력 시 쿨타임이 돌고 스태미나가 충분하면
+        if (_input.IsDash && _stateMachine.DashState.UseCanDash())
+        {   //대쉬
+            _stateMachine.ChangeState(_stateMachine.DashState); 
+        }
+    }
 
     #region AnimationEvent Method
 
@@ -134,6 +138,7 @@ public class PlayerBaseState : IState
 
     public virtual void PlaySFX1() { }
     public virtual void PlaySFX2() { }
+    public virtual void PlaySFX3() { }
     
     #endregion
     

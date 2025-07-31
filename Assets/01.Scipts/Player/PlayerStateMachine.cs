@@ -11,7 +11,8 @@ public class PlayerStateMachine : StateMachine
     public PlayerMoveState MoveState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
     public PlayerDownJumpState DownJumpState { get; private set; }
-    public List<ComboAttackState> ComboAttack { get; private set; }
+    public List<PlayerAttackState> ComboAttack { get; private set; }
+    public StrongAttackState StrongAttack;
     public JumpAttackState JumpAttack { get; private set; }
     public DashAttackState DashAttack { get; private set; }
     public UltimateState UltState { get; private set; }
@@ -39,12 +40,13 @@ public class PlayerStateMachine : StateMachine
         MoveState = new PlayerMoveState(this);
         JumpState = new PlayerJumpState(this);
         DownJumpState = new PlayerDownJumpState(this);
-        ComboAttack = new List<ComboAttackState>
+        StrongAttack = new StrongAttackState(this, player.AttackData.strongAttack);
+        ComboAttack = new List<PlayerAttackState>
         {
             new ComboAttackState(this, player.AttackData.attacks[0]),
             new ComboAttackState(this, player.AttackData.attacks[1]),
-            new ComboAttackState(this, player.AttackData.attacks[2])
         };
+        ComboAttack.Add(StrongAttack);
         JumpAttack = new JumpAttackState(this, player.AttackData.jumpAttack);
         DashAttack = new DashAttackState(this, player.AttackData.dashAttack);
         UltState = new UltimateState(this, player.AttackData.UltAttack);

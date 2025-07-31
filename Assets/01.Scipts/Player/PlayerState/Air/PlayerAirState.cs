@@ -13,6 +13,8 @@ public class PlayerAirState : PlayerBaseState
     {
         base.Enter();
         StartAnimation(_player.AnimationDB.AirParameterHash);
+        
+        _move.IsGrounded = false;
     }
 
     public override void Exit()
@@ -24,6 +26,9 @@ public class PlayerAirState : PlayerBaseState
     public override void HandleInput()
     {
         base.HandleInput();
+        
+        InputAirDash();
+        
         if (_input.IsAttack && _stateMachine.JumpAttack.CanJumpAttack)
         {
             _stateMachine.ChangeState(_stateMachine.JumpAttack);
@@ -38,4 +43,11 @@ public class PlayerAirState : PlayerBaseState
             _stateMachine.ChangeState(_stateMachine.IdleState);      
         }
     }
+    
+    public void InputAirDash()
+    {
+        if(!_skill.GetSkill(Skill.AirDash).open)return;
+        InputDash();
+    }
+
 }

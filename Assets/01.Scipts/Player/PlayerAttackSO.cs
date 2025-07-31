@@ -19,25 +19,27 @@ public class AttackInfo
 }
 
 [Serializable]
-[CreateAssetMenu(fileName = "PlayerAttack", menuName = "New PlayerAttack")]
+[CreateAssetMenu(fileName = "PlayerAttack", menuName = "Player/New PlayerAttack")]
 public class PlayerAttackSO : ScriptableObject
 {
-    [Header("AttackState")]
+    [Header("AttackState")] 
     public AttackInfo[] attacks;
     public float defpen;
     public float maxUltimateGauge;
 
-    [Header("DashAttackState")]
+    [Header("StrongAttack")] 
+    public AttackInfo strongAttack;
+    
+    [Header("DashAttackState")] 
     public AttackInfo dashAttack;
-
-    [Header("JumpAttackState")]
+    
+    [Header("JumpAttackState")] 
     public AttackInfo jumpAttack;
 
-
-    [Header("TopAttackState")]
+    [Header("TopAttackState")] 
     public AttackInfo topAttack;
 
-    [Header("GroggAttackState")]
+    [Header("GroggAttackState")] 
     public GameObject groggyAttackPrefab;
     public int prefabId;
     public float groggyAnimInterval;

@@ -10,4 +10,10 @@ public class DashAttackState : PlayerAttackState
     {
         
     }
+    
+    public bool UseCanDashAttack()
+    {
+        if (_condition.UsingStamina(StaminaCost)) { return true; }
+        else {return false;}
+    }
 }

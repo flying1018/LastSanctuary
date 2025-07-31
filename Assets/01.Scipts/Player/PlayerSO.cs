@@ -7,7 +7,7 @@ using UnityEngine;
 /// 플레이어의 필요한 데이터
 /// </summary>
 [Serializable]
-[CreateAssetMenu(fileName = "Player", menuName = "New Player")]
+[CreateAssetMenu(fileName = "Player", menuName = "Player/New Player")]
 public class PlayerSO : ScriptableObject
 {
     [Header("GroundState")] 
