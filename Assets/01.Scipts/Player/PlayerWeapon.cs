@@ -14,6 +14,7 @@ public class PlayerWeapon : Weapon
     private Coroutine _ultAttackCoroutine;
     private int _hitCount;
     private float _hitInterval;
+    private bool _isUltimate;
     
     //직렬화
     [SerializeField] private SpriteRenderer spriteRenderer1;
@@ -39,7 +40,6 @@ public class PlayerWeapon : Weapon
                 dummy.CurUltimate += WeaponInfo.UltimateValue;
             }
         }
-
     }
     public void GroggyAttackInit(float animInterval, int id)
     {
@@ -90,11 +90,16 @@ public class PlayerWeapon : Weapon
 
     IEnumerator UltAttackAnim_Coroutine()
     {
+        //초기설정 스프라이트
         spriteRenderer1.sprite = sprites1[0];
         spriteRenderer2.sprite = sprites2[0];
         
+        //공격 가능 처리
+        _isUltimate = true;
+        
         yield return new WaitForSeconds(_hitCount*_hitInterval - _hitInterval*sprites1.Length);
         
+        //사라지는 애니메이션
         for(int i=0; i<sprites1.Length; i++)
         {
             spriteRenderer1.sprite = sprites1[i];
@@ -102,7 +107,36 @@ public class PlayerWeapon : Weapon
             yield return _waitAnimSec;
         }
 
+        //사라지기
         _ultAttackCoroutine = null;
         ObjectPoolManager.Set(gameObject, _objectPoolId);
+    }
+    
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag(StringNameSpace.Tags.Player)) return;
+        if(!_isUltimate) return;
+
+        base.OnTriggerEnter2D(other);
+
+        if (other.TryGetComponent(out Condition condition))
+        {
+            condition.DamageDelay();
+            _isUltimate = false;
+            Invoke(nameof(DemageDelay),_hitInterval);
+        }
+
+        if (other.CompareTag(StringNameSpace.Tags.Enemy))
+        {
+            if (WeaponInfo.Condition is PlayerCondition dummy)
+            {
+                dummy.CurUltimate += WeaponInfo.UltimateValue;
+            }
+        }
+    }
+
+    private void DemageDelay()
+    {
+        _isUltimate = true;
     }
 }

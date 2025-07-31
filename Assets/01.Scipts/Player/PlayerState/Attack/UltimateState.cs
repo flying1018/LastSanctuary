@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UltimateState : PlayerAttackState
 {
-    private int _hitCount = 20;
-    private float _interval = 0.2f;
+    private int _hitCount;
+    private float _interval;
 
     public UltimateState(PlayerStateMachine stateMachine, AttackInfo attackInfo) : base(stateMachine, attackInfo)
     {
@@ -52,7 +52,9 @@ public class UltimateState : PlayerAttackState
         
         //생성 및 위치 설정
         GameObject go = ObjectPoolManager.Get(_attackData.laserPrefab,(int)PoolingIndex.PlayerUlt);
-        go.transform.position = _player.transform.position;
+        Vector3 pos = _player.transform.position;
+        pos += 2 * (_spriteRenderer.flipX ? Vector3.left : Vector3.right);
+        go.transform.position = pos;
         //방향 설정
         float dir = _spriteRenderer.flipX ? -180 : 0;
         go.transform.rotation = Quaternion.Euler(0, 0, dir);
