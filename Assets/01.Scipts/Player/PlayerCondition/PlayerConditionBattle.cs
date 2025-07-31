@@ -18,7 +18,8 @@ public partial class PlayerCondition : IDamageable, IKnockBackable,IGuardable
         CurHp = MaxHp;
         CurStamina = MaxStamina;
         HealAmonut = _player.Data.healAmount;
-        _curUltimate = 0f; // 궁극기 게이지 보존된다면 수정 필요
+        //testCode
+        CurUltimate = MaxUltimate;
         
         IsInvincible = false;
     }

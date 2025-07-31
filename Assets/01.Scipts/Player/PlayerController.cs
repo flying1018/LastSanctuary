@@ -135,7 +135,6 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-            DebugHelper.Log("궁극기 버튼 누름");
             IsUltimate = true;
         }
         else if (context.phase == InputActionPhase.Canceled)
