@@ -13,6 +13,9 @@ public class EnemyDeathState : EnemyBaseState
         
         //시간 체크
         _time = 0;
+        
+        //콜라이더 끄기
+        _enemy.CapsuleCollider.enabled = false;
     }
 
     public override void Exit()
@@ -32,6 +35,9 @@ public class EnemyDeathState : EnemyBaseState
         
         //골드 드랍
         ItemManager.Instance.GetGold(_data.dropGold);
+        
+        //콜라이더 켜기
+        _enemy.CapsuleCollider.enabled = true;
         
         //오브젝트 회수
         ObjectPoolManager.Set(_enemy.gameObject, _enemy.Data._key);
