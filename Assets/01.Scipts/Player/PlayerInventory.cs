@@ -38,7 +38,7 @@ public class PlayerInventory : MonoBehaviour
         _uiManager = UIManager.Instance;
         
         //test Code
-        _gold = 100000;
+        //_gold = 100000;
     }
 
 
@@ -48,10 +48,10 @@ public class PlayerInventory : MonoBehaviour
         relics.Sort();
         
         //test Code
-        foreach (var relic in relics)
-        {
-            relic.IsGet = true;
-        }
+        // foreach (var relic in relics)
+        // {
+        //     relic.IsGet = true;
+        // }
 
         MaxPotionNum = player.Data.potionNum;
         CurPotionNum = MaxPotionNum;
