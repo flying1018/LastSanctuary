@@ -59,6 +59,7 @@ public class UIManager : Singleton<UIManager>
     
     [Header("SkillUI")]
     [SerializeField] private GameObject skillUI;
+    [SerializeField] private TextMeshProUGUI skillUIGoldText;
 
 
     public UIStateMachine StateMachine { get; set; }
@@ -114,6 +115,8 @@ public class UIManager : Singleton<UIManager>
     
     //SkillUI
     public GameObject SkillUI { get => skillUI;}
+    public TextMeshProUGUI SkillUIGoldText { get => skillUIGoldText;}
+    
 
     private void Start()
     {

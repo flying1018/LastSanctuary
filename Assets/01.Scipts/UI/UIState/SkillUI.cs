@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SkillUI : UnifiedUI
 {
     private SellectSkillUI[] _sellectSkills;
     private SkillDescUI _skillDescUI;
+    private TextMeshProUGUI _goldText;
     
     public SkillUI(UIStateMachine uiStateMachine) : base(uiStateMachine)
     {
@@ -19,6 +21,7 @@ public class SkillUI : UnifiedUI
             _sellectSkills[i].OnOpen += () => OnOpen(_sellectSkills[index]);
         }
         
+        _goldText = _uiManager.SkillUIGoldText;
     }
 
     public override void Enter()
@@ -28,6 +31,8 @@ public class SkillUI : UnifiedUI
         _centerLine.localPosition = new Vector3(_data.centerLinePosition, 0, 0);
         _mouseLeftDesc.text = _data.skillLeftClickDesc;
         _mouseRightDesc.text = _data.sKillRightClickDesc;
+
+        UpdateGoldText();
         
         _uiManager.SkillUI.SetActive(true);
     }
@@ -83,7 +88,13 @@ public class SkillUI : UnifiedUI
             _playerSkill.GetSkill(sellect.Skill).open = true;
             _playerSkill.SetSkillData(sellect.Skill);
             sellect.Unlock();
+            UpdateGoldText();
         }
         //골드 부족 알림창이 있으면 좋을 듯?
+    }
+    
+    private void UpdateGoldText()
+    {
+        _goldText.text = _playerInventory.Gold.ToString();
     }
 }
