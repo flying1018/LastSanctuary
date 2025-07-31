@@ -91,11 +91,9 @@ public class PlayerWeapon : Weapon
     IEnumerator UltAttackAnim_Coroutine()
     {
         //초기설정 스프라이트
+        _isUltimate = true;
         spriteRenderer1.sprite = sprites1[0];
         spriteRenderer2.sprite = sprites2[0];
-        
-        //공격 가능 처리
-        _isUltimate = true;
         
         yield return new WaitForSeconds(_hitCount*_hitInterval - _hitInterval*sprites1.Length);
         
@@ -108,6 +106,7 @@ public class PlayerWeapon : Weapon
         }
 
         //사라지기
+        _isUltimate = false;
         _ultAttackCoroutine = null;
         ObjectPoolManager.Set(gameObject, _objectPoolId);
     }
@@ -118,19 +117,14 @@ public class PlayerWeapon : Weapon
         if(!_isUltimate) return;
 
         base.OnTriggerEnter2D(other);
-
+        
         if (other.TryGetComponent(out Condition condition))
         {
-            condition.DamageDelay();
-            
-            //필살기 딜레이
-            _isUltimate = false;
-            Invoke(nameof(DemageDelay),_hitInterval);
+            condition.DamageDelay(_hitInterval);
         }
     }
 
-    private void DemageDelay()
-    {
-        _isUltimate = true;
-    }
+
+
+
 }
