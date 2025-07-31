@@ -17,6 +17,11 @@ public class JumpAttackState : PlayerAttackState
         CanJumpAttack = false;
     }
 
+    public override void HandleInput()
+    {
+        
+    }
+
     public override void Update()
     {
         if (_move.IsGrounded)

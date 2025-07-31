@@ -19,7 +19,6 @@ public partial class PlayerCondition : IDamageable, IKnockBackable,IGuardable
         CurStamina = MaxStamina;
         HealAmonut = _player.Data.healAmount;
         _curUltimate = 0f; // 궁극기 게이지 보존된다면 수정 필요
-        _enemyGroggyTime = _player.AttackData.groggyTime;
         
         IsInvincible = false;
     }
@@ -103,16 +102,16 @@ public partial class PlayerCondition : IDamageable, IKnockBackable,IGuardable
             if (weaponInfo.Condition is EnemyCondition enemyCondition && weaponInfo.DamageType != DamageType.Range)
             {
                 //적은 그로기 처리
-                enemyCondition.ChangeGroggyState(_enemyGroggyTime);
+                enemyCondition.ChangeGroggyState(_player.Skill.GroggyTime);
             }
 
             return true;
         }
         else if (TryGuard(isFront))
         {
-            _player.EventSFX1();
+            _player.EventSFX3();
 
-            weaponInfo.Attack = Mathf.CeilToInt(weaponInfo.Attack * (1 - _player.Data.damageReduction));
+            weaponInfo.Attack = Mathf.CeilToInt(weaponInfo.Attack * (1 - _player.Skill.DamageReduceRate));
             ApplyDamage(weaponInfo.Attack);
 
             if (_curHp <= 0)

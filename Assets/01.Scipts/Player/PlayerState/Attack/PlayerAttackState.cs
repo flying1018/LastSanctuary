@@ -6,6 +6,8 @@ public class PlayerAttackState : PlayerBaseState
 {
     public AttackInfo AttackInfo;
     protected float _animationTime;
+    public int StaminaCost { get; protected set; }
+    
 
     //생성자
     public PlayerAttackState(PlayerStateMachine stateMachine, AttackInfo attackInfo) : base(stateMachine)
@@ -13,7 +15,7 @@ public class PlayerAttackState : PlayerBaseState
         this.AttackInfo = attackInfo;
         _time = 0;
         _animationTime = attackInfo.animTime;
-        
+        StaminaCost = attackInfo.staminaCost;
     }
 
     public override void Enter()
@@ -53,11 +55,7 @@ public class PlayerAttackState : PlayerBaseState
 
     public override void HandleInput()
     {
-        //대쉬 키 입력 시 스태미나가 충분하면
-        if (_input.IsDash && _stateMachine.DashState.UseCanDash())
-        {   //대쉬
-            _stateMachine.ChangeState(_stateMachine.DashState);
-        }
+        InputDash();
         //공격 중 가드 가능
         if (_move.IsGrounded &&_input.IsGuarding && _stateMachine.comboIndex != 2)
         { 
