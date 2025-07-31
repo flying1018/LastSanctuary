@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1543481419627228699}
   - component: {fileID: 2441803533381722085}
   m_Layer: 5
-  m_Name: Shiftkey
+  m_Name: Ekey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ Animator:
   m_GameObject: {fileID: 1998943634693253275}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d3daf6728c407e24d8ba045e5975a55e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7631e5da61c810a40b745c2b9d71dd26, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -108,15 +108,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1428277392, guid: c026371cfd53e7240bf72a8d861ad22a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.4375, y: 0.6875}
+  m_Size: {x: 0.71875, y: 0.6875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3608182066331288549
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 5168105262199656009}
   - component: {fileID: 800494232503953128}
   m_Layer: 5
-  m_Name: DashGuideUI
+  m_Name: HealGuideUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

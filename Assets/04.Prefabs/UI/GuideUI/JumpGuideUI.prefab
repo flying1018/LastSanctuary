@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1543481419627228699}
   - component: {fileID: 2441803533381722085}
   m_Layer: 5
-  m_Name: Shiftkey
+  m_Name: Spacekey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ Animator:
   m_GameObject: {fileID: 1998943634693253275}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d3daf6728c407e24d8ba045e5975a55e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 627520e444f5dff4b842cbe8dc72c57a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -113,7 +113,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.4375, y: 0.6875}
+  m_Size: {x: 0.71875, y: 0.6875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 5168105262199656009}
   - component: {fileID: 800494232503953128}
   m_Layer: 5
-  m_Name: DashGuideUI
+  m_Name: JumpGuideUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
