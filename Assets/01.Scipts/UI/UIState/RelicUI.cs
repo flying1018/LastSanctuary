@@ -12,9 +12,16 @@ public class RelicUI : UnifiedUI
     private TextMeshProUGUI _relicName;
     private TextMeshProUGUI _relicEffect;
     private TextMeshProUGUI _relicDesc;
+    
+    // 슬롯 액션 캐시
+    private List<Action> _selectActions;
+    private List<Action> _equipActions;
 
     public RelicUI(UIStateMachine uiStateMachine) : base(uiStateMachine)
     {
+        _selectActions = new List<Action>();
+        _equipActions = new List<Action>();
+        
         _statUIs = new List<StatUI>();
         _equipUIs = new List<EquipUI>();
         _slotUIs = new List<SlotUI>();
@@ -67,7 +74,6 @@ public class RelicUI : UnifiedUI
         _mouseLeft.SetActive(true);
         _mouseRight.SetActive(true);
         
-        
         _uiManager.RelicUI.SetActive(true);
         
         UpdateStatus();
@@ -77,6 +83,9 @@ public class RelicUI : UnifiedUI
     public override void Exit()
     {
         base.Exit();
+
+        DisUpdateSlot();
+        
         _uiManager.RelicUI.SetActive(false);
     }
 
@@ -158,19 +167,42 @@ public class RelicUI : UnifiedUI
         
     }
 
-    //성물 슬롯 갱신
+    //성물 슬롯에 이벤트 추가
     private void UpdateSlot()
     {
+        _selectActions.Clear();
+        _equipActions.Clear();
+        
         for (int i = 0; i < _playerInventory.relics.Count; i++)
         {
+            int index = i;
+            Action select = () => OnSelect(_slotUIs[index].data.Data);
+            Action equip  = () => OnEquip(_slotUIs[index].data.Data);
+            
             if (_playerInventory.relics[i].IsGet)
             {
                 _slotUIs[i].data = _playerInventory.relics[i];
                 _slotUIs[i].SetActive();
-                int index = i;
-                _slotUIs[i].OnSelect += () => OnSelect(_slotUIs[index].data.Data);
-                _slotUIs[i].OnEquip += () => OnEquip(_slotUIs[index].data.Data);
+
+                _slotUIs[i].OnSelect += select;
+                _slotUIs[i].OnEquip  += equip;
             }
+            
+            _selectActions.Add(select);
+            _equipActions.Add(equip);
         }
+    }
+    
+    //성물 슬롯에 이벤트 제거
+    private void DisUpdateSlot()
+    {
+        for (int i = 0; i < _playerInventory.relics.Count; i++)
+        {
+            _slotUIs[i].OnSelect -= _selectActions[i];
+            _slotUIs[i].OnEquip  -= _equipActions[i];
+        }
+        
+        _selectActions.Clear();
+        _equipActions.Clear();
     }
 }
