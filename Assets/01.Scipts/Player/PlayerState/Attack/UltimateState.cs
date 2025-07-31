@@ -6,6 +6,7 @@ public class UltimateState : PlayerAttackState
 {
     private int _hitCount;
     private float _interval;
+    private bool UltimateStart;
 
     public UltimateState(PlayerStateMachine stateMachine, AttackInfo attackInfo) : base(stateMachine, attackInfo)
     {
@@ -17,6 +18,11 @@ public class UltimateState : PlayerAttackState
     public override void Enter()
     {
         base.Enter();
+
+        UltimateStart = false;
+        
+        if(_skill.GetSkill(Skill.UltimateStmUp).open)
+            _condition.CurStamina = _condition.MaxStamina;
     }
 
     public override void Exit()
@@ -32,12 +38,13 @@ public class UltimateState : PlayerAttackState
 
     public override void Update()
     {
-
+        //게이지 감소
+        if(!UltimateStart) return;
+        _condition.CurUltimate -= (_condition.MaxUltimate/(_hitCount*_interval)) * Time.deltaTime;
     }
 
     public override void PhysicsUpdate()
     {
-
     }
 
     public override void PlayEvent1()
@@ -49,6 +56,9 @@ public class UltimateState : PlayerAttackState
     {
         //애니메이션 정지
         _player.Animator.speed = 0;
+        
+        //게이지 감소 시작
+        UltimateStart = true;
         
         //생성 및 위치 설정
         GameObject go = ObjectPoolManager.Get(_attackData.laserPrefab,(int)PoolingIndex.PlayerUlt);
@@ -75,5 +85,9 @@ public class UltimateState : PlayerAttackState
         _stateMachine.ChangeState(_stateMachine.IdleState);
     }
 
+    public void HitCountUp(int count)
+    {
+        _hitCount = count;
+    }
 
 }

@@ -16,4 +16,9 @@ public class DashAttackState : PlayerAttackState
         if (_condition.UsingStamina(StaminaCost)) { return true; }
         else {return false;}
     }
+    
+    public void CostDown(int cost)
+    {
+        StaminaCost = cost;
+    }
 }

@@ -122,16 +122,10 @@ public class PlayerWeapon : Weapon
         if (other.TryGetComponent(out Condition condition))
         {
             condition.DamageDelay();
+            
+            //필살기 딜레이
             _isUltimate = false;
             Invoke(nameof(DemageDelay),_hitInterval);
-        }
-
-        if (other.CompareTag(StringNameSpace.Tags.Enemy))
-        {
-            if (WeaponInfo.Condition is PlayerCondition dummy)
-            {
-                dummy.CurUltimate += WeaponInfo.UltimateValue;
-            }
         }
     }
 
