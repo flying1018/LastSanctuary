@@ -13,4 +13,7 @@ public class PlayerSkillSO : ScriptableObject
 
     [Header("Excution")] 
     public float groggyTime;
+
+    [Header("Ultimate")] 
+    public int ultimateHitCount;
 }

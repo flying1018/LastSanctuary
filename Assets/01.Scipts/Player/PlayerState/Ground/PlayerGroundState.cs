@@ -39,7 +39,6 @@ public class PlayerGroundState : PlayerBaseState
         //궁극기
         if (_input.IsUltimate && (_condition.CurUltimate >= _condition.MaxUltimate))
         {
-            DebugHelper.Log("궁극기 감지");
             _stateMachine.ChangeState(_stateMachine.UltState);
         }
 
