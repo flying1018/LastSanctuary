@@ -118,7 +118,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01761818, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -143,8 +143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e805740af841bd3438b051d1b4fafe85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 2096291478615072802}
-  sprites:
+  spriteRenderer1: {fileID: 2096291478615072802}
+  spriteRenderer2: {fileID: 0}
+  sprites1:
   - {fileID: 839475429, guid: 2a4c0a14c3b33e042acacab53b9be967, type: 3}
   - {fileID: -351128636, guid: 2a4c0a14c3b33e042acacab53b9be967, type: 3}
   - {fileID: -2122022974, guid: 2a4c0a14c3b33e042acacab53b9be967, type: 3}
+  sprites2: []

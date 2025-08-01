@@ -30,7 +30,6 @@ public abstract class Weapon : MonoBehaviour
         {
             if (iguardable.ApplyGuard(WeaponInfo,transform))
                 return;
-            
         }
         //그로기
         if (other.TryGetComponent(out IGroggyable ibossdamageable))

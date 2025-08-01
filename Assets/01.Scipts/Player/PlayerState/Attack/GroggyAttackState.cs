@@ -92,11 +92,11 @@ public class GroggyAttackState : PlayerAttackState
 
     private void GroggyAttackEffect(float angle)
     {
-        GameObject go = ObjectPoolManager.Get(_attackData.groggyAttackPrefab, _attackData.prefabId);
+        GameObject go = ObjectPoolManager.Get(_attackData.groggyAttackPrefab,(int)PoolingIndex.PlayerGroggy);
         if (go.TryGetComponent(out PlayerWeapon weapon))
         {
             //그로기 애니메이션에 필요한 정보
-            weapon.GroggyAttackInit(_attackData.groggyAnimInterval,_attackData.prefabId);
+            weapon.GroggyAttackInit(_attackData.groggyAnimInterval, (int)PoolingIndex.PlayerGroggy);
             
             //무기에 대미지 전달
             weapon.WeaponInfo = _player.WeaponInfo;

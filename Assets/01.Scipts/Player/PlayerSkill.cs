@@ -71,12 +71,16 @@ public class PlayerSkill : MonoBehaviour
         {
             case Skill.StrAttackStmDown:
                 _player.StateMachine.StrongAttack.CostDown(_skillData.downStaminaCost);
+                _player.StateMachine.DashAttack.CostDown(_skillData.downStaminaCost);
                 break;
             case Skill.GuardDamDecUp:
                 DamageReduceRate = _skillData.reduceDamageRate;
                 break;
             case Skill.ExecutionTimeUp:
                 GroggyTime = _skillData.groggyTime;
+                break;
+            case Skill.UltimateTimeUp:
+                _player.StateMachine.UltState.HitCountUp(_skillData.ultimateHitCount);
                 break;
         }
     }
