@@ -83,14 +83,14 @@ public class PlayerCamera : MonoBehaviour
     /// </summary>
     /// <param name="target"></param>
     /// <param name="zoom"></param>
-    public void StartCutsceneCamera(Transform target, float zoom = 6f)
+    public void StartZoomCamera(Transform target, float zoom = 6f)
     {
         if (otherCam == null) return;
         otherCam.Priority = 30;
         otherCam.Follow = target;
         otherCam.m_Lens.OrthographicSize = zoom;
     }
-    public void EndCutsceneCamera()
+    public void EndZoomCamera()
     {
         if (otherCam == null) return;
         otherCam.Priority = 10;
