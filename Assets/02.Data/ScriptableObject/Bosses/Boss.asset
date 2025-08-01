@@ -17,10 +17,10 @@ MonoBehaviour:
   gravityPower: 0.6
   attack: 35
   defense: 10
-  hp: 100
-  groggyGauge: 1
+  hp: 1200
+  groggyGauge: 50
   groggyDuration: 5
-  damageDelay: 0.17
+  damageDelay: 0.1
   dropGold: 1000
   deathAnim: {fileID: 7400000, guid: f745dd3432f773c46807b3753e7880d9, type: 2}
   deathEventDuration: 3

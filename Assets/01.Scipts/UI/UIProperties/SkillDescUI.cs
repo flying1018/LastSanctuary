@@ -9,6 +9,7 @@ public class SkillDescUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI controlKeys;
     [SerializeField] private TextMeshProUGUI skillDescription;
     [SerializeField] private TextMeshProUGUI skillOpenConditions;
+    [SerializeField] private TextMeshProUGUI needGold;
     
     public void SetSkillDesc(SellectSkillUI skillUI)
     {
@@ -16,6 +17,7 @@ public class SkillDescUI : MonoBehaviour
         controlKeys.text = skillUI.ControlKeys;
         skillDescription.text = skillUI.SkillDescription;
         skillOpenConditions.text = skillUI.SkillOpenConditions;
+        needGold.text = skillUI.NeedGold + "G";
     }
     
     

@@ -52,7 +52,8 @@ public class PlayerAttackSO : ScriptableObject
     [Header("UltimateAttackState")]
     public AttackInfo UltAttack;
     public float ultimateValue;
-    public float ultDefpen;
+    public int ultHitCount;
+    public float ultInterval;
     public GameObject laserPrefab;
 
 }

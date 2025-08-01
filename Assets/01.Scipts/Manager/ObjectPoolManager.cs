@@ -9,7 +9,8 @@ public enum PoolingIndex
     Item = 3,
     BossProjectile = 4,
     SFX = 5,
-    PlayerAttack = 6,
+    PlayerGroggy = 6,
+    PlayerUlt = 7,
 }
 
 public static class ObjectPoolManager

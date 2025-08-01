@@ -54,14 +54,17 @@ MonoBehaviour:
   preSkill: 0
   skill: 0
   skillName: "\uAC00\uB4DC"
-  controlKeys: "\uC6B0\uD074\uB9AD(\uC9C0\uC0C1\uC5D0\uC11C)"
-  skillDescription: "\uC0AC\uC6A9\uC2DC \uC2A4\uD0DC\uBBF8\uB098\uB97C \uC18C\uBAA8\uD574
-    \uC801\uC758 \uACF5\uACA9\uC744 \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4.<br>\uC815\uD655\uD55C
-    \uD0C0\uC774\uBC0D\uC5D0 \uC785\uB825\uD558\uBA74 \uD37C\uD399\uD2B8 \uAC00\uB4DC\uAC00
-    \uBC1C\uB3D9\uB418\uC5B4 \uBAA8\uB4E0 \uB370\uBBF8\uC9C0\uB97C \uBB34\uC2DC\uD558\uACE0
-    \uC2A4\uD0DC\uBBF8\uB098\uB97C \uD68C\uBCF5\uD558\uBA70, \uC77C\uBC18 \uC801\uC744
-    \uADF8\uB85C\uAE30 \uC0C1\uD0DC\uB85C \uB9CC\uB4ED\uB2C8\uB2E4.<br>\uD574\uB2F9
-    \uC2A4\uD0AC\uAD70\uC740 \uAC00\uB4DC \uAD00\uB828 \uC131\uB2A5\uC774 \uAC15\uD654\uB429\uB2C8\uB2E4."
+  controlKeys: "\uB9C8\uC6B0\uC2A4 \uC6B0\uD074\uB9AD"
+  skillDescription: "\uC9C0\uC0C1\uC5D0\uC11C\uB9CC \uC0AC\uC6A9 \uAC00\uB2A5\uD558\uBA70,
+    \uC2A4\uD0DC\uBBF8\uB098\uB97C \uC18C\uBAA8\uD574 \uC801\uC758 \uD53C\uD574\uB7C9\uC744
+    \uAC10\uC18C\uC2DC\uD0A4\uBA70 \uB109\uBC31\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.
+    <br>\uC815\uD655\uD55C \uD0C0\uC774\uBC0D\uC5D0 \uC785\uB825 \uC2DC '\uD37C\uD399\uD2B8
+    \uAC00\uB4DC'\uAC00 \uBC1C\uB3D9\uB418\uC5B4, \uBAA8\uB4E0 \uD53C\uD574\uB97C
+    \uBB34\uC2DC\uD558\uACE0 \uC2A4\uD0DC\uBBF8\uB098\uB97C \uD68C\uBCF5\uD558\uBA70
+    \uC801\uC744 \uADF8\uB85C\uAE30 \uC0C1\uD0DC\uB85C \uB9CC\uB4ED\uB2C8\uB2E4.
+    <br>\uD574\uB2F9 \uC2A4\uD0AC\uAD70\uC740 \uD53C\uD574 \uACBD\uAC10\uB960, \uD37C\uD399\uD2B8
+    \uD310\uC815, \uB9AC\uBC84\uC124 \uAE30\uB2A5 \uB4F1\uC758 \uAE30\uB2A5\uC774
+    \uD655\uC7A5\uB429\uB2C8\uB2E4."
   skillOpenConditions: "\uD574\uAE08 \uC870\uAC74 \uC5C6\uC74C."
   needGold: 0
   lockImage: {fileID: 0}
@@ -77,7 +80,7 @@ GameObject:
   - component: {fileID: 483213529900828377}
   - component: {fileID: 3752069349434941348}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Desc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,11 +100,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1103638627778369531}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035156, y: -5}
-  m_SizeDelta: {x: 400, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 20, y: 0}
+  m_SizeDelta: {x: 370, y: 100}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &483213529900828377
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -130,7 +133,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "~\uC2DC \uD574\uAE08 ~ \uACE8\uB4DC \uC18C\uBAA8\n"
+  m_text: "~\uC2DC \uD574\uAE08 \n~ \uACE8\uB4DC \uC18C\uBAA8\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44bfc223206556e4fa3fbdd7703a9bd9, type: 2}
   m_sharedMaterial: {fileID: -4451629425219399282, guid: 44bfc223206556e4fa3fbdd7703a9bd9, type: 2}
@@ -157,8 +160,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 33
+  m_fontSizeBase: 33
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -574,17 +577,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 12
   skill: 13
-  skillName: "\uCC98\uD615 \uCCB4\uB825 \uD68C\uBCF5 (\uD328\uC2DC\uBE0C)"
-  controlKeys: "E \uD0A4 (\uAE30\uC874 \uCC98\uD615\uACFC \uB3D9\uC77C) "
+  skillName: "\uCC98\uD615 \uCCB4\uB825 \uD68C\uBCF5"
+  controlKeys: E
   skillDescription: "\uCC98\uD615\uC5D0 \uC131\uACF5\uD560 \uB54C\uB9C8\uB2E4 \uCCB4\uB825\uC774
-    \uC18C\uD3ED \uD68C\uBCF5\uB429\uB2C8\uB2E4. <br>\uB610\uD55C \uCCB4\uB825\uC774
+    \uC18C\uD3ED \uD68C\uBCF5\uB429\uB2C8\uB2E4. \uB610\uD55C \uCCB4\uB825\uC774
     30% \uC774\uD558\uC778 \uC0C1\uD0DC\uC5D0\uC11C \uCC98\uD615\uC5D0 \uC131\uACF5\uD558\uBA74,
     1\uD68C\uC5D0 \uD55C\uD574 \uCCB4\uB825\uC774 \uC808\uBC18\uAE4C\uC9C0 \uC989\uC2DC
     \uD68C\uBCF5\uB429\uB2C8\uB2E4. <br>\u203B \uD574\uB2F9 1\uD68C \uD55C\uC815
     \uD6A8\uACFC\uB294 \uD68C\uBCF5 \uD3EC\uC778\uD2B8\uC640 \uC0C1\uD638\uC791\uC6A9
-    \uC2DC \uB2E4\uC2DC \uC0AC\uC6A9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+    \uC2DC \uB2E4\uC2DC \uC0AC\uC6A9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4. "
   skillOpenConditions: "\uCC98\uD615 \uAC00\uB2A5 \uC2DC\uAC04 \uC99D\uAC00 \uD574\uAE08
-    \uD544\uC694.<br>\uB450 \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694.<br>5000G"
+    \uD544\uC694.<br>\uB450 \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694."
   needGold: 5000
   lockImage: {fileID: 212839981029748065}
 --- !u!1 &212839981029748065
@@ -2389,6 +2392,7 @@ RectTransform:
   m_Children:
   - {fileID: 7421370062156343092}
   - {fileID: 7069703011841468247}
+  - {fileID: 6377883812466218352}
   m_Father: {fileID: 4681216608274612855}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
@@ -2980,6 +2984,140 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1880956766670527952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6377883812466218352}
+  - component: {fileID: 8797351887005079393}
+  - component: {fileID: 224198987976683020}
+  m_Layer: 5
+  m_Name: Gold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6377883812466218352
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880956766670527952}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1103638627778369531}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -20, y: -25}
+  m_SizeDelta: {x: 100, y: 50}
+  m_Pivot: {x: 1, y: 0.5}
+--- !u!222 &8797351887005079393
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880956766670527952}
+  m_CullTransparentMesh: 1
+--- !u!114 &224198987976683020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880956766670527952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: G
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 44bfc223206556e4fa3fbdd7703a9bd9, type: 2}
+  m_sharedMaterial: {fileID: -4451629425219399282, guid: 44bfc223206556e4fa3fbdd7703a9bd9, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 34
+  m_fontSizeBase: 34
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1882627541521366797
 GameObject:
   m_ObjectHideFlags: 0
@@ -4222,14 +4360,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 17
   skill: 18
-  skillName: "\uAD81\uADF9\uAE30 \uCCB4\uB825 \uD68C\uBCF5 (\uD328\uC2DC\uBE0C)"
-  controlKeys: "Q(\uC9C0\uC0C1\uC5D0\uC11C)"
+  skillName: "\uAD81\uADF9\uAE30 \uCCB4\uB825 \uD68C\uBCF5 "
+  controlKeys: Q
   skillDescription: "\uAD81\uADF9\uAE30 \uC0AC\uC6A9 \uC2DC \uCCB4\uB825\uC774 \uC77C\uBD80
-    \uD68C\uBCF5\uB429\uB2C8\uB2E4. <br>\uAD81\uADF9\uAE30 \uBC1C\uB3D9 \uD0C0\uC774\uBC0D\uC5D0
-    \uB9DE\uCDB0 \uC548\uC815\uC801\uC778 \uC0DD\uC874\uB825\uC744 \uD655\uBCF4\uD560
-    \uC218 \uC788\uC2B5\uB2C8\uB2E4. "
+    \uD68C\uBCF5\uB429\uB2C8\uB2E4. <br>\uAD81\uADF9\uAE30 \uBC1C\uB3D9\uC73C\uB85C\uB3C4
+    \uC77C\uC815\uB7C9\uC758 \uCCB4\uB825\uC744 \uC989\uC2DC \uD68C\uBCF5\uD574 \uC548\uC815\uC801\uC778
+    \uC804\uD22C \uC9C0\uC18D\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4. "
   skillOpenConditions: "\uAD81\uADF9\uAE30 \uAC15\uD654 \uD574\uAE08 \uD544\uC694.<br>\uC138
-    \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694.<br>15000G"
+    \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694."
   needGold: 15000
   lockImage: {fileID: 2569814473427565122}
 --- !u!1 &3005065590200581094
@@ -4512,16 +4650,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 16
   skill: 17
-  skillName: "\uAD81\uADF9\uAE30 \uAC15\uD654 (\uD328\uC2DC\uBE0C) "
-  controlKeys: "Q(\uC9C0\uC0C1\uC5D0\uC11C)"
-  skillDescription: "\uAD81\uADF9\uAE30 \uBC1C\uB3D9 \uC2DC \uB808\uC774\uC800\uAC00
-    \uAC00\uC2DC \uD615\uD0DC\uB85C \uBCC0\uD615\uB418\uC5B4 \uC138\uB85C \uBC94\uC704\uAC00
-    \uD655\uC7A5\uB429\uB2C8\uB2E4. <br>\uB610\uD55C \uD53C\uD574 \uACC4\uC218\uAC00
-    \uC99D\uAC00\uD558\uC5EC \uB354 \uB9CE\uC740 \uC801\uC5D0\uAC8C, \uB354 \uAC15\uD55C
-    \uD53C\uD574\uB97C \uC904 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  skillName: "\uAD81\uADF9\uAE30 \uAC15\uD654 "
+  controlKeys: Q
+  skillDescription: "\uAD81\uADF9\uAE30\uAC00 \uD55C\uCE35 \uC9C4\uD654\uB41C \uD615\uD0DC\uB97C
+    \uAC16\uCDA5\uB2C8\uB2E4. <br>\uC804\uBC29\uC73C\uB85C \uBED7\uB294 \uB808\uC774\uC800\uC5D0
+    \uB0A0\uCE74\uB85C\uC6B4 \uAC00\uC2DC\uAC00 \uB3CB\uC544\uB098\uBA70, \uB354
+    \uC704\uD611\uC801\uC774\uACE0 \uAC15\uB82C\uD55C \uBAA8\uC2B5\uC73C\uB85C \uBCC0\uBAA8\uD569\uB2C8\uB2E4.
+    <br>\uB3D9\uC2DC\uC5D0 \uB370\uBBF8\uC9C0\uAC00 \uD06C\uAC8C \uC99D\uAC00\uD558\uACE0,
+    \uACF5\uACA9 \uBC94\uC704\uAC00 \uC138\uB85C\uB85C \uD655\uC7A5\uB418\uC5B4 \uC804\uC7A5\uC744
+    \uC7A5\uC545\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
   skillOpenConditions: "\uAD81\uADF9\uAE30 \uC9C0\uC18D \uC2DC\uAC04 \uC99D\uAC00
     \uD574\uAE08 \uD544\uC694.<br>\uB450 \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4
-    \uD544\uC694.<br>10000G"
+    \uD544\uC694."
   needGold: 10000
   lockImage: {fileID: 2124406065789876264}
 --- !u!1 &3202776400209705973
@@ -4808,6 +4948,45 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3278709634521570412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6350453115937244174}
+  m_Layer: 5
+  m_Name: GoldUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6350453115937244174
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3278709634521570412}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8071278643698785555}
+  - {fileID: 5327164541493047150}
+  - {fileID: 4043379214805033840}
+  - {fileID: 7257641760114621478}
+  m_Father: {fileID: 7430332252065980250}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 210, y: 160}
+  m_SizeDelta: {x: 300, y: 100}
+  m_Pivot: {x: 1, y: 1}
 --- !u!1 &3305055063987498430
 GameObject:
   m_ObjectHideFlags: 0
@@ -5013,17 +5192,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 9
   skill: 10
-  skillName: "\uD37C\uD399\uD2B8 \uAC00\uB4DC \uD310\uC815 \uC644\uD654 (\uD328\uC2DC\uBE0C)"
-  controlKeys: "\uB9C8\uC6B0\uC2A4 \uC6B0\uD074\uB9AD (\uAE30\uC874 \uAC00\uB4DC\uC640
-    \uB3D9\uC77C)"
-  skillDescription: "\uAC00\uB4DC\uB97C \uB20C\uB800\uC744 \uB54C, \uD37C\uD399\uD2B8
-    \uAC00\uB4DC\uB85C \uC778\uC2DD\uB418\uB294 \uC2DC\uAC04\uC774 \uC870\uAE08 \uB354
-    \uAE38\uC5B4\uC9D1\uB2C8\uB2E4. <br>\uC815\uD655\uD55C \uD0C0\uC774\uBC0D\uC774
-    \uC544\uB2C8\uC5B4\uB3C4 \uD37C\uD399\uD2B8 \uAC00\uB4DC\uAC00 \uB354 \uC798
-    \uBC1C\uB3D9\uB429\uB2C8\uB2E4."
+  skillName: "\uD37C\uD399\uD2B8 \uAC00\uB4DC \uD310\uC815 \uC644\uD654"
+  controlKeys: "\uB9C8\uC6B0\uC2A4 \uC6B0\uD074\uB9AD"
+  skillDescription: "\uAC00\uB4DC \uC785\uB825 \uC2DC, \uD37C\uD399\uD2B8 \uAC00\uB4DC
+    \uD310\uC815 \uC2DC\uAC04\uC774 \uC870\uAE08 \uB354 \uAE38\uC5B4\uC9D1\uB2C8\uB2E4.
+    <br>\uAC00\uB4DC \uC2DC \uD37C\uD399\uD2B8 \uAC00\uB4DC\uAC00 \uB354 \uC27D\uAC8C
+    \uBC1C\uB3D9\uB429\uB2C8\uB2E4. "
   skillOpenConditions: "\uAC00\uB4DC \uB370\uBBF8\uC9C0 \uAC10\uC18C\uC728 \uC99D\uAC00
     \uD574\uAE08 \uD544\uC218.<br>\uB450 \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4
-    \uD544\uC694.<br>5000G"
+    \uD544\uC694."
   needGold: 5000
   lockImage: {fileID: 6756411288683487181}
 --- !u!1 &3419439632282750026
@@ -5348,14 +5525,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 8
   skill: 12
-  skillName: "\uCC98\uD615 \uAC00\uB2A5 \uC2DC\uAC04 \uC99D\uAC00 (\uD328\uC2DC\uBE0C)"
-  controlKeys: "E \uD0A4 (\uAE30\uC874 \uCC98\uD615 \uC785\uB825\uACFC \uB3D9\uC77C)"
-  skillDescription: "\uD37C\uD399\uD2B8 \uAC00\uB4DC \uC131\uACF5 \uC2DC, \uCC98\uD615
-    \uAC00\uB2A5\uD55C \uC0C1\uD0DC\uAC00 \uB354 \uC624\uB798 \uC720\uC9C0\uB429\uB2C8\uB2E4.
-    <br>\uC785\uB825 \uD0C0\uC774\uBC0D\uC5D0 \uC5EC\uC720\uAC00 \uC0DD\uACA8 \uCC98\uD615\uC744
-    \uB354 \uC548\uC815\uC801\uC73C\uB85C \uBC1C\uB3D9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4. "
+  skillName: "\uCC98\uD615 \uAC00\uB2A5 \uC2DC\uAC04 \uC99D\uAC00"
+  controlKeys: E
+  skillDescription: "\uD37C\uD399\uD2B8 \uAC00\uB4DC \uC131\uACF5 \uC2DC, \uC77C\uBC18
+    \uC801\uC758 \uADF8\uB85C\uAE30 \uC0C1\uD0DC\uAC00 \uB354 \uC624\uB798 \uC720\uC9C0\uB418\uC5B4
+    \uCC98\uD615 \uAC00\uB2A5 \uC2DC\uAC04\uC774 \uAE38\uC5B4\uC9D1\uB2C8\uB2E4.
+    <br>\uC785\uB825 \uD0C0\uC774\uBC0D\uC774 \uB109\uB109\uD574\uC838, \uC804\uD22C
+    \uC911\uC5D0\uB3C4 \uC801\uC744 \uC548\uC815\uC801\uC73C\uB85C \uCC98\uD615\uD560
+    \uC218 \uC788\uC2B5\uB2C8\uB2E4."
   skillOpenConditions: "\uCC98\uD615 \uD574\uAE08 \uD544\uC694.<br>\uACC4\uBABD\uC758
-    \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694.<br>1500G"
+    \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694."
   needGold: 1500
   lockImage: {fileID: 4037957476606910917}
 --- !u!1 &3790922647490190313
@@ -5905,17 +6084,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 13
   skill: 14
-  skillName: "\uC5F0\uC18D \uCC98\uD615 (\uC561\uD2F0\uBE0C)"
-  controlKeys: "E \uD0A4 (\uAE30\uC874 \uCC98\uD615\uACFC \uB3D9\uC77C)"
-  skillDescription: "\uCC98\uD615 \uC9C1\uD6C4 \uB2E4\uB978 \uC77C\uBC18 \uC801\uC774
-    \uBC94\uC704 \uB0B4 \uC874\uC7AC \uC2DC E.\uCC98\uD615 \uC131\uACF5 \uC2DC, \uC8FC\uBCC0
-    \uC801\uC774 \uBC94\uC704 \uB0B4\uC5D0 \uC788\uC744 \uACBD\uC6B0, \uD574\uB2F9
-    \uC801\uC5D0\uAC8C\uB3C4 \uBD89\uC740 \uC774\uD399\uD2B8\uAC00 \uB098\uD0C0\uB098\uBA70,
-    \uC2DC\uAC04 \uB0B4 'E' \uD0A4 \uC785\uB825\uC73C\uB85C \uCD94\uAC00 \uCC98\uD615\uC774
-    \uAC00\uB2A5\uD569\uB2C8\uB2E4. <br>\u203B \uD574\uB2F9 \uD6A8\uACFC\uB294 \uC81C\uD55C
-    \uC5C6\uC774 \uBC18\uBCF5\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  skillName: "\uC5F0\uC18D \uCC98\uD615 "
+  controlKeys: E
+  skillDescription: "\uCC98\uD615 \uC131\uACF5 \uC2DC, \uC77C\uBC18 \uC801\uC774
+    \uBC94\uC704 \uB0B4\uC5D0 \uC788\uC744 \uACBD\uC6B0 \uD574\uB2F9 \uC801\uC5D0\uAC8C
+    \uBD89\uC740 \uC774\uD399\uD2B8\uAC00 \uBC1C\uC0DD\uD558\uBA70, \uCC98\uD615
+    \uAC00\uB2A5\uD55C \uC0C1\uD0DC\uAC00 \uB429\uB2C8\uB2E4. <br>\uC2A4\uD0AC \uD0A4
+    \uC785\uB825 \uC2DC \uD574\uB2F9 \uC801\uC5D0\uAC8C\uB3C4 \uC989\uC2DC \uCC98\uD615\uC774
+    \uBC1C\uB3D9\uB429\uB2C8\uB2E4. <br>\u203B \uD574\uB2F9 \uD6A8\uACFC\uB294 \uD69F\uC218
+    \uC81C\uD55C \uC5C6\uC774 \uC5F0\uC18D\uC73C\uB85C \uBC1C\uB3D9 \uAC00\uB2A5\uD569\uB2C8\uB2E4."
   skillOpenConditions: "\uCC98\uD615 \uC2DC \uCCB4\uB825 \uD68C\uBCF5 \uD574\uAE08
-    \uD544\uC694.<br>\uC138 \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694.<br>10000G"
+    \uD544\uC694.<br>\uC138 \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694."
   needGold: 10000
   lockImage: {fileID: 7369774032710661271}
 --- !u!1 &4037957476606910917
@@ -6273,18 +6452,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 10
   skill: 11
-  skillName: "\uB9AC\uBC84\uC124 \uAC00\uB4DC (\uD328\uC2DC\uBE0C)"
-  controlKeys: "\uC5C6\uC74C (\uAC00\uB4DC \uC911 \uC790\uB3D9 \uBC1C\uB3D9)"
-  skillDescription: "\uC0AC\uB9DD \uC804 \uAC00\uB4DC \uC0C1\uD0DC \uC720\uC9C0 \uC2DC
-    \uBC1C\uB3D9.<br>\uAC00\uB4DC \uC911 \uCE58\uBA85\uC801\uC778 \uD53C\uD574\uB97C
+  skillName: "\uB9AC\uBC84\uC124 \uAC00\uB4DC"
+  controlKeys: "\uC0AC\uB9DD \uC804 \uB9C8\uC6B0\uC2A4 \uC6B0\uD074\uB9AD \uC720\uC9C0"
+  skillDescription: "\uAC00\uB4DC \uC911 \uC0AC\uB9DD\uC5D0 \uC774\uB974\uB294 \uD53C\uD574\uB97C
     \uBC1B\uC744 \uACBD\uC6B0, \uC790\uB3D9\uC73C\uB85C \uD37C\uD399\uD2B8 \uAC00\uB4DC\uAC00
-    \uBC1C\uB3D9\uB418\uC5B4 \uACF5\uACA9\uC744 \uC644\uBCBD\uD788 \uB9C9\uC544\uB0C5\uB2C8\uB2E4.<br>\u203B
-    \uD574\uB2F9 \uD6A8\uACFC\uB294 1\uD68C\uB9CC \uBC1C\uB3D9\uB418\uBA70, \uD68C\uBCF5
-    \uD3EC\uC778\uD2B8\uC5D0\uC11C \uC0C1\uD638 \uC791\uC6A9 \uD6C4 \uB2E4\uC2DC
-    \uC0AC\uC6A9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+    \uBC1C\uB3D9\uB418\uC5B4 \uACF5\uACA9\uC744 \uC644\uBCBD\uD788 \uB9C9\uC544\uB0C5\uB2C8\uB2E4.
+    <br>\u203B \uD574\uB2F9 \uD6A8\uACFC\uB294 1\uD68C\uB9CC \uBC1C\uB3D9\uB418\uBA70,
+    \uD68C\uBCF5 \uD3EC\uC778\uD2B8\uC5D0\uC11C \uC0C1\uD638 \uC791\uC6A9 \uC2DC
+    \uB2E4\uC2DC \uC0AC\uC6A9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
   skillOpenConditions: "\uD37C\uD399\uD2B8 \uAC00\uB4DC \uD310\uC815 \uC644\uD654
     \uD574\uAE08 \uD544\uC218.<br>\uC138 \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4
-    \uD544\uC694.<br>10000G"
+    \uD544\uC694."
   needGold: 10000
   lockImage: {fileID: 2638815892038797031}
 --- !u!1 &4237613219731618332
@@ -6566,14 +6744,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 6
   skill: 7
-  skillName: "\uAC15\uACF5\uACA9 \uD30C\uC0DD (\uD328\uC2DC\uBE0C) "
-  controlKeys: "\uC88C\uD074\uB9AD \uD640\uB4DC"
+  skillName: "\uAC15\uACF5\uACA9 \uD30C\uC0DD"
+  controlKeys: "\uB9C8\uC6B0\uC2A4 \uC88C\uD074\uB9AD \uD640\uB4DC "
   skillDescription: "\uB9C8\uC6B0\uC2A4 \uC88C\uD074\uB9AD \uD640\uB4DC \uC2DC \uAC15\uACF5\uACA9\uC774
-    \uBC14\uB85C \uBC1C\uB3D9\uD569\uB2C8\uB2E4. <br>\uBE60\uB974\uAC8C \uAC15\uACF5\uACA9\uC744
-    \uBC1C\uB3D9\uD560 \uC218 \uC788\uC9C0\uB9CC, \uC2A4\uD0DC\uBBF8\uB098 \uC18C\uBAA8\uAC00
+    \uBC14\uB85C \uBC1C\uB3D9\uD569\uB2C8\uB2E4. <br>\uAC15\uACF5\uACA9\uC744 \uBE60\uB974\uAC8C
+    \uBC1C\uB3D9\uD560 \uC218 \uC788\uC9C0\uB9CC, \uC2A4\uD0DC\uBBF8\uB098 \uC18C\uBAA8\uB7C9\uC774
     2\uBC30\uB85C \uB298\uC5B4\uB0A9\uB2C8\uB2E4."
   skillOpenConditions: "\uAC15\uACF5\uACA9 \uACC4\uC218 \uC99D\uAC00 \uD574\uAE08
-    \uD544\uC218.<br>\uC138 \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694.<br>10000G"
+    \uD544\uC218.<br>\uC138 \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694."
   needGold: 10000
   lockImage: {fileID: 3340630937293858550}
 --- !u!1 &4424992376170653228
@@ -6651,6 +6829,140 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4465200297918597172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4043379214805033840}
+  - component: {fileID: 2265375671514671449}
+  - component: {fileID: 7533716723138682995}
+  m_Layer: 5
+  m_Name: GoldText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4043379214805033840
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4465200297918597172}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6350453115937244174}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 260, y: 100}
+  m_Pivot: {x: 0, y: 1}
+--- !u!222 &2265375671514671449
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4465200297918597172}
+  m_CullTransparentMesh: 1
+--- !u!114 &7533716723138682995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4465200297918597172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 10000
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: b34038e7b61479a44a6b1e5a90a0ecb1, type: 2}
+  m_sharedMaterial: {fileID: -8682157575594799043, guid: b34038e7b61479a44a6b1e5a90a0ecb1, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 50
+  m_fontSizeBase: 50
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4479653268581271934
 GameObject:
   m_ObjectHideFlags: 0
@@ -7214,14 +7526,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 0
   skill: 0
-  skillName: "\uD544\uC0B4\uAE30(\uC561\uD2F0\uBE0C)"
-  controlKeys: "Q(\uC9C0\uC0C1\uC5D0\uC11C)"
-  skillDescription: "\uD544\uC0B4\uAE30 \uAC8C\uC774\uC9C0\uB97C \uBAA8\uB450 \uC18C\uBAA8\uD574
-    \uAC15\uB825\uD55C \uACF5\uACA9\uC744 \uC2DC\uC804\uD569\uB2C8\uB2E4.<br>\uB113\uC740
-    \uBC94\uC704\uC5D0 \uB192\uC740 \uB300\uBBF8\uC9C0\uB97C \uC785\uD788\uBA70,
-    \uC2DC\uC804 \uC911 \uBB34\uC801 \uC0C1\uD0DC\uAC00 \uB429\uB2C8\uB2E4.<br>\uD574\uB2F9
-    \uC2A4\uD0AC\uAD70\uC740 \uD544\uC0B4\uAE30\uC758 \uB370\uBBF8\uC9C0, \uBC94\uC704,
-    \uC9C0\uC18D\uC2DC\uAC04\uC774 \uAC15\uD654\uB429\uB2C8\uB2E4."
+  skillName: "\uD544\uC0B4\uAE30"
+  controlKeys: Q
+  skillDescription: "\uC9C0\uC0C1\uC5D0\uC11C\uB9CC \uC0AC\uC6A9 \uAC00\uB2A5\uD558\uBA70,
+    \uD544\uC0B4\uAE30 \uAC8C\uC774\uC9C0\uB97C \uBAA8\uB450 \uC18C\uBAA8\uD574 \uAC15\uB825\uD55C
+    \uBC94\uC704 \uACF5\uACA9\uC744 \uBC1C\uB3D9\uD569\uB2C8\uB2E4. <br>\uB113\uC740
+    \uBC94\uC704\uC5D0 \uB192\uC740 \uD53C\uD574\uB97C \uC8FC\uBA70, \uC2DC\uC804
+    \uC911 \uBB34\uC801 \uC0C1\uD0DC\uAC00 \uB429\uB2C8\uB2E4. <br>\uD574\uB2F9 \uC2A4\uD0AC\uAD70\uC740
+    \uD544\uC0B4\uAE30 \uAC15\uD654, \uBD80\uAC00 \uD6A8\uACFC \uBD80\uC5EC, \uC9C0\uC18D
+    \uC2DC\uAC04 \uC99D\uAC00 \uB4F1\uC758 \uAE30\uB2A5\uC774 \uD655\uC7A5\uB429\uB2C8\uB2E4. "
   skillOpenConditions: "\uD574\uAE08 \uC870\uAC74 \uC5C6\uC74C."
   needGold: 0
   lockImage: {fileID: 0}
@@ -8631,14 +8944,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 5
   skill: 6
-  skillName: "\uAC15\uACF5\uACA9 \uB370\uBBF8\uC9C0 \uC99D\uAC00 (\uD328\uC2DC\uBE0C) "
+  skillName: "\uAC15\uACF5\uACA9 \uB370\uBBF8\uC9C0 \uC99D\uAC00"
   controlKeys: "\uC88C\uD074\uB9AD(\uC77C\uBC18 \uACF5\uACA9 3\uD0C0)"
   skillDescription: "\uAC15\uACF5\uACA9\uC758 \uD53C\uD574\uB7C9\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4.
-    <br>\uAE30\uC874\uBCF4\uB2E4 \uB354 \uAC15\uD55C \uD53C\uD574\uB97C \uC904 \uC218
-    \uC788\uC2B5\uB2C8\uB2E4."
+    <br>\uB300\uC2DC \uC5B4\uD0DD\uC758 \uB370\uBBF8\uC9C0 \uD53C\uD574\uB7C9\uB3C4
+    \uD568\uAED8 \uC99D\uAC00 \uD569\uB2C8\uB2E4."
   skillOpenConditions: "\uAC15\uACF5\uACA9 \uC18C\uBAA8 \uC2A4\uD0DC\uBBF8\uB098
     \uAC10\uC18C \uD574\uAE08 \uD544\uC218.<br>\uB450 \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4
-    \uD544\uC694.<br>5000G"
+    \uD544\uC694."
   needGold: 5000
   lockImage: {fileID: 285915528024216730}
 --- !u!1 &5662998357254951522
@@ -8706,7 +9019,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1780394023, guid: c2a6eda378a6deb4a96fd76bb81f1f21, type: 3}
+  m_Sprite: {fileID: 943848366, guid: c2a6eda378a6deb4a96fd76bb81f1f21, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8932,6 +9245,81 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 50244209, guid: 1937087fb40415541b95be7bbc042a0d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5693213132187779036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5327164541493047150}
+  - component: {fileID: 6213030268442546648}
+  - component: {fileID: 6309796612610766741}
+  m_Layer: 5
+  m_Name: Line
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5327164541493047150
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5693213132187779036}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6350453115937244174}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6213030268442546648
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5693213132187779036}
+  m_CullTransparentMesh: 1
+--- !u!114 &6309796612610766741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5693213132187779036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 0252269fce35b4be294a3c2ddc91e94c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9243,13 +9631,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 2
   skill: 3
-  skillName: "\uB300\uC2DC \uAE38\uC774 \uC99D\uAC00(\uD328\uC2DC\uBE0C)"
-  controlKeys: "Shift (\uC9C0\uC0C1/\uACF5\uC911 \uB300\uC2DC\uC640 \uB3D9\uC77C) "
-  skillDescription: "\uB300\uC2DC \uC2DC \uC774\uB3D9 \uAC70\uB9AC\uAC00 \uB298\uC5B4\uB0A9\uB2C8\uB2E4.
-    <br>\uC774\uB3D9 \uC18D\uB3C4\uC640 \uC2A4\uD0DC\uBBF8\uB098 \uC18C\uBAA8\uB294
-    \uAE30\uC874\uACFC \uB3D9\uC77C\uD569\uB2C8\uB2E4."
+  skillName: "\uB300\uC2DC \uAC70\uB9AC \uC99D\uAC00 "
+  controlKeys: Shift
+  skillDescription: "\uB300\uC2DC\uC758 \uC774\uB3D9 \uAC70\uB9AC\uAC00 \uB298\uC5B4\uB0A9\uB2C8\uB2E4.
+    <br>\uC774\uB3D9 \uC18D\uB3C4\uC640 \uC18C\uBAA8 \uC2A4\uD0DC\uBBF8\uB098\uB7C9\uC740
+    \uAE30\uC874\uACFC \uB3D9\uC77C\uD569\uB2C8\uB2E4. "
   skillOpenConditions: "\uACF5\uC911 \uB300\uC2DC \uD574\uAE08 \uD544\uC694.<br>\uB450
-    \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694.<br>5000G"
+    \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694."
   needGold: 5000
   lockImage: {fileID: 6334090276992002943}
 --- !u!1 &6036848351051871484
@@ -9309,6 +9697,7 @@ MonoBehaviour:
   controlKeys: {fileID: 4589482069652189507}
   skillDescription: {fileID: 5603886366486188642}
   skillOpenConditions: {fileID: 3752069349434941348}
+  needGold: {fileID: 224198987976683020}
 --- !u!1 &6162584951183406970
 GameObject:
   m_ObjectHideFlags: 0
@@ -9375,6 +9764,81 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 6dcd2f4a7918fba41b1566f4a118b6cf, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6165782220960860385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8071278643698785555}
+  - component: {fileID: 7421953152091095696}
+  - component: {fileID: 8509307677744909739}
+  m_Layer: 5
+  m_Name: BG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8071278643698785555
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6165782220960860385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6350453115937244174}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7421953152091095696
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6165782220960860385}
+  m_CullTransparentMesh: 1
+--- !u!114 &8509307677744909739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6165782220960860385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 63e860a9a1fe2094f8f42446900abe6e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9964,15 +10428,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 0
   skill: 8
-  skillName: "\uCC98\uD615(\uC561\uD2F0\uBE0C)"
-  controlKeys: "\uC77C\uBC18 \uC801 \uD37C\uD399\uD2B8 \uAC00\uB4DC \uD6C4 E"
-  skillDescription: "\uD37C\uD399\uD2B8 \uAC00\uB4DC \uC131\uACF5 \uC2DC, \uBD89\uC740
-    \uC774\uD399\uD2B8\uAC00 \uBC1C\uC0DD\uD55C \uC801\uC5D0\uAC8C `E` \uD0A4\uB85C
-    \uC989\uC2DC \uCC98\uD615\uC744 \uAC00\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4. 
-    <br>\uD50C\uB808\uC774\uC5B4\uB294 \uC7A0\uC2DC \uC0AC\uB77C\uC84C\uB2E4\uAC00
-    \uC801\uC758 \uBC18\uB300\uD3B8\uC5D0 \uB4F1\uC7A5\uD574 \uC801\uC744 \uCC0C\uB985\uB2C8\uB2E4. "
+  skillName: "\uCC98\uD615"
+  controlKeys: 'E '
+  skillDescription: "\uD37C\uD399\uD2B8 \uAC00\uB4DC\uB97C \uD1B5\uD574 \uADF8\uB85C\uAE30
+    \uC0C1\uD0DC\uAC00 \uB41C \uC77C\uBC18 \uC801\uC744 \uC989\uC2DC \uCC98\uD615\uD560
+    \uC218 \uC788\uC2B5\uB2C8\uB2E4. <br>\uCC98\uD615 \uC2DC, \uD50C\uB808\uC774\uC5B4\uB294
+    \uC801\uC758 \uB4F1 \uB4A4\uB85C \uC21C\uAC04 \uC774\uB3D9\uD558\uC5EC \uBB34\uC218\uD55C
+    \uC5F0\uACA9\uC73C\uB85C \uC801\uC744 \uCC14\uB7EC \uB9C8\uBB34\uB9AC\uD569\uB2C8\uB2E4. "
   skillOpenConditions: "\uC120\uD589 \uC2A4\uD0AC \uC5C6\uC74C. <br>\uC131\uC5ED
-    \uD074\uB9AC\uC5B4 \uC870\uAC74 \uC5C6\uC74C<br>500G"
+    \uD074\uB9AC\uC5B4 \uC870\uAC74 \uC5C6\uC74C"
   needGold: 500
   lockImage: {fileID: 6620390225055182729}
 --- !u!1 &6578321154939333506
@@ -10600,6 +11064,140 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &6894503162064892885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7257641760114621478}
+  - component: {fileID: 4917083728273149712}
+  - component: {fileID: 8942085604768675283}
+  m_Layer: 5
+  m_Name: UnitText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7257641760114621478
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6894503162064892885}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6350453115937244174}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 100}
+  m_Pivot: {x: 1, y: 1}
+--- !u!222 &4917083728273149712
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6894503162064892885}
+  m_CullTransparentMesh: 1
+--- !u!114 &8942085604768675283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6894503162064892885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: G
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: b34038e7b61479a44a6b1e5a90a0ecb1, type: 2}
+  m_sharedMaterial: {fileID: -8682157575594799043, guid: b34038e7b61479a44a6b1e5a90a0ecb1, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 50
+  m_fontSizeBase: 50
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6902015736464586328
 GameObject:
   m_ObjectHideFlags: 0
@@ -10729,14 +11327,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 1
   skill: 2
-  skillName: "\uACF5\uC911 \uB300\uC2DC(\uD328\uC2DC\uBE0C)"
-  controlKeys: "Shift(\uACF5\uC911\uC5D0\uC11C \uC785\uB825 \uC2DC)"
-  skillDescription: "\uACF5\uC911\uC5D0\uC11C\uB3C4 \uC77C\uBC18 \uB300\uC2DC\uCC98\uB7FC
-    \uBE60\uB974\uAC8C \uC774\uB3D9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4. <br>\uC774\uB3D9
-    \uAC70\uB9AC\uC640 \uC2A4\uD0DC\uBBF8\uB098 \uC18C\uBAA8\uB7C9\uC740 \uC9C0\uC0C1
-    \uB300\uC2DC\uC640 \uB3D9\uC77C\uD569\uB2C8\uB2E4. "
+  skillName: "\uACF5\uC911 \uB300\uC2DC "
+  controlKeys: Shift
+  skillDescription: "\uACF5\uC911\uC5D0\uC11C\uB3C4 \uB300\uC2DC\uB85C \uBE60\uB974\uAC8C
+    \uC774\uB3D9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4. <br>\uC774\uB3D9 \uAC70\uB9AC\uC640
+    \uC2A4\uD0DC\uBBF8\uB098 \uC18C\uBAA8\uB7C9\uC740 \uC9C0\uC0C1 \uB300\uC2DC\uC640
+    \uB3D9\uC77C\uD569\uB2C8\uB2E4."
   skillOpenConditions: "\uB300\uC2DC \uC5B4\uD0DD \uD574\uAE08 \uD544\uC694.<br>\uACC4\uBABD\uC758
-    \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694.<br>1500G"
+    \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694."
   needGold: 1500
   lockImage: {fileID: 917930477651792012}
 --- !u!1 &7105536871020619044
@@ -11077,16 +11675,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 0
   skill: 15
-  skillName: "\uAD81\uADF9\uAE30 \uC2A4\uD0DC\uBBF8\uB098 \uD68C\uBCF5 (\uD328\uC2DC\uBE0C)"
-  controlKeys: "Q(\uC9C0\uC0C1\uC5D0\uC11C)"
-  skillDescription: "\uAD81\uADF9\uAE30\uB97C \uC0AC\uC6A9\uD558\uBA74 \uC2A4\uD0DC\uBBF8\uB098\uAC00
-    \uC804\uBD80 \uD68C\uBCF5\uB429\uB2C8\uB2E4. <br>\uC804\uD22C \uB3C4\uC911 \uC2A4\uD0DC\uBBF8\uB098\uAC00
-    \uBD80\uC871\uD55C \uC0C1\uD669\uC5D0\uC11C\uB3C4 \uAD81\uADF9\uAE30\uB97C \uD1B5\uD574
-    \uC989\uC2DC \uD68C\uBCF5\uC774 \uAC00\uB2A5\uD558\uBBC0\uB85C, \uD68C\uD53C,
-    \uB300\uC2DC, \uAC15\uACF5\uACA9 \uB4F1 \uD6C4\uC18D \uD589\uB3D9\uC744 \uC548\uC815\uC801\uC73C\uB85C
-    \uC774\uC5B4\uAC08 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  skillName: "\uAD81\uADF9\uAE30 \uC2A4\uD0DC\uBBF8\uB098 \uD68C\uBCF5"
+  controlKeys: Q
+  skillDescription: "\uAD81\uADF9\uAE30 \uC0AC\uC6A9 \uC2DC, \uC18C\uBAA8\uB41C \uC2A4\uD0DC\uBBF8\uB098\uAC00
+    \uC989\uC2DC \uCD5C\uB300\uCE58\uAE4C\uC9C0 \uD68C\uBCF5\uB429\uB2C8\uB2E4. <br>\uC804\uD22C
+    \uC911 \uC2A4\uD0DC\uBBF8\uB098\uB97C \uBAA8\uB450 \uC18C\uC9C4\uD55C \uC0C1\uD669\uC5D0\uC11C
+    \uAD81\uADF9\uAE30\uB97C \uC804\uB7B5\uC801\uC73C\uB85C \uD65C\uC6A9\uD560 \uC218
+    \uC788\uC2B5\uB2C8\uB2E4. "
   skillOpenConditions: "\uC120\uD589 \uC2A4\uD0AC \uC5C6\uC74C.<br>\uC131\uC5ED \uD074\uB9AC\uC5B4
-    \uC870\uAC74 \uC5C6\uC74C<br>1500G"
+    \uC870\uAC74 \uC5C6\uC74C"
   needGold: 1500
   lockImage: {fileID: 5310304371610427234}
 --- !u!1 &7163183085749002019
@@ -11257,7 +11854,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: -0.000061035156, y: -20}
   m_SizeDelta: {x: 400, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5087483526002667647
@@ -11315,8 +11912,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11621,14 +12218,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 15
   skill: 16
-  skillName: "\uAD81\uADF9\uAE30 \uC9C0\uC18D \uC2DC\uAC04 \uC99D\uAC00 (\uD328\uC2DC\uBE0C) "
-  controlKeys: "Q(\uC9C0\uC0C1\uC5D0\uC11C)"
+  skillName: "\uAD81\uADF9\uAE30 \uC9C0\uC18D \uC2DC\uAC04 \uC99D\uAC00"
+  controlKeys: Q
   skillDescription: "\uAD81\uADF9\uAE30\uC758 \uC9C0\uC18D \uC2DC\uAC04\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4.
-    <br>\uB354 \uC624\uB79C \uC2DC\uAC04 \uC801\uC5D0\uAC8C \uAC15\uB825\uD55C \uB370\uBBF8\uC9C0\uB97C
-    \uC785\uD790 \uC218 \uC788\uAC8C \uB429\uB2C8\uB2E4."
+    <br>\uC9C0\uC18D \uC2DC\uAC04\uC774 \uB298\uC5B4\uB09C \uB9CC\uD07C \uAD81\uADF9\uAE30
+    \uC804\uCCB4 \uD53C\uD574\uB7C9\uC774 \uD568\uAED8 \uC99D\uAC00\uD569\uB2C8\uB2E4. "
   skillOpenConditions: "\uAD81\uADF9\uAE30 \uC2A4\uD0DC\uBBF8\uB098 \uD68C\uBCF5
     \uD574\uAE08 \uD544\uC218.<br>\uACC4\uBABD\uC758 \uC131\uC5ED \uD074\uB9AC\uC5B4
-    \uD544\uC694.<br>5000G"
+    \uD544\uC694."
   needGold: 5000
   lockImage: {fileID: 7770046999728847101}
 --- !u!1 &7581938441322559011
@@ -12137,13 +12734,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 1
   skill: 5
-  skillName: "\uAC15\uACF5\uACA9 \uC2A4\uD0DC\uBBF8\uB098 \uAC10\uC18C (\uD328\uC2DC\uBE0C)"
+  skillName: "\uAC15\uACF5\uACA9 \uC2A4\uD0DC\uBBF8\uB098 \uAC10\uC18C "
   controlKeys: "\uC88C\uD074\uB9AD(\uC77C\uBC18 \uACF5\uACA9 3\uD0C0)"
   skillDescription: "\uAC15\uACF5\uACA9 \uC0AC\uC6A9 \uC2DC \uC18C\uBAA8\uB418\uB294
-    \uC2A4\uD0DC\uBBF8\uB098\uAC00 \uC904\uC5B4\uB4ED\uB2C8\uB2E4. <br>\uC2A4\uD0DC\uBBF8\uB098
-    \uAD00\uB9AC\uC5D0 \uD070 \uB3C4\uC6C0\uC774 \uB429\uB2C8\uB2E4."
+    \uC2A4\uD0DC\uBBF8\uB098\uAC00 \uC904\uC5B4\uB4ED\uB2C8\uB2E4. <br>\uB300\uC2DC
+    \uC5B4\uD0DD\uC758 \uC2A4\uD0DC\uBBF8\uB098 \uC18C\uBAA8\uB7C9\uB3C4 \uD568\uAED8
+    \uC904\uC5B4\uB4ED\uB2C8\uB2E4."
   skillOpenConditions: "\uB300\uC2DC \uC5B4\uD0DD \uD574\uAE08 \uD544\uC218.<br>\uACC4\uBABD\uC758
-    \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694<br>1500G"
+    \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694"
   needGold: 1500
   lockImage: {fileID: 4773964155721039217}
 --- !u!1 &7817470299887893951
@@ -12484,13 +13082,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 8
   skill: 9
-  skillName: "\uAC00\uB4DC \uB370\uBBF8\uC9C0 \uAC10\uC18C\uC728 \uC99D\uAC00 (\uD328\uC2DC\uBE0C)"
+  skillName: "\uAC00\uB4DC \uB370\uBBF8\uC9C0 \uAC10\uC18C\uC728 \uC99D\uAC00"
   controlKeys: "\uB9C8\uC6B0\uC2A4 \uC6B0\uD074\uB9AD"
-  skillDescription: "\uAC00\uB4DC \uC911 \uBC1B\uB294 \uD53C\uD574\uAC00 \uAE30\uC874\uBCF4\uB2E4
-    \uB354 \uC904\uC5B4\uB4ED\uB2C8\uB2E4. <br>\uBAA8\uB4E0 \uACF5\uACA9\uC5D0 \uB300\uD574
-    \uB354 \uC548\uC815\uC801\uC73C\uB85C \uBC29\uC5B4\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  skillDescription: "\uAC00\uB4DC \uC911 \uBC1B\uB294 \uD53C\uD574\uAC00 \uC880 \uB354
+    \uAC10\uC18C\uD569\uB2C8\uB2E4. <br>\uC801\uC758 \uBAA8\uB4E0 \uACF5\uACA9\uC744
+    \uC880 \uB354 \uC548\uC815\uC801\uC73C\uB85C \uBC29\uC5B4\uD560 \uC218 \uC788\uAC8C
+    \uB429\uB2C8\uB2E4."
   skillOpenConditions: "\uCC98\uD615 \uD574\uAE08 \uD544\uC218.<br>\uACC4\uBABD\uC758
-    \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694.<br>1500G"
+    \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694."
   needGold: 1500
   lockImage: {fileID: 2628707784214155827}
 --- !u!1 &7989816386299411617
@@ -12697,13 +13296,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 3
   skill: 4
-  skillName: "\uB300\uC2DC \uBB34\uC801 \uBD80\uC5EC(\uD328\uC2DC\uBE0C)"
+  skillName: "\uB300\uC2DC \uBB34\uC801 \uBD80\uC5EC"
   controlKeys: Shift
-  skillDescription: "\uB300\uC2DC \uC911 \uBB34\uC801\uC774 \uB418\uC5B4 \uACF5\uACA9\uC744
-    \uBC1B\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. <br>\uC815\uD655\uD55C \uD0C0\uC774\uBC0D\uC5D0
-    \uC0AC\uC6A9\uD558\uBA74 \uC704\uD5D8\uC5D0\uC11C \uBC97\uC5B4\uB0A0 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  skillDescription: "\uB300\uC2DC \uC0C1\uD0DC \uC911 \uBB34\uC801\uC774 \uB429\uB2C8\uB2E4.
+    <br>\uB300\uC2DC \uC911 \uC801\uC5D0\uAC8C \uD53C\uACA9 \uB2F9\uD558\uAC70\uB098
+    \uD568\uC815\uC5D0 \uB2FF\uC544\uB3C4 \uD53C\uD574\uB97C \uC785\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
   skillOpenConditions: "\uB300\uC2DC \uAE38\uC774 \uC99D\uAC00 \uD574\uAE08 \uD544\uC218.<br>\uC138
-    \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694.<br>10000G"
+    \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694."
   needGold: 10000
   lockImage: {fileID: 8468650751721892853}
 --- !u!1 &8171793512300048753
@@ -13034,6 +13633,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6350453115937244174}
   - {fileID: 4681216608274612855}
   - {fileID: 5839186743055149078}
   m_Father: {fileID: 0}
@@ -13096,12 +13696,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 0
   skill: 0
-  skillName: "\uAC15\uACF5\uACA9(\uC561\uD2F0\uBE0C)"
-  controlKeys: "\uC88C\uD074\uB9AD(\uC77C\uBC18 \uACF5\uACA9 3\uD0C0)"
-  skillDescription: "\uC77C\uBC18 \uACF5\uACA9 2\uD0C0\uC5D0 \uC774\uC5B4\uC11C 3\uD0C0\uB85C
-    \uAC15\uACF5\uACA9\uC744 \uC2DC\uC804\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.<br>\uD574\uB2F9
-    \uC2A4\uD0AC\uAD70\uC740 \uAC15\uACF5\uACA9\uC758 \uC5F0\uACC4 \uBC29\uC2DD\uC774\uB098
-    \uC704\uB825\uC774 \uAC15\uD654\uB429\uB2C8\uB2E4."
+  skillName: "\uAC15\uACF5\uACA9"
+  controlKeys: "\uB9C8\uC6B0\uC2A4 \uC88C\uD074\uB9AD"
+  skillDescription: "\uC77C\uBC18 \uACF5\uACA9 2\uD0C0 \uC774\uD6C4 3\uD0C0\uB85C
+    \uAC15\uACF5\uACA9\uC744 \uC5F0\uACC4\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.
+    <br>\uD574\uB2F9 \uC2A4\uD0AC\uAD70\uC740 \uD53C\uD574\uB7C9, \uC2A4\uD0DC\uBBF8\uB098
+    \uD6A8\uC728, \uD30C\uC0DD \uC5F0\uACC4 \uB4F1\uC758 \uAE30\uB2A5\uC774 \uD655\uC7A5\uB429\uB2C8\uB2E4. "
   skillOpenConditions: "\uD574\uAE08 \uC870\uAC74 \uC5C6\uC74C."
   needGold: 0
   lockImage: {fileID: 0}
@@ -13234,15 +13834,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 0
   skill: 1
-  skillName: "\uB300\uC2DC \uC5B4\uD0DD(\uC561\uD2F0\uBE0C)"
-  controlKeys: Shift + LeftClick
+  skillName: "\uB300\uC2DC \uC5B4\uD0DD"
+  controlKeys: "Shift + \uB9C8\uC6B0\uC2A4 \uC88C\uD074\uB9AD"
   skillDescription: "\uB300\uC2DC \uC911 \uAC15\uACF5\uACA9\uC73C\uB85C \uC5F0\uACC4\uD574
-    \uAC15\uD55C \uCC0C\uB974\uAE30\uB97C \uAC00\uD569\uB2C8\uB2E4. <br> \uACF5\uACA9
-    \uC911 \uBB34\uC801\uC774\uBA70, 1, 2\uD0C0 \uC785\uB825 \uC5C6\uC774\uB3C4 \uBC14\uB85C
-    \uC0AC\uC6A9 \uAC00\uB2A5\uD558\uC9C0\uB9CC \uC2A4\uD0DC\uBBF8\uB098 \uC18C\uBAA8\uAC00
+    \uAC15\uD55C \uCC0C\uB974\uAE30\uB97C \uAC00\uD569\uB2C8\uB2E4. <br>\uACF5\uACA9
+    \uC911 \uBB34\uC801\uC774\uBA70, \uC2A4\uD0DC\uBBF8\uB098 \uC18C\uBAA8\uAC00
     \uD07D\uB2C8\uB2E4."
   skillOpenConditions: "\uC120\uD589 \uC2A4\uD0AC \uD574\uAE08 \uC870\uAC74 \uC5C6\uC74C.
-    <br>\uC131\uC5ED \uD074\uB9AC\uC5B4 \uC870\uAC74 \uC5C6\uC74C.<br>500G"
+    <br>\uC131\uC5ED \uD074\uB9AC\uC5B4 \uC870\uAC74 \uC5C6\uC74C."
   needGold: 500
   lockImage: {fileID: 3005065590200581094}
 --- !u!1 &8413122595330104967
@@ -14225,13 +14824,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 18
   skill: 19
-  skillName: "\uAD81\uADF9\uAE30 \uC2DC\uAC04 \uC815\uC9C0 (\uD328\uC2DC\uBE0C)"
-  controlKeys: "Q(\uC9C0\uC0C1\uC5D0\uC11C)"
-  skillDescription: "\uAD81\uADF9\uAE30 \uC0AC\uC6A9 \uC911\uC5D0\uB294 \uAC8C\uC784
-    \uC2DC\uAC04\uC774 \uC644\uC804\uD788 \uC815\uC9C0\uB429\uB2C8\uB2E4. <br>\uBCF4\uC2A4\uC758
-    \uADF8\uB85C\uAE30 \uC9C0\uC18D \uC2DC\uAC04 \uB610\uD55C \uC815\uC9C0\uB429\uB2C8\uB2E4."
+  skillName: "\uAD81\uADF9\uAE30 \uC2DC\uAC04 \uC815\uC9C0 "
+  controlKeys: Q
+  skillDescription: "\uAD81\uADF9\uAE30 \uBC1C\uB3D9 \uC2DC \uC138\uACC4\uC758 \uC2DC\uAC04\uC774
+    \uC644\uC804\uD788 \uBA48\uCDA5\uB2C8\uB2E4. <br>\uAD81\uADF9\uAE30\uC758 \uCD5C\uC885
+    \uD615\uD0DC\uC5D0\uC11C\uB294 \uBAA8\uB4E0 \uC801\uACFC \uC624\uBE0C\uC81D\uD2B8\uC758
+    \uC6C0\uC9C1\uC784\uC774 \uC815\uC9C0\uB418\uBA70, \uBCF4\uC2A4\uC758 \uADF8\uB85C\uAE30
+    \uC9C0\uC18D \uC2DC\uAC04\uC870\uCC28 \uBA48\uCDB0, \uC9D1\uC911 \uACF5\uACA9
+    \uD0C0\uC774\uBC0D\uC744 \uADF9\uB300\uD654\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
   skillOpenConditions: "\uAD81\uADF9\uAE30 \uCCB4\uB825 \uD68C\uBCF5 \uD574\uAE08
-    \uD544\uC694.<br>\uB124 \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694.<br>25000G"
+    \uD544\uC694.<br>\uB124 \uBC88\uC9F8 \uC131\uC5ED \uD074\uB9AC\uC5B4 \uD544\uC694."
   needGold: 25000
   lockImage: {fileID: 7665169708119004029}
 --- !u!1 &9125577893454755957
@@ -14496,11 +15098,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 0
   skill: 0
-  skillName: "\uB300\uC2DC(\uC561\uD2F0\uBE0C)"
-  controlKeys: "Shift(\uC9C0\uC0C1\uC5D0\uC11C)"
+  skillName: "\uB300\uC2DC"
+  controlKeys: Shift
   skillDescription: "\uC2A4\uD0DC\uBBF8\uB098\uB97C \uC18C\uBAA8\uD574 \uBE60\uB974\uAC8C
-    \uC774\uB3D9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.<br>\uD574\uB2F9 \uC2A4\uD0AC\uAD70\uC740
-    \uB300\uC2DC\uC640 \uAD00\uB828\uB41C \uAE30\uB2A5\uB4E4\uC774 \uAC15\uD654\uB429\uB2C8\uB2E4."
+    \uC774\uB3D9\uD569\uB2C8\uB2E4. <br>\uD574\uB2F9 \uC2A4\uD0AC\uAD70\uC740 \uC774\uB3D9
+    \uAC70\uB9AC, \uACF5\uC911 \uC0AC\uC6A9, \uBB34\uC801 \uD6A8\uACFC \uB4F1\uC758
+    \uAE30\uB2A5\uC774 \uD655\uC7A5\uB429\uB2C8\uB2E4."
   skillOpenConditions: "\uD574\uAE08 \uC870\uAC74 \uC5C6\uC74C."
   needGold: 0
   lockImage: {fileID: 0}
@@ -14557,14 +15160,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preSkill: 0
   skill: 0
-  skillName: "\uADF8\uB85C\uAE30 \uC2A4\uD0AC(\uC561\uD2F0\uBE0C)"
-  controlKeys: "E(\uBCF4\uC2A4 \uADF8\uB85C\uAE30 \uC2DC, \uC9C0\uC0C1\uC5D0\uC11C)"
+  skillName: "\uADF8\uB85C\uAE30 \uC2A4\uD0AC"
+  controlKeys: E
   skillDescription: "\uBCF4\uC2A4\uC758 \uADF8\uB85C\uAE30 \uAC8C\uC774\uC9C0\uAC00
-    \uAC00\uB4DD\uCC2C \uD6C4 \uADF8\uB85C\uAE30 \uC0C1\uD0DC\uC77C \uB54C \uBC1C\uB3D9
-    \uAC00\uB2A5\uD569\uB2C8\uB2E4.<br>\uAC15\uB825\uD55C \uB370\uBBF8\uC9C0\uB97C
-    \uC785\uD788\uBA70, \uC2DC\uC804 \uC911 \uBB34\uC801\uC0C1\uD0DC\uAC00 \uB429\uB2C8\uB2E4.<br>\uD574\uB2F9
-    \uC2A4\uD0AC\uAD70\uC740 \uADF8\uB85C\uAE30 \uC2A4\uD0AC \uB370\uBBF8\uC9C0\uB098
-    \uC5F0\uCD9C, \uD6A8\uACFC \uB4F1\uC774 \uAC15\uD654\uB429\uB2C8\uB2E4."
+    \uAC00\uB4DD \uCC3C\uC744 \uB54C \uBC1C\uB3D9 \uAC00\uB2A5\uD569\uB2C8\uB2E4.
+    <br>\uC9C0\uC0C1\uC5D0\uC11C\uB9CC \uC0AC\uC6A9 \uAC00\uB2A5\uD558\uBA70, \uADF8\uB85C\uAE30
+    \uC0C1\uD0DC\uC758 \uBCF4\uC2A4\uC5D0\uAC8C \uAC15\uB825\uD55C \uD53C\uD574\uB97C
+    \uC90D\uB2C8\uB2E4. <br>\uD574\uB2F9 \uC2A4\uD0AC\uAD70\uC740 \uD53C\uD574\uB7C9,
+    \uC785\uB825 \uC720\uD6A8 \uC2DC\uAC04, \uC5F0\uC18D \uCC98\uD615 \uB4F1\uC758
+    \uAE30\uB2A5\uC774 \uD655\uC7A5\uB429\uB2C8\uB2E4."
   skillOpenConditions: "\uD574\uAE08 \uC870\uAC74 \uC5C6\uC74C."
   needGold: 0
   lockImage: {fileID: 0}

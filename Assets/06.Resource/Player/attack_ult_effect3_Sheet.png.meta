@@ -141,17 +141,101 @@ TextureImporter:
         serializedVersion: 2
         x: 397
         y: 0
-        width: 72
+        width: 71
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2855e5145e6e24371a29579b3fe479a2
-      internalID: -1780394023
+      spriteID: c33fa218a958f9d48ac922d301382623
+      internalID: 943848366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_ult_effect3_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 0
+        width: 70
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc487aaccbe942f47b6f4f1e109d2757
+      internalID: -1464733334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_ult_effect3_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 0
+        width: 32
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a762319b642bfd4a984d84ef475d04f
+      internalID: 248368976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_ult_effect3_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 0
+        width: 24
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1789dc02d673a34a805c287ddd8898d
+      internalID: -844380321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_ult_effect3_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 0
+        width: 15
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29e49df6cb9d36246a52ddba5fc94962
+      internalID: 123965421
       vertices: []
       indices: 
       edges: []
@@ -167,7 +251,43 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      attack_ult_effect3_Sheet_0: 75773191
+      attack_ult_effect3_Sheet_0: 943848366
+      attack_ult_effect3_Sheet_1: -1464733334
+      attack_ult_effect3_Sheet_11: -962870950
+      attack_ult_effect3_Sheet_12: 1306783385
+      attack_ult_effect3_Sheet_13: 1277421788
+      attack_ult_effect3_Sheet_14: -1264549723
+      attack_ult_effect3_Sheet_15: -998238183
+      attack_ult_effect3_Sheet_16: -2020867794
+      attack_ult_effect3_Sheet_17: 601189676
+      attack_ult_effect3_Sheet_18: -1358975538
+      attack_ult_effect3_Sheet_19: -484083851
+      attack_ult_effect3_Sheet_2: 248368976
+      attack_ult_effect3_Sheet_20: -1756391420
+      attack_ult_effect3_Sheet_21: 344852183
+      attack_ult_effect3_Sheet_22: 1478019128
+      attack_ult_effect3_Sheet_23: 1752734834
+      attack_ult_effect3_Sheet_24: 166726229
+      attack_ult_effect3_Sheet_25: 1627704456
+      attack_ult_effect3_Sheet_26: -1647848157
+      attack_ult_effect3_Sheet_27: 699420770
+      attack_ult_effect3_Sheet_28: -1807527676
+      attack_ult_effect3_Sheet_29: 1421373815
+      attack_ult_effect3_Sheet_3: -844380321
+      attack_ult_effect3_Sheet_30: -1769990018
+      attack_ult_effect3_Sheet_31: 310080567
+      attack_ult_effect3_Sheet_32: -1075905935
+      attack_ult_effect3_Sheet_33: 1731341783
+      attack_ult_effect3_Sheet_34: -586896713
+      attack_ult_effect3_Sheet_35: -798966663
+      attack_ult_effect3_Sheet_36: -1688429100
+      attack_ult_effect3_Sheet_37: 556083206
+      attack_ult_effect3_Sheet_38: -1537067753
+      attack_ult_effect3_Sheet_39: -860783467
+      attack_ult_effect3_Sheet_4: 123965421
+      attack_ult_effect3_Sheet_40: -1277210371
+      attack_ult_effect3_Sheet_41: -492641033
+      attack_ult_effect3_Sheet_5: 1700266800
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
