@@ -11,22 +11,24 @@ public enum TUItype
 
 public class TutorialUITrigger : MonoBehaviour
 {
-    [SerializeField] public TutorialUIManager tutoriaManager;
-    [SerializeField] private int UIIndex;
-    [SerializeField] TUItype UItype;
-    private bool hasTriggeed = false;
-
+    [SerializeField] private GameObject uiPrefab;
+    [SerializeField] private TUItype UItype;
+    [SerializeField] private Transform uiPosition;
     
+    [SerializeField] private string animationNameToPlay;
+    private Animator _animator;
+    private bool _hasTriggeed = false;
+
+
+    private void Awake()
+    {
+        _animator = uiPrefab.GetComponentInChildren<Animator>(true);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag(StringNameSpace.Tags.Player)) return;
-
-        if (UItype == TUItype.Once)
-        {
-            if (hasTriggeed) return;
-            hasTriggeed = true;
-        }
-        tutoriaManager.ShowUI(UIIndex, UItype);
+        ShowUI();
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -34,8 +36,29 @@ public class TutorialUITrigger : MonoBehaviour
         if (!other.CompareTag(StringNameSpace.Tags.Player)) return;
         if (UItype == TUItype.Repeat)
         {
-            tutoriaManager.HideUI();
+            HideUI();
         }
     }
     
+    public void ShowUI()
+    {
+        if (UItype == TUItype.Once)
+        {
+            if (_hasTriggeed) return;
+            _hasTriggeed = true;
+        }
+        else if (UItype == TUItype.Repeat)
+        {
+            uiPrefab.transform.position = uiPosition.position;
+        }
+
+        uiPrefab.SetActive(true);
+        _animator.Play(animationNameToPlay);
+    }
+
+    public void HideUI()
+    {
+        uiPrefab.SetActive(false);
+    }
 }
+    
