@@ -110639,8 +110639,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1621854658}
     - target: {fileID: 1987310803826506068, guid: bfcf07b52b632e24a8153942ea6bc750, type: 3}
+      propertyPath: keyTypeIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987310803826506068, guid: bfcf07b52b632e24a8153942ea6bc750, type: 3}
       propertyPath: tutoriaManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987310803826506068, guid: bfcf07b52b632e24a8153942ea6bc750, type: 3}
+      propertyPath: animationNameToPlay
+      value: EkeyPress
       objectReference: {fileID: 0}
     - target: {fileID: 8272151200302604905, guid: bfcf07b52b632e24a8153942ea6bc750, type: 3}
       propertyPath: m_LocalPosition.x
@@ -116754,11 +116762,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.6
+      value: 193.1
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.z
@@ -117835,6 +117843,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1967127400}
     m_Modifications:
+    - target: {fileID: 2441803533381722085, guid: 2f3d3cc88208ad24bbd6e8edd246966d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441803533381722085, guid: 2f3d3cc88208ad24bbd6e8edd246966d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441803533381722085, guid: 2f3d3cc88208ad24bbd6e8edd246966d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 148f5e5802484dc428d17fb92ae9f142, type: 3}
+    - target: {fileID: 2441803533381722085, guid: 2f3d3cc88208ad24bbd6e8edd246966d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2992962485838334390, guid: 2f3d3cc88208ad24bbd6e8edd246966d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -125470,8 +125494,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 779603411}
     - target: {fileID: 1987310803826506068, guid: bfcf07b52b632e24a8153942ea6bc750, type: 3}
+      propertyPath: keyTypeIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987310803826506068, guid: bfcf07b52b632e24a8153942ea6bc750, type: 3}
       propertyPath: tutoriaManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987310803826506068, guid: bfcf07b52b632e24a8153942ea6bc750, type: 3}
+      propertyPath: animationNameToPlay
+      value: DkeyPress
       objectReference: {fileID: 0}
     - target: {fileID: 8272151200302604905, guid: bfcf07b52b632e24a8153942ea6bc750, type: 3}
       propertyPath: m_LocalPosition.x
@@ -125817,8 +125849,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 246919696}
     - target: {fileID: 1987310803826506068, guid: bfcf07b52b632e24a8153942ea6bc750, type: 3}
+      propertyPath: keyTypeIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987310803826506068, guid: bfcf07b52b632e24a8153942ea6bc750, type: 3}
       propertyPath: tutoriaManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987310803826506068, guid: bfcf07b52b632e24a8153942ea6bc750, type: 3}
+      propertyPath: animationNameToPlay
+      value: AkeyPress
       objectReference: {fileID: 0}
     - target: {fileID: 8272151200302604905, guid: bfcf07b52b632e24a8153942ea6bc750, type: 3}
       propertyPath: m_LocalPosition.x

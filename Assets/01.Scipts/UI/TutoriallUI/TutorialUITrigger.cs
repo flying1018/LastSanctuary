@@ -14,10 +14,17 @@ public class TutorialUITrigger : MonoBehaviour
     [SerializeField] private GameObject uiPrefab;
     [SerializeField] private TUItype UItype;
     [SerializeField] private Transform uiPosition;
-    private Animator uiAnimator;
+    
+    [SerializeField] private string animationNameToPlay;
+    private Animator _animator;
     private bool _hasTriggeed = false;
 
-    
+
+    private void Awake()
+    {
+        _animator = uiPrefab.GetComponentInChildren<Animator>(true);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag(StringNameSpace.Tags.Player)) return;
@@ -46,7 +53,7 @@ public class TutorialUITrigger : MonoBehaviour
         }
 
         uiPrefab.SetActive(true);
-        uiAnimator.SetTrigger("dkey");
+        _animator.Play(animationNameToPlay);
     }
 
     public void HideUI()
