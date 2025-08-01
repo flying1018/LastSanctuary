@@ -20,7 +20,8 @@ public class CollectObject : MonoBehaviour, IInteractable, IComparable<CollectOb
 
         ItemManager.Instance.GetCollectItem(collectData);
         _isGet = true;
-
+        GetComponent<TutorialUIInterction>()?.ShowUI(); //상호작용시 UI 호출
+        
         SetActive();
     }
 

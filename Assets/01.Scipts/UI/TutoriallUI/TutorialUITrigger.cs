@@ -13,7 +13,9 @@ public class TutorialUITrigger : MonoBehaviour
 {
     [SerializeField] private GameObject uiPrefab;
     [SerializeField] private TUItype UItype;
-    private bool hasTriggeed = false;
+    [SerializeField] private Transform uiPosition;
+    private Animator uiAnimator;
+    private bool _hasTriggeed = false;
 
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -35,10 +37,16 @@ public class TutorialUITrigger : MonoBehaviour
     {
         if (UItype == TUItype.Once)
         {
-            if (hasTriggeed) return;
-            hasTriggeed = true;
+            if (_hasTriggeed) return;
+            _hasTriggeed = true;
         }
+        else if (UItype == TUItype.Repeat)
+        {
+            uiPrefab.transform.position = uiPosition.position;
+        }
+
         uiPrefab.SetActive(true);
+        uiAnimator.SetTrigger("dkey");
     }
 
     public void HideUI()

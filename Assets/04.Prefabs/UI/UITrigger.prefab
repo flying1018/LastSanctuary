@@ -122,6 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98dfa0998b6ae8e438f6a84a54912ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutoriaManager: {fileID: 0}
-  UIIndex: 0
+  uiPrefab: {fileID: 0}
   UItype: 0
+  uiPosition: {fileID: 3343947966080278325}
