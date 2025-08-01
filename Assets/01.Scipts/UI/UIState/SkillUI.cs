@@ -31,6 +31,8 @@ public class SkillUI : UnifiedUI
         _centerLine.localPosition = new Vector3(_data.centerLinePosition, 0, 0);
         _mouseLeftDesc.text = _data.skillLeftClickDesc;
         _mouseRightDesc.text = _data.sKillRightClickDesc;
+        _mouseLeft.SetActive(true);
+        _mouseRight.SetActive(true);
 
         UpdateGoldText();
         

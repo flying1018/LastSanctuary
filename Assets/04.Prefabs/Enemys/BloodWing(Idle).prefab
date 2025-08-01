@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7995237856167525000}
   - component: {fileID: 2406020538053831016}
   - component: {fileID: 5815088360185114722}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: BloodWing(Idle)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
     m_Bits: 1280
   platformCheckDistance: 10
   idleType: 0
-  attackType: 2
+  attackType: 0
   patrolDistance: 5
 --- !u!114 &7995237856167525000
 MonoBehaviour:
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 7433476367284325732}
   - component: {fileID: 7633928009784155903}
   - component: {fileID: 7670445638048680209}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6706967590784163810}
   - component: {fileID: 6011781980084704244}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: WeaponCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2230761353910399565}
   - component: {fileID: 2575019175853921997}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

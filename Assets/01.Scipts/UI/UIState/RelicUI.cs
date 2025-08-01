@@ -67,7 +67,6 @@ public class RelicUI : UnifiedUI
         _mouseLeft.SetActive(true);
         _mouseRight.SetActive(true);
         
-        
         _uiManager.RelicUI.SetActive(true);
         
         UpdateStatus();
@@ -77,6 +76,9 @@ public class RelicUI : UnifiedUI
     public override void Exit()
     {
         base.Exit();
+
+        DisUpdateSlot();
+        
         _uiManager.RelicUI.SetActive(false);
     }
 
@@ -158,19 +160,31 @@ public class RelicUI : UnifiedUI
         
     }
 
-    //성물 슬롯 갱신
+    //성물 슬롯에 이벤트 추가
     private void UpdateSlot()
     {
         for (int i = 0; i < _playerInventory.relics.Count; i++)
         {
+            
             if (_playerInventory.relics[i].IsGet)
             {
                 _slotUIs[i].data = _playerInventory.relics[i];
                 _slotUIs[i].SetActive();
+
                 int index = i;
                 _slotUIs[i].OnSelect += () => OnSelect(_slotUIs[index].data.Data);
-                _slotUIs[i].OnEquip += () => OnEquip(_slotUIs[index].data.Data);
+                _slotUIs[i].OnEquip  += () => OnEquip(_slotUIs[index].data.Data);
             }
+        }
+    }
+    
+    //성물 슬롯에 이벤트 제거
+    private void DisUpdateSlot()
+    {
+        for (int i = 0; i < _playerInventory.relics.Count; i++)
+        {
+            _slotUIs[i].OnSelect = null;
+            _slotUIs[i].OnEquip = null;
         }
     }
 }

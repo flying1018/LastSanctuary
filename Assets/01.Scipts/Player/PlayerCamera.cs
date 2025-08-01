@@ -8,9 +8,8 @@ public class PlayerCamera : MonoBehaviour
     private Player _player;
     private CinemachineVirtualCamera _camera;
     private CinemachineFramingTransposer _transposer;
-
-    [SerializeField] private CinemachineVirtualCamera battleCam;
-    [SerializeField] private CinemachineVirtualCamera cutsceneCam;
+    
+    [SerializeField] private CinemachineVirtualCamera otherCam;
 
     private float _defaultOrthoSize;
 
@@ -39,18 +38,18 @@ public class PlayerCamera : MonoBehaviour
     /// <param name="zoom"></param>
     public void StartBattleCamera(Vector2 focusPosition, float zoom = 5f)
     {
-        if (battleCam == null) return;
-        battleCam.Priority = 20;
-        battleCam.Follow = null;
-        battleCam.transform.position = new Vector3(focusPosition.x, focusPosition.y, battleCam.transform.position.z);
-        battleCam.m_Lens.OrthographicSize = zoom;
+        if (otherCam == null) return;
+        otherCam.Priority = 20;
+        otherCam.Follow = null;
+        otherCam.transform.position = new Vector3(focusPosition.x, focusPosition.y, otherCam.transform.position.z);
+        otherCam.m_Lens.OrthographicSize = zoom;
     }
 
 
     public void EndBattleCamera()
     {
-        if (battleCam == null) return;
-        battleCam.Priority = 10;
+        if (otherCam == null) return;
+        otherCam.Priority = 10;
         _camera.Priority = 20;
         _camera.Follow = _player.transform;
         _camera.m_Lens.OrthographicSize = _defaultOrthoSize;
@@ -62,7 +61,7 @@ public class PlayerCamera : MonoBehaviour
     /// <param name="amplitude"></param>
     /// <param name="frequency"></param>
     /// <param name="duration"></param>
-    public void ShakeCamera(float amplitude, float frequency, float duration)
+    public void ShakeCamera(float amplitude = 1f, float frequency = 1f, float duration = 1f)
     {
         var perlin = _camera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         if (perlin == null) return;
@@ -84,17 +83,17 @@ public class PlayerCamera : MonoBehaviour
     /// </summary>
     /// <param name="target"></param>
     /// <param name="zoom"></param>
-    public void StartCutsceneCamera(Transform target, float zoom = 6f)
+    public void StartZoomCamera(Transform target, float zoom = 6f)
     {
-        if (cutsceneCam == null) return;
-        cutsceneCam.Priority = 30;
-        cutsceneCam.Follow = target;
-        cutsceneCam.m_Lens.OrthographicSize = zoom;
+        if (otherCam == null) return;
+        otherCam.Priority = 30;
+        otherCam.Follow = target;
+        otherCam.m_Lens.OrthographicSize = zoom;
     }
-    public void EndCutsceneCamera()
+    public void EndZoomCamera()
     {
-        if (cutsceneCam == null) return;
-        cutsceneCam.Priority = 10;
+        if (otherCam == null) return;
+        otherCam.Priority = 10;
         _camera.Priority = 20;
         _camera.Follow = _player.transform;
         _camera.m_Lens.OrthographicSize = _defaultOrthoSize;

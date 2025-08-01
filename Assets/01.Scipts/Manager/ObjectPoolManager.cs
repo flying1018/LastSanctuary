@@ -11,6 +11,8 @@ public enum PoolingIndex
     SFX = 5,
     PlayerGroggy = 6,
     PlayerUlt = 7,
+    UltParticle1 = 8,
+    UltParticle2 = 9,
 }
 
 public static class ObjectPoolManager

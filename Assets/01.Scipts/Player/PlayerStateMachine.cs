@@ -49,7 +49,7 @@ public class PlayerStateMachine : StateMachine
         ComboAttack.Add(StrongAttack);
         JumpAttack = new JumpAttackState(this, player.AttackData.jumpAttack);
         DashAttack = new DashAttackState(this, player.AttackData.dashAttack);
-        UltState = new UltimateState(this, player.AttackData.UltAttack);
+        UltState = new UltimateState(this, player.AttackData.ultAttack);
         DashState = new PlayerDashState(this);
         FallState = new PlayerFallState(this);
         HealState = new PlayerHealState(this);
