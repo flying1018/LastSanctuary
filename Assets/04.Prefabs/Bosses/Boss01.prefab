@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5823522210937144706}
   - component: {fileID: 8515650869219092945}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Attack3Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 103140824763510856}
   - component: {fileID: 4230989925986528542}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5433685927027791756}
   - component: {fileID: 5422159773692845429}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: WeaponCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 6464638119810744875}
   - component: {fileID: 5371399571826576760}
   - component: {fileID: 4660887761634564893}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8617638883515162977}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ItemDropPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 1630865445912036173}
   - component: {fileID: 390536238904548190}
   - component: {fileID: 5323315833894694255}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Boss01
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -550,3 +550,5 @@ MonoBehaviour:
   jumpDuration: 1.5
   minDrop: 10
   maxDrop: 11
+  circleSprite: {fileID: 0}
+  highlight: {fileID: 0}

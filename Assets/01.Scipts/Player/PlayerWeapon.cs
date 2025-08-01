@@ -18,7 +18,8 @@ public class PlayerWeapon : Weapon
     private bool _isUltimate;
     private int _hitCount;
     private float _hitInterval;
-    
+    private Vector2 _boxCenter;
+
     //직렬화
     [SerializeField] private SpriteRenderer spriteRenderer1;
     [SerializeField] private SpriteRenderer spriteRenderer2;
@@ -31,6 +32,8 @@ public class PlayerWeapon : Weapon
     [SerializeField] private float initAnimInterval;
     [SerializeField] private float extAnimInterval;
     [SerializeField] private float particleInterval;
+    [SerializeField] private Vector2 boxSize;
+    [SerializeField] private LayerMask playerLayer;
     
 
     public override void OnTriggerEnter2D(Collider2D other)
@@ -96,6 +99,10 @@ public class PlayerWeapon : Weapon
         
         //소멸 애니메이션 간격
         _waitUltExtSec = new WaitForSeconds(extAnimInterval);
+        
+        // 이 위치 기준으로 판정할 Box 중심
+        float boxCenterX = transform.rotation.z == 0 ?  boxSize.x / 2 : -boxSize.x / 2;;
+        _boxCenter = new Vector2(transform.position.x + boxCenterX, transform.position.y);
     }
 
     public void UltAttack()
@@ -161,20 +168,42 @@ public class PlayerWeapon : Weapon
         ObjectPoolManager.Set(gameObject,(int)PoolingIndex.PlayerUlt);
     }
     
-    public void OnTriggerStay2D(Collider2D other)
+    
+    private void FixedUpdate()
     {
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.Player)) return;
-        if(!_isUltimate) return;
+        if (!_isUltimate) return;
 
-        base.OnTriggerEnter2D(other);
-        
-        if (other.TryGetComponent(out Condition condition))
+        // 박스 충돌 검사
+        Collider2D[] hits = Physics2D.OverlapBoxAll(_boxCenter, boxSize, 0f, playerLayer);
+
+        foreach (var hit in hits)
         {
-            condition.DamageDelay(_hitInterval);
+            //그로기
+            if (hit.TryGetComponent(out IGroggyable ibossdamageable))
+            {
+                ibossdamageable.ApplyGroggy(WeaponInfo);
+            }
+            //공격
+            if (hit.TryGetComponent(out IDamageable idamageable) )
+            {
+                idamageable.TakeDamage(WeaponInfo);
+            }
+            //넉백
+            if (hit.TryGetComponent(out IKnockBackable iknockBackable))
+            {
+                iknockBackable.ApplyKnockBack(WeaponInfo, transform);
+            }
+            if (hit.TryGetComponent(out Condition condition))
+            {
+                condition.DamageDelay(_hitInterval);
+            }
         }
     }
-
-
-
-
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Vector3 boxCenter = new Vector2(transform.position.x + boxSize.x / 2, transform.position.y);
+        Gizmos.DrawWireCube(boxCenter, boxSize);
+    }
 }

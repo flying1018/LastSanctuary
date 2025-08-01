@@ -26,6 +26,9 @@ public class UltimateState : PlayerAttackState
         
         //UI 꺼짐 연출
         UIManager.Instance.OnOffUI(false);
+        
+        //줌인 연출
+        _camera.StartCutsceneCamera(_player.transform,3f);
     }
 
     public override void Exit()
@@ -59,6 +62,9 @@ public class UltimateState : PlayerAttackState
     {
         //UI 켜짐
         UIManager.Instance.OnOffUI(true);
+        //줌인 연출 종료
+        _camera.EndCutsceneCamera();
+        _camera.ShakeCamera(2,2,_hitCount*_interval);
         
         //애니메이션 정지
         _player.Animator.speed = 0;

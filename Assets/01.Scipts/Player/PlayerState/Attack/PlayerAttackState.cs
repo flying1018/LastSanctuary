@@ -30,6 +30,7 @@ public class PlayerAttackState : PlayerBaseState
         _player.WeaponInfo.Attack = (int)(_condition.TotalAttack * AttackInfo.multiplier);
         _player.WeaponInfo.KnockBackForce = AttackInfo.knockbackForce;
         _player.WeaponInfo.GroggyDamage = AttackInfo.groggyDamage;
+        _player.WeaponInfo.UltimateValue = AttackInfo.ultimateValue;
         
         _playerWeapon.WeaponInfo = _player.WeaponInfo;
         

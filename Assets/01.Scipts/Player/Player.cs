@@ -68,7 +68,6 @@ public class Player : MonoBehaviour
         WeaponInfo.Defpen = AttackData.defpen;
         WeaponInfo.Condition = Condition;
         WeaponInfo.DamageType = DamageType.Attack;
-        WeaponInfo.UltimateValue = AttackData.ultimateValue;
         
         AnimationDB.Initailize();
         Inventory.Init(this);

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7080938109545919741}
   - component: {fileID: 1348362879168003846}
   - component: {fileID: -7410431195481988543}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: HoodSniper(Idle)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3932651908727566937}
   - component: {fileID: 1299284665928902010}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7273112300858512142}
   - component: {fileID: 8899005654010150793}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

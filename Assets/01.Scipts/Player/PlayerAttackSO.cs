@@ -16,6 +16,7 @@ public class AttackInfo
     public float knockbackForce;//넉백 파워
     public int groggyDamage; //그로기 증가량
     public bool isInvincible; //해당 공격 시 무적여부
+    public float ultimateValue;
 }
 
 [Serializable]
@@ -39,21 +40,17 @@ public class PlayerAttackSO : ScriptableObject
     [Header("TopAttackState")] 
     public AttackInfo topAttack;
 
-    [Header("GroggAttackState")] 
+    [Header("GroggyAttackState")] 
     public GameObject groggyAttackPrefab;
-    public int prefabId;
     public float groggyAnimInterval;
     public AttackInfo groggyAttack;
     public float groggyTime;
     public float detectionRange;
-    public float hidingTime;
     public float groggyAttackInterval;
 
     [Header("UltimateAttackState")]
-    public AttackInfo UltAttack;
-    public float ultimateValue;
+    public AttackInfo ultAttack;
     public int ultHitCount;
-    public float initAnimTime;
     public float ultInterval;
     public GameObject laserPrefab;
 

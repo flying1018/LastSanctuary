@@ -22,6 +22,7 @@ MonoBehaviour:
     knockbackForce: 0
     groggyDamage: 1
     isInvincible: 0
+    ultimateValue: 1
   - attackAnim: {fileID: 7400000, guid: 3c8ab8fd8e124cd47ba5909da708ef53, type: 2}
     attackIndex: 2
     multiplier: 1.5
@@ -31,6 +32,7 @@ MonoBehaviour:
     knockbackForce: 0
     groggyDamage: 2
     isInvincible: 0
+    ultimateValue: 2
   defpen: 0.25
   maxUltimateGauge: 100
   strongAttack:
@@ -43,6 +45,7 @@ MonoBehaviour:
     knockbackForce: 10
     groggyDamage: 5
     isInvincible: 0
+    ultimateValue: 5
   dashAttack:
     attackAnim: {fileID: 7400000, guid: ec5c2cbf39d0d7c4185a8542b0455c20, type: 2}
     attackIndex: 4
@@ -53,6 +56,7 @@ MonoBehaviour:
     knockbackForce: 10
     groggyDamage: 5
     isInvincible: 1
+    ultimateValue: 5
   jumpAttack:
     attackAnim: {fileID: 7400000, guid: fb83938d100c40e4b9e179de0fa7eb31, type: 2}
     attackIndex: 5
@@ -63,6 +67,7 @@ MonoBehaviour:
     knockbackForce: 0
     groggyDamage: 1
     isInvincible: 0
+    ultimateValue: 1
   topAttack:
     attackAnim: {fileID: 7400000, guid: cbdcd516d24c3354bbf3ec8e4db03db7, type: 2}
     attackIndex: 6
@@ -73,8 +78,8 @@ MonoBehaviour:
     knockbackForce: 0
     groggyDamage: 1
     isInvincible: 0
+    ultimateValue: 1
   groggyAttackPrefab: {fileID: 4232177779540841221, guid: 6e243fd6a47e6684ba9bf7b6cb7e60c8, type: 3}
-  prefabId: 6
   groggyAnimInterval: 0.15
   groggyAttack:
     attackAnim: {fileID: 7400000, guid: 556e6092d14c0be4e9231422d08e78af, type: 2}
@@ -86,22 +91,21 @@ MonoBehaviour:
     knockbackForce: 1
     groggyDamage: 2
     isInvincible: 1
+    ultimateValue: 2
   groggyTime: 1
   detectionRange: 5
-  hidingTime: 0
   groggyAttackInterval: 0.15
-  UltAttack:
+  ultAttack:
     attackAnim: {fileID: 7400000, guid: 1b15b0d3195f54e7d898c9aeb9060295, type: 2}
     attackIndex: 8
     multiplier: 0.25
     nextComboTime: 0
     staminaCost: 0
     attackForce: 0
-    knockbackForce: 2
+    knockbackForce: 1
     groggyDamage: 1
     isInvincible: 1
-  ultimateValue: 10
+    ultimateValue: 0
   ultHitCount: 20
-  initAnimTime: 0.1
   ultInterval: 0.2
   laserPrefab: {fileID: 3831501438011429933, guid: 15be0f0d53dbb418f8a1841825e5afec, type: 3}
