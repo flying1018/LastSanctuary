@@ -7,28 +7,96 @@ public class PlayerCamera : MonoBehaviour
 {
     private Player _player;
     private CinemachineVirtualCamera _camera;
-    private CinemachineFramingTransposer _transposer; 
-    
+    private CinemachineFramingTransposer _transposer;
+
+    [SerializeField] private CinemachineVirtualCamera battleCam;
+    [SerializeField] private CinemachineVirtualCamera cutsceneCam;
+
+    private float _defaultOrthoSize;
+
     //프로퍼티
     public bool StopCamera { get; set; }
-    
+
     public void Init(Player player)
     {
         _player = player;
         _camera = GetComponent<CinemachineVirtualCamera>();
         _transposer = _camera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        _defaultOrthoSize = _camera.m_Lens.OrthographicSize;
     }
 
     public void RotateCamera(Vector2 direction)
     {
-        if(StopCamera) return;
+        if (StopCamera || _transposer == null) return;
         if (direction.x != 0)
-        {
             _transposer.m_TrackedObjectOffset.x = direction.x > 0 ? _player.Data.cameraDiff : -_player.Data.cameraDiff;
-        }
     }
-    
-    
-    
 
+    /// <summary>
+    /// 전투 시작시 
+    /// </summary>
+    /// <param name="focusPosition"></param>
+    /// <param name="zoom"></param>
+    public void StartBattleCamera(Vector2 focusPosition, float zoom = 5f)
+    {
+        if (battleCam == null) return;
+        battleCam.Priority = 20;
+        battleCam.Follow = null;
+        battleCam.transform.position = new Vector3(focusPosition.x, focusPosition.y, battleCam.transform.position.z);
+        battleCam.m_Lens.OrthographicSize = zoom;
+    }
+
+
+    public void EndBattleCamera()
+    {
+        if (battleCam == null) return;
+        battleCam.Priority = 10;
+        _camera.Priority = 20;
+        _camera.Follow = _player.transform;
+        _camera.m_Lens.OrthographicSize = _defaultOrthoSize;
+    }
+
+    /// <summary>
+    /// 카메라 흔들림
+    /// </summary>
+    /// <param name="amplitude"></param>
+    /// <param name="frequency"></param>
+    /// <param name="duration"></param>
+    public void ShakeCamera(float amplitude, float frequency, float duration)
+    {
+        var perlin = _camera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        if (perlin == null) return;
+
+        perlin.m_AmplitudeGain = amplitude;
+        perlin.m_FrequencyGain = frequency;
+        StartCoroutine(StopShake(perlin, duration));
+    }
+
+    private IEnumerator StopShake(CinemachineBasicMultiChannelPerlin perlin, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        perlin.m_AmplitudeGain = 0f;
+        perlin.m_FrequencyGain = 0f;
+    }
+
+    /// <summary>
+    /// 컷씬에 사용되는 카메라
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="zoom"></param>
+    public void StartCutsceneCamera(Transform target, float zoom = 6f)
+    {
+        if (cutsceneCam == null) return;
+        cutsceneCam.Priority = 30;
+        cutsceneCam.Follow = target;
+        cutsceneCam.m_Lens.OrthographicSize = zoom;
+    }
+    public void EndCutsceneCamera()
+    {
+        if (cutsceneCam == null) return;
+        cutsceneCam.Priority = 10;
+        _camera.Priority = 20;
+        _camera.Follow = _player.transform;
+        _camera.m_Lens.OrthographicSize = _defaultOrthoSize;
+    }
 }
