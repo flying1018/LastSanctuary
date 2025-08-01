@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class TutorialUIManager : MonoBehaviour
+public class TutorialUIManager : Singleton<TutorialUIManager>
 { 
     //UI 프리펩 및 위치
     [SerializeField] private List<GameObject> uiPrefabs;
