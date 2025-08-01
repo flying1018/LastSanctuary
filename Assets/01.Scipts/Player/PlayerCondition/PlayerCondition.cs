@@ -92,6 +92,7 @@ public partial class PlayerCondition : Condition
 
     //무적 처리 프로퍼티
     public bool IsInvincible { get; set; }
+    public bool DontKnockBack { get; set; }
     
 
     #region Condition

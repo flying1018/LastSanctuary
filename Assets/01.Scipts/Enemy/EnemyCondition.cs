@@ -74,6 +74,7 @@ public class EnemyCondition : Condition, IDamageable,IKnockBackable
     //넉백 처리하는 메서드
     public void ApplyKnockBack(WeaponInfo weaponInfo, Transform attackDir)
     {
+        if(_isTakeDamageable) return;
         if (weaponInfo.KnockBackForce <= 0) return;
         if (_curHp <= 0) return;
         

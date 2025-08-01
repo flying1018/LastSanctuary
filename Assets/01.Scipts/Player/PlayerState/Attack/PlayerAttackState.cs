@@ -30,6 +30,7 @@ public class PlayerAttackState : PlayerBaseState
         _player.WeaponInfo.Attack = (int)(_condition.TotalAttack * AttackInfo.multiplier);
         _player.WeaponInfo.KnockBackForce = AttackInfo.knockbackForce;
         _player.WeaponInfo.GroggyDamage = AttackInfo.groggyDamage;
+        _player.WeaponInfo.UltimateValue = AttackInfo.ultimateValue;
         
         _playerWeapon.WeaponInfo = _player.WeaponInfo;
         
@@ -38,10 +39,13 @@ public class PlayerAttackState : PlayerBaseState
         _time = 0;
         
         //무적 공격은 무적상태 추가
-        if(AttackInfo.isInvincible)
-            _condition.InvincibleFunc(_animationTime);
-        
- 
+        if (AttackInfo.isInvincible)
+        {
+            _condition.IsInvincible = true;
+            _condition.DontKnockBack = true;
+        }
+
+
     }
 
     public override void Exit()
@@ -51,6 +55,13 @@ public class PlayerAttackState : PlayerBaseState
         StopAnimation(_player.AnimationDB.AttackParameterHash);
         
         _player.Animator.SetInteger(_stateMachine.Player.AnimationDB.ComboParameterHash, 0);
+        
+        //무적 공격은 무적상태 종료
+        if (AttackInfo.isInvincible)
+        {
+            _condition.IsInvincible = false;
+            _condition.DontKnockBack = false;
+        }
     }
 
     public override void HandleInput()

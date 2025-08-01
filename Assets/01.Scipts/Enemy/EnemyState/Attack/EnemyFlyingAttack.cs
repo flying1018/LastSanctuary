@@ -64,4 +64,9 @@ public class EnemyFlyingAttack : EAttackState
     {
         _stateMachine.ChangeState(_stateMachine.IdleState);
     }
+    
+    public void ResetPrevDir()
+    {
+        PrevDir = Vector2.zero;
+    }
 }

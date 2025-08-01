@@ -13,11 +13,6 @@ public class UnifiedUI : UIBaseState
     
     public UnifiedUI(UIStateMachine uiStateMachine) : base(uiStateMachine)
     {
-        _uiManager.ExitButton.onClick.AddListener(OnClickExitButton);
-        _uiManager.RelicUIButton.onClick.AddListener(OnClickRelicUIButton);
-        _uiManager.SkillUIButton.onClick.AddListener(OnClickSkillUIButton);
-        _uiManager.SettingUIButton.onClick.AddListener(OnClickSettingUIButton);
-        
         _mouseLeft = _uiManager.MouseLeft;
         _mouseRight= _uiManager.MouseRight;
         _mouseLeftDesc = _mouseLeft.GetComponentInChildren<TextMeshProUGUI>();
@@ -28,6 +23,11 @@ public class UnifiedUI : UIBaseState
 
     public override void Enter()
     {
+        _uiManager.ExitButton.onClick.AddListener(OnClickExitButton);
+        _uiManager.RelicUIButton.onClick.AddListener(OnClickRelicUIButton);
+        _uiManager.SkillUIButton.onClick.AddListener(OnClickSkillUIButton);
+        _uiManager.SettingUIButton.onClick.AddListener(OnClickSettingUIButton);
+        
         _centerLine.localPosition = Vector3.zero;
         
         _uiManager.PlayerInput.enabled = false;
@@ -37,6 +37,11 @@ public class UnifiedUI : UIBaseState
 
     public override void Exit()
     {
+        _uiManager.ExitButton.onClick.RemoveAllListeners();
+        _uiManager.RelicUIButton.onClick.RemoveAllListeners();
+        _uiManager.SkillUIButton.onClick.RemoveAllListeners();
+        _uiManager.SettingUIButton.onClick.RemoveAllListeners();
+        
         _uiManager.PlayerInput.enabled = true;
         _uiManager.UnifiedUI.SetActive(false);
     }

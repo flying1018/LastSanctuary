@@ -158,6 +158,11 @@ public class Enemy : MonoBehaviour
     //위치와 상태 초기화
     public void ResetPosition()
     {
+        if (StateMachine.AttackState is EnemyFlyingAttack attack)
+        {
+            attack.ResetPrevDir();
+        }
+        
         Target = null;
         transform.position = SpawnPointPos.position;
         StateMachine.ChangeState(StateMachine.IdleState);

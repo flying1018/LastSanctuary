@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,7 +134,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: attack_ult_effect1_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 93
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feadf78bfafd900498818ac3a34787e4
+      internalID: -1192246869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_ult_effect1_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 0
+        width: 91
+        height: 74
+      alignment: 9
+      pivot: {x: 0.5, y: 0.47}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07ef0873e805afb4795a654f9ed505d6
+      internalID: -1085189740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_ult_effect1_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 0
+        width: 86
+        height: 74
+      alignment: 9
+      pivot: {x: 0.5, y: 0.47}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cfcd83093681e64084504783ef93e4c
+      internalID: -1308804581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_ult_effect1_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 0
+        width: 82
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1782b5d535dfcf148aa876dc38cf3cd4
+      internalID: 1782837925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_ult_effect1_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 0
+        width: 69
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 159342a8f054b0449a75316a74dbc07f
+      internalID: -1645441760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_ult_effect1_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 0
+        width: 67
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ccf939fc4f276b48907f06382099ab8
+      internalID: -287168257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +271,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      attack_ult_effect1_Sheet_0: -1192246869
+      attack_ult_effect1_Sheet_1: -1085189740
+      attack_ult_effect1_Sheet_2: -1308804581
+      attack_ult_effect1_Sheet_3: 1782837925
+      attack_ult_effect1_Sheet_4: -1645441760
+      attack_ult_effect1_Sheet_5: -287168257
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
