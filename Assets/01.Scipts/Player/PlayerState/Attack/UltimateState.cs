@@ -23,6 +23,9 @@ public class UltimateState : PlayerAttackState
         
         if(_skill.GetSkill(Skill.UltimateStmUp).open)
             _condition.CurStamina = _condition.MaxStamina;
+        
+        //UI 꺼짐 연출
+        UIManager.Instance.OnOffUI(false);
     }
 
     public override void Exit()
@@ -54,6 +57,9 @@ public class UltimateState : PlayerAttackState
 
     IEnumerator UltimateSkill_Coroutine()
     {
+        //UI 켜짐
+        UIManager.Instance.OnOffUI(true);
+        
         //애니메이션 정지
         _player.Animator.speed = 0;
         
@@ -72,7 +78,7 @@ public class UltimateState : PlayerAttackState
         //필살기 데이터 설정
         go.TryGetComponent(out PlayerWeapon playerWeapon);
         playerWeapon.WeaponInfo = _player.WeaponInfo;
-        playerWeapon.UltAttackInit(_hitCount, _interval,(int)PoolingIndex.PlayerUlt);
+        playerWeapon.UltAttackInit(_hitCount,_interval);
         
         //필살기 실행
         playerWeapon.UltAttack();

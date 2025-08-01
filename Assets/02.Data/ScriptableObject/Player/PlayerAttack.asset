@@ -102,5 +102,6 @@ MonoBehaviour:
     isInvincible: 1
   ultimateValue: 10
   ultHitCount: 20
+  initAnimTime: 0.1
   ultInterval: 0.2
   laserPrefab: {fileID: 3831501438011429933, guid: 15be0f0d53dbb418f8a1841825e5afec, type: 3}

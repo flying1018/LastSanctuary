@@ -53,6 +53,7 @@ public class PlayerAttackSO : ScriptableObject
     public AttackInfo UltAttack;
     public float ultimateValue;
     public int ultHitCount;
+    public float initAnimTime;
     public float ultInterval;
     public GameObject laserPrefab;
 
