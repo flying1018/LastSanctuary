@@ -81,9 +81,15 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (_eventProduction) return;   //이벤트 중에는 막기
-        StateMachine.HandleInput();
-        StateMachine.Update();
+        if (!_eventProduction)
+        {
+            StateMachine.HandleInput();
+            StateMachine.Update();
+        }
+        else
+        {
+            StateMachine.Update();
+        }
     }
 
     private void FixedUpdate()
@@ -134,18 +140,21 @@ public class Player : MonoBehaviour
     private bool _eventProduction = false;
     public void EventProduction(bool onOff)
     {
-        
         if (onOff)  //이벤트 시작
         {
             UIManager.Instance.OnOffUI(false);
-            PlayerInput.enabled = false;
             _eventProduction = true;
+            PlayerInput.enabled = false;
+            Condition.IsInvincible = true;
+            Condition.DontKnockBack = true;
         }
         else    //이벤트 종료
         {
             UIManager.Instance.OnOffUI(true);
-            PlayerInput.enabled = true;
             _eventProduction = false;
+            PlayerInput.enabled = true;
+            Condition.IsInvincible = false;
+            Condition.DontKnockBack = false;
         }
     }
     

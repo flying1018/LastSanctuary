@@ -83,6 +83,7 @@ public class BossEvent : MonoBehaviour
     //스폰 이벤트
     IEnumerator Spawn_Coroutine()
     {
+        
         //카메라 초기화 
         _bossCamera.transform.position = _originCameraPosition;
         _bossCamera.m_Lens.OrthographicSize = _originCameraSize;
@@ -193,7 +194,6 @@ public class BossEvent : MonoBehaviour
     //UI 정상화와 플레이어 조작 가능
     public void StartBattle()
     {
-        UIManager.Instance.OnOffUI(true);
         _player.EventProduction(false);
         _bossCamera.Priority = 0;
     }
@@ -211,7 +211,7 @@ public class BossEvent : MonoBehaviour
         _bossCamera.m_Lens.OrthographicSize = cameraZoom;
         _bossCamera.Priority = 20;
         //UI 끄기
-        UIManager.Instance.OnOffUI(false);
+        _player.EventProduction(true);
         //조작 불가
         _player.PlayerInput.enabled = false;
         yield return new WaitForSeconds(_boss.Data.PhaseShiftTime);
@@ -236,9 +236,7 @@ public class BossEvent : MonoBehaviour
         float timer = 0f;
         
         //UI 끄기
-        UIManager.Instance.OnOffUI(false);
-        //조작 불가
-        _player.PlayerInput.enabled = false;
+        _player.EventProduction(true);
         
         //순간 암전
         Color originbackGroundColor = _backGroundSprite.color;
@@ -285,7 +283,6 @@ public class BossEvent : MonoBehaviour
         
         
         //문 열기
-        //벽이 올라와서 막힘
         foreach (MoveObject moveObject in _moveObjects)
         {
             moveObject.MoveObj();
