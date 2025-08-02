@@ -215,6 +215,9 @@ public class BossEvent : MonoBehaviour
         //조작 불가
         _player.PlayerInput.enabled = false;
         yield return new WaitForSeconds(_boss.Data.PhaseShiftTime);
+        
+        //카메라 초기 설정 복구
+        _brain.m_DefaultBlend = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.EaseInOut, 2f);
         StartBattle();
     }
     
@@ -280,6 +283,8 @@ public class BossEvent : MonoBehaviour
         _boss.Animator.speed = 1f;
         yield return new WaitForSeconds(2f);
         StartBattle();
+        //카메라 초기 설정 복구
+        _brain.m_DefaultBlend = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.EaseInOut, 2f);
         
         
         //문 열기
