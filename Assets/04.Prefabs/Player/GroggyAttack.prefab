@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8197361161435421811}
   - component: {fileID: 2096291478615072802}
   - component: {fileID: 2749401400886117426}
-  - component: {fileID: 8493246982006323976}
+  - component: {fileID: 346683578187642661}
   m_Layer: 0
-  m_Name: PlayerWeapon
+  m_Name: GroggyAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8493246982006323976
+--- !u!114 &346683578187642661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,13 +140,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4232177779540841221}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e805740af841bd3438b051d1b4fafe85, type: 3}
+  m_Script: {fileID: 11500000, guid: 8239a28f69f6c6140910f834a2a04c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer1: {fileID: 2096291478615072802}
-  spriteRenderer2: {fileID: 0}
   sprites1:
   - {fileID: 839475429, guid: 2a4c0a14c3b33e042acacab53b9be967, type: 3}
   - {fileID: -351128636, guid: 2a4c0a14c3b33e042acacab53b9be967, type: 3}
   - {fileID: -2122022974, guid: 2a4c0a14c3b33e042acacab53b9be967, type: 3}
-  sprites2: []
+  spriteRenderer1: {fileID: 2096291478615072802}
