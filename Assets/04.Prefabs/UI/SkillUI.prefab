@@ -4982,11 +4982,11 @@ RectTransform:
   - {fileID: 7257641760114621478}
   m_Father: {fileID: 7430332252065980250}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 210, y: 160}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 100}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &3305055063987498430
 GameObject:
   m_ObjectHideFlags: 0
@@ -6863,8 +6863,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 260, y: 100}
+  m_AnchoredPosition: {x: 10, y: 0}
+  m_SizeDelta: {x: 220, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2265375671514671449
 CanvasRenderer:
@@ -6896,8 +6896,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 10000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b34038e7b61479a44a6b1e5a90a0ecb1, type: 2}
-  m_sharedMaterial: {fileID: -8682157575594799043, guid: b34038e7b61479a44a6b1e5a90a0ecb1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 44bfc223206556e4fa3fbdd7703a9bd9, type: 2}
+  m_sharedMaterial: {fileID: -4451629425219399282, guid: 44bfc223206556e4fa3fbdd7703a9bd9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6921,15 +6921,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 4
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -11098,7 +11098,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -10, y: 0}
   m_SizeDelta: {x: 40, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &4917083728273149712
@@ -11131,8 +11131,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: G
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b34038e7b61479a44a6b1e5a90a0ecb1, type: 2}
-  m_sharedMaterial: {fileID: -8682157575594799043, guid: b34038e7b61479a44a6b1e5a90a0ecb1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 44bfc223206556e4fa3fbdd7703a9bd9, type: 2}
+  m_sharedMaterial: {fileID: -4451629425219399282, guid: 44bfc223206556e4fa3fbdd7703a9bd9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11156,15 +11156,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -13614,13 +13614,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7430332252065980250}
+  - component: {fileID: 6576211746828560370}
   m_Layer: 5
   m_Name: SkillUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7430332252065980250
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13643,6 +13644,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6576211746828560370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8301259616611791457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f89ca747f7d5974c82c3361c5219e81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unifiedUI: {fileID: 0}
+  exitButton: {fileID: 0}
+  relicUIButton: {fileID: 0}
+  skillUIButton: {fileID: 0}
+  settingUIButton: {fileID: 0}
+  mouseLeft: {fileID: 0}
+  mouseRight: {fileID: 0}
+  centerLinePos: {fileID: 0}
+  skillUIGoldText: {fileID: 7533716723138682995}
 --- !u!1 &8301680604116810544
 GameObject:
   m_ObjectHideFlags: 0
