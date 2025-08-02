@@ -27,10 +27,14 @@ public class SoundManager : Singleton<SoundManager>
     protected override async void Awake()
     {
         base.Awake();
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         DontDestroyOnLoad(gameObject);
-        
         await Init();
-        
         PlayBGM(StringNameSpace.SoundAddress.TutorialBGM);
     }
     
