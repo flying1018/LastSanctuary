@@ -12,7 +12,6 @@ public class BGMSound : MonoBehaviour
         audioSource = source;
         audioSource.loop = true;
         audioSource.playOnAwake = false;
-        DontDestroyOnLoad(gameObject); 
     }
 
     public void Play(AudioClip clip)
