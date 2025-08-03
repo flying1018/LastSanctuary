@@ -39,6 +39,7 @@ public class BossPhaseShiftState : BossBaseState
         
         //배경음 변경
         SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBossPhase2);
+        
     }
 
     public override void Update()

@@ -77,6 +77,7 @@ public class BossEvent : MonoBehaviour
             }
             
             SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBGM);
+            UIManager.Instance.SetBossUI(false);
         }
     }
 

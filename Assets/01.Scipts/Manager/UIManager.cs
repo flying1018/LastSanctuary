@@ -22,6 +22,7 @@ public class UIManager : Singleton<UIManager>
     public SkillUI SkillUI { get; private set; }
     public UIBaseState OffUI { get; private set; }
     public UIManagerSO Data { get => data;}
+    public BossUI BossUI { get; set; }
     
 
     private void Start()
@@ -44,6 +45,9 @@ public class UIManager : Singleton<UIManager>
         OffUI = GetComponentInChildren<UIBaseState>(true);
         
         StateMachine = new UIStateMachine(this);
+
+        BossUI = GetComponentInChildren<BossUI>(true);
+        BossUI.Init();
     }
     
 
@@ -76,6 +80,20 @@ public class UIManager : Singleton<UIManager>
         else
         {
             StateMachine.ChangeState(StateMachine.OffUI);
+        }
+    }
+
+    public void SetBossUI(bool isOn,BossCondition bossCondition = null)
+    {
+        if (isOn)
+        {
+            if (bossCondition == null) return;
+            BossUI.BossCondition = bossCondition;
+            BossUI.gameObject.SetActive(true);
+        }
+        else
+        {
+            BossUI.gameObject.SetActive(false);
         }
     }
 
