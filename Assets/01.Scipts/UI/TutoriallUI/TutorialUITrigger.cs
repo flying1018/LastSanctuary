@@ -3,27 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TUItype
+public enum UItype
 {
     Repeat,
     Once,
 }
-
 public class TutorialUITrigger : MonoBehaviour
 {
     [SerializeField] private GameObject uiPrefab;
-    [SerializeField] private TUItype UItype;
+    [SerializeField] private UItype UItype;
+    [Header("Icon")]
     [SerializeField] private Transform uiPosition;
+    [SerializeField] private List<TutorialUIAnim> uiAnims;
+    [Header("Popup")]
+    [SerializeField] private string message;
+    [SerializeField] private Sprite image;
     
-    [SerializeField] private string animationNameToPlay;
-    private Animator _animator;
     private bool _hasTriggeed = false;
-
-
-    private void Awake()
-    {
-        _animator = uiPrefab.GetComponentInChildren<Animator>(true);
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -34,7 +30,7 @@ public class TutorialUITrigger : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         if (!other.CompareTag(StringNameSpace.Tags.Player)) return;
-        if (UItype == TUItype.Repeat)
+        if (UItype == UItype.Repeat)
         {
             HideUI();
         }
@@ -42,22 +38,32 @@ public class TutorialUITrigger : MonoBehaviour
     
     public void ShowUI()
     {
-        if (UItype == TUItype.Once)
+        if (UItype == UItype.Once)
         {
             if (_hasTriggeed) return;
             _hasTriggeed = true;
+            uiPrefab.SetActive(true);
         }
-        else if (UItype == TUItype.Repeat)
+        else if (UItype == UItype.Repeat)
         {
             uiPrefab.transform.position = uiPosition.position;
+            foreach (TutorialUIAnim uiAnim in uiAnims)
+            {
+                uiAnim.gameObject.SetActive(true);
+                uiAnim.Init();
+            }
         }
-
-        uiPrefab.SetActive(true);
-        _animator.Play(animationNameToPlay);
     }
 
     public void HideUI()
     {
+        if (UItype == UItype.Repeat)
+        {
+            foreach (TutorialUIAnim uiAnim in uiAnims)
+                uiAnim.gameObject.SetActive(false);
+            return;
+        }
+
         uiPrefab.SetActive(false);
     }
 }
