@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,7 +12,6 @@ public class TutorialUIAnim : MonoBehaviour
     
     private SpriteRenderer _spriteRenderer;
     private float _time;
-    private bool _playAnim;
 
     private void Awake()
     {
@@ -20,7 +20,6 @@ public class TutorialUIAnim : MonoBehaviour
 
     public void Init()
     {
-        _playAnim = true;
         if (_spriteRenderer == null)
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -30,18 +29,9 @@ public class TutorialUIAnim : MonoBehaviour
         
     }
 
-    public void Init(Sprite sprites, TextMeshPro text)
-    {
-        _playAnim = false;
-        _spriteRenderer.sprite = sprites;
-        
-    }
-
     //애니메이션 실행
     private void FixedUpdate()
     {
-        if (!_playAnim) return;
-        
         _time += Time.fixedDeltaTime;
         if (_time >= animInterval)
         {
