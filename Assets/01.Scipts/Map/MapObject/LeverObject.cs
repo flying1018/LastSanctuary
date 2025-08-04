@@ -22,7 +22,6 @@ public class LeverObject : MonoBehaviour, IDamageable
         _isMove = true;
 
         isOn = !isOn;
-        DebugHelper.Log($"레버 상태 : {isOn}임");
 
         foreach (MoveObject _moveObject in _moveObjects)
         {
