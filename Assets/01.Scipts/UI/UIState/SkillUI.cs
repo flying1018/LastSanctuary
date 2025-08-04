@@ -5,12 +5,19 @@ using UnityEngine;
 
 public class SkillUI : UnifiedUI
 {
+    [Header("SkillUI")]
+    [SerializeField] private TextMeshProUGUI skillUIGoldText;
+    
     private SellectSkillUI[] _sellectSkills;
     private SkillDescUI _skillDescUI;
-    private TextMeshProUGUI _goldText;
+
     
-    public SkillUI(UIStateMachine uiStateMachine) : base(uiStateMachine)
+    public SkillUI(UIStateMachine uiStateMachine) : base(uiStateMachine) { }
+    
+    public override void Init(UIStateMachine uiStateMachine)
     {
+        base.Init(uiStateMachine);
+        
         _sellectSkills = _uiManager.GetComponentsInChildren<SellectSkillUI>(true);
         _skillDescUI = _uiManager.GetComponentInChildren<SkillDescUI>(true);
 
@@ -20,30 +27,28 @@ public class SkillUI : UnifiedUI
             _sellectSkills[i].OnSelect += () => OnSelect(_sellectSkills[index]);
             _sellectSkills[i].OnOpen += () => OnOpen(_sellectSkills[index]);
         }
-        
-        _goldText = _uiManager.SkillUIGoldText;
     }
 
     public override void Enter()
     {
         base.Enter();
 
-        _centerLine.localPosition = new Vector3(_data.centerLinePosition, 0, 0);
+        centerLinePos.localPosition = new Vector3(_data.centerLinePosition, 0, 0);
         _mouseLeftDesc.text = _data.skillLeftClickDesc;
         _mouseRightDesc.text = _data.sKillRightClickDesc;
-        _mouseLeft.SetActive(true);
-        _mouseRight.SetActive(true);
+        mouseLeft.SetActive(true);
+        mouseRight.SetActive(true);
 
         UpdateGoldText();
         
-        _uiManager.SkillUI.SetActive(true);
+        gameObject.SetActive(true);
     }
 
     public override void Exit()
     {
         base.Exit();
         
-        _uiManager.SkillUI.SetActive(false);
+        gameObject.SetActive(false);
     }
     
     public override void HandleInput()
@@ -97,6 +102,6 @@ public class SkillUI : UnifiedUI
     
     private void UpdateGoldText()
     {
-        _goldText.text = _playerInventory.Gold.ToString();
+        skillUIGoldText.text = _playerInventory.Gold.ToString();
     }
 }

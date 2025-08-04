@@ -2,14 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//플레이어의 무기
-public class PlayerWeapon : Weapon
+public class UltimateAttack : PlayerWeapon
 {
-    //필드 그로기
-    private Coroutine _groggyAttackCoroutine;
-    private WaitForSeconds _waitGroggyAnimSec;
-    private int _objectPoolId;
-    
     //필드 필살기
     private Coroutine _ultAttackCoroutine;
     private WaitForSeconds _waitUltInitAnimSec;
@@ -19,7 +13,7 @@ public class PlayerWeapon : Weapon
     private int _hitCount;
     private float _hitInterval;
     private Vector2 _boxCenter;
-
+    
     //직렬화
     [SerializeField] private SpriteRenderer spriteRenderer1;
     [SerializeField] private SpriteRenderer spriteRenderer2;
@@ -35,56 +29,7 @@ public class PlayerWeapon : Weapon
     [SerializeField] private Vector2 boxSize;
     [SerializeField] private LayerMask playerLayer;
     
-
-    public override void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.Player)) return;
-
-        base.OnTriggerEnter2D(other);
-
-        if (other.TryGetComponent(out Condition condition))
-        {
-            condition.DamageDelay();
-        }
-
-        if (other.CompareTag(StringNameSpace.Tags.Enemy))
-        {
-            if (WeaponInfo.Condition is PlayerCondition dummy)
-            {
-                dummy.CurUltimate += WeaponInfo.UltimateValue;
-            }
-        }
-    }
-    public void GroggyAttackInit(float animInterval, int id)
-    {
-        _waitGroggyAnimSec = new WaitForSeconds(animInterval);
-        _objectPoolId = id;
-    }
-
-    public void GroggyAttack()
-    {
-        if (_groggyAttackCoroutine != null)
-        {
-            StopCoroutine(_groggyAttackCoroutine);
-            _groggyAttackCoroutine = null;
-        }
-
-        _groggyAttackCoroutine = StartCoroutine(GroggyAttack_Coroutine());
-    }
-
-    IEnumerator GroggyAttack_Coroutine()
-    {
-        for (int i = 0; i < sprites1.Length; i++)
-        {
-            spriteRenderer1.sprite = sprites1[i];
-            yield return _waitGroggyAnimSec;
-        }
-
-        _groggyAttackCoroutine = null;
-        ObjectPoolManager.Set(gameObject, _objectPoolId);
-    }
-    
-    public void UltAttackInit(int hitCount ,float hitInterval)
+     public void UltAttackInit(int hitCount ,float hitInterval)
     {
         _hitCount = hitCount;
         _hitInterval = hitInterval;

@@ -6,49 +6,50 @@ using UnityEngine.UI;
 
 public class MainUI : UIBaseState
 {
-    private Image _potionIcon;
-    private TextMeshProUGUI _potionText;
-    private TextMeshProUGUI _goldText;
-    private List<BuffUI> _buffUIs;
-    private ConditionUI _hpConditionUI;
-    private ConditionUI _staminaConditionUI;
-    private ConditionUI _ultimateConditionUI;
     
-    public MainUI(UIStateMachine uiStateMachine) : base(uiStateMachine)
+    [Header("MainUI")]
+    [SerializeField] private RectTransform buffUIPivot;
+    [SerializeField] private ConditionUI hpConditionUI;
+    [SerializeField] private ConditionUI staminaConditionUI;
+    [SerializeField] private ConditionUI ultimateConditionUI;
+    [SerializeField] private Image potionIcon;
+    [SerializeField] private TextMeshProUGUI potionText;
+    [SerializeField] private TextMeshProUGUI goldText;
+    
+    //필드
+    private List<BuffUI> _buffUIs;
+    
+    public MainUI(UIStateMachine uiStateMachine) : base(uiStateMachine) { }
+
+    public override void Init(UIStateMachine uiStateMachine)
     {
-        //변수 셋팅
-        _potionIcon = _uiManager.PotionIcon;
-        _potionText = _uiManager.PotionText;
-        _hpConditionUI = _uiManager.HpUI;
-        _staminaConditionUI = _uiManager.StaminaUI;
-        _ultimateConditionUI = _uiManager.UltimateConditionUI;
-        _goldText = _uiManager.GoldText;
+        base.Init(uiStateMachine);
 
         _buffUIs = new List<BuffUI>();
         for (int i = 0; i < _data.buffUINum; i++)
         {
-            GameObject go = _uiManager.InstantiateUI(_data.buffUIPrefab, _uiManager.BuffUIPivot);
+            GameObject go = _uiManager.InstantiateUI(_data.buffUIPrefab, buffUIPivot);
             _buffUIs.Add(go.GetComponent<BuffUI>());
         }
 
         //데이터 셋팅
-        _potionIcon.sprite = _data.potionIcon;
+        potionIcon.sprite = _data.potionIcon;
     }
 
     public override void Enter()
     {
         //text 설정
-        _potionText.text = _playerInventory.CurPotionNum.ToString();
-        _goldText.text = _playerInventory.Gold.ToString();
+        potionText.text = _playerInventory.CurPotionNum.ToString();
+        goldText.text = _playerInventory.Gold.ToString();
         
         //컨디션 설정
         UpdateCondition();
         
-        _uiManager.MainUI.SetActive(true);
+        gameObject.SetActive(true);
     }
     public override void Exit()
     {
-        _uiManager.MainUI.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public override void HandleInput()
@@ -65,26 +66,26 @@ public class MainUI : UIBaseState
         base.Update();
 
         //UI 갱신
-        _hpConditionUI.SetCurValue(_playerCondition.HpValue());
-        _staminaConditionUI.SetCurValue(_playerCondition.StaminaValue());
-        _ultimateConditionUI.SetCurValue(_playerCondition.UltimateValue());
+        hpConditionUI.SetCurValue(_playerCondition.HpValue());
+        staminaConditionUI.SetCurValue(_playerCondition.StaminaValue());
+        ultimateConditionUI.SetCurValue(_playerCondition.UltimateValue());
     }
     
     //포션의 개수를 갱신
     public void UpdatePotionText()
     {
-        _potionText.text = _playerInventory.CurPotionNum.ToString();
+        potionText.text = _playerInventory.CurPotionNum.ToString();
         
         if(_playerInventory.CurPotionNum > 0)
-            _potionIcon.sprite = _data.potionIcon;
+            potionIcon.sprite = _data.potionIcon;
         else
-            _potionIcon.sprite = _data.emptyPotionIcon;
+            potionIcon.sprite = _data.emptyPotionIcon;
     }
     
     //골드 수를 갱신
     public void UpdateGoldText()
     {
-        _goldText.text = _playerInventory.Gold.ToString();
+        goldText.text = _playerInventory.Gold.ToString();
     }
 
     //버프 갱신
@@ -102,9 +103,9 @@ public class MainUI : UIBaseState
 
     public void UpdateCondition()
     {
-        _hpConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.TotalHp);
-        _staminaConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.TotalStamina);
-        _ultimateConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.MaxUltimate);
+        hpConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.TotalHp);
+        staminaConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.TotalStamina);
+        ultimateConditionUI.SetMaxValue(_data.conditionSize * _playerCondition.MaxUltimate);
     }
     
     
