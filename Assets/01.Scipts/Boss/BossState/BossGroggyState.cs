@@ -8,9 +8,7 @@ public class BossGroggyState : BossBaseState
     private Color _originColor;
     private float _blinkLength = 2;
     
-    public BossGroggyState(BossStateMachine bossStateMachine) : base(bossStateMachine)
-    {
-    }
+    public BossGroggyState(BossStateMachine bossStateMachine) : base(bossStateMachine) { }
 
     public override void Enter()
     {
@@ -38,6 +36,8 @@ public class BossGroggyState : BossBaseState
 
     public override void Update()
     {
+        _condition.GroggyGauge -= (_condition.MaxGroggyGauge/_data.groggyDuration)*Time.deltaTime;
+        
         //색상 점멸
         float blinking = Mathf.PingPong(Time.time * _data.groggyDuration, _blinkLength);
         _boss.SpriteRenderer.color = Color.Lerp(Color.red,_originColor, blinking);

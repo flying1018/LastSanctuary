@@ -16,7 +16,7 @@ public class MoveObject : MonoBehaviour
     [SerializeField] private GameObject[] TurnOff;
     [SerializeField] private GameObject[] TurnOn;
 
-    [SerializeField] private float moveDistance = StringNameSpace.ValueSpace.MoveDistance;
+    [SerializeField] private float moveDistance = 3.6f;
 
     private bool _isTurnOn;
 

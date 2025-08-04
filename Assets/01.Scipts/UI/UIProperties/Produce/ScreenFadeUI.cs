@@ -2,23 +2,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class ScreenFade : MonoBehaviour
+public class ScreenFadeUI : MonoBehaviour
 {
     public Image fadeImage;
 
     private void Awake()
     {
-        // Instance = this;
-        // Canvas > Image 연결
+
     }
 
-    public IEnumerator FadeOut(float duration = 1f, Color? color = null)
+    public IEnumerator FadeOut_Coroutine(float duration = 1f, Color? color = null)
     {
         if (color.HasValue) fadeImage.color = color.Value;
         Color c = fadeImage.color;
         c.a = 0;
         fadeImage.color = c;
-        fadeImage.gameObject.SetActive(true);
 
         float time = 0f;
         while (time < duration)
@@ -32,7 +30,7 @@ public class ScreenFade : MonoBehaviour
         fadeImage.color = c;
     }
 
-    public IEnumerator FadeIn(float duration = 1f)
+    public IEnumerator FadeIn_Coroutine(float duration = 1f)
     {
         Color c = fadeImage.color;
         c.a = 1;
@@ -47,6 +45,5 @@ public class ScreenFade : MonoBehaviour
         }
         c.a = 0;
         fadeImage.color = c;
-        fadeImage.gameObject.SetActive(false);
     }
 }
