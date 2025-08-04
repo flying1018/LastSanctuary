@@ -792,8 +792,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1480242670351404155}
-  - component: {fileID: 8429408934347475713}
   - component: {fileID: 938602627411954642}
+  - component: {fileID: 2280579730496846232}
   m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
@@ -819,31 +819,6 @@ Transform:
   - {fileID: 3350321960090712428}
   m_Father: {fileID: 6653849905273561096}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8429408934347475713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3084327231788739462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e805740af841bd3438b051d1b4fafe85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer1: {fileID: 0}
-  spriteRenderer2: {fileID: 0}
-  sprites1: []
-  sprites2: []
-  particle1: []
-  particle2: []
-  initAnimInterval: 0
-  extAnimInterval: 0
-  particleInterval: 0
-  boxSize: {x: 0, y: 0}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!50 &938602627411954642
 Rigidbody2D:
   serializedVersion: 4
@@ -871,6 +846,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2280579730496846232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3084327231788739462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e805740af841bd3438b051d1b4fafe85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3724385338706473902
 GameObject:
   m_ObjectHideFlags: 0
