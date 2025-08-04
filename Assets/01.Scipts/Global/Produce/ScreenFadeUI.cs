@@ -8,11 +8,10 @@ public class ScreenFadeUI : MonoBehaviour
 
     private void Awake()
     {
-        // Instance = this;
-        // Canvas > Image 연결
+        fadeImage.gameObject.SetActive(false);
     }
 
-    public IEnumerator FadeOut(float duration = 1f, Color? color = null)
+    public IEnumerator FadeOut_Coroutine(float duration = 1f, Color? color = null)
     {
         if (color.HasValue) fadeImage.color = color.Value;
         Color c = fadeImage.color;
@@ -32,7 +31,7 @@ public class ScreenFadeUI : MonoBehaviour
         fadeImage.color = c;
     }
 
-    public IEnumerator FadeIn(float duration = 1f)
+    public IEnumerator FadeIn_Coroutine(float duration = 1f)
     {
         Color c = fadeImage.color;
         c.a = 1;
@@ -48,5 +47,15 @@ public class ScreenFadeUI : MonoBehaviour
         c.a = 0;
         fadeImage.color = c;
         fadeImage.gameObject.SetActive(false);
+    }
+
+    public void FadeOut(float duration = 1f, Color? color = null)
+    {
+        StartCoroutine(FadeOut_Coroutine(duration, color));
+    }
+
+    public void FadeIn(float duration = 1f)
+    {
+        StartCoroutine(FadeIn_Coroutine(duration));
     }
 }
