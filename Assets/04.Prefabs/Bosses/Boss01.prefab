@@ -434,6 +434,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1024
+  uiOn: 1
 --- !u!114 &3900554615578015434
 MonoBehaviour:
   m_ObjectHideFlags: 0

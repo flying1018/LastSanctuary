@@ -8,6 +8,7 @@ public class PlayerRespawnState : PlayerBaseState
 
     public override void Enter()
     {
+        UIManager.Instance.FadeIn(0.5f);
         //세이브 포인트로 위치 변경
         _player.gameObject.transform.position = SaveManager.Instance.GetSavePoint();
         
