@@ -2,59 +2,78 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UnifiedUI : UIBaseState
 {
-    protected GameObject _mouseLeft;
+    [Header("UnifiedUI")] [SerializeField] protected GameObject unifiedUI;
+    [SerializeField] protected Button exitButton;
+    [SerializeField] protected Button relicUIButton;
+    [SerializeField] protected Button skillUIButton;
+    [SerializeField] protected Button settingUIButton;
+    [SerializeField] protected GameObject mouseLeft;
+    [SerializeField] protected GameObject mouseRight;
+    [SerializeField] protected RectTransform centerLinePos;
+
     protected TextMeshProUGUI _mouseLeftDesc;
-    protected GameObject _mouseRight;
     protected TextMeshProUGUI _mouseRightDesc;
-    protected RectTransform _centerLine;
-    
+
     public UnifiedUI(UIStateMachine uiStateMachine) : base(uiStateMachine)
     {
-        _mouseLeft = _uiManager.MouseLeft;
-        _mouseRight= _uiManager.MouseRight;
-        _mouseLeftDesc = _mouseLeft.GetComponentInChildren<TextMeshProUGUI>();
-        _mouseRightDesc = _mouseRight.GetComponentInChildren<TextMeshProUGUI>();
+    }
 
-        _centerLine = _uiManager.CenterLinePos;
+    public override void Init(UIStateMachine uiStateMachine)
+    {
+        base.Init(uiStateMachine);
+
+        _mouseLeftDesc = mouseLeft.GetComponentInChildren<TextMeshProUGUI>();
+        _mouseRightDesc = mouseRight.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public override void Enter()
     {
-        _uiManager.ExitButton.onClick.AddListener(OnClickExitButton);
-        _uiManager.RelicUIButton.onClick.AddListener(OnClickRelicUIButton);
-        _uiManager.SkillUIButton.onClick.AddListener(OnClickSkillUIButton);
-        _uiManager.SettingUIButton.onClick.AddListener(OnClickSettingUIButton);
-        
-        _centerLine.localPosition = Vector3.zero;
-        
-        _uiManager.PlayerInput.enabled = false;
-        _uiManager.UnifiedUI.SetActive(true);
-        
+        //타이틀 씬이 아닐때
+        if (_uiManager != null)
+        {
+            relicUIButton.onClick.AddListener(OnClickRelicUIButton);
+            skillUIButton.onClick.AddListener(OnClickSkillUIButton);
+            settingUIButton.onClick.AddListener(OnClickSettingUIButton);
+            _uiManager.PlayerInput.enabled = false;
+        }
+
+        exitButton.onClick.AddListener(OnClickExitButton);
+        centerLinePos.localPosition = Vector3.zero;
+        unifiedUI.SetActive(true);
     }
 
     public override void Exit()
     {
-        _uiManager.ExitButton.onClick.RemoveAllListeners();
-        _uiManager.RelicUIButton.onClick.RemoveAllListeners();
-        _uiManager.SkillUIButton.onClick.RemoveAllListeners();
-        _uiManager.SettingUIButton.onClick.RemoveAllListeners();
-        
-        _uiManager.PlayerInput.enabled = true;
-        _uiManager.UnifiedUI.SetActive(false);
+
+        //타이틀 씬이 아닐때
+        if (_uiManager != null)
+        {
+            relicUIButton.onClick.RemoveAllListeners();
+            skillUIButton.onClick.RemoveAllListeners();
+            settingUIButton.onClick.RemoveAllListeners();
+            _uiManager.PlayerInput.enabled = true;
+        }
+
+        exitButton.onClick.RemoveAllListeners();
+        unifiedUI.SetActive(false);
     }
+
     //성물 버튼
     public void OnClickRelicUIButton()
     {
         _uiStateMachine.ChangeState(_uiStateMachine.RelicUI);
     }
+
     //스킬 버튼
     public void OnClickSkillUIButton()
-    { 
+    {
         _uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
     }
+
     //설정 버튼
     public void OnClickSettingUIButton()
     {
@@ -64,16 +83,19 @@ public class UnifiedUI : UIBaseState
     //나가기 버튼
     public void OnClickExitButton()
     {
-        _uiStateMachine.ChangeState(_uiStateMachine.MainUI);
+        if (_uiManager != null)
+            _uiStateMachine.ChangeState(_uiStateMachine.MainUI);
+        else
+            Exit();
     }
-    
+
     public override void HandleInput()
     {
         //Esc 입력 시
         if (Input.GetKeyDown(KeyCode.Escape))
-        {   //메인 UI로 이동
+        {
+            //메인 UI로 이동
             _uiStateMachine.ChangeState(_uiStateMachine.MainUI);
         }
     }
-
 }

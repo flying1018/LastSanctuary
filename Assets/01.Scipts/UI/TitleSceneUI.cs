@@ -8,12 +8,19 @@ public class TitleSceneUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private Button newButton;
+    [SerializeField] private Button settingButton;
     [SerializeField] private Button exitButton;
+    
+    private SettingUI _settingUI;
 
     private void Awake()
     {
+        _settingUI = GetComponentInChildren<SettingUI>(true);
+        _settingUI.TitleInit();
+        
         newButton.onClick.AddListener(OnClickGameStart);
         exitButton.onClick.AddListener(OnClickExit);
+        settingButton.onClick.AddListener(OnClickSetting);
     }
 
     public void OnClickGameStart()
@@ -25,6 +32,11 @@ public class TitleSceneUI : MonoBehaviour
     public void OnClickExit()
     {
         Application.Quit();
+    }
+
+    public void OnClickSetting()
+    {
+        _settingUI.Enter();
     }
     
 }

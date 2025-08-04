@@ -13,7 +13,6 @@ public class ComboAttackState : PlayerAttackState
         
         //다음 공격
         //입력 시간 내에 공격 입력 시
-        _time += Time.deltaTime;
         if (_time <= (_animationTime + AttackInfo.nextComboTime) && _input.IsAttack)
         {
             //애니메이션 끝나고 공격
@@ -39,20 +38,18 @@ public class ComboAttackState : PlayerAttackState
                     _stateMachine.ChangeState(_stateMachine.ComboAttack[ _stateMachine.comboIndex]);
                 }
             }
-
         }
-        //공격 종료
-        else if (_time > (_animationTime + AttackInfo.nextComboTime))
-        {
-            _stateMachine.comboIndex = 0;
-            _stateMachine.ChangeState(_stateMachine.IdleState);
-        }
-        
     }
 
     public override void Update()
     {
-
+        //공격 종료
+        _time += Time.deltaTime;
+        if (_time > (_animationTime + AttackInfo.nextComboTime))
+        {
+            _stateMachine.comboIndex = 0;
+            _stateMachine.ChangeState(_stateMachine.IdleState);
+        }
     }
 
     public override void PhysicsUpdate()
