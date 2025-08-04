@@ -69,10 +69,4 @@ public static class StringNameSpace
         public const string RenewalTutorials = "Renewal_Tutorials";
         public const string TitleScene = "TitleScene";
     }
-
-    public static class ValueSpace
-    {
-        public const float MoveDistance = 3.6f;
-        public const float UltimateValue = 10f;
-    }
 }

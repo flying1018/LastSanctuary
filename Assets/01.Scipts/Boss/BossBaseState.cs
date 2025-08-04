@@ -21,6 +21,7 @@ public class BossBaseState : IState
     protected KinematicMove _move;
     
     protected float _time;
+    
 
     public BossBaseState(BossStateMachine bossStateMachine)
     {

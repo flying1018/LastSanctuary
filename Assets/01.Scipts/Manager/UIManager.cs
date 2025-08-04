@@ -21,9 +21,10 @@ public class UIManager : Singleton<UIManager>
     public SettingUI SettingUI { get; private set; }
     public SkillUI SkillUI { get; private set; }
     public UIBaseState OffUI { get; private set; }
-    public UIManagerSO Data { get => data;}
+    public UIManagerSO Data { get => data; }
     public BossUI BossUI { get; set; }
-    
+    public ScreenFadeUI screenFadeUI { get; set; }
+
 
     private void Start()
     {
@@ -37,19 +38,21 @@ public class UIManager : Singleton<UIManager>
         PlayerInventory = FindAnyObjectByType<PlayerInventory>();
         PlayerInput = FindAnyObjectByType<PlayerInput>();
         PlayerSkill = FindAnyObjectByType<PlayerSkill>();
-        
+
         MainUI = GetComponentInChildren<MainUI>(true);
         RelicUI = GetComponentInChildren<RelicUI>(true);
         SettingUI = GetComponentInChildren<SettingUI>(true);
         SkillUI = GetComponentInChildren<SkillUI>(true);
         OffUI = GetComponentInChildren<UIBaseState>(true);
-        
+
+        screenFadeUI = GetComponentInChildren<ScreenFadeUI>(true);
+
         StateMachine = new UIStateMachine(this);
 
         BossUI = GetComponentInChildren<BossUI>(true);
         BossUI.Init();
     }
-    
+
 
     private void Update()
     {
@@ -65,9 +68,9 @@ public class UIManager : Singleton<UIManager>
     #region Need MonoBehaviour Method
 
     //필요한 UI 프리펩 생성하는 메서드
-    public GameObject InstantiateUI(GameObject prefab,RectTransform parent)
+    public GameObject InstantiateUI(GameObject prefab, RectTransform parent)
     {
-        return Instantiate(prefab,parent);
+        return Instantiate(prefab, parent);
     }
 
     //UI를 껏다켜는 메서드
@@ -83,7 +86,7 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    public void SetBossUI(bool isOn,BossCondition bossCondition = null)
+    public void SetBossUI(bool isOn, BossCondition bossCondition = null)
     {
         if (isOn)
         {
@@ -95,6 +98,18 @@ public class UIManager : Singleton<UIManager>
         {
             BossUI.gameObject.SetActive(false);
         }
+    }
+
+    public void FadeIn(float duration = 1f)
+    {
+        DebugHelper.Log("FadeIn실행");
+        StartCoroutine(screenFadeUI.FadeIn_Coroutine(duration));
+    }
+
+    public void FadeOut(float duration = 1f, Color? color = null)
+    {
+        DebugHelper.Log("FadeOut실행");
+        StartCoroutine(screenFadeUI.FadeOut_Coroutine(duration, color));
     }
 
     #endregion
