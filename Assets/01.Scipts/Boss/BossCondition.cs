@@ -8,11 +8,17 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     //필드
     private Boss _boss;
     private int _maxGroggyGauge;
-    private int _groggyGauge;
+    private float _groggyGauge;
     private Coroutine _hitEffectCoroutine;
     
     //프로퍼티
     public bool IsGroggy {get; set;}
+    public float GroggyGauge
+    {
+        get => _groggyGauge;
+        set => _groggyGauge = Mathf.Clamp(value,0,_maxGroggyGauge);
+    }
+    public int MaxGroggyGauge => _maxGroggyGauge;
 
     public void Init(Boss boss)
     {
@@ -110,13 +116,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     //그로기 상태로 가야 하는지 체크
     public bool CheckGroggyState()
     {
-        if (_groggyGauge >= _maxGroggyGauge)
-        {
-            _groggyGauge = 0;
-            return true;
-        }
-
-        return false;
+        return _groggyGauge >= _maxGroggyGauge;
     }
 
     //페이즈 변환 상태로 가야 하는지 체크
