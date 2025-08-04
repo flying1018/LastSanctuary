@@ -1,21 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
-
-/// <summary>
-/// 보스 스폰과 이벤트를 담당하는 스크립트
-/// </summary>
-public class BossEvent : MonoBehaviour
+public class TutorialBossEvent : BossEvent
 {
     //필드
-    private MoveObject[] _moveObjects;
-    private Boss _boss;
-    private Player _player;
-    private CinemachineVirtualCamera _bossCamera;
-    private SpriteRenderer _backGroundSprite;
-    private CinemachineBasicMultiChannelPerlin _perlin;
-    private CinemachineBrain _brain;
     private CinemachineBlendDefinition _originBlend;
     private Vector3 _originCameraPosition;
     private float _originCameraSize;
@@ -34,32 +24,25 @@ public class BossEvent : MonoBehaviour
     [SerializeField] private float shakeDuration;
     
     //초기 설정
-    private void Start()
+    protected override void Start()
     {
-        _moveObjects = GetComponentsInChildren<MoveObject>();
-        _boss = FindAnyObjectByType<Boss>();
-        _boss.gameObject.SetActive(false);
-        _bossCamera = GetComponentInChildren<CinemachineVirtualCamera>();
-        _perlin = _bossCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        _backGroundSprite = GameObject.FindGameObjectWithTag(StringNameSpace.Tags.BackGround)
-            .GetComponent<SpriteRenderer>();
-        _brain = Camera.main.GetComponent<CinemachineBrain>();
+        base.Start();
         
         //카메라 기본 설정
         _originBlend = _brain.m_DefaultBlend; 
         _originCameraPosition = _bossCamera.transform.position;
         _originCameraSize = _bossCamera.m_Lens.OrthographicSize;
     }
-
+    
     //플레이어 입장 시
     private void OnTriggerEnter2D(Collider2D other)
     {
-            if(MapManager.IsBossAlive == false) return;
-            if (other.CompareTag(StringNameSpace.Tags.Player))
-            {
-                _player = other.GetComponent<Player>();
-                StartCoroutine(Spawn_Coroutine());
-            }
+        if(MapManager.IsBossAlive == false) return;
+        if (other.CompareTag(StringNameSpace.Tags.Player))
+        {
+            _player = other.GetComponent<Player>();
+            StartCoroutine(Spawn_Coroutine());
+        }
         
     }
 
@@ -80,8 +63,8 @@ public class BossEvent : MonoBehaviour
             UIManager.Instance.SetBossUI(false);
         }
     }
-
-    //스폰 이벤트
+    
+       //스폰 이벤트
     IEnumerator Spawn_Coroutine()
     {
         
@@ -176,31 +159,9 @@ public class BossEvent : MonoBehaviour
         _boss.gameObject.SetActive(true);
         _boss.Init(this);
     }
-
-    //카메라 흔들림
-    public void CameraShake(float duration = 1f, float amplitude = 10f,  float frequency = 5f)
-    {
-        StartCoroutine(CameraShake_Coroutine(duration, amplitude, frequency));
-    }
-
-    IEnumerator CameraShake_Coroutine(float duration, float amplitude ,  float frequency)
-    {
-        _perlin.m_AmplitudeGain = amplitude;
-        _perlin.m_FrequencyGain = frequency;
-        yield return new WaitForSeconds(duration);
-        _perlin.m_AmplitudeGain = 0;
-        _perlin.m_FrequencyGain = 0;
-    }
-
-    //UI 정상화와 플레이어 조작 가능
-    public void StartBattle()
-    {
-        _player.EventProduction(false);
-        _bossCamera.Priority = 0;
-    }
     
     //보스 페이즈전환 연출
-    public void OnTriggerBossPhaseShift()
+    public override void OnTriggerBossPhaseShift()
     {
         StartCoroutine(PhaseShift_Coroutine());
     }
@@ -223,7 +184,7 @@ public class BossEvent : MonoBehaviour
     }
     
     //보스 사망 연출
-    public void OnTriggerBossDeath()
+    public override void OnTriggerBossDeath()
     {
         StartCoroutine(Death_coroution());
     }
@@ -293,10 +254,8 @@ public class BossEvent : MonoBehaviour
         {
             moveObject.MoveObj();
         }
-
         
         //브금 복구
         SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBGM);
-        
     }
 }

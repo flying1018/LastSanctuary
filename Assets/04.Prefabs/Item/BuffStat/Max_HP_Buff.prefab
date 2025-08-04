@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statData: {fileID: 11400000, guid: f6f07a2d7cf2b844784fcb721567e8df, type: 2}
-  isGet: 0
 --- !u!212 &4638529638379998610
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88,7 +87,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 120
   m_Sprite: {fileID: 21300000, guid: f7e5483be52ab4151b0bfeb42237f3c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

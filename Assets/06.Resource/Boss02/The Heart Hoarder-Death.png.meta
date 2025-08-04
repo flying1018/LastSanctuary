@@ -1,0 +1,967 @@
+fileFormatVersion: 2
+guid: b9384820879f8904ca51e6b9a6a0f91d
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_0
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 0
+        width: 68
+        height: 59
+      alignment: 9
+      pivot: {x: 0.5, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a17be75c72bd88438f59b89a0183c1d
+      internalID: 1576694028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 66
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14b35eb79ce3a974b8465bb881608423
+      internalID: 496615723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_2
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 0
+        width: 53
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3589067f4bf4cfa4faa3121aa826eb27
+      internalID: 1504960482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_3
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 0
+        width: 54
+        height: 36
+      alignment: 9
+      pivot: {x: 0.53, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 314fe1f855567b049b94bfe83004ca3e
+      internalID: -1549839964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_4
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 0
+        width: 52
+        height: 36
+      alignment: 9
+      pivot: {x: 0.54, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e700ac31d8912744ad1426f63e363da
+      internalID: 730414596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_5
+      rect:
+        serializedVersion: 2
+        x: 1194
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.54, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c80df16ddc692c43844d89bbe5f0c8c
+      internalID: -61099228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_6
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 0
+        width: 46
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a22503743196b646a4b0d2ddc692566
+      internalID: -1191805630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_7
+      rect:
+        serializedVersion: 2
+        x: 1642
+        y: 0
+        width: 48
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36774676f43c5a446b4ace75452bebc6
+      internalID: 1686959186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_8
+      rect:
+        serializedVersion: 2
+        x: 1863
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2bf2413a5ebbb1449c074d478735c3e
+      internalID: 610296102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_9
+      rect:
+        serializedVersion: 2
+        x: 2085
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be4630d03e9cbb844995eb97fbb339d3
+      internalID: -935819689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_10
+      rect:
+        serializedVersion: 2
+        x: 2307
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d834a4da394b4d142ba4d07c1fd517ca
+      internalID: 286637745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_11
+      rect:
+        serializedVersion: 2
+        x: 2529
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 873d2144e2b647c428661428839f8069
+      internalID: 384679220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_12
+      rect:
+        serializedVersion: 2
+        x: 2751
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ead5a2a429c57c4284434c32cafde1b
+      internalID: -1899189879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_13
+      rect:
+        serializedVersion: 2
+        x: 2973
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37bbabd61d5461146942fc32f53ea766
+      internalID: -246624217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_14
+      rect:
+        serializedVersion: 2
+        x: 3195
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5fb0ce1a7c8bbe4faf197adb74ab392
+      internalID: -1327596663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_15
+      rect:
+        serializedVersion: 2
+        x: 3417
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57fb82449f6a3ab49b1ad90316121299
+      internalID: -720538628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_16
+      rect:
+        serializedVersion: 2
+        x: 3639
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68f857db86a8d104abc09b60809d7ce0
+      internalID: -747659060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_17
+      rect:
+        serializedVersion: 2
+        x: 3861
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56868f1136354c841b0b8882c6b5291f
+      internalID: 978688899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_18
+      rect:
+        serializedVersion: 2
+        x: 4083
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9f6efe743de49440a66480b2d2afc96
+      internalID: -1402654771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_19
+      rect:
+        serializedVersion: 2
+        x: 4305
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 222dbd437087fb84bb85c36c778a1181
+      internalID: -1641717171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_20
+      rect:
+        serializedVersion: 2
+        x: 4527
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a55a4c4dc2637cf4b905d5c6b4f6671b
+      internalID: -197637678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_21
+      rect:
+        serializedVersion: 2
+        x: 4749
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a736204e4288364dad3695e2f6ee726
+      internalID: -212305011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_22
+      rect:
+        serializedVersion: 2
+        x: 4971
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.48, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce3cf46ded6663640bee9d3a5b909d39
+      internalID: -1857645001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_23
+      rect:
+        serializedVersion: 2
+        x: 5193
+        y: 0
+        width: 50
+        height: 35
+      alignment: 9
+      pivot: {x: 0.48, y: 0.88}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbacbfe6383a5254280515c9d5d873e9
+      internalID: 531582103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_24
+      rect:
+        serializedVersion: 2
+        x: 5415
+        y: 0
+        width: 50
+        height: 35
+      alignment: 9
+      pivot: {x: 0.48, y: 0.88}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c83a0c04ef3089d42b3abdfafeb20fb4
+      internalID: 1416966087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_25
+      rect:
+        serializedVersion: 2
+        x: 5637
+        y: 0
+        width: 50
+        height: 35
+      alignment: 9
+      pivot: {x: 0.48, y: 0.88}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb8dd941a8ab959459d7e015df8a1ea4
+      internalID: 1246072808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_26
+      rect:
+        serializedVersion: 2
+        x: 5859
+        y: 0
+        width: 50
+        height: 35
+      alignment: 9
+      pivot: {x: 0.48, y: 0.88}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 788f49eaf437dbb48b2df47fb4e3f984
+      internalID: -157297465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_27
+      rect:
+        serializedVersion: 2
+        x: 6081
+        y: 0
+        width: 46
+        height: 35
+      alignment: 9
+      pivot: {x: 0.52, y: 0.88}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d924477ad50ccf489980fb1c98a6152
+      internalID: -1121175270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_28
+      rect:
+        serializedVersion: 2
+        x: 6303
+        y: 0
+        width: 46
+        height: 35
+      alignment: 9
+      pivot: {x: 0.52, y: 0.88}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e8277dc650bac04f9840f3a7870c3fa
+      internalID: -1044913127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_29
+      rect:
+        serializedVersion: 2
+        x: 6525
+        y: 0
+        width: 46
+        height: 35
+      alignment: 9
+      pivot: {x: 0.52, y: 0.88}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a01e853e05bdf84a90fa9562ad3b44e
+      internalID: -756354562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_30
+      rect:
+        serializedVersion: 2
+        x: 6747
+        y: 0
+        width: 46
+        height: 36
+      alignment: 9
+      pivot: {x: 0.52, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de69b8f2e122d674d8dcdb5cce75877b
+      internalID: 2101958274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_31
+      rect:
+        serializedVersion: 2
+        x: 6969
+        y: 0
+        width: 46
+        height: 38
+      alignment: 9
+      pivot: {x: 0.52, y: 0.81}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b1ee5408ff03d14bb1b9255568c6df5
+      internalID: -982343207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_32
+      rect:
+        serializedVersion: 2
+        x: 7191
+        y: 0
+        width: 46
+        height: 39
+      alignment: 9
+      pivot: {x: 0.52, y: 0.79}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b049ee6fea144c44cb40ccf30198c2fc
+      internalID: -291342771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_33
+      rect:
+        serializedVersion: 2
+        x: 7413
+        y: 0
+        width: 46
+        height: 40
+      alignment: 9
+      pivot: {x: 0.52, y: 0.77}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b82d7a29a1b07e44845e3cd3b66bbed
+      internalID: -2079146118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_34
+      rect:
+        serializedVersion: 2
+        x: 7635
+        y: 0
+        width: 46
+        height: 41
+      alignment: 9
+      pivot: {x: 0.52, y: 0.76}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d79e0e8127a80784692f20357a0ea40c
+      internalID: -462218942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_35
+      rect:
+        serializedVersion: 2
+        x: 7857
+        y: 0
+        width: 46
+        height: 42
+      alignment: 9
+      pivot: {x: 0.52, y: 0.74}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e69979a0f2c71d4d9772f3c6b016771
+      internalID: -967662552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Death_36
+      rect:
+        serializedVersion: 2
+        x: 8079
+        y: 0
+        width: 46
+        height: 19
+      alignment: 9
+      pivot: {x: 0.52, y: 1.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88cc0ca0d078cbe498722aca396def7c
+      internalID: -915635941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      The Heart Hoarder-Death_0: 1576694028
+      The Heart Hoarder-Death_1: 496615723
+      The Heart Hoarder-Death_10: 286637745
+      The Heart Hoarder-Death_11: 384679220
+      The Heart Hoarder-Death_12: -1899189879
+      The Heart Hoarder-Death_13: -246624217
+      The Heart Hoarder-Death_14: -1327596663
+      The Heart Hoarder-Death_15: -720538628
+      The Heart Hoarder-Death_16: -747659060
+      The Heart Hoarder-Death_17: 978688899
+      The Heart Hoarder-Death_18: -1402654771
+      The Heart Hoarder-Death_19: -1641717171
+      The Heart Hoarder-Death_2: 1504960482
+      The Heart Hoarder-Death_20: -197637678
+      The Heart Hoarder-Death_21: -212305011
+      The Heart Hoarder-Death_22: -1857645001
+      The Heart Hoarder-Death_23: 531582103
+      The Heart Hoarder-Death_24: 1416966087
+      The Heart Hoarder-Death_25: 1246072808
+      The Heart Hoarder-Death_26: -157297465
+      The Heart Hoarder-Death_27: -1121175270
+      The Heart Hoarder-Death_28: -1044913127
+      The Heart Hoarder-Death_29: -756354562
+      The Heart Hoarder-Death_3: -1549839964
+      The Heart Hoarder-Death_30: 2101958274
+      The Heart Hoarder-Death_31: -982343207
+      The Heart Hoarder-Death_32: -291342771
+      The Heart Hoarder-Death_33: -2079146118
+      The Heart Hoarder-Death_34: -462218942
+      The Heart Hoarder-Death_35: -967662552
+      The Heart Hoarder-Death_36: -915635941
+      The Heart Hoarder-Death_4: 730414596
+      The Heart Hoarder-Death_5: -61099228
+      The Heart Hoarder-Death_6: -1191805630
+      The Heart Hoarder-Death_7: 1686959186
+      The Heart Hoarder-Death_8: 610296102
+      The Heart Hoarder-Death_9: -935819689
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
