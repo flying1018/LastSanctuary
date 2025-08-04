@@ -133,4 +133,14 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     {
         return _curHp > 0;
     }
+
+    public float HpValue()
+    {
+        return _curHp/ _maxHp;
+    }
+    
+    public float GroggyGaugeValue()
+    {
+        return (float)_groggyGauge / _maxGroggyGauge;
+    }
 }

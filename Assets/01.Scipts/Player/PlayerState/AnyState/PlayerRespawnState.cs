@@ -25,7 +25,9 @@ public class PlayerRespawnState : PlayerBaseState
     {
         //체력 회복
         _condition.PlayerRecovery();
-
+        //리스폰시 저장
+        if (_player.InteractableTarget is SavePoint savePoint)
+            _player.InteractableTarget.Interact();
         //애니메이터 초기화
         _player.Animator.Rebind();
         //조작 가능
