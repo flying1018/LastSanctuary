@@ -22,6 +22,7 @@ public class TutoUITriggerIcon : TutoUITriggerBase
 
     protected override void  ShowUI()
     {
+        HideUI();
         uiPrefab.transform.position = uiPosition.position;
         foreach (TutorialUIAnim uiAnim in uiAnims)
         {
