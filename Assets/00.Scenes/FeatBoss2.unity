@@ -153,6 +153,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: New_UIManagerBossHp
       objectReference: {fileID: 0}
+    - target: {fileID: 2677926304237891742, guid: afa8e6186b5c75b46b2bb9a9acdebb73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4633151595740375271, guid: afa8e6186b5c75b46b2bb9a9acdebb73, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -116449,6 +116453,10 @@ PrefabInstance:
     - target: {fileID: 4698509731449102044, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.y
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6541171185867327984, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6541171185867327984, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.y
