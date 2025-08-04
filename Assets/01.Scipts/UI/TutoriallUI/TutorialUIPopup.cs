@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class TutorialUIPopup : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI[] texts;
+    
     private Image _image;
 
-    [SerializeField]
-    private TextMeshProUGUI[] texts;
     public void Init(Sprite sprite, string title, string explanation)
     {
         Transform imageTransform = transform.Find("Image");
@@ -17,7 +17,7 @@ public class TutorialUIPopup : MonoBehaviour
             _image = imageTransform.GetComponentInChildren<Image>();
         }
         _image.sprite = sprite;
-        texts[0].text = title;
-        texts[1].text = explanation;
+        texts[0].text = title.ToString();
+        texts[1].text = explanation.ToString();
     }
 }

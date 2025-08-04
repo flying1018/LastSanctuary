@@ -10,13 +10,5 @@ public abstract class TutoUITriggerBase : MonoBehaviour
         if (!other.CompareTag(StringNameSpace.Tags.Player)) return;
         ShowUI();
     }
-
-    protected void OnTriggerExit2D(Collider2D other)
-    {
-        if (!other.CompareTag(StringNameSpace.Tags.Player)) return;
-        HideUI();
-    }
-
     protected abstract void ShowUI();
-    protected abstract void HideUI();
 }

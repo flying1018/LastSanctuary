@@ -8,35 +8,28 @@ using UnityEngine;
 public class TutoUITriggerPopup : TutoUITriggerBase
 {
     
-    
-    [SerializeField] private string titletext;
-    [SerializeField] private string exptext;
+    [SerializeField] private TextMeshPro titletext;
+    [SerializeField] private TextMeshPro exptext;
     [SerializeField] private Sprite sprite;
     private bool _hasTriggeed = false;
-    private TutorialUIPopup uiPopup;
+    private TutorialUIPopup _uiPopup;
     
     private void Awake()
     {
         if (uiPrefab == null)
         {
-            GameObject go = GameObject.Find("Popup");
+            GameObject go = GameObject.Find("GuideUIPopup");
             if (go != null)
                 uiPrefab = go;
         }
-        uiPopup = uiPrefab.GetComponent<TutorialUIPopup>();
+        _uiPopup = uiPrefab.GetComponentInChildren<TutorialUIPopup>(true);
     }
     
     protected override void  ShowUI()
     {
         if (_hasTriggeed) return;
         _hasTriggeed = true;
-        uiPrefab.SetActive(true);
-        uiPopup.Init(sprite, titletext, exptext);
-
-    }
-
-    protected override void HideUI()
-    {
-        
+        _uiPopup.gameObject.SetActive(true);
+        _uiPopup.Init(sprite, titletext.text, exptext.text);
     }
 }

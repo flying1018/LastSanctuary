@@ -31,7 +31,13 @@ public class TutoUITriggerIcon : TutoUITriggerBase
 
     }
 
-    protected override void HideUI()
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.CompareTag(StringNameSpace.Tags.Player)) return;
+        HideUI();
+    }
+
+    public void HideUI()
     {
         foreach (TutorialUIAnim uiAnim in uiAnims)
             uiAnim.gameObject.SetActive(false);
