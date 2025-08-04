@@ -6,7 +6,7 @@ public class UltimateState : PlayerAttackState
 {
     private int _hitCount;
     private float _interval;
-    private bool UltimateStart;
+    private bool _ultimateStart;
 
     public UltimateState(PlayerStateMachine stateMachine, AttackInfo attackInfo) : base(stateMachine, attackInfo)
     {
@@ -19,7 +19,7 @@ public class UltimateState : PlayerAttackState
     {
         base.Enter();
 
-        UltimateStart = false;
+        _ultimateStart = false;
         
         if(_skill.GetSkill(Skill.UltimateStmUp).open)
             _condition.CurStamina = _condition.MaxStamina;
@@ -45,7 +45,7 @@ public class UltimateState : PlayerAttackState
     public override void Update()
     {
         //게이지 감소
-        if(!UltimateStart) return;
+        if(!_ultimateStart) return;
         _condition.CurUltimate -= (_condition.MaxUltimate/(_hitCount*_interval)) * Time.deltaTime;
     }
 
@@ -70,7 +70,7 @@ public class UltimateState : PlayerAttackState
         _player.Animator.speed = 0;
         
         //게이지 감소 시작
-        UltimateStart = true;
+        _ultimateStart = true;
         
         //생성 및 위치 설정
         GameObject go = ObjectPoolManager.Get(_attackData.laserPrefab,(int)PoolingIndex.PlayerUlt);
@@ -82,12 +82,12 @@ public class UltimateState : PlayerAttackState
         go.transform.rotation = Quaternion.Euler(0, 0, dir);
         
         //필살기 데이터 설정
-        go.TryGetComponent(out PlayerWeapon playerWeapon);
-        playerWeapon.WeaponInfo = _player.WeaponInfo;
-        playerWeapon.UltAttackInit(_hitCount,_interval);
+        go.TryGetComponent(out UltimateAttack ultimateAttack);
+        ultimateAttack.WeaponInfo = _player.WeaponInfo;
+        ultimateAttack.UltAttackInit(_hitCount,_interval);
         
         //필살기 실행
-        playerWeapon.UltAttack();
+        ultimateAttack.UltAttack();
         
         //필살기 시간동안 정지
         yield return new WaitForSeconds(_hitCount * _interval);

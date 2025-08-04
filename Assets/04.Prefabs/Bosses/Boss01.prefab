@@ -156,10 +156,10 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 80
   m_Sprite: {fileID: -1603400233, guid: 5e4c06737edd3c942aa3f7974b2f3304, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.9375, y: 1.40625}
@@ -510,7 +510,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 1.4}
+  m_Size: {x: 2, y: 1.3}
   m_EdgeRadius: 0
 --- !u!114 &390536238904548190
 MonoBehaviour:
@@ -550,5 +550,5 @@ MonoBehaviour:
   jumpDuration: 1.5
   minDrop: 10
   maxDrop: 11
-  circleSprite: {fileID: 0}
-  highlight: {fileID: 0}
+  circleSprite: {fileID: -2413806693520163455, guid: 05715ead379287c47afc71b720cb72d2, type: 3}
+  highlight: {fileID: 455611820256146302, guid: f76022b029c8e5b4481fdcf9204b5e2e, type: 3}

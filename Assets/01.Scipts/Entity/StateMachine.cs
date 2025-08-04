@@ -24,7 +24,7 @@ public abstract class StateMachine
     /// 현재 상태를 변경하는 메서드
     /// </summary>
     /// <param name="state"></param>
-    public void ChangeState(IState state)
+    public virtual void ChangeState(IState state)
     {
         currentState?.Exit();
         currentState = state;

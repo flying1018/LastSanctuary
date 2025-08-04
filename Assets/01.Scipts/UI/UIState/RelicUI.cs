@@ -6,26 +6,33 @@ using UnityEngine;
 
 public class RelicUI : UnifiedUI
 {
+    [Header("RelicUI")]
+    [SerializeField] private TextMeshProUGUI relicName;
+    [SerializeField] private TextMeshProUGUI relicEffectText;
+    [SerializeField] private TextMeshProUGUI relicDescText;
+    [SerializeField] private RectTransform statUIPivot;
+    [SerializeField] private RectTransform equipUIPivot;
+    [SerializeField] private RectTransform slotUIPivot;
+    
+    //필드
     private List<StatUI> _statUIs;
     private List<EquipUI> _equipUIs;
     private List<SlotUI> _slotUIs;
-    private TextMeshProUGUI _relicName;
-    private TextMeshProUGUI _relicEffect;
-    private TextMeshProUGUI _relicDesc;
 
-    public RelicUI(UIStateMachine uiStateMachine) : base(uiStateMachine)
-    {
+    public RelicUI(UIStateMachine uiStateMachine) : base(uiStateMachine) { }
+
+    public override void Init(UIStateMachine uiStateMachine)
+    { 
+        base.Init(uiStateMachine);
+        
         _statUIs = new List<StatUI>();
         _equipUIs = new List<EquipUI>();
         _slotUIs = new List<SlotUI>();
-        _relicName = _uiManager.RelicName;
-        _relicEffect = _uiManager.RelicEffectText;
-        _relicDesc = _uiManager.RelicDecsText;
 
         //스탯 슬롯 생성
         for (int i = 0; i < _data.statNames.Length; i++)
         {
-            GameObject go = _uiManager.InstantiateUI(_data.statUIPrefab, _uiManager.StatUIPivot);
+            GameObject go = _uiManager.InstantiateUI(_data.statUIPrefab, statUIPivot);
 
             _statUIs.Add(go.GetComponent<StatUI>());
             _statUIs[i].statName.text = _data.statNames[i];
@@ -34,7 +41,7 @@ public class RelicUI : UnifiedUI
         //장비 슬롯 생성
         for (int i = 0; i < _data.equipNum; i++)
         {
-            GameObject go = _uiManager.InstantiateUI(_data.equipUIPrefab, _uiManager.EquipUIPivot);
+            GameObject go = _uiManager.InstantiateUI(_data.equipUIPrefab,equipUIPivot);
 
             _equipUIs.Add(go.GetComponent<EquipUI>());
 
@@ -44,18 +51,17 @@ public class RelicUI : UnifiedUI
             //장비칸 잠그기
             if (i < _data.nonLockEquip) _equipUIs[i].SetLock(false);
             else _equipUIs[i].SetLock(true);
-            
+
         }
 
         //성물 슬롯 생성
         for (int i = 0; i < _playerInventory.relics.Count; i++)
         {
-            GameObject go = _uiManager.InstantiateUI(_data.slotUIPrefab, _uiManager.SlotUIPivot);
+            GameObject go = _uiManager.InstantiateUI(_data.slotUIPrefab, slotUIPivot);
 
             _slotUIs.Add(go.GetComponent<SlotUI>());
         }
-
-
+        
     }
 
     public override void Enter()
@@ -64,10 +70,10 @@ public class RelicUI : UnifiedUI
 
         _mouseLeftDesc.text = _data.relicLeftClickDesc;
         _mouseRightDesc.text = _data.relicRightClickDesc;
-        _mouseLeft.SetActive(true);
-        _mouseRight.SetActive(true);
+        mouseLeft.SetActive(true);
+        mouseRight.SetActive(true);
         
-        _uiManager.RelicUI.SetActive(true);
+        gameObject.SetActive(true);
         
         UpdateStatus();
         UpdateSlot();
@@ -79,7 +85,7 @@ public class RelicUI : UnifiedUI
 
         DisUpdateSlot();
         
-        _uiManager.RelicUI.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public override void HandleInput()
@@ -121,9 +127,9 @@ public class RelicUI : UnifiedUI
     //좌클릭 시 실행
     private void OnSelect(CollectObjectSO data)
     {
-        _relicName.text = data.relicName;
-        _relicEffect.text = data.effectDesc;
-        _relicDesc.text = data.relicDesc;
+        relicName.text = data.relicName;
+        relicEffectText.text = data.effectDesc;
+        relicDescText.text = data.relicDesc;
     }
 
 

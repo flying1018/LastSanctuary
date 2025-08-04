@@ -30,6 +30,13 @@ public class BossSpawnState : BossBaseState
         
         //배경음 추가
         SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBossPhase1);
+        
+        //bossUI
+        if (_boss.UIOn)
+        {
+            Debug.Log("UIOn");
+            UIManager.Instance.SetBossUI(true,_condition);
+        }
     }
 
     public override void Update()

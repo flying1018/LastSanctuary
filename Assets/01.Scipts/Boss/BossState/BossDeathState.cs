@@ -22,6 +22,10 @@ public class BossDeathState : BossBaseState
         MapManager.SetBossDead();
         //보스 콜라이더 끄기
         _boxCollider.enabled = false;
+        
+        //bossUI
+        if(_boss.UIOn)
+            UIManager.Instance.SetBossUI(false);
     }
 
     public override void Update()

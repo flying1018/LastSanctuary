@@ -16,6 +16,7 @@ public class Boss : MonoBehaviour
     [field: SerializeField] public BossAnimationDB AnimationDB {get; private set;}
     [SerializeField] private BossSO bossData;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private bool uiOn;
 
     //프로퍼티
     public BossEvent BossEvent { get; set; }
@@ -32,6 +33,8 @@ public class Boss : MonoBehaviour
     public bool Phase2 { get; set; }
     public KinematicMove Move {get; set;}
     public BossItemDropper ItemDropper {get; set;}
+
+    public bool UIOn { get => uiOn; }
 
     public void Awake()
     {

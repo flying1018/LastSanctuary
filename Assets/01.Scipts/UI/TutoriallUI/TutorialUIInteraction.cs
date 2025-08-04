@@ -10,7 +10,6 @@ public class TutorialUIInterction : MonoBehaviour
    {
       if (_hasTriggeed) return;
       _hasTriggeed = true;
-      Debug.Log("TutorialUIInterction Show");
       uiPrefab.SetActive(true);
    }
 
