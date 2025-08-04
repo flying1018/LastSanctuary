@@ -5,28 +5,30 @@ using UnityEngine;
 public class PlayerDeathState : PlayerBaseState
 {
     public PlayerDeathState(PlayerStateMachine stateMachine) : base(stateMachine) { }
-    
+
     public override void Enter()
     {
         _player.Animator.SetTrigger(_player.AnimationDB.DieParameterHash);
 
         PlaySFX1();
-        
+
         //입력 막기
         _player.PlayerInput.enabled = false;
-        
+
         //시간 체크
         _time = 0;
 
         //무적 처리
         _condition.IsInvincible = true;
-        
+
         //물리 없애기
         if (_move.AddForceCoroutine != null)
         {
             _move.StopCoroutine(_move.AddForceCoroutine);
             _move.AddForceCoroutine = null;
         }
+        
+        
     }
 
     //모든 조작 및 물리 상태 막기
@@ -38,7 +40,8 @@ public class PlayerDeathState : PlayerBaseState
         _time += Time.deltaTime;
         if (_time >= _data.deathTime)
         {   //부활 상태로 전환
-            _stateMachine.ChangeState(_stateMachine.RespawnState);   
+            _stateMachine.ChangeState(_stateMachine.RespawnState); 
+           UIManager.Instance.FadeOut(0.5f);
         }
     }
 
