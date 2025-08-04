@@ -77,7 +77,6 @@ public class SavePoint : MonoBehaviour, IInteractable
         ItemManager.Instance.playerInventory.SupplyPotion();
         MapManager.Instance.RespawnEnemies();
         //MapManager.Instance.RespawnItems();
-        
         GetComponent<TutorialUIInterction>()?.ShowUI(); //상호작용시 UI 호출
 
         //코루틴 초기화
