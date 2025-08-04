@@ -115,6 +115,7 @@ MonoBehaviour:
   - {fileID: -1780470834, guid: 7218e71c0052d2d4ab6016a5c702a8b8, type: 3}
   - {fileID: -538811938, guid: 7218e71c0052d2d4ab6016a5c702a8b8, type: 3}
   - {fileID: -188484302, guid: 7218e71c0052d2d4ab6016a5c702a8b8, type: 3}
+  tmptext: {fileID: 0}
   animInterval: 0.2
   index: 0
 --- !u!1 &3100068670331700306
@@ -232,6 +233,7 @@ MonoBehaviour:
   - {fileID: 1810073647, guid: c026371cfd53e7240bf72a8d861ad22a, type: 3}
   - {fileID: 1149763792, guid: c026371cfd53e7240bf72a8d861ad22a, type: 3}
   - {fileID: 102074940, guid: c026371cfd53e7240bf72a8d861ad22a, type: 3}
+  tmptext: {fileID: 0}
   animInterval: 0.2
   index: 0
 --- !u!1 &3608182066331288549
@@ -325,7 +327,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5168105262199656009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,6 +468,7 @@ MonoBehaviour:
   - {fileID: -1733249015, guid: b27f2d6396c03e94cb94216a0c0283d3, type: 3}
   - {fileID: 45414754, guid: b27f2d6396c03e94cb94216a0c0283d3, type: 3}
   - {fileID: 1526740621, guid: b27f2d6396c03e94cb94216a0c0283d3, type: 3}
+  tmptext: {fileID: 0}
   animInterval: 0.2
   index: 0
 --- !u!1 &7313185018903125642
@@ -583,6 +586,7 @@ MonoBehaviour:
   - {fileID: -271135874, guid: 6ccd8d7ef7c46aa40b9c28f742cd0b01, type: 3}
   - {fileID: 1347284539, guid: 6ccd8d7ef7c46aa40b9c28f742cd0b01, type: 3}
   - {fileID: -1988629525, guid: 6ccd8d7ef7c46aa40b9c28f742cd0b01, type: 3}
+  tmptext: {fileID: 0}
   animInterval: 0.2
   index: 0
 --- !u!1 &8467046902022024731
@@ -700,6 +704,7 @@ MonoBehaviour:
   - {fileID: 11813722, guid: cd975000b53f0af45ba862a475ebe2bf, type: 3}
   - {fileID: 494764462, guid: cd975000b53f0af45ba862a475ebe2bf, type: 3}
   - {fileID: -519924740, guid: cd975000b53f0af45ba862a475ebe2bf, type: 3}
+  tmptext: {fileID: 0}
   animInterval: 0.2
   index: 2
 --- !u!1 &8600968481681504496
@@ -817,6 +822,7 @@ MonoBehaviour:
   - {fileID: -2095457100, guid: 7d81c81d44f2a6c4ab678db661eff26b, type: 3}
   - {fileID: 1699447191, guid: 7d81c81d44f2a6c4ab678db661eff26b, type: 3}
   - {fileID: -2030863055, guid: 7d81c81d44f2a6c4ab678db661eff26b, type: 3}
+  tmptext: {fileID: 0}
   animInterval: 0.2
   index: 0
 --- !u!1 &8838575072364966050
@@ -934,5 +940,6 @@ MonoBehaviour:
   - {fileID: 1772409686, guid: b896d979a0629e0449a44189edba096c, type: 3}
   - {fileID: -91167650, guid: b896d979a0629e0449a44189edba096c, type: 3}
   - {fileID: -402830763, guid: b896d979a0629e0449a44189edba096c, type: 3}
+  tmptext: {fileID: 0}
   animInterval: 0.2
   index: 0
