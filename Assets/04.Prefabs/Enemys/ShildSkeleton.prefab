@@ -169,7 +169,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.65}
   m_Size: {x: 1, y: 2.8}
   m_Direction: 0
 --- !u!50 &2517412206996114845
@@ -222,7 +222,7 @@ MonoBehaviour:
   platformLayer:
     serializedVersion: 2
     m_Bits: 1280
-  platformCheckDistance: 2
+  platformCheckDistance: 5
   idleType: 0
   attackType: 0
   patrolDistance: 5
@@ -254,7 +254,7 @@ MonoBehaviour:
   platformLayer:
     serializedVersion: 2
     m_Bits: 1280
-  platformCheckDistance: 2
+  platformCheckDistance: 5
 --- !u!1 &3014264475499094713
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +358,7 @@ Transform:
   m_GameObject: {fileID: 5311290726978491297}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 0.9, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
