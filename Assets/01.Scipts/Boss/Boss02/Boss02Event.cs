@@ -16,6 +16,7 @@ public class Boss02Event : BossEvent
         {
             _player = other.GetComponent<Player>();
             _boss.gameObject.SetActive(true);
+            _boss.Init(this);
         }
         
     }
@@ -36,6 +37,38 @@ public class Boss02Event : BossEvent
             SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBGM);
             UIManager.Instance.SetBossUI(false);
         }
+    }
+
+    public Vector2 GetRandomMirror()
+    {
+        int num = Random.Range(0, 7);
+        Vector2 result = Vector2.zero;
+        switch (num)
+        {
+            case 0:
+                result= topMirror.position;
+                break;
+            case 1:
+                result= leftMirror[0].position;
+                break;
+            case 2:
+                result= leftMirror[1].position;
+                break;
+            case 3:
+                result= leftMirror[2].position;
+                break;
+            case 4:
+                result= rightMirror[0].position;
+                break;
+            case 5:
+                result= rightMirror[1].position;
+                break;
+            case 6:
+                result= rightMirror[2].position;
+                break;
+        }
+
+        return result;
     }
 
 

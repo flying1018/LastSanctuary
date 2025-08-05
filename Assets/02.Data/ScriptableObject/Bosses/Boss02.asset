@@ -14,24 +14,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: 0
   _name: 
-  gravityPower: 0
-  attack: 0
-  defense: 0
-  hp: 0
-  groggyGauge: 0
-  groggyDuration: 0
-  damageDelay: 0
-  dropGold: 0
-  deathAnim: {fileID: 0}
+  gravityPower: 10
+  attack: 40
+  defense: 20
+  hp: 1600
+  groggyGauge: 80
+  groggyDuration: 5
+  damageDelay: 0.1
+  dropGold: 1000
+  deathAnim: {fileID: 7400000, guid: 34d0c93c2fbac19488594f45b8378e44, type: 2}
   deathEventDuration: 0
-  moveSpeed: 2
-  spawnFallVelocity: 20
-  spawnAnim: {fileID: 0}
-  attackRange: 2
-  attackIdleTime: 0
-  knockbackForce: 0
-  attacks: []
-  defpen: 0
+  moveSpeed: 10
+  spawnFallVelocity: 0
+  spawnAnim: {fileID: 7400000, guid: 2bd9235ee42807643b7524b45b358d1b, type: 2}
+  attackRange: 20
+  attackIdleTime: 3
+  knockbackForce: 5
+  attacks:
+  - multiplier: 1.5
+    knockbackForce: 5
+    coolTime: 0
+    animParameter: Attack1
+    attackAnim: {fileID: 7400000, guid: fb2cd6ba0ec1ea0418165fad187ca9a7, type: 2}
+    projectilePrefab: {fileID: 0}
+    projectilePower: 0
+    attackSounds: []
+  - multiplier: 1.5
+    knockbackForce: 5
+    coolTime: 10
+    animParameter: Attack2
+    attackAnim: {fileID: 7400000, guid: 40a4f2c395cd582409922bd0adf8bf1c, type: 2}
+    projectilePrefab: {fileID: 0}
+    projectilePower: 0
+    attackSounds: []
+  - multiplier: 1.5
+    knockbackForce: 5
+    coolTime: 10
+    animParameter: Attack3
+    attackAnim: {fileID: 7400000, guid: 6c3c77eddb180974eae3c670713eca79, type: 2}
+    projectilePrefab: {fileID: 0}
+    projectilePower: 0
+    attackSounds: []
+  - multiplier: 1.5
+    knockbackForce: 5
+    coolTime: 10
+    animParameter: Attack4
+    attackAnim: {fileID: 7400000, guid: 2eb1b4d8242bb8443b5582a27f445ee3, type: 2}
+    projectilePrefab: {fileID: 5955045292827202703, guid: c5ad0093618fcc84ba07cb8860d03a27, type: 3}
+    projectilePower: 5
+    attackSounds: []
+  - multiplier: 1.5
+    knockbackForce: 5
+    coolTime: 10
+    animParameter: Attack5
+    attackAnim: {fileID: 7400000, guid: ddd282f8b2c550145bf3c5583f816290, type: 2}
+    projectilePrefab: {fileID: 5492190605815318470, guid: 295d6274bd3645746b7d111692cecefd, type: 3}
+    projectilePower: 0
+    attackSounds: []
+  - multiplier: 1.5
+    knockbackForce: 5
+    coolTime: 10
+    animParameter: Attack5
+    attackAnim: {fileID: 7400000, guid: 40a4f2c395cd582409922bd0adf8bf1c, type: 2}
+    projectilePrefab: {fileID: 0}
+    projectilePower: 0
+    attackSounds: []
+  defpen: 0.25
   backjumpDistance: 0
   backjumpHeight: 0
   backjumpSpeed: 0

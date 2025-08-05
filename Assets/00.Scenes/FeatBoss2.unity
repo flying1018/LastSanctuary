@@ -116086,6 +116086,7 @@ GameObject:
   - component: {fileID: 1272799348}
   - component: {fileID: 1272799347}
   - component: {fileID: 1272799346}
+  - component: {fileID: 1272799351}
   m_Layer: 0
   m_Name: Boss02
   m_TagString: Untagged
@@ -116216,6 +116217,23 @@ Transform:
   - {fileID: 1519160591}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1272799351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272799345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c32e0c6c75dc094448acdd0677548039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossData: {fileID: 11400000, guid: 77eb48bd7af06644f869cd4769e465a1, type: 2}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  uiOn: 1
 --- !u!1 &1294264693
 GameObject:
   m_ObjectHideFlags: 0
@@ -117447,11 +117465,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 202.95
+      value: 188.5
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 38.22
+      value: 37.8
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.z
