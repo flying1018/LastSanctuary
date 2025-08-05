@@ -24,6 +24,7 @@ public class UIManager : Singleton<UIManager>
     public UIManagerSO Data { get => data; }
     public BossUI BossUI { get; set; }
     public ScreenFadeUI screenFadeUI { get; set; }
+    public SaveUI saveUI { get; set; }
 
 
     private void Start()
@@ -46,6 +47,7 @@ public class UIManager : Singleton<UIManager>
         OffUI = GetComponentInChildren<UIBaseState>(true);
 
         screenFadeUI = GetComponentInChildren<ScreenFadeUI>(true);
+        saveUI = GetComponentInChildren<SaveUI>(true);
 
         StateMachine = new UIStateMachine(this);
 

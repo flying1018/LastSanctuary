@@ -72,6 +72,8 @@ public class SavePoint : MonoBehaviour, IInteractable
     {
         if (_isInteracted) { return; }
 
+        UIManager.Instance.saveUI.SaveAnimation();
+
         SaveManager.Instance.SetSavePoint(SavePosition());
         ItemManager.Instance.playerCondition.PlayerRecovery(); // 회복
         ItemManager.Instance.playerInventory.SupplyPotion();
