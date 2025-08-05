@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fdeda8d67d82d428a31ed163ad950e, type: 3}
+  m_Name: Boss02
+  m_EditorClassIdentifier: 
+  _key: 0
+  _name: 
+  gravityPower: 0
+  attack: 0
+  defense: 0
+  hp: 0
+  groggyGauge: 0
+  groggyDuration: 0
+  damageDelay: 0
+  dropGold: 0
+  deathAnim: {fileID: 0}
+  deathEventDuration: 0
+  moveSpeed: 2
+  spawnFallVelocity: 20
+  spawnAnim: {fileID: 0}
+  attackRange: 2
+  attackIdleTime: 0
+  knockbackForce: 0
+  attacks: []
+  defpen: 0
+  backjumpDistance: 0
+  backjumpHeight: 0
+  backjumpSpeed: 0
+  phaseShiftHpRatio: 0
+  phaseShiftAnim: {fileID: 0}
+  breathSound: {fileID: 0}
+  howlingSound: {fileID: 0}
+  jumpSound: {fileID: 0}
+  landingSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  phaseShiftSound: {fileID: 0}
+  walkSound: {fileID: 0}
+  materials: []

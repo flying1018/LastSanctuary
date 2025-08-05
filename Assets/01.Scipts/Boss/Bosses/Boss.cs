@@ -51,7 +51,7 @@ public class Boss : MonoBehaviour
         Move = GetComponent<KinematicMove>();
     }
 
-    public void Init(BossEvent bossEvent)
+    public virtual void Init(BossEvent bossEvent)
     {
         BossEvent = bossEvent;
         //무기 데이터 설정

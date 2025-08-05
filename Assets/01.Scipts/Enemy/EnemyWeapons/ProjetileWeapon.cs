@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ProjectileWeapon : EnemyWeapon
 {
-    private Rigidbody2D _rigidbody2D;
-    private PoolingIndex _poolingIndex;
+    protected Rigidbody2D _rigidbody2D;
+    protected PoolingIndex _poolingIndex;
 
     //생성
     public void Init(int attack, float knockback,PoolingIndex poolingIndex)
@@ -19,7 +19,7 @@ public class ProjectileWeapon : EnemyWeapon
     }
 
     //발사
-    public void Shot(Vector2 dir, float arrowPower)
+    public virtual void Shot(Vector2 dir, float arrowPower)
     {
         _rigidbody2D.velocity = dir * arrowPower;
     }
