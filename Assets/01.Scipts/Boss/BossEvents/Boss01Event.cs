@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
-public class TutorialBossEvent : BossEvent
+public class Boss01Event : BossEvent
 {
     //필드
     private CinemachineBlendDefinition _originBlend;

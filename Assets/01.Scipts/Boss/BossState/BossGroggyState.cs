@@ -20,6 +20,7 @@ public class BossGroggyState : BossBaseState
         
         //애니 실행
        _boss.Animator.SetTrigger(_boss.AnimationDB.GroggyParameterHash);
+       StartAnimation(_boss.AnimationDB.GroggyParameterHash);
         
         //색상 저장
         _originColor = _boss.SpriteRenderer.color;
@@ -32,6 +33,8 @@ public class BossGroggyState : BossBaseState
         
         //색상 변경
         _boss.SpriteRenderer.color = _originColor;
+        
+        StopAnimation(_boss.AnimationDB.GroggyParameterHash);
     }
 
     public override void Update()
