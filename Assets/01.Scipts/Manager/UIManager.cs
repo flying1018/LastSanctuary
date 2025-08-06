@@ -25,11 +25,10 @@ public class UIManager : Singleton<UIManager>
     public BossUI BossUI { get; set; }
     public ScreenFadeUI screenFadeUI { get; set; }
     public SaveUI saveUI { get; set; }
+    
 
-
-    protected override void Awake()
+    private void Start()
     {
-        base.Awake();
         //testCode
         Init();
     }
