@@ -38,7 +38,6 @@ public class Boss02 : Boss
     protected override void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
-        Debug.Log(StateMachine.currentState);
     }
     
     #region AnimationEvent Method

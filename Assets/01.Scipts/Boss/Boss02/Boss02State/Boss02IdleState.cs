@@ -13,9 +13,6 @@ public class Boss02IdleState : BossBaseState
         
         //이동 정지
         Move(Vector2.zero);
-        
-        //시간 초기화
-        _time = 0;
     }
 
     public override void Exit()
@@ -29,6 +26,9 @@ public class Boss02IdleState : BossBaseState
         _time += Time.deltaTime;
         if (_time > _data.attackIdleTime)
         {
+            //시간 초기화
+            _time = 0;
+            
             _stateMachine2.TargetMirror = _boss02Event.GetRandomMirror();
             _stateMachine2.ChangeState(_stateMachine2.TeleportState);
         }

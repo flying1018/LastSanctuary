@@ -23,6 +23,7 @@ public class BossBaseState : IState
     protected KinematicMove _move;
     protected Boss02Event _boss02Event;
     protected Animator _animator;
+
     
     protected float _time;
     
@@ -39,6 +40,7 @@ public class BossBaseState : IState
         _weapon = _boss.BossWeapon;
         _move = _boss.Move;
         _animator = _boss.Animator;
+
     }
 
     public BossBaseState(Boss02StateMachine bossStateMachine)
@@ -54,7 +56,7 @@ public class BossBaseState : IState
         _move = _boss2.Move;
         _boss02Event = _boss2.BossEvent;
         _animator = _boss2.Animator;
-        
+
     }
     
     public virtual void Enter()
@@ -112,7 +114,7 @@ public class BossBaseState : IState
         
         //무기 회전
         float angle = _spriteRenderer.flipX ? 180 : 0;
-        _boss.Weapon.transform.rotation = Quaternion.Euler(angle, 0, angle);
+        _weapon.gameObject.transform.rotation = Quaternion.Euler(angle, 0, angle);
     }
     
     //추적 거리 안에 들어오는지 확인하는 메서드

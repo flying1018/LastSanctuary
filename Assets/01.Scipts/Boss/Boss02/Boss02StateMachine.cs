@@ -13,6 +13,7 @@ public class Boss02StateMachine : StateMachine
     public BossDeathState DeathState { get; private set; }
     public Boss02JugMirrorState JugMirror { get; private set; }
     public Boss02DownAttackState DownAttack { get; private set; }
+    public Boss02RushAttackState RushAttack { get; private set; }
     
     public Queue<BossAttackState> Attacks { get; private set; }
     
@@ -26,6 +27,7 @@ public class Boss02StateMachine : StateMachine
         TeleportState = new Boss02TeleportState(this);
         JugMirror = new Boss02JugMirrorState(this);
         DownAttack = new Boss02DownAttackState(this, boss.Data.attacks[0]);
+        RushAttack = new Boss02RushAttackState(this, boss.Data.attacks[2]);
         
         ChangeState(SpawnState);
     }
