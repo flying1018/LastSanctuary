@@ -114,5 +114,11 @@ public class UIManager : Singleton<UIManager>
         StartCoroutine(screenFadeUI.FadeOut_Coroutine(duration, color));
     }
 
+    public void SaveAnimation()
+    {
+        data.saveUIObj.SetActive(true);
+        saveUI.SaveAnima();
+    }
+
     #endregion
 }
