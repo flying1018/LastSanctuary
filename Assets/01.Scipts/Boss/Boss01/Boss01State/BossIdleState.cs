@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossIdleState : BossBaseState
 {
     
-    public BossIdleState(BossStateMachine bossStateMachine) : base(bossStateMachine)
+    public BossIdleState(BossStateMachine bossStateMachine1) : base(bossStateMachine1)
     {
     }
 
@@ -29,12 +29,27 @@ public class BossIdleState : BossBaseState
 
     public override void Update()
     {
-        base.Update();
+        //공격 쿨타임 체크
+        if (_stateMachine1.Attack1.CheckCoolTime())
+        {
+            _stateMachine1.Attacks.Enqueue(_stateMachine1.Attack1);
+        }
+        
+        if (_stateMachine1.Attack2.CheckCoolTime())
+        {           
+            _stateMachine1.Attacks.Enqueue(_stateMachine1.Attack2);
+        }
+        
+        //3번째 공격 페이즈 2에서만 사용
+        if (_boss.Phase2 && _stateMachine1.Attack3.CheckCoolTime())
+        {           
+            _stateMachine1.Attacks.Enqueue(_stateMachine1.Attack3);
+        }
         
         //추적거리 외에 있을때
         if (!WithinChaseDistance()) 
         {    //추적
-             _stateMachine.ChangeState(_stateMachine.ChaseState);
+             _stateMachine1.ChangeState(_stateMachine1.ChaseState);
         }
         
         //공격 대기 시간과 공격 사정거리 안에 있다면
@@ -42,10 +57,10 @@ public class BossIdleState : BossBaseState
         if (_time >= _data.attackIdleTime && WithAttackDistance())
         {
             //쿨타임이 다찬 공격이 없다면 대기
-            if (_stateMachine.Attacks.Count <= 0) return;
+            if (_stateMachine1.Attacks.Count <= 0) return;
             
             //공격
-            _stateMachine.ChangeState(_stateMachine.Attacks.Dequeue());
+            _stateMachine1.ChangeState(_stateMachine1.Attacks.Dequeue());
         }
     }
 }

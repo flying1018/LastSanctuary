@@ -8,7 +8,7 @@ public class BossGroggyState : BossBaseState
     private Color _originColor;
     private float _blinkLength = 2;
     
-    public BossGroggyState(BossStateMachine bossStateMachine) : base(bossStateMachine) { }
+    public BossGroggyState(BossStateMachine bossStateMachine1) : base(bossStateMachine1) { }
 
     public override void Enter()
     {
@@ -52,12 +52,12 @@ public class BossGroggyState : BossBaseState
         //체력이 페이즈 변환 조건일 만족했을 때
         if (_condition.CheckPhaseShift())
         {   //페이즈 변환
-            _stateMachine.ChangeState(_stateMachine.PhaseShiftState);
+            _stateMachine1.ChangeState(_stateMachine1.PhaseShiftState);
         }
         //아니라면 대기
         else
         { 
-            _stateMachine.ChangeState(_stateMachine.IdleState);
+            _stateMachine1.ChangeState(_stateMachine1.IdleState);
         }
     }
 }

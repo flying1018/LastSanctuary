@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossPhaseShiftState : BossBaseState
 {
-    public BossPhaseShiftState(BossStateMachine bossStateMachine) : base(bossStateMachine) { }
+    public BossPhaseShiftState(BossStateMachine bossStateMachine1) : base(bossStateMachine1) { }
 
     public override void Enter()
     {
@@ -31,8 +31,8 @@ public class BossPhaseShiftState : BossBaseState
     {
         
         //추가 공격 바로 실행을 위해서 추가
-        _stateMachine.Attacks.Clear();
-        _stateMachine.Attacks.Enqueue(_stateMachine.Attack3);
+        _stateMachine1.Attacks.Clear();
+        _stateMachine1.Attacks.Enqueue(_stateMachine1.Attack3);
 
         //외곽선 변경
         _spriteRenderer.material = _data.materials[1];
@@ -48,7 +48,7 @@ public class BossPhaseShiftState : BossBaseState
         _time += Time.deltaTime;
         if(_time > _data.PhaseShiftTime)
         {   //대기
-            _stateMachine.ChangeState(_stateMachine.IdleState);
+            _stateMachine1.ChangeState(_stateMachine1.IdleState);
         }
     }
 

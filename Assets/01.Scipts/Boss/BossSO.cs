@@ -84,4 +84,10 @@ public class BossSO : ScriptableObject
     
     [Header("Materials")]
     public Material[] materials;
+
+    [Header("TeleportState")]
+    public AnimationClip teleportAnim;
+    public float TeleportTime => teleportAnim.length;
+        
+    
 }

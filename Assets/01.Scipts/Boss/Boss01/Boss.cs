@@ -78,13 +78,13 @@ public class Boss : MonoBehaviour
         Target = FindObjectOfType<Player>().transform;
     }
     
-    protected void Update()
+    protected virtual void Update()
     {
         StateMachine.HandleInput();
         StateMachine.Update();
     }
     
-    protected void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
 //        Debug.Log(StateMachine.currentState);
@@ -117,7 +117,7 @@ public class Boss : MonoBehaviour
     #region AnimationEvent Method
     
     //애니메이션 이벤트
-    public void AnimationEvent1()
+    public virtual void AnimationEvent1()
     {
         if (StateMachine.currentState is BossBaseState bossBaseState)
         {
@@ -126,7 +126,7 @@ public class Boss : MonoBehaviour
     }
     
     //애니메이션 이벤트
-    public void AnimationEvent2()
+    public virtual void AnimationEvent2()
     {
         if (StateMachine.currentState is BossBaseState bossBaseState)
         {
@@ -137,7 +137,7 @@ public class Boss : MonoBehaviour
     
     //효과음 실행르 위한 메서드
     //사운드 실행 애니메이션 이벤트
-    public void EventSFX1()
+    public virtual void EventSFX1()
     {
         if (StateMachine.currentState is BossBaseState bossBaseState)
         {
@@ -145,7 +145,7 @@ public class Boss : MonoBehaviour
         }
     }
 
-    public void EventSFX2()
+    public virtual void EventSFX2()
     {
         if (StateMachine.currentState is BossBaseState bossBaseState)
         {
@@ -153,7 +153,7 @@ public class Boss : MonoBehaviour
         }
     }
     
-    public void EventSFX3()
+    public virtual void EventSFX3()
     {
         if (StateMachine.currentState is BossBaseState bossBaseState)
         {

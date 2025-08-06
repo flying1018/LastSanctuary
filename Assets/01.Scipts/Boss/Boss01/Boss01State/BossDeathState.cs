@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossDeathState : BossBaseState
 {
     
-    public BossDeathState(BossStateMachine bossStateMachine) : base(bossStateMachine) { }
+    public BossDeathState(BossStateMachine bossStateMachine1) : base(bossStateMachine1) { }
 
     public override void Enter()
     {        

@@ -10,23 +10,27 @@ using UnityEngine;
 public class BossBaseState : IState
 {
     //필요하거나 자주쓰는 컴포넌트
-    protected BossStateMachine _stateMachine;
+    protected BossStateMachine _stateMachine1;
+    protected Boss02StateMachine _stateMachine2;
     protected BossSO _data;
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
     protected BoxCollider2D _boxCollider;
     protected BossCondition _condition;
     protected Boss _boss;
+    protected Boss02 _boss2;
     protected BossWeapon _weapon;
     protected KinematicMove _move;
+    protected Boss02Event _boss02Event;
+    protected Animator _animator;
     
     protected float _time;
     
 
     public BossBaseState(BossStateMachine bossStateMachine)
     {
-        this._stateMachine = bossStateMachine;
-        _boss = _stateMachine.Boss;
+        this._stateMachine1 = bossStateMachine;
+        _boss = _stateMachine1.Boss;
         _data = _boss.Data;
         _rigidbody = _boss.Rigidbody;
         _spriteRenderer =_boss.SpriteRenderer;
@@ -34,6 +38,23 @@ public class BossBaseState : IState
         _condition = _boss.Condition;
         _weapon = _boss.BossWeapon;
         _move = _boss.Move;
+        _animator = _boss.Animator;
+    }
+
+    public BossBaseState(Boss02StateMachine bossStateMachine)
+    {
+        this._stateMachine2 = bossStateMachine;
+        _boss2 = _stateMachine2.Boss;
+        _data = _boss2.Data;
+        _rigidbody = _boss2.Rigidbody;
+        _spriteRenderer =_boss2.SpriteRenderer;
+        _boxCollider = _boss2.BoxCollider;
+        _condition = _boss2.Condition;
+        _weapon = _boss2.BossWeapon;
+        _move = _boss2.Move;
+        _boss02Event = _boss2.BossEvent;
+        _animator = _boss2.Animator;
+        
     }
     
     public virtual void Enter()
@@ -53,22 +74,7 @@ public class BossBaseState : IState
 
     public virtual void Update()
     {
-        //공격 쿨타임 체크
-        if (_stateMachine.Attack1.CheckCoolTime())
-        {
-            _stateMachine.Attacks.Enqueue(_stateMachine.Attack1);
-        }
-        
-        if (_stateMachine.Attack2.CheckCoolTime())
-        {           
-             _stateMachine.Attacks.Enqueue(_stateMachine.Attack2);
-        }
-        
-        //3번째 공격 페이즈 2에서만 사용
-        if (_boss.Phase2 && _stateMachine.Attack3.CheckCoolTime())
-        {           
-            _stateMachine.Attacks.Enqueue(_stateMachine.Attack3);
-        }
+
     }
 
     public virtual void PhysicsUpdate()
@@ -78,13 +84,13 @@ public class BossBaseState : IState
     //애니메이션 실행
     protected void StartAnimation(int animatorHash)
     {
-        _boss.Animator.SetBool(animatorHash, true);
+        _animator.SetBool(animatorHash, true);
     }
 
     //애니메이션 정지
     protected void StopAnimation(int animatorHash)
     {
-        _boss.Animator.SetBool(animatorHash, false);
+        _animator.SetBool(animatorHash, false);
     }
     
     //좌우 이동

@@ -8,6 +8,10 @@ public class Boss02Event : BossEvent
     [SerializeField] private Transform[] rightMirror;
     [SerializeField] private Transform topMirror;
     
+    public Transform[] LeftMirror => leftMirror;
+    public Transform[] RightMirror => rightMirror;
+    public Transform TopMirror => topMirror;
+    
     //플레이어 입장 시
     private void OnTriggerEnter2D(Collider2D other)
     {

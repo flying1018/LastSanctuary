@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class SaveUI : MonoBehaviour
 {
@@ -46,6 +47,6 @@ public class SaveUI : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         color.a = 0f;
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
