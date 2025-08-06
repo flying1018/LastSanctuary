@@ -182,8 +182,19 @@ public class Enemy : MonoBehaviour
         if (StateMachine.currentState is EnemyBaseState enemyBaseState)
             enemyBaseState.PlayEvent1();
     }
-    
-    
+    //가드 ON
+    public void GuardOn()
+    {
+        Condition.IsGuard = true;
+        Debug.Log("Guard On");
+    }
+    //가드 OFF
+    public void GuardOff()
+    {
+        Condition.IsGuard = false;
+        Debug.Log("Guard Off");
+    }
+
     //사운드 실행 애니메이션 이벤트
     public void EventSFX1()
     {
@@ -194,5 +205,21 @@ public class Enemy : MonoBehaviour
     }
     
     #endregion
+
+    public void EventSFX2()
+    {
+        if (StateMachine.currentState is EnemyBaseState enemyBaseState)
+        {
+            enemyBaseState.PlaySFX2();
+        }
+    }
+    
+    public void EventSFX3()
+    {
+        if (StateMachine.currentState is EnemyBaseState enemyBaseState)
+        {
+            enemyBaseState.PlaySFX3();
+        }
+    }
 }
         

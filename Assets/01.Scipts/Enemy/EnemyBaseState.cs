@@ -14,6 +14,7 @@ public class EnemyBaseState : IState
     protected KinematicMove _move;
 
     protected float _time;
+    protected float _moveSpeed;
     
 
 
@@ -27,6 +28,7 @@ public class EnemyBaseState : IState
         _condition = _enemy.Condition;
         _spawnPoint = _enemy.SpawnPointPos;
         _move = _enemy.Move;
+        _moveSpeed = _data.moveSpeed;
     }
     
     public virtual void Enter()
@@ -62,7 +64,7 @@ public class EnemyBaseState : IState
     //좌우 이동
     protected void Move(Vector2 direction)
     {
-        Vector2 x = _move.Horizontal(direction, _data.moveSpeed);
+        Vector2 x = _move.Horizontal(direction, _moveSpeed);
         
         if(!_move.IsGrounded)
             _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
@@ -120,6 +122,11 @@ public class EnemyBaseState : IState
 
     public virtual void PlaySFX1() { }
     public virtual void PlaySFX2() { }
+
+    public virtual void PlaySFX3()
+    {
+        SoundManager.Instance.PlaySFX(_data.guardSound);
+    }
     
     #endregion
 }

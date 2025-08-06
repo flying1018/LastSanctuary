@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShildSkeleton_Idle
+  m_Name: WereWolf_Run
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,11 +21,23 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 0724ebcf7969ade4c829022b5aa6ec3f, type: 3}
+      value: {fileID: 21300000, guid: 057d54d9093929e4a9fe589fb6faac7f, type: 3}
+    - time: 0.083333336
+      value: {fileID: 21300000, guid: e85d4740261a6794eb81df4298b76ed4, type: 3}
+    - time: 0.16666667
+      value: {fileID: 21300000, guid: b36ba46f445e80d49b03233d944c0738, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: 650ec0b02d81d5a449f4d343b02c109e, type: 3}
     - time: 0.33333334
-      value: {fileID: 21300000, guid: 2688fe1d766061047a0c7bbdaff2e5ea, type: 3}
-    - time: 0.6666667
-      value: {fileID: 21300000, guid: 0724ebcf7969ade4c829022b5aa6ec3f, type: 3}
+      value: {fileID: 21300000, guid: 1c4d0eb85fe5d8b42b1812ed402c9c2a, type: 3}
+    - time: 0.41666666
+      value: {fileID: 21300000, guid: 56651921b5d926347937fdff28c08f2a, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: b3908ef888fd574419244e0f0be9aceb, type: 3}
+    - time: 0.5833333
+      value: {fileID: 21300000, guid: 4da08a1f8ee779e439a67173fbf9ce93, type: 3}
+    - time: 0.65
+      value: {fileID: 21300000, guid: 4da08a1f8ee779e439a67173fbf9ce93, type: 3}
     attribute: m_Sprite
     path: Model
     classID: 212
@@ -48,15 +60,21 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 0724ebcf7969ade4c829022b5aa6ec3f, type: 3}
-    - {fileID: 21300000, guid: 2688fe1d766061047a0c7bbdaff2e5ea, type: 3}
-    - {fileID: 21300000, guid: 0724ebcf7969ade4c829022b5aa6ec3f, type: 3}
+    - {fileID: 21300000, guid: 057d54d9093929e4a9fe589fb6faac7f, type: 3}
+    - {fileID: 21300000, guid: e85d4740261a6794eb81df4298b76ed4, type: 3}
+    - {fileID: 21300000, guid: b36ba46f445e80d49b03233d944c0738, type: 3}
+    - {fileID: 21300000, guid: 650ec0b02d81d5a449f4d343b02c109e, type: 3}
+    - {fileID: 21300000, guid: 1c4d0eb85fe5d8b42b1812ed402c9c2a, type: 3}
+    - {fileID: 21300000, guid: 56651921b5d926347937fdff28c08f2a, type: 3}
+    - {fileID: 21300000, guid: b3908ef888fd574419244e0f0be9aceb, type: 3}
+    - {fileID: 21300000, guid: 4da08a1f8ee779e439a67173fbf9ce93, type: 3}
+    - {fileID: 21300000, guid: 4da08a1f8ee779e439a67173fbf9ce93, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.68333334
+    m_StopTime: 0.6666666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -75,11 +93,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: GuardOn
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []
