@@ -9,7 +9,14 @@ public class EChaseState : EnemyBaseState
     public override void Enter()
     {
         //이동 애니메이션
-        StartAnimation(_enemy.AnimationDB.WalkParameterHash);
+        _moveSpeed = _enemy.Data.moveSpeed;
+        if (_enemy.Data.runSpeed > 0)
+        {
+            StartAnimation(_enemy.AnimationDB.RunParameterHash);
+           _moveSpeed += _enemy.Data.runSpeed; ;
+        }
+        else
+            StartAnimation(_enemy.AnimationDB.WalkParameterHash);
         
         _time = 0;
         
@@ -18,7 +25,13 @@ public class EChaseState : EnemyBaseState
     public override void Exit()
     {
         //이동 애니메이션
-        StopAnimation(_enemy.AnimationDB.WalkParameterHash);
+        if (_enemy.Data.runSpeed > 0)
+        {
+            StopAnimation(_enemy.AnimationDB.RunParameterHash);
+            _moveSpeed -= _enemy.Data.runSpeed;
+        }
+        else
+            StopAnimation(_enemy.AnimationDB.WalkParameterHash);
     }
     
     public override void Update()
