@@ -1,0 +1,417 @@
+fileFormatVersion: 2
+guid: 424f217ae91741b418798cc9f224fb76
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: The Heart Hoarder-PhaseShift_0
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 0
+        width: 68
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e08373651cc68049bc9398b0ae5b2f3
+      internalID: 1879060082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-PhaseShift_1
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 0
+        width: 68
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 831cae494b7e6cf49bb019225b0411af
+      internalID: 447955252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-PhaseShift_2
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 0
+        width: 68
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a49db946609a6d41b251b08a74e2cd5
+      internalID: -2037551594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-PhaseShift_3
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 0
+        width: 67
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc5abde0704699145968b044814e6636
+      internalID: 1305897985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-PhaseShift_4
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 0
+        width: 68
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5d23987a29456b43822e553bab5ebf7
+      internalID: -782783436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-PhaseShift_5
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 0
+        width: 68
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcbb28e5409fc0840bacff0be2b3ebbb
+      internalID: -1059819189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-PhaseShift_6
+      rect:
+        serializedVersion: 2
+        x: 1409
+        y: 0
+        width: 68
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b806ed7b304a7b46b3a2adff6324c03
+      internalID: -188431199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-PhaseShift_7
+      rect:
+        serializedVersion: 2
+        x: 1631
+        y: 0
+        width: 68
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db6713e2194fb8445b7ad76e7842dc55
+      internalID: 908674750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-PhaseShift_8
+      rect:
+        serializedVersion: 2
+        x: 1853
+        y: 0
+        width: 68
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dbda189a802bcd42aeb10c101171273
+      internalID: -1407128183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-PhaseShift_9
+      rect:
+        serializedVersion: 2
+        x: 2075
+        y: 0
+        width: 68
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 444e4f1c229c9174e946d7d97d624445
+      internalID: 356299799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-PhaseShift_10
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ea3bb2bfdd751c468cc76e8b6a498de
+      internalID: 1394196884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      The Heart Hoarder-PhaseShift_0: 1879060082
+      The Heart Hoarder-PhaseShift_1: 447955252
+      The Heart Hoarder-PhaseShift_10: 1394196884
+      The Heart Hoarder-PhaseShift_11: 1068142672
+      The Heart Hoarder-PhaseShift_12: 835871502
+      The Heart Hoarder-PhaseShift_13: -37878776
+      The Heart Hoarder-PhaseShift_14: 743161784
+      The Heart Hoarder-PhaseShift_15: -149156844
+      The Heart Hoarder-PhaseShift_16: -1242984964
+      The Heart Hoarder-PhaseShift_17: 503905478
+      The Heart Hoarder-PhaseShift_18: 1599303667
+      The Heart Hoarder-PhaseShift_19: -950487581
+      The Heart Hoarder-PhaseShift_2: -2037551594
+      The Heart Hoarder-PhaseShift_20: 494228478
+      The Heart Hoarder-PhaseShift_21: 890760804
+      The Heart Hoarder-PhaseShift_22: -1368619695
+      The Heart Hoarder-PhaseShift_23: 1927025017
+      The Heart Hoarder-PhaseShift_24: -466008735
+      The Heart Hoarder-PhaseShift_25: -1361740591
+      The Heart Hoarder-PhaseShift_26: -1775589377
+      The Heart Hoarder-PhaseShift_27: 1570996809
+      The Heart Hoarder-PhaseShift_28: -1066513073
+      The Heart Hoarder-PhaseShift_29: -488036667
+      The Heart Hoarder-PhaseShift_3: 1305897985
+      The Heart Hoarder-PhaseShift_30: 1500330559
+      The Heart Hoarder-PhaseShift_31: 100595982
+      The Heart Hoarder-PhaseShift_32: 788836216
+      The Heart Hoarder-PhaseShift_4: -782783436
+      The Heart Hoarder-PhaseShift_5: -1059819189
+      The Heart Hoarder-PhaseShift_6: -188431199
+      The Heart Hoarder-PhaseShift_7: 908674750
+      The Heart Hoarder-PhaseShift_8: -1407128183
+      The Heart Hoarder-PhaseShift_9: 356299799
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

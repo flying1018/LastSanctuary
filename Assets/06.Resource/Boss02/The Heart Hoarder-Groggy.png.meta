@@ -1,0 +1,439 @@
+fileFormatVersion: 2
+guid: 98851be268a1e2e48a963e1528f0c682
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: The Heart Hoarder-Groggy_0
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 0
+        width: 66
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f55dff7f9caaf7d4b960580c0e13bfd5
+      internalID: -1647846699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Groggy_1
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 0
+        width: 53
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8648749191c20a49a0dfe04d64337c5
+      internalID: -919559765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Groggy_2
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 0
+        width: 54
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51ba4210d843a6b4d9ee753fc7ac7308
+      internalID: -2055576639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Groggy_3
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 0
+        width: 52
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c848356b9bf2de42b843c13975bfdc8
+      internalID: 307644441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Groggy_4
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a77d71748591080468d09d5864c658f6
+      internalID: -2121174574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Groggy_5
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 0
+        width: 46
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d40c5e2785ef22d4c8ac96bf3c05f1d9
+      internalID: -1319984642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Groggy_6
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 0
+        width: 48
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90de80fa7e4c0094e8552ca430e109e8
+      internalID: 1488024855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Groggy_7
+      rect:
+        serializedVersion: 2
+        x: 6748
+        y: 0
+        width: 46
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9e3a3122a0c95a4bbf5852e09a76845
+      internalID: -377024994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Groggy_8
+      rect:
+        serializedVersion: 2
+        x: 6966
+        y: 0
+        width: 50
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eabc02feddbae646b750c73e72a7804
+      internalID: 1252185078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Groggy_9
+      rect:
+        serializedVersion: 2
+        x: 7187
+        y: 0
+        width: 52
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd6b33a916a916648b1579da0c82884b
+      internalID: 1342305757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Groggy_10
+      rect:
+        serializedVersion: 2
+        x: 7408
+        y: 0
+        width: 54
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dc6451eb8940ec448677342d4080f89
+      internalID: 1362320278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Groggy_11
+      rect:
+        serializedVersion: 2
+        x: 7632
+        y: 0
+        width: 53
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13cf25b95252bc941950f53f3dccbba0
+      internalID: -376334586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-Groggy_12
+      rect:
+        serializedVersion: 2
+        x: 7848
+        y: 0
+        width: 66
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.86}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11f510514c2ac944aa8524e0ac7c75c7
+      internalID: -1751171735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      The Heart Hoarder-Groggy_0: -1647846699
+      The Heart Hoarder-Groggy_1: -919559765
+      The Heart Hoarder-Groggy_10: 1362320278
+      The Heart Hoarder-Groggy_11: -376334586
+      The Heart Hoarder-Groggy_12: -1751171735
+      The Heart Hoarder-Groggy_2: -2055576639
+      The Heart Hoarder-Groggy_3: 307644441
+      The Heart Hoarder-Groggy_4: -2121174574
+      The Heart Hoarder-Groggy_5: -1319984642
+      The Heart Hoarder-Groggy_6: 1488024855
+      The Heart Hoarder-Groggy_7: -377024994
+      The Heart Hoarder-Groggy_8: 1252185078
+      The Heart Hoarder-Groggy_9: 1342305757
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

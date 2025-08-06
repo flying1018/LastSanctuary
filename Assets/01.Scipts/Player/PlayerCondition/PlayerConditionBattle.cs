@@ -18,8 +18,7 @@ public partial class PlayerCondition : IDamageable, IKnockBackable,IGuardable
         CurHp = MaxHp;
         CurStamina = MaxStamina;
         HealAmonut = _player.Data.healAmount;
-        //testCode
-        CurUltimate = MaxUltimate;
+        CurUltimate = 0;
         
         IsInvincible = false;
     }

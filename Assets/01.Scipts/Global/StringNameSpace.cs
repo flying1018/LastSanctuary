@@ -60,7 +60,6 @@ public static class StringNameSpace
         public const string BackGround = "BackGround";
         public const string Wall = "Wall";
         public const string Celling = "Celling";
-
     }
     
     //씬 정보

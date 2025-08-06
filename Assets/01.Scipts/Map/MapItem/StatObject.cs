@@ -24,6 +24,7 @@ public class StatObject : MonoBehaviour, IInteractable
         
         _isGet = true;
         ItemManager.Instance.UpgradeStat(statData);
+        GetComponent<TutorialUIInterction>()?.ShowUI(); //상호작용시 UI 호출
         OnInteracte?.Invoke();
         gameObject.SetActive(false);
     }
