@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 13d24b6bc7b2b93419ea73b3eccbcc0b
+guid: 41410d270db772644b5f429ac85ad0c2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: MirrorofProphet_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 0
+        width: 200
+        height: 306
+      alignment: 9
+      pivot: {x: 0.75, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29e43af7140cc2b458c80a80abe71045
+      internalID: -1928609384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MirrorofProphet_Attack_5
+      rect:
+        serializedVersion: 2
+        x: 1252
+        y: 0
+        width: 200
+        height: 306
+      alignment: 9
+      pivot: {x: 0.75, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef3ac087525987a4d913830a37307e85
+      internalID: 983403201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MirrorofProphet_Attack_6
+      rect:
+        serializedVersion: 2
+        x: 1480
+        y: 0
+        width: 200
+        height: 306
+      alignment: 9
+      pivot: {x: 0.75, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be8553f56c68e6a4484bc7d3aa784d4f
+      internalID: -1517190281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MirrorofProphet_Attack_7
+      rect:
+        serializedVersion: 2
+        x: 1708
+        y: 0
+        width: 200
+        height: 306
+      alignment: 9
+      pivot: {x: 0.75, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4195d101f55b184f962a0e5040e39f7
+      internalID: 1530409758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MirrorofProphet_Attack_8
+      rect:
+        serializedVersion: 2
+        x: 1925
+        y: 0
+        width: 200
+        height: 306
+      alignment: 9
+      pivot: {x: 0.75, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8080b9e048427ad49a92c0b230a62caf
+      internalID: 806464978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +237,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MirrorofProphet_Attack_0: 1053074255
+      MirrorofProphet_Attack_1: 3568195
+      MirrorofProphet_Attack_2: -1928609384
+      MirrorofProphet_Attack_3: -730162130
+      MirrorofProphet_Attack_4: 152123900
+      MirrorofProphet_Attack_5: 983403201
+      MirrorofProphet_Attack_6: -1517190281
+      MirrorofProphet_Attack_7: 1530409758
+      MirrorofProphet_Attack_8: 806464978
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
