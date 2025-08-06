@@ -16,7 +16,6 @@ public class BossAttackInfo
     public float AnimTime => attackAnim.length;
     //투사체 있는 경우
     public GameObject projectilePrefab;
-    public int projectilePoolId;
     public int projectilePower;
     //사운드
     public AudioClip[] attackSounds;

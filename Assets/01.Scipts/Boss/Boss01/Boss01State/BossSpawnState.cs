@@ -34,7 +34,6 @@ public class BossSpawnState : BossBaseState
         //bossUI
         if (_boss.UIOn)
         {
-            Debug.Log("UIOn");
             UIManager.Instance.SetBossUI(true,_condition);
         }
     }

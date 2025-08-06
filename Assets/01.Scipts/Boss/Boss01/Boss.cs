@@ -51,7 +51,7 @@ public class Boss : MonoBehaviour
         Move = GetComponent<KinematicMove>();
     }
 
-    public void Init(BossEvent bossEvent)
+    public virtual void Init(BossEvent bossEvent)
     {
         BossEvent = bossEvent;
         //무기 데이터 설정
@@ -72,19 +72,19 @@ public class Boss : MonoBehaviour
 
 
 
-    private void OnEnable()
+    protected void OnEnable()
     {
         //오브젝트 활성화 시 플레이어 찾기
         Target = FindObjectOfType<Player>().transform;
     }
     
-    private void Update()
+    protected void Update()
     {
         StateMachine.HandleInput();
         StateMachine.Update();
     }
     
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
 //        Debug.Log(StateMachine.currentState);
@@ -92,7 +92,7 @@ public class Boss : MonoBehaviour
     }
 
     //보스와 충돌시 넉백과 대미지
-    private void OnTriggerEnter2D(Collider2D other)
+    protected void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
         {

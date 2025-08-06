@@ -56,9 +56,10 @@ public class BossEvent : MonoBehaviour
         _bossCamera.Priority = 0;
     }
 
+    public virtual void OnTriggerBossPhaseShift() {}
+    
     public virtual void OnTriggerBossDeath() { }
     
-    public virtual void OnTriggerBossPhaseShift() {}
 
 
 }
