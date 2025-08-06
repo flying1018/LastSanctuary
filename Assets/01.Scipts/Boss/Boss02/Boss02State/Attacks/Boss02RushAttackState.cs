@@ -14,6 +14,15 @@ public class Boss02RushAttackState : Boss02AttackState
         
         _rushDir = (_stateMachine2.TargetMirror - _boss2.transform.position).normalized;
         Rotate(_rushDir);
+        
+        _boxCollider.enabled = false;
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        
+        _boxCollider.enabled = true;
     }
 
 

@@ -27,8 +27,9 @@ public class UIManager : Singleton<UIManager>
     public SaveUI saveUI { get; set; }
 
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         //testCode
         Init();
     }

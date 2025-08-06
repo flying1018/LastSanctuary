@@ -6,6 +6,8 @@ public class Boss02Condition : BossCondition
 {
     private Boss02 _boss02;
     
+    public bool PlayerPerfectGuard { get; set; }
+    
     public void Init(Boss02 boss)
     {
         _boss = boss;
@@ -21,11 +23,14 @@ public class Boss02Condition : BossCondition
         _isTakeDamageable = false;
     }
 
-    public void ChangeAnotherIdleState()
+    public override void ApplyGroggy(WeaponInfo weaponInfo)
     {
+        base.ApplyGroggy(weaponInfo);
+
         if (_boss02.StateMachine2.currentState is Boss02RushAttackState)
         {
-            _boss02.StateMachine2.ChangeState(_boss02.StateMachine2.IdleState);       
+            PlayerPerfectGuard = true;
+            _boss02.StateMachine2.ChangeState(_boss02.StateMachine2.AreaAttackIdle);       
         }
     }
 }

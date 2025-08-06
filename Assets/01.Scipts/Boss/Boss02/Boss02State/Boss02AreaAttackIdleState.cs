@@ -6,9 +6,18 @@ public class Boss02AreaAttackIdleState : Boss02IdleState
 {
 
     public Boss02AreaAttackIdleState(Boss02StateMachine bossStateMachine) : base(bossStateMachine) { }
-    
+
+    public override void Exit()
+    {
+        base.Exit();
+
+        _condition2.PlayerPerfectGuard = false;
+    }
+
     public override void Update()
     {
+        _stateMachine2.AreaAttack.CheckCoolTime();
+        
         _time += Time.deltaTime;
         if (_time > _data.attackIdleTime)
         {
@@ -24,8 +33,11 @@ public class Boss02AreaAttackIdleState : Boss02IdleState
                 _stateMachine2.TargetMirror = _boss02Event.GetRandomMirror();
                 _stateMachine2.ChangeState(_stateMachine2.TeleportState);
             }
-            
         }
     }
 
+    public override void PhysicsUpdate()
+    {
+        _move.Move(Vector2.down);
+    }
 }

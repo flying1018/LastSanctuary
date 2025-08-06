@@ -97,7 +97,7 @@ public class Boss : MonoBehaviour
     }
 
     //보스와 충돌시 넉백과 대미지
-    protected void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
         {

@@ -33,6 +33,14 @@ public class Boss02 : Boss
     {
         StateMachine2.PhysicsUpdate();
     }
+
+    protected override void OnTriggerEnter2D(Collider2D other)
+    {
+        if (Condition2.PlayerPerfectGuard) return;
+        
+        base.OnTriggerEnter2D(other);
+    }
+    
     
     #region AnimationEvent Method
     

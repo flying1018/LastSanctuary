@@ -24,6 +24,7 @@ public class BossBaseState : IState
     protected Boss02 _boss2;
     protected Boss02StateMachine _stateMachine2;
     protected Boss02Event _boss02Event;
+    protected Boss02Condition _condition2;
     
     protected float _time;
     
@@ -51,7 +52,7 @@ public class BossBaseState : IState
         _rigidbody = _boss2.Rigidbody;
         _spriteRenderer =_boss2.SpriteRenderer;
         _boxCollider = _boss2.BoxCollider;
-        _condition = _boss2.Condition2;
+        _condition2 = _boss2.Condition2;
         _weapon = _boss2.BossWeapon;
         _move = _boss2.Move;
         _boss02Event = _boss2.Boss02Event;

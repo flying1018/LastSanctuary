@@ -97,7 +97,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     }
     
     //보스 그로기 증가
-    public void ApplyGroggy(WeaponInfo weaponInfo)
+    public virtual void ApplyGroggy(WeaponInfo weaponInfo)
     {
         if(_curHp <= 0) return;
         if (_isTakeDamageable) return;
