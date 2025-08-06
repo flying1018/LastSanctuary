@@ -11,19 +11,19 @@ public class BossBaseState : IState
 {
     //필요하거나 자주쓰는 컴포넌트
     protected BossStateMachine _stateMachine1;
-    protected Boss02StateMachine _stateMachine2;
     protected BossSO _data;
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
     protected BoxCollider2D _boxCollider;
     protected BossCondition _condition;
     protected Boss _boss;
-    protected Boss02 _boss2;
     protected BossWeapon _weapon;
     protected KinematicMove _move;
-    protected Boss02Event _boss02Event;
     protected Animator _animator;
 
+    protected Boss02 _boss2;
+    protected Boss02StateMachine _stateMachine2;
+    protected Boss02Event _boss02Event;
     
     protected float _time;
     
@@ -51,10 +51,10 @@ public class BossBaseState : IState
         _rigidbody = _boss2.Rigidbody;
         _spriteRenderer =_boss2.SpriteRenderer;
         _boxCollider = _boss2.BoxCollider;
-        _condition = _boss2.Condition;
+        _condition = _boss2.Condition2;
         _weapon = _boss2.BossWeapon;
         _move = _boss2.Move;
-        _boss02Event = _boss2.BossEvent;
+        _boss02Event = _boss2.Boss02Event;
         _animator = _boss2.Animator;
 
     }

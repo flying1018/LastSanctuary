@@ -36,6 +36,9 @@ public class Boss02AttackState : BossBaseState
         _boss2.WeaponInfo.DamageType = DamageType.Heavy;
         
         _weapon.WeaponInfo = _boss2.WeaponInfo;
+
+        //쿨타임 초기화
+        _coolTime = 0;
     }
     
     public override void Update()
@@ -56,15 +59,7 @@ public class Boss02AttackState : BossBaseState
     public bool CheckCoolTime()
     {
         _coolTime += Time.deltaTime;
-        if (_coolTime > _attackCoolTime)
-        {
-            _coolTime = 0;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return (_coolTime >= _attackCoolTime);
     }
 
     public override void PlaySFX1()

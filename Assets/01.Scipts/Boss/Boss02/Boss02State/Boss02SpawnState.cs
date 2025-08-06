@@ -23,7 +23,7 @@ public class Boss02SpawnState : BossBaseState
     public override void Exit()
     {
         //플레이어 상태 복구
-        _boss2.BossEvent.StartBattle();
+        _boss2.Boss02Event.StartBattle();
         
         //배경음 추가
         SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBossPhase1);

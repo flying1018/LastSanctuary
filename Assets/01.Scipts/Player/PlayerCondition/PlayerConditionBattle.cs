@@ -100,6 +100,11 @@ public partial class PlayerCondition : IDamageable, IKnockBackable,IGuardable
                 bossCondition.ApplyGroggy(_player.WeaponInfo);
             }
 
+            if (weaponInfo.Condition is Boss02Condition boss02Condition)
+            {
+                boss02Condition.ChangeAnotherIdleState();
+            }
+
             if (weaponInfo.Condition is EnemyCondition enemyCondition && weaponInfo.DamageType != DamageType.Range)
             {
                 //적은 그로기 처리

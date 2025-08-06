@@ -36,7 +36,7 @@ public class Boss : MonoBehaviour
 
     public bool UIOn { get => uiOn; }
 
-    public void Awake()
+    public virtual void Awake()
     {
         //필요한 프로퍼티 설정
         AnimationDB = new BossAnimationDB(); 
@@ -51,9 +51,8 @@ public class Boss : MonoBehaviour
         Move = GetComponent<KinematicMove>();
     }
 
-    public virtual void Init(BossEvent bossEvent)
+    public void Init()
     {
-        BossEvent = bossEvent;
         //무기 데이터 설정
         WeaponInfo = new WeaponInfo();
         WeaponInfo.Condition = Condition;
@@ -64,9 +63,15 @@ public class Boss : MonoBehaviour
         
         Move.Init(BoxCollider.bounds.size.x, BoxCollider.bounds.size.y, Rigidbody);
         AnimationDB.Initailize(); 
-        Condition.Init(this);
         Phase2 = false;
+    }
+
+    public void Init(BossEvent bossEvent)
+    {
+        Init();
         
+        BossEvent = bossEvent;
+        Condition.Init(this);
         StateMachine = new BossStateMachine(this);
     }
 

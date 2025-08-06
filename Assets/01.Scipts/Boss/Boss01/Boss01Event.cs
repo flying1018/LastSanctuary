@@ -9,6 +9,7 @@ public class Boss01Event : BossEvent
     private CinemachineBlendDefinition _originBlend;
     private Vector3 _originCameraPosition;
     private float _originCameraSize;
+    private Boss _boss;
 
     [Header("Boss Spawn")]
     [SerializeField] private Transform playerPosition;
@@ -27,6 +28,9 @@ public class Boss01Event : BossEvent
     protected override void Start()
     {
         base.Start();
+        
+        _boss = FindAnyObjectByType<Boss>();
+        _boss.gameObject.SetActive(false);
         
         //카메라 기본 설정
         _originBlend = _brain.m_DefaultBlend; 

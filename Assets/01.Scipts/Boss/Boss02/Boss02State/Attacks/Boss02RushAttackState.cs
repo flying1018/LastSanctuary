@@ -19,7 +19,8 @@ public class Boss02RushAttackState : Boss02AttackState
 
     public override void Update()
     {
-        if (Vector2.Distance(_boss2.transform.position, _stateMachine2.TargetMirror) < 0.1f)
+        base.Update();
+        if (Vector2.Distance(_boss2.transform.position, _stateMachine2.TargetMirror) < 0.2f)
         {
             _stateMachine2.ChangeState(_stateMachine2.IdleState);
         }   
