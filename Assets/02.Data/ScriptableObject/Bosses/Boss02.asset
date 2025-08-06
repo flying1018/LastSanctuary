@@ -57,7 +57,7 @@ MonoBehaviour:
     attackSounds: []
   - multiplier: 1.5
     knockbackForce: 5
-    coolTime: 10
+    coolTime: 15
     animParameter: Attack4
     attackAnim: {fileID: 7400000, guid: 2eb1b4d8242bb8443b5582a27f445ee3, type: 2}
     projectilePrefab: {fileID: 5955045292827202703, guid: c5ad0093618fcc84ba07cb8860d03a27, type: 3}
@@ -69,13 +69,13 @@ MonoBehaviour:
     animParameter: Attack5
     attackAnim: {fileID: 7400000, guid: ddd282f8b2c550145bf3c5583f816290, type: 2}
     projectilePrefab: {fileID: 5492190605815318470, guid: 295d6274bd3645746b7d111692cecefd, type: 3}
-    projectilePower: 0
+    projectilePower: 5
     attackSounds: []
-  - multiplier: 1.5
-    knockbackForce: 5
-    coolTime: 10
-    animParameter: Attack5
-    attackAnim: {fileID: 7400000, guid: 40a4f2c395cd582409922bd0adf8bf1c, type: 2}
+  - multiplier: 0
+    knockbackForce: 0
+    coolTime: 0
+    animParameter: FakeAttack
+    attackAnim: {fileID: 7400000, guid: 335718903fd213a44908bf678905d3de, type: 2}
     projectilePrefab: {fileID: 0}
     projectilePower: 0
     attackSounds: []
@@ -83,8 +83,8 @@ MonoBehaviour:
   backjumpDistance: 0
   backjumpHeight: 0
   backjumpSpeed: 0
-  phaseShiftHpRatio: 0
-  phaseShiftAnim: {fileID: 0}
+  phaseShiftHpRatio: 0.5
+  phaseShiftAnim: {fileID: 7400000, guid: 5ff75cee86e07b742a0f6b748a03e16c, type: 2}
   breathSound: {fileID: 0}
   howlingSound: {fileID: 0}
   jumpSound: {fileID: 0}
@@ -92,4 +92,8 @@ MonoBehaviour:
   deathSound: {fileID: 0}
   phaseShiftSound: {fileID: 0}
   walkSound: {fileID: 0}
-  materials: []
+  materials:
+  - {fileID: 2100000, guid: 925d379cb152be54891be7a5c23adf6a, type: 2}
+  - {fileID: 2100000, guid: 19f0a6c5696afe54a8574a963f4c1a70, type: 2}
+  - {fileID: 2100000, guid: a10da65ad77caf64cbdf4e4fcfb69a74, type: 2}
+  - {fileID: 2100000, guid: 1d6c919171b720f4698baec530ce9a22, type: 2}
