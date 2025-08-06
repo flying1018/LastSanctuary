@@ -14,6 +14,7 @@ public class EnemySO : ScriptableObject
 
     [Header("Move")]
     public float gravityPower;
+    public float runSpeed;
     
     [Header("DetectState")]
     public float detectTime;
