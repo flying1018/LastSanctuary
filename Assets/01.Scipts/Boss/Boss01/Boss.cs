@@ -36,7 +36,7 @@ public class Boss : MonoBehaviour
 
     public bool UIOn { get => uiOn; }
 
-    public void Awake()
+    public virtual void Awake()
     {
         //필요한 프로퍼티 설정
         AnimationDB = new BossAnimationDB(); 
@@ -51,9 +51,8 @@ public class Boss : MonoBehaviour
         Move = GetComponent<KinematicMove>();
     }
 
-    public virtual void Init(BossEvent bossEvent)
+    public void Init()
     {
-        BossEvent = bossEvent;
         //무기 데이터 설정
         WeaponInfo = new WeaponInfo();
         WeaponInfo.Condition = Condition;
@@ -64,9 +63,15 @@ public class Boss : MonoBehaviour
         
         Move.Init(BoxCollider.bounds.size.x, BoxCollider.bounds.size.y, Rigidbody);
         AnimationDB.Initailize(); 
-        Condition.Init(this);
         Phase2 = false;
+    }
+
+    public void Init(BossEvent bossEvent)
+    {
+        Init();
         
+        BossEvent = bossEvent;
+        Condition.Init(this);
         StateMachine = new BossStateMachine(this);
     }
 
@@ -78,13 +83,13 @@ public class Boss : MonoBehaviour
         Target = FindObjectOfType<Player>().transform;
     }
     
-    protected void Update()
+    protected virtual void Update()
     {
         StateMachine.HandleInput();
         StateMachine.Update();
     }
     
-    protected void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
 //        Debug.Log(StateMachine.currentState);
@@ -92,7 +97,7 @@ public class Boss : MonoBehaviour
     }
 
     //보스와 충돌시 넉백과 대미지
-    protected void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
         {
@@ -117,7 +122,7 @@ public class Boss : MonoBehaviour
     #region AnimationEvent Method
     
     //애니메이션 이벤트
-    public void AnimationEvent1()
+    public virtual void AnimationEvent1()
     {
         if (StateMachine.currentState is BossBaseState bossBaseState)
         {
@@ -126,7 +131,7 @@ public class Boss : MonoBehaviour
     }
     
     //애니메이션 이벤트
-    public void AnimationEvent2()
+    public virtual void AnimationEvent2()
     {
         if (StateMachine.currentState is BossBaseState bossBaseState)
         {
@@ -137,7 +142,7 @@ public class Boss : MonoBehaviour
     
     //효과음 실행르 위한 메서드
     //사운드 실행 애니메이션 이벤트
-    public void EventSFX1()
+    public virtual void EventSFX1()
     {
         if (StateMachine.currentState is BossBaseState bossBaseState)
         {
@@ -145,7 +150,7 @@ public class Boss : MonoBehaviour
         }
     }
 
-    public void EventSFX2()
+    public virtual void EventSFX2()
     {
         if (StateMachine.currentState is BossBaseState bossBaseState)
         {
@@ -153,7 +158,7 @@ public class Boss : MonoBehaviour
         }
     }
     
-    public void EventSFX3()
+    public virtual void EventSFX3()
     {
         if (StateMachine.currentState is BossBaseState bossBaseState)
         {

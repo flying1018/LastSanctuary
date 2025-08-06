@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BossProjectileAttackState : BossAttackState
 {
-    public BossProjectileAttackState(BossStateMachine bossStateMachine, BossAttackInfo attackInfo) : base(
-        bossStateMachine, attackInfo) { }
+    public BossProjectileAttackState(BossStateMachine bossStateMachine1, BossAttackInfo attackInfo) : base(
+        bossStateMachine1, attackInfo) { }
 
     public override void PlayEvent1()
     {

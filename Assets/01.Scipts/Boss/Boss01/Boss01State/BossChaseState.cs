@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossChaseState : BossBaseState
 {
-    public BossChaseState(BossStateMachine bossStateMachine) : base(bossStateMachine)
+    public BossChaseState(BossStateMachine bossStateMachine1) : base(bossStateMachine1)
     {
     }
     
@@ -22,13 +22,28 @@ public class BossChaseState : BossBaseState
     
     public override void Update()
     {
-        base.Update();
+        //공격 쿨타임 체크
+        if (_stateMachine1.Attack1.CheckCoolTime())
+        {
+            _stateMachine1.Attacks.Enqueue(_stateMachine1.Attack1);
+        }
+        
+        if (_stateMachine1.Attack2.CheckCoolTime())
+        {           
+            _stateMachine1.Attacks.Enqueue(_stateMachine1.Attack2);
+        }
+        
+        //3번째 공격 페이즈 2에서만 사용
+        if (_boss.Phase2 && _stateMachine1.Attack3.CheckCoolTime())
+        {           
+            _stateMachine1.Attacks.Enqueue(_stateMachine1.Attack3);
+        }
         
         //타겟이 사라지거나, 추적 사정거리에 안에 있으면
         if (_boss.Target == null || WithinChaseDistance())
         {
             //대기 상태로 이동
-            _stateMachine.ChangeState(_stateMachine.IdleState);
+            _stateMachine1.ChangeState(_stateMachine1.IdleState);
         }
     }
 

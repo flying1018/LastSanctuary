@@ -11,16 +11,12 @@ public class BoomerangProjectile : ProjectileWeapon
     private Vector2 _dir;
     private float _arrowPower;
     private float _time;
-
-    private void Awake()
-    {
-        Init(40, 5, PoolingIndex.Boss02Projectile1);
-        Shot(new Vector2(1,1), 5);
-    }
+    private float _width;
 
     public override void Shot(Vector2 dir, float arrowPower)
     {
         _dir = new Vector2(dir.x*width, dir.y*height);
+        _width = _dir.x;
         _arrowPower = arrowPower;
         _time = 0;
     }
@@ -29,7 +25,7 @@ public class BoomerangProjectile : ProjectileWeapon
     {
         _time += Time.fixedDeltaTime;
 
-        _dir.x = width - width * _time;
+        _dir.x = _width - _width * _time;
         
         _rigidbody2D.MovePosition(_rigidbody2D.position + _arrowPower*Time.fixedDeltaTime*_dir);
     }

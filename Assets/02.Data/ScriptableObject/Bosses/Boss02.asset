@@ -28,7 +28,7 @@ MonoBehaviour:
   spawnFallVelocity: 0
   spawnAnim: {fileID: 7400000, guid: 2bd9235ee42807643b7524b45b358d1b, type: 2}
   attackRange: 20
-  attackIdleTime: 3
+  attackIdleTime: 2
   knockbackForce: 5
   attacks:
   - multiplier: 1.5
@@ -37,7 +37,7 @@ MonoBehaviour:
     animParameter: Attack1
     attackAnim: {fileID: 7400000, guid: fb2cd6ba0ec1ea0418165fad187ca9a7, type: 2}
     projectilePrefab: {fileID: 0}
-    projectilePower: 0
+    projectilePower: 10
     attackSounds: []
   - multiplier: 1.5
     knockbackForce: 5
@@ -53,7 +53,7 @@ MonoBehaviour:
     animParameter: Attack3
     attackAnim: {fileID: 7400000, guid: 6c3c77eddb180974eae3c670713eca79, type: 2}
     projectilePrefab: {fileID: 0}
-    projectilePower: 0
+    projectilePower: 15
     attackSounds: []
   - multiplier: 1.5
     knockbackForce: 5
@@ -97,3 +97,4 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 19f0a6c5696afe54a8574a963f4c1a70, type: 2}
   - {fileID: 2100000, guid: a10da65ad77caf64cbdf4e4fcfb69a74, type: 2}
   - {fileID: 2100000, guid: 1d6c919171b720f4698baec530ce9a22, type: 2}
+  teleportAnim: {fileID: 7400000, guid: 43e4160540de0e14aacbbc2e8b79357e, type: 2}

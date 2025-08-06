@@ -9,17 +9,17 @@ using UnityEngine;
 /// </summary>
 public class BossStateMachine : StateMachine
 {
-    public Boss Boss { get; protected set; }
-    public BossIdleState IdleState {get; protected set;}
-    public BossChaseState ChaseState { get; protected set; }
-    public BossGroggyState GroggyState { get; protected set; }
-    public BossSpawnState SpawnState { get; protected set; }
-    public Queue<BossAttackState> Attacks { get; protected set; }
-    public BossChopDownAttackState Attack1 { get; protected set; }
-    public BossProjectileAttackState Attack2 { get; protected set; }
-    public BossJumpAttackState Attack3 { get; protected set; }
-    public BossPhaseShiftState PhaseShiftState { get; protected set; }
-    public BossDeathState DeathState { get; protected set; }
+    public Boss Boss { get; private set; }
+    public BossIdleState IdleState {get; private set;}
+    public BossChaseState ChaseState { get; private set; }
+    public BossGroggyState GroggyState { get; private set; }
+    public BossSpawnState SpawnState { get; private set; }
+    public Queue<BossAttackState> Attacks { get; private set; }
+    public BossChopDownAttackState Attack1 { get; private set; }
+    public BossProjectileAttackState Attack2 { get; private set; }
+    public BossJumpAttackState Attack3 { get; private set; }
+    public BossPhaseShiftState PhaseShiftState { get; private set; }
+    public BossDeathState DeathState { get; private set; }
 
     
     //부모 클래스 BossStateMachine

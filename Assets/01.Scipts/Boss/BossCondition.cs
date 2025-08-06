@@ -6,10 +6,10 @@ using UnityEngine;
 public class BossCondition : Condition,IDamageable, IGroggyable
 {
     //필드
-    private Boss _boss;
-    private int _maxGroggyGauge;
-    private float _groggyGauge;
-    private Coroutine _hitEffectCoroutine;
+    protected Boss _boss;
+    protected int _maxGroggyGauge;
+    protected float _groggyGauge;
+    protected Coroutine _hitEffectCoroutine;
     
     //프로퍼티
     public bool IsGroggy {get; set;}
@@ -97,7 +97,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     }
     
     //보스 그로기 증가
-    public void ApplyGroggy(WeaponInfo weaponInfo)
+    public virtual void ApplyGroggy(WeaponInfo weaponInfo)
     {
         if(_curHp <= 0) return;
         if (_isTakeDamageable) return;

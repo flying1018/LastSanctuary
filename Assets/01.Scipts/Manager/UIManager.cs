@@ -25,7 +25,7 @@ public class UIManager : Singleton<UIManager>
     public BossUI BossUI { get; set; }
     public ScreenFadeUI screenFadeUI { get; set; }
     public SaveUI saveUI { get; set; }
-
+    
 
     private void Start()
     {

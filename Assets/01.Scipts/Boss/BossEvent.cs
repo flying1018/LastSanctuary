@@ -13,7 +13,6 @@ public class BossEvent : MonoBehaviour
     protected CinemachineVirtualCamera _bossCamera;
     protected CinemachineBasicMultiChannelPerlin _perlin;
     protected CinemachineBrain _brain;
-    protected Boss _boss;
     protected Player _player;
     protected SpriteRenderer _backGroundSprite;
     
@@ -22,9 +21,6 @@ public class BossEvent : MonoBehaviour
     protected virtual void Start()
     {
         _moveObjects = GetComponentsInChildren<MoveObject>();
-        
-        _boss = FindAnyObjectByType<Boss>();
-        _boss.gameObject.SetActive(false);
         
         _backGroundSprite = GameObject.FindGameObjectWithTag(StringNameSpace.Tags.BackGround)
             .GetComponent<SpriteRenderer>();

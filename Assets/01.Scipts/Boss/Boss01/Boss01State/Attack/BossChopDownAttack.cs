@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class BossChopDownAttackState : BossAttackState
 {
-    public BossChopDownAttackState(BossStateMachine bossStateMachine, BossAttackInfo attackInfo) : base(bossStateMachine, attackInfo)
+    public BossChopDownAttackState(BossStateMachine bossStateMachine1, BossAttackInfo attackInfo) : base(bossStateMachine1, attackInfo)
     { }
 }

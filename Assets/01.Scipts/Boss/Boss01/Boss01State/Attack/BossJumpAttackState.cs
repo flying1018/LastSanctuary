@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossJumpAttackState : BossAttackState
 {
-    public BossJumpAttackState(BossStateMachine bossStateMachine, BossAttackInfo attackInfo) : base(bossStateMachine, attackInfo) { }
+    public BossJumpAttackState(BossStateMachine bossStateMachine1, BossAttackInfo attackInfo) : base(bossStateMachine1, attackInfo) { }
 
     public override void Enter()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossSpawnState : BossBaseState
 {
-    public BossSpawnState(BossStateMachine stateMachine) : base(stateMachine) {}
+    public BossSpawnState(BossStateMachine stateMachine1) : base(stateMachine1) {}
 
     public override void Enter()
     {
@@ -45,7 +45,7 @@ public class BossSpawnState : BossBaseState
         if (_time >= _data.SpawnAnimeTime)
         {
             //대기 상태
-            _stateMachine.ChangeState(_stateMachine.IdleState);
+            _stateMachine1.ChangeState(_stateMachine1.IdleState);
         }
     }
 

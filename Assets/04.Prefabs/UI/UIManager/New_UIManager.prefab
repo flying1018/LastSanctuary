@@ -522,21 +522,25 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2006731200756750038, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4509313604129103294, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4509313604129103294, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4509313604129103294, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4509313604129103294, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4509313604129103294, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
       propertyPath: m_AnchorMin.x
@@ -606,8 +610,66 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProduceUI
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    - target: {fileID: 5250299520217273143, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250299520217273143, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250299520217273143, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250299520217273143, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250299520217273143, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250299520217273143, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892961002116430659, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892961002116430659, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892961002116430659, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892961002116430659, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892961002116430659, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892961002116430659, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892961002116430659, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -960
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892961002116430659, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7184018041065039368, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 7838593785006218010, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d828b4d1666154b5494ee5c96c230384, type: 3}
