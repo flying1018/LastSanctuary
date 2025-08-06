@@ -11,11 +11,15 @@ public class Boss02TeleportState : BossBaseState
         StartAnimation(_boss2.AnimationDB.WalkParameterHash);
 
         _time = 0;
+        
+        _boxCollider.enabled = false;
     }
 
     public override void Exit()
     {
         StopAnimation(_boss2.AnimationDB.WalkParameterHash);
+
+        _boxCollider.enabled = true;
     }
 
     public override void Update()
