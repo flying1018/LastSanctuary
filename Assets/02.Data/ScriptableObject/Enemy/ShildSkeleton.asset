@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe245788b651394e8fcb8b034fc10ec, type: 3}
+  m_Name: ShildSkeleton
+  m_EditorClassIdentifier: 
+  _key: 0
+  _name: 
+  gravityPower: 0.6
+  detectTime: 0.2
+  detectDistance: 7
+  moveSpeed: 3
+  cancelChaseTime: 5
+  hitMaterial: {fileID: 2100000, guid: 1d6c919171b720f4698baec530ce9a22, type: 2}
+  attackDistance: 5
+  attackDuration: 1.5
+  knockbackForce: 5
+  attackAnim: {fileID: 7400000, guid: 44ccad762aabf8f41b1546b699a4a850, type: 2}
+  blinkLength: 1
+  attack: 25
+  hp: 120
+  defence: 0
+  damageDelay: 0.1
+  hitDuration: 0.5
+  dropGold: 500
+  deathAnim: {fileID: 7400000, guid: c49c567cc62317943b3a2b705b391e59, type: 2}
+  arrowPrefab: {fileID: 0}
+  arrowPoolId: 0
+  arrowPower: 0
+  flyingHeight: 0
+  flyingSpeed: 0
+  attackSound: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: de0cd8413b9439d478b9403f1c719fda, type: 3}

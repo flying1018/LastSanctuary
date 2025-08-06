@@ -7,11 +7,11 @@ using UnityEngine;
 /// <summary>
 /// UI의 필요한 데이터
 /// </summary>
-[CreateAssetMenu (fileName = "UI", menuName = "new UI")]
+[CreateAssetMenu(fileName = "UI", menuName = "new UI")]
 public class UIManagerSO : ScriptableObject
 {
     [Header("RelicUI")]
-    public string[] statNames; 
+    public string[] statNames;
     public int equipNum;    //장비칸 수
     public int nonLockEquip;
     public GameObject statUIPrefab;
@@ -20,16 +20,18 @@ public class UIManagerSO : ScriptableObject
     public string relicLeftClickDesc;
     public string relicRightClickDesc;
 
-    [Header("MainUI")] 
+    [Header("MainUI")]
     public int buffUINum;
     public int conditionSize;
     public GameObject buffUIPrefab;
     public Sprite potionIcon;
     public Sprite emptyPotionIcon;
 
-    [Header("SkillUI")] 
+    [Header("SkillUI")]
     public float centerLinePosition;
     public string skillLeftClickDesc;
     public string sKillRightClickDesc;
-    
+
+    [Header("ProduceUI")]
+    public GameObject saveUIObj;
 }

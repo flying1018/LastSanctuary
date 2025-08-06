@@ -2959,7 +2959,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: New_UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 610911475562611203, guid: 855e5eb8bcb01fb4b8ac6aae284da4bb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2385915640873112566, guid: 855e5eb8bcb01fb4b8ac6aae284da4bb, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3110268536229294377, guid: 855e5eb8bcb01fb4b8ac6aae284da4bb, type: 3}
+      propertyPath: saveImage
+      value: 
+      objectReference: {fileID: 1624928330}
+    - target: {fileID: 5999482983497859575, guid: 855e5eb8bcb01fb4b8ac6aae284da4bb, type: 3}
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
@@ -109223,7 +109235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7a517f123d41e4eb8d82a7ff780654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiPrefab: {fileID: 0}
+  uiPrefab: {fileID: 1950846348}
 --- !u!1 &1524110038
 GameObject:
   m_ObjectHideFlags: 0
@@ -116676,6 +116688,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1624928330 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5999482983497859575, guid: 855e5eb8bcb01fb4b8ac6aae284da4bb, type: 3}
+  m_PrefabInstance: {fileID: 459280334}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1668494437
 PrefabInstance:
   m_ObjectHideFlags: 0
