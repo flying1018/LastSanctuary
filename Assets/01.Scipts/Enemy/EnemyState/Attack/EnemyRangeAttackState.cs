@@ -15,27 +15,31 @@ public class EnemyRangeAttackState : EAttackState
 
     public override void PlayEvent1()
     {
-        FireArrow();
+        FireProjetile();
     }
 
     //원거리 공격
-    public void FireArrow()
+    public void FireProjetile()
     {
         Transform firePoint = _enemy.EnemyWeapon.transform;
 
         //오브젝트 생성
-        GameObject arrow = ObjectPoolManager.Get(_data.arrowPrefab, (int)PoolingIndex.Arrow);
-        arrow.transform.position = firePoint.position;
+        GameObject projectileOb = ObjectPoolManager.Get(_data.projectilePrefab, (int)PoolingIndex.Arrow);
+        projectileOb.transform.position = firePoint.position;
 
         //쏘는 방향 설정
         Vector2 dir = DirectionToTarget();
-        arrow.transform.right = dir;
+        if (_enemy.Data.rangeType == RangeType.Beeline)
+        {
+            dir = new Vector2(dir.x, 0).normalized;
+        }
+        projectileOb.transform.right = dir;
 
         //투사체 발사
-        if (arrow.TryGetComponent(out ProjectileWeapon arrowProjectile))
+        if (projectileOb.TryGetComponent(out ProjectileWeapon projectile))
         {
-            arrowProjectile.Init(_data.attack, _data.knockbackForce,PoolingIndex.Arrow);
-            arrowProjectile.Shot(dir, _data.arrowPower);
+            projectile.Init(_data.attack, _data.knockbackForce,  PoolingIndex.Arrow);
+            projectile.Shot(dir, _data.projectilePower);
         }
         
         

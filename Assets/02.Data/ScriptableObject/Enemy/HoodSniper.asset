@@ -15,6 +15,7 @@ MonoBehaviour:
   _key: 0
   _name: 
   gravityPower: 0.6
+  runSpeed: 0
   detectTime: 0.2
   detectDistance: 10
   moveSpeed: 3
@@ -32,10 +33,11 @@ MonoBehaviour:
   hitDuration: 0.5
   dropGold: 500
   deathAnim: {fileID: 7400000, guid: f919a152158bfc44cab06413c735a95d, type: 2}
-  arrowPrefab: {fileID: 5272416872062206358, guid: c05a8d5e33a31fd44952373077d8c852, type: 3}
-  arrowPoolId: 2
-  arrowPower: 25
+  projectilePrefab: {fileID: 5272416872062206358, guid: c05a8d5e33a31fd44952373077d8c852, type: 3}
+  projectilePower: 36
+  rangeType: 0
   flyingHeight: 0
   flyingSpeed: 0
   attackSound: {fileID: 8300000, guid: 9469b8c238d8bcd4b987c8279bc7675a, type: 3}
   hitSound: {fileID: 8300000, guid: 0c627532d49dd2b49baec69f27b7b7b9, type: 3}
+  guardSound: {fileID: 0}

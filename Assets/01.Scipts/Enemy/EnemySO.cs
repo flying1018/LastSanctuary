@@ -1,9 +1,15 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// 몬스터에 필요한 초기 데이터
 /// </summary>
+public enum RangeType
+{
+ LookOn,
+ Beeline,
+}
 [Serializable]
 [CreateAssetMenu(fileName = "Enemy", menuName = "New Enemy")]
 public class EnemySO : ScriptableObject
@@ -52,9 +58,9 @@ public class EnemySO : ScriptableObject
     public float DeathTime => deathAnim.length;
     
     [Header("Range Attack")]
-    public GameObject arrowPrefab;
-    public int arrowPoolId;
-    public int arrowPower;
+    public GameObject projectilePrefab;
+    public int projectilePower;
+    public RangeType rangeType;
 
     [Header("Flying Attack")] 
     public float flyingHeight;
@@ -63,5 +69,5 @@ public class EnemySO : ScriptableObject
     [Header("Sound")] 
     public AudioClip attackSound;
     public AudioClip hitSound;
-
+    public AudioClip guardSound;
 }
