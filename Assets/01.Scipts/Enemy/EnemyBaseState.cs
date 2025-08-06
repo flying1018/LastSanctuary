@@ -122,6 +122,11 @@ public class EnemyBaseState : IState
 
     public virtual void PlaySFX1() { }
     public virtual void PlaySFX2() { }
+
+    public virtual void PlaySFX3()
+    {
+        SoundManager.Instance.PlaySFX(_data.guardSound);
+    }
     
     #endregion
 }
