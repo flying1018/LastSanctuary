@@ -25,7 +25,7 @@ public class UIManager : Singleton<UIManager>
     public BossUI BossUI { get; set; }
     public ScreenFadeUI screenFadeUI { get; set; }
     public SaveUI saveUI { get; set; }
-    
+
 
     private void Start()
     {
@@ -102,22 +102,22 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    public void FadeIn(float duration = 1f)
+    public void Fade(float duration = 1f, Color? color = null)
     {
-        DebugHelper.Log("FadeIn실행");
-        StartCoroutine(screenFadeUI.FadeIn_Coroutine(duration));
+        DebugHelper.Log("Fade실행");
+        StartCoroutine(screenFadeUI.Fade_Coroutine(duration));
     }
 
-    public void FadeOut(float duration = 1f, Color? color = null)
-    {
-        DebugHelper.Log("FadeOut실행");
-        StartCoroutine(screenFadeUI.FadeOut_Coroutine(duration, color));
-    }
 
     public void SaveAnimation()
     {
-        data.saveUIObj.SetActive(true);
         saveUI.SaveAnima();
+    }
+
+    public void ShowItemText(string message, Vector3 worldPos)
+    {
+        var obj = Instantiate(data.itemTextUI, transform); 
+        obj.GetComponent<ItemTextUI>().Show(message, worldPos);
     }
 
     #endregion

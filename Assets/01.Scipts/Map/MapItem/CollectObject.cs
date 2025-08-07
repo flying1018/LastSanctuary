@@ -5,10 +5,10 @@ public class CollectObject : MonoBehaviour, IInteractable, IComparable<CollectOb
 {
     //필드
     private bool _isGet;
-    
+
     //직렬화
     [SerializeField] private CollectObjectSO collectData;
-    
+
     //프로퍼티
     public CollectObjectSO Data { get => collectData; }
     public bool IsGet { get => _isGet; set => _isGet = value; }
@@ -19,9 +19,22 @@ public class CollectObject : MonoBehaviour, IInteractable, IComparable<CollectOb
         if (_isGet) { return; }
 
         ItemManager.Instance.GetCollectItem(collectData);
+
+        string itemName;
+        if (Data.collectType == CollectType.Potion)
+        {
+            itemName = "체력포션";
+        }
+        else
+        {
+            itemName = Data.relicName;
+        }
+        
+        UIManager.Instance.ShowItemText(itemName, transform.position + Vector3.up * 1.5f);
+
         _isGet = true;
         GetComponent<TutorialUIInterction>()?.ShowUI(); //상호작용시 UI 호출
-        
+
         SetActive();
     }
 
