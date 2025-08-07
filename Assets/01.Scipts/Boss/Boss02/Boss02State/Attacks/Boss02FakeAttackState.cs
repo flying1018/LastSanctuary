@@ -17,6 +17,6 @@ public class Boss02FakeAttackState : Boss02AttackState
 
     public override void PhysicsUpdate()
     {
-        _move.Move(Vector2.down * _attackInfo.projectilePower);
+        Move(Vector2.down * _attackInfo.projectilePower);
     }
 }

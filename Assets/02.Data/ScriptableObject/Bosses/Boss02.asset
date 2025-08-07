@@ -37,7 +37,7 @@ MonoBehaviour:
     animParameter: Attack1
     attackAnim: {fileID: 7400000, guid: fb2cd6ba0ec1ea0418165fad187ca9a7, type: 2}
     projectilePrefab: {fileID: 0}
-    projectilePower: 10
+    projectilePower: 5
     attackSounds: []
   - multiplier: 1.5
     knockbackForce: 5
@@ -77,13 +77,13 @@ MonoBehaviour:
     animParameter: FakeAttack
     attackAnim: {fileID: 7400000, guid: 335718903fd213a44908bf678905d3de, type: 2}
     projectilePrefab: {fileID: 0}
-    projectilePower: 0
+    projectilePower: 5
     attackSounds: []
   defpen: 0.25
   backjumpDistance: 0
   backjumpHeight: 0
   backjumpSpeed: 0
-  phaseShiftHpRatio: 0.5
+  phaseShiftHpRatio: 1
   phaseShiftAnim: {fileID: 7400000, guid: 5ff75cee86e07b742a0f6b748a03e16c, type: 2}
   breathSound: {fileID: 0}
   howlingSound: {fileID: 0}
