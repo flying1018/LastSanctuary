@@ -13,7 +13,7 @@ public class EChaseState : EnemyBaseState
         if (_enemy.Data.runSpeed > 0)
         {
             StartAnimation(_enemy.AnimationDB.RunParameterHash);
-           _moveSpeed += _enemy.Data.runSpeed; ;
+           _moveSpeed = _enemy.Data.runSpeed; ;
         }
         else
             StartAnimation(_enemy.AnimationDB.WalkParameterHash);
@@ -28,7 +28,7 @@ public class EChaseState : EnemyBaseState
         if (_enemy.Data.runSpeed > 0)
         {
             StopAnimation(_enemy.AnimationDB.RunParameterHash);
-            _moveSpeed -= _enemy.Data.runSpeed;
+            _moveSpeed = _enemy.Data.moveSpeed;
         }
         else
             StopAnimation(_enemy.AnimationDB.WalkParameterHash);

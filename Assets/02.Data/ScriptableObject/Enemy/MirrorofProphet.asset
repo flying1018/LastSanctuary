@@ -17,14 +17,14 @@ MonoBehaviour:
   gravityPower: 0
   runSpeed: 0
   detectTime: 0.2
-  detectDistance: 10
+  detectDistance: 15
   moveSpeed: 0
   cancelChaseTime: 3
   hitMaterial: {fileID: 2100000, guid: 1d6c919171b720f4698baec530ce9a22, type: 2}
-  attackDistance: 20
+  attackDistance: 30
   attackDuration: 3
   knockbackForce: 5
-  attackAnim: {fileID: 7400000, guid: 32f545428e2fedc4fa0fae19f49bdcb7, type: 2}
+  attackAnim: {fileID: 7400000, guid: ff820789ab707dd41b57d4324dbdc49f, type: 2}
   blinkLength: 0.3
   attack: 36
   hp: 100
@@ -32,12 +32,13 @@ MonoBehaviour:
   damageDelay: 0.1
   hitDuration: 0.5
   dropGold: 500
-  deathAnim: {fileID: 7400000, guid: f919a152158bfc44cab06413c735a95d, type: 2}
+  deathAnim: {fileID: 7400000, guid: 80cb5519d8b7f5445be6796710e83596, type: 2}
   projectilePrefab: {fileID: 5272416872062206358, guid: 083e398724606534aaac677dee19183c, type: 3}
-  projectilePower: 15
+  projectilePower: 24
   rangeType: 1
+  firePointX: 1.5
   flyingHeight: 0
   flyingSpeed: 0
   attackSound: {fileID: 8300000, guid: 9469b8c238d8bcd4b987c8279bc7675a, type: 3}
   hitSound: {fileID: 8300000, guid: 0c627532d49dd2b49baec69f27b7b7b9, type: 3}
-  guardSound: {fileID: 0}
+  abilitySound: {fileID: 8300000, guid: 61e9aeea63799d54abba62404839dc75, type: 3}

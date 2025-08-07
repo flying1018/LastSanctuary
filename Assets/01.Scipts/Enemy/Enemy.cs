@@ -186,13 +186,21 @@ public class Enemy : MonoBehaviour
     public void GuardOn()
     {
         Condition.IsGuard = true;
-        Debug.Log("Guard On");
     }
     //가드 OFF
     public void GuardOff()
     {
         Condition.IsGuard = false;
-        Debug.Log("Guard Off");
+    }
+    //반사 ON
+    public void ReflectOn()
+    {
+        Condition.IsReflection = true;
+    }
+    //반사 OFF
+    public void ReflectOff()
+    {
+        Condition.IsReflection = false;
     }
 
     //사운드 실행 애니메이션 이벤트

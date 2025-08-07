@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
         //Debug.Log(StateMachine.currentState);
     }
     
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         //사다리 판단
         if (other.CompareTag(StringNameSpace.Tags.Ladder))
