@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a10da65ad77caf64cbdf4e4fcfb69a74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 50
+  m_SortingOrder: 70
   m_Sprite: {fileID: 21300000, guid: 8a83e7956d0944662a4f5a25e8878fb3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -166,7 +166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 0
-  animator: {fileID: 2795628377548770122}
   audioClip: {fileID: 0}
-  _moveObjects:
+  moveObjects:
   - {fileID: 0}
+  leverImage:
+  - {fileID: 21300000, guid: 8a83e7956d0944662a4f5a25e8878fb3, type: 3}
+  - {fileID: 21300000, guid: 61f362494f00842edbc58eb64a640de3, type: 3}

@@ -21,7 +21,4 @@ MonoBehaviour:
   effectDesc: 
   relicDesc: 
   relicSprite: {fileID: 0}
-  attack: 0
-  defense: 0
-  hp: 0
-  stamina: 0
+  statDeltas: []

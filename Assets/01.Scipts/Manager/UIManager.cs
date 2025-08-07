@@ -25,7 +25,7 @@ public class UIManager : Singleton<UIManager>
     public BossUI BossUI { get; set; }
     public ScreenFadeUI screenFadeUI { get; set; }
     public SaveUI saveUI { get; set; }
-    
+
 
     private void Start()
     {
@@ -112,6 +112,12 @@ public class UIManager : Singleton<UIManager>
     public void SaveAnimation()
     {
         saveUI.SaveAnima();
+    }
+
+    public void ShowItemText(string message, Vector3 worldPos)
+    {
+        var obj = Instantiate(data.itemTextUI, transform); 
+        obj.GetComponent<ItemTextUI>().Show(message, worldPos);
     }
 
     #endregion

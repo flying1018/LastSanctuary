@@ -41,8 +41,13 @@ public class PlayerDeathState : PlayerBaseState
         if (_time >= _data.deathTime)
         {   //부활 상태로 전환
             _stateMachine.ChangeState(_stateMachine.RespawnState); 
-           UIManager.Instance.Fade(1f);
+           
         }
+    }
+
+    public override void Exit()
+    {
+        UIManager.Instance.Fade(1f);
     }
 
     public override void PhysicsUpdate()
