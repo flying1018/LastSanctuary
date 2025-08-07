@@ -118003,11 +118003,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.8
+      value: -14.3
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.z
@@ -120327,7 +120327,8 @@ PrefabInstance:
         \uBC1C\uB3D9\uD569\uB2C8\uB2E4.\n<color=#9F866F>\uD37C\uD399\uD2B8 \uAC00\uB4DC
         \uC131\uACF5 \uC2DC</color> \uBAAC\uC2A4\uD130\uB294 <color=#9F866F>\uCC98\uD615
         \uAC00\uB2A5 \uC0C1\uD0DC</color>\uAC00 \uB418\uBA70 <color=#9F866F>F</color>\uB97C
-        \uC785\uB825 \uC2DC <color=#9F866F>\uCC98\uD615</color>\uC774 \uB429\uB2C8\uB2E4."
+        \uC785\uB825 \uC2DC <color=#9F866F>\uCC98\uD615</color>\uC774 \uB429\uB2C8\uB2E4.\n\uCC98\uD615\uC740
+        \uC2A4\uD0AC \uD2B8\uB9AC\uC5D0\uC11C \uD68D\uB4DD\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 5950031769836475188, guid: 4dc41a65f1200234c8abebe8675dd5b2, type: 3}
       propertyPath: sprite

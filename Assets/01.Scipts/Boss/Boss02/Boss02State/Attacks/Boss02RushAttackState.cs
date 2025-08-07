@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss02RushAttackState : Boss02AttackState
 {
     private Vector2 _rushDir;
+    private float _margin = 0.5f;
     
     public Boss02RushAttackState(Boss02StateMachine bossStateMachine, BossAttackInfo attackInfo) : base(bossStateMachine, attackInfo) { }
 
@@ -29,7 +30,7 @@ public class Boss02RushAttackState : Boss02AttackState
     public override void Update()
     {
         base.Update();
-        if (Vector2.Distance(_boss2.transform.position, _stateMachine2.MoveTarget) < 0.2f)
+        if (Vector2.Distance(_boss2.transform.position, _stateMachine2.MoveTarget) < _margin)
         {
             _stateMachine2.ChangeState(_stateMachine2.IdleState);
         }   
