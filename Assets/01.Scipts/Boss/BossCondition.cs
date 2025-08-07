@@ -32,12 +32,13 @@ public class BossCondition : Condition,IDamageable, IGroggyable
         _groggyGauge = 0;
         _delay = boss.Data.damageDelay;
         _isTakeDamageable = false;
+        IsGroggy = false;
     }
     
 
     
     //대미지 입을 때
-    public void TakeDamage(WeaponInfo weaponInfo)
+    public virtual void TakeDamage(WeaponInfo weaponInfo)
     {
         if (!IsAlive()) return;
         if (_isTakeDamageable) return;
@@ -77,7 +78,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
     }
     
     //피격 이펙트
-    private void OnHitEffected()
+    protected void OnHitEffected()
     {
         if (_hitEffectCoroutine != null)
         {

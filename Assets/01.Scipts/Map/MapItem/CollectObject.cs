@@ -30,7 +30,7 @@ public class CollectObject : MonoBehaviour, IInteractable, IComparable<CollectOb
             itemName = Data.relicName;
         }
         
-        UIManager.Instance.ShowItemText(itemName, transform.position + Vector3.up * 1.5f);
+        //UIManager.Instance.ShowItemText(itemName, transform.position + Vector3.up * 1.5f);
 
         _isGet = true;
         GetComponent<TutorialUIInterction>()?.ShowUI(); //상호작용시 UI 호출

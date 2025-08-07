@@ -11,15 +11,20 @@ public class Boss02BoomerangAttackState : Boss02AttackState
     {
         base.Enter();
         
-        _dir = (_stateMachine2.TargetMirror - _boss2.transform.position).normalized;
+        _dir = (_stateMachine2.MoveTarget - _boss2.transform.position).normalized;
         Rotate(_dir);
     }
 
 
     public override void PlayEvent1()
     {
+        ThrowBoomerang();
+    }
+
+    private void ThrowBoomerang()
+    {
         GameObject boomerang = ObjectPoolManager.Get(_attackInfo.projectilePrefab, (int)PoolingIndex.Boss02Projectile1);
-        boomerang.transform.position = _weapon.transform.position;
+        boomerang.transform.position = new Vector2(_weapon.transform.position.x,_weapon.transform.position.y - _boxCollider.size.y/3);
         boomerang.transform.rotation = _weapon.transform.rotation;
 
         if (boomerang.TryGetComponent(out BoomerangProjectile boomerangProjectile))

@@ -26,7 +26,7 @@ MonoBehaviour:
   dashCost: 25
   healAmount: 40
   healAnim: {fileID: 7400000, guid: 52dc6dc8e8aaf90419bc5df20a09978b, type: 2}
-  perfectGuardWindow: 0.4
+  perfectGuardWindow: 0.2
   perfactGuardStemina: 30
   perfactGuardGroggy: 10
   guardCost: 30

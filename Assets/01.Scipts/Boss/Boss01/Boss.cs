@@ -64,6 +64,7 @@ public class Boss : MonoBehaviour
         Move.Init(BoxCollider.bounds.size.x, BoxCollider.bounds.size.y, Rigidbody);
         AnimationDB.Initailize(); 
         Phase2 = false;
+        SpriteRenderer.color = Color.white;
     }
 
     public void Init(BossEvent bossEvent)

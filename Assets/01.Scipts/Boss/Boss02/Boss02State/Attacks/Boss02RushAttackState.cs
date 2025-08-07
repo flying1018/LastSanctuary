@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss02RushAttackState : Boss02AttackState
 {
     private Vector2 _rushDir;
+    private float _margin = 0.5f;
     
     public Boss02RushAttackState(Boss02StateMachine bossStateMachine, BossAttackInfo attackInfo) : base(bossStateMachine, attackInfo) { }
 
@@ -12,7 +13,7 @@ public class Boss02RushAttackState : Boss02AttackState
     {
         base.Enter();
         
-        _rushDir = (_stateMachine2.TargetMirror - _boss2.transform.position).normalized;
+        _rushDir = (_stateMachine2.MoveTarget - _boss2.transform.position).normalized;
         Rotate(_rushDir);
         
         _boxCollider.enabled = false;
@@ -29,7 +30,7 @@ public class Boss02RushAttackState : Boss02AttackState
     public override void Update()
     {
         base.Update();
-        if (Vector2.Distance(_boss2.transform.position, _stateMachine2.TargetMirror) < 0.2f)
+        if (Vector2.Distance(_boss2.transform.position, _stateMachine2.MoveTarget) < _margin)
         {
             _stateMachine2.ChangeState(_stateMachine2.IdleState);
         }   

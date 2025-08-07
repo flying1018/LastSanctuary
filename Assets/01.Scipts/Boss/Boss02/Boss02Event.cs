@@ -9,6 +9,8 @@ public class Boss02Event : BossEvent
     [SerializeField] private Transform[] leftMirror;
     [SerializeField] private Transform[] rightMirror;
     [SerializeField] private Transform topMirror;
+    [SerializeField] private float teleportRange = 10f;
+    [SerializeField] private float projectileYMargin = 2f;
 
     public Transform[] LeftMirror => leftMirror;
     public Transform[] RightMirror => rightMirror;
@@ -81,7 +83,19 @@ public class Boss02Event : BossEvent
                 result = rightMirror[2].position;
                 break;
         }
-
         return result;
+    }
+
+    public Vector2 GetRandomTopPosition()
+    {
+        float margin = Random.Range(-teleportRange, teleportRange);
+        return new Vector2(topMirror.position.x + margin, topMirror.position.y);
+    }
+    
+    public Vector2 GetRandomProjectilePosition()
+    {
+        float xMargin = Random.Range(-teleportRange, teleportRange);
+        float yMargin = Random.Range(-projectileYMargin, projectileYMargin);
+        return new Vector2(topMirror.position.x + xMargin, topMirror.position.y + projectileYMargin + yMargin);
     }
 }

@@ -67,12 +67,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1762102481329420927}
   - {fileID: 1049391958120251134}
   - {fileID: 4410695601359180216}
   - {fileID: 8021195718919676419}
   - {fileID: 5385203049532582541}
   - {fileID: 8577658113301607828}
-  - {fileID: 1762102481329420927}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -406,6 +406,10 @@ PrefabInstance:
     - target: {fileID: 796436796584303298, guid: 520574ba0a517bf40b6f8f0e7e4d60c6, type: 3}
       propertyPath: m_Name
       value: BossUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 796436796584303298, guid: 520574ba0a517bf40b6f8f0e7e4d60c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4797231367715233970, guid: 520574ba0a517bf40b6f8f0e7e4d60c6, type: 3}
       propertyPath: m_Pivot.x

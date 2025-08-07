@@ -187,7 +187,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 200}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7922790460267410940
 CanvasRenderer:
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBB3C\uC57D"
+  m_text: "\uC81C\uBAA9"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44bfc223206556e4fa3fbdd7703a9bd9, type: 2}
   m_sharedMaterial: {fileID: -4451629425219399282, guid: 44bfc223206556e4fa3fbdd7703a9bd9, type: 2}
@@ -304,7 +304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6546701345043801840
 RectTransform:
   m_ObjectHideFlags: 0
@@ -404,7 +404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1023824085438993420
 RectTransform:
   m_ObjectHideFlags: 0
@@ -419,8 +419,8 @@ RectTransform:
   m_Children:
   - {fileID: 105742387618246633}
   - {fileID: 1540504934208542727}
-  - {fileID: 1378751054471585614}
   - {fileID: 2406050353002314174}
+  - {fileID: 1378751054471585614}
   m_Father: {fileID: 6546701345043801840}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -443,6 +443,7 @@ MonoBehaviour:
   texts:
   - {fileID: 7228121757214223572}
   - {fileID: 4025877566010714178}
+  closeButton: {fileID: 1223188790123355591}
 --- !u!1 &4080329755248759706
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +650,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 1000, y: 50}
+  m_SizeDelta: {x: 1300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4541836743149777349
 CanvasRenderer:
@@ -679,9 +680,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Esc \uB97C \uB20C\uB7EC \uC131\uBB3C \uD654\uBA74\uC5D0 \uC9C4\uC785\uD558\uC5EC
-    \uC7A5\uCC29\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.\n\uC774\uB54C \uAC8C\uC784
-    \uC2DC\uAC04\uC740 \uC815\uC9C0\uB429\uB2C8\uB2E4."
+  m_text: "\uC124\uBA85"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44bfc223206556e4fa3fbdd7703a9bd9, type: 2}
   m_sharedMaterial: {fileID: -4451629425219399282, guid: 44bfc223206556e4fa3fbdd7703a9bd9, type: 2}
@@ -708,8 +707,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 47
+  m_fontSizeBase: 47
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -936,7 +935,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 674, y: -358}
+  m_AnchoredPosition: {x: 674, y: -350}
   m_SizeDelta: {x: 120, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1518163924418965438
@@ -1021,10 +1020,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5260973097857166308}
-        m_TargetAssemblyTypeName: TutorialUIPopup, Assembly-CSharp
-        m_MethodName: HideUI
-        m_Mode: 1
+      - m_Target: {fileID: 2893910896567212863}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
