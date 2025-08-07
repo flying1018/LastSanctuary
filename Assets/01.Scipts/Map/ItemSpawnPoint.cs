@@ -2,14 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ItemSpawnPoint : MonoBehaviour
 {
     [SerializeField] private GameObject item;
     
-    private GameObject curItem;
-    private Coroutine coroutine;    //어떤 코루틴인지 명시 필요
-    [SerializeField] private float _respawnCoolTime = 10;
+    private GameObject _curItem;
+    private Coroutine _respawnCoroutine;
+    [SerializeField] private float respawnCoolTime = 10;
     
     
     private void Start()
@@ -21,12 +22,12 @@ public class ItemSpawnPoint : MonoBehaviour
     //아이템 스폰
     public void Spawn()
     {
-        curItem =ObjectPoolManager.Get(item,(int)PoolingIndex.Item);
-        curItem.transform.position = transform.position;
+        _curItem =ObjectPoolManager.Get(item,(int)PoolingIndex.Item);
+        _curItem.transform.position = transform.position;
 
-        if (curItem.TryGetComponent(out StatObject statObject))
+        if (_curItem.TryGetComponent(out StatObject statObject))
         { 
-            statObject.OnInteracte += () => coroutine = StartCoroutine(RespawmCoroutine());
+            statObject.OnInteracte += () => _respawnCoroutine = StartCoroutine(RespawmCoroutine());
         }
     }
     
@@ -35,25 +36,25 @@ public class ItemSpawnPoint : MonoBehaviour
     public void Respawn()
     {
         //리스폰시 동작중인 코루틴 정지
-        if (coroutine != null)
+        if (_respawnCoroutine != null)
         {
-            StopCoroutine(coroutine);
-            coroutine = null;
+            StopCoroutine(_respawnCoroutine);
+            _respawnCoroutine = null;
         }
 
-        if (curItem == null)
+        if (_curItem == null)
         {
             Spawn();
             return;
         }
-        StatObject statObject = curItem.GetComponent<StatObject>();
+        StatObject statObject = _curItem.GetComponent<StatObject>();
         statObject.IsGet = false;
         statObject.SetActive();
     }
 
     private IEnumerator RespawmCoroutine()
     {
-        yield return new WaitForSeconds(_respawnCoolTime);
+        yield return new WaitForSeconds(respawnCoolTime);
         Respawn();
     }
 }
