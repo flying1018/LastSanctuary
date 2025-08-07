@@ -13,6 +13,7 @@ public class EnemyCondition : Condition, IDamageable, IKnockBackable, IGuardable
     //프로퍼티
     public bool IsInvincible { get; set; }
     public bool IsGuard { get; set; }
+    public bool IsReflection { get; set; }
     public bool IsDeath { get; set; }
     public float GroggyTime { get; set; }
 
@@ -27,6 +28,8 @@ public class EnemyCondition : Condition, IDamageable, IKnockBackable, IGuardable
         _originMaterial = _enemy.SpriteRenderer.material;
         _isTakeDamageable = false;
         IsInvincible = false;
+        IsGuard = false;
+        IsReflection = false;
         IsDeath = false;
         GroggyTime = 0;
     }
@@ -36,6 +39,12 @@ public class EnemyCondition : Condition, IDamageable, IKnockBackable, IGuardable
     {
         if (IsInvincible) return;
         if (_isTakeDamageable) return;
+        if (IsReflection)
+        {
+            ApplyReflection(weaponInfo);
+            return;
+        }
+
         ApplyDamage(weaponInfo.Attack, weaponInfo.Defpen);
 
         if (_curHp <= 0)
@@ -114,6 +123,7 @@ public class EnemyCondition : Condition, IDamageable, IKnockBackable, IGuardable
         _curHp = _maxHp;
     }
 
+    #region Shild
     //정면 확인
     private bool IsFront(Transform dir)
     {
@@ -137,4 +147,17 @@ public class EnemyCondition : Condition, IDamageable, IKnockBackable, IGuardable
         }
         else return false;
     }
+    #endregion
+
+    #region reflection
+    //반사딜
+    public void ApplyReflection(WeaponInfo weaponInfo)
+    {
+        if (weaponInfo.Condition is PlayerCondition playerCondition)
+        {
+            playerCondition.TakeDamage(weaponInfo);
+            _enemy.EventSFX3();
+        }
+    }
+    #endregion
 }

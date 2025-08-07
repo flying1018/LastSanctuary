@@ -82,6 +82,10 @@ public class EnemyBaseState : IState
         _spriteRenderer.flipX = direction.x < 0;
         //무기 회전
         float angle = _spriteRenderer.flipX ? 180 : 0;
+        float offset = _enemy.SpriteRenderer.flipX ? -_enemy.Data.firePointX : _enemy.Data.firePointX;
+        Vector3 localPos = _enemy.Weapon.transform.localPosition;
+        localPos.x = offset;
+        _enemy.Weapon.transform.localPosition = localPos;
         _enemy.Weapon.transform.rotation = Quaternion.Euler(angle, 0, angle);
     }
     
@@ -125,7 +129,7 @@ public class EnemyBaseState : IState
 
     public virtual void PlaySFX3()
     {
-        SoundManager.Instance.PlaySFX(_data.guardSound);
+        SoundManager.Instance.PlaySFX(_data.abilitySound);
     }
     
     #endregion
