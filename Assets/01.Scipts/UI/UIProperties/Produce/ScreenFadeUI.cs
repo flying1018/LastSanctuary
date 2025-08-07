@@ -11,7 +11,7 @@ public class ScreenFadeUI : MonoBehaviour
 
     }
 
-    public IEnumerator FadeOut_Coroutine(float duration = 1f, Color? color = null)
+    public IEnumerator Fade_Coroutine(float duration = 1f, Color? color = null)
     {
         if (color.HasValue) fadeImage.color = color.Value;
         Color c = fadeImage.color;
@@ -19,26 +19,22 @@ public class ScreenFadeUI : MonoBehaviour
         fadeImage.color = c;
 
         float time = 0f;
-        while (time < duration)
+        while (time < duration/2)
         {
-            c.a = Mathf.Lerp(0, 1, time / duration);
+            c.a = Mathf.Lerp(0, 1, time / (duration/2));
             fadeImage.color = c;
             time += Time.unscaledDeltaTime;
             yield return null;
         }
         c.a = 1;
         fadeImage.color = c;
-    }
 
-    public IEnumerator FadeIn_Coroutine(float duration = 1f)
-    {
-        Color c = fadeImage.color;
-        c.a = 1;
-        fadeImage.color = c;
-        float time = 0f;
-        while (time < duration)
+        yield return new WaitForSeconds(duration/2);
+
+        time = 0f;
+        while (time < duration /2)
         {
-            c.a = Mathf.Lerp(1, 0, time / duration);
+            c.a = Mathf.Lerp(1, 0, time / (duration/2));
             fadeImage.color = c;
             time += Time.unscaledDeltaTime;
             yield return null;
