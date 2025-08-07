@@ -13,6 +13,8 @@ public class BossAnimationDB
     [SerializeField] private string deathParameter = "Death";
     [SerializeField] private string phaseShiftParameter = "PhaseShift";
     [SerializeField] private string groggyParameter = "Groggy";
+    [SerializeField] private string groggyEnterParameter = "GroggyEnter";
+    [SerializeField] private string groggyExitParameter = "GroggyExit";
 
 
 
@@ -22,6 +24,8 @@ public class BossAnimationDB
     public int DeathParameterHash { get; private set; }
     public int PhaseShiftParameterHash { get; private set; }
     public int GroggyParameterHash { get; private set; }
+    public int GroggyEnterParameter { get; private set; }
+    public int GroggyExitParameter { get; private set; }
 
 
     public void Initailize()
@@ -32,5 +36,7 @@ public class BossAnimationDB
         DeathParameterHash = Animator.StringToHash(deathParameter);
         PhaseShiftParameterHash = Animator.StringToHash(phaseShiftParameter);
         GroggyParameterHash = Animator.StringToHash(groggyParameter);
+        GroggyEnterParameter = Animator.StringToHash(groggyEnterParameter);
+        GroggyExitParameter = Animator.StringToHash(groggyExitParameter);
     }
 }

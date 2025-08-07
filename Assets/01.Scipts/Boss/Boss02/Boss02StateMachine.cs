@@ -8,10 +8,10 @@ public class Boss02StateMachine : StateMachine
     public Boss02IdleState IdleState {get; private set;}
     public Boss02AreaAttackIdleState AreaAttackIdle { get; private set; }
     public Boss02TeleportState TeleportState { get; private set; }
-    public BossGroggyState GroggyState { get; private set; }
+    public Boss02GroggyState GroggyState { get; private set; }
     public Boss02SpawnState SpawnState { get; private set; }
-    public BossPhaseShiftState PhaseShiftState { get; private set; }
-    public BossDeathState DeathState { get; private set; }
+    public Boss02PhaseShiftState PhaseShiftState { get; private set; }
+    public Boss02DeathState DeathState { get; private set; }
     public Boss02JugMirrorState JugMirror { get; private set; }
     public Boss02DownAttackState DownAttack { get; private set; }
     public Boss02AreaAttackState AreaAttack { get; private set; }
@@ -30,6 +30,10 @@ public class Boss02StateMachine : StateMachine
         SpawnState = new Boss02SpawnState(this);
         TeleportState = new Boss02TeleportState(this);
         JugMirror = new Boss02JugMirrorState(this);
+        GroggyState = new Boss02GroggyState(this);
+        PhaseShiftState = new Boss02PhaseShiftState(this);
+        DeathState = new Boss02DeathState(this);
+        
         DownAttack = new Boss02DownAttackState(this, boss.Data.attacks[0]);
         AreaAttack = new Boss02AreaAttackState(this, boss.Data.attacks[1]);
         RushAttack = new Boss02RushAttackState(this, boss.Data.attacks[2]);
