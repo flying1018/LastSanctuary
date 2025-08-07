@@ -22,6 +22,7 @@ public class EnemyRangeAttackState : EAttackState
     public void FireProjetile()
     {
         Transform firePoint = _enemy.EnemyWeapon.transform;
+        
 
         //오브젝트 생성
         GameObject projectileOb = ObjectPoolManager.Get(_data.projectilePrefab, (int)PoolingIndex.Arrow);

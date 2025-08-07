@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 /// </summary>
 public enum RangeType
 {
- LookOn,
+ Traget,
  Beeline,
 }
 [Serializable]
@@ -61,6 +61,7 @@ public class EnemySO : ScriptableObject
     public GameObject projectilePrefab;
     public int projectilePower;
     public RangeType rangeType;
+    public float firePointX; 
 
     [Header("Flying Attack")] 
     public float flyingHeight;
@@ -69,5 +70,5 @@ public class EnemySO : ScriptableObject
     [Header("Sound")] 
     public AudioClip attackSound;
     public AudioClip hitSound;
-    public AudioClip guardSound;
+    public AudioClip abilitySound;
 }
