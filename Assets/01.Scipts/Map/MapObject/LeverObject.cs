@@ -1,19 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class LeverObject : MonoBehaviour, IDamageable
 {
     [SerializeField] private bool isOn = false;
-    [SerializeField] private Animator animator;
     [SerializeField] private AudioClip audioClip;
-    [SerializeField] private MoveObject[] _moveObjects;
+    [SerializeField] private MoveObject[] moveObjects;
+    [SerializeField] private Sprite[] leverImage;
 
+    private SpriteRenderer spriteRenderer;
     private bool _isMove;
 
-    private void UpdateVisual()
+    private void Awake()
     {
-        animator.SetBool("isOn", isOn);
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private IEnumerator Toggle()
@@ -23,11 +25,21 @@ public class LeverObject : MonoBehaviour, IDamageable
 
         isOn = !isOn;
 
-        foreach (MoveObject _moveObject in _moveObjects)
+        if (isOn)
+        {
+            DebugHelper.Log("IsOn true상태");
+            spriteRenderer.sprite = leverImage[0];
+        }
+        else
+        {
+            DebugHelper.Log("IsOn false상태");
+            spriteRenderer.sprite = leverImage[1];
+        }
+
+        foreach (MoveObject _moveObject in moveObjects)
         {
             _moveObject.MoveObj();
         }
-        UpdateVisual();
 
         yield return new WaitForSeconds(2f);
 

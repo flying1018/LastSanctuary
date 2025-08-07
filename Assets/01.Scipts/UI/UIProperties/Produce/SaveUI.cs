@@ -34,6 +34,7 @@ public class SaveUI : MonoBehaviour
     {
         Color color = saveImage.color;
         color.a = 1f;
+        saveImage.color = color;
 
         int repeatCount = 2;
         for (int loop = 0; loop < repeatCount; loop++)
@@ -47,6 +48,6 @@ public class SaveUI : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         color.a = 0f;
-        gameObject.SetActive(false);
+        saveImage.color = color;
     }
 }

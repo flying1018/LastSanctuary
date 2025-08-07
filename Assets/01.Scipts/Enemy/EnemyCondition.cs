@@ -156,7 +156,7 @@ public class EnemyCondition : Condition, IDamageable, IKnockBackable, IGuardable
         if (weaponInfo.Condition is PlayerCondition playerCondition)
         {
             playerCondition.TakeDamage(weaponInfo);
-            _enemy.EventSFX3();
+            playerCondition.ApplyKnockBack(_enemy.WeaponInfo, transform);
         }
     }
     #endregion
