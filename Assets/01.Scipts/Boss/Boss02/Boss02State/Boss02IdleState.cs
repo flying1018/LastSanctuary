@@ -24,6 +24,7 @@ public class Boss02IdleState : BossBaseState
     public override void Update()
     {
         _stateMachine2.AreaAttack.CheckCoolTime();
+        _stateMachine2.ProjectileAttack.CheckCoolTime();
         
         _time += Time.deltaTime;
         if (_time > _data.attackIdleTime)
@@ -36,12 +37,6 @@ public class Boss02IdleState : BossBaseState
         }
     }
 
-    protected void SetMovePosition()
-    {
-        if (_boss2.Phase2)
-            _stateMachine2.MoveTarget = _boss02Event.GetRandomTopPosition();
-        else
-            _stateMachine2.MoveTarget = _boss02Event.GetRandomMirror();
-    }
+
     
 }

@@ -17,6 +17,7 @@ public class Boss02AreaAttackIdleState : Boss02IdleState
     public override void Update()
     {
         _stateMachine2.AreaAttack.CheckCoolTime();
+        _stateMachine2.ProjectileAttack.CheckCoolTime();
         
         _time += Time.deltaTime;
         if (_time > _data.attackIdleTime)

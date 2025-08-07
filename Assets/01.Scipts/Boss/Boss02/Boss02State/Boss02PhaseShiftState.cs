@@ -35,7 +35,8 @@ public class Boss02PhaseShiftState : BossBaseState
         //시간이 끝나면
         _time += Time.deltaTime;
         if(_time > _data.PhaseShiftTime)
-        {   //대기
+        {   
+            SetMovePosition();
             _stateMachine2.ChangeState(_stateMachine2.TeleportState);
         }
     }

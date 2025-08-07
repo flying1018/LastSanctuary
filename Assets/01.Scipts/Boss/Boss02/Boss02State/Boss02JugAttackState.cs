@@ -20,7 +20,10 @@ public class Boss02JugAttackState : BossBaseState
                     _stateMachine2.ChangeState(_stateMachine2.DownAttack);
                     break;
                 case 1:
-                    _stateMachine2.ChangeState(_stateMachine2.ProjectileAttack);
+                    if(_stateMachine2.ProjectileAttack.CheckCoolTime()) 
+                        _stateMachine2.ChangeState(_stateMachine2.ProjectileAttack);
+                    else
+                        _stateMachine2.ChangeState(_stateMachine2.FakeAttack);
                     break;
                 case 2:
                     _stateMachine2.ChangeState(_stateMachine2.FakeAttack);

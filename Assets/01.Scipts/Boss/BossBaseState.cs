@@ -143,6 +143,14 @@ public class BossBaseState : IState
         return (_boss.Target.position - _boss.transform.position).normalized; //플레이어 방향
     }
     
+    protected void SetMovePosition()
+    {
+        if (_boss2.Phase2)
+            _stateMachine2.MoveTarget = _boss02Event.GetRandomTopPosition();
+        else
+            _stateMachine2.MoveTarget = _boss02Event.GetRandomMirror();
+    }
+    
     public virtual void PlayEvent1() { }
     public virtual void PlayEvent2() { }
     public virtual void PlayEvent3() { }

@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Boss02ProjectileAttackState : Boss02AttackState
 {
-    public Boss02ProjectileAttackState(Boss02StateMachine bossStateMachine, BossAttackInfo attackInfo) : base(bossStateMachine, attackInfo) { }
+    public Boss02ProjectileAttackState(Boss02StateMachine bossStateMachine, BossAttackInfo attackInfo) : base(
+        bossStateMachine, attackInfo)
+    {
+        _coolTime = _attackCoolTime;
+    }
     
     public override void Enter()
     {
