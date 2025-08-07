@@ -102,17 +102,12 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    public void FadeIn(float duration = 1f)
+    public void Fade(float duration = 1f, Color? color = null)
     {
-        DebugHelper.Log("FadeIn실행");
-        StartCoroutine(screenFadeUI.FadeIn_Coroutine(duration));
+        DebugHelper.Log("Fade실행");
+        StartCoroutine(screenFadeUI.Fade_Coroutine(duration));
     }
 
-    public void FadeOut(float duration = 1f, Color? color = null)
-    {
-        DebugHelper.Log("FadeOut실행");
-        StartCoroutine(screenFadeUI.FadeOut_Coroutine(duration, color));
-    }
 
     public void SaveAnimation()
     {
