@@ -32,6 +32,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
         _groggyGauge = 0;
         _delay = boss.Data.damageDelay;
         _isTakeDamageable = false;
+        IsGroggy = false;
     }
     
 
