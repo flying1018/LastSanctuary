@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2332787068095135388
 RectTransform:
   m_ObjectHideFlags: 0
@@ -99,7 +99,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uACF5\uACA9\uD568"
+  m_text: "<color=#9F866F>\uB9C8\uC6B0\uC2A4 \uC6B0\uD074\uB9AD</color>\uC73C\uB85C
+    \uBAAC\uC2A4\uD130\uC758<color=#9F866F> \uACF5\uACA9</color>\uC744 \uAC00\uB4DC
+    \uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.\n<color=#9F866F>\uAC00\uB4DC</color>\uB294
+    \uD53C\uD574\uC758 \uC77C\uBD80\uB97C <color=#9F866F>\uACBD\uAC10</color>\uD569\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -266,7 +269,7 @@ MonoBehaviour:
   uiPrefab: {fileID: 0}
   titletext: {fileID: 8348882303607468974}
   exptext: {fileID: 3231935294096286879}
-  sprite: {fileID: 21300000, guid: aba8ec8acd70da449855beb43fca05a6, type: 3}
+  sprite: {fileID: 21300000, guid: fd6ef099ae404cd47a47c4bef7399471, type: 3}
 --- !u!1 &2591546589717606156
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +287,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &174737984781930645
 RectTransform:
   m_ObjectHideFlags: 0
