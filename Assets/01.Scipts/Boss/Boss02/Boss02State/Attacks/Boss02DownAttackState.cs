@@ -8,7 +8,6 @@ public class Boss02DownAttackState : Boss02AttackState
 
     public override void Update()
     {
-        _stateMachine2.AreaAttack.CheckCoolTime();
         
         //공격이 끝나면 대기 상태
         _time += Time.deltaTime;

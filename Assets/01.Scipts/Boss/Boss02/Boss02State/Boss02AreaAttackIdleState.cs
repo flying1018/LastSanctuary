@@ -30,7 +30,7 @@ public class Boss02AreaAttackIdleState : Boss02IdleState
             }
             else
             {
-                _stateMachine2.TargetMirror = _boss02Event.GetRandomMirror();
+                SetMovePosition();
                 _stateMachine2.ChangeState(_stateMachine2.TeleportState);
             }
         }

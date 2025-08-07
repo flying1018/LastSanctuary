@@ -29,12 +29,12 @@ public class Boss02TeleportState : BossBaseState
         _time += Time.deltaTime;
         if (_time > _data.TeleportTime)
         {
-            _stateMachine2.ChangeState(_stateMachine2.JugMirror);
+            _stateMachine2.ChangeState(_stateMachine2.JugAttack);
         }
     }
 
     public override void PlayEvent1()
     {
-        _boss2.transform.position = _stateMachine2.TargetMirror;
+        _boss2.transform.position = _stateMachine2.MoveTarget;
     }
 }

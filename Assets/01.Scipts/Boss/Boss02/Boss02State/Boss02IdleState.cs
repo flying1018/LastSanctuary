@@ -30,10 +30,18 @@ public class Boss02IdleState : BossBaseState
         {
             //시간 초기화
             _time = 0;
-            
-            _stateMachine2.TargetMirror = _boss02Event.GetRandomMirror();
+
+            SetMovePosition();
             _stateMachine2.ChangeState(_stateMachine2.TeleportState);
         }
+    }
+
+    protected void SetMovePosition()
+    {
+        if (_boss2.Phase2)
+            _stateMachine2.MoveTarget = _boss02Event.GetRandomTopPosition();
+        else
+            _stateMachine2.MoveTarget = _boss02Event.GetRandomMirror();
     }
     
 }

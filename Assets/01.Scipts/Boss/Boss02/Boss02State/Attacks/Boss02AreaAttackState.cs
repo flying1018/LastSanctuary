@@ -9,11 +9,4 @@ public class Boss02AreaAttackState : Boss02AttackState
         //초기에는 바로 사용 가능
         _coolTime = _attackCoolTime;
     }
-
-    public override void Update()
-    {
-        _stateMachine2.AreaAttack.CheckCoolTime();
-        
-        base.Update();
-    }
 }

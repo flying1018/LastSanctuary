@@ -42,7 +42,7 @@ public class Boss02SpawnState : BossBaseState
         if (_time >= _data.SpawnAnimeTime)
         {
             //탑 미러로 이동
-            _stateMachine2.TargetMirror = _boss02Event.TopMirror.position;
+            _stateMachine2.MoveTarget = _boss02Event.TopMirror.position;
             _stateMachine2.ChangeState(_stateMachine2.TeleportState);
         }
     }
