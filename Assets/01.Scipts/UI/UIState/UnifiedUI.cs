@@ -32,9 +32,13 @@ public class UnifiedUI : UIBaseState
 
     public override void Enter()
     {
+        Debug.Log(_uiManager);
+        
         //타이틀 씬이 아닐때
-        if (_uiManager != null)
+        if (_uiManager)
         {
+            Debug.Log("asdasd");
+            
             relicUIButton.onClick.AddListener(OnClickRelicUIButton);
             skillUIButton.onClick.AddListener(OnClickSkillUIButton);
             settingUIButton.onClick.AddListener(OnClickSettingUIButton);
