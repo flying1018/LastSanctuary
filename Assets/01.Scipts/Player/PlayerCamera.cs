@@ -29,6 +29,10 @@ public class PlayerCamera : MonoBehaviour
         if (StopCamera || _transposer == null) return;
         if (direction.x != 0)
             _transposer.m_TrackedObjectOffset.x = direction.x > 0 ? _player.Data.cameraDiff : -_player.Data.cameraDiff;
+    
+        _transposer.m_TrackedObjectOffset.y = direction.y >= 0 ? _player.Data.cameraTopView : -_player.Data.cameraBottomView;
+            
+        
     }
 
     /// <summary>

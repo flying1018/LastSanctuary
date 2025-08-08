@@ -60,3 +60,5 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 4b8e4564344994245855150f74caab25, type: 2}
   transparentMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   cameraDiff: 3
+  cameraTopView: 2.5
+  cameraBottomView: 1.5
