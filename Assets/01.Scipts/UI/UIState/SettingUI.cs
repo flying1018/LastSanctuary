@@ -24,13 +24,13 @@ public class SettingUI : UnifiedUI
 
     //설정 값
     private Resolution[] _resolutions;
-    private int _curResolutionIndex = 0;
+    private int _curResolutionIndex;
 
     private bool _isFullScreen;
 
     //초기 설정
     private int _defaultResolutionIndex;
-    private bool _defaultFullscreen;
+    private bool _defaultFullScreen;
     private float _defaultBgmVolume;
     private float _defaultSfxVolume;
 
@@ -73,7 +73,7 @@ public class SettingUI : UnifiedUI
             mouseLeft.SetActive(false);
             mouseRight.SetActive(false);
         }
-
+        
         gameObject.SetActive(true);
 
         SetupSettings();
@@ -105,6 +105,7 @@ public class SettingUI : UnifiedUI
     //초기 설정
     private void SetupSettings()
     {
+        _isFullScreen = Screen.fullScreen;
         InitResolution();
         InitSettings();
     }
@@ -119,11 +120,11 @@ public class SettingUI : UnifiedUI
     private void InitSettings()
     {
         _defaultResolutionIndex = _curResolutionIndex;
-        _defaultFullscreen = _isFullScreen;
+        _defaultFullScreen = _isFullScreen;
         _defaultBgmVolume = bgmVolume.value;
         _defaultSfxVolume = sfxVolume.value;
         Resolution res = _resolutions[_curResolutionIndex];
-        Screen.SetResolution(res.width, res.height, _isFullScreen);
+        Screen.SetResolution(res.width, res.height, _defaultFullScreen);
         ApplySettingTexts();
     }
 
@@ -131,7 +132,7 @@ public class SettingUI : UnifiedUI
     private void RevertSettings()
     {
         _curResolutionIndex = _defaultResolutionIndex;
-        _isFullScreen = _defaultFullscreen;
+        _isFullScreen = _defaultFullScreen;
         SoundManager.Instance.SetVolume(SoundManager.SoundType.BGMMixer, _defaultBgmVolume);
         SoundManager.Instance.SetVolume(SoundManager.SoundType.SFXMixer, _defaultSfxVolume);
         ApplySettingTexts();
@@ -143,25 +144,28 @@ public class SettingUI : UnifiedUI
     //해상도 설정
     private void InitResolution() // 가능한 해상도 불러오기
     {
-        _resolutions = Screen.resolutions;
+        var allresolutions = Screen.resolutions;
+        var options = new List<Resolution>();
+        var resolution = new HashSet<string>();
 
-        var options = new List<string>();
 
-
-        for (var i = 0; i < _resolutions.Length; i++)
+        for (var i = 0; i < allresolutions.Length; i++)
         {
-            var option = $"{_resolutions[i].width} x {_resolutions[i].height}";
-            if (!options.Contains(option)) //중복 제거
+            string key = $"{allresolutions[i].width} x {allresolutions[i].height}";
+            
+            if (!resolution.Contains(key)) //중복 제거
             {
-                options.Add(option);
+                resolution.Add(key);
+                options.Add(allresolutions[i]);
             }
 
-            if (_resolutions[i].width == Screen.currentResolution.width &&
-                _resolutions[i].height == Screen.currentResolution.height)
+            if (allresolutions[i].width == Screen.currentResolution.width &&
+                allresolutions[i].height == Screen.currentResolution.height)
             {
-                _curResolutionIndex = i;
+                _curResolutionIndex = options.Count - 1;
             }
         }
+        _resolutions = options.ToArray();
     }
 
     public void OnClickLeft()
