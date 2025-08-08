@@ -25,6 +25,7 @@ public class KinematicMove : MonoBehaviour
         SizeX = sizeX;
         SizeY = sizeY;
         _rigidbody = rigidbody;
+        IsGrounded = false;
     }
     
     protected virtual void OnTriggerEnter2D(Collider2D other)
