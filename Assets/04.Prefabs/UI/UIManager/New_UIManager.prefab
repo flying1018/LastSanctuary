@@ -610,6 +610,14 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1656497888658196000, guid: cfd62c6978bd14ad49692e240b647a8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193211351817176456, guid: cfd62c6978bd14ad49692e240b647a8e, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4848158938483036613, guid: cfd62c6978bd14ad49692e240b647a8e, type: 3}
       propertyPath: m_Name
       value: ProduceUI
@@ -644,15 +652,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7600857413237279438, guid: cfd62c6978bd14ad49692e240b647a8e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 250
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 7600857413237279438, guid: cfd62c6978bd14ad49692e240b647a8e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -188
+      value: -185
       objectReference: {fileID: 0}
     - target: {fileID: 7600857413237279438, guid: cfd62c6978bd14ad49692e240b647a8e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 6
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1406,26 +1406,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 729474372}
     m_Modifications:
-    - target: {fileID: 420110515070695024, guid: e474bd9086a9e4edbaa69aeb6c078d63, type: 3}
-      propertyPath: topRopePrefab
-      value: 
-      objectReference: {fileID: 1219587960027766282, guid: 2d823b76566004dafb4bc748cedf99b7, type: 3}
-    - target: {fileID: 420110515070695024, guid: e474bd9086a9e4edbaa69aeb6c078d63, type: 3}
-      propertyPath: bottomRopePrefab
-      value: 
-      objectReference: {fileID: 7058610418532835112, guid: eb8aacf290a274a778f94c1135e12060, type: 3}
-    - target: {fileID: 420110515070695024, guid: e474bd9086a9e4edbaa69aeb6c078d63, type: 3}
-      propertyPath: middleRopePrefab
-      value: 
-      objectReference: {fileID: 7322322716963896146, guid: 22f7f2ff35c054670a4ddf3a8d55a182, type: 3}
-    - target: {fileID: 1440881954611850267, guid: e474bd9086a9e4edbaa69aeb6c078d63, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440881954611850267, guid: e474bd9086a9e4edbaa69aeb6c078d63, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6602538626570452252, guid: e474bd9086a9e4edbaa69aeb6c078d63, type: 3}
       propertyPath: m_Name
       value: RopeObj
