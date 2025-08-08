@@ -195,11 +195,11 @@ public class Boss02Event : BossEvent
     {
         foreach (Sprite sprite in  brokenMirror)
         {
+            yield return new WaitForSeconds(brokenTime);
             for(int i=1;i<5;i++)
             {
                 _mirrorSpriteRenderers[i].sprite = sprite;
             }
-            yield return new WaitForSeconds(brokenTime);
         }
         
         SetMirror(false);
