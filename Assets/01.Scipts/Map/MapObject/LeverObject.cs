@@ -27,12 +27,12 @@ public class LeverObject : MonoBehaviour, IDamageable
         if (isOn)
         {
             DebugHelper.Log("IsOn true상태");
-            spriteRenderer.sprite = leverImage[0];
+            spriteRenderer.sprite = leverImage[1];
         }
         else
         {
             DebugHelper.Log("IsOn false상태");
-            spriteRenderer.sprite = leverImage[1];
+            spriteRenderer.sprite = leverImage[0];
         }
 
         foreach (MoveObject _moveObject in moveObjects)
