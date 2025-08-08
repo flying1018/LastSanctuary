@@ -15,9 +15,11 @@ public class PlayerRespawnState : PlayerBaseState
         _player.Animator.SetTrigger(_player.AnimationDB.RespawnParameterHash);
         
         //적 부활
-        MapManager.Instance.RespawnEnemies();
+        MapManager.Instance.RespawnMap();
         //포션 개수 회복
         _inventory.SupplyPotion();
+
+        _time = 0;
     }
 
     public override void Exit()

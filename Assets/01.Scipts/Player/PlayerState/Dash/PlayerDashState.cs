@@ -25,14 +25,6 @@ public class PlayerDashState : PlayerBaseState
         //쿨타임 체크
         _player.StartCoroutine(CoolTime_Coroutine());
         
-        
-        //입력이 있는지 없는지에 따라 방향 설정
-        if (_input.MoveInput.x == 0)
-            _dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
-        else
-            _dir = _input.MoveInput.x < 0 ? Vector2.left : Vector2.right;
-        Rotate(_dir);
-        
         //효과음
         PlaySFX1();
     }
@@ -44,6 +36,8 @@ public class PlayerDashState : PlayerBaseState
 
     public override void HandleInput()
     {
+        if (_time < 0.1) SetDashDir();
+        
         InputDashAttack();
     }
 
@@ -73,6 +67,17 @@ public class PlayerDashState : PlayerBaseState
     public override void PhysicsUpdate()
     {
         Dash();
+    }
+    
+    public void SetDashDir()
+    {
+        //입력이 있는지 없는지에 따라 방향 설정
+        if (_input.MoveInput.x == 0)
+            _dir = _spriteRenderer.flipX ? Vector2.left : Vector2.right;
+        else
+            _dir = _input.MoveInput.x < 0 ? Vector2.left : Vector2.right;
+        
+        Rotate(_dir);
     }
 
     //대쉬

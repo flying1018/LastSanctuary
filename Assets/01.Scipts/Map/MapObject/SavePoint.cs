@@ -72,12 +72,12 @@ public class SavePoint : MonoBehaviour, IInteractable
     {
         if (_isInteracted) { return; }
 
-        UIManager.Instance.SaveAnimation();
+        //UIManager.Instance.SaveAnimation();
 
         SaveManager.Instance.SetSavePoint(SavePosition());
         ItemManager.Instance.playerCondition.PlayerRecovery(); // 회복
         ItemManager.Instance.playerInventory.SupplyPotion();
-        MapManager.Instance.RespawnEnemies();
+        MapManager.Instance.RespawnMap();
         //MapManager.Instance.RespawnItems();
         GetComponent<TutorialUIInterction>()?.ShowUI(); //상호작용시 UI 호출
 

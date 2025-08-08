@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+
 
 public class ItemSpawnPoint : MonoBehaviour
 {
@@ -12,12 +10,6 @@ public class ItemSpawnPoint : MonoBehaviour
     private Coroutine _respawnCoroutine;
     [SerializeField] private float respawnCoolTime = 10;
     
-    
-    private void Start()
-    {
-        //Test Code
-        Spawn();
-    }
     
     //아이템 스폰
     public void Spawn()

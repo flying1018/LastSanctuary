@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerInteractState : PlayerGroundState
 {
     private float _interactTime;
+    private float _margin = 0.3f; 
     
     public PlayerInteractState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
@@ -71,7 +72,7 @@ public class PlayerInteractState : PlayerGroundState
 
         //세이브 포인트 위치로 이동
         StartAnimation(_player.AnimationDB.MoveParameterHash);
-        while (Mathf.Abs(savePoint.NearPosition().position.x - _player.transform.position.x) > 0.1f)
+        while (Mathf.Abs(savePoint.NearPosition().position.x - _player.transform.position.x) > _margin)
         {
             _move.Move(direction * _data.moveSpeed);
             Rotate(direction);

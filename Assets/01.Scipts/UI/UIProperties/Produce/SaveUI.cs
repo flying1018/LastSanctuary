@@ -10,20 +10,20 @@ public class SaveUI : MonoBehaviour
 
     [SerializeField] private float frameDelay = 0.4f;
 
-    private Coroutine animCoroutine;
+    private Coroutine _animCoroutine;
 
     public void SaveAnima()
     {
-        if (animCoroutine != null)
-            StopCoroutine(animCoroutine);
-        animCoroutine = StartCoroutine(SaveAnimation_Coroutine());
+        if (_animCoroutine != null)
+            StopCoroutine(_animCoroutine);
+        _animCoroutine = StartCoroutine(SaveAnimation_Coroutine());
     }
     public void StopSaveAnimation()
     {
-        if (animCoroutine != null)
+        if (_animCoroutine != null)
         {
-            StopCoroutine(animCoroutine);
-            animCoroutine = null;
+            StopCoroutine(_animCoroutine);
+            _animCoroutine = null;
         }
 
         if (saveSprites.Length > 0)

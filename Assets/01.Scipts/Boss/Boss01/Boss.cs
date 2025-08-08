@@ -53,6 +53,8 @@ public class Boss : MonoBehaviour
 
     public void Init()
     {
+        SpriteRenderer.flipX = false;
+        
         //무기 데이터 설정
         WeaponInfo = new WeaponInfo();
         WeaponInfo.Condition = Condition;

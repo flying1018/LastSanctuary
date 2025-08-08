@@ -41,6 +41,13 @@ public class PlayerGroundState : PlayerBaseState
         {
             _stateMachine.ChangeState(_stateMachine.UltState);
         }
+        
+        //아래 키 입력 시
+        if (_input.MoveInput.y < 0 && _input.IsJump)
+        {
+            if (!_move.IsAerialPlatform) return;
+            _stateMachine.ChangeState(_stateMachine.DownJumpState);
+        }
 
         //점프
         if (_input.IsJump && _move.IsGrounded)
@@ -67,13 +74,6 @@ public class PlayerGroundState : PlayerBaseState
         {
             _stateMachine.comboIndex = 0;
             _stateMachine.ChangeState(_stateMachine.ComboAttack[0]);
-        }
-
-        //아래 키 입력 시
-        if (_input.MoveInput.y < 0)
-        {
-            if (!_move.IsAerialPlatform) return;
-            _stateMachine.ChangeState(_stateMachine.DownJumpState);
         }
 
         //상호작용 키 입력 시 
