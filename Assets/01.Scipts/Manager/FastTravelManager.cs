@@ -25,17 +25,17 @@ public class FastTravelManager : Singleton<FastTravelManager>
         LastSanctumPortalUid = PlayerPrefs.GetString(_playerPrefsKey, string.Empty);
     }
 
-    public void Register(FastTravelPortal p)
+    public void Register(FastTravelPortal portal)
     {
-        if (!string.IsNullOrEmpty(p.uid)) _byUid[p.uid] = p;
-        _byArea[p.area] = p;
-        if (p.area == SanctumArea.Lobby) LobbyPortal = p;
+        if (!string.IsNullOrEmpty(portal.uid)) _byUid[portal.uid] = portal;
+        _byArea[portal.area] = portal;
+        if (portal.area == SanctumArea.Lobby) LobbyPortal = portal;
     }
 
-    public void SetLastSanctum(FastTravelPortal p)
+    public void SetLastSanctum(FastTravelPortal portal)
     {
-        if (p.area == SanctumArea.Lobby) return;
-        LastSanctumPortalUid = p.uid;
+        if (portal.area == SanctumArea.Lobby) return;
+        LastSanctumPortalUid = portal.uid;
         PlayerPrefs.SetString(_playerPrefsKey, LastSanctumPortalUid); 
     }
 

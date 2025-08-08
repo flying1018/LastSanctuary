@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class FastTravelPortal : MonoBehaviour, IInteractable
 {
-    [Header("ID & 영역")]
-    public string uid;                  // 씬 내 유일
+    public string uid;         
     public SanctumArea area;
 
     [Header("스폰 포인트")]
-    public Transform spawnPoint;        // 이 포탈의 도착 위치 (발판 빈 오브젝트)
+    public Transform spawnPoint;
 
     private void Awake()
     {
@@ -18,14 +17,16 @@ public class FastTravelPortal : MonoBehaviour, IInteractable
     {
         if (area == SanctumArea.Lobby)
         {
-            // 로비 → 최근 성역
             var target = FastTravelManager.Instance.GetLastSanctumSpawn();
-            if (target != null) TeleportTo(target.position);
-            else Debug.Log("[FastTravel] 최근 성역 정보 없음");
+            if (target != null)
+            {
+                TeleportTo(target.position);
+            }
+            else { DebugHelper.LogWarning("최근성역 정보 Null로 뜨니 확인요망"); }
         }
         else
-        {
-            // 성역 → 로비, 그리고 ‘최근 성역’ 갱신
+        {  // 성역에서 로비갈때 사용되며 일단 최근성역 등록하ㅔㄱ됨
+            
             FastTravelManager.Instance.SetLastSanctum(this);
             var lobby = FastTravelManager.Instance.LobbyPortal;
             if (lobby != null) TeleportTo(lobby.spawnPoint.position);
