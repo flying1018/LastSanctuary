@@ -7,6 +7,7 @@ public class SaveUI : MonoBehaviour
 {
     [SerializeField] private Sprite[] saveSprites;
     [SerializeField] private Image saveImage;
+    [SerializeField] private Image saveTextImage;
 
     [SerializeField] private float frameDelay = 0.4f;
 
@@ -32,9 +33,12 @@ public class SaveUI : MonoBehaviour
 
     private IEnumerator SaveAnimation_Coroutine()
     {
-        Color color = saveImage.color;
-        color.a = 1f;
-        saveImage.color = color;
+        Color color1 = saveImage.color;
+        Color color2 = saveTextImage.color;
+        color1.a = 1f;
+        color2.a = 2f;
+        saveImage.color = color1;
+        saveTextImage.color = color2;
 
         int repeatCount = 2;
         for (int loop = 0; loop < repeatCount; loop++)
@@ -47,7 +51,11 @@ public class SaveUI : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.5f);
-        color.a = 0f;
-        saveImage.color = color;
+        color1.a = 0f;
+        color2.a = 0f;
+        saveImage.color = color1;
+        saveTextImage.color = color2;
+
+        this.gameObject.SetActive(false);
     }
 }

@@ -105,12 +105,14 @@ public class UIManager : Singleton<UIManager>
     public void Fade(float duration = 1f, Color? color = null)
     {
         DebugHelper.Log("Fade실행");
+        screenFadeUI.gameObject.SetActive(true);
         StartCoroutine(screenFadeUI.Fade_Coroutine(duration));
     }
 
 
     public void SaveAnimation()
     {
+        saveUI.gameObject.SetActive(true);
         saveUI.SaveAnima();
     }
 

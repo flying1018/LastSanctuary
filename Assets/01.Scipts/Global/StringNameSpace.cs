@@ -61,11 +61,16 @@ public static class StringNameSpace
         public const string Wall = "Wall";
         public const string Celling = "Celling";
     }
-    
+
     //씬 정보
     public static class Scenes
     {
         public const string RenewalTutorials = "Renewal_Tutorials";
         public const string TitleScene = "TitleScene";
+    }
+
+    public static class FastTravel
+    {
+        public const string PlayerPrefsKey = "LastSanctumPortalUid";
     }
 }

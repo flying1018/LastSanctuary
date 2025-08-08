@@ -17,12 +17,10 @@ public class LeverObject : MonoBehaviour, IDamageable
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
     
-
     public void TakeDamage(WeaponInfo weaponInfo)
     {
-        if(_isMove) return;
-        
         //SoundManager.Instance.PlaySFX(audioClip);
+        if (isOn) return;
         
         isOn = true;
         
@@ -30,7 +28,7 @@ public class LeverObject : MonoBehaviour, IDamageable
         {
             spriteRenderer.sprite = leverImage[1];
         }
-     
+        
         foreach (MoveObject _moveObject in moveObjects)
         {
             _moveObject.MoveObj();

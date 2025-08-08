@@ -14,6 +14,7 @@ public class PlayerDeathState : PlayerBaseState
 
         //입력 막기
         _player.PlayerInput.enabled = false;
+        UIManager.Instance.Fade(3f);
 
         //시간 체크
         _time = 0;
@@ -47,7 +48,7 @@ public class PlayerDeathState : PlayerBaseState
 
     public override void Exit()
     {
-        UIManager.Instance.Fade(1f);
+        
     }
 
     public override void PhysicsUpdate()
