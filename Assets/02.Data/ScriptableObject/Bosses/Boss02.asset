@@ -83,14 +83,14 @@ MonoBehaviour:
   backjumpDistance: 0
   backjumpHeight: 0
   backjumpSpeed: 0
-  phaseShiftHpRatio: 1
+  phaseShiftHpRatio: 0.5
   phaseShiftAnim: {fileID: 7400000, guid: 5ff75cee86e07b742a0f6b748a03e16c, type: 2}
   breathSound: {fileID: 0}
-  howlingSound: {fileID: 0}
+  howlingSound: {fileID: 8300000, guid: 79d147a33e9a45b469fe7d516304cc60, type: 3}
   jumpSound: {fileID: 0}
   landingSound: {fileID: 0}
   deathSound: {fileID: 0}
-  phaseShiftSound: {fileID: 0}
+  phaseShiftSound: {fileID: 8300000, guid: 81725d64760066d459db10145e794805, type: 3}
   walkSound: {fileID: 0}
   materials:
   - {fileID: 2100000, guid: 925d379cb152be54891be7a5c23adf6a, type: 2}

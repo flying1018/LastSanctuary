@@ -12,7 +12,6 @@ public class Boss01Event : BossEvent
     private Boss _boss;
 
     [Header("Boss Spawn")]
-    [SerializeField] private Transform playerPosition;
     [SerializeField] private float blackDuration = 1f;
     [SerializeField] private float blinkInterval;
     [SerializeField] private GameObject[] parts;

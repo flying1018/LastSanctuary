@@ -90,7 +90,7 @@ public class PlayerCamera : MonoBehaviour
     public void StartZoomCamera(Transform target, float zoom = 6f)
     {
         if (otherCam == null) return;
-        otherCam.Priority = 30;
+        otherCam.Priority = 20;
         otherCam.Follow = target;
         otherCam.m_Lens.OrthographicSize = zoom;
     }

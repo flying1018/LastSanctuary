@@ -11,6 +11,8 @@ public class Boss02 : Boss
     
     public void Init(Boss02Event bossEvent)
     {
+        gameObject.SetActive(true);
+        
         Init();
         
         Boss02Event = bossEvent;
@@ -21,6 +23,7 @@ public class Boss02 : Boss
         }
             
         StateMachine2 = new Boss02StateMachine(this);
+        
     }
     
     protected override void Update()
