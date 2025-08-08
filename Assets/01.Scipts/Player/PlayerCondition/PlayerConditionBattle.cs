@@ -15,9 +15,9 @@ public partial class PlayerCondition : IDamageable, IKnockBackable,IGuardable
         Attack = _player.Data.attack;
         MaxUltimate = _player.AttackData.maxUltimateGauge;
         
-        CurHp = MaxHp;
         CurStamina = MaxStamina;
         HealAmonut = _player.Data.healAmount;
+        CurHp = MaxHp - HealAmonut;
         CurUltimate = 0;
         
         IsInvincible = false;

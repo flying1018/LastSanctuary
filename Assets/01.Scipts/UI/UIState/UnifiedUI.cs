@@ -32,8 +32,6 @@ public class UnifiedUI : UIBaseState
 
     public override void Enter()
     {
-        Debug.Log(_uiManager);
-        
         //타이틀 씬이 아닐때
         if (_uiManager)
         {

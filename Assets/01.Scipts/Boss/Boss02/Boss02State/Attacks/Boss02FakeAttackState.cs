@@ -10,15 +10,15 @@ public class Boss02FakeAttackState : Boss02AttackState
     {
         base.Enter();
         
-        _boxCollider.enabled = false;
+        _condition2.DontCollision = true;
     }
     
     public override void Exit()
     {
         base.Exit();
-        
-        _boxCollider.enabled = true;
-        _move.gravityScale = Vector2.zero;
+
+
+        _condition2.DontCollision = false;
     }
 
     public override void Update()

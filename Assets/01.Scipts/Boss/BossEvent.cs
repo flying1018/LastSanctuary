@@ -16,6 +16,9 @@ public class BossEvent : MonoBehaviour
     protected Player _player;
     protected SpriteRenderer _backGroundSprite;
     
+    [Header("Boss Spawn")]
+    [SerializeField] protected Transform playerPosition;
+    
     
     //초기 설정
     protected virtual void Start()
@@ -46,7 +49,7 @@ public class BossEvent : MonoBehaviour
     }
 
     //UI 정상화와 플레이어 조작 가능
-    public void StartBattle()
+    public virtual void StartBattle()
     {
         _player.EventProduction(false);
         _bossCamera.Priority = 0;

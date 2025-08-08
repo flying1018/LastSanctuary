@@ -51,7 +51,7 @@ public class BossSpawnState : BossBaseState
 
     public override void PhysicsUpdate()
     {
-        Move(_move.gravityScale);
+        Move(Vector2.down);
     }
 
     public override void PlayEvent1()

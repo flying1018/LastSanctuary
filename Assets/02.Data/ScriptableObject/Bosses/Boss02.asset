@@ -15,7 +15,7 @@ MonoBehaviour:
   _key: 0
   _name: 
   gravityPower: 10
-  attack: 40
+  attack: 20
   defense: 20
   hp: 1600
   groggyGauge: 80
@@ -28,7 +28,7 @@ MonoBehaviour:
   spawnFallVelocity: 0
   spawnAnim: {fileID: 7400000, guid: 2bd9235ee42807643b7524b45b358d1b, type: 2}
   attackRange: 20
-  attackIdleTime: 2
+  attackIdleTime: 3
   knockbackForce: 5
   attacks:
   - multiplier: 1.5
@@ -53,7 +53,7 @@ MonoBehaviour:
     animParameter: Attack3
     attackAnim: {fileID: 7400000, guid: 6c3c77eddb180974eae3c670713eca79, type: 2}
     projectilePrefab: {fileID: 0}
-    projectilePower: 50
+    projectilePower: 40
     attackSounds: []
   - multiplier: 1.5
     knockbackForce: 5
@@ -85,12 +85,13 @@ MonoBehaviour:
   backjumpSpeed: 0
   phaseShiftHpRatio: 1
   phaseShiftAnim: {fileID: 7400000, guid: 5ff75cee86e07b742a0f6b748a03e16c, type: 2}
+  phaseShiftDuration: 5
   breathSound: {fileID: 0}
-  howlingSound: {fileID: 0}
+  howlingSound: {fileID: 8300000, guid: 79d147a33e9a45b469fe7d516304cc60, type: 3}
   jumpSound: {fileID: 0}
   landingSound: {fileID: 0}
   deathSound: {fileID: 0}
-  phaseShiftSound: {fileID: 0}
+  phaseShiftSound: {fileID: 8300000, guid: 81725d64760066d459db10145e794805, type: 3}
   walkSound: {fileID: 0}
   materials:
   - {fileID: 2100000, guid: 925d379cb152be54891be7a5c23adf6a, type: 2}

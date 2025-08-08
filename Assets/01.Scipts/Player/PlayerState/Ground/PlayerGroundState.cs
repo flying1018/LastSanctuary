@@ -15,6 +15,7 @@ public class PlayerGroundState : PlayerBaseState
 
         //착지하면 점프 어택 초기화
         _stateMachine.JumpAttack.CanJumpAttack = true;
+        _stateMachine.JumpTopAttack.CanJumpAttack = true;
     }
 
     public override void Exit()
@@ -41,6 +42,13 @@ public class PlayerGroundState : PlayerBaseState
         {
             _stateMachine.ChangeState(_stateMachine.UltState);
         }
+        
+        //아래 키 입력 시
+        if (_input.MoveInput.y < 0 && _input.IsJump)
+        {
+            if (!_move.IsAerialPlatform) return;
+            _stateMachine.ChangeState(_stateMachine.DownJumpState);
+        }
 
         //점프
         if (_input.IsJump && _move.IsGrounded)
@@ -59,7 +67,7 @@ public class PlayerGroundState : PlayerBaseState
         //위 키를 누르고 공격 입력 시
         if (_input.MoveInput.y > 0 && _input.IsAttack)
         {
-            _stateMachine.ChangeState(_stateMachine.TopAttackState);
+            _stateMachine.ChangeState(_stateMachine.TopAttack);
         }
 
         //공격
@@ -67,13 +75,6 @@ public class PlayerGroundState : PlayerBaseState
         {
             _stateMachine.comboIndex = 0;
             _stateMachine.ChangeState(_stateMachine.ComboAttack[0]);
-        }
-
-        //아래 키 입력 시
-        if (_input.MoveInput.y < 0)
-        {
-            if (!_move.IsAerialPlatform) return;
-            _stateMachine.ChangeState(_stateMachine.DownJumpState);
         }
 
         //상호작용 키 입력 시 

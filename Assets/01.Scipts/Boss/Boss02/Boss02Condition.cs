@@ -6,7 +6,7 @@ public class Boss02Condition : BossCondition
 {
     private Boss02 _boss02;
     
-    public bool PlayerPerfectGuard { get; set; }
+    public bool DontCollision { get; set; }
     
     public void Init(Boss02 boss)
     {
@@ -38,7 +38,7 @@ public class Boss02Condition : BossCondition
 
         if (_boss02.StateMachine2.currentState is Boss02RushAttackState)
         {
-            PlayerPerfectGuard = true;
+            DontCollision = true;
             _boss02.StateMachine2.ChangeState(_boss02.StateMachine2.AreaAttackIdle);       
         }
     }
