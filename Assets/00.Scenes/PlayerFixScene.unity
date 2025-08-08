@@ -1422,6 +1422,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1440881954611850267, guid: e474bd9086a9e4edbaa69aeb6c078d63, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6602538626570452252, guid: e474bd9086a9e4edbaa69aeb6c078d63, type: 3}
       propertyPath: m_Name
       value: RopeObj
