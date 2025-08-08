@@ -1,19 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TeleportObject : MonoBehaviour, IInteractable
+public enum TeleportType
 {
-    [SerializeField] private Transform target;
-    private Player _player;
+    Auto,
+    Interactable,
+}
 
-    private void OnTriggerStay2D(Collider2D other)
+public class TeleportObject : MonoBehaviour, IInteractable
+{  
+    [SerializeField] private TeleportType teleportType;
+    [SerializeField] private Transform target;
+    
+    [SerializeField] private float cooltime = 0.5f;
+    private static bool _istelpoCooldown;
+    
+    private Player _player;
+    
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
+        if (!other.gameObject.CompareTag(StringNameSpace.Tags.Player)) return;
+
+        if (other.TryGetComponent(out Player player))
         {
-            if (other.TryGetComponent(out Player player))
+            _player = player;
+
+            if (teleportType == TeleportType.Auto && !_istelpoCooldown)
             {
-                _player = player;
+                Teleport(_player);
+                _istelpoCooldown = true;
+                Invoke(nameof(ResetCooldown), cooltime);
             }
         }
     }
@@ -24,10 +39,23 @@ public class TeleportObject : MonoBehaviour, IInteractable
             _player = null;
         }
     }
-
+    
     public void Interact()
     {
-       //이동
-       _player.transform.position = target.position;
+        if(teleportType == TeleportType.Interactable && _player != null)
+            Teleport(_player);
+    }
+    
+    private void ResetCooldown()
+    {
+        _istelpoCooldown = false;
+    }
+    
+    private void Teleport(Player player)
+    {
+        if (_player != null)
+        {
+            player.transform.position = target.position;
+        }
     }
 }
