@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 6068774720010212936}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -11, z: 0}
-  m_LocalScale: {x: 1, y: 22, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8415786969358007340}
@@ -126,7 +126,9 @@ MonoBehaviour:
   moveObjType: 2
   ropeLength: 22
   baseRope: {fileID: 8318560711597368983}
-  ropeSegmentPrefab: {fileID: 7322322716963896146, guid: 22f7f2ff35c054670a4ddf3a8d55a182, type: 3}
+  middleRopePrefab: {fileID: 7322322716963896146, guid: 22f7f2ff35c054670a4ddf3a8d55a182, type: 3}
+  topRopePrefab: {fileID: 1219587960027766282, guid: 2d823b76566004dafb4bc748cedf99b7, type: 3}
+  bottomRopePrefab: {fileID: 7058610418532835112, guid: eb8aacf290a274a778f94c1135e12060, type: 3}
   coli: {fileID: 6068774720010212936}
 --- !u!1 &8318560711597368983
 GameObject:

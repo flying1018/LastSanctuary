@@ -165,12 +165,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveSprites:
-  - {fileID: 21300000, guid: 7a2a8655bed9c473cb8a7bae7b8665ef, type: 3}
-  - {fileID: 21300000, guid: 3e31c98b47b1b44eb8b6bc272f31152f, type: 3}
-  - {fileID: 21300000, guid: 71aa192d0aa7246c4893604989387ae2, type: 3}
-  - {fileID: 21300000, guid: 0482850e761a64bbfaff30b374761740, type: 3}
-  - {fileID: 21300000, guid: 1c816aa7c063f42dcb0e44a8a3d6a350, type: 3}
-  - {fileID: 21300000, guid: e9a7915998b1948319126f9210c30d57, type: 3}
-  - {fileID: 21300000, guid: 8fef54c8b2eee4775942f93bb2a8b656, type: 3}
+  - {fileID: -850064294, guid: f94db231854a84b2d94af4a7d1343db5, type: 3}
+  - {fileID: 1510076134, guid: f94db231854a84b2d94af4a7d1343db5, type: 3}
+  - {fileID: 186925645, guid: f94db231854a84b2d94af4a7d1343db5, type: 3}
+  - {fileID: -123474969, guid: f94db231854a84b2d94af4a7d1343db5, type: 3}
+  - {fileID: 511499464, guid: f94db231854a84b2d94af4a7d1343db5, type: 3}
+  - {fileID: -1044011950, guid: f94db231854a84b2d94af4a7d1343db5, type: 3}
+  - {fileID: 780936300, guid: f94db231854a84b2d94af4a7d1343db5, type: 3}
   saveImage: {fileID: 6883597963648343271}
+  saveTextImage: {fileID: 1950072196545928553}
   frameDelay: 0.1
