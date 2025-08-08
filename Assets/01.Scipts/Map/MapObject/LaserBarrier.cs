@@ -25,7 +25,8 @@ public class LaserBarrier : MoveObject
 
     public override void MoveObj()
     {
-        _isTurnOn = !_isTurnOn;
+        //_isTurnOn = !_isTurnOn;
+        _isTurnOn = false;
         SetBarrierActive(_isTurnOn);
     }
 
@@ -42,7 +43,6 @@ public class LaserBarrier : MoveObject
         if (other.TryGetComponent(out PlayerCondition playerCondition))
         {
             playerCondition.TakeDamage(WeaponInfo);
-            Debug.Log("a");
             playerCondition.ApplyKnockBack(WeaponInfo, transform);
         }
     }
