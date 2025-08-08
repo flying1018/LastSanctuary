@@ -72,6 +72,7 @@ public class BossSO : ScriptableObject
     public float phaseShiftHpRatio;
     public AnimationClip phaseShiftAnim;
     public float PhaseShiftTime => phaseShiftAnim.length;
+    public float phaseShiftDuration;
     
     [Header("Sound")] 
     public AudioClip breathSound;

@@ -28,7 +28,7 @@ MonoBehaviour:
   spawnFallVelocity: 0
   spawnAnim: {fileID: 7400000, guid: 2bd9235ee42807643b7524b45b358d1b, type: 2}
   attackRange: 20
-  attackIdleTime: 2
+  attackIdleTime: 3
   knockbackForce: 5
   attacks:
   - multiplier: 1.5
@@ -83,8 +83,9 @@ MonoBehaviour:
   backjumpDistance: 0
   backjumpHeight: 0
   backjumpSpeed: 0
-  phaseShiftHpRatio: 0.5
+  phaseShiftHpRatio: 1
   phaseShiftAnim: {fileID: 7400000, guid: 5ff75cee86e07b742a0f6b748a03e16c, type: 2}
+  phaseShiftDuration: 5
   breathSound: {fileID: 0}
   howlingSound: {fileID: 8300000, guid: 79d147a33e9a45b469fe7d516304cc60, type: 3}
   jumpSound: {fileID: 0}

@@ -5,11 +5,20 @@ using UnityEngine;
 public class Boss02Event : BossEvent
 {
     private Boss02 _boss;
+    private SpriteRenderer[] _mirrorSpriteRenderers;
+
     
     [Header("BossSpawn")]
+    [SerializeField] private Sprite originTopMirrorSprite;
+    [SerializeField] private Sprite originMirrorSprite;
     [SerializeField] private float blackDuration = 1f;
     [SerializeField] private float cameraZoom = 4f;
     [SerializeField] private Vector3 backGroundSize = new Vector3(3, 3, 0);
+
+    [Header("PhaseShift")] 
+    [SerializeField] private Sprite[] brokenMirror;
+    [SerializeField] private float brokenTime;
+    [SerializeField] private Sprite phaseShiftSprite;
 
     [Header("Battle")]
     [SerializeField] private Transform leftTopMirror;
@@ -34,6 +43,8 @@ public class Boss02Event : BossEvent
         
         _boss = FindAnyObjectByType<Boss02>();
         _boss.gameObject.SetActive(false);
+        
+        _mirrorSpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
     }
 
     //플레이어 입장 시
@@ -66,11 +77,19 @@ public class Boss02Event : BossEvent
         }
     }
     
-         //스폰 이벤트
+    //스폰 이벤트
     IEnumerator Spawn_Coroutine()
     {
-        // _bossCamera.Priority = 20;
-        // _backGroundSprite.gameObject.transform.localScale = new Vector3(3, 3, 0);
+        SetMirror(true);
+        
+        //거울 정상화
+        for (int i = 0; i < 5; i++)
+        {
+            if(i==0)
+                _mirrorSpriteRenderers[i].sprite = originTopMirrorSprite;
+            else
+                _mirrorSpriteRenderers[i].sprite = originMirrorSprite;
+        }
         
         //플레이어 이벤트 상태(조작 불가 + 업데이트, 물리 업데이트 막기)
         _player.EventProduction(true);
@@ -122,6 +141,14 @@ public class Boss02Event : BossEvent
         _player.Camera.StartZoomCamera(_boss.transform,cameraZoom);
     }
 
+    public void SetMirror(bool isOn)
+    {
+        leftTopMirror.gameObject.SetActive(isOn);
+        leftBottomMirror.gameObject.SetActive(isOn);
+        rightTopMirror.gameObject.SetActive(isOn);
+        rightBottomMirror.gameObject.SetActive(isOn);
+    }
+
     public override void StartBattle()
     {
         _player.EventProduction(false);
@@ -141,11 +168,48 @@ public class Boss02Event : BossEvent
             yield return null;
         }
     }
+    public void StartZoomCamera()
+    {
+        _bossCamera.Priority = 0;
+        _player.Camera.StartZoomCamera(_boss.transform,cameraZoom);
+    }
     public void EndZoomCamera()
     {
         _player.Camera.EndZoomCamera();
         _bossCamera.Priority = 30;
     }
+
+    private Coroutine _phaseShiftCoroutine;
+    
+    public void BrokenMirror()
+    {
+        if (_phaseShiftCoroutine != null)
+        {
+            StopCoroutine(_phaseShiftCoroutine);
+            _phaseShiftCoroutine = null;
+        }
+        _phaseShiftCoroutine = StartCoroutine(BrokenMirror_Coroutine());
+    }
+
+    IEnumerator BrokenMirror_Coroutine()
+    {
+        foreach (Sprite sprite in  brokenMirror)
+        {
+            for(int i=1;i<5;i++)
+            {
+                _mirrorSpriteRenderers[i].sprite = sprite;
+            }
+            yield return new WaitForSeconds(brokenTime);
+        }
+        
+        SetMirror(false);
+    }
+
+    public void ChangeMirrorSprite()
+    {
+        _mirrorSpriteRenderers[0].sprite = phaseShiftSprite;
+    }
+    
 
     public Vector2 GetRandomMirror()
     {
