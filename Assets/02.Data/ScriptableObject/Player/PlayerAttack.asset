@@ -109,7 +109,7 @@ MonoBehaviour:
   ultAttack:
     attackAnim: {fileID: 7400000, guid: 1b15b0d3195f54e7d898c9aeb9060295, type: 2}
     attackIndex: 8
-    multiplier: 0.5
+    multiplier: 0.75
     nextComboTime: 0
     staminaCost: 0
     attackForce: 0
