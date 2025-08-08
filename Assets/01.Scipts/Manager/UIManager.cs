@@ -112,6 +112,7 @@ public class UIManager : Singleton<UIManager>
 
     public void SaveAnimation()
     {
+        saveUI.gameObject.SetActive(true);
         saveUI.SaveAnima();
     }
 

@@ -55,5 +55,7 @@ public class SaveUI : MonoBehaviour
         color2.a = 0f;
         saveImage.color = color1;
         saveTextImage.color = color2;
+
+        this.gameObject.SetActive(false);
     }
 }
