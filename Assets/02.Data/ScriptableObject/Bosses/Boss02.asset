@@ -15,7 +15,7 @@ MonoBehaviour:
   _key: 0
   _name: 
   gravityPower: 10
-  attack: 40
+  attack: 20
   defense: 20
   hp: 1600
   groggyGauge: 80
@@ -53,7 +53,7 @@ MonoBehaviour:
     animParameter: Attack3
     attackAnim: {fileID: 7400000, guid: 6c3c77eddb180974eae3c670713eca79, type: 2}
     projectilePrefab: {fileID: 0}
-    projectilePower: 50
+    projectilePower: 40
     attackSounds: []
   - multiplier: 1.5
     knockbackForce: 5

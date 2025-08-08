@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss02BoomerangAttackState : Boss02AttackState
 {
     Vector2 _dir;
+    float _margin = 1f;
     public Boss02BoomerangAttackState(Boss02StateMachine bossStateMachine, BossAttackInfo attackInfo) : base(bossStateMachine, attackInfo) { }
 
     public override void Enter()
@@ -24,7 +25,7 @@ public class Boss02BoomerangAttackState : Boss02AttackState
     private void ThrowBoomerang()
     {
         GameObject boomerang = ObjectPoolManager.Get(_attackInfo.projectilePrefab, (int)PoolingIndex.Boss02Projectile1);
-        boomerang.transform.position = new Vector2(_weapon.transform.position.x,_weapon.transform.position.y - _boxCollider.size.y/3);
+        boomerang.transform.position = new Vector2(_weapon.transform.position.x,_weapon.transform.position.y - _margin);
         boomerang.transform.rotation = _weapon.transform.rotation;
 
         if (boomerang.TryGetComponent(out BoomerangProjectile boomerangProjectile))

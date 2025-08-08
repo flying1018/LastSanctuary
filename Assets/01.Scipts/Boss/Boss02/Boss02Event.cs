@@ -6,14 +6,18 @@ public class Boss02Event : BossEvent
 {
     private Boss02 _boss;
 
-    [SerializeField] private Transform[] leftMirror;
-    [SerializeField] private Transform[] rightMirror;
+    [SerializeField] private Transform leftTopMirror;
+    [SerializeField] private Transform leftBottomMirror;
+    [SerializeField] private Transform rightTopMirror;
+    [SerializeField] private Transform rightBottomMirror;
     [SerializeField] private Transform topMirror;
     [SerializeField] private float teleportRange = 10f;
     [SerializeField] private float projectileYMargin = 2f;
 
-    public Transform[] LeftMirror => leftMirror;
-    public Transform[] RightMirror => rightMirror;
+    public Transform LeftTopMirror => leftTopMirror;
+    public Transform LeftBottomMirror => leftBottomMirror;
+    public Transform RightTopMirror => rightTopMirror;
+    public Transform RightBottomMirror => rightBottomMirror;
     public Transform TopMirror => topMirror;
 
 
@@ -57,7 +61,7 @@ public class Boss02Event : BossEvent
 
     public Vector2 GetRandomMirror()
     {
-        int num = Random.Range(0, 7);
+        int num = Random.Range(0, 5);
         Vector2 result = Vector2.zero;
         switch (num)
         {
@@ -65,22 +69,16 @@ public class Boss02Event : BossEvent
                 result = topMirror.position;
                 break;
             case 1:
-                result = leftMirror[0].position;
+                result = leftTopMirror.position;
                 break;
             case 2:
-                result = leftMirror[1].position;
+                result = leftBottomMirror.position;
                 break;
             case 3:
-                result = leftMirror[2].position;
+                result = rightTopMirror.position;
                 break;
             case 4:
-                result = rightMirror[0].position;
-                break;
-            case 5:
-                result = rightMirror[1].position;
-                break;
-            case 6:
-                result = rightMirror[2].position;
+                result = rightBottomMirror.position;
                 break;
         }
         return result;

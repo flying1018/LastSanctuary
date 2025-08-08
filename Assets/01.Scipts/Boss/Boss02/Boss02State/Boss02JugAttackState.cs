@@ -10,11 +10,11 @@ public class Boss02JugAttackState : BossBaseState
     {
         base.Enter();
 
-        int num = 0;
+        int jugment = 0;
         if (_boss2.Phase2)
         {
-            num = Random.Range(0, 3);
-            switch (num)
+            jugment = Random.Range(0, 3);
+            switch (jugment)
             {
                 case 0:
                     _stateMachine2.ChangeState(_stateMachine2.DownAttack);
@@ -35,34 +35,38 @@ public class Boss02JugAttackState : BossBaseState
         }
 
 
-        num = Random.Range(0, 2);
         if (_stateMachine2.MoveTarget == _boss02Event.TopMirror.position )
         {
             _stateMachine2.ChangeState(_stateMachine2.DownAttack);
+            return;
         }
-        for (int i = 0; i < _boss02Event.LeftMirror.Length; i++)
+        
+        if (_stateMachine2.MoveTarget == _boss02Event.LeftTopMirror.position)
         {
-            if (_stateMachine2.MoveTarget == _boss02Event.LeftMirror[i].position)
-            {
-                _stateMachine2.MoveTarget = _boss02Event.RightMirror[2-i].position;
-                if(num == 0&& _stateMachine2.MoveTarget != _boss02Event.RightMirror[1].position)
-                    _stateMachine2.ChangeState(_stateMachine2.BoomerangAttack);
-                else
-                    _stateMachine2.ChangeState(_stateMachine2.RushAttack);
-                return;
-            }
+            _stateMachine2.MoveTarget = _boss02Event.RightBottomMirror.position;
         }
-        for (int i = 0; i < _boss02Event.RightMirror.Length; i++)
+        else if (_stateMachine2.MoveTarget == _boss02Event.LeftBottomMirror.position)
         {
-            if (_stateMachine2.MoveTarget == _boss02Event.RightMirror[i].position)
-            {
-                _stateMachine2.MoveTarget = _boss02Event.LeftMirror[2-i].position;
-                if(num == 0&& _stateMachine2.MoveTarget != _boss02Event.LeftMirror[1].position)
-                    _stateMachine2.ChangeState(_stateMachine2.BoomerangAttack);
-                else
-                    _stateMachine2.ChangeState(_stateMachine2.RushAttack);
-                return;
-            }
+            _stateMachine2.MoveTarget = _boss02Event.RightTopMirror.position;
+        }
+        else if (_stateMachine2.MoveTarget == _boss02Event.RightTopMirror.position)
+        {
+            _stateMachine2.MoveTarget = _boss02Event.LeftBottomMirror.position;
+        }
+        else if (_stateMachine2.MoveTarget == _boss02Event.RightBottomMirror.position)
+        {
+            _stateMachine2.MoveTarget = _boss02Event.LeftTopMirror.position;
+        }
+        
+        jugment = Random.Range(0, 2);
+        switch (jugment)
+        {
+            case 0:
+                _stateMachine2.ChangeState(_stateMachine2.RushAttack);
+                break;
+            case 1:
+                _stateMachine2.ChangeState(_stateMachine2.BoomerangAttack);
+                break;
         }
 
     }
