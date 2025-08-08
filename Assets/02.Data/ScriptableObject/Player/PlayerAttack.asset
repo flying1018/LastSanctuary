@@ -79,6 +79,17 @@ MonoBehaviour:
     groggyDamage: 1
     isInvincible: 0
     ultimateValue: 1
+  jumpTopAttack:
+    attackAnim: {fileID: 7400000, guid: cbdcd516d24c3354bbf3ec8e4db03db7, type: 2}
+    attackIndex: 6
+    multiplier: 1
+    nextComboTime: 0
+    staminaCost: 0
+    attackForce: 0
+    knockbackForce: 0
+    groggyDamage: 1
+    isInvincible: 0
+    ultimateValue: 1
   groggyAttackPrefab: {fileID: 4232177779540841221, guid: 6e243fd6a47e6684ba9bf7b6cb7e60c8, type: 3}
   groggyAnimInterval: 0.15
   groggyAttack:

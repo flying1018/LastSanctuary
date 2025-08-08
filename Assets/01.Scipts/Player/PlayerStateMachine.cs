@@ -26,7 +26,8 @@ public class PlayerStateMachine : StateMachine
     public PlayerDeathState DeathState { get; private set; }
     public PlayerRespawnState RespawnState { get; private set; }
     public PlayerInteractState InteractState { get; private set; }
-    public PlayerTopAttackState TopAttackState { get; private set; }
+    public PlayerTopAttackState TopAttack { get; private set; }
+    public PlayerJumpTopAttackState JumpTopAttack { get; private set; }
     public GroggyAttackState GroggyAttackState { get; private set; }
     
     public int comboIndex;
@@ -60,7 +61,8 @@ public class PlayerStateMachine : StateMachine
         DeathState = new PlayerDeathState(this);
         RespawnState = new PlayerRespawnState(this);
         InteractState = new PlayerInteractState(this);
-        TopAttackState = new PlayerTopAttackState(this, player.AttackData.topAttack);
+        TopAttack = new PlayerTopAttackState(this, player.AttackData.topAttack);
+        JumpTopAttack = new PlayerJumpTopAttackState(this, player.AttackData.jumpTopAttack);
         GroggyAttackState = new GroggyAttackState(this, player.AttackData.groggyAttack);
         
         comboIndex = 0;
