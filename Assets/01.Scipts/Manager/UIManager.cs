@@ -108,12 +108,10 @@ public class UIManager : Singleton<UIManager>
         StartCoroutine(screenFadeUIs[0].Fade_Coroutine(duration));
     }
     
-    public void BorderFadeOut(float duration = 1f, Color? color = null)
+    public void BorderFadeOut(Color color,float startAlpha = 1f,float duration = 1f)
     {
-        
-        
         screenFadeUIs[1].gameObject.SetActive(true);
-        screenFadeUIs[1].FadeOut(duration, color);
+        screenFadeUIs[1].FadeOut(color,startAlpha,duration);
     }
 
 

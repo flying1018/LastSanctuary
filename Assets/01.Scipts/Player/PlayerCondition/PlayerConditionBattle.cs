@@ -5,7 +5,7 @@ using UnityEngine;
 
 public partial class PlayerCondition : IDamageable, IKnockBackable,IGuardable
 {
-     public void Init(Player player)
+    public void Init(Player player)
     {
         _player = player;
         MaxHp = _player.Data.hp;
@@ -82,6 +82,10 @@ public partial class PlayerCondition : IDamageable, IKnockBackable,IGuardable
     #endregion
     
     #region Guard
+    
+    private Coroutine _timeSlower;
+    private Coroutine _changeBackGround;
+    private Coroutine _zoomInOut;
 
     public bool ApplyGuard(WeaponInfo weaponInfo,Transform dir)
     {
@@ -91,7 +95,12 @@ public partial class PlayerCondition : IDamageable, IKnockBackable,IGuardable
         {
             _player.EventSFX2();
             _curStamina += _player.Data.perfactGuardStemina;
-            //궁극기 게이지 회복
+            CurUltimate += _player.Data.perfactGuardUlt;
+            
+            //연출 (몰라 급해 하드코딩임)
+            //UIManager.Instance.BorderFadeOut(Color.white, 0.05f);
+            //_player.Camera.ShakeCamera(6,6,0.1f);
+            GuardCoroutine();
 
             if (weaponInfo.Condition is BossCondition bossCondition)
             {
@@ -124,6 +133,56 @@ public partial class PlayerCondition : IDamageable, IKnockBackable,IGuardable
         {
             return false;
         }
+    }
+
+    //일단은 하드코딩 시간 부족
+    private void GuardCoroutine()
+    {
+        if (_zoomInOut != null)
+        {
+            StopCoroutine(_zoomInOut);
+            _zoomInOut = null;
+        }
+        _zoomInOut = StartCoroutine(ZoomInOut_Coroutine(_player.Camera.transform, 4f, 0.2f));
+        
+        if (_timeSlower != null)
+        {
+            StopCoroutine(_timeSlower);
+            _timeSlower = null;
+        }
+        _timeSlower = StartCoroutine(TimeSlower_Coroutine(0.1f, 1,0.2f));
+
+        if (_changeBackGround != null)
+        {
+            StopCoroutine(_changeBackGround);
+            _changeBackGround = null;
+        }
+        _changeBackGround = StartCoroutine(ChangeBackGround_Coroutine(0.1f));
+    }
+
+    IEnumerator ZoomInOut_Coroutine(Transform target, float zoom, float stopTime)
+    {
+        _player.Camera.CutZoomIn(target,zoom);
+        yield return new WaitForSecondsRealtime(stopTime);
+        _player.Camera.EndZoomCamera();
+    }
+
+    IEnumerator TimeSlower_Coroutine(float force,float time,float stopTime)
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(stopTime);
+        Time.timeScale = force;
+        yield return new WaitForSecondsRealtime(time);
+        Time.timeScale = 1;
+    }
+
+    IEnumerator ChangeBackGround_Coroutine(float time)
+    {
+        _player.BackGround.sprite = _player.Data.whiteBackGround;
+        _player.BackGround.sortingOrder = 75;
+        yield return new WaitForSecondsRealtime(time);
+        _player.BackGround.sprite = _player.OriginBackGround;
+        _player.BackGround.sortingOrder = 0;
     }
 
     //정면 확인

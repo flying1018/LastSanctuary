@@ -29,6 +29,7 @@ MonoBehaviour:
   perfectGuardWindow: 0.2
   perfactGuardStemina: 30
   perfactGuardGroggy: 10
+  perfactGuardUlt: 0
   guardCost: 30
   lightHitDuration: 0.7
   heavyHitDuration: 1
@@ -62,3 +63,4 @@ MonoBehaviour:
   cameraDiff: 3
   cameraTopView: 2.5
   cameraBottomView: 1.5
+  whiteBackGround: {fileID: 21300000, guid: f88a56042c702cb4ca8f55b70f4301ed, type: 3}

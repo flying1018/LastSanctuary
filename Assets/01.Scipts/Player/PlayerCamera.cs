@@ -8,6 +8,9 @@ public class PlayerCamera : MonoBehaviour
     private Player _player;
     private CinemachineVirtualCamera _camera;
     private CinemachineFramingTransposer _transposer;
+    private CinemachineBrain _brain;
+    private readonly CinemachineBlendDefinition cut = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.Cut, 0f);
+    private readonly CinemachineBlendDefinition slow = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.EaseInOut, 2f);
     
     [SerializeField] private CinemachineVirtualCamera otherCam;
 
@@ -22,6 +25,7 @@ public class PlayerCamera : MonoBehaviour
         _camera = GetComponent<CinemachineVirtualCamera>();
         _transposer = _camera.GetCinemachineComponent<CinemachineFramingTransposer>();
         _defaultOrthoSize = _camera.m_Lens.OrthographicSize;
+        _brain = Camera.main.GetComponent<CinemachineBrain>();
     }
 
     public void RotateCamera(Vector2 direction)
@@ -90,12 +94,33 @@ public class PlayerCamera : MonoBehaviour
     public void StartZoomCamera(Transform target, float zoom = 6f)
     {
         if (otherCam == null) return;
+        _brain.m_DefaultBlend = slow;
         otherCam.Priority = 20;
         otherCam.Follow = target;
         otherCam.m_Lens.OrthographicSize = zoom;
     }
     public void EndZoomCamera()
     {
+        if (otherCam == null) return;
+        _brain.m_DefaultBlend = slow;
+        otherCam.Priority = 10;
+        _camera.Priority = 20;
+        _camera.Follow = _player.transform;
+        _camera.m_Lens.OrthographicSize = _defaultOrthoSize;
+    }
+
+    public void CutZoomIn(Transform target, float zoom = 6f)
+    {
+        _brain.m_DefaultBlend = cut;
+        if (otherCam == null) return;
+        otherCam.Priority = 50;
+        otherCam.Follow = target;
+        otherCam.m_Lens.OrthographicSize = zoom;
+    }
+    
+    public void CutZoomOut()
+    {
+        _brain.m_DefaultBlend = cut;
         if (otherCam == null) return;
         otherCam.Priority = 10;
         _camera.Priority = 20;

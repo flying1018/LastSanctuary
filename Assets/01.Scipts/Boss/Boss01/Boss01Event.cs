@@ -100,7 +100,7 @@ public class Boss01Event : BossEvent
         {
             distance = Mathf.Abs(_player.transform.position.x - playerPosition.position.x);
             _player.Move.Move(dir);
-            yield return null;
+            yield return _player.Move.WaitFixedUpdate;
         }
         //대기 상태
         _player.StateMachine.ChangeState(_player.StateMachine.IdleState);

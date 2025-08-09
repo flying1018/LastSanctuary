@@ -46,26 +46,26 @@ public class ScreenFadeUI : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    public void FadeOut(float duration = 1f, Color? color = null)
+    public void FadeOut(Color color, float startAlpha, float duration)
     {
         if (_fadeCoroutine != null)
         {
             StopCoroutine(_fadeCoroutine);
             _fadeCoroutine = null;
         }
-        _fadeCoroutine = StartCoroutine(FadeOut_Coroutine(duration, color));
+        _fadeCoroutine = StartCoroutine(FadeOut_Coroutine(color,startAlpha,duration));
     }
     
-    IEnumerator FadeOut_Coroutine(float duration = 1f, Color? color = null)
+    IEnumerator FadeOut_Coroutine(Color color ,float startAlpha,float duration)
     {
-        gameObject.SetActive(true); 
+        gameObject.SetActive(true);
         
-        Color c = _fadeImage.color;
+        Color c = color;
         float time = 0f;
         
         while (time < duration)
         {
-            c.a = Mathf.Lerp(1, 0, time /duration);
+            c.a = Mathf.Lerp(startAlpha, 0, time /duration);
             _fadeImage.color = c;
             time += Time.unscaledDeltaTime;
             yield return null;
