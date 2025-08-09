@@ -14,6 +14,7 @@ public class PlayerDeathState : PlayerBaseState
 
         //입력 막기
         _player.PlayerInput.enabled = false;
+        UIManager.Instance.DeathText(4f);
         UIManager.Instance.Fade(3f);
 
         //시간 체크
@@ -28,8 +29,8 @@ public class PlayerDeathState : PlayerBaseState
             _move.StopCoroutine(_move.AddForceCoroutine);
             _move.AddForceCoroutine = null;
         }
-        
-        
+
+
     }
 
     //모든 조작 및 물리 상태 막기
@@ -41,14 +42,14 @@ public class PlayerDeathState : PlayerBaseState
         _time += Time.deltaTime;
         if (_time >= _data.deathTime)
         {   //부활 상태로 전환
-            _stateMachine.ChangeState(_stateMachine.RespawnState); 
-           
+            _stateMachine.ChangeState(_stateMachine.RespawnState);
+
         }
     }
 
     public override void Exit()
     {
-        
+
     }
 
     public override void PhysicsUpdate()

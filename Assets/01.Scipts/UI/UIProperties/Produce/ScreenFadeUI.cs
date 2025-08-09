@@ -29,7 +29,7 @@ public class ScreenFadeUI : MonoBehaviour
         c.a = 1;
         fadeImage.color = c;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSecondsRealtime(0.5f);
 
         time = 0f;
         while (time < duration / 2)

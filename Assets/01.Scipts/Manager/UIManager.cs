@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -25,7 +20,7 @@ public class UIManager : Singleton<UIManager>
     public BossUI BossUI { get; set; }
     public ScreenFadeUI screenFadeUI { get; set; }
     public SaveUI saveUI { get; set; }
-
+    public DeathUI deathUI { get; set; }
 
     private void Start()
     {
@@ -48,6 +43,7 @@ public class UIManager : Singleton<UIManager>
 
         screenFadeUI = GetComponentInChildren<ScreenFadeUI>(true);
         saveUI = GetComponentInChildren<SaveUI>(true);
+        deathUI = GetComponentInChildren<DeathUI>(true);
 
         StateMachine = new UIStateMachine(this);
 
@@ -118,8 +114,14 @@ public class UIManager : Singleton<UIManager>
 
     public void ShowItemText(string message, Vector3 worldPos)
     {
-        var obj = Instantiate(data.itemTextUI, transform); 
+        var obj = Instantiate(data.itemTextUI, transform);
         obj.GetComponent<ItemTextUI>().Show(message, worldPos);
+    }
+
+    public void DeathText(float time)
+    {
+        deathUI.gameObject.SetActive(true);
+        deathUI.ShowForSeconds(time);
     }
 
     #endregion
