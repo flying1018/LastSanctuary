@@ -3832,6 +3832,14 @@ PrefabInstance:
       propertyPath: uiAnims.Array.data[0]
       value: 
       objectReference: {fileID: 983284247}
+    - target: {fileID: 3343947966080278325, guid: bfcf07b52b632e24a8153942ea6bc750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3343947966080278325, guid: bfcf07b52b632e24a8153942ea6bc750, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8272151200302604905, guid: bfcf07b52b632e24a8153942ea6bc750, type: 3}
       propertyPath: m_LocalPosition.x
       value: 186.6
@@ -20766,11 +20774,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 397.2
+      value: -13.7
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 32.5
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.z

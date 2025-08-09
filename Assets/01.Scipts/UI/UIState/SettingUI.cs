@@ -121,6 +121,7 @@ public class SettingUI : UnifiedUI
     {
         _defaultResolutionIndex = _curResolutionIndex;
         _defaultFullScreen = _isFullScreen;
+        LoadSliderSet();
         _defaultBgmVolume = bgmVolume.value;
         _defaultSfxVolume = sfxVolume.value;
         Resolution res = _resolutions[_curResolutionIndex];
@@ -135,9 +136,9 @@ public class SettingUI : UnifiedUI
         _isFullScreen = _defaultFullScreen;
         bgmVolume.value = _defaultBgmVolume;
         sfxVolume.value = _defaultSfxVolume;
-        LoadSliderSet();
         SoundManager.Instance.SetVolume(SoundManager.SoundType.BGMMixer, bgmSlider.value);
         SoundManager.Instance.SetVolume(SoundManager.SoundType.SFXMixer, sfxSlider.value);
+        LoadSliderSet();
         ApplySettingTexts();
     }
 

@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PuzzleObject : MoveObject
 {
-   [SerializeField] private Sprite sprite;
+   [SerializeField] private Sprite[] sprite;
    private Sprite _originSprite;
    private PuzzleManager _sequencePuzzleManager;
    private SpriteRenderer _spriteRenderer;
    private LeverObject _leverObject;
+   
+   private int _curSpriteIndex;
    private void Awake()
    {
       _sequencePuzzleManager = GetComponentInParent<PuzzleManager>();
@@ -26,13 +28,18 @@ public class PuzzleObject : MoveObject
    {
       if (_sequencePuzzleManager != null)
       _sequencePuzzleManager.OnCheckCorrect(gameObject);
-      
-      _spriteRenderer.sprite = sprite;
+
+      if (sprite != null && sprite.Length > 0)
+      {
+         _spriteRenderer.sprite = sprite[_curSpriteIndex];
+         _curSpriteIndex++;
+      }
    }
 
    public void Reset()
    {
       _leverObject.ReturnLever();
       _spriteRenderer.sprite = _originSprite;
+      _curSpriteIndex = 0;
    }
 }
