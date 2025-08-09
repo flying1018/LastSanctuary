@@ -1279,6 +1279,7 @@ MonoBehaviour:
   EnemySpawnPoints: []
   ItemSpawnPoints: []
   warpObjects: []
+  map: 0
   selectWarpObj: {fileID: 0}
   targetWarpObj: {fileID: 0}
 --- !u!4 &123986373
@@ -12860,10 +12861,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4230989925986528542, guid: fbd6cacc9cbbc8843ae3666e84ab3dfc, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4479920597923524145, guid: fbd6cacc9cbbc8843ae3666e84ab3dfc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 139.1315
@@ -20650,11 +20647,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 198.1
+      value: 191
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.1
+      value: 38.8
       objectReference: {fileID: 0}
     - target: {fileID: 6653849905273561096, guid: 2a9571fb476c53149994c8f4dd02cd68, type: 3}
       propertyPath: m_LocalPosition.z

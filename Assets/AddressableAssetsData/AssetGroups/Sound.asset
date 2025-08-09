@@ -27,6 +27,30 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 095eebe4d2b48534baffd8f13ecedd7a
+    m_Address: Assets/06.Resource/Sound/BGM/Tutorials_Sound.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 447efa19073c05f42b38fe2caee5d8bb
+    m_Address: Assets/06.Resource/Sound/BGM/Boss01_PhaseShift.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92d37a5cb249694438b634d0174365de
+    m_Address: Assets/06.Resource/Sound/BGM/Boss01_Phase2.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 529161031fee2f344b7847d8ae8d96ab
+    m_Address: Assets/06.Resource/Sound/BGM/Boss01_Phase1.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 776f3e8915c904c98ae272975e3fbf24, type: 2}
   m_SchemaSet:

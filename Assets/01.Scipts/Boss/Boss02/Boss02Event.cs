@@ -77,7 +77,7 @@ public class Boss02Event : BossEvent
                 moveObject.MoveObj();
             }
 
-            SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBGM);
+            SoundManager.Instance.PlayBGM(BGM.Tutorials_Sound);
             UIManager.Instance.SetBossUI(false);
         }
     }
@@ -284,7 +284,7 @@ public class Boss02Event : BossEvent
         }
         
         //브금 복구
-        SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBGM);
+        SoundManager.Instance.PlayBGM(BGM.Tutorials_Sound);
     }
     
 

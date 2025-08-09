@@ -29,7 +29,10 @@ public class BossSpawnState : BossBaseState
         _boss.BossEvent.StartBattle();
         
         //배경음 추가
-        SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBossPhase1);
+        Debug.Log(Time.time);
+        SoundManager.Instance.PlayBGM(BGM.Boss01_Phase1);
+        //SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBossPhase1);
+        Debug.Log(Time.time);
         
         //bossUI
         if (_boss.UIOn)
