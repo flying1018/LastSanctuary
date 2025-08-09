@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum PortalType
+{
+    Lobby,
+    Map,
+}
+
+public class LodeScenePotal : MonoBehaviour, IInteractable
+{
+    public string uid;
+    public string sceneName;
+    public Transform spawnPoint;
+    public PortalType portalType;
+    
+    public void Interact()
+    {
+        LodeScenesManager.Instance.LoadScenePortal(this);
+    }
+}

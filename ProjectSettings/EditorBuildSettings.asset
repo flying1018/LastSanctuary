@@ -11,5 +11,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00.Scenes/Renewal_Tutorials.unity
     guid: 17fd55e0ade4c53428bc1724db82128d
+  - enabled: 1
+    path: Assets/00.Scenes/1stPuzzle.unity
+    guid: 8e101c6f815709f49b9655517ba501a3
+  - enabled: 1
+    path: Assets/00.Scenes/1stTelePort.unity
+    guid: 8532467f3adfe4f44b514edb57659c8b
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 232de7517ad4649fb8063cd224c42546, type: 2}
