@@ -56,6 +56,7 @@ public class PlayerSO : ScriptableObject
     
     [Header("DeathState")]
     public float deathTime;
+    public float fadeTime;
     
     [Header("RespawnState")]
     public float respawnTime;

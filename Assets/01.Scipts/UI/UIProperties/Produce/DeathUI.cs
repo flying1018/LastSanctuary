@@ -16,20 +16,19 @@ public class DeathUI : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void ShowForSeconds(float totalSeconds)
+    public void DeathText(float totalSeconds)
     {
         if (_routine != null) StopCoroutine(_routine);
-        _routine = StartCoroutine(ShowForSeconds_Co(totalSeconds, defaultText));
+        _routine = StartCoroutine(DeathText_Coroutine(totalSeconds, defaultText));
     }
 
-    IEnumerator ShowForSeconds_Co(float totalSeconds, string text)
+    IEnumerator DeathText_Coroutine(float fadeTime, string text)
     {
         message.text = text;
 
         Color c = message.color;
 
-        // 첫 절반: 알파 0 → 1
-        float halfTime = totalSeconds * 0.5f;
+        float halfTime = fadeTime * 0.5f;
         float t = 0f;
         while (t < halfTime)
         {
@@ -41,7 +40,6 @@ public class DeathUI : MonoBehaviour
         c.a = 1f;
         message.color = c;
 
-        // 둘째 절반: 알파 1 → 0
         t = 0f;
         while (t < halfTime)
         {

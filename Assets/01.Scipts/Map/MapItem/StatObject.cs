@@ -5,9 +5,9 @@ using UnityEngine;
 public class StatObject : MonoBehaviour, IInteractable
 {
     public event Action OnInteracte;
-    
+
     [SerializeField] private StatObjectSO statData;
-    
+
     private bool _isGet;
     public bool IsGet { get => _isGet; set => _isGet = value; }
 
@@ -21,9 +21,22 @@ public class StatObject : MonoBehaviour, IInteractable
     public void Interact()
     {
         if (_isGet) { return; }
-        
+
         _isGet = true;
         ItemManager.Instance.UpgradeStat(statData);
+
+        string itemName;
+        if (statData.isConsumable)
+        {
+            itemName = "버프 획득";
+        }
+        else
+        {
+            itemName = "+" + statData.statDeltas[0].statType.ToString() + " " + statData.statDeltas[0].amount.ToString();
+        }
+
+        UIManager.Instance.ShowItemText(itemName, transform.position + Vector3.up * 1.5f);
+
         GetComponent<TutorialUIInterction>()?.ShowUI(); //상호작용시 UI 호출
         OnInteracte?.Invoke();
         gameObject.SetActive(false);

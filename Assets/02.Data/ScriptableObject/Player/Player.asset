@@ -36,6 +36,7 @@ MonoBehaviour:
   hitStaminaRecovery: 15
   damageReduction: 0.4
   deathTime: 2
+  fadeTime: 6
   respawnTime: 2
   interactionAnim: {fileID: 7400000, guid: 6b4cb65176225f64dbb39f0b25730cf3, type: 2}
   hp: 100

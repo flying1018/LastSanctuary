@@ -102,7 +102,7 @@ public class UIManager : Singleton<UIManager>
     {
         DebugHelper.Log("Fade실행");
         screenFadeUI.gameObject.SetActive(true);
-        StartCoroutine(screenFadeUI.Fade_Coroutine(duration));
+        screenFadeUI.FadeBackground(duration);
     }
 
 
@@ -115,13 +115,13 @@ public class UIManager : Singleton<UIManager>
     public void ShowItemText(string message, Vector3 worldPos)
     {
         var obj = Instantiate(data.itemTextUI, transform);
-        obj.GetComponent<ItemTextUI>().Show(message, worldPos);
+        obj.GetComponent<ItemTextUI>().ShowText(message, worldPos);
     }
 
     public void DeathText(float time)
     {
         deathUI.gameObject.SetActive(true);
-        deathUI.ShowForSeconds(time);
+        deathUI.DeathText(time);
     }
 
     #endregion
