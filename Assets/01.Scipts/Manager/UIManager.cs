@@ -25,7 +25,9 @@ public class UIManager : Singleton<UIManager>
     public BossUI BossUI { get; set; }
     public ScreenFadeUI[] screenFadeUIs { get; set; }
     public SaveUI saveUI { get; set; }
-
+    public TutorialUIPopup PopUpUI { get; set; }
+    public Queue<TutorialUIPopup> PopUpQueue { get; set; }
+    
 
     private void Start()
     {
@@ -35,6 +37,8 @@ public class UIManager : Singleton<UIManager>
 
     public void Init()
     {
+        PopUpQueue = new Queue<TutorialUIPopup>();
+        
         PlayerCondition = FindAnyObjectByType<PlayerCondition>();
         PlayerInventory = FindAnyObjectByType<PlayerInventory>();
         PlayerInput = FindAnyObjectByType<PlayerInput>();
@@ -46,13 +50,15 @@ public class UIManager : Singleton<UIManager>
         SkillUI = GetComponentInChildren<SkillUI>(true);
         OffUI = GetComponentInChildren<UIBaseState>(true);
 
+        StateMachine = new UIStateMachine(this);
+
         screenFadeUIs = GetComponentsInChildren<ScreenFadeUI>(true);
         saveUI = GetComponentInChildren<SaveUI>(true);
-
-        StateMachine = new UIStateMachine(this);
+        PopUpUI = GetComponentInChildren<TutorialUIPopup>(true);
 
         BossUI = GetComponentInChildren<BossUI>(true);
         BossUI.Init();
+        
     }
 
 

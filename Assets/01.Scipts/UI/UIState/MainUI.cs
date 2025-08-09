@@ -55,7 +55,7 @@ public class MainUI : UIBaseState
     public override void HandleInput()
     {
         //esc 이력 시
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && _uiManager.PopUpQueue.Count == 0)
         {   //성물 UI
             _uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
         }
