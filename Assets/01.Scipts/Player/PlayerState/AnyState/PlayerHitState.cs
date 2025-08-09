@@ -36,11 +36,15 @@ public class PlayerHitState : PlayerBaseState
         
         //무적 시간 시작
         _condition.InvincibleFunc(_data.invincibleDuration);
+        //히트 연출
+        SoundManager.Instance.MuffleSound(false);
+        SoundManager.Instance.MuffleSound(true);
+        UIManager.Instance.BorderFadeOut(_data.invincibleDuration *3);
     }
 
     public override void Exit()
     {
-        
+        SoundManager.Instance.MuffleSound(false,2f);
     }
 
     public override void HandleInput()

@@ -23,7 +23,7 @@ public class UIManager : Singleton<UIManager>
     public UIBaseState OffUI { get; private set; }
     public UIManagerSO Data { get => data; }
     public BossUI BossUI { get; set; }
-    public ScreenFadeUI screenFadeUI { get; set; }
+    public ScreenFadeUI[] screenFadeUIs { get; set; }
     public SaveUI saveUI { get; set; }
 
 
@@ -46,7 +46,7 @@ public class UIManager : Singleton<UIManager>
         SkillUI = GetComponentInChildren<SkillUI>(true);
         OffUI = GetComponentInChildren<UIBaseState>(true);
 
-        screenFadeUI = GetComponentInChildren<ScreenFadeUI>(true);
+        screenFadeUIs = GetComponentsInChildren<ScreenFadeUI>(true);
         saveUI = GetComponentInChildren<SaveUI>(true);
 
         StateMachine = new UIStateMachine(this);
@@ -104,9 +104,16 @@ public class UIManager : Singleton<UIManager>
 
     public void Fade(float duration = 1f, Color? color = null)
     {
-        DebugHelper.Log("Fade실행");
-        screenFadeUI.gameObject.SetActive(true);
-        StartCoroutine(screenFadeUI.Fade_Coroutine(duration));
+        screenFadeUIs[0].gameObject.SetActive(true);
+        StartCoroutine(screenFadeUIs[0].Fade_Coroutine(duration));
+    }
+    
+    public void BorderFadeOut(float duration = 1f, Color? color = null)
+    {
+        
+        
+        screenFadeUIs[1].gameObject.SetActive(true);
+        screenFadeUIs[1].FadeOut(duration, color);
     }
 
 
