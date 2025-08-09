@@ -37,4 +37,10 @@ public class Boss02DeathState : BossBaseState
             _boss2.gameObject.SetActive(false);
         }
     }
+
+    public override void PlayEvent1()
+    {
+        //아이템 드롬
+        _boss2.ItemDropper.DropItems();
+    }
 }

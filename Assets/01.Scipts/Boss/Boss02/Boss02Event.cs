@@ -263,9 +263,6 @@ public class Boss02Event : BossEvent
         CameraShake(shakeDuration);
         yield return new WaitForSeconds(shakeDuration);
         
-        //아이템 드롬
-        _boss.ItemDropper.DropItems();
-        
         //죽는 이벤트 시간만큼 대기
         yield return new WaitForSeconds(_boss.Data.deathEventDuration);
 
