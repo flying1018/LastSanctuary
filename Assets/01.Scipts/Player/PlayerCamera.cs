@@ -29,6 +29,10 @@ public class PlayerCamera : MonoBehaviour
         if (StopCamera || _transposer == null) return;
         if (direction.x != 0)
             _transposer.m_TrackedObjectOffset.x = direction.x > 0 ? _player.Data.cameraDiff : -_player.Data.cameraDiff;
+    
+        _transposer.m_TrackedObjectOffset.y = direction.y >= 0 ? _player.Data.cameraTopView : -_player.Data.cameraBottomView;
+            
+        
     }
 
     /// <summary>
@@ -86,7 +90,7 @@ public class PlayerCamera : MonoBehaviour
     public void StartZoomCamera(Transform target, float zoom = 6f)
     {
         if (otherCam == null) return;
-        otherCam.Priority = 30;
+        otherCam.Priority = 20;
         otherCam.Follow = target;
         otherCam.m_Lens.OrthographicSize = zoom;
     }

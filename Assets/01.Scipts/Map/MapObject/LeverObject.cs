@@ -16,38 +16,29 @@ public class LeverObject : MonoBehaviour, IDamageable
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
-    private IEnumerator Toggle()
+    
+    public void TakeDamage(WeaponInfo weaponInfo)
     {
         //SoundManager.Instance.PlaySFX(audioClip);
-        _isMove = true;
-
-        isOn = !isOn;
-
+        if (isOn) return;
+        
+        isOn = true;
+        
         if (isOn)
         {
-            DebugHelper.Log("IsOn true상태");
             spriteRenderer.sprite = leverImage[1];
         }
-        else
-        {
-            DebugHelper.Log("IsOn false상태");
-            spriteRenderer.sprite = leverImage[0];
-        }
-
+        
         foreach (MoveObject _moveObject in moveObjects)
         {
             _moveObject.MoveObj();
         }
-
-        yield return new WaitForSeconds(2f);
-
-        _isMove = false;
     }
 
-    public void TakeDamage(WeaponInfo weaponInfo)
+    public void ReturnLever()
     {
-        if (_isMove) { return; }
-        StartCoroutine(Toggle());
+        isOn = false;
+        spriteRenderer.sprite = leverImage[0];
     }
+
 }

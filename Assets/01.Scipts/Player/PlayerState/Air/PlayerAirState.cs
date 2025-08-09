@@ -29,10 +29,16 @@ public class PlayerAirState : PlayerBaseState
         
         InputAirDash();
         
+        if (_input.MoveInput.y >0 && _input.IsAttack && _stateMachine.JumpTopAttack.CanJumpAttack)
+        {
+            _stateMachine.ChangeState(_stateMachine.JumpTopAttack);
+        }
+        
         if (_input.IsAttack && _stateMachine.JumpAttack.CanJumpAttack)
         {
             _stateMachine.ChangeState(_stateMachine.JumpAttack);
         }
+        
     }
 
     public override void Update()

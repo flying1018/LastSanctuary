@@ -11,7 +11,7 @@ public class Boss02AreaAttackIdleState : Boss02IdleState
     {
         base.Exit();
 
-        _condition2.PlayerPerfectGuard = false;
+        _condition2.DontCollision = false;
     }
 
     public override void Update()

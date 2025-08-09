@@ -18,16 +18,12 @@ public class Boss02SpawnState : BossBaseState
         _boxCollider.enabled = true;
 
         _time = 0;
+        
+        PlaySFX1();
     }
     
     public override void Exit()
     {
-        //플레이어 상태 복구
-        _boss2.Boss02Event.StartBattle();
-        
-        //배경음 추가
-        SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBossPhase1);
-        
         //bossUI
         if (_boss2.UIOn)
         {
@@ -38,10 +34,12 @@ public class Boss02SpawnState : BossBaseState
     public override void Update()
     {
         //스폰 애니메이션 시간이 끝나면
-        _time += Time.deltaTime; 
+        _time += Time.deltaTime;
         if (_time >= _data.SpawnAnimeTime)
         {
-            //탑 미러로 이동
+            _boss02Event.EndZoomCamera();
+            _boss2.StartCoroutine(StartBattle());
+            
             _stateMachine2.MoveTarget = _boss02Event.TopMirror.position;
             _stateMachine2.ChangeState(_stateMachine2.TeleportState);
         }
@@ -51,6 +49,15 @@ public class Boss02SpawnState : BossBaseState
     {
         Move(Vector2.down);
     }
-    
-    
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.phaseShiftSound);
+    }
+
+    IEnumerator StartBattle()
+    {
+        yield return new WaitForSeconds(1f);
+        _boss02Event.StartBattle();
+    }
 }

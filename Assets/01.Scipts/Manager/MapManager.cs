@@ -22,6 +22,7 @@ public class MapManager : Singleton<MapManager>
     {
         //스폰 포인트 가져오기
         EnemySpawnPoints = new List<EnemySpawnPoint>(FindObjectsOfType<EnemySpawnPoint>());
+        ItemSpawnPoints = new List<ItemSpawnPoint>(FindObjectsOfType<ItemSpawnPoint>());
         IsBossAlive = true;
     }
 
@@ -37,7 +38,13 @@ public class MapManager : Singleton<MapManager>
     }
 
     //몬스터 리스폰
-    public void RespawnEnemies()
+    public void RespawnMap()
+    {
+        RespawnEnemys();
+        RespawnItems();
+    }
+
+    public void RespawnEnemys()
     {
         foreach (var spawnPoint in EnemySpawnPoints)
         {

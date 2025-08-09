@@ -100,5 +100,7 @@ public class PlayerSO : ScriptableObject
 
     [Header("PlayerCamera")] 
     public float cameraDiff;
+    public float cameraTopView;
+    public float cameraBottomView;
 }
 

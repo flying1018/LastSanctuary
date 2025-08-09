@@ -75,7 +75,7 @@ public class UltimateState : PlayerAttackState
         //생성 및 위치 설정
         GameObject go = ObjectPoolManager.Get(_attackData.laserPrefab,(int)PoolingIndex.PlayerUlt);
         Vector3 pos = _player.transform.position;
-        pos += 2 * (_spriteRenderer.flipX ? Vector3.left : Vector3.right);
+        pos += 1 * (_spriteRenderer.flipX ? Vector3.left : Vector3.right);
         go.transform.position = pos;
         //방향 설정
         float dir = _spriteRenderer.flipX ? -180 : 0;

@@ -40,6 +40,9 @@ public class PlayerAttackSO : ScriptableObject
     [Header("TopAttackState")] 
     public AttackInfo topAttack;
 
+    [Header("JumpTopAttack")] 
+    public AttackInfo jumpTopAttack;
+    
     [Header("GroggyAttackState")] 
     public GameObject groggyAttackPrefab;
     public float groggyAnimInterval;

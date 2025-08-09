@@ -19,6 +19,8 @@ public class BoomerangProjectile : ProjectileWeapon
         _width = _dir.x;
         _arrowPower = arrowPower;
         _time = 0;
+        
+        Debug.Log(dir);
     }
 
     private void FixedUpdate()

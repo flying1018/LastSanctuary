@@ -118,9 +118,10 @@ public class PlayerBaseState : IState
             //무기 회전
             float angle = _spriteRenderer.flipX ? 180 : 0;
             _player.Weapon.transform.rotation = Quaternion.Euler(angle, 0, angle);
-            //카메라 회전
-            _camera.RotateCamera(direction);
         }
+        
+        //카메라 회전
+        _camera.RotateCamera(direction);
     }
 
     public void InputDash()

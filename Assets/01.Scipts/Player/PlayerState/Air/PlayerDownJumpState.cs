@@ -11,6 +11,8 @@ public class PlayerDownJumpState : PlayerAirState
     {
         base.Enter();
         
+        _input.IsJump = false;
+        
         _boxCollider.enabled = false;
         
         _move.IsGrounded = false;

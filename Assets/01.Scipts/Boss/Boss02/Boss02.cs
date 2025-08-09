@@ -11,6 +11,8 @@ public class Boss02 : Boss
     
     public void Init(Boss02Event bossEvent)
     {
+        gameObject.SetActive(true);
+        
         Init();
         
         Boss02Event = bossEvent;
@@ -21,6 +23,7 @@ public class Boss02 : Boss
         }
             
         StateMachine2 = new Boss02StateMachine(this);
+        
     }
     
     protected override void Update()
@@ -32,12 +35,12 @@ public class Boss02 : Boss
     protected override void FixedUpdate()
     {
         StateMachine2.PhysicsUpdate();
-        Debug.Log(StateMachine2.currentState);
+        //Debug.Log(StateMachine2.currentState);
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if (Condition2.PlayerPerfectGuard) return;
+        if (Condition2.DontCollision) return;
         
         base.OnTriggerEnter2D(other);
     }

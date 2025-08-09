@@ -57,7 +57,7 @@ public class MainUI : UIBaseState
         //esc 이력 시
         if (Input.GetKeyDown(KeyCode.Escape))
         {   //성물 UI
-            _uiStateMachine.ChangeState(_uiStateMachine.RelicUI);
+            _uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
         }
     }
 
