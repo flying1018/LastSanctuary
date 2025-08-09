@@ -147,7 +147,6 @@ public class SoundManager : Singleton<SoundManager>
             {
                 if (audioClip.name == bgm.ToString())
                 {
-                    DebugHelper.Log(audioClip.name);
                     _BGMs.Add(bgm, audioClip);
                 }
             }

@@ -15,8 +15,7 @@ public class FlyingWeapon : EnemyWeapon
     {
         base.OnTriggerEnter2D(other);
         
-        if (other.gameObject.CompareTag(StringNameSpace.Tags.Celling) ||
-        other.gameObject.CompareTag(StringNameSpace.Tags.Ground))   //TestCode
+        if (other.gameObject.CompareTag(StringNameSpace.Tags.Celling))
         {
             _flyingAttack.ChangeIdleState();
         }
