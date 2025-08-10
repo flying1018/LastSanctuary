@@ -24,7 +24,7 @@ public class BossPhaseShiftState : BossBaseState
         PlaySFX1();
         
         //배경음 변경
-        SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialPhaseShift);
+        SoundManager.Instance.PlayBGM(BGM.Boss01_PhaseShift);
     }
 
     public override void Exit()
@@ -38,7 +38,7 @@ public class BossPhaseShiftState : BossBaseState
         _spriteRenderer.material = _data.materials[1];
         
         //배경음 변경
-        SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBossPhase2);
+        SoundManager.Instance.PlayBGM(BGM.Boss01_Phase2);
         
     }
 

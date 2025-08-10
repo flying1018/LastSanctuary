@@ -65,7 +65,7 @@ public class BossProjectileAttackState : BossAttackState
         //
         if (attack2.TryGetComponent(out ProjectileWeapon arrowPoProjectile))
         {
-            arrowPoProjectile.Init(_data.attack, _attackInfo.knockbackForce,PoolingIndex.BossProjectile);
+            arrowPoProjectile.Init(_boss.WeaponInfo,PoolingIndex.BossProjectile);
             arrowPoProjectile.Shot(dir, _attackInfo.projectilePower);
         }
     }

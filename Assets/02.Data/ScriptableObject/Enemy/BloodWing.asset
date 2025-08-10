@@ -27,7 +27,7 @@ MonoBehaviour:
   attackAnim: {fileID: 7400000, guid: 9bfbf15d9c5af0a4faf3399a46d06316, type: 2}
   blinkLength: 0.3
   attack: 25
-  hp: 100
+  hp: 20
   defence: 0
   damageDelay: 0.1
   hitDuration: 0.5
@@ -37,8 +37,11 @@ MonoBehaviour:
   projectilePower: 0
   rangeType: 0
   firePointX: 0
+  poolIndex: 0
   flyingHeight: 20
   flyingSpeed: 10
   attackSound: {fileID: 0}
   hitSound: {fileID: 8300000, guid: 0c627532d49dd2b49baec69f27b7b7b9, type: 3}
+  walkSound: {fileID: 0}
   abilitySound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 75d384425342bbf42b61ecf13007cbf4, type: 3}

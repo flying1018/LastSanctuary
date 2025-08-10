@@ -24,6 +24,8 @@ public class Boss02SpawnState : BossBaseState
     
     public override void Exit()
     {
+        SoundManager.Instance.PlayBGM(BGM.Boss02_Bgm);
+        
         //bossUI
         if (_boss2.UIOn)
         {

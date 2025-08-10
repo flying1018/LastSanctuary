@@ -10,10 +10,10 @@ public class PlayerRespawnState : PlayerBaseState
     {
         //세이브 포인트로 위치 변경
         _player.gameObject.transform.position = SaveManager.Instance.GetSavePoint();
-        
+
         //애니메이션 실행
         _player.Animator.SetTrigger(_player.AnimationDB.RespawnParameterHash);
-        
+
         //적 부활
         MapManager.Instance.RespawnMap();
         //포션 개수 회복

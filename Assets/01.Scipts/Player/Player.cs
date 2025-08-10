@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask aerialPlatformLayer;
+    
 
     //프로퍼티
     public BoxCollider2D BoxCollider { get; set; }
@@ -39,6 +40,8 @@ public class Player : MonoBehaviour
     public IInteractable InteractableTarget { get; set; }
     public GameObject Target { get; set; }
     public PlayerCamera Camera { get; set; }
+    public SpriteRenderer BackGround { get; set; }
+    public Sprite OriginBackGround { get; set; }
 
     public PlayerSkill Skill { get; set; }
     //직렬화 데이터 프로퍼티
@@ -62,6 +65,9 @@ public class Player : MonoBehaviour
         Move = GetComponent<PlayerKinematicMove>();
         Camera = GetComponentInChildren<PlayerCamera>();
         Skill = GetComponent<PlayerSkill>();
+        BackGround = GameObject.FindGameObjectWithTag(StringNameSpace.Tags.BackGround)
+            .GetComponent<SpriteRenderer>();
+        OriginBackGround = BackGround.sprite;
         
         //무기 대미지 설정
         WeaponInfo = new WeaponInfo();

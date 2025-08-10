@@ -12,6 +12,9 @@ public class Boss02DeathState : BossBaseState
         _boss2.Animator.Rebind();
         _boss2.Animator.SetTrigger(_boss2.AnimationDB.DeathParameterHash);
         
+        //보스 사망 연출
+        _boss02Event.OnTriggerBossDeath();
+        
         //보스 골드 드랍
         ItemManager.Instance.GetGold(_data.dropGold);
 
@@ -33,5 +36,11 @@ public class Boss02DeathState : BossBaseState
         {
             _boss2.gameObject.SetActive(false);
         }
+    }
+
+    public override void PlayEvent1()
+    {
+        //아이템 드롬
+        _boss2.ItemDropper.DropItems();
     }
 }

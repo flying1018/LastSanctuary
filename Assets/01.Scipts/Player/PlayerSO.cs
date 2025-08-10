@@ -43,6 +43,7 @@ public class PlayerSO : ScriptableObject
     public float perfectGuardWindow;
     public int perfactGuardStemina;
     public int perfactGuardGroggy;
+    public int perfactGuardUlt;
     public int guardCost;
     
     
@@ -56,6 +57,7 @@ public class PlayerSO : ScriptableObject
     
     [Header("DeathState")]
     public float deathTime;
+    public float fadeTime;
     
     [Header("RespawnState")]
     public float respawnTime;
@@ -85,9 +87,9 @@ public class PlayerSO : ScriptableObject
     public AudioClip ropeSound;
     public AudioClip deathSound;
     public AudioClip arrowHitSound;
+    public AudioClip magicHitSound;
     public AudioClip hitSound;
     public AudioClip healSound;
-    
     
     public AudioClip teleportStartSound;
     public AudioClip teleportEndSound;
@@ -101,5 +103,6 @@ public class PlayerSO : ScriptableObject
     public float cameraDiff;
     public float cameraTopView;
     public float cameraBottomView;
+    public Sprite whiteBackGround;
 }
 
