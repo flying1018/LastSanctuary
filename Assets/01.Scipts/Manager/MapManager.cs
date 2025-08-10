@@ -24,6 +24,7 @@ public class MapManager : Singleton<MapManager>
         EnemySpawnPoints = new List<EnemySpawnPoint>(FindObjectsOfType<EnemySpawnPoint>());
         ItemSpawnPoints = new List<ItemSpawnPoint>(FindObjectsOfType<ItemSpawnPoint>());
         IsBossAlive = true;
+        RespawnMap();
     }
 
     public static void SetBossDead()

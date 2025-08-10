@@ -22,7 +22,8 @@ public class Boss01Event : BossEvent
     [SerializeField] private float cameraZoom = 5f;
     [SerializeField] private Material redSilhouette;
     [SerializeField] private float shakeDuration;
-    
+    [SerializeField] private LodeScenePortal _lodeScenerPortal;
+
     //초기 설정
     protected override void Start()
     {
@@ -246,7 +247,7 @@ public class Boss01Event : BossEvent
         //설정 복구
         _brain.m_DefaultBlend = _originBlend;
         _boss.Animator.speed = 1f;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         StartBattle();
         //카메라 초기 설정 복구
         _brain.m_DefaultBlend = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.EaseInOut, 2f);
@@ -257,7 +258,8 @@ public class Boss01Event : BossEvent
         {
             moveObject.MoveObj();
         }
-        
+        //포탈 생성
+        _lodeScenerPortal.gameObject.SetActive(true);
         //브금 복구
         SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBGM);
     }

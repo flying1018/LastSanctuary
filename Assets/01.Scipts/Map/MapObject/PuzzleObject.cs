@@ -10,7 +10,7 @@ public class PuzzleObject : MoveObject
    private SpriteRenderer _spriteRenderer;
    private LeverObject _leverObject;
    
-   private int _curSpriteIndex;
+   private int _curSpriteIndex = 0;
    private void Awake()
    {
       _sequencePuzzleManager = GetComponentInParent<PuzzleManager>();
@@ -29,7 +29,7 @@ public class PuzzleObject : MoveObject
       if (_sequencePuzzleManager != null)
       _sequencePuzzleManager.OnCheckCorrect(gameObject);
 
-      if (sprite != null && sprite.Length > 0)
+      if (sprite != null)
       {
          _spriteRenderer.sprite = sprite[_curSpriteIndex];
          _curSpriteIndex++;

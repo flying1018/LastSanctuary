@@ -28,7 +28,7 @@ public class LodeScenesManager : Singleton<LodeScenesManager>
 
    private void SetSpawnPoint()
    {
-      var portals = FindObjectsOfType<LodeScenePotal>();
+      var portals = FindObjectsOfType<LodeScenePortal>();
       var player = FindObjectOfType<Player>();
   
       Debug.Log(portalUid);
@@ -52,7 +52,7 @@ public class LodeScenesManager : Singleton<LodeScenesManager>
          }
       }
    }
-   public void LoadScenePortal(LodeScenePotal potal)
+   public void LoadScenePortal(LodeScenePortal potal)
    {
       if (potal.portalType == PortalType.Map)
       {
