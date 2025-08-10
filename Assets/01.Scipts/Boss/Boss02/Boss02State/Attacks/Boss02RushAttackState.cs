@@ -17,6 +17,8 @@ public class Boss02RushAttackState : Boss02AttackState
         Rotate(_rushDir);
         
         _boxCollider.enabled = false;
+
+        PlaySFX1();
     }
 
     public override void Exit()
@@ -40,4 +42,9 @@ public class Boss02RushAttackState : Boss02AttackState
     {
         _move.Move(_rushDir * _attackInfo.projectilePower);
     }
+    
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_attackInfo.attackSounds[0]);
+    } 
 }

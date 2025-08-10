@@ -17,7 +17,7 @@ MonoBehaviour:
   gravityPower: 10
   attack: 20
   defense: 20
-  hp: 1
+  hp: 1600
   groggyGauge: 80
   groggyDuration: 5
   damageDelay: 0.1
@@ -38,7 +38,8 @@ MonoBehaviour:
     attackAnim: {fileID: 7400000, guid: fb2cd6ba0ec1ea0418165fad187ca9a7, type: 2}
     projectilePrefab: {fileID: 0}
     projectilePower: 5
-    attackSounds: []
+    attackSounds:
+    - {fileID: 8300000, guid: 79c0412da74d776438d8114359d842c3, type: 3}
   - multiplier: 1.5
     knockbackForce: 5
     coolTime: 10
@@ -46,7 +47,8 @@ MonoBehaviour:
     attackAnim: {fileID: 7400000, guid: 40a4f2c395cd582409922bd0adf8bf1c, type: 2}
     projectilePrefab: {fileID: 0}
     projectilePower: 0
-    attackSounds: []
+    attackSounds:
+    - {fileID: 8300000, guid: 6257b2bafcc936c4a817ce7fbb707df7, type: 3}
   - multiplier: 1.5
     knockbackForce: 5
     coolTime: 10
@@ -54,7 +56,8 @@ MonoBehaviour:
     attackAnim: {fileID: 7400000, guid: 6c3c77eddb180974eae3c670713eca79, type: 2}
     projectilePrefab: {fileID: 0}
     projectilePower: 40
-    attackSounds: []
+    attackSounds:
+    - {fileID: 8300000, guid: 4948834e2bfe920459e4a84ea324cb6e, type: 3}
   - multiplier: 1.5
     knockbackForce: 5
     coolTime: 15
@@ -70,7 +73,8 @@ MonoBehaviour:
     attackAnim: {fileID: 7400000, guid: ddd282f8b2c550145bf3c5583f816290, type: 2}
     projectilePrefab: {fileID: 5492190605815318470, guid: 295d6274bd3645746b7d111692cecefd, type: 3}
     projectilePower: 15
-    attackSounds: []
+    attackSounds:
+    - {fileID: 8300000, guid: 16978721c066958409f0a850ff4b58d8, type: 3}
   - multiplier: 0
     knockbackForce: 0
     coolTime: 0
@@ -83,16 +87,18 @@ MonoBehaviour:
   backjumpDistance: 0
   backjumpHeight: 0
   backjumpSpeed: 0
-  phaseShiftHpRatio: 1.1
+  phaseShiftHpRatio: 0.5
   phaseShiftAnim: {fileID: 7400000, guid: 5ff75cee86e07b742a0f6b748a03e16c, type: 2}
   phaseShiftDuration: 5
+  spawnSound: {fileID: 8300000, guid: 81725d64760066d459db10145e794805, type: 3}
   breathSound: {fileID: 0}
-  howlingSound: {fileID: 8300000, guid: 79d147a33e9a45b469fe7d516304cc60, type: 3}
+  howlingSound: {fileID: 8300000, guid: ab851faccb60fd34cb8b87c173a13797, type: 3}
   jumpSound: {fileID: 0}
   landingSound: {fileID: 0}
-  deathSound: {fileID: 0}
-  phaseShiftSound: {fileID: 8300000, guid: 81725d64760066d459db10145e794805, type: 3}
-  walkSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: fef59b87eef06754688ca818ffd246cd, type: 3}
+  phaseShiftSound: {fileID: 8300000, guid: 36a78ad04d2078545994fc30684288da, type: 3}
+  walkSound: {fileID: 8300000, guid: 084b5f5694a25d144b6c0b0f8ecf6329, type: 3}
+  hitSound: {fileID: 8300000, guid: 54c26708d9ea2044e919eaa89e2050f1, type: 3}
   materials:
   - {fileID: 2100000, guid: 925d379cb152be54891be7a5c23adf6a, type: 2}
   - {fileID: 2100000, guid: 19f0a6c5696afe54a8574a963f4c1a70, type: 2}

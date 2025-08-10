@@ -9,4 +9,16 @@ public class Boss02AreaAttackState : Boss02AttackState
         //초기에는 바로 사용 가능
         _coolTime = _attackCoolTime;
     }
+
+    public override void Enter()
+    {
+        base.Enter();
+        
+        PlaySFX1();
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_attackInfo.attackSounds[0]);
+    }
 }
