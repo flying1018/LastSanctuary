@@ -7,10 +7,17 @@ using System.Threading.Tasks;
 
 public enum BGM
 {
+    None,
     Tutorials_Sound,
     Boss01_PhaseShift,
     Boss01_Phase1,
-    Boss01_Phase2
+    Boss01_Phase2,
+    FirstSancBgm,
+    FirstSancBgm2,
+    FirstSancCenter,
+    TitleBgm,
+    VillageBgm,
+    Boss02_Bgm,
 }
 
 public class SoundManager : Singleton<SoundManager>
@@ -152,6 +159,6 @@ public class SoundManager : Singleton<SoundManager>
             }
         }
         
-        PlayBGM(BGM.Tutorials_Sound);
+        //PlayBGM(BGM.Tutorials_Sound);
     }
 }

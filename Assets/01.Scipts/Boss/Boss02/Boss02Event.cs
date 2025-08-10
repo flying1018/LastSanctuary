@@ -77,7 +77,7 @@ public class Boss02Event : BossEvent
                 moveObject.MoveObj();
             }
 
-            SoundManager.Instance.PlayBGM(BGM.Tutorials_Sound);
+            SoundManager.Instance.PlayBGM(BGM.FirstSancCenter);
             UIManager.Instance.SetBossUI(false);
         }
     }
@@ -120,7 +120,7 @@ public class Boss02Event : BossEvent
         {
             distance = Mathf.Abs(_player.transform.position.x - playerPosition.position.x);
             _player.Move.Move(dir);
-            yield return null;
+            yield return  _player.Move.WaitFixedUpdate;
         }
         //대기 상태
         _player.StateMachine.ChangeState(_player.StateMachine.IdleState);
@@ -281,7 +281,7 @@ public class Boss02Event : BossEvent
         }
         
         //브금 복구
-        SoundManager.Instance.PlayBGM(BGM.Tutorials_Sound);
+        SoundManager.Instance.PlayBGM(BGM.FirstSancCenter);
     }
     
 

@@ -8,6 +8,7 @@ public class BackGroundChanger : MonoBehaviour
 {
     [SerializeField] private Sprite sprite;
     [SerializeField] private Vector2 size;
+    [SerializeField] private BGM bgm;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent(out Player player))
@@ -15,6 +16,7 @@ public class BackGroundChanger : MonoBehaviour
             player.OriginBackGround = sprite;
             player.BackGround.sprite = sprite;
             player.BackGround.transform.localScale = size;
+            SoundManager.Instance.PlayBGM(bgm);
         }
     }
 }
