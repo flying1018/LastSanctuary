@@ -71,6 +71,8 @@ public class EnemySO : ScriptableObject
     [Header("Sound")] 
     public AudioClip attackSound;
     public AudioClip hitSound;
+    public AudioClip walkSound;
     public AudioClip abilitySound;
     public AudioClip deathSound;
+    public AudioClip detectSound;
 }

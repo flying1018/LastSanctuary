@@ -44,4 +44,9 @@ public class EnemyPatrolState : EIdleState
         Move(direction);
         Rotate(direction);
     }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.walkSound);
+    }
 }

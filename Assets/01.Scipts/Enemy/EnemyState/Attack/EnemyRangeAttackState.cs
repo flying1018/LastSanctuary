@@ -5,6 +5,19 @@ using UnityEngine;
 public class EnemyRangeAttackState : EAttackState
 {
     public EnemyRangeAttackState(EnemyStateMachine ememyStateMachine) : base(ememyStateMachine) {}
+    
+    public override void Enter()
+    {
+        //공격에 관련된 정보 초기화
+        _time = 0;
+        _stateMachine.attackCoolTime = 0;
+
+        //공격 중간은 Idle 애니메이션
+        _enemy.Animator.SetTrigger(_enemy.AnimationDB.AttackParameterHash);
+
+        //공격력 정보 넘겨주기
+        _enemy.EnemyWeapon.WeaponInfo = _enemy.WeaponInfo;
+    }
 
     public override void PhysicsUpdate()
     {
@@ -44,6 +57,6 @@ public class EnemyRangeAttackState : EAttackState
         
         
         //사운드
-        //_enemy.PlaySFX1();
+        PlaySFX1();
     }
 }

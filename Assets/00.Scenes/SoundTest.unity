@@ -2633,7 +2633,7 @@ PrefabInstance:
     - target: {fileID: 5338306366773298638, guid: 4653b3b449fac104cb979968fa51464b, type: 3}
       propertyPath: monster
       value: 
-      objectReference: {fileID: 3153555157828818715, guid: ac04356c4a009e449b8a757a4d0eee20, type: 3}
+      objectReference: {fileID: 3153555157828818715, guid: 2ab2aef2f1d77714888d50886277885f, type: 3}
     - target: {fileID: 5338306366773298638, guid: 4653b3b449fac104cb979968fa51464b, type: 3}
       propertyPath: enemyType
       value: 0

@@ -36,8 +36,13 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5272416872062206358, guid: c05a8d5e33a31fd44952373077d8c852, type: 3}
   projectilePower: 36
   rangeType: 0
+  firePointX: 0
+  poolIndex: 2
   flyingHeight: 0
   flyingSpeed: 0
-  attackSound: {fileID: 8300000, guid: 9469b8c238d8bcd4b987c8279bc7675a, type: 3}
+  attackSound: {fileID: 8300000, guid: 1aae01dfe3b76804e9c4e88447d0b858, type: 3}
   hitSound: {fileID: 8300000, guid: 0c627532d49dd2b49baec69f27b7b7b9, type: 3}
-  guardSound: {fileID: 0}
+  walkSound: {fileID: 0}
+  abilitySound: {fileID: 0}
+  deathSound: {fileID: 0}
+  detectSound: {fileID: 0}

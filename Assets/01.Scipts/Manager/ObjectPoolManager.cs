@@ -15,6 +15,7 @@ public enum PoolingIndex
     UltParticle2 = 9,
     Boss02Projectile1 = 10,
     Boss02Projectile2 = 11,
+    FireBall = 12,
 }
 
 public static class ObjectPoolManager
