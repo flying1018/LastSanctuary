@@ -5,12 +5,12 @@ using UnityEngine;
 public class ItemTextUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
-    [SerializeField] private float moveUpDistance = 60f;
-    [SerializeField] private float fadeDuration = 1.0f;
+    [SerializeField] private float moveUpDistance = 30f;
+    [SerializeField] private float fadeDuration = 4.0f;
 
     private Vector3 startPos;
 
-    public void Show(string message, Vector3 worldPos)
+    public void ShowText(string message, Vector3 worldPos)
     {
         text.text = message;
         startPos = Camera.main.WorldToScreenPoint(worldPos);

@@ -35,5 +35,4 @@ public class UIManagerSO : ScriptableObject
     [Header("ProduceUI")]
     public GameObject saveUIObj;
     public GameObject itemTextUI;
-    public GameObject fadeObj;
 }
