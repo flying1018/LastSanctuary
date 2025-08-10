@@ -46,4 +46,8 @@ public class CollectObjectSO : ScriptableObject
     public string relicDesc;
     public Sprite relicSprite;
     public StatDelta[] statDeltas;
+    
+    [Header("Sound")]
+    public AudioClip dropSound;
+    public AudioClip getSound;
 }

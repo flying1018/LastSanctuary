@@ -32,6 +32,10 @@ public class PlayerHitState : PlayerBaseState
                 _hitDuration = _data.lightHitDuration; //0.5f
                 PlaySFX3();
                 break;
+            case DamageType.Trap:
+                _hitDuration = _data.lightHitDuration; //0.5f
+                PlaySFX4();
+                break;
             default:
                 _hitDuration = _data.lightHitDuration; //0.5f
                 PlaySFX1();
@@ -86,5 +90,10 @@ public class PlayerHitState : PlayerBaseState
     public override void PlaySFX3()
     {
         SoundManager.Instance.PlaySFX(_data.magicHitSound);
+    }
+    
+    private void PlaySFX4()
+    {
+        SoundManager.Instance.PlaySFX(_data.trapHitSound);
     }
 }

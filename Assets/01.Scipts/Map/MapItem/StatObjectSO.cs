@@ -15,4 +15,7 @@ public class StatObjectSO : ScriptableObject
     [Header("스탯")]
     public StatDelta[] statDeltas;
     public float duration;
+    
+    [Header("Sound")]
+    public AudioClip getSound;
 }

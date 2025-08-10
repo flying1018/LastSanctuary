@@ -19,3 +19,4 @@ MonoBehaviour:
   - statType: 3
     amount: 30
   duration: 20
+  getSound: {fileID: 8300000, guid: bce7c49b6989ef54f8523fb356bc0d17, type: 3}
