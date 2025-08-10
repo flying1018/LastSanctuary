@@ -230,14 +230,16 @@ MonoBehaviour:
     hitParameter: Hit
     deathParameter: Death
     groggyParameter: Groggy
+    runParameter: Run
   enemyData: {fileID: 11400000, guid: 790ca16ca97a0cd428cecb6988ba6e05, type: 2}
   platformLayer:
     serializedVersion: 2
     m_Bits: 1280
   platformCheckDistance: 2
-  idleType: 0
+  idleType: 1
   attackType: 0
   patrolDistance: 5
+  damageType: 0
 --- !u!114 &3718565276844333261
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,6 +16,9 @@ public class EnemyDeathState : EnemyBaseState
         
         //콜라이더 끄기
         _enemy.CapsuleCollider.enabled = false;
+        
+        //소리 실행
+        PlaySFX1();
     }
 
     public override void Exit()
@@ -53,6 +56,14 @@ public class EnemyDeathState : EnemyBaseState
             _stateMachine.ChangeState(_stateMachine.IdleState);
         }
     }
-    
-    public override void PhysicsUpdate() { }
+
+    public override void PhysicsUpdate()
+    {
+        
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.deathSound);
+    }
 }

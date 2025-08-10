@@ -62,6 +62,7 @@ public class EnemySO : ScriptableObject
     public int projectilePower;
     public RangeType rangeType;
     public float firePointX; 
+    public PoolingIndex poolIndex;
 
     [Header("Flying Attack")] 
     public float flyingHeight;
@@ -70,5 +71,8 @@ public class EnemySO : ScriptableObject
     [Header("Sound")] 
     public AudioClip attackSound;
     public AudioClip hitSound;
+    public AudioClip walkSound;
     public AudioClip abilitySound;
+    public AudioClip deathSound;
+    public AudioClip detectSound;
 }

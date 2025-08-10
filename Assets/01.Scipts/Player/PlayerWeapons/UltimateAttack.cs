@@ -62,6 +62,8 @@ public class UltimateAttack : PlayerWeapon
 
     IEnumerator UltAttackAnim_Coroutine()
     {
+        SoundManager.Instance.PlaySFX(sound);
+        
         //초기설정 스프라이트
         _isUltimate = true;
         spriteRenderer1.sprite = sprites1[sprites1.Length-1];

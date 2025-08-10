@@ -17,7 +17,7 @@ MonoBehaviour:
   gravityPower: 10
   attack: 20
   defense: 20
-  hp: 1600
+  hp: 1
   groggyGauge: 80
   groggyDuration: 5
   damageDelay: 0.1
@@ -83,7 +83,7 @@ MonoBehaviour:
   backjumpDistance: 0
   backjumpHeight: 0
   backjumpSpeed: 0
-  phaseShiftHpRatio: 1
+  phaseShiftHpRatio: 1.1
   phaseShiftAnim: {fileID: 7400000, guid: 5ff75cee86e07b742a0f6b748a03e16c, type: 2}
   phaseShiftDuration: 5
   breathSound: {fileID: 0}

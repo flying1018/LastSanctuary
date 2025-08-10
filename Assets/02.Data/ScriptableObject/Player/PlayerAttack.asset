@@ -42,7 +42,7 @@ MonoBehaviour:
     nextComboTime: 0
     staminaCost: 15
     attackForce: 3
-    knockbackForce: 10
+    knockbackForce: 5
     groggyDamage: 5
     isInvincible: 0
     ultimateValue: 5
@@ -53,7 +53,7 @@ MonoBehaviour:
     nextComboTime: 0
     staminaCost: 15
     attackForce: 7
-    knockbackForce: 10
+    knockbackForce: 5
     groggyDamage: 5
     isInvincible: 1
     ultimateValue: 5

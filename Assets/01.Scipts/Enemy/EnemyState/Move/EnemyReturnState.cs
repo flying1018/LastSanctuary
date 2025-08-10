@@ -40,6 +40,10 @@ public class EReturnState : EnemyBaseState
         
     }
     
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.walkSound);
+    }
 }
 
 

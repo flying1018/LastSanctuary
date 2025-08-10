@@ -41,6 +41,7 @@ public static class StringNameSpace
     public static class Labels
     {
         public const string Relic = "Relic";
+        public const string BGM = "BGM";
     }
 
     //테그 정보

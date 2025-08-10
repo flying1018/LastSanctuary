@@ -9,14 +9,26 @@ public class TutorialUIPopup : MonoBehaviour
     [SerializeField] private Button closeButton;
     
     private Image _image;
+    private UIManager _uiManager;
 
     private void Awake()
     {
         closeButton.onClick.AddListener(OnCloseButton);
+        _uiManager = UIManager.Instance;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnCloseButton();
+        }
     }
 
     public void Init(Sprite sprite, string title, string explanation)
     {
+        _uiManager.PopUpQueue.Enqueue(this);
+        
         Transform imageTransform = transform.Find("Image");
         if (_image == null)
         {
@@ -30,5 +42,6 @@ public class TutorialUIPopup : MonoBehaviour
     private void OnCloseButton()
     {
         gameObject.SetActive(false);
+        _uiManager.PopUpQueue.Dequeue();
     }
 }

@@ -8,6 +8,7 @@ public enum DamageType
     Attack,
     Range,
     Heavy,
+    Magic,
 }
 
 /// <summary>
