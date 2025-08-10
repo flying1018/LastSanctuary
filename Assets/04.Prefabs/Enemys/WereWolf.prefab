@@ -159,7 +159,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   platformCheckDistance: 3
-  idleType: 1
+  idleType: 0
   attackType: 0
   patrolDistance: 5
 --- !u!114 &-6160990783679430078
