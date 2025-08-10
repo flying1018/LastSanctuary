@@ -62,7 +62,7 @@ public class Boss02ProjectileAttackState : Boss02AttackState
                             
         if (boomerang.TryGetComponent(out  ProjectileWeapon projectileWeapon))
         {
-            projectileWeapon.Init((int)(_data.attack * _attackInfo.multiplier),_attackInfo.knockbackForce,PoolingIndex.Boss02Projectile2);
+            projectileWeapon.Init(_boss2.WeaponInfo,PoolingIndex.Boss02Projectile2);
             projectileWeapon.Shot(targetDir,_attackInfo.projectilePower);
         }
     }

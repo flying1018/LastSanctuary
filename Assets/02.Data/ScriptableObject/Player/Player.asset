@@ -50,10 +50,11 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: 88b8978948694884da40287daa2f8731, type: 3}
   attackSound: {fileID: 8300000, guid: d0bdd06f23819b343a87821769e1e063, type: 3}
   guardSound: {fileID: 8300000, guid: 8ca16915b42589344ae289e10c6027c1, type: 3}
-  perfectGuardSound: {fileID: 8300000, guid: 61e9aeea63799d54abba62404839dc75, type: 3}
+  perfectGuardSound: {fileID: 8300000, guid: 89048cf20f365f442ad6d75cd8780a1b, type: 3}
   ropeSound: {fileID: 8300000, guid: c58dcf675b92c2241ba14a68ef75fab8, type: 3}
   deathSound: {fileID: 8300000, guid: b65b0e01fefddb84692987980cad667d, type: 3}
   arrowHitSound: {fileID: 8300000, guid: d1a6849676cb1dd42969940571daccd2, type: 3}
+  magicHitSound: {fileID: 8300000, guid: eeb7e6ccfda8c1b46bf67655a42034f8, type: 3}
   hitSound: {fileID: 8300000, guid: 474f73407786adf41953e0b8b86777ca, type: 3}
   healSound: {fileID: 8300000, guid: d4adbc096bba18641bb3db713a46b0ec, type: 3}
   teleportStartSound: {fileID: 8300000, guid: 61012c41929ea52499cb03d531eb4db2, type: 3}

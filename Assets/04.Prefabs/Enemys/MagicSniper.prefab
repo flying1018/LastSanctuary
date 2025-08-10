@@ -162,6 +162,7 @@ MonoBehaviour:
   idleType: 0
   attackType: 1
   patrolDistance: 5
+  damageType: 3
 --- !u!114 &-7410431195481988543
 MonoBehaviour:
   m_ObjectHideFlags: 0

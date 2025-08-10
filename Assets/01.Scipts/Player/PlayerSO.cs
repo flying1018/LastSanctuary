@@ -86,9 +86,9 @@ public class PlayerSO : ScriptableObject
     public AudioClip ropeSound;
     public AudioClip deathSound;
     public AudioClip arrowHitSound;
+    public AudioClip magicHitSound;
     public AudioClip hitSound;
     public AudioClip healSound;
-    
     
     public AudioClip teleportStartSound;
     public AudioClip teleportEndSound;

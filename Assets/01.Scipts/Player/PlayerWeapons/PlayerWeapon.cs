@@ -3,6 +3,7 @@ using UnityEngine;
 //플레이어의 무기
 public class PlayerWeapon : Weapon
 {
+    [SerializeField] protected AudioClip sound;
 
     public override void OnTriggerEnter2D(Collider2D other)
     {

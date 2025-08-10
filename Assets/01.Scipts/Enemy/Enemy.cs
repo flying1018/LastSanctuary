@@ -13,6 +13,7 @@ public enum AttackType
     Melee,
     Range,
     Flying,
+    Magic,
 }
 
 public class Enemy : MonoBehaviour
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private IdleType idleType;
     [SerializeField] private AttackType attackType;
     [SerializeField] private float patrolDistance = 5;
+    [SerializeField] private DamageType damageType;
     
     
     //프로퍼티
@@ -48,6 +50,7 @@ public class Enemy : MonoBehaviour
     public EnemySO Data {get => enemyData;}
     public IdleType IdleType {get => idleType;}
     public AttackType AttackType {get => attackType;}
+    public DamageType DamageType { get => damageType; }
 
     public void Awake()
     {
@@ -75,7 +78,7 @@ public class Enemy : MonoBehaviour
         WeaponInfo.Condition = Condition;
         WeaponInfo.Attack = Data.attack;
         WeaponInfo.KnockBackForce = Data.knockbackForce;
-        WeaponInfo.DamageType = DamageType.Attack;
+        WeaponInfo.DamageType = DamageType;
        
         
         Move.Init(CapsuleCollider.size.x, CapsuleCollider.size.y, Rigidbody);
@@ -106,6 +109,7 @@ public class Enemy : MonoBehaviour
         {
             if(other.gameObject.TryGetComponent(out IDamageable damageable))
             {
+                WeaponInfo.DamageType = DamageType.Attack;
                 damageable.TakeDamage(WeaponInfo);
             }
 

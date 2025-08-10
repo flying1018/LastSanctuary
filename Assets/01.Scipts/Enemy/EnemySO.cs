@@ -62,6 +62,7 @@ public class EnemySO : ScriptableObject
     public int projectilePower;
     public RangeType rangeType;
     public float firePointX; 
+    public PoolingIndex poolIndex;
 
     [Header("Flying Attack")] 
     public float flyingHeight;

@@ -81,6 +81,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - BGM
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec759c46fa47021499558ff4df866d5c
+    m_Address: Assets/06.Resource/Sound/BGM/Boss02_Bgm.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 776f3e8915c904c98ae272975e3fbf24, type: 2}
   m_SchemaSet:

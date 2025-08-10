@@ -28,6 +28,10 @@ public class PlayerHitState : PlayerBaseState
                 _hitDuration = _data.heavyHitDuration; //1f
                 PlaySFX2();
                 break;
+            case DamageType.Magic:
+                _hitDuration = _data.lightHitDuration; //0.5f
+                PlaySFX3();
+                break;
             default:
                 _hitDuration = _data.lightHitDuration; //0.5f
                 PlaySFX1();
@@ -38,7 +42,7 @@ public class PlayerHitState : PlayerBaseState
         _condition.InvincibleFunc(_data.invincibleDuration);
         //히트 연출
         SoundManager.Instance.MuffleSound(false);
-        SoundManager.Instance.MuffleSound(true);
+        SoundManager.Instance.MuffleSound(true,0.2f);
         UIManager.Instance.BorderFadeOut(Color.black,_data.invincibleDuration *3);
     }
 
@@ -77,5 +81,10 @@ public class PlayerHitState : PlayerBaseState
     public override void PlaySFX2()
     {
         SoundManager.Instance.PlaySFX(_data.arrowHitSound);
+    }
+    
+    public override void PlaySFX3()
+    {
+        SoundManager.Instance.PlaySFX(_data.magicHitSound);
     }
 }
