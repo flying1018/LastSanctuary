@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -8,23 +9,29 @@ using UnityEngine;
 /// </summary>
 public class SaveManager : Singleton<SaveManager>
 {
-    [SerializeField] private Transform _lastSavePos;
+    [SerializeField] private Transform lastSavePos;
+    
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);
     }
 
+    public void Start()
+    {
+        //FindAnyObjectByType<Player>().transform.position = lastSavePos.position;
+    }
+
     //세이브 포인트 지정
     public void SetSavePoint(Vector2 pos)
     {
-        _lastSavePos.position = pos;
+        lastSavePos.position = pos;
     }
 
     //세이브 포인틀 리턴
     public Vector2 GetSavePoint()
     {
-        return _lastSavePos.position;
+        return lastSavePos.position;
     }
 
     public void SaveGame(int index)
@@ -59,7 +66,7 @@ public class SaveManager : Singleton<SaveManager>
 
     private MapItemData SaveMapItemData()
     {
-        Vector2 pos = _lastSavePos.position;
+        Vector2 pos = lastSavePos.position;
         // bool clear = 
         // int gold = 
         // bool haveRelic = 

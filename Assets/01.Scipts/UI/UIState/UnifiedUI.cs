@@ -62,33 +62,6 @@ public class UnifiedUI : UIBaseState
         unifiedUI.SetActive(false);
     }
 
-    //성물 버튼
-    public void OnClickRelicUIButton()
-    {
-        _uiStateMachine.ChangeState(_uiStateMachine.RelicUI);
-    }
-
-    //스킬 버튼
-    public void OnClickSkillUIButton()
-    {
-        _uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
-    }
-
-    //설정 버튼
-    public void OnClickSettingUIButton()
-    {
-        _uiStateMachine.ChangeState(_uiStateMachine.SettingUI);
-    }
-
-    //나가기 버튼
-    public void OnClickExitButton()
-    {
-        if (_uiManager != null)
-            _uiStateMachine.ChangeState(_uiStateMachine.MainUI);
-        else
-            Exit();
-    }
-
     public override void HandleInput()
     {
         //Esc 입력 시
@@ -98,4 +71,36 @@ public class UnifiedUI : UIBaseState
             _uiStateMachine.ChangeState(_uiStateMachine.MainUI);
         }
     }
+    
+    //성물 버튼
+    public void OnClickRelicUIButton()
+    {
+        SoundManager.Instance.PlaySFX(_data.buttonClickSound);
+        _uiStateMachine.ChangeState(_uiStateMachine.RelicUI);
+    }
+
+    //스킬 버튼
+    public void OnClickSkillUIButton()
+    {
+        SoundManager.Instance.PlaySFX(_data.buttonClickSound);
+        _uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
+    }
+
+    //설정 버튼
+    public void OnClickSettingUIButton()
+    {
+        SoundManager.Instance.PlaySFX(_data.buttonClickSound);
+        _uiStateMachine.ChangeState(_uiStateMachine.SettingUI);
+    }
+
+    //나가기 버튼
+    public void OnClickExitButton()
+    {
+        SoundManager.Instance.PlaySFX(_data.buttonClickSound);
+        if (_uiManager != null)
+            _uiStateMachine.ChangeState(_uiStateMachine.MainUI);
+        else
+            Exit();
+    }
+
 }

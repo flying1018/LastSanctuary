@@ -979,6 +979,7 @@ MonoBehaviour:
   newButton: {fileID: 1012053113}
   settingButton: {fileID: 1493562934}
   exitButton: {fileID: 1160072548}
+  startSound: {fileID: 8300000, guid: fb774ecbd58b504438c9d32fc3060b7c, type: 3}
 --- !u!1 &884704351
 GameObject:
   m_ObjectHideFlags: 0

@@ -156,6 +156,7 @@ public class RelicUI : UnifiedUI
             }
             else if (equipUI.Data == null)
             {
+                SoundManager.Instance.PlaySFX(_data.equipSound);
                 _playerInventory.EquipRelic(data);
                 equipUI.Data = data;
                 equipUI.SetActive();
