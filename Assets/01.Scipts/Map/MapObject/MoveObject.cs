@@ -9,7 +9,9 @@ public class MoveObject : MonoBehaviour
         None,
         IronCage,
         Rope,
-        LaserBarrier
+        LaserBarrier,
+        Puzzle,
+        BossDoor,
     }
 
     [SerializeField] protected MoveObjType moveObjType;
