@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
