@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
@@ -25,9 +22,10 @@ public class UIManager : Singleton<UIManager>
     public BossUI BossUI { get; set; }
     public ScreenFadeUI[] screenFadeUIs { get; set; }
     public SaveUI saveUI { get; set; }
+    public DeathUI deathUI { get; set; }
     public TutorialUIPopup PopUpUI { get; set; }
     public Queue<TutorialUIPopup> PopUpQueue { get; set; }
-    
+
 
     private void Start()
     {
@@ -38,7 +36,7 @@ public class UIManager : Singleton<UIManager>
     public void Init()
     {
         PopUpQueue = new Queue<TutorialUIPopup>();
-        
+
         PlayerCondition = FindAnyObjectByType<PlayerCondition>();
         PlayerInventory = FindAnyObjectByType<PlayerInventory>();
         PlayerInput = FindAnyObjectByType<PlayerInput>();
@@ -50,6 +48,10 @@ public class UIManager : Singleton<UIManager>
         SkillUI = GetComponentInChildren<SkillUI>(true);
         OffUI = GetComponentInChildren<UIBaseState>(true);
 
+        screenFadeUIs = GetComponentsInChildren<ScreenFadeUI>(true);
+        saveUI = GetComponentInChildren<SaveUI>(true);
+        deathUI = GetComponentInChildren<DeathUI>(true);
+
         StateMachine = new UIStateMachine(this);
 
         screenFadeUIs = GetComponentsInChildren<ScreenFadeUI>(true);
@@ -58,7 +60,7 @@ public class UIManager : Singleton<UIManager>
 
         BossUI = GetComponentInChildren<BossUI>(true);
         BossUI.Init();
-        
+
     }
 
 
@@ -111,13 +113,13 @@ public class UIManager : Singleton<UIManager>
     public void Fade(float duration = 1f, Color? color = null)
     {
         screenFadeUIs[0].gameObject.SetActive(true);
-        StartCoroutine(screenFadeUIs[0].Fade_Coroutine(duration));
+        screenFadeUIs[0].FadeBackground(duration);
     }
-    
-    public void BorderFadeOut(Color color,float startAlpha = 1f,float duration = 1f)
+
+    public void BorderFadeOut(Color color, float startAlpha = 1f, float duration = 1f)
     {
         screenFadeUIs[1].gameObject.SetActive(true);
-        screenFadeUIs[1].FadeOut(color,startAlpha,duration);
+        screenFadeUIs[1].FadeOut(color, startAlpha, duration);
     }
 
 
@@ -129,8 +131,14 @@ public class UIManager : Singleton<UIManager>
 
     public void ShowItemText(string message, Vector3 worldPos)
     {
-        var obj = Instantiate(data.itemTextUI, transform); 
-        obj.GetComponent<ItemTextUI>().Show(message, worldPos);
+        var obj = Instantiate(data.itemTextUI, transform);
+        obj.GetComponent<ItemTextUI>().ShowText(message, worldPos);
+    }
+
+    public void DeathText(float time)
+    {
+        deathUI.gameObject.SetActive(true);
+        deathUI.DeathText(time);
     }
 
     #endregion
