@@ -14,12 +14,12 @@ public class SaveManager : Singleton<SaveManager>
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(gameObject);
+
     }
 
     public void Start()
     {
-        //FindAnyObjectByType<Player>().transform.position = lastSavePos.position;
+        FindAnyObjectByType<Player>().transform.position = lastSavePos.position;
     }
 
     //세이브 포인트 지정

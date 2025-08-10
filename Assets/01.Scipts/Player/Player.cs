@@ -84,6 +84,8 @@ public class Player : MonoBehaviour
         Move.Init(BoxCollider.size.x, BoxCollider.size.y,Rigidbody);
         
         StateMachine = new PlayerStateMachine(this);
+        
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()

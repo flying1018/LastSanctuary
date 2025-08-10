@@ -56,7 +56,10 @@ public class Boss01Event : BossEvent
         if (other.CompareTag(StringNameSpace.Tags.Player))
         {
             _player = null;
-            _boss.gameObject.SetActive(false);
+            if (_boss.gameObject.activeInHierarchy)
+            { 
+                _boss.gameObject.SetActive(false);
+            }
             //벽 치우기
             foreach (MoveObject moveObject in _moveObjects)
             {
