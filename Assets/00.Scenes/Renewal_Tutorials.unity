@@ -140557,6 +140557,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1828925297}
     m_Modifications:
+    - target: {fileID: 918408614145694779, guid: 611fba5ab09476348956a1b80c0bde09, type: 3}
+      propertyPath: uid
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918408614145694779, guid: 611fba5ab09476348956a1b80c0bde09, type: 3}
+      propertyPath: sceneName
+      value: 1stSanc
+      objectReference: {fileID: 0}
     - target: {fileID: 979592415210388645, guid: 611fba5ab09476348956a1b80c0bde09, type: 3}
       propertyPath: m_Name
       value: MapPortal
@@ -147573,6 +147581,10 @@ PrefabInstance:
     - target: {fileID: 239952616402915067, guid: ac60e46ee1f4be044be358261bb81d20, type: 3}
       propertyPath: m_LocalPosition.y
       value: -2.7000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 644034409376396970, guid: ac60e46ee1f4be044be358261bb81d20, type: 3}
+      propertyPath: shakeDuration
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 644034409376396970, guid: ac60e46ee1f4be044be358261bb81d20, type: 3}
       propertyPath: _lodeScenerPortal

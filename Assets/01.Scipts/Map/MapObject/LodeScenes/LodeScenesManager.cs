@@ -36,8 +36,11 @@ public class LodeScenesManager : Singleton<LodeScenesManager>
       {
          foreach (var portal in portals)
          {
-            player.transform.position = portal.spawnPoint.transform.position;
-            break;
+            if (portal.portalType == PortalType.Lobby)
+            {
+               player.transform.position = portal.spawnPoint.transform.position;
+               break;
+            }
          }
       }
       else
