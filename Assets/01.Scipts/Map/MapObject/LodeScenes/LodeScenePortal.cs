@@ -19,9 +19,4 @@ public class LodeScenePortal : MonoBehaviour, IInteractable
     {
         LodeScenesManager.Instance.LoadScenePortal(this);
     }
-
-    public IEnumerator<LodeScenePortal> GetEnumerator()
-    {
-        throw new System.NotImplementedException();
-    }
 }
