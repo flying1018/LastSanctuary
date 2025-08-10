@@ -35,7 +35,6 @@ public class Boss02Condition : BossCondition
         {
             _boss02.StateMachine2.ChangeState(_boss02.StateMachine2.GroggyState);
         }
-
         if (_boss02.StateMachine2.currentState is Boss02RushAttackState)
         {
             DontCollision = true;
@@ -64,6 +63,7 @@ public class Boss02Condition : BossCondition
         }
         else
         {   //피격 이펙트
+            SoundManager.Instance.PlaySFX(_boss02.Data.hitSound);
             OnHitEffected();
         }
     }

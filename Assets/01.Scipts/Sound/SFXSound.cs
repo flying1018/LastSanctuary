@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading;
 using UnityEngine;
 
 /// <summary>
@@ -7,6 +8,8 @@ using UnityEngine;
 public class SFXSound : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
+    
+    private Coroutine _coroutine;
 
     public void Play(AudioClip clip, float volume)
     {
@@ -16,13 +19,19 @@ public class SFXSound : MonoBehaviour
         audioSource.clip = clip;
         audioSource.Play();
 
-        StartCoroutine(ReturnSFX(clip.length + 1f));
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+            _coroutine = null;
+        }
+        _coroutine = StartCoroutine(ReturnSFX(clip.length + 1f));
     }
 
+    
     private IEnumerator ReturnSFX(float value)
-    {
+    {   
         yield return new WaitForSeconds(value);
-
+        _coroutine = null;
         ObjectPoolManager.Set(gameObject,(int)PoolingIndex.SFX);
     }
 }

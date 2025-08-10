@@ -22,12 +22,6 @@ public class EnemySpawnPoint : MonoBehaviour
     [SerializeField] private EnemyType enemyType;
     public EnemyType Enemytype => enemyType;
     public float PatrolDistance => patrolDistance;
-
-    private void Start()
-    {
-        //Test Code
-        Spawn();
-    }
     
     //몬스터 스폰
     public void Spawn()

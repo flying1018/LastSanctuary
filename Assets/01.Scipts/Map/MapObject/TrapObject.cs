@@ -17,7 +17,7 @@ public class TrapObject : MonoBehaviour
     {
         WeaponInfo = new WeaponInfo();
         WeaponInfo.Attack = damage;
-        WeaponInfo.DamageType = DamageType.Attack;
+        WeaponInfo.DamageType = DamageType.Trap;
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -27,7 +27,6 @@ public class TrapObject : MonoBehaviour
         if (other.gameObject.CompareTag(StringNameSpace.Tags.Player))
         {
             idamageable.TakeDamage(WeaponInfo);
-
             StartCoroutine(ReturnPlayer(other.transform));
         }
     }

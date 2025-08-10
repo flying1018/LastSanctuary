@@ -20,7 +20,7 @@ public class EDetectState : EnemyBaseState
         Vector2 direction = _enemy.Target.position - _enemy.transform.position;
         Rotate(direction);
 
-        PlaySFX1();
+        SoundManager.Instance.PlaySFX(_data.detectSound);
     }
 
     public override void Exit()
@@ -28,11 +28,6 @@ public class EDetectState : EnemyBaseState
         base.Exit();
 
         StopAnimation(_enemy.AnimationDB.IdleParameterHash);
-    }
-
-    public override void PlaySFX1()
-    {
-        SoundManager.Instance.PlaySFX(_data.detectSound);
     }
 }
 

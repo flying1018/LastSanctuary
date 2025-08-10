@@ -24,6 +24,8 @@ public class SavePoint : MonoBehaviour, IInteractable
     [SerializeField] private SpriteRenderer effect;
     [SerializeField] private float targetAlpha;
     
+    [SerializeField] private AudioClip saveSFX;
+    
     private void Start()
     {
         _boxCollider = GetComponent<BoxCollider2D>();
@@ -72,7 +74,7 @@ public class SavePoint : MonoBehaviour, IInteractable
     {
         if (_isInteracted) { return; }
 
-
+        SoundManager.Instance.PlaySFX(saveSFX);
         UIManager.Instance.SaveAnimation();
         SaveManager.Instance.SetSavePoint(SavePosition());
         ItemManager.Instance.playerCondition.PlayerRecovery(); // 회복

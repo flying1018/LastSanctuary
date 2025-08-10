@@ -75,6 +75,7 @@ public class BossSO : ScriptableObject
     public float phaseShiftDuration;
     
     [Header("Sound")] 
+    public AudioClip spawnSound;
     public AudioClip breathSound;
     public AudioClip howlingSound;
     public AudioClip jumpSound;
@@ -82,6 +83,7 @@ public class BossSO : ScriptableObject
     public AudioClip deathSound;
     public AudioClip phaseShiftSound;
     public AudioClip walkSound;
+    public AudioClip hitSound;
     
     [Header("Materials")]
     public Material[] materials;

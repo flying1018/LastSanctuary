@@ -67,6 +67,7 @@ MonoBehaviour:
   phaseShiftHpRatio: 0.5
   phaseShiftAnim: {fileID: 7400000, guid: d781c0a65ca4bdf40ad84d4b0b6413a3, type: 2}
   phaseShiftDuration: 0
+  spawnSound: {fileID: 0}
   breathSound: {fileID: 8300000, guid: 4339960f031eb8e4f80c861fc4769350, type: 3}
   howlingSound: {fileID: 8300000, guid: 79d147a33e9a45b469fe7d516304cc60, type: 3}
   jumpSound: {fileID: 8300000, guid: 94643bcc75cfd7e40ba70900d44036d8, type: 3}
@@ -74,6 +75,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: d6d6e76fb1f588446b05c8731b924cc3, type: 3}
   phaseShiftSound: {fileID: 8300000, guid: 81725d64760066d459db10145e794805, type: 3}
   walkSound: {fileID: 8300000, guid: 270f683745274b2499f9f72f95a60f56, type: 3}
+  hitSound: {fileID: 8300000, guid: fe3cf116b0a70cb4c8b5db9d20852103, type: 3}
   materials:
   - {fileID: 2100000, guid: 925d379cb152be54891be7a5c23adf6a, type: 2}
   - {fileID: 2100000, guid: 19f0a6c5696afe54a8574a963f4c1a70, type: 2}

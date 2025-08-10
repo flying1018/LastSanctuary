@@ -45,12 +45,10 @@ public static class ObjectPoolManager
         newObj.SetActive(true);
         return newObj;
     }
-
+    
     //오브젝트 회수
     public static void Set(GameObject gameObject, int id)
     {
-        gameObject.SetActive(false);
-
         //딕셔너리에 존재한다면 회수
         if (poolDictionary.TryGetValue(id, out Queue<GameObject> objectQueue))
         {
@@ -63,5 +61,7 @@ public static class ObjectPoolManager
             newQueue.Enqueue(gameObject);
             poolDictionary.Add(id, newQueue);
         }
+        
+        gameObject.SetActive(false);
     }
 }

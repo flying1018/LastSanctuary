@@ -27,6 +27,8 @@ public class Boss02DeathState : BossBaseState
         //bossUI
         if(_boss2.UIOn)
             UIManager.Instance.SetBossUI(false);
+
+        PlaySFX1();
     }
 
     public override void Update()
@@ -42,5 +44,10 @@ public class Boss02DeathState : BossBaseState
     {
         //아이템 드롬
         _boss2.ItemDropper.DropItems();
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.deathSound);
     }
 }
