@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &560901476640555312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7119506069556602728}
+  m_Layer: 14
+  m_Name: ItemDropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7119506069556602728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560901476640555312}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4435267835551723527}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2890105900324122565
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,6 +359,7 @@ GameObject:
   - component: {fileID: 7598377369161449664}
   - component: {fileID: 989294249957291426}
   - component: {fileID: 349227183603375710}
+  - component: {fileID: 574950874158840488}
   m_Layer: 0
   m_Name: Boss02
   m_TagString: Enemy
@@ -350,6 +382,7 @@ Transform:
   m_Children:
   - {fileID: 4697123698431085387}
   - {fileID: 7692875058564503397}
+  - {fileID: 7119506069556602728}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &5067054856132331200
@@ -487,6 +520,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c13a9af0fc2fd74f8c29f006511e534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &574950874158840488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8569130655293288697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f6ec19f510503469bd6e1584b278fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  relicItems:
+  - {fileID: 1910408655105834304, guid: f94746f82e28a4bf68e0c7e7d3dd50bb, type: 3}
+  - {fileID: 5909182335501913812, guid: 1a6dd41e9ee82451386aff3adf2b47cd, type: 3}
+  - {fileID: 7268740456645221802, guid: c27df6509375c4272b9c862fa26f7ccb, type: 3}
+  statItems:
+  - {fileID: 7142327278872833692, guid: 18b0774b268164072bc3050373b21c5e, type: 3}
+  - {fileID: 7142327278872833692, guid: 99e2bfc00b2334b8aad40337f66183b5, type: 3}
+  spawnPoint: {fileID: 7119506069556602728}
+  dropRange: 1.5
+  jumpHeight: 5
+  jumpDuration: 1.5
+  minDrop: 10
+  maxDrop: 11
+  circleSprite: {fileID: -2413806693520163455, guid: 05715ead379287c47afc71b720cb72d2, type: 3}
+  highlight: {fileID: 455611820256146302, guid: f76022b029c8e5b4481fdcf9204b5e2e, type: 3}
 --- !u!1 &8981695670153962876
 GameObject:
   m_ObjectHideFlags: 0

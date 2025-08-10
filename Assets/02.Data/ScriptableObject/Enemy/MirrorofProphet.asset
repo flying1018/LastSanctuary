@@ -37,8 +37,11 @@ MonoBehaviour:
   projectilePower: 24
   rangeType: 1
   firePointX: 1.5
+  poolIndex: 11
   flyingHeight: 0
   flyingSpeed: 0
-  attackSound: {fileID: 8300000, guid: 9469b8c238d8bcd4b987c8279bc7675a, type: 3}
-  hitSound: {fileID: 8300000, guid: 0c627532d49dd2b49baec69f27b7b7b9, type: 3}
+  attackSound: {fileID: 8300000, guid: ba4ae0190edf6064eababe9b0d5295bc, type: 3}
+  hitSound: {fileID: 8300000, guid: 3c95f3ac643e45c47aa7192e885c89bf, type: 3}
+  walkSound: {fileID: 0}
   abilitySound: {fileID: 8300000, guid: 61e9aeea63799d54abba62404839dc75, type: 3}
+  deathSound: {fileID: 8300000, guid: 36a78ad04d2078545994fc30684288da, type: 3}

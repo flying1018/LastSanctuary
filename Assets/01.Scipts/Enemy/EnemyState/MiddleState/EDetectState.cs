@@ -19,6 +19,8 @@ public class EDetectState : EnemyBaseState
         //유저 방향 확인
         Vector2 direction = _enemy.Target.position - _enemy.transform.position;
         Rotate(direction);
+
+        PlaySFX1();
     }
 
     public override void Exit()
@@ -26,6 +28,11 @@ public class EDetectState : EnemyBaseState
         base.Exit();
 
         StopAnimation(_enemy.AnimationDB.IdleParameterHash);
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.detectSound);
     }
 }
 

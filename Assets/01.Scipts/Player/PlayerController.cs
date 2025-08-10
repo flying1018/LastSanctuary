@@ -97,6 +97,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
+        if(UIManager.Instance.PopUpQueue.Count > 0) return;
         if (context.phase == InputActionPhase.Started)
         {
             IsAttack = true;

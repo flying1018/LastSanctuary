@@ -102,7 +102,6 @@ public class EnemyBaseState : IState
     protected bool WithinAttackDistnace()
     {
         if (_enemy.Target == null) return false;
-        
         float distance = Vector2.Distance(_enemy.transform.position, _enemy.Target.transform.position);
         return distance <= _data.attackDistance;
     }

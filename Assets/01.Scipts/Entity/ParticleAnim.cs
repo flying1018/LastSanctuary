@@ -7,6 +7,7 @@ public class ParticleAnim : MonoBehaviour
 {
     [SerializeField] private Sprite[] animSprites;
     [SerializeField] private float animInterval;
+    [SerializeField] private AudioClip particleSound;
     
     private SpriteRenderer _spriteRenderer;
     private int _index;
@@ -22,6 +23,7 @@ public class ParticleAnim : MonoBehaviour
     {
         _poolingIndex = poolingIndex;
         _index = 0;
+        SoundManager.Instance.PlaySFX(particleSound);
     }
 
     //애니메이션 실행

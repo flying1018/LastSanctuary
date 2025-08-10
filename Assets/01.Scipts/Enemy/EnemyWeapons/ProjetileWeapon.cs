@@ -8,13 +8,13 @@ public class ProjectileWeapon : EnemyWeapon
     protected PoolingIndex _poolingIndex;
 
     //생성
-    public void Init(int attack, float knockback,PoolingIndex poolingIndex)
+    public void Init(WeaponInfo weaponInfo,PoolingIndex poolingIndex)
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
 
-        WeaponInfo.Attack = attack;
-        WeaponInfo.KnockBackForce = knockback;
-        WeaponInfo.DamageType = DamageType.Range;
+        WeaponInfo.Attack = weaponInfo.Attack;
+        WeaponInfo.KnockBackForce = weaponInfo.KnockBackForce;
+        WeaponInfo.DamageType = weaponInfo.DamageType;
         _poolingIndex = poolingIndex;
     }
 

@@ -1,7 +1,25 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.AddressableAssets;
 using System.Threading.Tasks;
+
+public enum BGM
+{
+    None,
+    Tutorials_Sound,
+    Boss01_PhaseShift,
+    Boss01_Phase1,
+    Boss01_Phase2,
+    FirstSancBgm,
+    FirstSancBgm2,
+    FirstSancCenter,
+    TitleBgm,
+    VillageBgm,
+    Boss02_Bgm,
+}
+
 public class SoundManager : Singleton<SoundManager>
 {
     // 사용할 사운드 종류들
@@ -23,6 +41,7 @@ public class SoundManager : Singleton<SoundManager>
     private BGMSound _bgmSound;
     private AudioMixerSnapshot _muffledSnapshot;
     private AudioMixerSnapshot _normalSnapshot;
+    private Dictionary<BGM, AudioClip> _BGMs = new Dictionary<BGM, AudioClip>();
 
     protected override async void Awake()
     {
@@ -38,10 +57,21 @@ public class SoundManager : Singleton<SoundManager>
         }
 
         await Init();
-        PlayBGM(StringNameSpace.SoundAddress.TutorialBGM);
     }
     
     //BGM 실행 메서드
+    public void PlayBGM(BGM bgm)
+    {
+        if (_BGMs.TryGetValue(bgm, out AudioClip clip))
+        {
+            _bgmSound.Play(clip);
+        }
+        else
+        {
+            DebugHelper.Log("찾을 수 없음.");
+        }
+    }
+
     public async void PlayBGM(string key)
     {
         var clip = await ResourceLoader.LoadAssetAddress<AudioClip>(key);
@@ -50,7 +80,7 @@ public class SoundManager : Singleton<SoundManager>
             Debug.LogError($"BGM 로딩 실패: {key}");
             return;
         }
-
+        
         _bgmSound.Play(clip);
     }
 
@@ -97,6 +127,8 @@ public class SoundManager : Singleton<SoundManager>
 
         _bgmSound = gameObject.AddComponent<BGMSound>();
         _bgmSound.Init(_bgmSource); // AudioSource 주입
+        
+        GetMapBGM();
     }
 
     //BGM 정지
@@ -111,5 +143,22 @@ public class SoundManager : Singleton<SoundManager>
             _muffledSnapshot.TransitionTo(speed);
         else
             _normalSnapshot.TransitionTo(speed);
+    }
+    
+    public async void GetMapBGM()
+    {
+        List<AudioClip> audioClips = await ResourceLoader.LoadAssetsLabel<AudioClip>(StringNameSpace.Labels.BGM);
+        foreach (AudioClip audioClip in audioClips)
+        {
+            foreach (BGM bgm in Enum.GetValues(typeof(BGM)))
+            {
+                if (audioClip.name == bgm.ToString())
+                {
+                    _BGMs.Add(bgm, audioClip);
+                }
+            }
+        }
+        
+        //PlayBGM(BGM.Tutorials_Sound);
     }
 }

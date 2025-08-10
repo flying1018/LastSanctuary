@@ -19,6 +19,11 @@ public class Boss02Event : BossEvent
     [SerializeField] private Sprite[] brokenMirror;
     [SerializeField] private float brokenTime;
     [SerializeField] private Sprite phaseShiftSprite;
+    
+    [Header("Boss Death")]
+    [SerializeField] private float sloweventDuration = 2f;
+    [SerializeField] private Material redSilhouette;
+    [SerializeField] private float shakeDuration;
 
     [Header("Battle")]
     [SerializeField] private Transform leftTopMirror;
@@ -72,7 +77,7 @@ public class Boss02Event : BossEvent
                 moveObject.MoveObj();
             }
 
-            SoundManager.Instance.PlayBGM(StringNameSpace.SoundAddress.TutorialBGM);
+            SoundManager.Instance.PlayBGM(BGM.FirstSancCenter);
             UIManager.Instance.SetBossUI(false);
         }
     }
@@ -115,7 +120,7 @@ public class Boss02Event : BossEvent
         {
             distance = Mathf.Abs(_player.transform.position.x - playerPosition.position.x);
             _player.Move.Move(dir);
-            yield return null;
+            yield return  _player.Move.WaitFixedUpdate;
         }
         //대기 상태
         _player.StateMachine.ChangeState(_player.StateMachine.IdleState);
@@ -208,6 +213,75 @@ public class Boss02Event : BossEvent
     public void ChangeMirrorSprite()
     {
         _mirrorSpriteRenderers[0].sprite = phaseShiftSprite;
+    }
+    
+      //보스 사망 연출
+    public override void OnTriggerBossDeath()
+    {
+        StartCoroutine(Death_coroution());
+    }
+    IEnumerator  Death_coroution()
+    {
+        //보스 포커싱
+        StartZoomCamera();
+        
+        //슬로우 모션
+        Time.timeScale = 0.2f;
+        float timer = 0f;
+        
+        //UI 끄기
+        _player.EventProduction(true);
+        
+        //순간 암전
+        Color originbackGroundColor = _backGroundSprite.color;
+        _backGroundSprite.color = Color.black;
+        
+        //빨간 실루엣
+         SpriteRenderer bossSprite = _boss.SpriteRenderer;
+         SpriteRenderer playerSprite = _player.SpriteRenderer;
+         
+         Material originBossMaterial = bossSprite.material;
+         Material originplayerMaterial = playerSprite.material;
+         
+         bossSprite.material = redSilhouette;
+         playerSprite.material = redSilhouette;
+        
+        //연출 유지
+        yield return new WaitForSecondsRealtime(sloweventDuration);
+
+        //색 돌리기
+        Time.timeScale = 1f;
+        _backGroundSprite.color = originbackGroundColor;
+        bossSprite.material = originBossMaterial;
+        playerSprite.material = originplayerMaterial;
+
+        //보스 정지
+        _boss.Animator.speed = 0f;
+        yield return new WaitForSeconds(1f);
+        
+        //카메라 흔들림
+        CameraShake(shakeDuration);
+        yield return new WaitForSeconds(shakeDuration);
+        
+        //죽는 이벤트 시간만큼 대기
+        yield return new WaitForSeconds(_boss.Data.deathEventDuration);
+
+        //설정 복구
+        _boss.Animator.speed = 1f;
+        yield return new WaitForSeconds(2f);
+        StartBattle();
+        EndZoomCamera();
+        _bossCamera.Priority = 0;
+        
+        
+        //문 열기
+        foreach (MoveObject moveObject in _moveObjects)
+        {
+            moveObject.MoveObj();
+        }
+        
+        //브금 복구
+        SoundManager.Instance.PlayBGM(BGM.FirstSancCenter);
     }
     
 

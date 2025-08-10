@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.86274517, g: 0.054901965, b: 0.054901965, a: 1}
   m_FlipX: 0
@@ -540,7 +540,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relicItems:
   - {fileID: 4525773854370757086, guid: ba78e566eb0ff46a2beda1230a8693c5, type: 3}
-  - {fileID: 1277652407626446751, guid: cf53d84a50e6b4206a47f48b32166def, type: 3}
   - {fileID: 945913013097137193, guid: 048255f31eacf4a96bfb45ebba775238, type: 3}
   statItems:
   - {fileID: 7142327278872833692, guid: 18b0774b268164072bc3050373b21c5e, type: 3}

@@ -46,14 +46,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb9d9030065575478074ebf51e9a2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 14c1924b1ecea804dbd46573b50278f1, type: 3}
   spriteRenderer1: {fileID: 3727540924207987988}
   spriteRenderer2: {fileID: 8090110660788236521}
   sprites1:
-  - {fileID: 943848366, guid: c2a6eda378a6deb4a96fd76bb81f1f21, type: 3}
-  - {fileID: -1464733334, guid: c2a6eda378a6deb4a96fd76bb81f1f21, type: 3}
-  - {fileID: 248368976, guid: c2a6eda378a6deb4a96fd76bb81f1f21, type: 3}
-  - {fileID: -844380321, guid: c2a6eda378a6deb4a96fd76bb81f1f21, type: 3}
-  - {fileID: 123965421, guid: c2a6eda378a6deb4a96fd76bb81f1f21, type: 3}
+  - {fileID: 1416165053, guid: b762a6c7b3972df418ede0a91f2c1e61, type: 3}
+  - {fileID: -864789712, guid: b762a6c7b3972df418ede0a91f2c1e61, type: 3}
+  - {fileID: 2125525064, guid: b762a6c7b3972df418ede0a91f2c1e61, type: 3}
+  - {fileID: 862913952, guid: b762a6c7b3972df418ede0a91f2c1e61, type: 3}
+  - {fileID: 120844341, guid: b762a6c7b3972df418ede0a91f2c1e61, type: 3}
   sprites2:
   - {fileID: 369322646, guid: c11665b68c7fbbb408e9e952c9abe96e, type: 3}
   - {fileID: -422961, guid: c11665b68c7fbbb408e9e952c9abe96e, type: 3}
@@ -74,19 +75,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 18432
-  spriteRenderer1: {fileID: 0}
-  spriteRenderer2: {fileID: 0}
-  sprites1: []
-  sprites2: []
-  particle1: []
-  particle2: []
-  initAnimInterval: 0
-  extAnimInterval: 0
-  particleInterval: 0
-  boxSize: {x: 0, y: 0}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &4190509182139599081
 GameObject:
   m_ObjectHideFlags: 0

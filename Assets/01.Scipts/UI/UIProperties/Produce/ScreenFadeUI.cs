@@ -4,52 +4,91 @@ using System.Collections;
 
 public class ScreenFadeUI : MonoBehaviour
 {
-    public Image fadeImage;
-    private Coroutine _coroutine;
+    private Image _fadeImage;
+    private Coroutine _fadeCoroutine;
+
+    private void Awake()
+    {
+        _fadeImage = GetComponent<Image>();
+    }
 
     public void FadeBackground(float duration, float holdSeconds = 0f, Color? color = null)
     {
-        if (_coroutine != null) StopCoroutine(_coroutine);
+        if (_fadeCoroutine != null) StopCoroutine(_fadeCoroutine);
         gameObject.SetActive(true);
-        _coroutine = StartCoroutine(Fade_Coroutine(duration, holdSeconds, color));
+        _fadeCoroutine = StartCoroutine(Fade_Coroutine(duration, holdSeconds, color));
     }
 
     public IEnumerator Fade_Coroutine(float duration, float holdSeconds = 0f, Color? color = null)
     {
-        if (color.HasValue) fadeImage.color = color.Value;
-
-        // 알파 0으로 시작
-        Color c = fadeImage.color; c.a = 0f; fadeImage.color = c;
+        if (color.HasValue) _fadeImage.color = color.Value;
+        Color c = _fadeImage.color;
+        c.a = 0;
+        _fadeImage.color = c;
 
         float half = Mathf.Max(0.0001f, duration * 0.5f);
 
-        // IN
-        float t = 0f;
-        while (t < half)
+        float time = 0f;
+        while (time < half)
         {
-            t += Time.unscaledDeltaTime;
-            c.a = Mathf.Lerp(0f, 1f, t / half);
-            fadeImage.color = c;
+            c.a = Mathf.Lerp(0, 1, time / (duration / 2));
+            _fadeImage.color = c;
+            time += Time.unscaledDeltaTime;
             yield return null;
         }
-        c.a = 1f; fadeImage.color = c;
+        c.a = 1;
+        _fadeImage.color = c;
 
         // HOLD (옵션)
         if (holdSeconds > 0f)
             yield return new WaitForSecondsRealtime(holdSeconds);
 
         // OUT
-        t = 0f;
-        while (t < half)
+        time = 0f;
+        while (time < half)
         {
-            t += Time.unscaledDeltaTime;
-            c.a = Mathf.Lerp(1f, 0f, t / half);
-            fadeImage.color = c;
+            c.a = Mathf.Lerp(1, 0, time / (duration / 2));
+            _fadeImage.color = c;
+            time += Time.unscaledDeltaTime;
             yield return null;
         }
-        c.a = 0f; fadeImage.color = c;
+        c.a = 0;
+        _fadeImage.color = c;
 
-        _coroutine = null;
+        _fadeCoroutine = null;
         gameObject.SetActive(false);
+    }
+
+    public void FadeOut(Color color, float startAlpha, float duration)
+    {
+        if (_fadeCoroutine != null)
+        {
+            StopCoroutine(_fadeCoroutine);
+            _fadeCoroutine = null;
+        }
+        _fadeCoroutine = StartCoroutine(FadeOut_Coroutine(color, startAlpha, duration));
+    }
+
+    IEnumerator FadeOut_Coroutine(Color color, float startAlpha, float duration)
+    {
+        gameObject.SetActive(true);
+
+        Color c = color;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            c.a = Mathf.Lerp(startAlpha, 0, time / duration);
+            _fadeImage.color = c;
+            time += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        c.a = 0;
+        _fadeImage.color = c;
+
+        _fadeCoroutine = null;
+
+        gameObject.SetActive(false);
+
     }
 }

@@ -30,6 +30,8 @@ public class GroggyAttack : PlayerWeapon
 
     IEnumerator GroggyAttack_Coroutine()
     {
+        SoundManager.Instance.PlaySFX(sound);
+        
         for (int i = 0; i < sprites1.Length; i++)
         {
             spriteRenderer1.sprite = sprites1[i];
