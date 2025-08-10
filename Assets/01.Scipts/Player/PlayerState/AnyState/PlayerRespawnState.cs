@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class PlayerRespawnState : PlayerBaseState
 {
+    private bool _fadeOut;
+    
     public PlayerRespawnState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
-        //세이브 포인트로 위치 변경
-        _player.gameObject.transform.position = SaveManager.Instance.GetSavePoint();
-
-        //애니메이션 실행
-        _player.Animator.SetTrigger(_player.AnimationDB.RespawnParameterHash);
-
+        //페이드 아웃 연출
+        UIManager.Instance.FadeOut(0,Color.black,1,1.5f);
+        
         //적 부활
         MapManager.Instance.RespawnMap();
+        
         //포션 개수 회복
         _inventory.SupplyPotion();
 
@@ -42,10 +42,21 @@ public class PlayerRespawnState : PlayerBaseState
     public override void Update()
     {
         _time += Time.deltaTime;
-        if (_time >= _data.respawnTime)
+        if (_time >= 1.5f && !_fadeOut)
         {
-            _stateMachine.ChangeState(_stateMachine.IdleState);
+            _fadeOut = true;
+            //애니메이션 실행
+            _player.Animator.SetTrigger(_player.AnimationDB.RespawnParameterHash);
+        }
+
+        if (_time >= _data.respawnTime + 1.5f)
+        {
+            _stateMachine.ChangeState(_stateMachine.IdleState);       
         }
     }
-    public override void PhysicsUpdate() { }
+
+    public override void PhysicsUpdate()
+    {
+        ApplyGravity();
+    }
 }

@@ -115,11 +115,17 @@ public class UIManager : Singleton<UIManager>
         screenFadeUIs[0].gameObject.SetActive(true);
         screenFadeUIs[0].FadeBackground(duration);
     }
-
-    public void BorderFadeOut(Color color, float startAlpha = 1f, float duration = 1f)
+    
+    public void FadeIn(int index,Color color, float startAlpha = 0f, float duration = 1f)
     {
-        screenFadeUIs[1].gameObject.SetActive(true);
-        screenFadeUIs[1].FadeOut(color, startAlpha, duration);
+        screenFadeUIs[index].gameObject.SetActive(true);
+        screenFadeUIs[index].FadeIn(color, startAlpha, duration);
+    }
+
+    public void FadeOut(int index,Color color, float startAlpha = 1f, float duration = 1f)
+    {
+        screenFadeUIs[index].gameObject.SetActive(true);
+        screenFadeUIs[index].FadeOut(color, startAlpha, duration);
     }
 
 

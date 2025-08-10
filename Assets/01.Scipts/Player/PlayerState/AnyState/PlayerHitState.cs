@@ -43,7 +43,7 @@ public class PlayerHitState : PlayerBaseState
         //히트 연출
         SoundManager.Instance.MuffleSound(false);
         SoundManager.Instance.MuffleSound(true,0.2f);
-        UIManager.Instance.BorderFadeOut(Color.black,_data.invincibleDuration *3);
+        UIManager.Instance.FadeOut(1,Color.black,_data.invincibleDuration *3);
     }
 
     public override void Exit()
