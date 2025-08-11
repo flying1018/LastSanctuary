@@ -44,4 +44,14 @@ public class TutorialUIPopup : MonoBehaviour
         gameObject.SetActive(false);
         _uiManager.PopUpQueue.Dequeue();
     }
+
+    private void OnEnable()
+    {
+        Time.timeScale = 0;
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
+    }
 }
