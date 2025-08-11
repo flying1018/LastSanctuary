@@ -24,3 +24,5 @@ MonoBehaviour:
   statDeltas:
   - statType: 4
     amount: 20
+  dropSound: {fileID: 8300000, guid: c1f1cdd9032f92d468281f39fe391967, type: 3}
+  getSound: {fileID: 8300000, guid: bce7c49b6989ef54f8523fb356bc0d17, type: 3}

@@ -30,17 +30,14 @@ public class MapManager : Singleton<MapManager>
     
     public static bool IsBossAlive { get; private set; }
 
-
     private void Awake()
     {
         //스폰 포인트 가져오기
         EnemySpawnPoints = new List<EnemySpawnPoint>(FindObjectsOfType<EnemySpawnPoint>());
         ItemSpawnPoints = new List<ItemSpawnPoint>(FindObjectsOfType<ItemSpawnPoint>());
         IsBossAlive = true;
-
+        RespawnMap();
     }
-
-  
 
     public static void SetBossDead()
     {

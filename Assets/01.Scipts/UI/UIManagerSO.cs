@@ -35,4 +35,8 @@ public class UIManagerSO : ScriptableObject
     [Header("ProduceUI")]
     public GameObject saveUIObj;
     public GameObject itemTextUI;
+    
+    [Header("Sound")]
+    public AudioClip buttonClickSound;
+    public AudioClip equipSound;
 }

@@ -87,6 +87,7 @@ public class BossItemDropper : MonoBehaviour
          SpriteRenderer sprite = item.GetComponent<SpriteRenderer>();
          sprite.sprite = obj.Data.relicSprite;
          sprite.color = Color.white;
+         obj.PlayDropSound();
       }
    }
 }
