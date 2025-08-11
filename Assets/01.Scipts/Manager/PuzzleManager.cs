@@ -16,7 +16,7 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] private List<GameObject> correctObj = new List<GameObject>();
     [SerializeField] private List<GameObject> diableObj = new List<GameObject>();
     
-    private List<GameObject> currentObj = new List<GameObject>();
+    private List<GameObject> _currentObj = new List<GameObject>();
     private int _currentIndex = 0;
     private bool _resetPuzzle = false;
     private bool _isFinished = false;
@@ -29,12 +29,12 @@ public class PuzzleManager : MonoBehaviour
         if (_isFinished) return;
         if (puzzleType == PuzzleType.Sequence)
         {
-            if (currentObj.Contains(obj)) return;
+            if (_currentObj.Contains(obj)) return;
         }
 
-        currentObj.Add(obj);
+        _currentObj.Add(obj);
 
-        if (currentObj.Count == correctObj.Count)
+        if (_currentObj.Count == correctObj.Count)
         {
             if (IsSequenceCorrect())
             {
@@ -56,7 +56,7 @@ public class PuzzleManager : MonoBehaviour
     {
         for (int i = 0; i < correctObj.Count; i++)
         {
-            if (currentObj[i] != correctObj[i])
+            if (_currentObj[i] != correctObj[i])
                 return false;
         }
         return true;
@@ -73,6 +73,6 @@ public class PuzzleManager : MonoBehaviour
 
             //if (obj != null) obj.SetActive(false);
         }
-        currentObj.Clear();
+        _currentObj.Clear();
     }
 }

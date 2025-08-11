@@ -173,7 +173,6 @@ public class SettingUI : UnifiedUI
 
     public void OnClickLeft()
     {
-        SoundManager.Instance.PlaySFX(_data.buttonClickSound);
         _curResolutionIndex--;
         if (_curResolutionIndex < 0)
             _curResolutionIndex = _resolutions.Length - 1;
@@ -182,7 +181,6 @@ public class SettingUI : UnifiedUI
 
     public void OnClickRight()
     {
-        SoundManager.Instance.PlaySFX(_data.buttonClickSound);
         _curResolutionIndex++;
         if (_curResolutionIndex >= _resolutions.Length)
             _curResolutionIndex = 0;
@@ -192,7 +190,6 @@ public class SettingUI : UnifiedUI
     //전체화면 설정
     public void OnClickScreen()
     {
-        SoundManager.Instance.PlaySFX(_data.buttonClickSound);
         _isFullScreen = !_isFullScreen;
         ApplySettingTexts();
     }

@@ -96,9 +96,11 @@ public class UnifiedUI : UIBaseState
     //나가기 버튼
     public void OnClickExitButton()
     {
-        SoundManager.Instance.PlaySFX(_data.buttonClickSound);
         if (_uiManager != null)
+        {
+            SoundManager.Instance.PlaySFX(_data.buttonClickSound);
             _uiStateMachine.ChangeState(_uiStateMachine.MainUI);
+        }
         else
             Exit();
     }
