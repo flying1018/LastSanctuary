@@ -32,7 +32,7 @@ public class PlayerDeathState : PlayerBaseState
         }
 
         _fadeIn = false;
-
+        _deathText = false;
     }
 
     //모든 조작 및 물리 상태 막기

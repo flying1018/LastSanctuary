@@ -45,5 +45,12 @@ public class RopeObject : MoveObject
         coli.transform.localPosition = Vector3.down * (ropeLength / 2);
         coli.transform.localScale = new Vector3(1, ropeLength, 1);
     }
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Vector3 boxCenter = new Vector2(transform.position.x, transform.position.y - ropeLength/2);
+        Gizmos.DrawWireCube(boxCenter, new Vector3(1, ropeLength, 1));
+    }
 }
 
