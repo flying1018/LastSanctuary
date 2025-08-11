@@ -150,7 +150,7 @@ public partial class PlayerCondition : IDamageable, IKnockBackable,IGuardable
             StopCoroutine(_timeSlower);
             _timeSlower = null;
         }
-        _timeSlower = StartCoroutine(TimeSlower_Coroutine(0.1f, 1,0.2f));
+        _timeSlower = StartCoroutine(TimeSlower_Coroutine(0.1f, 0.5f,0.2f));
 
         if (_changeBackGround != null)
         {
