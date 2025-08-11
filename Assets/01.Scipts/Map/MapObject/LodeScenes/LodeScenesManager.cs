@@ -30,8 +30,7 @@ public class LodeScenesManager : Singleton<LodeScenesManager>
    {
       var portals = FindObjectsOfType<LodeScenePortal>();
       var player = FindObjectOfType<Player>();
-
-      Debug.Log(portalUid);
+      
       if(nextPortalType == PortalType.Lobby)
       {
          foreach (var portal in portals)

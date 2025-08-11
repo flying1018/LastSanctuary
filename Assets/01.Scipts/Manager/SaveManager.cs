@@ -17,10 +17,10 @@ public class SaveManager : Singleton<SaveManager>
 
     }
 
-    public void Start()
-    {
-        FindAnyObjectByType<Player>().transform.position = lastSavePos.position;
-    }
+    // public void Start()
+    // {
+    //     FindAnyObjectByType<Player>().transform.position = lastSavePos.position;
+    // }
 
     //세이브 포인트 지정
     public void SetSavePoint(Vector2 pos)

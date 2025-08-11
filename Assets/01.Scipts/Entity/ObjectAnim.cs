@@ -4,33 +4,29 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TutorialUIAnim : MonoBehaviour
+public class ObjectAnim : MonoBehaviour
 {
-    [SerializeField] private Sprite[] animSprites;
-    [SerializeField] private float animInterval;
-    [SerializeField] private int index;
+    [SerializeField] protected Sprite[] animSprites;
+    [SerializeField] protected float animInterval;
     
-    private SpriteRenderer _spriteRenderer;
-    private float _time;
-
-    private void Awake()
+    [SerializeField] protected int index = 0;
+    
+    protected SpriteRenderer _spriteRenderer;
+    protected float _time;
+    
+    protected void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     public void Init()
     {
-        if (_spriteRenderer == null)
-        {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
-        }
         _time = 0;
         _spriteRenderer.sprite = animSprites[index];
-        
     }
-
+    
     //애니메이션 실행
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         _time += Time.fixedDeltaTime;
         if (_time >= animInterval)
