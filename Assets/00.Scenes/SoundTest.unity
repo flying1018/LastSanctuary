@@ -2633,10 +2633,10 @@ PrefabInstance:
     - target: {fileID: 5338306366773298638, guid: 4653b3b449fac104cb979968fa51464b, type: 3}
       propertyPath: monster
       value: 
-      objectReference: {fileID: 3153555157828818715, guid: 2ab2aef2f1d77714888d50886277885f, type: 3}
+      objectReference: {fileID: 3153555157828818715, guid: ab52df2361e482847bee3b5e268d8513, type: 3}
     - target: {fileID: 5338306366773298638, guid: 4653b3b449fac104cb979968fa51464b, type: 3}
       propertyPath: enemyType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12566,7 +12566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4862bb29157aa439cb36ec626364f191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lastSavePos: {fileID: 1190957817}
+  lastSavePos: {fileID: 0}
 --- !u!4 &1322028430
 Transform:
   m_ObjectHideFlags: 0
