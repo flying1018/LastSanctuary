@@ -12,10 +12,9 @@ public class PlayerDownJumpState : PlayerBaseState
         base.Enter();
         
         _input.IsJump = false;
-        
         _boxCollider.enabled = false;
-        
         _move.IsGrounded = false;
+        _move.IsAerialPlatform = false;
 
         _time = 0;
     }
