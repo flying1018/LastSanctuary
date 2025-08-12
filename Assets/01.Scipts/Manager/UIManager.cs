@@ -26,8 +26,22 @@ public class UIManager : Singleton<UIManager>
     public DeathUI DeathUI { get; set; }
     public TutorialUIPopup PopUpUI { get; set; }
     public Queue<TutorialUIPopup> PopUpQueue { get; set; }
-
-
+    
+    protected override async void Awake()
+    {
+        base.Awake();
+        if (Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else if (Instance == this)
+        { 
+            DontDestroyOnLoad(gameObject);
+        }
+        
+    }
+    
     private void Start()
     {
         //testCode
@@ -62,7 +76,8 @@ public class UIManager : Singleton<UIManager>
 
         BossUI = GetComponentInChildren<BossUI>(true);
         BossUI.Init();
-
+        
+        DontDestroyOnLoad(gameObject);
     }
 
 
