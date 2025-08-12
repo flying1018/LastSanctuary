@@ -3,44 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleAnim : MonoBehaviour
+public class ParticleAnim : ObjectAnim
 {
-    [SerializeField] private Sprite[] animSprites;
-    [SerializeField] private float animInterval;
     [SerializeField] private AudioClip particleSound;
     
-    private SpriteRenderer _spriteRenderer;
-    private int _index;
-    private float _time;
     private PoolingIndex _poolingIndex;
-
-    private void Awake()
-    {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    public void Init(PoolingIndex poolingIndex)
+    
+    public void  Init(PoolingIndex poolingIndex)
     {
         _poolingIndex = poolingIndex;
-        _index = 0;
+        index = 0;
         SoundManager.Instance.PlaySFX(particleSound);
     }
 
     //애니메이션 실행
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
         _time += Time.fixedDeltaTime;
         if (_time >= animInterval)
         {
             _time = 0;
-            _index++;
+            index++;
 
-            if (_index >= animSprites.Length)
+            if (index >= animSprites.Length)
             {
                 ObjectPoolManager.Set(gameObject, (int)_poolingIndex);
                 return;
             }
-            _spriteRenderer.sprite = animSprites[_index];
+            _spriteRenderer.sprite = animSprites[index];
         }
     }
 }
