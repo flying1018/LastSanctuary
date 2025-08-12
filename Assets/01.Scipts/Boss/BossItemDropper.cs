@@ -6,15 +6,13 @@ using UnityEngine.Serialization;
 public class BossItemDropper : MonoBehaviour
 {
    [Header("드롭 아이템")] 
-   [SerializeField] private List<GameObject> relicItems;
+   [SerializeField] private GameObject relicItems;
    [SerializeField] private List<GameObject> statItems;
    [Header("드롭 옵션")]
    [SerializeField] private Transform spawnPoint;
    [SerializeField] private float dropRange;
    [SerializeField] private float jumpHeight;
    [SerializeField] private float jumpDuration;
-   [SerializeField] private int minDrop;
-   [SerializeField] private int maxDrop;
    [SerializeField] private Sprite circleSprite;
    //파티클
    [SerializeField] private GameObject highlight;
@@ -25,17 +23,11 @@ public class BossItemDropper : MonoBehaviour
       List<(GameObject obj, bool isRelic)> dropItems = new List<(GameObject, bool)>();
       
       //렐릭
-      if (relicItems.Count > 0)
-      {
-         int relicIndex = Random.Range(0, relicItems.Count);
-         dropItems.Add((relicItems[relicIndex], true));
-      }
+      dropItems.Add((relicItems, true));
       //스탯
-      int dropCount = Random.Range(minDrop, maxDrop+1);
-      for (int i = 0; i < dropCount; i++)
+      for (int i = 0; i < statItems.Count; i++)
       {
-         int statIndex = Random.Range(0, statItems.Count);
-         dropItems.Add((statItems[statIndex], false));
+         dropItems.Add((statItems[i], false));
       }
       //드롭 위치
       float offsetX = -((dropItems.Count - 1) * dropRange) / 2f;

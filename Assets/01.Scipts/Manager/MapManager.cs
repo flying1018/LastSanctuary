@@ -54,7 +54,6 @@ public class MapManager : Singleton<MapManager>
     public void RespawnMap()
     {
         RespawnEnemys();
-        RespawnItems();
     }
 
     public void RespawnEnemys()
@@ -70,6 +69,7 @@ public class MapManager : Singleton<MapManager>
 
     public void RespawnItems()
     {
-        foreach (var spawnPoint in ItemSpawnPoints) spawnPoint.Respawn(); 
+        foreach (var spawnPoint in ItemSpawnPoints) spawnPoint.Respawn();
+        
     }
 }

@@ -16,9 +16,6 @@ public class PlayerRespawnState : PlayerBaseState
         //적 부활
         MapManager.Instance.RespawnMap();
         
-        //포션 개수 회복
-        _inventory.SupplyPotion();
-
         _time = 0;
     }
 
@@ -27,8 +24,8 @@ public class PlayerRespawnState : PlayerBaseState
         //체력 회복
         _condition.PlayerRecovery();
         //리스폰시 저장
-        if (_player.InteractableTarget is SavePoint savePoint)
-            _player.InteractableTarget.Interact();
+         if (_player.InteractableTarget is SavePoint savePoint)
+             _player.InteractableTarget.Interact();
         //애니메이터 초기화
         _player.Animator.Rebind();
         //조작 가능
