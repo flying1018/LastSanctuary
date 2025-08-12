@@ -22,11 +22,11 @@ public class UIManager : Singleton<UIManager>
     public BossUI BossUI { get; set; }
     public ScreenFadeUI[] screenFadeUIs { get; set; }
     public SaveUI saveUI { get; set; }
-    public DeathUI deathUI { get; set; }
+    public ShowTextUI ShowTextUI { get; set; }
+    public DeathUI DeathUI { get; set; }
     public TutorialUIPopup PopUpUI { get; set; }
     public Queue<TutorialUIPopup> PopUpQueue { get; set; }
-
-
+    
     private void Start()
     {
         //testCode
@@ -50,7 +50,8 @@ public class UIManager : Singleton<UIManager>
 
         screenFadeUIs = GetComponentsInChildren<ScreenFadeUI>(true);
         saveUI = GetComponentInChildren<SaveUI>(true);
-        deathUI = GetComponentInChildren<DeathUI>(true);
+        ShowTextUI = GetComponentInChildren<ShowTextUI>(true);
+        DeathUI = GetComponentInChildren<DeathUI>(true);
 
         StateMachine = new UIStateMachine(this);
 
@@ -60,7 +61,8 @@ public class UIManager : Singleton<UIManager>
 
         BossUI = GetComponentInChildren<BossUI>(true);
         BossUI.Init();
-
+        
+        DontDestroyOnLoad(gameObject);
     }
 
 
@@ -141,10 +143,16 @@ public class UIManager : Singleton<UIManager>
         obj.GetComponent<ItemTextUI>().ShowText(message, worldPos);
     }
 
+    public void ShowText(float time)
+    {
+        ShowTextUI.gameObject.SetActive(true);
+        ShowTextUI.ShowText(time);
+    }
+
     public void DeathText(float time)
     {
-        deathUI.gameObject.SetActive(true);
-        deathUI.DeathText(time);
+        DeathUI.gameObject.SetActive(true);
+        DeathUI.ShowText(time);
     }
 
     #endregion
