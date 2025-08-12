@@ -118,14 +118,14 @@ public class UIManager : Singleton<UIManager>
         screenFadeUIs[0].gameObject.SetActive(true);
         screenFadeUIs[0].FadeBackground(duration);
     }
-    
-    public void FadeIn(int index,Color color, float startAlpha = 0f, float duration = 1f)
+
+    public void FadeIn(int index, Color color, float startAlpha = 0f, float duration = 1f)
     {
         screenFadeUIs[index].gameObject.SetActive(true);
         screenFadeUIs[index].FadeIn(color, startAlpha, duration);
     }
 
-    public void FadeOut(int index,Color color, float startAlpha = 1f, float duration = 1f)
+    public void FadeOut(int index, Color color, float startAlpha = 1f, float duration = 1f)
     {
         screenFadeUIs[index].gameObject.SetActive(true);
         screenFadeUIs[index].FadeOut(color, startAlpha, duration);
@@ -154,6 +154,11 @@ public class UIManager : Singleton<UIManager>
     {
         hintUI.gameObject.SetActive(true);
         hintUI.OpenHint(body);
+    }
+
+    public void CloseHint()
+    {
+        hintUI.CloseHint();
     }
 
     #endregion
