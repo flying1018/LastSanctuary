@@ -283,16 +283,16 @@
 | 팀원 | 담당 기능 | 코드 Github |
 | --- | --- | --- |
 | 이준영, 안상진 |    <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/FSM%EA%B5%AC%EC%A1%B0%EB%A5%BC%20%ED%99%9C%EC%9A%A9%ED%95%9C%20Player%2CEnemy%2CBoss%2CUI"> **FSM구조를 활용한 Player,Enemy,Boss,UI**</A> |
-| 이준영, 안상진 | **Kinematic을 이용한 지형 충돌의 이동 기능** | https://github.com/leejy1685/LastSanctuary_Code/tree/main/Kinematic%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EC%A7%80%ED%98%95%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EC%9D%B4%EB%8F%99%20%EA%B8%B0%EB%8A%A5 |
-| 이준영 | **ScripableObject를 활용한 데이터 관리** | https://github.com/leejy1685/LastSanctuary_Code/tree/main/ScripableObject%EB%A5%BC%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B4%80%EB%A6%AC |
-| 이준영, 안상진 | **상속 구조를 이용한 Weapon** | https://github.com/leejy1685/LastSanctuary_Code/tree/main/%EC%83%81%EC%86%8D%20%EA%B5%AC%EC%A1%B0%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20Weapon |
-| 이준영 | **추상 클래스와 인터페이스를 사용한 Condition 구조** | https://github.com/leejy1685/LastSanctuary_Code/tree/main/%EC%B6%94%EC%83%81%20%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EB%A5%BC%20%EC%82%AC%EC%9A%A9%ED%95%9C%20Condition%20%EA%B5%AC%EC%A1%B0 |
-| 이준영, 안상진, 김재경 | **Cinemacine을 활용한 카메라 연출** | https://github.com/leejy1685/LastSanctuary_Code/tree/main/Cinemacine%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EC%B9%B4%EB%A9%94%EB%9D%BC%20%EC%97%B0%EC%B6%9C |
-| 안상진, 김재경 | **Singleton을 활용한 다양한 매니저** | https://github.com/leejy1685/LastSanctuary_Code/tree/main/Singleton%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%8B%A4%EC%96%91%ED%95%9C%20%EB%A7%A4%EB%8B%88%EC%A0%80 |
-| 이준영, 김재경  | **상호작용 가능한 아이템 구조** | https://github.com/leejy1685/LastSanctuary_Code/tree/main/%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9%20%EA%B0%80%EB%8A%A5%ED%95%9C%20%EC%95%84%EC%9D%B4%ED%85%9C%20%EA%B5%AC%EC%A1%B0 |
-| 김재경 | **어드레서블을 활용한 SoundManager** | https://github.com/leejy1685/LastSanctuary_Code/tree/main/%EC%96%B4%EB%93%9C%EB%A0%88%EC%84%9C%EB%B8%94%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20SoundManager |
-| 김재경 | **프로젝트 제작에 도움되는 다양한 헬퍼** | https://github.com/leejy1685/LastSanctuary_Code/tree/main/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%A0%9C%EC%9E%91%EC%97%90%20%EB%8F%84%EC%9B%80%EB%90%98%EB%8A%94%20%EB%8B%A4%EC%96%91%ED%95%9C%20%ED%97%AC%ED%8D%BC |
-| 안상진, 김재경 | **플레이어와 상호작용 가능한 맵 오브젝트** | https://github.com/leejy1685/LastSanctuary_Code/tree/main/%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9%20%EA%B0%80%EB%8A%A5%ED%95%9C%20%EB%A7%B5%20%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8 |
+| 이준영, 안상진 |<A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/Kinematic%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EC%A7%80%ED%98%95%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EC%9D%B4%EB%8F%99%20%EA%B8%B0%EB%8A%A5"> **Kinematic을 이용한 지형 충돌의 이동 기능** </A>| 
+| 이준영 | <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/ScripableObject%EB%A5%BC%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B4%80%EB%A6%AC"> **ScripableObject를 활용한 데이터 관리** </A> | 
+| 이준영, 안상진 | <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/%EC%83%81%EC%86%8D%20%EA%B5%AC%EC%A1%B0%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20Weapon"> **상속 구조를 이용한 Weapon** </A> | 
+| 이준영 | <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/%EC%B6%94%EC%83%81%20%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EB%A5%BC%20%EC%82%AC%EC%9A%A9%ED%95%9C%20Condition%20%EA%B5%AC%EC%A1%B0">**추상 클래스와 인터페이스를 사용한 Condition 구조**</A> | 
+| 이준영, 안상진, 김재경 | <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/Cinemacine%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EC%B9%B4%EB%A9%94%EB%9D%BC%20%EC%97%B0%EC%B6%9C">**Cinemacine을 활용한 카메라 연출**</A> | 
+| 안상진, 김재경 | <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/Singleton%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%8B%A4%EC%96%91%ED%95%9C%20%EB%A7%A4%EB%8B%88%EC%A0%80">**Singleton을 활용한 다양한 매니저**</A> | 
+| 이준영, 김재경  | <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9%20%EA%B0%80%EB%8A%A5%ED%95%9C%20%EC%95%84%EC%9D%B4%ED%85%9C%20%EA%B5%AC%EC%A1%B0">**상호작용 가능한 아이템 구조** </A>| 
+| 김재경 | <A href=" https://github.com/leejy1685/LastSanctuary_Code/tree/main/%EC%96%B4%EB%93%9C%EB%A0%88%EC%84%9C%EB%B8%94%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20SoundManager"> **어드레서블을 활용한 SoundManager**</A> |
+| 김재경 | <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%A0%9C%EC%9E%91%EC%97%90%20%EB%8F%84%EC%9B%80%EB%90%98%EB%8A%94%20%EB%8B%A4%EC%96%91%ED%95%9C%20%ED%97%AC%ED%8D%BC ">**프로젝트 제작에 도움되는 다양한 헬퍼** </A>| 
+| 안상진, 김재경 | <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9%20%EA%B0%80%EB%8A%A5%ED%95%9C%20%EB%A7%B5%20%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8">**플레이어와 상호작용 가능한 맵 오브젝트**</A> | 
 
 ---
 
