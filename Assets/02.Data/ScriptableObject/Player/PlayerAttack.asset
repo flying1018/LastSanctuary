@@ -95,7 +95,7 @@ MonoBehaviour:
   groggyAttack:
     attackAnim: {fileID: 7400000, guid: 556e6092d14c0be4e9231422d08e78af, type: 2}
     attackIndex: 7
-    multiplier: 0.5
+    multiplier: 0.8
     nextComboTime: 0
     staminaCost: 0
     attackForce: 3
