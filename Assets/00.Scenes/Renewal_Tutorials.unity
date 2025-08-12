@@ -1489,7 +1489,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1596471116}
   - {fileID: 123986373}
   - {fileID: 1322028430}
   - {fileID: 1992860802}
@@ -140431,11 +140430,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!224 &1596471116 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6143477599657281456, guid: 855e5eb8bcb01fb4b8ac6aae284da4bb, type: 3}
-  m_PrefabInstance: {fileID: 1824686844}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1597616870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144521,7 +144515,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 237178977}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 610911475562611203, guid: 855e5eb8bcb01fb4b8ac6aae284da4bb, type: 3}
       propertyPath: m_Name
@@ -147790,6 +147784,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1534774785}
+  - {fileID: 1824686844}
   - {fileID: 237178977}
   - {fileID: 1601440782}
   - {fileID: 945333023}
