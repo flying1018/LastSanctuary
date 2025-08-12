@@ -27,8 +27,7 @@ public class LodeScenesManager : Singleton<LodeScenesManager>
    {
       var portals = FindObjectsOfType<LodeScenePortal>();
       var player = FindObjectOfType<Player>();
-
-      Debug.Log(portalUid);
+      
       if(nextPortalType == PortalType.Lobby)
       {
          foreach (var portal in portals)
@@ -36,6 +35,7 @@ public class LodeScenesManager : Singleton<LodeScenesManager>
             if (portal.portalType == PortalType.Lobby)
             {
                player.transform.position = portal.spawnPoint.transform.position;
+               ShowText(portal);
                break;
             }
          }
@@ -47,9 +47,20 @@ public class LodeScenesManager : Singleton<LodeScenesManager>
             if (portal.uid == portalUid)
             {
                player.transform.position = portal.spawnPoint.transform.position;
+               ShowText(portal);
                break;
             }
          }
+      }
+   }
+
+   public void ShowText(LodeScenePortal portal)
+   {
+      var areaInfo = portal.GetComponent<AreaInfo>();
+      if (areaInfo != null)
+      {
+         UIManager.Instance.ShowTextUI.gameObject.SetActive(true);
+         UIManager.Instance.ShowTextUI.ShowText(2f, areaInfo.AreaName);
       }
    }
    public void LoadScenePortal(LodeScenePortal potal)

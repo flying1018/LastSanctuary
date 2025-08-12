@@ -5,7 +5,7 @@ public class TutoUITriggerIcon : TutoUITriggerBase
 {
     
     [SerializeField] private Transform uiPosition;
-    [SerializeField] private List<TutorialUIAnim> uiAnims;
+    [SerializeField] private List<ObjectAnim> uiAnims;
  
     
     private bool _hasTriggeed = false;
@@ -24,7 +24,7 @@ public class TutoUITriggerIcon : TutoUITriggerBase
     {
         HideUI();
         uiPrefab.transform.position = uiPosition.position;
-        foreach (TutorialUIAnim uiAnim in uiAnims)
+        foreach (ObjectAnim uiAnim in uiAnims)
         {
             uiAnim.gameObject.SetActive(true);
             uiAnim.Init();
@@ -40,7 +40,7 @@ public class TutoUITriggerIcon : TutoUITriggerBase
 
     public void HideUI()
     {
-        foreach (TutorialUIAnim uiAnim in uiAnims)
+        foreach (ObjectAnim uiAnim in uiAnims)
             uiAnim.gameObject.SetActive(false);
     }
 }

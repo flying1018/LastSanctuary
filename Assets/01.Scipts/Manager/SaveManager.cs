@@ -10,7 +10,7 @@ using UnityEngine;
 public class SaveManager : Singleton<SaveManager>
 {
     [SerializeField] private Transform lastSavePos;
-
+    
     //세이브 포인트 지정
     public void SetSavePoint(Vector2 pos)
     {
