@@ -30,8 +30,8 @@ public class MapManager : Singleton<MapManager>
     
     public static bool IsBossAlive { get; private set; }
 
-    private void Awake()
-    {
+    protected override void Awake()
+    {   base.Awake();
         //스폰 포인트 가져오기
         EnemySpawnPoints = new List<EnemySpawnPoint>(FindObjectsOfType<EnemySpawnPoint>());
         ItemSpawnPoints = new List<ItemSpawnPoint>(FindObjectsOfType<ItemSpawnPoint>());
@@ -54,6 +54,7 @@ public class MapManager : Singleton<MapManager>
     public void RespawnMap()
     {
         RespawnEnemys();
+        RespawnItems();
     }
 
     public void RespawnEnemys()
