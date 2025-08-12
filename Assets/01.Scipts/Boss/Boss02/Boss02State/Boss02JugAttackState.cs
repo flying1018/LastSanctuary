@@ -29,18 +29,15 @@ public class Boss02JugAttackState : BossBaseState
                     _stateMachine2.ChangeState(_stateMachine2.FakeAttack);
                     break;
             }
-
-
             return;
         }
+        
 
-
-        if (_stateMachine2.MoveTarget == _boss02Event.TopMirror.position )
+        if (_stateMachine2.MoveTarget == _boss02Event.TopMirror.position)
         {
             _stateMachine2.ChangeState(_stateMachine2.DownAttack);
             return;
         }
-        
         if (_stateMachine2.MoveTarget == _boss02Event.LeftTopMirror.position)
         {
             _stateMachine2.MoveTarget = _boss02Event.RightBottomMirror.position;
@@ -57,6 +54,7 @@ public class Boss02JugAttackState : BossBaseState
         {
             _stateMachine2.MoveTarget = _boss02Event.LeftTopMirror.position;
         }
+
         
         jugment = Random.Range(0, 2);
         switch (jugment)

@@ -40,6 +40,7 @@ public class TutoUITriggerIcon : TutoUITriggerBase
 
     public void HideUI()
     {
+        if (uiAnims.Count <= 0) return; 
         foreach (ObjectAnim uiAnim in uiAnims)
             uiAnim.gameObject.SetActive(false);
     }

@@ -16,6 +16,7 @@ public class ItemSpawnPoint : MonoBehaviour
     {
             _curItem = ObjectPoolManager.Get(item, (int)PoolingIndex.Item);
             _curItem.transform.position = transform.position;
+            _curItem.transform.parent = transform;
 
             if (_curItem.TryGetComponent(out StatObject statObject))
             {
