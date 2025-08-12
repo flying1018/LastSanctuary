@@ -40,10 +40,10 @@ MonoBehaviour:
   fadeTime: 6
   respawnTime: 2
   interactionAnim: {fileID: 7400000, guid: 6b4cb65176225f64dbb39f0b25730cf3, type: 2}
-  hp: 100
-  attack: 20
-  defense: 5
-  stamina: 100
+  hp: 105
+  attack: 23
+  defense: 7
+  stamina: 105
   staminaRecovery: 15
   potionNum: 3
   moveSound: {fileID: 8300000, guid: 554b00a1816932c4dac4c62aa2a222ac, type: 3}
