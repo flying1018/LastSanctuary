@@ -280,8 +280,8 @@
 
 ### 코드 샘플 및 주석
 
-| 팀원 | 담당 기능 | 코드 Github |
-| --- | --- | --- |
+| 팀원 | 담당 기능 |
+| --- | --- |
 | 이준영, 안상진 |    <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/FSM%EA%B5%AC%EC%A1%B0%EB%A5%BC%20%ED%99%9C%EC%9A%A9%ED%95%9C%20Player%2CEnemy%2CBoss%2CUI"> **FSM구조를 활용한 Player,Enemy,Boss,UI**</A> |
 | 이준영, 안상진 |<A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/Kinematic%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EC%A7%80%ED%98%95%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EC%9D%B4%EB%8F%99%20%EA%B8%B0%EB%8A%A5"> **Kinematic을 이용한 지형 충돌의 이동 기능** </A>| 
 | 이준영 | <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/ScripableObject%EB%A5%BC%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B4%80%EB%A6%AC"> **ScripableObject를 활용한 데이터 관리** </A> | 
