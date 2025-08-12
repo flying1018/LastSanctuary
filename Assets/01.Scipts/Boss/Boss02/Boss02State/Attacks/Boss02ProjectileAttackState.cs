@@ -53,6 +53,7 @@ public class Boss02ProjectileAttackState : Boss02AttackState
 
     private void FireProjectile()
     {
+        SoundManager.Instance.PlaySFX(_attackInfo.attackSounds[0]);
         
         GameObject boomerang = ObjectPoolManager.Get(_attackInfo.projectilePrefab, (int)PoolingIndex.Boss02Projectile2);
         boomerang.transform.position = _boss02Event.GetRandomProjectilePosition();

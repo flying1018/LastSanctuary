@@ -198,6 +198,9 @@ public class Boss02Event : BossEvent
 
     IEnumerator BrokenMirror_Coroutine()
     {
+        SoundManager.Instance.PlaySFX(_boss.Data.howlingSound);
+        SoundManager.Instance.PlaySFX(_boss.Data.phaseShiftSound);
+        
         foreach (Sprite sprite in  brokenMirror)
         {
             yield return new WaitForSeconds(brokenTime);

@@ -19,6 +19,7 @@ public class CollectObject : MonoBehaviour, IInteractable, IComparable<CollectOb
         if (_isGet) { return; }
 
         ItemManager.Instance.GetCollectItem(collectData);
+        SoundManager.Instance.PlaySFX(collectData.getSound);
 
         string itemName;
         if (Data.collectType == CollectType.Potion)
@@ -50,5 +51,10 @@ public class CollectObject : MonoBehaviour, IInteractable, IComparable<CollectOb
     public int CompareTo(CollectObject other)
     {
         return collectData.index.CompareTo(other.collectData.index);
+    }
+    
+    public void PlayDropSound()
+    {
+        SoundManager.Instance.PlaySFX(collectData.dropSound);
     }
 }

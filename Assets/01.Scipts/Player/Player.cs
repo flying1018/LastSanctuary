@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Tilemaps;
 
 public class Player : MonoBehaviour
 {
@@ -83,6 +78,8 @@ public class Player : MonoBehaviour
         Move.Init(BoxCollider.size.x, BoxCollider.size.y,Rigidbody);
         
         StateMachine = new PlayerStateMachine(this);
+        
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()

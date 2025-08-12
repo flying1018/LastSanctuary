@@ -87,6 +87,7 @@ public class SoundManager : Singleton<SoundManager>
     //효과음 실행 메서드
     public void PlaySFX(AudioClip clip, float volume = 1f)
     {
+        if (clip == null) return;
         GameObject sfxObj = ObjectPoolManager.Get(sfxPrefab, (int)PoolingIndex.SFX);
         if(sfxObj.TryGetComponent(out SFXSound sfx))
             sfx.Play(clip, volume);
@@ -128,7 +129,7 @@ public class SoundManager : Singleton<SoundManager>
         _bgmSound = gameObject.AddComponent<BGMSound>();
         _bgmSound.Init(_bgmSource); // AudioSource 주입
         
-        GetMapBGM();
+        GetBGMSound();
     }
 
     //BGM 정지
@@ -145,7 +146,7 @@ public class SoundManager : Singleton<SoundManager>
             _normalSnapshot.TransitionTo(speed);
     }
     
-    public async void GetMapBGM()
+    public async void GetBGMSound()
     {
         List<AudioClip> audioClips = await ResourceLoader.LoadAssetsLabel<AudioClip>(StringNameSpace.Labels.BGM);
         foreach (AudioClip audioClip in audioClips)
@@ -159,6 +160,6 @@ public class SoundManager : Singleton<SoundManager>
             }
         }
         
-        //PlayBGM(BGM.Tutorials_Sound);
+        PlayBGM(BGM.TitleBgm);
     }
 }

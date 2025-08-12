@@ -4,42 +4,34 @@ public class FastTravelPortal : MonoBehaviour, IInteractable
 {
     public string uid;         
     public SanctumArea area;
-
-    [Header("스폰 포인트")]
+    public string sceneName;
     public Transform spawnPoint;
 
-    private void Awake()
+    private void Start()
     {
         FastTravelManager.Instance.Register(this);
     }
 
     public void Interact()
     {
+        
         if (area == SanctumArea.Lobby)
         {
             var target = FastTravelManager.Instance.GetLastSanctumSpawn();
             if (target != null)
             {
-                TeleportTo(target.position);
+               FastTravelManager.Instance.TravelTo(target.GetComponent<FastTravelPortal>());
             }
             else { DebugHelper.LogWarning("최근성역 정보 Null로 뜨니 확인요망"); }
         }
         else
-        {  // 성역에서 로비갈때 사용되며 일단 최근성역 등록하ㅔㄱ됨
+        {  // 성역에서 로비로 이동 (마지막 성역 갱신)
             
             FastTravelManager.Instance.SetLastSanctum(this);
             var lobby = FastTravelManager.Instance.LobbyPortal;
-            if (lobby != null) TeleportTo(lobby.spawnPoint.position);
+            Debug.Log(lobby);
+            if (lobby != null) FastTravelManager.Instance.TravelTo(lobby);
         }
     }
-
-    private void TeleportTo(Vector3 pos)
-    {
-        // UIManager.Instance.Fade()
-
-        var player = FindObjectOfType<Player>(); // 너희 프로젝트에 맞춰 참조 교체
-        if (player != null) player.transform.position = pos;
-
-        // CameraController.Instance.SnapTo(pos);
-    }
+    
 }

@@ -21,7 +21,6 @@ MonoBehaviour:
   effectDesc: 
   relicDesc: 
   relicSprite: {fileID: 0}
-  attack: 0
-  defense: 0
-  hp: 0
-  stamina: 0
+  statDeltas: []
+  dropSound: {fileID: 0}
+  getSound: {fileID: 8300000, guid: bce7c49b6989ef54f8523fb356bc0d17, type: 3}

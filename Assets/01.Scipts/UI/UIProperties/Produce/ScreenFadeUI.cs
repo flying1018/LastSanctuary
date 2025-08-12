@@ -36,6 +36,7 @@ public class ScreenFadeUI : MonoBehaviour
             time += Time.unscaledDeltaTime;
             yield return null;
         }
+
         c.a = 1;
         _fadeImage.color = c;
 
@@ -52,11 +53,40 @@ public class ScreenFadeUI : MonoBehaviour
             time += Time.unscaledDeltaTime;
             yield return null;
         }
+
         c.a = 0;
         _fadeImage.color = c;
 
         _fadeCoroutine = null;
         gameObject.SetActive(false);
+    }
+
+    public void FadeIn(Color color, float startAlpha, float duration)
+    {
+        if (_fadeCoroutine != null)
+        {
+            StopCoroutine(_fadeCoroutine);
+            _fadeCoroutine = null;
+        }
+        _fadeCoroutine = StartCoroutine(FadeIn_Coroutine(color, startAlpha, duration));
+    }
+    
+    IEnumerator FadeIn_Coroutine(Color color, float startAlpha, float duration)
+    {
+        Color c = color;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            c.a = Mathf.Lerp(startAlpha, 1, time / duration);
+            _fadeImage.color = c;
+            time += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        c.a = 1;
+        _fadeImage.color = c;
+
+        _fadeCoroutine = null;
     }
 
     public void FadeOut(Color color, float startAlpha, float duration)
@@ -71,8 +101,6 @@ public class ScreenFadeUI : MonoBehaviour
 
     IEnumerator FadeOut_Coroutine(Color color, float startAlpha, float duration)
     {
-        gameObject.SetActive(true);
-
         Color c = color;
         float time = 0f;
 

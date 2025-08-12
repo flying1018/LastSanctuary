@@ -13,6 +13,8 @@ public class Boss02TeleportState : BossBaseState
         _time = 0;
         
         _boxCollider.enabled = false;
+
+        PlaySFX1();
     }
 
     public override void Exit()
@@ -37,5 +39,10 @@ public class Boss02TeleportState : BossBaseState
     public override void PlayEvent1()
     {
         _boss2.transform.position = _stateMachine2.MoveTarget;
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_data.walkSound);
     }
 }

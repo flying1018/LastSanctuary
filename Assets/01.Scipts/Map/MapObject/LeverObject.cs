@@ -19,9 +19,9 @@ public class LeverObject : MonoBehaviour, IDamageable
     
     public void TakeDamage(WeaponInfo weaponInfo)
     {
-        //SoundManager.Instance.PlaySFX(audioClip);
         if (isOn) return;
         
+        SoundManager.Instance.PlaySFX(audioClip);
         isOn = true;
         
         if (isOn)
@@ -37,6 +37,7 @@ public class LeverObject : MonoBehaviour, IDamageable
 
     public void ReturnLever()
     {
+        SoundManager.Instance.PlaySFX(audioClip);
         isOn = false;
         spriteRenderer.sprite = leverImage[0];
     }

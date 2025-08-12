@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   gravityPower: 0.6
-  inputTimeLimit: 0.4
+  inputTimeLimit: 0.3
   jumpForce: 25
   jumpDuping: 0.87
   holdJumpDuping: 0.92
@@ -56,6 +56,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: b65b0e01fefddb84692987980cad667d, type: 3}
   arrowHitSound: {fileID: 8300000, guid: d1a6849676cb1dd42969940571daccd2, type: 3}
   magicHitSound: {fileID: 8300000, guid: eeb7e6ccfda8c1b46bf67655a42034f8, type: 3}
+  trapHitSound: {fileID: 8300000, guid: b1c1f726bc5bccc4e906d7bb56e0f3de, type: 3}
   hitSound: {fileID: 8300000, guid: 474f73407786adf41953e0b8b86777ca, type: 3}
   healSound: {fileID: 8300000, guid: d4adbc096bba18641bb3db713a46b0ec, type: 3}
   teleportStartSound: {fileID: 8300000, guid: 61012c41929ea52499cb03d531eb4db2, type: 3}

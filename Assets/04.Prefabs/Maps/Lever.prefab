@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 0
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: e6c84c6f566920a4dbcd135065b8984d, type: 3}
   moveObjects:
   - {fileID: 0}
   leverImage:

@@ -6,6 +6,13 @@ public class Boss02DownAttackState : Boss02AttackState
 {
     public Boss02DownAttackState(Boss02StateMachine bossStateMachine, BossAttackInfo attackInfo) : base(bossStateMachine, attackInfo) { }
 
+    public override void Enter()
+    {
+        base.Enter();
+
+        PlaySFX1();
+    }
+
     public override void Update()
     {
         
@@ -20,5 +27,10 @@ public class Boss02DownAttackState : Boss02AttackState
     public override void PhysicsUpdate()
     {
         Move(Vector2.down * _attackInfo.projectilePower);
+    }
+
+    public override void PlaySFX1()
+    {
+        SoundManager.Instance.PlaySFX(_attackInfo.attackSounds[0]);
     }
 }

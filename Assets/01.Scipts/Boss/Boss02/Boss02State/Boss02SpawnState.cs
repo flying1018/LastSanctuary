@@ -54,7 +54,7 @@ public class Boss02SpawnState : BossBaseState
 
     public override void PlaySFX1()
     {
-        SoundManager.Instance.PlaySFX(_data.phaseShiftSound);
+        SoundManager.Instance.PlaySFX(_data.spawnSound);
     }
 
     IEnumerator StartBattle()

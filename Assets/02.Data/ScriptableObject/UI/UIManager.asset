@@ -34,3 +34,5 @@ MonoBehaviour:
   sKillRightClickDesc: "\uD574\uAE08"
   saveUIObj: {fileID: 7782533198551027877, guid: 671db71841c7c4c31b64cec168b98058, type: 3}
   itemTextUI: {fileID: 5264680468936178939, guid: 8d88325159f434ea6aa13691a2f24a33, type: 3}
+  buttonClickSound: {fileID: 8300000, guid: 264c35dbe3f7d6c43b3c1a3a0042bef3, type: 3}
+  equipSound: {fileID: 8300000, guid: 6bccc69bbc8f31d4c88bcda89ecd7c2b, type: 3}

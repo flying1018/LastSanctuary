@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum SanctumArea
 {
@@ -19,10 +20,18 @@ public class FastTravelManager : Singleton<FastTravelManager>
     public FastTravelPortal LobbyPortal { get; private set; }
 
     private string _playerPrefsKey = StringNameSpace.FastTravel.PlayerPrefsKey;
+    private Vector3? _teleportPosition;
 
     protected override void Awake()
     {
+        
         LastSanctumPortalUid = PlayerPrefs.GetString(_playerPrefsKey, string.Empty);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        DontDestroyOnLoad(this);
+    }
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void Register(FastTravelPortal portal)
@@ -43,5 +52,31 @@ public class FastTravelManager : Singleton<FastTravelManager>
     {
         if (string.IsNullOrEmpty(LastSanctumPortalUid)) return null;
         return _byUid.TryGetValue(LastSanctumPortalUid, out var p) ? p.spawnPoint : null;
+    }
+
+    public void TravelTo(FastTravelPortal portal)
+    {
+        if (portal == null) return;
+        _teleportPosition = portal.spawnPoint.position;
+        SceneManager.LoadSceneAsync(portal.sceneName);
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        var portals = FindObjectsOfType<FastTravelPortal>();
+        foreach (var portal in portals)
+        {
+            Register(portal);
+        }
+
+        if (_teleportPosition.HasValue)
+        {
+            var player = FindObjectOfType<Player>();
+            if (player != null)
+            {
+                player.transform.position = _teleportPosition.Value;
+            }
+            _teleportPosition = null;
+        }
     }
 }

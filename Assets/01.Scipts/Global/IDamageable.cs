@@ -9,6 +9,7 @@ public enum DamageType
     Range,
     Heavy,
     Magic,
+    Trap
 }
 
 /// <summary>

@@ -24,6 +24,7 @@ public class StatObject : MonoBehaviour, IInteractable
 
         _isGet = true;
         ItemManager.Instance.UpgradeStat(statData);
+        SoundManager.Instance.PlaySFX(statData.getSound);
 
         string itemName;
         if (statData.isConsumable)

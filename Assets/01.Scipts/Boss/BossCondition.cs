@@ -58,6 +58,7 @@ public class BossCondition : Condition,IDamageable, IGroggyable
         }
         else
         {   //피격 이펙트
+            SoundManager.Instance.PlaySFX(_boss.Data.hitSound);
             OnHitEffected();
         }
     }
