@@ -1,6 +1,5 @@
-# LastSanctuary
 
-![Sprite-0001.png](attachment:4eba39d9-9248-4718-a77e-c6da51c4d6f2:Sprite-0001.png)
+<img width="380" height="270" alt="Sprite-0001" src="https://github.com/user-attachments/assets/eab0a3cb-baf7-4caf-b703-8055b9fb71c0" />
 
 ### 게임 소개: **Last Sanctuary - 잿더미 위의 맹세**
 
