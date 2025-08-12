@@ -290,7 +290,7 @@
 | 이준영, 안상진, 김재경 | <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/Cinemacine%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EC%B9%B4%EB%A9%94%EB%9D%BC%20%EC%97%B0%EC%B6%9C">**Cinemacine을 활용한 카메라 연출**</A> | 
 | 안상진, 김재경 | <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/Singleton%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%8B%A4%EC%96%91%ED%95%9C%20%EB%A7%A4%EB%8B%88%EC%A0%80">**Singleton을 활용한 다양한 매니저**</A> | 
 | 이준영, 김재경  | <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9%20%EA%B0%80%EB%8A%A5%ED%95%9C%20%EC%95%84%EC%9D%B4%ED%85%9C%20%EA%B5%AC%EC%A1%B0">**상호작용 가능한 아이템 구조** </A>| 
-| 김재경 | <A href=" https://github.com/leejy1685/LastSanctuary_Code/tree/main/%EC%96%B4%EB%93%9C%EB%A0%88%EC%84%9C%EB%B8%94%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20SoundManager"> **어드레서블을 활용한 SoundManager**</A> |
+| 김재경 | <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/%EC%96%B4%EB%93%9C%EB%A0%88%EC%84%9C%EB%B8%94%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20SoundManager"> **어드레서블을 활용한 SoundManager** </A> |
 | 김재경 | <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%A0%9C%EC%9E%91%EC%97%90%20%EB%8F%84%EC%9B%80%EB%90%98%EB%8A%94%20%EB%8B%A4%EC%96%91%ED%95%9C%20%ED%97%AC%ED%8D%BC ">**프로젝트 제작에 도움되는 다양한 헬퍼** </A>| 
 | 안상진, 김재경 | <A href="https://github.com/leejy1685/LastSanctuary_Code/tree/main/%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9%20%EA%B0%80%EB%8A%A5%ED%95%9C%20%EB%A7%B5%20%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8">**플레이어와 상호작용 가능한 맵 오브젝트**</A> | 
 
