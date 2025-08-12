@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class Player : Singleton<Player>
 {
     //필드
     public WeaponInfo WeaponInfo;
@@ -45,8 +45,11 @@ public class Player : MonoBehaviour
     public PlayerSkillSO SkillData { get => playerSkillData; }
 
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+        
         BoxCollider = GetComponent<BoxCollider2D>();
         Input = GetComponent<PlayerController>();
         Rigidbody = GetComponent<Rigidbody2D>();
@@ -78,8 +81,6 @@ public class Player : MonoBehaviour
         Move.Init(BoxCollider.size.x, BoxCollider.size.y,Rigidbody);
         
         StateMachine = new PlayerStateMachine(this);
-        
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()

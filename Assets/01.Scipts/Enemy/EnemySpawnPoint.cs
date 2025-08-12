@@ -28,6 +28,7 @@ public class EnemySpawnPoint : MonoBehaviour
     {
         GameObject go =ObjectPoolManager.Get(monster,(int)PoolingIndex.Monster);
         go.transform.position = transform.position;
+        go.transform.parent = transform;
         _enemy = go.GetComponent<Enemy>();
         _enemy.Init(this);
         isSpawn = true;

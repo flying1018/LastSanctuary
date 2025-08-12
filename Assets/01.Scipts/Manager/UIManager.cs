@@ -28,6 +28,12 @@ public class UIManager : Singleton<UIManager>
     public TutorialUIPopup PopUpUI { get; set; }
     public Queue<TutorialUIPopup> PopUpQueue { get; set; }
 
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void Start()
     {
         //testCode
@@ -36,12 +42,12 @@ public class UIManager : Singleton<UIManager>
 
     public void Init()
     {
-        PopUpQueue = new Queue<TutorialUIPopup>();
-
         PlayerCondition = FindAnyObjectByType<PlayerCondition>();
         PlayerInventory = FindAnyObjectByType<PlayerInventory>();
         PlayerInput = FindAnyObjectByType<PlayerInput>();
         PlayerSkill = FindAnyObjectByType<PlayerSkill>();
+        
+        PopUpQueue = new Queue<TutorialUIPopup>();
 
         MainUI = GetComponentInChildren<MainUI>(true);
         RelicUI = GetComponentInChildren<RelicUI>(true);
@@ -63,8 +69,6 @@ public class UIManager : Singleton<UIManager>
 
         BossUI = GetComponentInChildren<BossUI>(true);
         BossUI.Init();
-
-        DontDestroyOnLoad(gameObject);
     }
 
 
@@ -77,6 +81,7 @@ public class UIManager : Singleton<UIManager>
     private void FixedUpdate()
     {
         StateMachine.PhysicsUpdate();
+        //Debug.Log(StateMachine.currentState);
     }
 
     #region Need MonoBehaviour Method
@@ -90,6 +95,7 @@ public class UIManager : Singleton<UIManager>
     //UI를 껏다켜는 메서드
     public void OnOffUI(bool isOn)
     {
+        if(StateMachine == null) return;
         if (isOn)
         {
             StateMachine.ChangeState(StateMachine.MainUI);
