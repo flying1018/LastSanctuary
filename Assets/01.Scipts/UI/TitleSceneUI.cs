@@ -27,6 +27,7 @@ public class TitleSceneUI : MonoBehaviour
         LoadButton.onClick.AddListener(OnClickGameLoad);
         exitButton.onClick.AddListener(OnClickExit);
         settingButton.onClick.AddListener(OnClickSetting);
+        SoundManager.Instance.PlayBGM(BGM.TitleBgm); 
     }
 
     public async void OnClickGameStart()

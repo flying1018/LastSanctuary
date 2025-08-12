@@ -23,10 +23,13 @@ public class GameManager : Singleton<GameManager>
         if (scene.buildIndex == 0)
         {
             player.gameObject.SetActive(false);
+            UIManager.Instance.gameObject.SetActive(false);
         }
         else
         {
             player.gameObject.SetActive(true);
+            UIManager.Instance.gameObject.SetActive(true);
+            UIManager.Instance.StateMachine.ChangeState(UIManager.Instance.StateMachine.MainUI);
         }
     }
 }
