@@ -35,7 +35,7 @@ MonoBehaviour:
   deathAnim: {fileID: 7400000, guid: 53ea444c7cefd3447837f56833355fac, type: 2}
   projectilePrefab: {fileID: 5272416872062206358, guid: d0160a8affdd49b489cf4e530afafdda, type: 3}
   projectilePower: 36
-  rangeType: 1
+  rangeType: 0
   firePointX: 1.5
   poolIndex: 12
   flyingHeight: 0
@@ -45,3 +45,4 @@ MonoBehaviour:
   walkSound: {fileID: 0}
   abilitySound: {fileID: 0}
   deathSound: {fileID: 0}
+  detectSound: {fileID: 0}
