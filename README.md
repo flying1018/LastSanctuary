@@ -24,7 +24,7 @@
 **이준영 :** 
 
 <details>
-    <summary> **플레이어, 적, 보스 리지드 바디 타입을 Dynamic → Kinematic으로 변경** </summary>
+    <summary> 플레이어, 적, 보스 리지드 바디 타입을 Dynamic → Kinematic으로 변경 </summary>
     
     - 중간 발표 후 피드백 중에서 Dynamic을 사용할 필요가 없다는 피드백을 받았음.
     
