@@ -51,6 +51,7 @@ public class UIManager : Singleton<UIManager>
 
         screenFadeUIs = GetComponentsInChildren<ScreenFadeUI>(true);
         saveUI = GetComponentInChildren<SaveUI>(true);
+        ShowTextUI = GetComponentInChildren<ShowTextUI>(true);
         DeathUI = GetComponentInChildren<DeathUI>(true);
         hintUI = GetComponentInChildren<HintUI>(true);
 

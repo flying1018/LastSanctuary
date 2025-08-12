@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,7 @@ public class TitleSceneUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private Button newButton;
+    [SerializeField] private Button LoadButton;
     [SerializeField] private Button settingButton;
     [SerializeField] private Button exitButton;
     [SerializeField] private AudioClip startSound;
@@ -22,25 +24,22 @@ public class TitleSceneUI : MonoBehaviour
         _settingUI.TitleInit();
         
         newButton.onClick.AddListener(OnClickGameStart);
+        LoadButton.onClick.AddListener(OnClickGameLoad);
         exitButton.onClick.AddListener(OnClickExit);
         settingButton.onClick.AddListener(OnClickSetting);
+        SoundManager.Instance.PlayBGM(BGM.TitleBgm); 
     }
 
-    public void OnClickGameStart()
+    public async void OnClickGameStart()
     {
-        if (_startGameCoroutine != null)
-        {
-            StopCoroutine(_startGameCoroutine);
-            _startGameCoroutine = null;
-        }
-        _startGameCoroutine = StartCoroutine(StartGame_Coroutine());
-    }
-
-    private IEnumerator StartGame_Coroutine()
-    {
-        SoundManager.Instance.PlaySFX(startSound);
-        yield return new WaitForSecondsRealtime(startSound.length/2);
+        // SoundManager.Instance.PlaySFX(startSound);
+        // await Task.Delay((int)startSound.length * 500);
         SceneManager.LoadScene(StringNameSpace.Scenes.RenewalTutorials);
+    }
+    
+    public void OnClickGameLoad()
+    {
+        SceneManager.LoadScene(StringNameSpace.Scenes.SancScene);
     }
 
     public void OnClickExit()

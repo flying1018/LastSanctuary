@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1656d5e7e8832447a9a32cd66ab5c34, type: 3}
+  m_Name: Player 1st
+  m_EditorClassIdentifier: 
+  moveSpeed: 6
+  gravityPower: 0.6
+  inputTimeLimit: 0.1
+  jumpForce: 25
+  jumpDuping: 0.87
+  holdJumpDuping: 0.92
+  fallJudgment: 7
+  downJumpTime: 0.2
+  dashAnim: {fileID: 7400000, guid: 20526e8ebcd8b154daef3662caa8a8a5, type: 2}
+  dashPower: 20
+  dashCoolTime: 0.5
+  dashCost: 25
+  healAmount: 40
+  healAnim: {fileID: 7400000, guid: 52dc6dc8e8aaf90419bc5df20a09978b, type: 2}
+  perfectGuardWindow: 0.2
+  perfactGuardStemina: 30
+  perfactGuardGroggy: 10
+  perfactGuardUlt: 0
+  guardCost: 30
+  lightHitDuration: 0.7
+  heavyHitDuration: 1
+  invincibleDuration: 1
+  hitStaminaRecovery: 15
+  damageReduction: 0.4
+  deathTime: 2
+  fadeTime: 6
+  respawnTime: 2
+  interactionAnim: {fileID: 7400000, guid: 6b4cb65176225f64dbb39f0b25730cf3, type: 2}
+  hp: 105
+  attack: 23
+  defense: 7
+  stamina: 105
+  staminaRecovery: 15
+  potionNum: 3
+  moveSound: {fileID: 8300000, guid: 554b00a1816932c4dac4c62aa2a222ac, type: 3}
+  dashSound: {fileID: 8300000, guid: 55f8c9c9d44769f41b6d426cfd8c56a9, type: 3}
+  jumpSound: {fileID: 8300000, guid: 88b8978948694884da40287daa2f8731, type: 3}
+  attackSound: {fileID: 8300000, guid: d0bdd06f23819b343a87821769e1e063, type: 3}
+  guardSound: {fileID: 8300000, guid: 8ca16915b42589344ae289e10c6027c1, type: 3}
+  perfectGuardSound: {fileID: 8300000, guid: 89048cf20f365f442ad6d75cd8780a1b, type: 3}
+  ropeSound: {fileID: 8300000, guid: c58dcf675b92c2241ba14a68ef75fab8, type: 3}
+  deathSound: {fileID: 8300000, guid: b65b0e01fefddb84692987980cad667d, type: 3}
+  arrowHitSound: {fileID: 8300000, guid: d1a6849676cb1dd42969940571daccd2, type: 3}
+  magicHitSound: {fileID: 8300000, guid: eeb7e6ccfda8c1b46bf67655a42034f8, type: 3}
+  trapHitSound: {fileID: 8300000, guid: b1c1f726bc5bccc4e906d7bb56e0f3de, type: 3}
+  hitSound: {fileID: 8300000, guid: 474f73407786adf41953e0b8b86777ca, type: 3}
+  healSound: {fileID: 8300000, guid: d4adbc096bba18641bb3db713a46b0ec, type: 3}
+  teleportStartSound: {fileID: 8300000, guid: 61012c41929ea52499cb03d531eb4db2, type: 3}
+  teleportEndSound: {fileID: 8300000, guid: 4cb92929d1092cf47bc611c19b0dd21c, type: 3}
+  defaultMaterial: {fileID: 2100000, guid: 4b8e4564344994245855150f74caab25, type: 2}
+  transparentMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  cameraDiff: 3
+  cameraTopView: 2.5
+  cameraBottomView: 1.5
+  whiteBackGround: {fileID: 21300000, guid: f88a56042c702cb4ca8f55b70f4301ed, type: 3}

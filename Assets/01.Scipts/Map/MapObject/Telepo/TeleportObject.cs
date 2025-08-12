@@ -26,9 +26,11 @@ public class TeleportObject : MonoBehaviour, IInteractable
 
             if (teleportType == TeleportType.Auto && !_istelpoCooldown)
             {
+                Debug.Log(_istelpoCooldown);
                 Teleport(_player);
                 _istelpoCooldown = true;
                 Invoke(nameof(ResetCooldown), cooltime);
+                Debug.Log(_istelpoCooldown);
             }
         }
     }
