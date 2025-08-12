@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
 
 public class PlayerDashState : PlayerBaseState
 {
@@ -32,6 +34,7 @@ public class PlayerDashState : PlayerBaseState
     public override void Exit()
     {
         base.Exit();
+        _move.gravityScale = Vector2.zero;
     }
 
     public override void HandleInput()
