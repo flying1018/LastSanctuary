@@ -40,6 +40,9 @@ public class DebugWindow : EditorWindow
     // 디버그할 기능의 필드 변수 선언공간
     private string test; // 예시용로 사용할 테스트 변수 선언
     private AudioClip bgm;
+    private GameObject go;
+    private GameObject attacker;
+    private int testDamage;
 
 
     [MenuItem("Window/My Debug Tool")]
@@ -64,7 +67,32 @@ public class DebugWindow : EditorWindow
         bgm = (AudioClip)EditorGUILayout.ObjectField("BGM을 넣어주세요", bgm, typeof(AudioClip), true);
         if (GUILayout.Button("Bgm바꾸기")) // 디버그 툴에 뜰 버튼 이름
         {
-            
+
+        }
+
+        EditorGUILayout.LabelField("가드 테스트");
+        go = (GameObject)EditorGUILayout.ObjectField("playerObject", go, typeof(GameObject), true);
+        PlayerController pc = go.GetComponent<PlayerController>();
+        bool curGuarding = pc.IsGuarding;
+        bool newGuarding = EditorGUILayout.Toggle("가드 상태", curGuarding);
+        if (newGuarding != curGuarding)
+        {
+            //pc.testGuard(newGuarding);
+        }
+
+        testDamage = EditorGUILayout.IntField("데미지", testDamage);
+        attacker = (GameObject)EditorGUILayout.ObjectField("Attacker", attacker, typeof(GameObject), true);
+        Transform atkDir = attacker != null ? attacker.transform : null;
+        if (GUILayout.Button("데미지 테스트"))
+        {
+            PlayerCondition condition = go.GetComponent<PlayerCondition>();
+            //condition.TakeDamage(testDamage, atkDir, DamageType.Attack);
+        }
+
+        EditorGUILayout.LabelField("세이브 테스트");
+        if (GUILayout.Button("세이브"))
+        {
+            SaveManager.Instance.SaveGame(2);
         }
     }
 }

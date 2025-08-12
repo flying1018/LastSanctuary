@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe245788b651394e8fcb8b034fc10ec, type: 3}
+  m_Name: MagicSniper
+  m_EditorClassIdentifier: 
+  _key: 0
+  _name: 
+  gravityPower: 0.6
+  runSpeed: 0
+  detectTime: 0.2
+  detectDistance: 10
+  moveSpeed: 0
+  cancelChaseTime: 3
+  hitMaterial: {fileID: 2100000, guid: 1d6c919171b720f4698baec530ce9a22, type: 2}
+  attackDistance: 20
+  attackDuration: 3
+  knockbackForce: 5
+  attackAnim: {fileID: 7400000, guid: 6fc1f46ccded9c24d9408b85a778de65, type: 2}
+  blinkLength: 0.3
+  attack: 36
+  hp: 100
+  defence: 0
+  damageDelay: 0.1
+  hitDuration: 0.5
+  dropGold: 500
+  deathAnim: {fileID: 7400000, guid: 53ea444c7cefd3447837f56833355fac, type: 2}
+  projectilePrefab: {fileID: 5272416872062206358, guid: d0160a8affdd49b489cf4e530afafdda, type: 3}
+  projectilePower: 36
+  rangeType: 0
+  firePointX: 1.5
+  poolIndex: 12
+  flyingHeight: 0
+  flyingSpeed: 0
+  attackSound: {fileID: 8300000, guid: ba4ae0190edf6064eababe9b0d5295bc, type: 3}
+  hitSound: {fileID: 8300000, guid: 0c627532d49dd2b49baec69f27b7b7b9, type: 3}
+  walkSound: {fileID: 0}
+  abilitySound: {fileID: 0}
+  deathSound: {fileID: 0}
+  detectSound: {fileID: 0}

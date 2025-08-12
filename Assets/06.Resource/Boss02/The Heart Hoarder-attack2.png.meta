@@ -1,0 +1,847 @@
+fileFormatVersion: 2
+guid: 25844645526975a4684513c448da5302
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_0
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 0
+        width: 68
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c02c2493ba45cd240bfb65d6d96291cc
+      internalID: 693848482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_1
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 0
+        width: 68
+        height: 56
+      alignment: 9
+      pivot: {x: 0.51, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c93d958ad90a5bb41863bf09418c3ccf
+      internalID: 1233721496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_2
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 0
+        width: 66
+        height: 56
+      alignment: 9
+      pivot: {x: 0.51, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0b4682991c41c442a2cf67f3a364758
+      internalID: -1873581009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_3
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 0
+        width: 66
+        height: 59
+      alignment: 9
+      pivot: {x: 0.51, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 365b202d8b98a2841b91deadbc26ed4a
+      internalID: -703315247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_4
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 0
+        width: 66
+        height: 60
+      alignment: 9
+      pivot: {x: 0.51, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6699f5239d25f164d84a8008bed35a57
+      internalID: -1296401883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_5
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 0
+        width: 66
+        height: 61
+      alignment: 9
+      pivot: {x: 0.51, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46fe2c373429f7245925580ce43cb050
+      internalID: -1461563352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_6
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 0
+        width: 66
+        height: 62
+      alignment: 9
+      pivot: {x: 0.51, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65632fd790c162c4f938adb7704e0af9
+      internalID: 153723363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_7
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 0
+        width: 66
+        height: 60
+      alignment: 9
+      pivot: {x: 0.51, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a93b9e83b018794e828b09a5791194f
+      internalID: -1288558018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_8
+      rect:
+        serializedVersion: 2
+        x: 1854
+        y: 0
+        width: 66
+        height: 59
+      alignment: 9
+      pivot: {x: 0.51, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 685b7b382afb5a747ad1e4fee8b3274b
+      internalID: 548295953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_9
+      rect:
+        serializedVersion: 2
+        x: 2076
+        y: 0
+        width: 66
+        height: 58
+      alignment: 9
+      pivot: {x: 0.51, y: 0.53}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fbed1242a499bd449939de117e0aee7
+      internalID: 1783405136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_10
+      rect:
+        serializedVersion: 2
+        x: 2297
+        y: 0
+        width: 68
+        height: 57
+      alignment: 9
+      pivot: {x: 0.51, y: 0.54}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0127cdc21066feb4982a502439329359
+      internalID: 826299415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_11
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 0
+        width: 66
+        height: 59
+      alignment: 9
+      pivot: {x: 0.51, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4d977e00f813af41a24d5a85413e479
+      internalID: -416075729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_12
+      rect:
+        serializedVersion: 2
+        x: 2742
+        y: 0
+        width: 66
+        height: 60
+      alignment: 9
+      pivot: {x: 0.51, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c04b1c27181b63c4b8d4c2b9a4207b06
+      internalID: -803999616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_13
+      rect:
+        serializedVersion: 2
+        x: 2964
+        y: 0
+        width: 66
+        height: 61
+      alignment: 9
+      pivot: {x: 0.51, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3c9d2b3b25648547a3f1dd4c21f7252
+      internalID: 813732395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_14
+      rect:
+        serializedVersion: 2
+        x: 3186
+        y: 0
+        width: 66
+        height: 62
+      alignment: 9
+      pivot: {x: 0.51, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dd7a78f8bf907b468529af4e33bb440
+      internalID: -1937984445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_15
+      rect:
+        serializedVersion: 2
+        x: 3408
+        y: 0
+        width: 66
+        height: 60
+      alignment: 9
+      pivot: {x: 0.51, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2be0f2cef772c794ba76d6ee9a77c6c6
+      internalID: 534454459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_16
+      rect:
+        serializedVersion: 2
+        x: 3630
+        y: 0
+        width: 66
+        height: 59
+      alignment: 9
+      pivot: {x: 0.51, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dbb4101addc1ce40b19443706c974eb
+      internalID: -120561750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_17
+      rect:
+        serializedVersion: 2
+        x: 3852
+        y: 0
+        width: 66
+        height: 58
+      alignment: 9
+      pivot: {x: 0.51, y: 0.53}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec5f56fa113e43a4aa8b16a864d14ff6
+      internalID: -2082034405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_18
+      rect:
+        serializedVersion: 2
+        x: 4073
+        y: 0
+        width: 68
+        height: 57
+      alignment: 9
+      pivot: {x: 0.51, y: 0.54}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 292ea038a4337ec4eb117dbe867f644c
+      internalID: 1232263406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_19
+      rect:
+        serializedVersion: 2
+        x: 4293
+        y: 0
+        width: 48
+        height: 59
+      alignment: 9
+      pivot: {x: 0.77, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c7ad4832e7d91445bde9fc41849bbb2
+      internalID: -620539454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_20
+      rect:
+        serializedVersion: 2
+        x: 4517
+        y: 0
+        width: 46
+        height: 60
+      alignment: 9
+      pivot: {x: 0.76, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 552a76c3f6143f946a9811513c7e97ca
+      internalID: 175790275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_21
+      rect:
+        serializedVersion: 2
+        x: 4739
+        y: 0
+        width: 69
+        height: 61
+      alignment: 9
+      pivot: {x: 0.51, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917531fe803e9c543a60bebe2906f82a
+      internalID: 677322576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_22
+      rect:
+        serializedVersion: 2
+        x: 4968
+        y: 0
+        width: 62
+        height: 62
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b3fbd84840f4f147b4747052ed21ef6
+      internalID: 1514082861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_23
+      rect:
+        serializedVersion: 2
+        x: 5190
+        y: 0
+        width: 63
+        height: 63
+      alignment: 9
+      pivot: {x: 0.44, y: 0.49}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19122ba6b8400ac409dd36fef40cd1f0
+      internalID: 781384249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_24
+      rect:
+        serializedVersion: 2
+        x: 5411
+        y: 0
+        width: 66
+        height: 59
+      alignment: 9
+      pivot: {x: 0.44, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c36a2af79ff978d42acc96eae1c2a584
+      internalID: -2034566231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_25
+      rect:
+        serializedVersion: 2
+        x: 5632
+        y: 0
+        width: 68
+        height: 58
+      alignment: 9
+      pivot: {x: 0.44, y: 0.53}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e179bd00b1721e4486984305b1f2b01
+      internalID: 823680433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_34
+      rect:
+        serializedVersion: 2
+        x: 11174
+        y: 0
+        width: 50
+        height: 57
+      alignment: 9
+      pivot: {x: 0.76, y: 0.54}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebfcfc97e7606a2488b4a0c5dc536dda
+      internalID: 722135677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_35
+      rect:
+        serializedVersion: 2
+        x: 11400
+        y: 0
+        width: 66
+        height: 60
+      alignment: 9
+      pivot: {x: 0.51, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30aca39ed99ee9447a3dfa92ce4d901e
+      internalID: 298218045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_36
+      rect:
+        serializedVersion: 2
+        x: 11622
+        y: 0
+        width: 66
+        height: 60
+      alignment: 9
+      pivot: {x: 0.51, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8a9aacfa50262549b394eb458850259
+      internalID: -67576557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_37
+      rect:
+        serializedVersion: 2
+        x: 11844
+        y: 0
+        width: 66
+        height: 60
+      alignment: 9
+      pivot: {x: 0.51, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d67be4063c69b974aa67d24d2ab1310d
+      internalID: 88404842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Heart Hoarder-attack2_38
+      rect:
+        serializedVersion: 2
+        x: 12065
+        y: 0
+        width: 68
+        height: 62
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cd0f7b5ef6f26f43ac64f9141f809fd
+      internalID: 773172639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      The Heart Hoarder-attack2_0: 693848482
+      The Heart Hoarder-attack2_1: 1233721496
+      The Heart Hoarder-attack2_10: 826299415
+      The Heart Hoarder-attack2_11: -416075729
+      The Heart Hoarder-attack2_12: -803999616
+      The Heart Hoarder-attack2_13: 813732395
+      The Heart Hoarder-attack2_14: -1937984445
+      The Heart Hoarder-attack2_15: 534454459
+      The Heart Hoarder-attack2_16: -120561750
+      The Heart Hoarder-attack2_17: -2082034405
+      The Heart Hoarder-attack2_18: 1232263406
+      The Heart Hoarder-attack2_19: -620539454
+      The Heart Hoarder-attack2_2: -1873581009
+      The Heart Hoarder-attack2_20: 175790275
+      The Heart Hoarder-attack2_21: 677322576
+      The Heart Hoarder-attack2_22: 1514082861
+      The Heart Hoarder-attack2_23: 781384249
+      The Heart Hoarder-attack2_24: -2034566231
+      The Heart Hoarder-attack2_25: 823680433
+      The Heart Hoarder-attack2_26: -859739495
+      The Heart Hoarder-attack2_27: 1900127253
+      The Heart Hoarder-attack2_28: -924367942
+      The Heart Hoarder-attack2_29: -1022978357
+      The Heart Hoarder-attack2_3: -703315247
+      The Heart Hoarder-attack2_30: -499360951
+      The Heart Hoarder-attack2_31: -2094095785
+      The Heart Hoarder-attack2_32: 926821243
+      The Heart Hoarder-attack2_33: 1046457105
+      The Heart Hoarder-attack2_34: 722135677
+      The Heart Hoarder-attack2_35: 298218045
+      The Heart Hoarder-attack2_36: -67576557
+      The Heart Hoarder-attack2_37: 88404842
+      The Heart Hoarder-attack2_38: 773172639
+      The Heart Hoarder-attack2_39: 996608273
+      The Heart Hoarder-attack2_4: -1296401883
+      The Heart Hoarder-attack2_40: -1825481349
+      The Heart Hoarder-attack2_41: -1094351279
+      The Heart Hoarder-attack2_42: -1207382534
+      The Heart Hoarder-attack2_5: -1461563352
+      The Heart Hoarder-attack2_6: 153723363
+      The Heart Hoarder-attack2_7: -1288558018
+      The Heart Hoarder-attack2_8: 548295953
+      The Heart Hoarder-attack2_9: 1783405136
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

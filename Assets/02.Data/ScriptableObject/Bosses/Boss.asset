@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fdeda8d67d82d428a31ed163ad950e, type: 3}
+  m_Name: Boss
+  m_EditorClassIdentifier: 
+  _key: 0
+  _name: 
+  gravityPower: 0.6
+  attack: 35
+  defense: 10
+  hp: 1200
+  groggyGauge: 50
+  groggyDuration: 5
+  damageDelay: 0.1
+  dropGold: 1000
+  deathAnim: {fileID: 7400000, guid: f745dd3432f773c46807b3753e7880d9, type: 2}
+  deathEventDuration: 3
+  moveSpeed: 3
+  spawnFallVelocity: 20
+  spawnAnim: {fileID: 7400000, guid: 0ff33004cb5ec2549a83d61c8990ee54, type: 2}
+  attackRange: 11
+  attackIdleTime: 1
+  knockbackForce: 5
+  attacks:
+  - multiplier: 1.2
+    knockbackForce: 20
+    coolTime: 3
+    animParameter: Attack1
+    attackAnim: {fileID: 7400000, guid: 3852d77dc4102194eb172f127a49af23, type: 2}
+    projectilePrefab: {fileID: 0}
+    projectilePower: 0
+    attackSounds:
+    - {fileID: 8300000, guid: 99763f3d71b0c18409c1621c2b27f676, type: 3}
+  - multiplier: 1.5
+    knockbackForce: 20
+    coolTime: 3
+    animParameter: Attack2
+    attackAnim: {fileID: 7400000, guid: f01057286f56a7e48b86cce37d330c92, type: 2}
+    projectilePrefab: {fileID: 1731905444369871071, guid: 04ab5d43bba433d4782c69b13723599c, type: 3}
+    projectilePower: 80
+    attackSounds:
+    - {fileID: 8300000, guid: 94643bcc75cfd7e40ba70900d44036d8, type: 3}
+    - {fileID: 8300000, guid: 99c001b5140ffee4fb94380e55189221, type: 3}
+  - multiplier: 1.7
+    knockbackForce: 20
+    coolTime: 7
+    animParameter: Attack3
+    attackAnim: {fileID: 7400000, guid: 6c33d22002876bb4c811b29c853c46f9, type: 2}
+    projectilePrefab: {fileID: 0}
+    projectilePower: 0
+    attackSounds:
+    - {fileID: 8300000, guid: 94643bcc75cfd7e40ba70900d44036d8, type: 3}
+    - {fileID: 8300000, guid: 81a4b608bc284764297d3dd1bf938ae9, type: 3}
+  defpen: 0.5
+  backjumpDistance: 4
+  backjumpHeight: 8
+  backjumpSpeed: 2
+  phaseShiftHpRatio: 0.5
+  phaseShiftAnim: {fileID: 7400000, guid: d781c0a65ca4bdf40ad84d4b0b6413a3, type: 2}
+  phaseShiftDuration: 0
+  spawnSound: {fileID: 0}
+  breathSound: {fileID: 8300000, guid: 4339960f031eb8e4f80c861fc4769350, type: 3}
+  howlingSound: {fileID: 8300000, guid: 79d147a33e9a45b469fe7d516304cc60, type: 3}
+  jumpSound: {fileID: 8300000, guid: 94643bcc75cfd7e40ba70900d44036d8, type: 3}
+  landingSound: {fileID: 8300000, guid: 79c0412da74d776438d8114359d842c3, type: 3}
+  deathSound: {fileID: 8300000, guid: d6d6e76fb1f588446b05c8731b924cc3, type: 3}
+  phaseShiftSound: {fileID: 8300000, guid: 81725d64760066d459db10145e794805, type: 3}
+  walkSound: {fileID: 8300000, guid: 270f683745274b2499f9f72f95a60f56, type: 3}
+  hitSound: {fileID: 8300000, guid: fe3cf116b0a70cb4c8b5db9d20852103, type: 3}
+  materials:
+  - {fileID: 2100000, guid: 925d379cb152be54891be7a5c23adf6a, type: 2}
+  - {fileID: 2100000, guid: 19f0a6c5696afe54a8574a963f4c1a70, type: 2}
+  - {fileID: 2100000, guid: a10da65ad77caf64cbdf4e4fcfb69a74, type: 2}
+  - {fileID: 2100000, guid: 1d6c919171b720f4698baec530ce9a22, type: 2}
+  teleportAnim: {fileID: 0}

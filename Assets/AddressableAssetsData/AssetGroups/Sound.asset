@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Sound
+  m_EditorClassIdentifier: 
+  m_GroupName: Sound
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 62664de972a224a368cd3eb2c3788c50
+  m_SerializeEntries:
+  - m_GUID: 6677cb5b23f294bc3853de348fe4f76a
+    m_Address: Assets/05.Input/MainMixer.mixer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 658c77c45c00b48749f52d24d295dc1f
+    m_Address: Assets/04.Prefabs/Global/SFX.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 095eebe4d2b48534baffd8f13ecedd7a
+    m_Address: Assets/06.Resource/Sound/BGM/Tutorials_Sound.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 447efa19073c05f42b38fe2caee5d8bb
+    m_Address: Assets/06.Resource/Sound/BGM/Boss01_PhaseShift.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92d37a5cb249694438b634d0174365de
+    m_Address: Assets/06.Resource/Sound/BGM/Boss01_Phase2.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 529161031fee2f344b7847d8ae8d96ab
+    m_Address: Assets/06.Resource/Sound/BGM/Boss01_Phase1.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d6fbf33bbf2505b40aebafb7546208a0
+    m_Address: Assets/06.Resource/Sound/BGM/1stSancBgm.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 286333b8dfba8864b9d6b226eef080b7
+    m_Address: Assets/06.Resource/Sound/BGM/1stSancCenter.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a3051a662d51a240b2b85bec9a34118
+    m_Address: Assets/06.Resource/Sound/BGM/1stSancBgm2.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cbcabf7dd2bd9204cb590917c1aef1ac
+    m_Address: Assets/06.Resource/Sound/BGM/TitleBgm.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0b2f4c8cdfc8d0443ac65cc4ad41dd88
+    m_Address: Assets/06.Resource/Sound/BGM/VillageBgm.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec759c46fa47021499558ff4df866d5c
+    m_Address: Assets/06.Resource/Sound/BGM/Boss02_Bgm.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 776f3e8915c904c98ae272975e3fbf24, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e688da805faa64b628ea3885aa5d4587, type: 2}
+    - {fileID: 11400000, guid: ed8bacbae243446aba6a59595f60fdcb, type: 2}

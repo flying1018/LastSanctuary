@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe245788b651394e8fcb8b034fc10ec, type: 3}
+  m_Name: LanceSkeleton
+  m_EditorClassIdentifier: 
+  _key: 0
+  _name: 
+  gravityPower: 0.6
+  runSpeed: 0
+  detectTime: 0.2
+  detectDistance: 7
+  moveSpeed: 3
+  cancelChaseTime: 3
+  hitMaterial: {fileID: 2100000, guid: 1d6c919171b720f4698baec530ce9a22, type: 2}
+  attackDistance: 4
+  attackDuration: 2
+  knockbackForce: 5
+  attackAnim: {fileID: 7400000, guid: 5e71f4cd6439726469445f502727bac4, type: 2}
+  blinkLength: 0.3
+  attack: 25
+  hp: 120
+  defence: 0
+  damageDelay: 0.1
+  hitDuration: 0.5
+  dropGold: 500
+  deathAnim: {fileID: 7400000, guid: e8de934768cde414686f91b0fd9abc0a, type: 2}
+  projectilePrefab: {fileID: 0}
+  projectilePower: 0
+  rangeType: 0
+  firePointX: 0
+  poolIndex: 0
+  flyingHeight: 0
+  flyingSpeed: 0
+  attackSound: {fileID: 8300000, guid: 33c406444026aae41a055cf26a38037e, type: 3}
+  hitSound: {fileID: 8300000, guid: a248bdfb703162542864bddb16791cbe, type: 3}
+  walkSound: {fileID: 8300000, guid: 94679b4497785df4ab0c49555c3756bc, type: 3}
+  abilitySound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 30ef385047f9a9c4b83779ea35a34183, type: 3}

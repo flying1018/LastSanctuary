@@ -1,18 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+/// <summary>
+/// 게임 전체를 관리하는 게임 매니저
+/// </summary>
+public class GameManager : Singleton<GameManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void Awake()
     {
-        
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
     }
-
-    // Update is called once per frame
-    void Update()
+    protected void Start()
     {
-        
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    public void Init() { }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        var player = FindObjectOfType<Player>();
+        if (scene.buildIndex == 0)
+        {
+            Destroy(player.gameObject);
+            Destroy(UIManager.Instance.gameObject);
+        }
+
     }
 }
