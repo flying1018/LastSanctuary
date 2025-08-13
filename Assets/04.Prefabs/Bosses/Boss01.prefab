@@ -538,17 +538,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f6ec19f510503469bd6e1584b278fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relicItems:
-  - {fileID: 4525773854370757086, guid: ba78e566eb0ff46a2beda1230a8693c5, type: 3}
-  - {fileID: 945913013097137193, guid: 048255f31eacf4a96bfb45ebba775238, type: 3}
+  relicItems: {fileID: 4525773854370757086, guid: ba78e566eb0ff46a2beda1230a8693c5, type: 3}
   statItems:
   - {fileID: 7142327278872833692, guid: 18b0774b268164072bc3050373b21c5e, type: 3}
+  - {fileID: 7142327278872833692, guid: 18b0774b268164072bc3050373b21c5e, type: 3}
+  - {fileID: 7142327278872833692, guid: 1224710e180ae7648b600bb6269201f5, type: 3}
+  - {fileID: 7142327278872833692, guid: 1224710e180ae7648b600bb6269201f5, type: 3}
   - {fileID: 7142327278872833692, guid: 99e2bfc00b2334b8aad40337f66183b5, type: 3}
+  - {fileID: 7142327278872833692, guid: a703f11459a104a4fadd7a5b248a85c0, type: 3}
   spawnPoint: {fileID: 8617638883515162977}
   dropRange: 1.5
   jumpHeight: 5
   jumpDuration: 1.5
-  minDrop: 10
-  maxDrop: 11
   circleSprite: {fileID: -2413806693520163455, guid: 05715ead379287c47afc71b720cb72d2, type: 3}
   highlight: {fileID: 455611820256146302, guid: f76022b029c8e5b4481fdcf9204b5e2e, type: 3}

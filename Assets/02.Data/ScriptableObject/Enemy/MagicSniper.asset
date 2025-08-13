@@ -31,7 +31,7 @@ MonoBehaviour:
   defence: 0
   damageDelay: 0.1
   hitDuration: 0.5
-  dropGold: 500
+  dropGold: 100
   deathAnim: {fileID: 7400000, guid: 53ea444c7cefd3447837f56833355fac, type: 2}
   projectilePrefab: {fileID: 5272416872062206358, guid: d0160a8affdd49b489cf4e530afafdda, type: 3}
   projectilePower: 36

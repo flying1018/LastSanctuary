@@ -31,13 +31,13 @@ MonoBehaviour:
   defence: 0
   damageDelay: 0.1
   hitDuration: 0.5
-  dropGold: 500
+  dropGold: 100
   deathAnim: {fileID: 7400000, guid: 2fee7b95aee869640ab0bfeea263aabf, type: 2}
   projectilePrefab: {fileID: 0}
   projectilePower: 0
   rangeType: 0
   firePointX: 0
-  poolIndex: 0
+  poolIndex: 1
   flyingHeight: 0
   flyingSpeed: 0
   attackSound: {fileID: 8300000, guid: 49810fd24659262439c4f2396dfc1a19, type: 3}
