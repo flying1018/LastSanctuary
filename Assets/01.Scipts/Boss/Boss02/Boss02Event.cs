@@ -79,6 +79,7 @@ public class Boss02Event : BossEvent
 
             SoundManager.Instance.PlayBGM(BGM.FirstSancCenter);
             UIManager.Instance.SetBossUI(false);
+            _bossCamera.Priority = 0;
         }
     }
     
@@ -191,7 +192,7 @@ public class Boss02Event : BossEvent
     
     public void EndCutScene()
     {
-        _player.EventProduction(true);
+        _player.EventProduction(false);
     }
     
     

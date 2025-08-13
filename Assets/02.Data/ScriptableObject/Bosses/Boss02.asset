@@ -15,9 +15,9 @@ MonoBehaviour:
   _key: 0
   _name: 
   gravityPower: 10
-  attack: 20
+  attack: 30
   defense: 20
-  hp: 1300
+  hp: 1200
   groggyGauge: 80
   groggyDuration: 5
   damageDelay: 0.1
@@ -28,7 +28,7 @@ MonoBehaviour:
   spawnFallVelocity: 0
   spawnAnim: {fileID: 7400000, guid: 2bd9235ee42807643b7524b45b358d1b, type: 2}
   attackRange: 20
-  attackIdleTime: 2
+  attackIdleTime: 1
   knockbackForce: 5
   attacks:
   - multiplier: 1.5

@@ -6,8 +6,14 @@ public class IronCage : MoveObject
 {
     [SerializeField] private float moveDistance = 3.6f;
 
+    public void Awake()
+    {
+        _isTurnOn = false;
+    }
+
     public override void MoveObj()
     {
+        _isTurnOn = !_isTurnOn;
         StartCoroutine(MoveIronCage(base._isTurnOn));
     }
 

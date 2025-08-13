@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4697123698431085387}
   - component: {fileID: 8260622182865601485}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2022878720372771696}
   - component: {fileID: 2714591271425194873}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: WeaponCollider1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 7692875058564503397}
   - component: {fileID: 529078105895651102}
   - component: {fileID: 1066506779685505216}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7577291334085438332}
   - component: {fileID: 7350817380857460471}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: WeaponCollider2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 989294249957291426}
   - component: {fileID: 349227183603375710}
   - component: {fileID: 574950874158840488}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Boss02
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -532,10 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f6ec19f510503469bd6e1584b278fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relicItems:
-  - {fileID: 1910408655105834304, guid: f94746f82e28a4bf68e0c7e7d3dd50bb, type: 3}
-  - {fileID: 5909182335501913812, guid: 1a6dd41e9ee82451386aff3adf2b47cd, type: 3}
-  - {fileID: 7268740456645221802, guid: c27df6509375c4272b9c862fa26f7ccb, type: 3}
+  relicItems: {fileID: 0}
   statItems:
   - {fileID: 7142327278872833692, guid: 18b0774b268164072bc3050373b21c5e, type: 3}
   - {fileID: 7142327278872833692, guid: 99e2bfc00b2334b8aad40337f66183b5, type: 3}
@@ -543,8 +540,6 @@ MonoBehaviour:
   dropRange: 1.5
   jumpHeight: 5
   jumpDuration: 1.5
-  minDrop: 10
-  maxDrop: 11
   circleSprite: {fileID: -2413806693520163455, guid: 05715ead379287c47afc71b720cb72d2, type: 3}
   highlight: {fileID: 455611820256146302, guid: f76022b029c8e5b4481fdcf9204b5e2e, type: 3}
 --- !u!1 &8981695670153962876
@@ -557,7 +552,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1367127272105116}
   - component: {fileID: 5205240271131688204}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: WeaponCollider3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
