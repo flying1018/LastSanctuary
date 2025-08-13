@@ -79,6 +79,7 @@ public class Boss02Event : BossEvent
 
             SoundManager.Instance.PlayBGM(BGM.FirstSancCenter);
             UIManager.Instance.SetBossUI(false);
+            _bossCamera.Priority = 0;
         }
     }
     

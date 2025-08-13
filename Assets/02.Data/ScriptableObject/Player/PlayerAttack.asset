@@ -60,14 +60,14 @@ MonoBehaviour:
   jumpAttack:
     attackAnim: {fileID: 7400000, guid: fb83938d100c40e4b9e179de0fa7eb31, type: 2}
     attackIndex: 5
-    multiplier: 1
+    multiplier: 1.5
     nextComboTime: 0
     staminaCost: 0
     attackForce: 0
     knockbackForce: 0
-    groggyDamage: 1
+    groggyDamage: 2
     isInvincible: 0
-    ultimateValue: 1
+    ultimateValue: 2
   topAttack:
     attackAnim: {fileID: 7400000, guid: cbdcd516d24c3354bbf3ec8e4db03db7, type: 2}
     attackIndex: 6

@@ -44,7 +44,7 @@ public class Boss02JugAttackState : BossBaseState
         }
         else if (_stateMachine2.MoveTarget == _boss02Event.LeftBottomMirror.position)
         {
-            _stateMachine2.MoveTarget = _boss02Event.RightTopMirror.position;
+            _stateMachine2.MoveTarget = _boss02Event.RightBottomMirror.position;
         }
         else if (_stateMachine2.MoveTarget == _boss02Event.RightTopMirror.position)
         {
@@ -52,7 +52,7 @@ public class Boss02JugAttackState : BossBaseState
         }
         else if (_stateMachine2.MoveTarget == _boss02Event.RightBottomMirror.position)
         {
-            _stateMachine2.MoveTarget = _boss02Event.LeftTopMirror.position;
+            _stateMachine2.MoveTarget = _boss02Event.LeftBottomMirror.position;
         }
 
         
