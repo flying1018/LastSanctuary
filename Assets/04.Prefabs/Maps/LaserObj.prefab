@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 130
   m_Sprite: {fileID: -328311453, guid: c11665b68c7fbbb408e9e952c9abe96e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55fafd5c5534f4a78bd9ac0019e4ffef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveObjType: 3
   barrierSprite: {fileID: -328311453, guid: c11665b68c7fbbb408e9e952c9abe96e, type: 3}
   damage: 10
   knockBackPower: 10
