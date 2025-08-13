@@ -9,7 +9,6 @@ public class PuzzleObject : MoveObject
    private PuzzleManager _puzzleManager;
    private SpriteRenderer _spriteRenderer;
    private LeverObject _leverObject;
-   
    private int _curSpriteIndex = 0;
    private void Awake()
    {
@@ -26,22 +25,28 @@ public class PuzzleObject : MoveObject
 
    public override void ReturnObj()
    {
-      if (_puzzleManager != null)
-         _puzzleManager.OnRemoveCorrect(gameObject);
-      _spriteRenderer.sprite = _originSprite;
-      _curSpriteIndex = 0;
+      
+      OnReturn();
    }
 
    public void OnAction()
    {
       if (_puzzleManager != null)
-      _puzzleManager.OnCheckCorrect(gameObject);
+         _puzzleManager.OnCheckCorrect(gameObject);
 
       if (sprite != null)
       {
          _spriteRenderer.sprite = sprite[_curSpriteIndex];
          _curSpriteIndex++;
       }
+   }
+
+   public void OnReturn()
+   {
+      if (_puzzleManager != null)
+         _puzzleManager.OnRemoveCorrect(gameObject);
+      _spriteRenderer.sprite = _originSprite;
+      _curSpriteIndex = 0;
    }
 
    public void Reset()
