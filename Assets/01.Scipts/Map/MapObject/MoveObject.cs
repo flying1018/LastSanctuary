@@ -11,7 +11,12 @@ public class MoveObject : MonoBehaviour
     {
 
     }
-    
+
+    public virtual void ReturnObj()
+    {
+        
+    }
+
     private void OnDisable()
     {
         StopAllCoroutines();
