@@ -15,9 +15,9 @@ MonoBehaviour:
   _key: 0
   _name: 
   gravityPower: 10
-  attack: 30
+  attack: 40
   defense: 20
-  hp: 1200
+  hp: 1500
   groggyGauge: 80
   groggyDuration: 5
   damageDelay: 0.1
