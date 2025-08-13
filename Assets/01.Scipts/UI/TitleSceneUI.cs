@@ -23,14 +23,16 @@ public class TitleSceneUI : MonoBehaviour
     private void Awake()
     {
         _settingUI = GetComponentInChildren<SettingUI>(true);
-        _settingUI.TitleInit();
-        
         newButton.onClick.AddListener(OnClickGameStart);
         LoadButton.onClick.AddListener(OnClickGameLoad);
         exitButton.onClick.AddListener(OnClickExit);
         settingButton.onClick.AddListener(OnClickSetting);
         bossRushButton.onClick.AddListener(OnClickBossRush);
-        SoundManager.Instance.PlayBGM(BGM.TitleBgm); 
+    }
+
+    private void Start()
+    {
+        _settingUI.TitleInit();
     }
 
     private void Update()
