@@ -191,7 +191,7 @@ public class Boss02Event : BossEvent
     
     public void EndCutScene()
     {
-        _player.EventProduction(true);
+        _player.EventProduction(false);
     }
     
     
