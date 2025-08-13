@@ -7,7 +7,7 @@ using UnityEngine;
 /// <summary>
 /// 플레이어, 몬스터, 보스 공통으로 사용되는 컨디션의 부모
 /// </summary>
-public class Condition : MonoBehaviour
+public abstract class Condition : MonoBehaviour
 {
     protected float _maxHp;
     protected float _curHp;
