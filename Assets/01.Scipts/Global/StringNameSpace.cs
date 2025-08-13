@@ -69,6 +69,7 @@ public static class StringNameSpace
         public const string RenewalTutorials = "Renewal_Tutorials";
         public const string TitleScene = "TitleScene";
         public const string SancScene = "1stSancSave";
+        public const string BossRush = "BossRush";
     }
 
     public static class FastTravel

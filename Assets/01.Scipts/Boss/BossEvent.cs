@@ -15,6 +15,7 @@ public class BossEvent : MonoBehaviour
     protected CinemachineBrain _brain;
     protected Player _player;
     protected SpriteRenderer _backGroundSprite;
+    protected bool _isBossAlive;
     
     [Header("Boss Spawn")]
     [SerializeField] protected Transform playerPosition;
@@ -23,6 +24,7 @@ public class BossEvent : MonoBehaviour
     //초기 설정
     protected virtual void Start()
     {
+        _isBossAlive = true;
         _moveObjects = GetComponentsInChildren<MoveObject>();
         
         _backGroundSprite = GameObject.FindGameObjectWithTag(StringNameSpace.Tags.BackGround)

@@ -13,7 +13,9 @@ public class TitleSceneUI : MonoBehaviour
     [SerializeField] private Button LoadButton;
     [SerializeField] private Button settingButton;
     [SerializeField] private Button exitButton;
+    [SerializeField] private Button bossRushButton;
     [SerializeField] private AudioClip startSound;
+
     
     private SettingUI _settingUI;
     private Coroutine _startGameCoroutine;
@@ -27,7 +29,16 @@ public class TitleSceneUI : MonoBehaviour
         LoadButton.onClick.AddListener(OnClickGameLoad);
         exitButton.onClick.AddListener(OnClickExit);
         settingButton.onClick.AddListener(OnClickSetting);
+        bossRushButton.onClick.AddListener(OnClickBossRush);
         SoundManager.Instance.PlayBGM(BGM.TitleBgm); 
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            _settingUI.Exit();
+        }
     }
 
     public async void OnClickGameStart()
@@ -40,6 +51,11 @@ public class TitleSceneUI : MonoBehaviour
     public void OnClickGameLoad()
     {
         SceneManager.LoadScene(StringNameSpace.Scenes.SancScene);
+    }
+
+    public void OnClickBossRush()
+    {
+        SceneManager.LoadScene(StringNameSpace.Scenes.BossRush);
     }
 
     public void OnClickExit()

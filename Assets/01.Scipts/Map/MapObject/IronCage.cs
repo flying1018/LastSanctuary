@@ -40,4 +40,10 @@ public class IronCage : MoveObject
         if (_isTurnOn) { spriteRenderer.sortingOrder = 50; }
         transform.position = targetPos;
     }
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(transform.position + new Vector3(0,-moveDistance), new Vector3(0.5f,4,0));
+    }
 }

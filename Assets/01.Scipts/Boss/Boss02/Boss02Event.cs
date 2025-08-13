@@ -7,8 +7,9 @@ public class Boss02Event : BossEvent
     private Boss02 _boss;
     private SpriteRenderer[] _mirrorSpriteRenderers;
 
-    
+
     [Header("BossSpawn")]
+    [SerializeField] private Transform bossPosition;
     [SerializeField] private Sprite originTopMirrorSprite;
     [SerializeField] private Sprite originMirrorSprite;
     [SerializeField] private float blackDuration = 1f;
@@ -55,10 +56,11 @@ public class Boss02Event : BossEvent
     //플레이어 입장 시
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (MapManager.IsBossAlive == false) return;
+        if (!_isBossAlive) return;
         if (other.CompareTag(StringNameSpace.Tags.Player))
         {
             _player = other.GetComponent<Player>();
+            _boss.transform.position = bossPosition.position;
             StartCoroutine(Spawn_Coroutine());
         }
     }
@@ -141,7 +143,6 @@ public class Boss02Event : BossEvent
             _backGroundSprite.color = Color.Lerp(originColor, Color.black, elapsed / blackDuration);
             yield return null;
         }
-        
         
         _boss.Init(this);
         _player.Camera.StartZoomCamera(_boss.transform,cameraZoom);
@@ -303,6 +304,8 @@ public class Boss02Event : BossEvent
         SoundManager.Instance.PlayBGM(BGM.FirstSancCenter);
 
         EndCutScene();
+        
+        _isBossAlive = false;
     }
     
 
