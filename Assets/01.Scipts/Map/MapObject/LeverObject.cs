@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum LeverType
+{
+    Oneway,
+    Toggle,
+    
+}
 
 public class LeverObject : MonoBehaviour, IDamageable
 {
     [SerializeField] private bool isOn = false;
+    [SerializeField] private LeverType type;
     [SerializeField] private AudioClip audioClip;
     [SerializeField] private MoveObject[] moveObjects;
     [SerializeField] private Sprite[] leverImage;
@@ -19,20 +26,31 @@ public class LeverObject : MonoBehaviour, IDamageable
     
     public void TakeDamage(WeaponInfo weaponInfo)
     {
-        if (isOn) return;
+        switch (type)
+        {
+            case LeverType.Oneway:
+                if (isOn) return;
+                isOn = true;
+                break;
+            case LeverType.Toggle:
+                isOn = !isOn;
+                break;
+        }
         
         SoundManager.Instance.PlaySFX(audioClip);
-        isOn = true;
         
-        if (isOn)
+        spriteRenderer.sprite = isOn ? leverImage[1] : leverImage[0];
+
+        foreach (MoveObject moveObject in moveObjects)
         {
-            spriteRenderer.sprite = leverImage[1];
+            if (isOn)
+                moveObject.MoveObj();
+            else
+            {
+                moveObject.ReturnObj();
+            }
         }
-        
-        foreach (MoveObject _moveObject in moveObjects)
-        {
-            _moveObject.MoveObj();
-        }
+
     }
 
     public void ReturnLever()

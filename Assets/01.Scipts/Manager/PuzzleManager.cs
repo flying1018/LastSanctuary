@@ -51,6 +51,15 @@ public class PuzzleManager : MonoBehaviour
         }
     }
     
+    //레버 off시 현재 답 빼기
+    public void OnRemoveCorrect(GameObject obj)
+    {
+        if (_currentObj.Contains(obj))
+        {
+            _currentObj.Remove(obj);
+        }
+    }
+
     //정답 확인
     public bool IsSequenceCorrect()
     {
