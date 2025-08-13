@@ -17,6 +17,7 @@ public class Boss02PhaseShiftState : BossBaseState
         _boss2.Animator.SetTrigger(_boss2.AnimationDB.GroggyEnterParameter);
         
         _boss02Event.StartZoomCamera();
+        _boss02Event.StartCutScene();
         
         //데이터 초기화 
         _time = 0;
@@ -31,6 +32,8 @@ public class Boss02PhaseShiftState : BossBaseState
     {
         //애니메이션 종료
         _boss2.Animator.SetTrigger(_boss2.AnimationDB.GroggyExitParameter);
+        
+        _boss02Event.EndCutScene();
     }
 
     public override void Update()

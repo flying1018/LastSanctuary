@@ -184,6 +184,19 @@ public class Boss02Event : BossEvent
         _bossCamera.Priority = 30;
     }
 
+    public void StartCutScene()
+    {
+        _player.EventProduction(true);
+    }
+    
+    public void EndCutScene()
+    {
+        _player.EventProduction(true);
+    }
+    
+    
+    
+
     private Coroutine _phaseShiftCoroutine;
     
     public void BrokenMirror()
@@ -225,6 +238,8 @@ public class Boss02Event : BossEvent
     }
     IEnumerator  Death_coroution()
     {
+        StartCutScene();
+        
         //보스 포커싱
         StartZoomCamera();
         
@@ -285,6 +300,8 @@ public class Boss02Event : BossEvent
         
         //브금 복구
         SoundManager.Instance.PlayBGM(BGM.FirstSancCenter);
+
+        EndCutScene();
     }
     
 

@@ -20,4 +20,7 @@ public class PlayerFallState : PlayerAirState
         base.Exit();
         StopAnimation(_player.AnimationDB.FallParameterHash);;
     }
+
+    
+
 }
