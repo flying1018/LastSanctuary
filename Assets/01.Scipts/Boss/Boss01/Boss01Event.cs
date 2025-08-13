@@ -9,7 +9,7 @@ public class Boss01Event : BossEvent
     private CinemachineBlendDefinition _originBlend;
     private Vector3 _originCameraPosition;
     private float _originCameraSize;
-    private Boss _boss;
+    [SerializeField] private Boss boss;
 
     [Header("Boss Spawn")]
     [SerializeField] private float blackDuration = 1f;
@@ -29,19 +29,26 @@ public class Boss01Event : BossEvent
     {
         base.Start();
         
-        _boss = FindAnyObjectByType<Boss>();
-        _boss.gameObject.SetActive(false);
         
         //카메라 기본 설정
         _originBlend = _brain.m_DefaultBlend; 
         _originCameraPosition = _bossCamera.transform.position;
         _originCameraSize = _bossCamera.m_Lens.OrthographicSize;
+
+        if (boss == null)
+        {
+            boss = FindAnyObjectByType<Boss>();
+        }
+        boss.gameObject.SetActive(false);
+        
+        
+
     }
     
     //플레이어 입장 시
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(MapManager.IsBossAlive == false) return;
+        if(!_isBossAlive) return;
         if (other.CompareTag(StringNameSpace.Tags.Player))
         {
             _player = other.GetComponent<Player>();
@@ -56,9 +63,9 @@ public class Boss01Event : BossEvent
         if (other.CompareTag(StringNameSpace.Tags.Player))
         {
             _player = null;
-            if (_boss.gameObject.activeInHierarchy)
+            if (boss.gameObject.activeInHierarchy)
             { 
-                _boss.gameObject.SetActive(false);
+                boss.gameObject.SetActive(false);
             }
             //벽 치우기
             foreach (MoveObject moveObject in _moveObjects)
@@ -109,11 +116,6 @@ public class Boss01Event : BossEvent
         //대기 상태
         _player.StateMachine.ChangeState(_player.StateMachine.IdleState);
 
-        //벽이 올라와서 막힘
-        foreach (MoveObject moveObject in _moveObjects)
-        {
-            moveObject.MoveObj();
-        }
 
         //천천히 암전
         Color originColor = _backGroundSprite.color;
@@ -123,6 +125,12 @@ public class Boss01Event : BossEvent
             elapsed += Time.deltaTime;
             _backGroundSprite.color = Color.Lerp(originColor, Color.black, elapsed / blackDuration);
             yield return null;
+        }
+        
+        //벽이 올라와서 막힘
+        foreach (MoveObject moveObject in _moveObjects)
+        {
+            moveObject.MoveObj();
         }
         
         //배경음 종료
@@ -162,9 +170,9 @@ public class Boss01Event : BossEvent
         }
 
         //보스 스폰 상태
-        _boss.transform.position = transform.position;
-        _boss.gameObject.SetActive(true);
-        _boss.Init(this);
+        boss.transform.position = transform.position;
+        boss.gameObject.SetActive(true);
+        boss.Init(this);
     }
     
     //보스 페이즈전환 연출
@@ -176,14 +184,14 @@ public class Boss01Event : BossEvent
     {
         //보스 포커싱
         _brain.m_DefaultBlend = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.Cut, 0f);
-        _bossCamera.transform.position = new Vector3(_boss.transform.position.x, _boss.transform.position.y, _bossCamera.transform.position.z);
+        _bossCamera.transform.position = new Vector3(boss.transform.position.x, boss.transform.position.y, _bossCamera.transform.position.z);
         _bossCamera.m_Lens.OrthographicSize = cameraZoom;
         _bossCamera.Priority = 20;
         //UI 끄기
         _player.EventProduction(true);
         //조작 불가
         _player.PlayerInput.enabled = false;
-        yield return new WaitForSeconds(_boss.Data.PhaseShiftTime);
+        yield return new WaitForSeconds(boss.Data.PhaseShiftTime);
         
         //카메라 초기 설정 복구
         _brain.m_DefaultBlend = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.EaseInOut, 2f);
@@ -199,7 +207,7 @@ public class Boss01Event : BossEvent
     {
         //보스 포커싱
         _brain.m_DefaultBlend = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.Cut, 0f);
-        _bossCamera.transform.position = new Vector3(_boss.transform.position.x, _boss.transform.position.y, _bossCamera.transform.position.z);
+        _bossCamera.transform.position = new Vector3(boss.transform.position.x, boss.transform.position.y, _bossCamera.transform.position.z);
         _bossCamera.m_Lens.OrthographicSize = cameraZoom;
         _bossCamera.Priority = 20;
         
@@ -215,7 +223,7 @@ public class Boss01Event : BossEvent
         _backGroundSprite.color = Color.black;
         
         //빨간 실루엣
-         SpriteRenderer bossSprite = _boss.SpriteRenderer;
+         SpriteRenderer bossSprite = boss.SpriteRenderer;
          SpriteRenderer playerSprite = _player.SpriteRenderer;
          
          Material originBossMaterial = bossSprite.material;
@@ -234,7 +242,7 @@ public class Boss01Event : BossEvent
         playerSprite.material = originplayerMaterial;
 
         //보스 정지
-        _boss.Animator.speed = 0f;
+        boss.Animator.speed = 0f;
         yield return new WaitForSeconds(1f);
         
         //카메라 흔들림
@@ -242,14 +250,14 @@ public class Boss01Event : BossEvent
         yield return new WaitForSeconds(shakeDuration);
         
         //아이템 드롬
-        _boss.ItemDropper.DropItems();
+        boss.ItemDropper.DropItems();
         
         //죽는 이벤트 시간만큼 대기
-        yield return new WaitForSeconds(_boss.Data.deathEventDuration);
+        yield return new WaitForSeconds(boss.Data.deathEventDuration);
 
         //설정 복구
         _brain.m_DefaultBlend = _originBlend;
-        _boss.Animator.speed = 1f;
+        boss.Animator.speed = 1f;
         yield return new WaitForSeconds(3f);
         StartBattle();
         //카메라 초기 설정 복구
@@ -265,5 +273,7 @@ public class Boss01Event : BossEvent
         _lodeScenerPortal.gameObject.SetActive(true);
         //브금 복구
         SoundManager.Instance.PlayBGM(BGM.Tutorials_Sound);
+        
+        _isBossAlive = false;
     }
 }

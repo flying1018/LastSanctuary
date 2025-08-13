@@ -40,9 +40,6 @@ public class Boss02 : Boss
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if (Condition2.DontCollision) return;
-        
-        base.OnTriggerEnter2D(other);
     }
     
     
