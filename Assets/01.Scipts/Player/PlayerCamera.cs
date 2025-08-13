@@ -9,8 +9,10 @@ public class PlayerCamera : MonoBehaviour
     private CinemachineVirtualCamera _camera;
     private CinemachineFramingTransposer _transposer;
     private CinemachineBrain _brain;
-    private readonly CinemachineBlendDefinition cut = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.Cut, 0f);
-    private readonly CinemachineBlendDefinition slow = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.EaseInOut, 2f);
+    private readonly CinemachineBlendDefinition cut = 
+        new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.Cut, 0f);
+    private readonly CinemachineBlendDefinition slow = 
+        new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.EaseInOut, 2f);
     
     [SerializeField] private CinemachineVirtualCamera otherCam;
 
@@ -35,8 +37,6 @@ public class PlayerCamera : MonoBehaviour
             _transposer.m_TrackedObjectOffset.x = direction.x > 0 ? _player.Data.cameraDiff : -_player.Data.cameraDiff;
     
         _transposer.m_TrackedObjectOffset.y = direction.y >= 0 ? _player.Data.cameraTopView : -_player.Data.cameraBottomView;
-            
-        
     }
 
     /// <summary>
