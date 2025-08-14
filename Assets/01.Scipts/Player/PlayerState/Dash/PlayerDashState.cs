@@ -34,7 +34,7 @@ public class PlayerDashState : PlayerBaseState
     public override void Exit()
     {
         base.Exit();
-        _move.gravityScale = Vector2.zero;
+        _move.GravityScale = Vector2.zero;
     }
 
     public override void HandleInput()

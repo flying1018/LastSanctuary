@@ -52,7 +52,7 @@ public class PlayerDeathState : PlayerBaseState
         {
             _deathText = true;
             //세이브 포인트로 위치 변경
-            _move.gravityScale = Vector2.zero;
+            _move.GravityScale = Vector2.zero;
             _player.gameObject.transform.position = SaveManager.Instance.GetSavePoint();
             UIManager.Instance.DeathText(2f);
         }
@@ -67,7 +67,7 @@ public class PlayerDeathState : PlayerBaseState
 
     public override void Exit()
     {
-        _move.gravityScale = Vector2.zero;
+        _move.GravityScale = Vector2.zero;
     }
 
     public override void PhysicsUpdate()

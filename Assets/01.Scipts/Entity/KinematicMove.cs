@@ -7,11 +7,22 @@ public class KinematicMove : MonoBehaviour
 {
     //필드
     protected Rigidbody2D _rigidbody;
+    protected Vector2 _gravityScale;
     
-    public Vector2 gravityScale = Vector2.zero;
+    
     public readonly WaitForFixedUpdate WaitFixedUpdate = new WaitForFixedUpdate();
     
     //프로퍼티
+    public Vector2 GravityScale
+    {
+        get => _gravityScale;
+        set
+        {
+            float y = Mathf.Clamp(value.y, -20, 0);
+            _gravityScale = new Vector2(value.x,y);
+        }
+    }
+
     public Vector2 GroundDirection { get; set; }
     public Vector2 WallDirection { get; set; }
     public bool IsWall { get; set; }
@@ -27,8 +38,9 @@ public class KinematicMove : MonoBehaviour
         _rigidbody = rigidbody;
         IsGrounded = false;
         IsWall = false;
-        
-        
+        _gravityScale = Vector2.zero;
+
+
     }
     
     protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -44,7 +56,7 @@ public class KinematicMove : MonoBehaviour
             position.y = point.y + SizeY / 2;
             transform.position = position;
             
-            gravityScale = Vector2.zero;
+            GravityScale = Vector2.zero;
             IsGrounded = true;
         }
 
@@ -190,8 +202,8 @@ public class KinematicMove : MonoBehaviour
     {
         while (force.magnitude > 0.01f)
         {
-            gravityScale += Vector2.down * gravityPower;
-            Move(force + gravityScale);
+            GravityScale += Vector2.down * gravityPower;
+            Move(force + GravityScale);
             yield return WaitFixedUpdate;
             force *= dumping;
         }
