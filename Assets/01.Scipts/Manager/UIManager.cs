@@ -25,6 +25,7 @@ public class UIManager : Singleton<UIManager>
     public ShowTextUI ShowTextUI { get; set; }
     public HintUI hintUI { get; private set; }
     public DeathUI DeathUI { get; set; }
+    public MiniMapUI miniMapUI { get; set; }
     public TutorialUIPopup PopUpUI { get; set; }
     public Queue<TutorialUIPopup> PopUpQueue { get; set; }
 
@@ -58,6 +59,7 @@ public class UIManager : Singleton<UIManager>
 
         screenFadeUIs = GetComponentsInChildren<ScreenFadeUI>(true);
         saveUI = GetComponentInChildren<SaveUI>(true);
+        miniMapUI = GetComponentInChildren<MiniMapUI>(true);
         PopUpUI = GetComponentInChildren<TutorialUIPopup>(true);
 
         BossUI = GetComponentInChildren<BossUI>(true);
@@ -165,6 +167,12 @@ public class UIManager : Singleton<UIManager>
     public void CloseHint()
     {
         hintUI.CloseHint();
+    }
+
+    public void MiniMap()
+    {
+        miniMapUI.gameObject.SetActive(true);
+        miniMapUI.ShowMiniMap();
     }
 
     #endregion

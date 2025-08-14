@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if(UIManager.Instance.PopUpQueue.Count > 0) return;
+        if (UIManager.Instance.PopUpQueue.Count > 0) return;
         if (context.phase == InputActionPhase.Started)
         {
             IsAttack = true;
@@ -143,5 +143,13 @@ public class PlayerController : MonoBehaviour
             IsUltimate = false;
         }
 
+    }
+
+    public void OnMiniMap(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            UIManager.Instance.MiniMap();
+        }
     }
 }
