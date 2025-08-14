@@ -6,8 +6,14 @@ public class IronCage : MoveObject
 {
     [SerializeField] private float moveDistance = 3.6f;
 
+    public void Awake()
+    {
+        _isTurnOn = false;
+    }
+
     public override void MoveObj()
     {
+        _isTurnOn = !_isTurnOn;
         StartCoroutine(MoveIronCage(base._isTurnOn));
     }
 
@@ -33,5 +39,11 @@ public class IronCage : MoveObject
 
         if (_isTurnOn) { spriteRenderer.sortingOrder = 50; }
         transform.position = targetPos;
+    }
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(transform.position + new Vector3(0,-moveDistance), new Vector3(0.5f,4,0));
     }
 }

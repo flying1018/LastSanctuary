@@ -20,4 +20,17 @@ public class PlayerFallState : PlayerAirState
         base.Exit();
         StopAnimation(_player.AnimationDB.FallParameterHash);;
     }
+
+    public override void Update()
+    {
+        //스태미나 회복
+        _condition.RecoveryStamina();
+        
+        if (_move.IsGrounded)
+        {
+            _stateMachine.ChangeState(_stateMachine.IdleState);      
+        }
+    }
+
+
 }

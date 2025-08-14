@@ -11,7 +11,6 @@ public class SettingUI : UnifiedUI
     [SerializeField] private TextMeshProUGUI fullscreenText;
     [SerializeField] private Slider bgmVolume;
     [SerializeField] private Slider sfxVolume;
-
     [SerializeField] private Button leftButton;
     [SerializeField] private Button rightButton;
     [SerializeField] private Button fullscreenButtonA;
@@ -51,6 +50,8 @@ public class SettingUI : UnifiedUI
         titleButton.onClick.AddListener(ReturnToTitle);
         initButton.onClick.AddListener(InitSettings);
         revertButton.onClick.AddListener(RevertSettings);
+        
+        InitResolution();
     }
 
     public void TitleInit()
@@ -63,6 +64,8 @@ public class SettingUI : UnifiedUI
         sfxSlider.onValueChanged.AddListener(OnSFXVolumeChange);
         initButton.onClick.AddListener(InitSettings);
         revertButton.onClick.AddListener(RevertSettings);
+        
+        InitResolution();
     }
 
     public override void Enter()
@@ -100,13 +103,13 @@ public class SettingUI : UnifiedUI
             //스킬 UI로 이동
             _uiStateMachine.ChangeState(_uiStateMachine.SkillUI);
         }
+        
     }
 
     //초기 설정
     private void SetupSettings()
     {
         _isFullScreen = Screen.fullScreen;
-        InitResolution();
         InitSettings();
     }
 
@@ -121,7 +124,6 @@ public class SettingUI : UnifiedUI
     {
         _defaultResolutionIndex = _curResolutionIndex;
         _defaultFullScreen = _isFullScreen;
-        LoadSliderSet();
         _defaultBgmVolume = bgmVolume.value;
         _defaultSfxVolume = sfxVolume.value;
         Resolution res = _resolutions[_curResolutionIndex];
@@ -150,7 +152,6 @@ public class SettingUI : UnifiedUI
         var allresolutions = Screen.resolutions;
         var options = new List<Resolution>();
         var resolution = new HashSet<string>();
-
 
         for (var i = 0; i < allresolutions.Length; i++)
         {

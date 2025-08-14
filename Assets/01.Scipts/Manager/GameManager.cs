@@ -1,4 +1,5 @@
 
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -22,11 +23,9 @@ public class GameManager : Singleton<GameManager>
         var player = FindObjectOfType<Player>();
         if (scene.buildIndex == 0)
         {
-            player.gameObject.SetActive(false);
+            Destroy(player.gameObject);
+            Destroy(UIManager.Instance.gameObject);
         }
-        else
-        {
-            player.gameObject.SetActive(true);
-        }
+
     }
 }

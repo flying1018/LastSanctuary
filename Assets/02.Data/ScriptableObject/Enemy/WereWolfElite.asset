@@ -26,18 +26,18 @@ MonoBehaviour:
   knockbackForce: 5
   attackAnim: {fileID: 7400000, guid: ee540033272a2d546ab170860e0281b9, type: 2}
   blinkLength: 1
-  attack: 25
-  hp: 120
+  attack: 40
+  hp: 250
   defence: 0
   damageDelay: 0.1
   hitDuration: 0.5
-  dropGold: 500
+  dropGold: 150
   deathAnim: {fileID: 7400000, guid: 13d4cbde1167bcc4b966baff005f6d12, type: 2}
   projectilePrefab: {fileID: 0}
   projectilePower: 0
   rangeType: 0
   firePointX: 0
-  poolIndex: 0
+  poolIndex: 1
   flyingHeight: 0
   flyingSpeed: 0
   attackSound: {fileID: 8300000, guid: 742080f90db03c24aa1e3a74c2d36caa, type: 3}

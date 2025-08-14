@@ -10,9 +10,15 @@ EditorBuildSettings:
     guid: a0fc13cde07262940a66c1270cf3ddf0
   - enabled: 1
     path: Assets/00.Scenes/Renewal_Tutorials.unity
-    guid: 17fd55e0ade4c53428bc1724db82128d
+    guid: 25681274804379f42adcddde510c90bf
   - enabled: 1
-    path: Assets/00.Scenes/1stSancBackUp.unity
-    guid: 96dd2e517d19b004bb8c31243bb942f2
+    path: Assets/00.Scenes/1stSanc.unity
+    guid: 4110b4fb809f6984692a24674f3c4512
+  - enabled: 1
+    path: Assets/00.Scenes/1stSancSave.unity
+    guid: 224433f4e6d2d7847a2b92b292e58a41
+  - enabled: 1
+    path: Assets/00.Scenes/BossRush.unity
+    guid: 89b70171e40fdda41a331d8a69fcd388
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 232de7517ad4649fb8063cd224c42546, type: 2}

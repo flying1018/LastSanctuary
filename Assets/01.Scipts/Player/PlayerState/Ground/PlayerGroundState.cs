@@ -89,10 +89,19 @@ public class PlayerGroundState : PlayerBaseState
         if (_player.FindTarget() && _input.IsGroggyAttack)
         {
             //보스에게 그로기 어택
+            if (_player.Target.TryGetComponent(out Boss02 boss02))
+            {
+                if (boss02.StateMachine2.currentState is Boss02GroggyState)
+                    _stateMachine.ChangeState(_stateMachine.GroggyAttackState);
+                return;
+            }
+            
+            //보스에게 그로기 어택
             if (_player.Target.TryGetComponent(out Boss boss))
             {
                 if (boss.StateMachine.currentState is BossGroggyState)
                     _stateMachine.ChangeState(_stateMachine.GroggyAttackState);
+                return;
             }
             
             //스킬 해금 시 몬스터에게도 사용 가능
@@ -101,6 +110,7 @@ public class PlayerGroundState : PlayerBaseState
             {
                 if (enemy.StateMachine.currentState is EnemyGroggyState)
                     _stateMachine.ChangeState(_stateMachine.GroggyAttackState);
+                return;
             }
         }
     }

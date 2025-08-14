@@ -54,6 +54,7 @@ public class Boss : MonoBehaviour
     public void Init()
     {
         SpriteRenderer.flipX = false;
+        BoxCollider.enabled = true;
         
         //무기 데이터 설정
         WeaponInfo = new WeaponInfo();

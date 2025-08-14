@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,9 +10,12 @@ public class TitleSceneUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private Button newButton;
+    [SerializeField] private Button LoadButton;
     [SerializeField] private Button settingButton;
     [SerializeField] private Button exitButton;
+    [SerializeField] private Button bossRushButton;
     [SerializeField] private AudioClip startSound;
+
     
     private SettingUI _settingUI;
     private Coroutine _startGameCoroutine;
@@ -19,28 +23,41 @@ public class TitleSceneUI : MonoBehaviour
     private void Awake()
     {
         _settingUI = GetComponentInChildren<SettingUI>(true);
-        _settingUI.TitleInit();
-        
         newButton.onClick.AddListener(OnClickGameStart);
+        LoadButton.onClick.AddListener(OnClickGameLoad);
         exitButton.onClick.AddListener(OnClickExit);
         settingButton.onClick.AddListener(OnClickSetting);
+        bossRushButton.onClick.AddListener(OnClickBossRush);
     }
 
-    public void OnClickGameStart()
+    private void Start()
     {
-        if (_startGameCoroutine != null)
+        _settingUI.TitleInit();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            StopCoroutine(_startGameCoroutine);
-            _startGameCoroutine = null;
+            _settingUI.Exit();
         }
-        _startGameCoroutine = StartCoroutine(StartGame_Coroutine());
     }
 
-    private IEnumerator StartGame_Coroutine()
+    public async void OnClickGameStart()
     {
-        SoundManager.Instance.PlaySFX(startSound);
-        yield return new WaitForSecondsRealtime(startSound.length/2);
+        // SoundManager.Instance.PlaySFX(startSound);
+        // await Task.Delay((int)startSound.length * 500);
         SceneManager.LoadScene(StringNameSpace.Scenes.RenewalTutorials);
+    }
+    
+    public void OnClickGameLoad()
+    {
+        SceneManager.LoadScene(StringNameSpace.Scenes.SancScene);
+    }
+
+    public void OnClickBossRush()
+    {
+        SceneManager.LoadScene(StringNameSpace.Scenes.BossRush);
     }
 
     public void OnClickExit()

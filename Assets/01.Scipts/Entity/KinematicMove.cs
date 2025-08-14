@@ -26,6 +26,9 @@ public class KinematicMove : MonoBehaviour
         SizeY = sizeY;
         _rigidbody = rigidbody;
         IsGrounded = false;
+        IsWall = false;
+        
+        
     }
     
     protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -138,6 +141,26 @@ public class KinematicMove : MonoBehaviour
         
         _rigidbody.MovePosition(_rigidbody.position + direction * Time.fixedDeltaTime);
     }
+    public Coroutine AddForceCoroutine;
+    public virtual void AddForce(Vector2 force,float dumping = 0.95f)
+    {
+        if (AddForceCoroutine != null)
+        {
+            StopCoroutine(AddForceCoroutine);
+            AddForceCoroutine = null;
+        }
+        AddForceCoroutine = StartCoroutine(AddForce_Coroutine(force,dumping));;
+    }
+    IEnumerator AddForce_Coroutine(Vector2 force, float dumping)
+    {
+        while (force.magnitude > 0.01f)
+        {
+            Move(force);
+            yield return WaitFixedUpdate;
+            force *= dumping;
+        }
+        AddForceCoroutine = null;
+    }
 
     public Vector2 Horizontal(Vector2 direction, float speed)
     {
@@ -151,29 +174,6 @@ public class KinematicMove : MonoBehaviour
         return direction.normalized * speed;
     }
 
-    public Coroutine AddForceCoroutine;
-    public virtual void AddForce(Vector2 force,float dumping = 0.95f)
-    {
-        if (AddForceCoroutine != null)
-        {
-            StopCoroutine(AddForceCoroutine);
-            AddForceCoroutine = null;
-        }
-        
-        AddForceCoroutine = StartCoroutine(AddForce_Coroutine(force,dumping));;
-    }
-
-    IEnumerator AddForce_Coroutine(Vector2 force, float dumping)
-    {
-        while (force.magnitude > 0.01f)
-        {
-            Move(force);
-            yield return WaitFixedUpdate;
-            force *= dumping;
-        }
-        
-        AddForceCoroutine = null;
-    }
     
     //중력을 적용하는 AddForce
     public virtual void GravityAddForce(Vector2 force,float gravityPower,float dumping = 0.95f)

@@ -35,6 +35,7 @@ Transform:
   - {fileID: 8436999644749053198}
   - {fileID: 6412988763380068492}
   - {fileID: 7231019526234713104}
+  - {fileID: 3759018610162824307}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &5024413105975186805
@@ -95,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 7231019526234713104}
+  bossPosition: {fileID: 3759018610162824307}
   originTopMirrorSprite: {fileID: 21300000, guid: c344537987195f14593010a769b8c6ea, type: 3}
   originMirrorSprite: {fileID: 1476403571, guid: edaf9eb3e59e3bd449ec2b5897f382f8, type: 3}
   blackDuration: 1
@@ -107,7 +109,7 @@ MonoBehaviour:
   brokenTime: 1
   phaseShiftSprite: {fileID: 21300000, guid: 50e31d0ea8116b54fbe8b373ecdc1c41, type: 3}
   sloweventDuration: 2
-  redSilhouette: {fileID: 0}
+  redSilhouette: {fileID: 2100000, guid: 2ff5d5dd8b39e394aabdd9f8aa41f11a, type: 2}
   shakeDuration: 0
   leftTopMirror: {fileID: 8425999696619332062}
   leftBottomMirror: {fileID: 3530447715053493685}
@@ -116,6 +118,37 @@ MonoBehaviour:
   topMirror: {fileID: 5965412380870763584}
   teleportRange: 10
   projectileYMargin: 2
+--- !u!1 &1693408510970349717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3759018610162824307}
+  m_Layer: 0
+  m_Name: BossPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3759018610162824307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693408510970349717}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.15002441, y: -4.9400024, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2437718614702649452}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2317395067398452626
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,11 +835,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2019086048596025569, guid: b42efae5cbf6edc448eff2ee2a538551, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.34
+      value: -20.4
       objectReference: {fileID: 0}
     - target: {fileID: 2019086048596025569, guid: b42efae5cbf6edc448eff2ee2a538551, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.65
+      value: -2.77
       objectReference: {fileID: 0}
     - target: {fileID: 2019086048596025569, guid: b42efae5cbf6edc448eff2ee2a538551, type: 3}
       propertyPath: m_LocalPosition.z
