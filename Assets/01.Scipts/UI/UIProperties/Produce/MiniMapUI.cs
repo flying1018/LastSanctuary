@@ -1,30 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MiniMapUI : MonoBehaviour
 {
-    [SerializeField] private GameObject[] mapCanvas;
-    private int _curMap;
+    [System.Serializable]
+    public struct MapData
+    {
+        public MapType type;
+        public GameObject[] miniMaps;
+    }
+
+    [SerializeField] private MapData[] maps;
+    private RawImage _curMiniMap;
+    private MapType _curMapType;
+
     private bool _isOn = false;
 
     public void ShowMiniMap()
     {
         _isOn = !_isOn;
 
+        _curMapType = MapManager.Instance.Map;
+
+        DebugHelper.Log($"호출됨 : {_isOn}");
+
         if (_isOn)
         {
-            mapCanvas[_curMap - 1].SetActive(true);
+            maps[(int)_curMapType].miniMaps[0].SetActive(true);
+            // foreach (var map in maps)
+            //     map.canvas.SetActive(map.type == curMapType);
         }
         else
         {
-            // 미니맵 키고 딴맵가면 오류 방지
-            foreach (GameObject canva in mapCanvas)
-            {
-                canva.SetActive(false);
-            }
+            // foreach (var map in maps)
+            //     map.canvas.SetActive(false);
 
             this.gameObject.SetActive(false);
         }
+
+
     }
 }

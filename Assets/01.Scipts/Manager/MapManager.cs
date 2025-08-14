@@ -5,11 +5,11 @@ using UnityEngine;
 
 public enum MapType
 {
-    Tutorial, 
-    First, 
-    Second, 
-    Third, 
-    Fourth,
+    Tutorial = 0,
+    First = 1,
+    Second = 2,
+    Third = 3,
+    Fourth = 4,
 }
 
 
@@ -27,11 +27,13 @@ public class MapManager : Singleton<MapManager>
 
     public WarpObject selectWarpObj;
     public WarpObject targetWarpObj;
-    
+    public MapType Map { get => map; }
+
     public static bool IsBossAlive { get; private set; }
 
     protected override void Awake()
-    {   base.Awake();
+    {
+        base.Awake();
         //스폰 포인트 가져오기
         EnemySpawnPoints = new List<EnemySpawnPoint>(FindObjectsOfType<EnemySpawnPoint>());
         ItemSpawnPoints = new List<ItemSpawnPoint>(FindObjectsOfType<ItemSpawnPoint>());
@@ -63,7 +65,7 @@ public class MapManager : Singleton<MapManager>
         {
             if (spawnPoint.Enemytype == EnemyType.Elite && deadElites.Contains(spawnPoint))
                 continue;
-            
+
             spawnPoint.Respawn();
         }
     }
@@ -71,6 +73,6 @@ public class MapManager : Singleton<MapManager>
     public void RespawnItems()
     {
         foreach (var spawnPoint in ItemSpawnPoints) spawnPoint.Respawn();
-        
+
     }
 }

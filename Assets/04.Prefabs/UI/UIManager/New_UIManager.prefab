@@ -757,6 +757,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5845077051056828305, guid: cfd62c6978bd14ad49692e240b647a8e, type: 3}
+      propertyPath: m_Name
+      value: MiniMapUI1
+      objectReference: {fileID: 0}
     - target: {fileID: 6636391691301926898, guid: cfd62c6978bd14ad49692e240b647a8e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
