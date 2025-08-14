@@ -25,7 +25,7 @@ public class PlayerKinematicMove : KinematicMove
             position.y = point.y + SizeY / 2;
             transform.position = position;
             
-            gravityScale = Vector2.zero;
+            GravityScale = Vector2.zero;
             IsGrounded = true;
             IsAerialPlatform = true;
         }

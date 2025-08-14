@@ -11,7 +11,7 @@ public class PlayerRopeIdleState : PlayerAirState
         base.Enter();
         StartAnimation(_player.AnimationDB.RopeIdleParameterHash);
         
-        _move.gravityScale = Vector2.zero;
+        _move.GravityScale = Vector2.zero;
     }
     
     public override void Exit()

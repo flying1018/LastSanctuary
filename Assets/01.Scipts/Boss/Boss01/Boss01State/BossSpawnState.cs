@@ -12,7 +12,7 @@ public class BossSpawnState : BossBaseState
         _spriteRenderer.material = _data.materials[0];
         
         //빠르게 떨어지기
-        _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
+        _move.GravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
         
         //애니메이션 실행
         _boss.Animator.SetTrigger(_boss.AnimationDB.SpawnParameterHash);

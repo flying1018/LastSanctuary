@@ -64,7 +64,7 @@ public class PlayerBaseState : IState
         _condition.RecoveryStamina();
         
         //떨어지기 시작하면
-        if (!_move.IsGrounded && _move.gravityScale.y < -_data.fallJudgment)
+        if (!_move.IsGrounded && _move.GravityScale.y < -_data.fallJudgment)
         {   //떨어지는 상태
             _time = 0;
             _stateMachine.ChangeState(_stateMachine.FallState);
@@ -96,17 +96,17 @@ public class PlayerBaseState : IState
         
         //바닥에 있지 않으면
         if(!_move.IsGrounded)
-            _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
+            _move.GravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
         else
-            _move.gravityScale = Vector2.zero;
+            _move.GravityScale = Vector2.zero;
         
-        _move.Move(x + _move.gravityScale);
+        _move.Move(x + _move.GravityScale);
     }
 
     public void ApplyGravity()
     {
-        _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
-        _move.Move( _move.gravityScale);
+        _move.GravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
+        _move.Move( _move.GravityScale);
     }
 
     public void Rotate(Vector2 direction)

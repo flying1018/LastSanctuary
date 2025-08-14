@@ -67,12 +67,12 @@ public class EnemyBaseState : IState
         Vector2 x = _move.Horizontal(direction, _moveSpeed);
         
         if(!_move.IsGrounded)
-            _move.gravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
+            _move.GravityScale += _move.Vertical(Vector2.down, _data.gravityPower);
         else
-            _move.gravityScale = Vector2.zero;
+            _move.GravityScale = Vector2.zero;
         
         
-        _move.Move(x + _move.gravityScale);
+        _move.Move(x + _move.GravityScale);
     }
 
     //회전
